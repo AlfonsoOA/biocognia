@@ -25,7 +25,7 @@
     {
      "id": "global-strategy",
      "nombre": "Global strategy",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "single-organisms",
@@ -149,7 +149,7 @@
     {
      "id": "fragmentation",
      "nombre": "Fragmentation",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "tagmentation",
@@ -180,7 +180,7 @@
     {
      "id": "library",
      "nombre": "Library",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "single-end-illumina",
@@ -266,7 +266,7 @@
     {
      "id": "trimming",
      "nombre": "Trimming",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "q20",
@@ -305,7 +305,7 @@
     {
      "id": "assembly",
      "nombre": "Assembly",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "de-novo",
@@ -454,7 +454,7 @@
     {
      "id": "rna-to-analyze",
      "nombre": "RNA to analyze",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "total",
@@ -493,7 +493,7 @@
     {
      "id": "library",
      "nombre": "Library",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "stranded",
@@ -563,7 +563,7 @@
     {
      "id": "trimming",
      "nombre": "Trimming",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "q20",
@@ -602,7 +602,7 @@
     {
      "id": "assembly",
      "nombre": "Assembly",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "de-novo",
@@ -679,7 +679,7 @@
     {
      "id": "quantification",
      "nombre": "Quantification",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "pseudocounts",
@@ -725,7 +725,7 @@
     {
      "id": "correction",
      "nombre": "Correction",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "no",
@@ -828,7 +828,7 @@
     {
      "id": "fragmentation",
      "nombre": "Fragmentation",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "tagmentation",
@@ -859,7 +859,7 @@
     {
      "id": "library",
      "nombre": "Library",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "single-end-illumina",
@@ -945,7 +945,7 @@
     {
      "id": "trimming",
      "nombre": "Trimming",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "q20",
@@ -984,7 +984,7 @@
     {
      "id": "assembly",
      "nombre": "Assembly",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "de-novo",
@@ -1007,7 +1007,7 @@
     {
      "id": "binning",
      "nombre": "Binning",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "no",
@@ -1187,7 +1187,7 @@
     {
      "id": "rna-to-analyze",
      "nombre": "RNA to analyze",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "total",
@@ -1226,7 +1226,7 @@
     {
      "id": "library",
      "nombre": "Library",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "stranded",
@@ -1296,7 +1296,7 @@
     {
      "id": "trimming",
      "nombre": "Trimming",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "q20",
@@ -1335,7 +1335,7 @@
     {
      "id": "assembly",
      "nombre": "Assembly",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "de-novo",
@@ -1412,7 +1412,7 @@
     {
      "id": "quantification",
      "nombre": "Quantification",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "pseudocounts",
@@ -1458,7 +1458,7 @@
     {
      "id": "correction",
      "nombre": "Correction",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "no",
@@ -1561,7 +1561,7 @@
     {
      "id": "sample-preparation",
      "nombre": "Sample preparation",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "standard",
@@ -1584,7 +1584,7 @@
     {
      "id": "database",
      "nombre": "Database",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "reference-database-uniprot-ncbi",
@@ -1638,7 +1638,7 @@
     {
      "id": "htm",
      "nombre": "HTM",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "t-test",
@@ -1677,7 +1677,7 @@
     {
      "id": "cbr",
      "nombre": "CBR",
-     "tipo": "unica",
+     "tipo": "multiple",
      "opciones": [
       {
        "id": "fc",

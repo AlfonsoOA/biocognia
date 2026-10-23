@@ -80,7 +80,7 @@ const I = {
     win_t: "¡Misión cumplida!", win_d: (x) => `Ha salido el ${x}, uno de vuestros números. ¡Habéis salvado a la humanidad!`,
     lose_t: "La misión ha fracasado", lose_d: (x) => `Ha salido el ${x}, que no estaba entre vuestros números.`,
     retry: "Revisar la estrategia (siguiente ronda)", over_t: "Fin de la actividad", over_d: "Se han agotado las rondas. Comentad con el profesor qué decisiones han restado probabilidad.",
-    aviso: "Aviso del profesor", formula: "Coste de cada ómica = condiciones × réplicas × (precio por muestra) × profundidad + costes fijos.", changed: "Cambios guardados", saving: "Guardando…", demo: "Modo demostración: los datos se guardan solo en este navegador.",
+    aviso: "Aviso del profesor", varias: "(podéis elegir varias)", formula: "Coste de cada ómica = condiciones × réplicas × (precio por muestra) × profundidad + costes fijos.", changed: "Cambios guardados", saving: "Guardando…", demo: "Modo demostración: los datos se guardan solo en este navegador.",
     f: "SORTIVIA · Metodología ESTOPA · Parte de BIOCOGNIA · Open Educational Technology",
   },
   en: {
@@ -96,7 +96,7 @@ const I = {
     win_t: "Mission accomplished!", win_d: (x) => `${x} came up, one of your numbers. You have saved humanity!`,
     lose_t: "The mission has failed", lose_d: (x) => `${x} came up, which was not one of your numbers.`,
     retry: "Review the strategy (next round)", over_t: "End of the activity", over_d: "No rounds left. Discuss with the teacher which decisions lowered your probability.",
-    aviso: "Message from the teacher", formula: "Cost of each omics block = conditions × replicates × (price per sample) × depth + fixed costs.", changed: "Changes saved", saving: "Saving…", demo: "Demo mode: data are stored only in this browser.",
+    aviso: "Message from the teacher", varias: "(you may choose several)", formula: "Cost of each omics block = conditions × replicates × (price per sample) × depth + fixed costs.", changed: "Changes saved", saving: "Saving…", demo: "Demo mode: data are stored only in this browser.",
     f: "SORTIVIA · ESTOPA methodology · Part of BIOCOGNIA · Open Educational Technology",
   },
 };
@@ -149,10 +149,10 @@ function vBlock(b) {
     const opts = d.opciones.map((o) => {
       const g = o.grupo && o.grupo !== last ? `<span class="grp">${esc(o.grupo)}</span>` : ""; last = o.grupo || last;
       const name = `${b.id}__${d.id}`;
-      const checked = sel.dec[d.id] === o.id, pr = svPrecio(o, S.lang);
-      return `${g}<label class="opt"><input type="radio" name="${name}" data-b="${b.id}" data-d="${d.id}" value="${esc(o.id)}" ${checked ? "checked" : ""}><span>${esc(o.label)}${pr ? ` <i>${pr}</i>` : ""}</span></label>`;
+      const multi = d.tipo === "multiple", v = sel.dec[d.id], checked = multi ? (Array.isArray(v) ? v : (v ? [v] : [])).includes(o.id) : v === o.id, pr = svPrecio(o, S.lang);
+      return `${g}<label class="opt"><input type="${multi ? "checkbox" : "radio"}" name="${name}" data-b="${b.id}" data-d="${d.id}" value="${esc(o.id)}" ${checked ? "checked" : ""}><span>${esc(o.label)}${pr ? ` <i>${pr}</i>` : ""}</span></label>`;
     }).join("");
-    return `<div class="dec"><span class="lbl">${esc(d.nombre)}</span><div class="opts">${opts}</div></div>`;
+    return `<div class="dec"><span class="lbl">${esc(d.nombre)}${d.tipo === "multiple" ? `<br><span class="small muted">${T("varias")}</span>` : ""}</span><div class="opts">${opts}</div></div>`;
   }).join("");
   return `<section class="blk on">${head}<div class="body">${decs}
     <label class="stack small">${T("just")}<textarea class="field" data-just="${b.id}" placeholder="${T("just_ph")}">${esc(S.just[b.id] || "")}</textarea></label></div></section>`;
@@ -244,7 +244,10 @@ document.addEventListener("change", (e) => {
   if (el.dataset.inc) { S.el.bloques[el.dataset.inc].incluido = el.checked; guardar(); const y = window.scrollY; render(); window.scrollTo(0, y); return; }
   if (el.dataset.b) {
     const sel = S.el.bloques[el.dataset.b], d = S.act.bloques.find((b) => b.id === el.dataset.b).decisiones.find((x) => x.id === el.dataset.d);
-    sel.dec[d.id] = el.value;
+    if (d.tipo === "multiple") {
+      const cur = Array.isArray(sel.dec[d.id]) ? sel.dec[d.id] : (sel.dec[d.id] ? [sel.dec[d.id]] : []);
+      sel.dec[d.id] = el.checked ? [...new Set(cur.concat(el.value))] : cur.filter((x) => x !== el.value);
+    } else sel.dec[d.id] = el.value;
     guardar();
     actualizarSubtotales();
     renderBudget(); return;

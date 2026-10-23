@@ -54,17 +54,23 @@ async function cargarSesiones() { P.sesiones = await SVB.sesiones().catch(() => 
 /* ---------- Árbitro ---------- */
 async function arbitrar() {
   if (!P.auto || !P.act) return;
-  const clave = P.claves[P.act.id];
   for (const g of P.grupos) {
     const k = g.id + ":" + g.estado + ":" + g.ronda;
     if (P.busy.has(k)) continue;
+    try { await arbitrarGrupo(g, k); }
+    catch (er) { P.busy.delete(k); P.msg = `No se ha podido procesar el grupo «${g.nombre}»: ${er.code || er.message}. Se reintentará.`; render(); setTimeout(arbitrar, 4000); }
+  }
+}
+async function arbitrarGrupo(g, k) {
+  const clave = P.claves[P.act.id];
+  {
     if (g.estado === "enviado") {
-      if (!clave) continue;
+      if (!clave) { P.busy.delete(k); return; }
       P.busy.add(k);
       const el = g.eleccion || svEleccionVacia(P.act), c = svCosteTotal(P.act, el), falta = svPendientes(P.act, el);
       if (c > P.act.presupuesto || falta.length) {
         await SVB.cambiarGrupoAdmin(P.sid, g.id, { estado: "editando", aviso: c > P.act.presupuesto ? "La estrategia supera el presupuesto." : "Faltan decisiones por tomar." });
-        continue;
+        return;
       }
       const { total, detalle } = svPuntos(P.act, clave, el), n = svNumeros(P.act, total);
       const h = (g.historial || []).concat([{ ronda: g.ronda, coste: c, puntos: total, numeros: n, detalle, eleccion: el, justif: g.justif || {}, fecha: new Date().toISOString() }]);
@@ -72,7 +78,7 @@ async function arbitrar() {
     } else if (g.estado === "sorteo_pedido") {
       P.busy.add(k);
       const n = Math.min(g.numeros || 0, P.act.numeros), el = [...new Set((g.elegidos || []).map(Number))].filter((x) => x >= 1 && x <= P.act.numeros);
-      if (el.length !== n) { await SVB.cambiarGrupoAdmin(P.sid, g.id, { estado: "puntuado", aviso: `Hay que elegir exactamente ${n} números.` }); continue; }
+      if (el.length !== n) { await SVB.cambiarGrupoAdmin(P.sid, g.id, { estado: "puntuado", aviso: `Hay que elegir exactamente ${n} números.` }); return; }
       const x = svAleatorio(P.act.numeros), gana = el.includes(x);
       const h = (g.historial || []).slice(); if (h.length) Object.assign(h[h.length - 1], { elegidos: el, sorteo: x, resultado: gana ? "ganado" : "fallado" });
       await SVB.cambiarGrupoAdmin(P.sid, g.id, { sorteo: x, estado: gana ? "ganado" : (g.ronda >= P.act.rondas ? "terminado" : "fallado"), historial: h, aviso: null });

@@ -3,7 +3,7 @@
 Actividades de toma de decisiones y gamificación basadas en la metodología **ESTOPA**. Parte de BIOCOGNIA · Open Educational Technology.
 
 - **Autoría y desarrollo:** Alfonso Olaya Abril (Departamento de Bioquímica y Biología Molecular, Universidad de Córdoba).
-- **Versión:** 0.2.0.
+- **Versión:** 0.2.1.
 
 ## Cómo funciona una actividad
 
@@ -31,7 +31,7 @@ Añadiendo `?demo` a la dirección (`…/sortivia/panel.html?demo` y `…/sortiv
 
 1. Edita la hoja de claves en formato v2 (como `ESTOPA_BMSi_Keys_v2.xlsx`), con tres pestañas:
    - **Actividad**: identificador, títulos, resumen, presupuesto, rondas, números del sorteo y puntos por número.
-   - **Opciones**: Bloque · Decisión · Grupo · Opción · Tipo de coste · Precio · Puntos. Tipos de coste: *réplicas* (precio por muestra), *por muestra*, *multiplicador*, *fijo*, *por unidad* (contadores, como las validaciones) y *condiciones* (diseño experimental).
+   - **Opciones**: Bloque · Decisión · Grupo · Opción · Tipo de coste · Precio · Puntos · Notas · Selección (*única* o *múltiple*: si se pueden elegir varias opciones en esa decisión). Tipos de coste: *réplicas* (precio por muestra), *por muestra*, *multiplicador*, *fijo*, *por unidad* (contadores, como las validaciones) y *condiciones* (diseño experimental).
    - **Reglas**: reglas de coherencia ocultas, del tipo `metaproteomics/prodigal=yes & !genomic & !metagenomics` → −10 puntos.
 2. Conviértela: `python3 xlsx2sortivia.py hoja_v2.xlsx actividades/ claves/`. Comprueba que las reglas apuntan a opciones existentes, genera `actividades/<id>.json` (pública) y `claves/<id>.clave.json` (privada), y añade al Excel una pestaña «Identificadores» con los nombres que usan las reglas.
 3. Si es una actividad nueva, añádela a `actividades/index.json`. Sube la actividad al repositorio y carga la clave en el panel (nunca la subas al repositorio).

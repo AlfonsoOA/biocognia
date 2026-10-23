@@ -2,7 +2,7 @@
 
 Pestañas del Excel:
   Actividad  → parámetros (id, títulos, resumen, presupuesto, rondas, números, puntos por número, bloques obligatorios)
-  Opciones   → Bloque | Decisión | Grupo | Opción | Tipo de coste | Precio | Puntos | Notas
+  Opciones   → Bloque | Decisión | Grupo | Opción | Tipo de coste | Precio | Puntos | Notas | Selección (única / múltiple)
                Tipos de coste: réplicas, por muestra, multiplicador, fijo, por unidad, condiciones
   Reglas     → ID | Condición | Puntos | Explicación   (reglas de coherencia; ocultas a los alumnos)
 
@@ -34,7 +34,7 @@ obligatorios = [slug(x) for x in str(P.get("bloques_obligatorios") or "").split(
 bloques, idx, puntos, errores = [], {}, {}, []
 for i, row in enumerate(wb["Opciones"].iter_rows(min_row=2, values_only=True), start=2):
     if not row or not row[0]: continue
-    B, D, G, O, TIPO, PRECIO, PTS = (list(row) + [None] * 8)[:7]
+    B, D, G, O, TIPO, PRECIO, PTS, _NOTAS, SELEC = (list(row) + [None] * 9)[:9]
     tipo = TIPOS.get(str(TIPO).strip().lower())
     if not tipo: errores.append(f"Opciones fila {i}: tipo de coste desconocido «{TIPO}»"); continue
     bid, did = slug(B), slug(D)
@@ -42,7 +42,8 @@ for i, row in enumerate(wb["Opciones"].iter_rows(min_row=2, values_only=True), s
         idx[bid] = {"id": bid, "nombre": str(B).strip(), "decisiones": [], "_d": {}}; bloques.append(idx[bid])
     blk = idx[bid]
     if did not in blk["_d"]:
-        dec = {"id": did, "nombre": str(D).strip(), "tipo": "contador" if tipo == "unidad" else "unica", "opciones": []}
+        multiple = str(SELEC or "").strip().lower().startswith("m")
+        dec = {"id": did, "nombre": str(D).strip(), "tipo": "contador" if tipo == "unidad" else ("multiple" if multiple else "unica"), "opciones": []}
         blk["_d"][did] = dec; blk["decisiones"].append(dec)
     dec = blk["_d"][did]
     if tipo == "unidad":

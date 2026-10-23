@@ -3,18 +3,20 @@
    BIOCOGNIA · Open Educational Technology · Alfonso Olaya Abril
    ============================================================ */
 "use strict";
-const SV_VERSION = "0.2.0";
+const SV_VERSION = "0.2.1";
 
 /* ---------- Cálculo de costes y puntos ---------- */
 // eleccion = { bloques: { [bloque]: { incluido: bool, dec: { [decision]: idOpcion | número (contadores) } } } }
 // Coste de un bloque = condiciones × réplicas × (precio por muestra + Σ «por muestra») × Π «multiplicador» + Σ «fijo» + Σ unidades × «por unidad»
 function svOpcion(dec, id) { return dec.opciones.find((o) => o.id === id); }
+// Opciones elegidas en una decisión (única → 0 o 1; múltiple → varias).
+function svElegidas(d, v) { if (d.tipo === "contador") return []; const ids = Array.isArray(v) ? v : (v ? [v] : []); return ids.map((id) => svOpcion(d, id)).filter(Boolean); }
 function svIncluido(act, eleccion, b) { return act.bloques_obligatorios.includes(b.id) || !!(eleccion.bloques[b.id] && eleccion.bloques[b.id].incluido); }
 function svCondiciones(act, eleccion) {
   for (const b of act.bloques) {
     if (!svIncluido(act, eleccion, b)) continue;
     const sel = eleccion.bloques[b.id] || { dec: {} };
-    for (const d of b.decisiones) { const o = d.tipo !== "contador" && svOpcion(d, sel.dec && sel.dec[d.id]); if (o && o.coste.tipo === "condiciones") return o.coste.valor; }
+    for (const d of b.decisiones) { const o = svElegidas(d, sel.dec && sel.dec[d.id])[0]; if (o && o.coste.tipo === "condiciones") return o.coste.valor; }
   }
   return 1;
 }
@@ -23,13 +25,13 @@ function svCosteBloque(b, sel, ncond = 1) {
   for (const d of b.decisiones) {
     const v = sel && sel.dec ? sel.dec[d.id] : undefined;
     if (d.tipo === "contador") { const n = Math.max(0, Number(v) || 0); unidades += n * d.opciones[0].coste.valor; continue; }
-    if (v === undefined || v === null || v === false) continue;
-    const o = svOpcion(d, v); if (!o) continue;
-    const c = o.coste;
-    if (c.tipo === "replicas") { reps = c.n; porMuestra += c.valor; }
-    else if (c.tipo === "muestra") porMuestra += c.valor;
-    else if (c.tipo === "mult") mult *= c.valor;
-    else if (c.tipo === "fijo") fijo += c.valor;
+    for (const o of svElegidas(d, v)) {
+      const c = o.coste;
+      if (c.tipo === "replicas") { reps = Math.max(reps, c.n); porMuestra += c.valor; }
+      else if (c.tipo === "muestra") porMuestra += c.valor;
+      else if (c.tipo === "mult") mult *= c.valor;
+      else if (c.tipo === "fijo") fijo += c.valor;
+    }
     // «condiciones» no cuesta por sí mismo: multiplica las muestras de todos los bloques.
   }
   return Math.round((ncond * reps * porMuestra * mult + fijo + unidades) * 100) / 100;
@@ -44,7 +46,7 @@ function svPendientes(act, eleccion) {
   for (const b of act.bloques) {
     if (!svIncluido(act, eleccion, b)) continue;
     const sel = eleccion.bloques[b.id] || { dec: {} };
-    for (const d of b.decisiones) if (d.tipo !== "contador" && !(sel.dec && sel.dec[d.id])) falta.push(`${b.nombre} · ${d.nombre}`);
+    for (const d of b.decisiones) if (d.tipo !== "contador" && !svElegidas(d, sel.dec && sel.dec[d.id]).length) falta.push(`${b.nombre} · ${d.nombre}`);
   }
   return falta;
 }
@@ -54,8 +56,8 @@ function svTermino(act, eleccion, t) {
   let ok;
   if (!t.decision) ok = inc;
   else {
-    const v = inc ? (eleccion.bloques[b.id] || { dec: {} }).dec[t.decision] : undefined;
-    ok = inc && (t.opciones ? t.opciones.includes(v) : (Number(v) || 0) > t.mayor_que);
+    const d = b.decisiones.find((x) => x.id === t.decision), v = inc ? (eleccion.bloques[b.id] || { dec: {} }).dec[t.decision] : undefined;
+    ok = inc && !!d && (t.opciones ? svElegidas(d, v).some((o) => t.opciones.includes(o.id)) : (Number(v) || 0) > t.mayor_que);
   }
   return t.no ? !ok : ok;
 }
@@ -66,10 +68,16 @@ function svPuntos(act, clave, eleccion) {
     const sel = eleccion.bloques[b.id] || { dec: {} };
     for (const d of b.decisiones) {
       const v = sel.dec && sel.dec[d.id];
-      if (d.tipo === "contador" ? !(Number(v) > 0) : !v) continue;
-      const oid = d.tipo === "contador" ? d.opciones[0].id : v;
-      const p = Number(clave.puntos[`${b.id}/${d.id}/${oid}`] || 0);
-      total += p; detalle.push({ bloque: b.id, decision: d.id, opcion: oid, cantidad: d.tipo === "contador" ? Number(v) : undefined, puntos: p });
+      if (d.tipo === "contador") {
+        if (!(Number(v) > 0)) continue;
+        const p = Number(clave.puntos[`${b.id}/${d.id}/${d.opciones[0].id}`] || 0);
+        total += p; detalle.push({ bloque: b.id, decision: d.id, opcion: d.opciones[0].id, cantidad: Number(v), puntos: p });
+        continue;
+      }
+      for (const o of svElegidas(d, v)) {
+        const p = Number(clave.puntos[`${b.id}/${d.id}/${o.id}`] || 0);
+        total += p; detalle.push({ bloque: b.id, decision: d.id, opcion: o.id, puntos: p });
+      }
     }
   }
   for (const r of clave.reglas || []) {
@@ -100,6 +108,11 @@ async function svCargarActividad(id) { const r = await fetch(`actividades/${enco
 //          · borrarGrupo(sid, gid) · cerrarSesion(sid) · clave(aid) · guardarClave(aid, clave)
 function svDemo() { try { return new URLSearchParams(location.search).has("demo") || !(window.QUAESTIA_FIREBASE && window.QUAESTIA_FIREBASE.config); } catch (e) { return true; } }
 
+// Firestore rechaza valores undefined: el modo demo hace lo mismo para que los errores aparezcan al probar.
+function svComprobar(v, ruta = "") {
+  if (v === undefined) throw new Error(`valor vacío (undefined) en «${ruta}»`);
+  if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) svComprobar(x, ruta ? `${ruta}.${k}` : k);
+}
 function svBackendDemo() {
   const KEY = "sortivia.demo";
   const read = () => { try { return JSON.parse(localStorage.getItem(KEY)) || { sesiones: {}, claves: {} }; } catch (e) { return { sesiones: {}, claves: {} }; } };
@@ -116,12 +129,12 @@ function svBackendDemo() {
     async sesion(sid) { const s = read().sesiones[sid]; return s ? { ...s, grupos: undefined } : null; },
     async unirse(sid, nombre) { const d = read(); const s = d.sesiones[sid]; if (!s || s.estado !== "abierta") throw new Error("sesion"); s.grupos[me] = s.grupos[me] || { nombre, ronda: 1, estado: "editando", eleccion: null, justif: {}, coste: 0, actualizado: Date.now() }; s.grupos[me].nombre = nombre; write(d); },
     verGrupo(sid, cb) { watch(() => { const s = read().sesiones[sid]; cb(s && s.grupos[me] ? s.grupos[me] : null); }); },
-    async cambiarGrupo(sid, patch) { const d = read(); Object.assign(d.sesiones[sid].grupos[me], patch, { actualizado: Date.now() }); write(d); },
+    async cambiarGrupo(sid, patch) { svComprobar(patch); const d = read(); Object.assign(d.sesiones[sid].grupos[me], patch, { actualizado: Date.now() }); write(d); },
     async entrarAdmin() { return { uid: me, email: "demo" }; },
     async crearSesion(datos) { const d = read(); const sid = svCodigo(5); d.sesiones[sid] = { ...datos, estado: "abierta", creada: Date.now(), grupos: {} }; write(d); return sid; },
     async sesiones() { const d = read(); return Object.entries(d.sesiones).map(([id, s]) => ({ id, ...s, grupos: undefined })).sort((a, b) => b.creada - a.creada); },
     verGrupos(sid, cb) { watch(() => { const s = read().sesiones[sid]; cb(s ? Object.entries(s.grupos).map(([id, g]) => ({ id, ...g })) : []); }); },
-    async cambiarGrupoAdmin(sid, gid, patch) { const d = read(); Object.assign(d.sesiones[sid].grupos[gid], patch); write(d); },
+    async cambiarGrupoAdmin(sid, gid, patch) { svComprobar(patch); const d = read(); Object.assign(d.sesiones[sid].grupos[gid], patch); write(d); },
     async borrarGrupo(sid, gid) { const d = read(); delete d.sesiones[sid].grupos[gid]; write(d); },
     async cerrarSesion(sid) { const d = read(); d.sesiones[sid].estado = "cerrada"; write(d); },
     async clave(aid) { return read().claves[aid] || null; },
@@ -135,7 +148,7 @@ function svBackendFirebase() {
   const ready = (async () => {
     const [appM, authM, fsM] = await Promise.all([import(B + "firebase-app.js"), import(B + "firebase-auth.js"), import(B + "firebase-firestore.js")]);
     const app = appM.initializeApp(window.QUAESTIA_FIREBASE.config);
-    auth = authM.getAuth(app); db = fsM.getFirestore(app); M = { authM, fsM };
+    auth = authM.getAuth(app); db = fsM.initializeFirestore(app, { ignoreUndefinedProperties: true }); M = { authM, fsM };
     await auth.authStateReady();
   })();
   const F = () => M.fsM;

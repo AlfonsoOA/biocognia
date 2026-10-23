@@ -257,13 +257,14 @@ table.answers.key td:last-child { text-align: left; }
 <main class="wrap" id="main"><p class="muted">Cargando el banco de preguntas…</p></main>
 <footer><div class="wrap" id="foot"></div></footer>
 
+<script src="firebase-config.js"></script>
 <script>
 "use strict";
 /* ============================================================
    QUAESTIA — autoevaluación de Bioquímica metabólica (BIOCOGNIA)
    Versión 0.1 (estudiante). Sin servidor: datos en el navegador.
    ============================================================ */
-const APP_VERSION = "0.2.0";
+const APP_VERSION = "0.3.0";
 const TEMAS = [1, 2, 3, 4, 5, 6, 7];
 
 /* ---------- Núcleo (equivale a metahub-core.js) ---------- */
@@ -453,7 +454,7 @@ function render() {
 function consentBox() {
   if (!Store.get("grupo", null) || Store.get("consent", null) !== null) return "";
   return `<section class="consent" aria-labelledby="c-t">
-    <h2 id="c-t">${T("c_title")}</h2><p>${T("c_text")}</p>
+    <h2 id="c-t">${T("c_title")}</h2><p>${T(srvOn() ? "c_text_srv" : "c_text")}</p>
     <label class="check" style="max-width:max-content"><input type="checkbox" id="c-age"><span>${T("c_age")}</span></label>
     <div class="row"><button class="btn primary" type="button" data-consent="1" id="c-yes" disabled>${T("c_yes")}</button><button class="btn" type="button" data-consent="0">${T("c_no")}</button></div>
     <p class="small muted">${T("c_later")}</p></section>`;
@@ -616,6 +617,7 @@ function finishRun() {
   const rec = { id: uid(12), modo: r.modo === "train" ? "entrenamiento" : r.modo === "test" ? "test" : "simulacro", fecha: new Date().toISOString(), semana_curso: semanaCurso(), n_intento: hist.length + 1, investigacion: consent, grupo: Store.get("grupo", null),
     config: r.modo !== "exam" ? r.cfg : null, duracion_s: Math.round((Date.now() - r.inicio) / 1000), nota: res.nota, bruto: Math.round(res.bruto * 1000) / 1000, max: res.max, lang: S.lang, detalle: res.detalle };
   hist.push(rec); Store.set("historial", hist);
+  if (consent) srvAttempt(rec);
   S.result = { rec, preguntas: r.preguntas, modo: r.modo, cfg: r.cfg };
   S.run = null; S.view = "result"; render(); window.scrollTo(0, 0);
 }
@@ -689,6 +691,7 @@ function shortRate(v) {
   const reg = { autoeval: v, fecha: new Date().toISOString(), semana_curso: semanaCurso(), investigacion: consent, longitud: (($("#short-ans") || {}).value || "").length };
   all[q.id] = { ...prev, borrador: ($("#short-ans") || {}).value || prev.borrador || "", registros: [...(prev.registros || []), reg] };
   Store.set("cortas", all);
+  if (consent) srvShort(q.id, reg);
   render();
 }
 
@@ -699,7 +702,7 @@ function vMe() {
   const pill = consent === true ? `<span class="pill on">${T("c_on")}</span>` : `<span class="pill off">${T("c_off")}</span>`;
   const grupo = Store.get("grupo", null);
   let research = `<section class="panel stack"><h2>${T("me_research")}</h2><p class="small muted">${T("x_group")}: <span class="num">${esc(grupo || "")}</span></p><div class="row">${pill}<button class="btn" type="button" data-consent="${consent === true ? 0 : 1}">${consent === true ? T("c_toggle_off") : T("c_toggle_on")}</button></div>
-    <h3>${T("x_title")}</h3><p class="small">${T("x_text")}</p><p class="small muted">${T("x_week")}: <span class="num">${semanaCurso()}</span></p>
+    ${srvPanel()}<h3>${T("x_title")}</h3><p class="small">${T("x_text")}</p><p class="small muted">${T("x_week")}: <span class="num">${semanaCurso()}</span></p>
     ${consent !== true ? `<p class="small muted">${T("x_off")}</p>` : `<div class="row"><button class="btn primary" type="button" id="x-json">${T("x_json")}</button><button class="btn" type="button" id="x-csv">${T("x_csv")}</button><button class="btn" type="button" id="x-copy">${T("x_copy")}</button></div><p class="small" id="x-msg" aria-live="polite"></p><textarea id="x-out" readonly hidden aria-label="Datos"></textarea>`}</section>`;
   if (!grupo) research = `<section class="panel stack"><h2>${T("me_research")}</h2><p class="small muted">${T("x_nogroup")}</p></section>`;
   if (!hist.length) return `<div class="stack-lg">${consentBox()}<h1>${T("me_title")}</h1><p class="muted">${T("me_none")}</p>${nC ? `<p>${T("me_shorts")}: <b class="num">${nC}</b></p>` : ""}${research}${delBox()}</div>`;
@@ -763,6 +766,7 @@ document.addEventListener("click", (e) => {
   if (t.dataset.go) return go(t.dataset.go);
   if (t.dataset.consent) return setConsent(t.dataset.consent === "1");
   if (teachClick(t)) return;
+  if (srvClick(t)) return;
   if (t.dataset.all) { for (const i of document.querySelectorAll('input[name="tema"]')) i.checked = t.dataset.all === "1"; return trainUpdate(); }
   if (t.id === "exam-go") return startRun("exam", generarSimulacro(S.banco), null);
   if (S.view === "run" && S.run) {
@@ -823,7 +827,7 @@ async function boot() {
   renderChrome();
   main().innerHTML = `<p class="muted">${T("loading")}</p>`;
   S.testLink = parseTestParam();
-  try { await cargar(); if (S.testLink) S.view = "testIntro"; render(); }
+  try { await cargar(); if (S.testLink) S.view = "testIntro"; render(); srvFlush(); }
   catch (err) { main().innerHTML = `<div class="notice">${T("load_error")}</div>`; }
 }
 // Arranca cuando están cargados todos los scripts de la página (incluido el del profesorado).
@@ -1283,6 +1287,107 @@ function teachSubmit(e) {
   const target = S.ppErrors.length ? document.querySelector('[role="alert"]') : $("#pp-ready");
   if (target) target.scrollIntoView({ block: "center" });
   return true;
+}
+</script>
+<script>
+"use strict";
+/* ============================================================
+   QUAESTIA — Envío automático al servidor (Firebase, región UE).
+   Apagado por defecto: se activa en firebase-config.js.
+   Solo envía datos de quien participa (enlace de grupo + consentimiento).
+   ============================================================ */
+(function () {
+  const fc = window.QUAESTIA_FIREBASE || {};
+  Object.assign(CONFIG, { envio: !!(fc.envio && fc.config), firebase: fc.config || null });
+})();
+
+Object.assign(I18N.es, {
+  c_text_srv: "Esta aplicación forma parte del estudio BIOCOGNIA sobre aprendizaje de la Bioquímica (Universidad de Córdoba; informe del comité de ética [referencia]). Si aceptas, tus respuestas se enviarán a un servidor en la Unión Europea con un identificador aleatorio, sin tu nombre ni tu correo. Participar o no no afecta a tu nota y el profesor no puede saber quién eres. Si no aceptas, puedes usar la aplicación igual y no se envía nada.",
+  srv_on: "Tus respuestas se envían automáticamente al estudio con un identificador aleatorio.", srv_pending: (n) => `${n} envíos pendientes; se completarán cuando haya conexión.`,
+  srv_del: "Borrar lo que he enviado al estudio", srv_del_confirm: "Se borrarán del servidor todas las respuestas enviadas desde este navegador. No se puede deshacer.", srv_del_yes: "Sí, borrar del servidor", srv_deleted: "Datos borrados del servidor.", srv_del_fail: "No se ha podido borrar ahora. Inténtalo de nuevo con conexión.",
+});
+Object.assign(I18N.en, {
+  c_text_srv: "This app is part of the BIOCOGNIA study on learning biochemistry (University of Córdoba; ethics committee report [reference]). If you agree, your answers will be sent to a server in the European Union under a random identifier, without your name or email. Taking part or not does not affect your grade, and the teacher cannot know who you are. If you don't agree, you can still use the app and nothing is sent.",
+  srv_on: "Your answers are sent automatically to the study under a random identifier.", srv_pending: (n) => `${n} uploads pending; they will finish when you are online.`,
+  srv_del: "Delete what I have sent to the study", srv_del_confirm: "All answers sent from this browser will be deleted from the server. This cannot be undone.", srv_del_yes: "Yes, delete from server", srv_deleted: "Data deleted from the server.", srv_del_fail: "Deletion failed. Try again when you are online.",
+});
+
+const SRV = { ready: null, flushing: false };
+function srvOn() { return !!(CONFIG.envio && CONFIG.firebase) || !!window.QUAESTIA_SRV_MOCK; }
+function srvParticipa() { return srvOn() && Store.get("consent", null) === true && !!Store.get("grupo", null); }
+
+// Implementación por defecto: Firebase (SDK modular cargado solo si el envío está activo).
+function srvImpl() {
+  if (window.QUAESTIA_SRV_MOCK) return Promise.resolve(window.QUAESTIA_SRV_MOCK);
+  if (SRV.ready) return SRV.ready;
+  const B = "https://www.gstatic.com/firebasejs/10.12.2/";
+  SRV.ready = (async () => {
+    const [appM, authM, fsM] = await Promise.all([import(B + "firebase-app.js"), import(B + "firebase-auth.js"), import(B + "firebase-firestore.js")]);
+    const app = appM.initializeApp(CONFIG.firebase);
+    const auth = authM.getAuth(app), db = fsM.getFirestore(app);
+    await auth.authStateReady();
+    if (!auth.currentUser) await authM.signInAnonymously(auth);
+    const uid = () => auth.currentUser.uid;
+    return {
+      async add(kind, data) { await fsM.addDoc(fsM.collection(db, kind), { ...data, uid: uid(), creado: fsM.serverTimestamp() }); },
+      async deleteMine() {
+        for (const c of ["intentos", "cortas"]) {
+          const snap = await fsM.getDocs(fsM.query(fsM.collection(db, c), fsM.where("uid", "==", uid())));
+          for (const d of snap.docs) await fsM.deleteDoc(d.ref);
+        }
+      },
+    };
+  })();
+  SRV.ready.catch(() => { SRV.ready = null; });
+  return SRV.ready;
+}
+function srvQueue(kind, data) {
+  if (!srvParticipa()) return;
+  const q = Store.get("pendientes", []); q.push({ kind, data }); Store.set("pendientes", q);
+  srvFlush();
+}
+async function srvFlush() {
+  if (!srvOn() || SRV.flushing) return;
+  let q = Store.get("pendientes", []); if (!q.length) return;
+  SRV.flushing = true;
+  try {
+    const impl = await srvImpl();
+    while (q.length) { await impl.add(q[0].kind, q[0].data); q.shift(); Store.set("pendientes", q); }
+  } catch (e) { /* se reintenta en el próximo arranque o envío */ }
+  finally { SRV.flushing = false; }
+}
+async function srvDeleteMine() {
+  Store.set("pendientes", []);
+  const impl = await srvImpl();
+  await impl.deleteMine();
+}
+function srvAttempt(rec) {
+  srvQueue("intentos", {
+    app: "quaestia", app_version: APP_VERSION, grupo: rec.grupo || Store.get("grupo", null), modo: rec.modo, fecha: rec.fecha, semana_curso: rec.semana_curso, n_intento: rec.n_intento,
+    nota: rec.nota, bruto: rec.bruto, max: rec.max, duracion_s: rec.duracion_s, lang: rec.lang, config: rec.config || null,
+    items: rec.detalle.map((d) => ({ id: d.id, tema: d.tema, seccion: d.seccion || "", bloom: d.bloom, correctas: d.correctas.join(""), marcadas: d.marcadas.join(""), aciertos: d.aciertos, errores: d.errores, en_blanco: d.enBlanco, puntos: Math.round(d.puntos * 1000) / 1000, tiempo_s: d.tiempo_s })),
+  });
+}
+function srvShort(id, reg) {
+  srvQueue("cortas", { app: "quaestia", app_version: APP_VERSION, grupo: Store.get("grupo", null), id, autoeval: reg.autoeval, fecha: reg.fecha, semana_curso: reg.semana_curso, longitud: reg.longitud });
+}
+function srvPanel() {
+  if (!srvOn() || Store.get("consent", null) !== true || !Store.get("grupo", null)) return "";
+  const pend = Store.get("pendientes", []).length;
+  const del = S.srvConfirm
+    ? `<div class="confirm" role="alert"><span>${T("srv_del_confirm")}</span><button class="btn primary" type="button" id="srv-del-yes">${T("srv_del_yes")}</button><button class="btn" type="button" id="srv-del-no">${T("q_hand_no")}</button></div>`
+    : `<div class="row"><button class="btn ghost" type="button" id="srv-del">${T("srv_del")}</button>${S.srvMsg ? `<span class="small muted">${S.srvMsg}</span>` : ""}</div>`;
+  return `<p class="small">${T("srv_on")}${pend ? ` ${T("srv_pending", pend)}` : ""}</p>${del}`;
+}
+function srvClick(t) {
+  if (t.id === "srv-del") { S.srvConfirm = true; S.srvMsg = ""; render(); return true; }
+  if (t.id === "srv-del-no") { S.srvConfirm = false; render(); return true; }
+  if (t.id === "srv-del-yes") {
+    S.srvConfirm = false;
+    srvDeleteMine().then(() => { S.srvMsg = T("srv_deleted"); render(); }, () => { S.srvMsg = T("srv_del_fail"); render(); });
+    render(); return true;
+  }
+  return false;
 }
 </script>
 

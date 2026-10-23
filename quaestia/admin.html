@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>QUAESTIA · Datos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root { --bg:#f4f7f6; --surface:#fff; --ink:#142824; --muted:#56706a; --line:#cdd9d5; --accent:#0e6b5c; --bad:#b3261e; --warn:#fff4d6;
+  --f-display:"Literata",Georgia,serif; --f-ui:"IBM Plex Sans",system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,monospace; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0f1a18; --surface:#162421; --ink:#e3ece9; --muted:#93aaa4; --line:#2c403c; --accent:#4fc2ab; --bad:#ff8a80; --warn:#352d14; color-scheme:dark; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--f-ui); line-height:1.55; }
+main { max-width:900px; margin:0 auto; padding:40px 16px 64px; display:flex; flex-direction:column; gap:24px; }
+h1 { font-family:var(--f-display); font-weight:600; margin:0; } h2 { font-family:var(--f-display); font-weight:600; font-size:1.2rem; margin:0; }
+p { margin:0; max-width:70ch; } .muted { color:var(--muted); } .small { font-size:.88rem; } .num { font-family:var(--f-mono); font-variant-numeric:tabular-nums; }
+.row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.panel { background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:20px; display:flex; flex-direction:column; gap:12px; }
+.btn { border:1px solid var(--line); background:var(--surface); padding:9px 16px; border-radius:8px; cursor:pointer; font:inherit; font-weight:500; color:inherit; }
+.btn.primary { background:var(--accent); border-color:var(--accent); color:#fff; } .btn:disabled { opacity:.45; cursor:not-allowed; }
+select { font:inherit; padding:7px 10px; border:1px solid var(--line); border-radius:8px; background:var(--surface); color:inherit; }
+.kv { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; }
+.kv div { display:flex; flex-direction:column; } .kv b { font-family:var(--f-mono); font-size:1.3rem; font-weight:400; } .kv span { font-size:.8rem; color:var(--muted); }
+table { border-collapse:collapse; width:100%; font-size:.9rem; } td, th { padding:6px 8px; border-bottom:1px solid var(--line); text-align:left; } td.n, th.n { text-align:right; font-family:var(--f-mono); }
+.notice { background:var(--warn); border-radius:10px; padding:12px 14px; } .err { color:var(--bad); }
+code { font-family:var(--f-mono); font-size:.85em; word-break:break-all; }
+</style>
+</head>
+<body>
+<main>
+  <div><p class="small muted">QUAESTIA · BIOCOGNIA</p><h1>Datos del estudio</h1></div>
+  <section class="panel" id="login">
+    <p>Página solo para el equipo investigador. Entra con la cuenta de Google autorizada en las reglas de seguridad.</p>
+    <div class="row"><button class="btn primary" id="signin">Entrar con Google</button><span class="small" id="who"></span></div>
+    <p class="small err" id="err" role="alert"></p>
+  </section>
+  <section class="panel" id="data" hidden>
+    <div class="row"><h2>Resumen</h2><span style="margin-left:auto" class="row"><label for="grupo" class="small">Grupo</label><select id="grupo"></select><button class="btn" id="reload">Actualizar</button></span></div>
+    <div class="kv" id="kv"></div>
+    <table><thead><tr><th>Grupo</th><th class="n">Participantes</th><th class="n">Intentos</th><th class="n">Respuestas</th><th class="n">Nota media</th><th>Último envío</th></tr></thead><tbody id="tbl"></tbody></table>
+    <div class="row"><button class="btn primary" id="csv">Descargar CSV (formato largo)</button><button class="btn" id="csvc">Descargar CSV de preguntas cortas</button><button class="btn" id="json">Descargar JSON completo</button></div>
+    <p class="small muted">Cada fila del CSV es una pregunta respondida en un intento. «participante» es el identificador anónimo del navegador: permite seguir a cada persona a lo largo del curso sin saber quién es.</p>
+  </section>
+</main>
+<script src="firebase-config.js"></script>
+<script>
+"use strict";
+const $ = (s) => document.querySelector(s);
+const D = { intentos: [], cortas: [] };
+const short = (u) => String(u || "").slice(0, 10);
+const fmt = (n) => (Math.round(n * 100) / 100).toString().replace(".", ",");
+function csvCell(v) { const s = v == null ? "" : String(v); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; }
+function csvIntentos(rows) {
+  const head = ["participante", "grupo", "app", "app_version", "n_intento", "modo", "fecha", "semana_curso", "nota", "duracion_s", "lang", "item_id", "tema", "seccion", "bloom", "n_correctas", "correctas", "marcadas", "aciertos", "errores", "en_blanco", "puntos", "tiempo_s"];
+  const out = [head.join(",")];
+  for (const a of rows) for (const d of a.items || []) out.push([short(a.uid), a.grupo, a.app, a.app_version, a.n_intento, a.modo, a.fecha, a.semana_curso, a.nota, a.duracion_s, a.lang, d.id, d.tema, d.seccion, d.bloom, (d.correctas || "").length, d.correctas, d.marcadas, d.aciertos, d.errores, d.en_blanco ? 1 : 0, d.puntos, d.tiempo_s].map(csvCell).join(","));
+  return out.join("\n");
+}
+function csvCortas(rows) {
+  const head = ["participante", "grupo", "app", "item_id", "autoeval", "fecha", "semana_curso", "longitud"];
+  return [head.join(","), ...rows.map((c) => [short(c.uid), c.grupo, c.app, c.id, c.autoeval, c.fecha, c.semana_curso, c.longitud].map(csvCell).join(","))].join("\n");
+}
+function save(name, text, type) { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+function sel() { const g = $("#grupo").value; return { intentos: D.intentos.filter((a) => !g || a.grupo === g), cortas: D.cortas.filter((c) => !g || c.grupo === g) }; }
+function draw() {
+  const grupos = [...new Set(D.intentos.map((a) => a.grupo).concat(D.cortas.map((c) => c.grupo)))].filter(Boolean).sort();
+  const cur = $("#grupo").value;
+  $("#grupo").innerHTML = `<option value="">Todos</option>` + grupos.map((g) => `<option ${g === cur ? "selected" : ""}>${g}</option>`).join("");
+  const s = sel(), parts = new Set(s.intentos.map((a) => a.uid).concat(s.cortas.map((c) => c.uid)));
+  const resp = s.intentos.reduce((n, a) => n + (a.items || []).length, 0);
+  $("#kv").innerHTML = `<div><b>${parts.size}</b><span>Participantes</span></div><div><b>${s.intentos.length}</b><span>Intentos</span></div><div><b>${resp}</b><span>Respuestas a preguntas test</span></div><div><b>${s.cortas.length}</b><span>Autoevaluaciones de cortas</span></div>`;
+  $("#tbl").innerHTML = grupos.map((g) => { const ia = D.intentos.filter((a) => a.grupo === g), u = new Set(ia.map((a) => a.uid)); const last = ia.map((a) => a.fecha).sort().pop() || ""; const media = ia.length ? ia.reduce((x, a) => x + (a.nota || 0), 0) / ia.length : 0;
+    return `<tr><td class="num">${g}</td><td class="n">${u.size}</td><td class="n">${ia.length}</td><td class="n">${ia.reduce((n, a) => n + (a.items || []).length, 0)}</td><td class="n">${ia.length ? fmt(media) : "—"}</td><td class="small">${last ? new Date(last).toLocaleString("es-ES") : "—"}</td></tr>`; }).join("") || `<tr><td colspan="6" class="muted">Todavía no hay datos.</td></tr>`;
+  $("#data").hidden = false;
+}
+const stamp = () => new Date().toISOString().slice(0, 10);
+$("#csv").onclick = () => save(`quaestia_intentos_${$("#grupo").value || "todos"}_${stamp()}.csv`, csvIntentos(sel().intentos), "text/csv");
+$("#csvc").onclick = () => save(`quaestia_cortas_${$("#grupo").value || "todos"}_${stamp()}.csv`, csvCortas(sel().cortas), "text/csv");
+$("#json").onclick = () => save(`quaestia_${$("#grupo").value || "todos"}_${stamp()}.json`, JSON.stringify({ exportado: new Date().toISOString(), ...sel() }, null, 1), "application/json");
+$("#grupo").onchange = draw;
+
+// Acceso a Firebase (o a un simulador para pruebas).
+async function backend() {
+  if (window.QUAESTIA_ADMIN_MOCK) return window.QUAESTIA_ADMIN_MOCK;
+  const fc = window.QUAESTIA_FIREBASE || {};
+  if (!fc.config) throw new Error("Falta la configuración de Firebase en firebase-config.js.");
+  const B = "https://www.gstatic.com/firebasejs/10.12.2/";
+  const [appM, authM, fsM] = await Promise.all([import(B + "firebase-app.js"), import(B + "firebase-auth.js"), import(B + "firebase-firestore.js")]);
+  const app = appM.initializeApp(fc.config), auth = authM.getAuth(app), db = fsM.getFirestore(app);
+  return {
+    async signIn() { const r = await authM.signInWithPopup(auth, new authM.GoogleAuthProvider()); return { uid: r.user.uid, email: r.user.email }; },
+    async load(c) { const snap = await fsM.getDocs(fsM.collection(db, c)); return snap.docs.map((d) => ({ _id: d.id, ...d.data(), creado: d.data().creado ? d.data().creado.toDate().toISOString() : null })); },
+  };
+}
+let BE = null;
+async function load() {
+  $("#err").textContent = "";
+  try { D.intentos = await BE.load("intentos"); D.cortas = await BE.load("cortas"); draw(); }
+  catch (e) { $("#err").innerHTML = `No se pueden leer los datos (${e.code || e.message}). Si es «permission-denied», copia tu identificador de arriba en la función <code>esAdmin()</code> de las reglas de Firestore y publícalas.`; }
+}
+$("#signin").onclick = async () => {
+  try { BE = BE || await backend(); const u = await BE.signIn(); $("#who").innerHTML = `Has entrado como ${u.email || ""} · identificador <code>${u.uid}</code>`; await load(); }
+  catch (e) { $("#err").textContent = `No se ha podido entrar: ${e.message}`; }
+};
+$("#reload").onclick = load;
+</script>
+</body>
+</html>

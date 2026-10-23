@@ -6,7 +6,7 @@ Ecosistema de herramientas educativas abiertas para aprender Bioquímica, basada
 
 | Aplicación | Función | Base metodológica | Carpeta | Estado |
 | --- | --- | --- | --- | --- |
-| QUAESTIA | Evaluación y autoaprendizaje | Guía de Bioquímica Metabólica | `quaestia/` | v0.2 |
+| QUAESTIA | Evaluación y autoaprendizaje | Guía de Bioquímica Metabólica | `quaestia/` | v0.3 |
 | SORTIVIA | Gamificación y toma de decisiones | ESTOPA | `sortivia/` | En desarrollo |
 | DEAba Digital | Aprendizaje activo | DEAba | `deaba-digital/` | En desarrollo |
 

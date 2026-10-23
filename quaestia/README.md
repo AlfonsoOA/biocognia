@@ -3,7 +3,7 @@
 Autoevaluación y autoaprendizaje de **Bioquímica metabólica**, con preguntas clasificadas según la taxonomía de Bloom (B1 Recordar → B6 Crear). Bilingüe (ES/EN). Parte de BIOCOGNIA.
 
 - **Banco de preguntas:** Guía de Bioquímica Metabólica (Universidad de Córdoba).
-- **Versión:** 0.2.0 (estudiante y profesorado).
+- **Versión:** 0.3.0 (estudiante, profesorado y envío automático opcional).
 
 ## Qué hace
 
@@ -21,6 +21,20 @@ Cada pregunta vale 1 punto repartido entre sus opciones correctas (1, ½ o ⅓);
 ## Privacidad
 
 No hay servidor ni cuentas. Todo se guarda en el navegador de cada persona (`localStorage`). Las exportaciones llevan un código aleatorio nuevo y no incluyen nombre ni correo. El consentimiento para investigación es opcional y revocable; la aplicación funciona igual sin él.
+
+## Envío automático de datos (Firebase, apagado por defecto)
+
+Sin activar, la app no envía nada a ningún servidor. Activado, las respuestas de quien participa en el estudio (enlace de grupo + consentimiento) se envían a Firestore (región UE) con un identificador anónimo, y el equipo investigador las descarga desde `admin.html`.
+
+**Actívalo solo cuando el Comité Ético haya aprobado la modificación del estudio.**
+
+1. Firebase: proyecto con Firestore en región UE, Authentication con los métodos «Anónimo» y «Google», y `alfonsooa.github.io` en los dominios autorizados.
+2. Edita `firebase-config.js`: pega el bloque `firebaseConfig` en `config` (no es secreto) y deja `envio: false` de momento.
+3. Abre `https://alfonsooa.github.io/biocognia/quaestia/admin.html`, entra con tu cuenta de Google y copia el identificador que aparece.
+4. Copia `firestore.rules` en Firestore → Reglas, sustituye `PEGA_AQUI_TU_UID` por ese identificador y pulsa «Publicar».
+5. Cuando tengas el visto bueno del comité, cambia `envio: false` por `envio: true` en `firebase-config.js`.
+
+Quien participa puede borrar lo enviado desde «Mi progreso». Los envíos sin conexión se guardan y se completan en el siguiente uso.
 
 ## Enlace para un grupo
 

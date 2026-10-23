@@ -1,0 +1,47 @@
+rules_version = '2';
+// Reglas de seguridad de Firestore para QUAESTIA (BIOCOGNIA).
+// Cópialas en Firebase → Firestore Database → Reglas → Publicar.
+// - Cada participante (identificación anónima) solo puede crear sus propios registros, leerlos y borrarlos.
+// - Nadie puede modificar un registro ya enviado.
+// - Solo las cuentas listadas en esAdmin() pueden leer todos los datos (panel admin.html).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function esAdmin() {
+      // Sustituye PEGA_AQUI_TU_UID por el identificador que muestra admin.html al entrar con tu cuenta de Google.
+      return request.auth != null && request.auth.uid in ['PEGA_AQUI_TU_UID'];
+    }
+    function propio() {
+      return request.auth != null && resource.data.uid == request.auth.uid;
+    }
+    function creacionValida(campos) {
+      return request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.creado == request.time
+        && request.resource.data.keys().hasOnly(campos)
+        && request.resource.data.app == 'quaestia'
+        && request.resource.data.grupo is string
+        && request.resource.data.grupo.size() <= 24;
+    }
+
+    match /intentos/{id} {
+      allow create: if creacionValida(['uid', 'creado', 'app', 'app_version', 'grupo', 'modo', 'fecha', 'semana_curso', 'n_intento',
+                                        'nota', 'bruto', 'max', 'duracion_s', 'lang', 'config', 'items'])
+                    && request.resource.data.items is list
+                    && request.resource.data.items.size() <= 200;
+      allow read, delete: if esAdmin() || propio();
+      allow update: if false;
+    }
+
+    match /cortas/{id} {
+      allow create: if creacionValida(['uid', 'creado', 'app', 'app_version', 'grupo', 'id', 'autoeval', 'fecha', 'semana_curso', 'longitud'])
+                    && request.resource.data.autoeval in ['bien', 'parcial', 'mal'];
+      allow read, delete: if esAdmin() || propio();
+      allow update: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
- "schema": "sortivia-actividad/1",
+ "schema": "sortivia-actividad/2",
  "id": "poor-savior-astronauts",
  "metodologia": "ESTOPA",
  "titulo": {
@@ -10,11 +10,10 @@
   "es": "Diseñad la estrategia ómica más eficiente para demostrar la ruta biosintética de la Pepitina con un presupuesto de 17.000 €.",
   "en": "Design the most efficient omics strategy to demonstrate the biosynthetic pathway of Pepitin with a budget of €17,000."
  },
- "presupuesto": 17000,
- "moneda": "€",
+ "presupuesto": 17000.0,
  "numeros": 10,
  "rondas": 2,
- "puntos_por_numero": 10,
+ "puntos_por_numero": 10.0,
  "bloques_obligatorios": [
   "global-strategy"
  ],
@@ -24,52 +23,76 @@
    "nombre": "Global strategy",
    "decisiones": [
     {
-     "id": "estrategia",
+     "id": "global-strategy",
      "nombre": "Global strategy",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "single-organisms",
        "label": "Single organisms",
-       "grupo": "Cell-dependent system",
        "coste": {
         "tipo": "fijo",
         "valor": 500.0
-       }
+       },
+       "grupo": "Cell-dependent system"
       },
       {
        "id": "enrichment-cultures",
        "label": "Enrichment cultures",
-       "grupo": "Cell-dependent system",
        "coste": {
         "tipo": "fijo",
         "valor": 500.0
-       }
+       },
+       "grupo": "Cell-dependent system"
       },
       {
-       "id": "artifitial-consortia",
+       "id": "artificial-consortia",
        "label": "Artificial consortia",
-       "grupo": "Cell-dependent system",
        "coste": {
         "tipo": "fijo",
         "valor": 500.0
-       }
+       },
+       "grupo": "Cell-dependent system"
       },
       {
        "id": "recombinant-proteins",
        "label": "Recombinant proteins",
-       "grupo": "Cell-independent system",
        "coste": {
         "tipo": "fijo",
         "valor": 6000.0
-       }
+       },
+       "grupo": "Cell-independent system"
       },
       {
        "id": "crude-extracts",
        "label": "Crude extracts",
-       "grupo": "Cell-independent system",
        "coste": {
         "tipo": "fijo",
         "valor": 500.0
+       },
+       "grupo": "Cell-independent system"
+      }
+     ]
+    },
+    {
+     "id": "experimental-design",
+     "nombre": "Experimental design",
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "problem-condition-only",
+       "label": "Problem condition only",
+       "coste": {
+        "tipo": "condiciones",
+        "valor": 1.0
+       }
+      },
+      {
+       "id": "control-vs-problem",
+       "label": "Control vs problem",
+       "coste": {
+        "tipo": "condiciones",
+        "valor": 2.0
        }
       }
      ]
@@ -83,37 +106,42 @@
     {
      "id": "number-of-replicates",
      "nombre": "Number of replicates",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "1",
        "label": "1",
        "coste": {
-        "tipo": "base",
-        "valor": 200.0
+        "tipo": "replicas",
+        "valor": 200.0,
+        "n": 1
        }
       },
       {
        "id": "3",
        "label": "3",
        "coste": {
-        "tipo": "base",
-        "valor": 600.0
+        "tipo": "replicas",
+        "valor": 200.0,
+        "n": 3
        }
       },
       {
        "id": "5",
        "label": "5",
        "coste": {
-        "tipo": "base",
-        "valor": 1000.0
+        "tipo": "replicas",
+        "valor": 200.0,
+        "n": 5
        }
       },
       {
        "id": "10",
        "label": "10",
        "coste": {
-        "tipo": "base",
-        "valor": 2000.0
+        "tipo": "replicas",
+        "valor": 200.0,
+        "n": 10
        }
       }
      ]
@@ -121,6 +149,7 @@
     {
      "id": "fragmentation",
      "nombre": "Fragmentation",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "tagmentation",
@@ -151,37 +180,38 @@
     {
      "id": "library",
      "nombre": "Library",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "single-end-illumina",
        "label": "Single-end (Illumina)",
        "coste": {
-        "tipo": "mult",
-        "valor": 1.5
+        "tipo": "muestra",
+        "valor": 100.0
        }
       },
       {
        "id": "paired-end-illumina",
        "label": "Paired-end (Illumina)",
        "coste": {
-        "tipo": "mult",
-        "valor": 2.0
+        "tipo": "muestra",
+        "valor": 200.0
        }
       },
       {
        "id": "mate-pair-illumina",
        "label": "Mate-pair (Illumina)",
        "coste": {
-        "tipo": "mult",
-        "valor": 5.0
+        "tipo": "muestra",
+        "valor": 800.0
        }
       },
       {
        "id": "long-reads-pacbio",
        "label": "Long reads (PacBio)",
        "coste": {
-        "tipo": "mult",
-        "valor": 10.0
+        "tipo": "muestra",
+        "valor": 1800.0
        }
       }
      ]
@@ -189,13 +219,14 @@
     {
      "id": "depth",
      "nombre": "Depth",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "10x",
        "label": "10X",
        "coste": {
         "tipo": "mult",
-        "valor": 1.1
+        "valor": 1.0
        }
       },
       {
@@ -203,7 +234,7 @@
        "label": "30X",
        "coste": {
         "tipo": "mult",
-        "valor": 2.0
+        "valor": 1.5
        }
       },
       {
@@ -211,7 +242,7 @@
        "label": "50X",
        "coste": {
         "tipo": "mult",
-        "valor": 3.0
+        "valor": 2.0
        }
       },
       {
@@ -219,7 +250,7 @@
        "label": "70X",
        "coste": {
         "tipo": "mult",
-        "valor": 4.0
+        "valor": 2.5
        }
       },
       {
@@ -227,7 +258,7 @@
        "label": "100X",
        "coste": {
         "tipo": "mult",
-        "valor": 5.0
+        "valor": 3.0
        }
       }
      ]
@@ -235,6 +266,7 @@
     {
      "id": "trimming",
      "nombre": "Trimming",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "q20",
@@ -273,6 +305,7 @@
     {
      "id": "assembly",
      "nombre": "Assembly",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "de-novo",
@@ -295,6 +328,7 @@
     {
      "id": "number-of-assemblers",
      "nombre": "Number of assemblers",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "1",
@@ -325,6 +359,7 @@
     {
      "id": "cd-hit",
      "nombre": "CD-HIT",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
@@ -347,6 +382,7 @@
     {
      "id": "dea",
      "nombre": "DEA",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
@@ -375,37 +411,42 @@
     {
      "id": "number-of-replicates",
      "nombre": "Number of replicates",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "1",
        "label": "1",
        "coste": {
-        "tipo": "base",
-        "valor": 200.0
+        "tipo": "replicas",
+        "valor": 200.0,
+        "n": 1
        }
       },
       {
        "id": "3",
        "label": "3",
        "coste": {
-        "tipo": "base",
-        "valor": 600.0
+        "tipo": "replicas",
+        "valor": 200.0,
+        "n": 3
        }
       },
       {
        "id": "5",
        "label": "5",
        "coste": {
-        "tipo": "base",
-        "valor": 1000.0
+        "tipo": "replicas",
+        "valor": 200.0,
+        "n": 5
        }
       },
       {
        "id": "10",
        "label": "10",
        "coste": {
-        "tipo": "base",
-        "valor": 2000.0
+        "tipo": "replicas",
+        "valor": 200.0,
+        "n": 10
        }
       }
      ]
@@ -413,12 +454,13 @@
     {
      "id": "rna-to-analyze",
      "nombre": "RNA to analyze",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "total",
        "label": "Total",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "muestra",
         "valor": 200.0
        }
       },
@@ -426,7 +468,7 @@
        "id": "rrna-depleted",
        "label": "rRNA depleted",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "muestra",
         "valor": 200.0
        }
       },
@@ -434,7 +476,7 @@
        "id": "mrna-enriched",
        "label": "mRNA enriched",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "muestra",
         "valor": 200.0
        }
       },
@@ -442,7 +484,7 @@
        "id": "cdna-capture",
        "label": "cDNA capture",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "muestra",
         "valor": 200.0
        }
       }
@@ -451,12 +493,13 @@
     {
      "id": "library",
      "nombre": "Library",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "stranded",
        "label": "Stranded",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "muestra",
         "valor": 50.0
        }
       },
@@ -464,7 +507,7 @@
        "id": "non-stranded",
        "label": "Non-stranded",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "muestra",
         "valor": 20.0
        }
       }
@@ -473,13 +516,14 @@
     {
      "id": "depth",
      "nombre": "Depth",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "10x",
        "label": "10X",
        "coste": {
         "tipo": "mult",
-        "valor": 1.2
+        "valor": 1.0
        }
       },
       {
@@ -503,7 +547,7 @@
        "label": "70X",
        "coste": {
         "tipo": "mult",
-        "valor": 5.0
+        "valor": 2.5
        }
       },
       {
@@ -511,7 +555,7 @@
        "label": "100X",
        "coste": {
         "tipo": "mult",
-        "valor": 10.0
+        "valor": 3.0
        }
       }
      ]
@@ -519,6 +563,7 @@
     {
      "id": "trimming",
      "nombre": "Trimming",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "q20",
@@ -557,6 +602,7 @@
     {
      "id": "assembly",
      "nombre": "Assembly",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "de-novo",
@@ -579,6 +625,7 @@
     {
      "id": "number-of-assemblers",
      "nombre": "Number of assemblers",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "1",
@@ -609,6 +656,7 @@
     {
      "id": "cd-hit",
      "nombre": "CD-HIT",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
@@ -631,6 +679,7 @@
     {
      "id": "quantification",
      "nombre": "Quantification",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "pseudocounts",
@@ -653,6 +702,7 @@
     {
      "id": "normalization",
      "nombre": "Normalization",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
@@ -675,6 +725,7 @@
     {
      "id": "correction",
      "nombre": "Correction",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "no",
@@ -705,6 +756,7 @@
     {
      "id": "dea",
      "nombre": "DEA",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
@@ -733,37 +785,42 @@
     {
      "id": "number-of-replicates",
      "nombre": "Number of replicates",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "1",
        "label": "1",
        "coste": {
-        "tipo": "base",
-        "valor": 250.0
+        "tipo": "replicas",
+        "valor": 250.0,
+        "n": 1
        }
       },
       {
        "id": "3",
        "label": "3",
        "coste": {
-        "tipo": "base",
-        "valor": 750.0
+        "tipo": "replicas",
+        "valor": 250.0,
+        "n": 3
        }
       },
       {
        "id": "5",
        "label": "5",
        "coste": {
-        "tipo": "base",
-        "valor": 1250.0
+        "tipo": "replicas",
+        "valor": 250.0,
+        "n": 5
        }
       },
       {
        "id": "10",
        "label": "10",
        "coste": {
-        "tipo": "base",
-        "valor": 2500.0
+        "tipo": "replicas",
+        "valor": 250.0,
+        "n": 10
        }
       }
      ]
@@ -771,6 +828,7 @@
     {
      "id": "fragmentation",
      "nombre": "Fragmentation",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "tagmentation",
@@ -801,37 +859,38 @@
     {
      "id": "library",
      "nombre": "Library",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "single-end-illumina",
        "label": "Single-end (Illumina)",
        "coste": {
-        "tipo": "mult",
-        "valor": 1.5
+        "tipo": "muestra",
+        "valor": 100.0
        }
       },
       {
        "id": "paired-end-illumina",
        "label": "Paired-end (Illumina)",
        "coste": {
-        "tipo": "mult",
-        "valor": 2.0
+        "tipo": "muestra",
+        "valor": 200.0
        }
       },
       {
        "id": "mate-pair-illumina",
        "label": "Mate-pair (Illumina)",
        "coste": {
-        "tipo": "mult",
-        "valor": 5.0
+        "tipo": "muestra",
+        "valor": 800.0
        }
       },
       {
        "id": "long-reads-pacbio",
        "label": "Long reads (PacBio)",
        "coste": {
-        "tipo": "mult",
-        "valor": 10.0
+        "tipo": "muestra",
+        "valor": 1800.0
        }
       }
      ]
@@ -839,13 +898,14 @@
     {
      "id": "depth",
      "nombre": "Depth",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "10x",
        "label": "10X",
        "coste": {
         "tipo": "mult",
-        "valor": 1.2
+        "valor": 1.0
        }
       },
       {
@@ -869,7 +929,7 @@
        "label": "70X",
        "coste": {
         "tipo": "mult",
-        "valor": 5.0
+        "valor": 2.5
        }
       },
       {
@@ -877,7 +937,7 @@
        "label": "100X",
        "coste": {
         "tipo": "mult",
-        "valor": 10.0
+        "valor": 3.0
        }
       }
      ]
@@ -885,6 +945,7 @@
     {
      "id": "trimming",
      "nombre": "Trimming",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "q20",
@@ -923,6 +984,7 @@
     {
      "id": "assembly",
      "nombre": "Assembly",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "de-novo",
@@ -945,6 +1007,7 @@
     {
      "id": "binning",
      "nombre": "Binning",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "no",
@@ -975,6 +1038,7 @@
     {
      "id": "number-of-assemblers",
      "nombre": "Number of assemblers",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "1",
@@ -1005,6 +1069,7 @@
     {
      "id": "cd-hit",
      "nombre": "CD-HIT",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
@@ -1027,6 +1092,7 @@
     {
      "id": "variant-calling",
      "nombre": "Variant calling",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
@@ -1049,6 +1115,7 @@
     {
      "id": "dea",
      "nombre": "DEA",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
@@ -1077,37 +1144,42 @@
     {
      "id": "number-of-replicates",
      "nombre": "Number of replicates",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "1",
        "label": "1",
        "coste": {
-        "tipo": "base",
-        "valor": 250.0
+        "tipo": "replicas",
+        "valor": 250.0,
+        "n": 1
        }
       },
       {
        "id": "3",
        "label": "3",
        "coste": {
-        "tipo": "base",
-        "valor": 750.0
+        "tipo": "replicas",
+        "valor": 250.0,
+        "n": 3
        }
       },
       {
        "id": "5",
        "label": "5",
        "coste": {
-        "tipo": "base",
-        "valor": 1250.0
+        "tipo": "replicas",
+        "valor": 250.0,
+        "n": 5
        }
       },
       {
        "id": "10",
        "label": "10",
        "coste": {
-        "tipo": "base",
-        "valor": 2500.0
+        "tipo": "replicas",
+        "valor": 250.0,
+        "n": 10
        }
       }
      ]
@@ -1115,12 +1187,13 @@
     {
      "id": "rna-to-analyze",
      "nombre": "RNA to analyze",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "total",
        "label": "Total",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "muestra",
         "valor": 250.0
        }
       },
@@ -1128,7 +1201,7 @@
        "id": "rrna-depleted",
        "label": "rRNA depleted",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "muestra",
         "valor": 250.0
        }
       },
@@ -1136,7 +1209,7 @@
        "id": "mrna-enriched",
        "label": "mRNA enriched",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "muestra",
         "valor": 250.0
        }
       },
@@ -1144,7 +1217,7 @@
        "id": "cdna-capture",
        "label": "cDNA capture",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "muestra",
         "valor": 250.0
        }
       }
@@ -1153,12 +1226,13 @@
     {
      "id": "library",
      "nombre": "Library",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "stranded",
        "label": "Stranded",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "muestra",
         "valor": 50.0
        }
       },
@@ -1166,7 +1240,7 @@
        "id": "non-stranded",
        "label": "Non-stranded",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "muestra",
         "valor": 20.0
        }
       }
@@ -1175,13 +1249,14 @@
     {
      "id": "depth",
      "nombre": "Depth",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "10x",
        "label": "10X",
        "coste": {
         "tipo": "mult",
-        "valor": 1.2
+        "valor": 1.0
        }
       },
       {
@@ -1205,7 +1280,7 @@
        "label": "70X",
        "coste": {
         "tipo": "mult",
-        "valor": 5.0
+        "valor": 2.5
        }
       },
       {
@@ -1213,7 +1288,7 @@
        "label": "100X",
        "coste": {
         "tipo": "mult",
-        "valor": 10.0
+        "valor": 3.0
        }
       }
      ]
@@ -1221,6 +1296,7 @@
     {
      "id": "trimming",
      "nombre": "Trimming",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "q20",
@@ -1259,6 +1335,7 @@
     {
      "id": "assembly",
      "nombre": "Assembly",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "de-novo",
@@ -1281,6 +1358,7 @@
     {
      "id": "number-of-assemblers",
      "nombre": "Number of assemblers",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "1",
@@ -1311,6 +1389,7 @@
     {
      "id": "cd-hit",
      "nombre": "CD-HIT",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
@@ -1333,6 +1412,7 @@
     {
      "id": "quantification",
      "nombre": "Quantification",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "pseudocounts",
@@ -1355,6 +1435,7 @@
     {
      "id": "normalization",
      "nombre": "Normalization",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
@@ -1377,6 +1458,7 @@
     {
      "id": "correction",
      "nombre": "Correction",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "no",
@@ -1407,6 +1489,7 @@
     {
      "id": "dea",
      "nombre": "DEA",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
@@ -1435,37 +1518,65 @@
     {
      "id": "number-of-replicates",
      "nombre": "Number of replicates",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "1",
        "label": "1",
        "coste": {
-        "tipo": "base",
-        "valor": 150.0
+        "tipo": "replicas",
+        "valor": 150.0,
+        "n": 1
        }
       },
       {
        "id": "3",
        "label": "3",
        "coste": {
-        "tipo": "base",
-        "valor": 450.0
+        "tipo": "replicas",
+        "valor": 150.0,
+        "n": 3
        }
       },
       {
        "id": "5",
        "label": "5",
        "coste": {
-        "tipo": "base",
-        "valor": 750.0
+        "tipo": "replicas",
+        "valor": 150.0,
+        "n": 5
        }
       },
       {
        "id": "10",
        "label": "10",
        "coste": {
-        "tipo": "base",
-        "valor": 1500.0
+        "tipo": "replicas",
+        "valor": 150.0,
+        "n": 10
+       }
+      }
+     ]
+    },
+    {
+     "id": "sample-preparation",
+     "nombre": "Sample preparation",
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "standard",
+       "label": "Standard",
+       "coste": {
+        "tipo": "muestra",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "protein-corona",
+       "label": "Protein corona",
+       "coste": {
+        "tipo": "muestra",
+        "valor": 50.0
        }
       }
      ]
@@ -1473,18 +1584,27 @@
     {
      "id": "database",
      "nombre": "Database",
+     "tipo": "unica",
      "opciones": [
       {
-       "id": "reference-based",
-       "label": "Reference-based",
+       "id": "reference-database-uniprot-ncbi",
+       "label": "Reference database (UniProt, NCBI)",
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
        }
       },
       {
-       "id": "de-novo",
-       "label": "de novo",
+       "id": "own-database-from-metagenome-metatranscriptome",
+       "label": "Own database (from metagenome/metatranscriptome)",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "de-novo-peptide-sequencing-no-database",
+       "label": "De novo peptide sequencing (no database)",
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -1495,6 +1615,7 @@
     {
      "id": "prodigal",
      "nombre": "Prodigal",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
@@ -1517,6 +1638,7 @@
     {
      "id": "htm",
      "nombre": "HTM",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "t-test",
@@ -1544,7 +1666,7 @@
       },
       {
        "id": "msstats",
-       "label": "MSstats",
+       "label": "Msstats",
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -1555,6 +1677,7 @@
     {
      "id": "cbr",
      "nombre": "CBR",
+     "tipo": "unica",
      "opciones": [
       {
        "id": "fc",
@@ -1583,13 +1706,13 @@
     {
      "id": "qrt-pcr",
      "nombre": "qRT-PCR",
-     "opcional": true,
+     "tipo": "contador",
      "opciones": [
       {
-       "id": "si",
-       "label": "Each analysis",
+       "id": "n",
+       "label": "qRT-PCR",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "unidad",
         "valor": 50.0
        }
       }
@@ -1598,13 +1721,13 @@
     {
      "id": "western-blot",
      "nombre": "Western-blot",
-     "opcional": true,
+     "tipo": "contador",
      "opciones": [
       {
-       "id": "si",
-       "label": "Yes",
+       "id": "n",
+       "label": "Western-blot",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "unidad",
         "valor": 50.0
        }
       }
@@ -1613,13 +1736,13 @@
     {
      "id": "enzyme-activities",
      "nombre": "Enzyme activities",
-     "opcional": true,
+     "tipo": "contador",
      "opciones": [
       {
-       "id": "si",
-       "label": "Yes",
+       "id": "n",
+       "label": "Enzyme activities",
        "coste": {
-        "tipo": "fijo",
+        "tipo": "unidad",
         "valor": 30.0
        }
       }

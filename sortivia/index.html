@@ -35,6 +35,7 @@
 .opt input:checked + span i { color: inherit; opacity: .75; }
 .opt input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
 .opt input:disabled + span { cursor: default; opacity: .7; }
+.counter { align-items: center; gap: 10px; } .counter b { min-width: 1.6em; text-align: center; font-size: 1.05rem; }
 .sub { font-family: var(--f-mono); font-size: 0.95rem; margin-left: auto; }
 @media (max-width: 600px) { .dec { grid-template-columns: 1fr; } .dec > .lbl { padding-top: 0; } header.bar { position: static; } }
 /* Sorteo */
@@ -79,7 +80,7 @@ const I = {
     win_t: "¡Misión cumplida!", win_d: (x) => `Ha salido el ${x}, uno de vuestros números. ¡Habéis salvado a la humanidad!`,
     lose_t: "La misión ha fracasado", lose_d: (x) => `Ha salido el ${x}, que no estaba entre vuestros números.`,
     retry: "Revisar la estrategia (siguiente ronda)", over_t: "Fin de la actividad", over_d: "Se han agotado las rondas. Comentad con el profesor qué decisiones han restado probabilidad.",
-    aviso: "Aviso del profesor", changed: "Cambios guardados", saving: "Guardando…", demo: "Modo demostración: los datos se guardan solo en este navegador.",
+    aviso: "Aviso del profesor", formula: "Coste de cada ómica = condiciones × réplicas × (precio por muestra) × profundidad + costes fijos.", changed: "Cambios guardados", saving: "Guardando…", demo: "Modo demostración: los datos se guardan solo en este navegador.",
     f: "SORTIVIA · Metodología ESTOPA · Parte de BIOCOGNIA · Open Educational Technology",
   },
   en: {
@@ -95,7 +96,7 @@ const I = {
     win_t: "Mission accomplished!", win_d: (x) => `${x} came up, one of your numbers. You have saved humanity!`,
     lose_t: "The mission has failed", lose_d: (x) => `${x} came up, which was not one of your numbers.`,
     retry: "Review the strategy (next round)", over_t: "End of the activity", over_d: "No rounds left. Discuss with the teacher which decisions lowered your probability.",
-    aviso: "Message from the teacher", changed: "Changes saved", saving: "Saving…", demo: "Demo mode: data are stored only in this browser.",
+    aviso: "Message from the teacher", formula: "Cost of each omics block = conditions × replicates × (price per sample) × depth + fixed costs.", changed: "Changes saved", saving: "Saving…", demo: "Demo mode: data are stored only in this browser.",
     f: "SORTIVIA · ESTOPA methodology · Part of BIOCOGNIA · Open Educational Technology",
   },
 };
@@ -131,20 +132,25 @@ function vBudget() {
   return `<div class="budget ${over ? "over" : ""}" id="budget"><div class="row"><span class="eyebrow">${T("round", S.g.ronda, S.act.rondas)}</span><span class="spacer small muted" id="saved"></span></div>
     <div class="row"><span>${T("spent")} <b class="big">${svEur(c, S.lang)}</b> <span class="muted">/ ${svEur(P, S.lang)}</span></span><span class="spacer">${T("left")} <b class="big">${svEur(Math.max(0, P - c), S.lang)}</b></span></div>
     <div class="track"><span style="width:${Math.min(100, (100 * c) / P)}%"></span></div>
+    <p class="small muted">${T("formula")}</p>
     ${over ? `<p class="small" style="color:var(--bad)">${T("over", svEur(c - P, S.lang))}</p>` : ""}</div>`;
 }
 function vBlock(b) {
   const req = S.act.bloques_obligatorios.includes(b.id), sel = S.el.bloques[b.id], on = req || sel.incluido;
   const head = `<header><h2>${esc(b.nombre)}</h2>${req ? `<span class="pill">${T("required")}</span>` : `<label class="toggle"><input type="checkbox" data-inc="${b.id}" ${on ? "checked" : ""}>${T("include")}</label>`}
-    ${on ? `<span class="sub" title="${T("subtotal")}">${svEur(svCosteBloque(b, sel), S.lang)}</span>` : ""}</header>`;
+    ${on ? `<span class="sub" data-sub="${b.id}" title="${T("subtotal")}">${svEur(svCosteBloque(b, sel, svCondiciones(S.act, S.el)), S.lang)}</span>` : ""}</header>`;
   if (!on) return `<section class="blk">${head}</section>`;
   const decs = b.decisiones.map((d) => {
+    if (d.tipo === "contador") {
+      const o = d.opciones[0], n = Math.max(0, Number(sel.dec[d.id]) || 0);
+      return `<div class="dec"><span class="lbl">${esc(d.nombre)}</span><div class="opts counter"><button type="button" class="btn small" data-cnt="-1" data-b="${b.id}" data-d="${d.id}" aria-label="−" ${n ? "" : "disabled"}>−</button><b class="num" aria-live="polite">${n}</b><button type="button" class="btn small" data-cnt="1" data-b="${b.id}" data-d="${d.id}" aria-label="+">+</button><span class="small muted">${esc(o.label)} · ${svPrecio(o, S.lang)}</span></div></div>`;
+    }
     let last = null;
     const opts = d.opciones.map((o) => {
       const g = o.grupo && o.grupo !== last ? `<span class="grp">${esc(o.grupo)}</span>` : ""; last = o.grupo || last;
       const name = `${b.id}__${d.id}`;
-      const checked = d.opcional ? !!sel.dec[d.id] : sel.dec[d.id] === o.id;
-      return `${g}<label class="opt"><input type="${d.opcional ? "checkbox" : "radio"}" name="${name}" data-b="${b.id}" data-d="${d.id}" value="${esc(o.id)}" ${checked ? "checked" : ""}><span>${esc(o.label)}${o.coste.valor && !(o.coste.tipo === "mult" && o.coste.valor === 1) ? ` <i>${svPrecio(o, S.lang)}</i>` : ""}</span></label>`;
+      const checked = sel.dec[d.id] === o.id, pr = svPrecio(o, S.lang);
+      return `${g}<label class="opt"><input type="radio" name="${name}" data-b="${b.id}" data-d="${d.id}" value="${esc(o.id)}" ${checked ? "checked" : ""}><span>${esc(o.label)}${pr ? ` <i>${pr}</i>` : ""}</span></label>`;
     }).join("");
     return `<div class="dec"><span class="lbl">${esc(d.nombre)}</span><div class="opts">${opts}</div></div>`;
   }).join("");
@@ -197,6 +203,10 @@ function render() {
   else if (st === "enviado") main().innerHTML = `<div class="stack"><h1>${T("sent_t")}</h1><div class="wait"><span class="dot"></span><span>${T("sent_d")}</span></div></div>`;
   else main().innerHTML = vDraw();
 }
+function actualizarSubtotales() {
+  const nc = svCondiciones(S.act, S.el);
+  for (const el of document.querySelectorAll("[data-sub]")) { const b = S.act.bloques.find((x) => x.id === el.dataset.sub); el.textContent = svEur(svCosteBloque(b, S.el.bloques[b.id], nc), S.lang); }
+}
 function renderBudget() { const b = $("#budget"); if (b) b.outerHTML = vBudget(); const sb = $("#sendbox"); if (sb) { const tmp = document.createElement("div"); tmp.innerHTML = vEditor(); sb.replaceWith(tmp.querySelector("#sendbox")); } }
 
 /* ---------- Guardado ---------- */
@@ -212,6 +222,12 @@ function guardar() {
 document.addEventListener("click", async (e) => {
   const t = e.target.closest("button"); if (!t) return;
   if (t.dataset.lang) { S.lang = t.dataset.lang; svSetLang(S.lang); return S.g ? render() : (chrome(), main().innerHTML = vJoin()); }
+  if (t.dataset.cnt) {
+    const sel = S.el.bloques[t.dataset.b], n = Math.max(0, Math.min(20, (Number(sel.dec[t.dataset.d]) || 0) + Number(t.dataset.cnt)));
+    sel.dec[t.dataset.d] = n; guardar();
+    const box = t.closest(".counter"); box.querySelector("b").textContent = n; box.querySelector('[data-cnt="-1"]').disabled = !n;
+    actualizarSubtotales(); renderBudget(); return;
+  }
   if (t.id === "send") { S.confirm = true; return render(); }
   if (t.id === "send-no") { S.confirm = false; return render(); }
   if (t.id === "send-yes") { S.confirm = false; clearTimeout(S.saveT); await SVB.cambiarGrupo(S.sid, { eleccion: S.el, justif: S.just, coste: coste(), estado: "enviado" }); window.scrollTo(0, 0); return; }
@@ -228,9 +244,9 @@ document.addEventListener("change", (e) => {
   if (el.dataset.inc) { S.el.bloques[el.dataset.inc].incluido = el.checked; guardar(); const y = window.scrollY; render(); window.scrollTo(0, y); return; }
   if (el.dataset.b) {
     const sel = S.el.bloques[el.dataset.b], d = S.act.bloques.find((b) => b.id === el.dataset.b).decisiones.find((x) => x.id === el.dataset.d);
-    sel.dec[d.id] = d.opcional ? el.checked : el.value;
+    sel.dec[d.id] = el.value;
     guardar();
-    const blk = el.closest(".blk"), sub = blk && blk.querySelector(".sub"); if (sub) sub.textContent = svEur(svCosteBloque(S.act.bloques.find((b) => b.id === el.dataset.b), sel), S.lang);
+    actualizarSubtotales();
     renderBudget(); return;
   }
 });

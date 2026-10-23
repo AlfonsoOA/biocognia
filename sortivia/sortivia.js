@@ -3,37 +3,61 @@
    BIOCOGNIA · Open Educational Technology · Alfonso Olaya Abril
    ============================================================ */
 "use strict";
-const SV_VERSION = "0.1.0";
+const SV_VERSION = "0.2.0";
 
 /* ---------- Cálculo de costes y puntos ---------- */
-// eleccion = { bloques: { [bloque]: { incluido: bool, dec: { [decision]: idOpcion | true } } } }
+// eleccion = { bloques: { [bloque]: { incluido: bool, dec: { [decision]: idOpcion | número (contadores) } } } }
+// Coste de un bloque = condiciones × réplicas × (precio por muestra + Σ «por muestra») × Π «multiplicador» + Σ «fijo» + Σ unidades × «por unidad»
 function svOpcion(dec, id) { return dec.opciones.find((o) => o.id === id); }
 function svIncluido(act, eleccion, b) { return act.bloques_obligatorios.includes(b.id) || !!(eleccion.bloques[b.id] && eleccion.bloques[b.id].incluido); }
-function svCosteBloque(b, sel) {
-  let base = 0, mult = 1, fijo = 0;
+function svCondiciones(act, eleccion) {
+  for (const b of act.bloques) {
+    if (!svIncluido(act, eleccion, b)) continue;
+    const sel = eleccion.bloques[b.id] || { dec: {} };
+    for (const d of b.decisiones) { const o = d.tipo !== "contador" && svOpcion(d, sel.dec && sel.dec[d.id]); if (o && o.coste.tipo === "condiciones") return o.coste.valor; }
+  }
+  return 1;
+}
+function svCosteBloque(b, sel, ncond = 1) {
+  let reps = 0, porMuestra = 0, mult = 1, fijo = 0, unidades = 0;
   for (const d of b.decisiones) {
     const v = sel && sel.dec ? sel.dec[d.id] : undefined;
-    if (v === undefined || v === false || v === null) continue;
-    const o = d.opcional ? d.opciones[0] : svOpcion(d, v);
-    if (!o) continue;
-    if (o.coste.tipo === "base") base += o.coste.valor;
-    else if (o.coste.tipo === "mult") mult *= o.coste.valor;
-    else fijo += o.coste.valor;
+    if (d.tipo === "contador") { const n = Math.max(0, Number(v) || 0); unidades += n * d.opciones[0].coste.valor; continue; }
+    if (v === undefined || v === null || v === false) continue;
+    const o = svOpcion(d, v); if (!o) continue;
+    const c = o.coste;
+    if (c.tipo === "replicas") { reps = c.n; porMuestra += c.valor; }
+    else if (c.tipo === "muestra") porMuestra += c.valor;
+    else if (c.tipo === "mult") mult *= c.valor;
+    else if (c.tipo === "fijo") fijo += c.valor;
+    // «condiciones» no cuesta por sí mismo: multiplica las muestras de todos los bloques.
   }
-  return Math.round((base * mult + fijo) * 100) / 100;
+  return Math.round((ncond * reps * porMuestra * mult + fijo + unidades) * 100) / 100;
 }
 function svCosteTotal(act, eleccion) {
-  return act.bloques.reduce((s, b) => s + (svIncluido(act, eleccion, b) ? svCosteBloque(b, eleccion.bloques[b.id]) : 0), 0);
+  const nc = svCondiciones(act, eleccion);
+  return act.bloques.reduce((s, b) => s + (svIncluido(act, eleccion, b) ? svCosteBloque(b, eleccion.bloques[b.id], nc) : 0), 0);
 }
 function svPendientes(act, eleccion) {
-  // Decisiones obligatorias sin responder en los bloques incluidos.
+  // Decisiones de opción única sin responder en los bloques incluidos (los contadores pueden quedarse en 0).
   const falta = [];
   for (const b of act.bloques) {
     if (!svIncluido(act, eleccion, b)) continue;
     const sel = eleccion.bloques[b.id] || { dec: {} };
-    for (const d of b.decisiones) if (!d.opcional && !(sel.dec && sel.dec[d.id])) falta.push(`${b.nombre} · ${d.nombre}`);
+    for (const d of b.decisiones) if (d.tipo !== "contador" && !(sel.dec && sel.dec[d.id])) falta.push(`${b.nombre} · ${d.nombre}`);
   }
   return falta;
+}
+function svTermino(act, eleccion, t) {
+  const b = act.bloques.find((x) => x.id === t.bloque); if (!b) return false;
+  const inc = svIncluido(act, eleccion, b);
+  let ok;
+  if (!t.decision) ok = inc;
+  else {
+    const v = inc ? (eleccion.bloques[b.id] || { dec: {} }).dec[t.decision] : undefined;
+    ok = inc && (t.opciones ? t.opciones.includes(v) : (Number(v) || 0) > t.mayor_que);
+  }
+  return t.no ? !ok : ok;
 }
 function svPuntos(act, clave, eleccion) {
   let total = 0; const detalle = [];
@@ -42,11 +66,14 @@ function svPuntos(act, clave, eleccion) {
     const sel = eleccion.bloques[b.id] || { dec: {} };
     for (const d of b.decisiones) {
       const v = sel.dec && sel.dec[d.id];
-      if (!v) continue;
-      const oid = d.opcional ? d.opciones[0].id : v;
+      if (d.tipo === "contador" ? !(Number(v) > 0) : !v) continue;
+      const oid = d.tipo === "contador" ? d.opciones[0].id : v;
       const p = Number(clave.puntos[`${b.id}/${d.id}/${oid}`] || 0);
-      total += p; detalle.push({ bloque: b.id, decision: d.id, opcion: oid, puntos: p });
+      total += p; detalle.push({ bloque: b.id, decision: d.id, opcion: oid, cantidad: d.tipo === "contador" ? Number(v) : undefined, puntos: p });
     }
+  }
+  for (const r of clave.reglas || []) {
+    if (r.terminos.length && r.terminos.every((t) => svTermino(act, eleccion, t))) { total += r.puntos; detalle.push({ regla: r.id, texto: r.texto, puntos: r.puntos }); }
   }
   return { total, detalle };
 }
@@ -55,7 +82,15 @@ function svEleccionVacia(act) { const e = { bloques: {} }; for (const b of act.b
 function svAleatorio(n) { const a = new Uint32Array(1); crypto.getRandomValues(a); return (a[0] % n) + 1; }
 function svCodigo(n = 5) { const a = new Uint8Array(n); crypto.getRandomValues(a); return Array.from(a, (x) => "ABCDEFGHJKMNPQRSTUVWXYZ23456789"[x % 31]).join(""); }
 function svEur(n, lang) { return new Intl.NumberFormat(lang === "en" ? "en-GB" : "es-ES", { maximumFractionDigits: 0 }).format(Math.round(n)) + " €"; }
-function svPrecio(o, lang) { return o.coste.tipo === "mult" ? `×${String(o.coste.valor).replace(".", lang === "en" ? "." : ",")}` : (o.coste.valor ? svEur(o.coste.valor, lang) : (lang === "en" ? "no cost" : "sin coste")); }
+function svPrecio(o, lang) {
+  const c = o.coste, en = lang === "en", e = (v) => svEur(v, lang);
+  if (c.tipo === "mult") return c.valor === 1 ? "" : `×${String(c.valor).replace(".", en ? "." : ",")}`;
+  if (c.tipo === "replicas") return `${e(c.valor)}${en ? "/sample" : "/muestra"}`;
+  if (c.tipo === "muestra") return c.valor ? `+${e(c.valor)}${en ? "/sample" : "/muestra"}` : "";
+  if (c.tipo === "unidad") return `${e(c.valor)} ${en ? "each" : "c/u"}`;
+  if (c.tipo === "condiciones") return en ? `${c.valor} condition${c.valor > 1 ? "s" : ""}` : `${c.valor} ${c.valor > 1 ? "condiciones" : "condición"}`;
+  return c.valor ? e(c.valor) : "";
+}
 async function svCargarActividad(id) { const r = await fetch(`actividades/${encodeURIComponent(id)}.json`); if (!r.ok) throw new Error("actividad " + id); return r.json(); }
 
 /* ---------- Almacenamiento: Firebase o demo local ---------- */

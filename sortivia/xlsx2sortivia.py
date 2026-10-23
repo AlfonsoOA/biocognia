@@ -1,55 +1,115 @@
-"""Convierte una hoja de claves ESTOPA (Decisión | Subdecisión | Opción | Precio | Puntos) en:
-   - actividad pública (sin puntos) para la web de SORTIVIA
-   - clave privada (puntos por opción) para el panel del profesor.
-Uso: python3 -I xlsx2sortivia.py claves.xlsx id_actividad salida_publica.json salida_clave.json"""
-import json, re, sys, unicodedata
+"""Convierte una hoja de claves ESTOPA (formato v2) en una actividad de SORTIVIA.
+
+Pestañas del Excel:
+  Actividad  → parámetros (id, títulos, resumen, presupuesto, rondas, números, puntos por número, bloques obligatorios)
+  Opciones   → Bloque | Decisión | Grupo | Opción | Tipo de coste | Precio | Puntos | Notas
+               Tipos de coste: réplicas, por muestra, multiplicador, fijo, por unidad, condiciones
+  Reglas     → ID | Condición | Puntos | Explicación   (reglas de coherencia; ocultas a los alumnos)
+
+Genera:
+  actividades/<id>.json      → pública (sin puntos ni reglas): va al repositorio
+  <id>.clave.json            → privada (puntos y reglas): se carga en el panel, NUNCA en el repositorio
+y escribe en el propio Excel una pestaña «Identificadores» con los nombres que usan las reglas.
+
+Uso: python3 -I xlsx2sortivia.py claves_v2.xlsx carpeta_actividades/ carpeta_claves/
+"""
+import json, os, re, sys, unicodedata
 import openpyxl
 
-src, aid, out_pub, out_key = sys.argv[1:]
-FIX = {"Numer of replicates": "Number of replicates", "Artifitial consortia": "Artificial consortia", "Decission": "Decision", "Msstats": "MSstats", "Deqms": "DEqMS"}
+src, out_pub_dir, out_key_dir = sys.argv[1:]
+TIPOS = {"réplicas": "replicas", "replicas": "replicas", "por muestra": "muestra", "multiplicador": "mult", "fijo": "fijo", "por unidad": "unidad", "condiciones": "condiciones"}
+
 def slug(s):
     s = unicodedata.normalize("NFKD", str(s)).encode("ascii", "ignore").decode().lower()
     return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
-def fix(s): s = str(s).strip(); return FIX.get(s, s)
+def num(v):
+    if isinstance(v, (int, float)): return float(v)
+    return float(str(v).strip().lower().lstrip("x").replace(",", ".") or 0)
 
-ws = openpyxl.load_workbook(src, data_only=True).active
-rows = [r for r in ws.iter_rows(min_row=2, values_only=True) if any(c is not None for c in r)]
-bloques, clave = [], {}
-blk = dec = None; grupo = None
-for A, B, C, D, E in rows:
-    if A:
-        blk = {"id": slug(A), "nombre": fix(A), "decisiones": []}
-        bloques.append(blk); dec = None
-    if blk["id"] == "global-strategy":
-        if dec is None:
-            dec = {"id": "estrategia", "nombre": "Global strategy", "opciones": []}; blk["decisiones"].append(dec)
-        if B: grupo = fix(B)
-        opt = {"id": slug(C), "label": fix(C), "grupo": grupo, "coste": {"tipo": "fijo", "valor": float(D)}}
-    elif blk["id"] == "validations":
-        dec = {"id": slug(B), "nombre": fix(B), "opcional": True, "opciones": []}; blk["decisiones"].append(dec)
-        opt = {"id": "si", "label": fix(C) if C else "Yes", "coste": {"tipo": "fijo", "valor": float(D)}}
+wb = openpyxl.load_workbook(src)
+P = {str(r[0]).strip(): r[1] for r in wb["Actividad"].iter_rows(min_row=2, values_only=True) if r[0]}
+aid = slug(P["id"])
+obligatorios = [slug(x) for x in str(P.get("bloques_obligatorios") or "").split(";") if x.strip()]
+
+bloques, idx, puntos, errores = [], {}, {}, []
+for i, row in enumerate(wb["Opciones"].iter_rows(min_row=2, values_only=True), start=2):
+    if not row or not row[0]: continue
+    B, D, G, O, TIPO, PRECIO, PTS = (list(row) + [None] * 8)[:7]
+    tipo = TIPOS.get(str(TIPO).strip().lower())
+    if not tipo: errores.append(f"Opciones fila {i}: tipo de coste desconocido «{TIPO}»"); continue
+    bid, did = slug(B), slug(D)
+    if bid not in idx:
+        idx[bid] = {"id": bid, "nombre": str(B).strip(), "decisiones": [], "_d": {}}; bloques.append(idx[bid])
+    blk = idx[bid]
+    if did not in blk["_d"]:
+        dec = {"id": did, "nombre": str(D).strip(), "tipo": "contador" if tipo == "unidad" else "unica", "opciones": []}
+        blk["_d"][did] = dec; blk["decisiones"].append(dec)
+    dec = blk["_d"][did]
+    if tipo == "unidad":
+        oid = "n"; label = str(O).strip()
     else:
-        if B:
-            dec = {"id": slug(fix(B)), "nombre": fix(B), "opciones": []}; blk["decisiones"].append(dec)
-        if isinstance(D, str) and D.strip().lower().startswith("x"):
-            coste = {"tipo": "mult", "valor": float(D.strip()[1:].strip().replace(",", "."))}
-        elif dec["id"] == "number-of-replicates":
-            coste = {"tipo": "base", "valor": float(D)}
-        else:
-            coste = {"tipo": "fijo", "valor": float(D)}
-        opt = {"id": slug(C), "label": fix(C), "coste": coste}
+        label = str(O).strip(); oid = slug(label)
+    coste = {"tipo": tipo, "valor": num(PRECIO or 0)}
+    if tipo == "replicas":
+        coste["n"] = int(num(O))
+    opt = {"id": oid, "label": label, "coste": coste}
+    if G: opt["grupo"] = str(G).strip()
+    if any(o["id"] == oid for o in dec["opciones"]): errores.append(f"Opciones fila {i}: opción repetida «{label}» en {B} · {D}")
     dec["opciones"].append(opt)
-    clave[f"{blk['id']}/{dec['id']}/{opt['id']}"] = E
+    puntos[f"{bid}/{did}/{oid}"] = num(PTS or 0)
+for b in bloques: del b["_d"]
+
+# Reglas de coherencia
+TERM = re.compile(r"^(!?)([a-z0-9-]+)(?:/([a-z0-9-]+)(?:(=)([a-z0-9|-]+)|(>)(\d+)))?$")
+reglas = []
+if "Reglas" in wb.sheetnames:
+    for i, row in enumerate(wb["Reglas"].iter_rows(min_row=2, values_only=True), start=2):
+        if not row or not row[0] or not row[1]: continue
+        rid, cond, pts, texto = (list(row) + [None] * 4)[:4]
+        terms = []
+        for t in [x.strip() for x in str(cond).split("&") if x.strip()]:
+            m = TERM.match(t)
+            if not m: errores.append(f"Reglas fila {i} ({rid}): no entiendo «{t}»"); continue
+            neg, b, d, eq, opts, gt, n = m.groups()
+            if b not in idx: errores.append(f"Reglas fila {i} ({rid}): no existe el bloque «{b}»"); continue
+            term = {"bloque": b, "no": bool(neg)}
+            if d:
+                dec = next((x for x in idx[b]["decisiones"] if x["id"] == d), None)
+                if not dec: errores.append(f"Reglas fila {i} ({rid}): no existe la decisión «{b}/{d}»"); continue
+                term["decision"] = d
+                if eq:
+                    ids = opts.split("|")
+                    for o in ids:
+                        if not any(x["id"] == o for x in dec["opciones"]): errores.append(f"Reglas fila {i} ({rid}): no existe la opción «{b}/{d}={o}»")
+                    term["opciones"] = ids
+                else:
+                    term["mayor_que"] = int(n)
+            terms.append(term)
+        reglas.append({"id": str(rid).strip(), "terminos": terms, "puntos": num(pts or 0), "texto": str(texto or "").strip()})
+
+if errores:
+    print("ERRORES:"); [print("  -", e) for e in errores]; sys.exit(1)
+
 act = {
-    "schema": "sortivia-actividad/1", "id": aid, "metodologia": "ESTOPA",
-    "titulo": {"es": "The poor savior astronauts", "en": "The poor savior astronauts"},
-    "resumen": {"es": "Diseñad la estrategia ómica más eficiente para demostrar la ruta biosintética de la Pepitina con un presupuesto de 17.000 €.",
-                "en": "Design the most efficient omics strategy to demonstrate the biosynthetic pathway of Pepitin with a budget of €17,000."},
-    "presupuesto": 17000, "moneda": "€", "numeros": 10, "rondas": 2, "puntos_por_numero": 10,
-    "bloques_obligatorios": ["global-strategy"],
-    "bloques": bloques,
+    "schema": "sortivia-actividad/2", "id": aid, "metodologia": "ESTOPA",
+    "titulo": {"es": P.get("titulo_es") or P["id"], "en": P.get("titulo_en") or P.get("titulo_es") or P["id"]},
+    "resumen": {"es": P.get("resumen_es") or "", "en": P.get("resumen_en") or P.get("resumen_es") or ""},
+    "presupuesto": num(P.get("presupuesto") or 0), "numeros": int(num(P.get("numeros") or 10)), "rondas": int(num(P.get("rondas") or 2)),
+    "puntos_por_numero": num(P.get("puntos_por_numero") or 10), "bloques_obligatorios": obligatorios, "bloques": bloques,
 }
-json.dump(act, open(out_pub, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-json.dump({"schema": "sortivia-clave/1", "actividad": aid, "puntos": clave}, open(out_key, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-print(len(bloques), "bloques;", sum(len(b["decisiones"]) for b in bloques), "decisiones;", len(clave), "opciones")
-for b in bloques: print(" ", b["id"], [ (d["id"], len(d["opciones"])) for d in b["decisiones"]])
+os.makedirs(out_pub_dir, exist_ok=True); os.makedirs(out_key_dir, exist_ok=True)
+json.dump(act, open(os.path.join(out_pub_dir, f"{aid}.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+json.dump({"schema": "sortivia-clave/2", "actividad": aid, "puntos": puntos, "reglas": reglas},
+          open(os.path.join(out_key_dir, f"{aid}.clave.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+# Pestaña de identificadores para escribir reglas
+if "Identificadores" in wb.sheetnames: del wb["Identificadores"]
+wi = wb.create_sheet("Identificadores")
+wi.append(["Bloque", "Decisión", "Opción", "Para usar en una regla"])
+for b in bloques:
+    for d in b["decisiones"]:
+        for o in d["opciones"]:
+            wi.append([b["nombre"], d["nombre"], o["label"], f"{b['id']}/{d['id']}>0" if d["tipo"] == "contador" else f"{b['id']}/{d['id']}={o['id']}"])
+for c, w in zip("ABCD", (20, 24, 46, 80)): wi.column_dimensions[c].width = w
+wb.save(src)
+print(f"{aid}: {len(bloques)} bloques, {sum(len(b['decisiones']) for b in bloques)} decisiones, {len(puntos)} opciones, {len(reglas)} reglas")

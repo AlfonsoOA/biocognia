@@ -19,6 +19,7 @@ details.g > summary::-webkit-details-marker { display: none; }
 .det { padding: 10px 0 4px; display: flex; flex-direction: column; gap: 10px; font-size: .9rem; }
 .det table td, .det table th { padding: 4px 6px; }
 .pos { color: var(--ok); } .neg { color: var(--bad); }
+tr.regla td { background: var(--warn-bg); }
 .just { background: var(--sunk); border-radius: 8px; padding: 8px 10px; white-space: pre-wrap; }
 </style>
 </head>
@@ -104,8 +105,9 @@ function vGrupoDet(g) {
   const h = g.historial || [];
   const rondas = h.map((r) => {
     const filas = r.detalle.map((d) => {
-      const b = P.act.bloques.find((x) => x.id === d.bloque), dec = b && b.decisiones.find((x) => x.id === d.decision), o = dec && (dec.opcional ? dec.opciones[0] : dec.opciones.find((x) => x.id === d.opcion));
-      return `<tr><td>${esc(b ? b.nombre : d.bloque)}</td><td>${esc(dec ? dec.nombre : d.decision)}</td><td>${esc(o ? (dec.opcional ? "Sí" : o.label) : d.opcion)}</td><td class="n ${d.puntos > 0 ? "pos" : d.puntos < 0 ? "neg" : ""}">${d.puntos > 0 ? "+" : ""}${d.puntos}</td></tr>`;
+      if (d.regla) return `<tr class="regla"><td>Coherencia · ${esc(d.regla)}</td><td colspan="2">${esc(d.texto)}</td><td class="n ${d.puntos > 0 ? "pos" : d.puntos < 0 ? "neg" : ""}">${d.puntos > 0 ? "+" : ""}${d.puntos}</td></tr>`;
+      const b = P.act.bloques.find((x) => x.id === d.bloque), dec = b && b.decisiones.find((x) => x.id === d.decision), cnt = dec && dec.tipo === "contador", o = dec && (cnt ? dec.opciones[0] : dec.opciones.find((x) => x.id === d.opcion));
+      return `<tr><td>${esc(b ? b.nombre : d.bloque)}</td><td>${esc(dec ? dec.nombre : d.decision)}</td><td>${esc(o ? (cnt ? `${d.cantidad} ×` : o.label) : d.opcion)}</td><td class="n ${d.puntos > 0 ? "pos" : d.puntos < 0 ? "neg" : ""}">${d.puntos > 0 ? "+" : ""}${d.puntos}</td></tr>`;
     }).join("");
     const js = Object.entries(r.justif || {}).filter(([, t]) => t && t.trim()).map(([b, t]) => `<div><span class="eyebrow">${esc((P.act.bloques.find((x) => x.id === b) || {}).nombre || b)}</span><div class="just">${esc(t)}</div></div>`).join("");
     return `<div class="stack"><h3>Ronda ${r.ronda}: ${r.puntos} puntos → ${r.numeros} números · ${fmt(r.coste)}${r.sorteo ? ` · sorteo ${r.sorteo} (${r.resultado})` : ""}</h3>
@@ -138,7 +140,7 @@ function cell(v) { const s = v == null ? "" : String(v); return /[",\n]/.test(s)
 function save(name, text, type) { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
 function csvDecisiones() {
   const out = [["sesion", "actividad", "grupo", "ronda", "coste_ronda", "puntos_ronda", "numeros", "elegidos", "sorteo", "resultado", "bloque", "decision", "opcion", "puntos_opcion"].join(",")];
-  for (const g of P.grupos) for (const r of g.historial || []) for (const d of r.detalle) out.push([P.sid, P.act.id, g.nombre, r.ronda, r.coste, r.puntos, r.numeros, (r.elegidos || []).join(" "), r.sorteo || "", r.resultado || "", d.bloque, d.decision, d.opcion, d.puntos].map(cell).join(","));
+  for (const g of P.grupos) for (const r of g.historial || []) for (const d of r.detalle) out.push([P.sid, P.act.id, g.nombre, r.ronda, r.coste, r.puntos, r.numeros, (r.elegidos || []).join(" "), r.sorteo || "", r.resultado || "", d.regla ? "coherencia" : d.bloque, d.regla || d.decision, d.regla ? d.texto : (d.cantidad != null ? d.cantidad : d.opcion), d.puntos].map(cell).join(","));
   return out.join("\n");
 }
 function csvJust() {
@@ -175,7 +177,7 @@ document.addEventListener("change", async (e) => {
   if (e.target.id === "auto") { P.auto = e.target.checked; return arbitrar(); }
   if (e.target.dataset.key) {
     const aid = e.target.dataset.key, f = e.target.files[0]; if (!f) return;
-    try { const k = JSON.parse(await f.text()); if (k.schema !== "sortivia-clave/1" || k.actividad !== aid) throw new Error("Este archivo no es la clave de esta actividad."); await SVB.guardarClave(aid, k); P.claves[aid] = k; render(); }
+    try { const k = JSON.parse(await f.text()); if (!/^sortivia-clave\/[12]$/.test(k.schema || "") || k.actividad !== aid) throw new Error("Este archivo no es la clave de esta actividad."); await SVB.guardarClave(aid, k); P.claves[aid] = k; render(); }
     catch (er) { P.msg = er.message; render(); }
   }
 });

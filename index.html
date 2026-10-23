@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BIOCOGNIA</title>
+<meta name="description" content="BIOCOGNIA · Open Educational Technology: QUAESTIA, SORTIVIA y DEAba Digital, herramientas abiertas para aprender Bioquímica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root { --bg:#f4f7f6; --surface:#fff; --ink:#142824; --muted:#56706a; --line:#cdd9d5; --accent:#0e6b5c;
+  --f-display:"Literata",Georgia,serif; --f-ui:"IBM Plex Sans",system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,monospace; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0f1a18; --surface:#162421; --ink:#e3ece9; --muted:#93aaa4; --line:#2c403c; --accent:#4fc2ab; color-scheme:dark; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--f-ui); line-height:1.55; }
+.wrap { max-width:860px; margin:0 auto; padding:48px max(16px, env(safe-area-inset-right,0px)) 64px max(16px, env(safe-area-inset-left,0px)); display:flex; flex-direction:column; gap:32px; }
+.eyebrow { font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:500; margin:0; }
+h1 { font-family:var(--f-display); font-weight:600; font-size:clamp(2rem,6vw,2.8rem); letter-spacing:.08em; margin:0; }
+h1 + p { margin:8px 0 0; color:var(--muted); max-width:60ch; }
+.apps { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; }
+.app { display:flex; flex-direction:column; gap:8px; padding:20px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:inherit; text-decoration:none; }
+a.app:hover { border-color:var(--accent); }
+.app h2 { font-family:var(--f-display); font-weight:600; font-size:1.3rem; letter-spacing:.06em; margin:0; }
+.app p { margin:0; font-size:.92rem; color:var(--muted); }
+.app .meta { font-family:var(--f-mono); font-size:.78rem; color:var(--muted); }
+.app .go { margin-top:auto; color:var(--accent); font-weight:500; font-size:.92rem; }
+.app.soon { opacity:.65; }
+footer { border-top:1px solid var(--line); padding-top:20px; font-size:.84rem; color:var(--muted); display:flex; flex-direction:column; gap:4px; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <p class="eyebrow">Open Educational Technology</p>
+    <h1>BIOCOGNIA</h1>
+    <p>Herramientas abiertas para aprender Bioquímica, basadas en la taxonomía de Bloom.</p>
+  </header>
+  <section class="apps" aria-label="Aplicaciones">
+    <a class="app" href="quaestia/" data-keepq>
+      <h2>QUAESTIA</h2>
+      <p>Evaluación y autoaprendizaje: entrenamiento por temas, simulacro de examen y preguntas cortas.</p>
+      <span class="meta">Guía de Bioquímica Metabólica</span>
+      <span class="go">Entrar →</span>
+    </a>
+    <div class="app soon">
+      <h2>SORTIVIA</h2>
+      <p>Gamificación y toma de decisiones.</p>
+      <span class="meta">Metodología ESTOPA</span>
+      <span class="go">Próximamente</span>
+    </div>
+    <div class="app soon">
+      <h2>DEAba Digital</h2>
+      <p>Aprendizaje activo.</p>
+      <span class="meta">Metodología DEAba</span>
+      <span class="go">Próximamente</span>
+    </div>
+  </section>
+  <footer>
+    <span>Alfonso Olaya Abril · Departamento de Bioquímica y Biología Molecular · Universidad de Córdoba</span>
+    <span>Tus datos se guardan solo en tu navegador.</span>
+  </footer>
+</main>
+<script>
+// Conserva el enlace de grupo (?grupo=...) al entrar en cada aplicación.
+try {
+  var q = location.search;
+  if (q) document.querySelectorAll("a[data-keepq]").forEach(function (a) { a.href = a.getAttribute("href") + q; });
+} catch (e) {}
+</script>
+</body>
+</html>

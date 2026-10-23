@@ -1,0 +1,4903 @@
+{
+ "schema": "metahub-tema/1",
+ "tema": 5,
+ "titulo": {
+  "es": "Metabolismo de compuestos nitrogenados",
+  "en": "Metabolism of nitrogen compounds"
+ },
+ "secciones": {
+  "5.1": {
+   "es": "Ciclo del nitrógeno en la biosfera",
+   "en": "Nitrogen cycle in the biosphere"
+  },
+  "5.2": {
+   "es": "Incorporación de nitrógeno a esqueletos carbonados",
+   "en": "Incorporation of nitrogen into carbon skeletons"
+  },
+  "5.3": {
+   "es": "Reacciones de transaminación, desaminación y descarboxilación de aminoácidos",
+   "en": "Transamination, deamination and decarboxylation reactions of amino acids"
+  },
+  "5.4": {
+   "es": "Degradación de aminoácidos: aminoácidos glucogénicos y cetogénicos",
+   "en": "Amino acid degradation: glucogenic and ketogenic amino acids"
+  },
+  "5.5": {
+   "es": "Destino del amonio: ciclo de la urea y su regulación",
+   "en": "Fate of ammonium: the urea cycle and its regulation"
+  },
+  "5.6": {
+   "es": "Biosíntesis de aminoácidos: aminoácidos esenciales y familias biosintéticas",
+   "en": "Amino acid biosynthesis: essential amino acids and biosynthetic families"
+  },
+  "5.7": {
+   "es": "Biosíntesis y degradación de nucleótidos de purina",
+   "en": "Biosynthesis and degradation of purine nucleotides"
+  },
+  "5.8": {
+   "es": "Biosíntesis y degradación de nucleótidos de pirimidina",
+   "en": "Biosynthesis and degradation of pyrimidine nucleotides"
+  },
+  "5.9": {
+   "es": "Biosíntesis de desoxirribonucleótidos",
+   "en": "Biosynthesis of deoxyribonucleotides"
+  }
+ },
+ "conceptos_clave": {
+  "I": {
+   "es": "Fijación de N<sub>2</sub> y nitrificación",
+   "en": "N<sub>2</sub> fixation and nitrification"
+  },
+  "II": {
+   "es": "degradación de proteínas y amonio",
+   "en": "protein degradation and ammonium"
+  },
+  "III": {
+   "es": "catabolismo de aminoácidos y ciclo de la urea",
+   "en": "amino acid catabolism and the urea cycle"
+  },
+  "IV": {
+   "es": "destino del esqueleto carbonado (AA)",
+   "en": "fate of the carbon skeleton (AA)"
+  },
+  "V": {
+   "es": "Biosíntesis de nucleótidos",
+   "en": "nucleotide biosynthesis"
+  }
+ },
+ "preguntas": [
+  {
+   "id": "T5-5.1.1",
+   "num": "5.1.1",
+   "tema": 5,
+   "seccion": "5.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "La enzima nitrogenasa requiere un alto consumo energético para reducir N<sub>2</sub>. ¿Cuál es la razón principal de este gasto de energía y qué moléculas se consumen?",
+    "en": "The enzyme nitrogenase has a high energy requirement to reduce N<sub>2</sub>. What is the main reason for this energy expenditure, and which molecules are consumed?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El consumo de NADH como poder reductor y ADP para la disociación",
+     "en": "The consumption of NADH as reducing power and of ADP for dissociation"
+    },
+    "b": {
+     "es": "El alto coste de mantener la enzima lejos del oxígeno (O<sub>2</sub>) para evitar su inactivación",
+     "en": "The high cost of keeping the enzyme away from oxygen (O<sub>2</sub>) to prevent its inactivation"
+    },
+    "c": {
+     "es": "La alta estabilidad del triple enlace del N<sub>2</sub> molecular, que requiere el consumo de ATP para impulsar la reducción",
+     "en": "The high stability of the triple bond of molecular N<sub>2</sub>, which requires ATP consumption to drive the reduction"
+    },
+    "d": {
+     "es": "La necesidad de grandes cantidades de FAD y NAD<sup>+</sup> para oxidar el NH<sub>4</sub><sup>+</sup> producido",
+     "en": "The need for large amounts of FAD and NAD<sup>+</sup> to oxidize the NH<sub>4</sub><sup>+</sup> produced"
+    },
+    "e": {
+     "es": "El consumo de electrones de ferredoxina o flavodoxina para el proceso de reducción",
+     "en": "The consumption of electrons from ferredoxin or flavodoxin for the reduction process"
+    }
+   },
+   "correctas": [
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar los conocimientos de la estabilidad molecular del N<sub>2</sub> y la bioquímica de la nitrogenasa para identificar las moléculas (ATP y electrones) y el mecanismo termodinámico que superan el triple enlace",
+    "en": "Applying knowledge of the molecular stability of N<sub>2</sub> and the biochemistry of nitrogenase to identify the molecules (ATP and electrons) and the thermodynamic mechanism that overcome the triple bond"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.1.2",
+   "num": "5.1.2",
+   "tema": 5,
+   "seccion": "5.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cómo obtienen el nitrógeno los animales?",
+    "en": "How do animals obtain nitrogen?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Fijando el N<sub>2</sub> atmosférico mediante la nitrogenasa",
+     "en": "By fixing atmospheric N<sub>2</sub> through nitrogenase"
+    },
+    "b": {
+     "es": "Mediante el consumo de otros seres vivos que ya lo hayan incorporado previamente",
+     "en": "By consuming other living organisms that have already incorporated it"
+    },
+    "c": {
+     "es": "El nitrógeno no se incorpora, simplemente se recicla",
+     "en": "Nitrogen is not incorporated; it is simply recycled"
+    },
+    "d": {
+     "es": "Mediante el ciclo de la urea",
+     "en": "Through the urea cycle"
+    },
+    "e": {
+     "es": "Por reducción del nitrato del suelo",
+     "en": "By reducing nitrate from the soil"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender cómo los animales obtienen nitrógeno a partir de la dieta (proteínas)",
+    "en": "Understanding how animals obtain nitrogen from the diet (proteins)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.1.3",
+   "num": "5.1.3",
+   "tema": 5,
+   "seccion": "5.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Un paciente consume una dieta totalmente libre de proteínas. ¿Qué consecuencias inmediatas se observarían en su balance nitrogenado y en el recambio proteico?",
+    "en": "A patient eats a completely protein-free diet. What immediate consequences would be observed in their nitrogen balance and protein turnover?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El balance nitrogenado se mantendría neutro, ya que solo se necesitarían aminoácidos esenciales",
+     "en": "Nitrogen balance would remain neutral, since only essential amino acids would be needed"
+    },
+    "b": {
+     "es": "Se produciría un balance nitrogenado negativo, pues la excreción de N superaría la ingesta",
+     "en": "A negative nitrogen balance would develop, because N excretion would exceed intake"
+    },
+    "c": {
+     "es": "El organismo activaría la degradación neta de proteínas corporales para obtener aminoácidos esenciales",
+     "en": "The body would activate net degradation of body proteins to obtain essential amino acids"
+    },
+    "d": {
+     "es": "La síntesis de proteínas se aceleraría para compensar la falta de proteína dietética",
+     "en": "Protein synthesis would accelerate to compensate for the lack of dietary protein"
+    },
+    "e": {
+     "es": "Aumentaría significativamente la actividad de las bacterias fijadoras de N<sub>2</sub> en el intestino",
+     "en": "The activity of N<sub>2</sub>-fixing bacteria in the gut would increase significantly"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el concepto de balance nitrogenado y la función de los AA esenciales para predecir las consecuencias fisiológicas de una situación metabólica extrema",
+    "en": "Applying the concept of nitrogen balance and the role of essential AA to predict the physiological consequences of an extreme metabolic situation"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.1.4",
+   "num": "5.1.4",
+   "tema": 5,
+   "seccion": "5.1",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "El proceso de fijación biológica de nitrógeno es metabólicamente exclusivo de organismos procariotas. ¿Qué implicación tiene esto para la biosfera y los organismos eucariotas?",
+    "en": "Biological nitrogen fixation is metabolically exclusive to prokaryotic organisms. What does this imply for the biosphere and for eukaryotic organisms?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Los eucariotas pueden sintetizar NH<sub>4</sub><sup>+</sup> directamente, por lo que no dependen de los procariotas",
+     "en": "Eukaryotes can synthesize NH<sub>4</sub><sup>+</sup> directly, so they do not depend on prokaryotes"
+    },
+    "b": {
+     "es": "Implica que la disponibilidad de nitrógeno utilizable para plantas y animales es un cuello de botella energético, limitado a la capacidad procariota",
+     "en": "It implies that the availability of usable nitrogen for plants and animals is an energy bottleneck, limited by prokaryotic capacity"
+    },
+    "c": {
+     "es": "La fijación de N<sub>2</sub> es la única fuente de nitrógeno nuevo en el planeta",
+     "en": "N<sub>2</sub> fixation is the only source of new nitrogen on the planet"
+    },
+    "d": {
+     "es": "Demuestra una interdependencia ecológica crítica, donde la vida eucariota depende indirectamente del metabolismo de las bacterias",
+     "en": "It shows a critical ecological interdependence, in which eukaryotic life depends indirectly on bacterial metabolism"
+    },
+    "e": {
+     "es": "Las plantas pueden absorber N<sub>2</sub> de la atmósfera si tienen leghemoglobina",
+     "en": "Plants can absorb N<sub>2</sub> from the atmosphere if they have leghemoglobin"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar las implicaciones ecológicas y la interdependencia metabólica entre reinos. El estudiante debe descomponer el ciclo global del nitrógeno y determinar el rol limitante de un grupo metabólico",
+    "en": "Analyzing the ecological implications and the metabolic interdependence between kingdoms. The student must break down the global nitrogen cycle and determine the limiting role of one metabolic group"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.1.5",
+   "num": "5.1.5",
+   "tema": 5,
+   "seccion": "5.1",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Qué consecuencias inmediatas y a largo plazo se observarían si se eliminaran selectivamente las bacterias nitrificantes (Nitrosomonas y Nitrobacter) en un ecosistema terrestre?",
+    "en": "What immediate and long-term consequences would be observed if nitrifying bacteria (Nitrosomonas and Nitrobacter) were selectively eliminated from a terrestrial ecosystem?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Un aumento inmediato en la concentración de N<sub>2</sub> atmosférico",
+     "en": "An immediate increase in the concentration of atmospheric N<sub>2</sub>"
+    },
+    "b": {
+     "es": "Una mejora en la absorción de NH<sub>4</sub><sup>+</sup> por las plantas",
+     "en": "Improved uptake of NH<sub>4</sub><sup>+</sup> by plants"
+    },
+    "c": {
+     "es": "La acumulación de NH<sub>4</sub><sup>+</sup> en el suelo, llevando a la toxicidad del mismo en exceso",
+     "en": "Accumulation of NH<sub>4</sub><sup>+</sup> in the soil, leading to soil toxicity when in excess"
+    },
+    "d": {
+     "es": "Una disminución drástica en la disponibilidad de nitrato (NO<sub>3</sub><sup>−</sup>), la forma de nitrógeno preferida por muchas plantas",
+     "en": "A drastic decrease in the availability of nitrate (NO<sub>3</sub><sup>−</sup>), the form of nitrogen preferred by many plants"
+    },
+    "e": {
+     "es": "El cese completo de la desnitrificación",
+     "en": "The complete cessation of denitrification"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar el efecto cascada de la eliminación de un paso central del ciclo. El estudiante debe predecir el destino del sustrato (acumulación de NH<sub>4</sub><sup>+</sup>) y la escasez del producto (NO<sub>3</sub><sup>−</sup>) vital para las plantas",
+    "en": "Analyzing the cascade effect of eliminating a central step of the cycle. The student must predict the fate of the substrate (accumulation of NH<sub>4</sub><sup>+</sup>) and the shortage of the product (NO<sub>3</sub><sup>−</sup>) that is vital for plants"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.1.6",
+   "num": "5.1.6",
+   "tema": 5,
+   "seccion": "5.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En un ecosistema agrícola tratado con fertilizantes nitrogenados, ¿qué efecto inmediato se espera sobre la fijación biológica de N<sub>2</sub>?",
+    "en": "In an agricultural ecosystem treated with nitrogen fertilizers, what immediate effect on biological N<sub>2</sub> fixation is expected?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se reducirá, al estar el amonio disponible en el suelo",
+     "en": "It will decrease, because ammonium is available in the soil"
+    },
+    "b": {
+     "es": "Aumentará por retroalimentación positiva",
+     "en": "It will increase through positive feedback"
+    },
+    "c": {
+     "es": "Permanecerá estable independientemente de la concentración de N",
+     "en": "It will remain stable regardless of the N concentration"
+    },
+    "d": {
+     "es": "Se favorecerá la desnitrificación en condiciones anaerobias",
+     "en": "Denitrification will be favored under anaerobic conditions"
+    },
+    "e": {
+     "es": "Se inducirá la síntesis de nitrogenasa en plantas",
+     "en": "Nitrogenase synthesis will be induced in plants"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar la regulación de la fijación biológica de N<sub>2</sub> en un ecosistema agrícola: el amonio disponible reprime la fijación, y el exceso de nitrato favorece la desnitrificación en condiciones anaerobias",
+    "en": "Applying the regulation of biological N<sub>2</sub> fixation in an agricultural ecosystem: available ammonium represses fixation, and excess nitrate favors denitrification under anaerobic conditions"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.1.7",
+   "num": "5.1.7",
+   "tema": 5,
+   "seccion": "5.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La desnitrificación se caracteriza porque…",
+    "en": "Denitrification is characterized by the fact that it…"
+   },
+   "opciones": {
+    "a": {
+     "es": "Convierte nitrato en N<sub>2</sub>",
+     "en": "Converts nitrate into N<sub>2</sub>"
+    },
+    "b": {
+     "es": "Se produce sólo en plantas",
+     "en": "Occurs only in plants"
+    },
+    "c": {
+     "es": "No tiene relevancia ecológica",
+     "en": "Has no ecological relevance"
+    },
+    "d": {
+     "es": "Implica bacterias anaerobias facultativas",
+     "en": "Involves facultative anaerobic bacteria"
+    },
+    "e": {
+     "es": "Aumenta la fertilidad del suelo",
+     "en": "Increases soil fertility"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender la desnitrificación (reducción de NO<sub>3</sub><sup>−</sup>) y sus condiciones (anaerobias)",
+    "en": "Understanding denitrification (reduction of NO<sub>3</sub><sup>−</sup>) and the conditions under which it occurs (anaerobic)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.1.8",
+   "num": "5.1.8",
+   "tema": 5,
+   "seccion": "5.1",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un cultivo de Rhizobium presenta una mutación que inactiva la ferredoxina. ¿Qué consecuencia tendría en la fijación de nitrógeno?",
+    "en": "A Rhizobium culture carries a mutation that inactivates ferredoxin. What consequence would this have for nitrogen fixation?"
+   },
+   "opciones": {
+    "a": {
+     "es": "No se podrán transferir electrones a la nitrogenasa",
+     "en": "Electrons cannot be transferred to nitrogenase"
+    },
+    "b": {
+     "es": "Se acumulará NH<sub>4</sub><sup>+</sup> en el citoplasma",
+     "en": "NH<sub>4</sub><sup>+</sup> will accumulate in the cytoplasm"
+    },
+    "c": {
+     "es": "Se incrementará la producción de nitrato",
+     "en": "Nitrate production will increase"
+    },
+    "d": {
+     "es": "La planta compensará produciendo ureasa",
+     "en": "The plant will compensate by producing urease"
+    },
+    "e": {
+     "es": "El proceso de fijación se detendría",
+     "en": "The fixation process would stop"
+    }
+   },
+   "correctas": [
+    "a",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar las consecuencias de una mutación en la ferredoxina: sin su donador de electrones, la nitrogenasa no puede reducir el N<sub>2</sub> y la fijación se detiene",
+    "en": "Analyzing the consequences of a ferredoxin mutation: without its electron donor, nitrogenase cannot reduce N<sub>2</sub> and fixation stops"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.1.9",
+   "num": "5.1.9",
+   "tema": 5,
+   "seccion": "5.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Para la eliminación eficiente del nitrógeno de aguas residuales (proveniente principalmente de NH<sub>4</sub><sup>+</sup> y urea) mediante el tratamiento biológico, el sistema debe llevar a cabo una serie de transformaciones microbianas secuenciales. ¿Qué procesos o requerimientos metabólicos son esenciales para la conversión final del nitrógeno contaminante en N<sub>2</sub> gaseoso inerte?",
+    "en": "For the efficient removal of nitrogen from wastewater (mainly from NH<sub>4</sub><sup>+</sup> and urea) by biological treatment, the system must carry out a series of sequential microbial transformations. Which processes or metabolic requirements are essential for the final conversion of the contaminating nitrogen into inert N<sub>2</sub> gas?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Un estado inicial aeróbico que permita la oxidación del amonio a nitrato (nitrificación) a través de bacterias quimiolitotrofas",
+     "en": "An initial aerobic stage that allows ammonium to be oxidized to nitrate (nitrification) by chemolithotrophic bacteria"
+    },
+    "b": {
+     "es": "La necesidad de enzimas transaminasas para liberar el nitrógeno directamente en forma gaseosa",
+     "en": "The need for transaminase enzymes to release the nitrogen directly in gaseous form"
+    },
+    "c": {
+     "es": "Una fase posterior en condiciones anóxicas donde el nitrato actúe como aceptor final de electrones para su reducción a N<sub>2</sub> (desnitrificación)",
+     "en": "A subsequent phase under anoxic conditions in which nitrate acts as the terminal electron acceptor and is reduced to N<sub>2</sub> (denitrification)"
+    },
+    "d": {
+     "es": "La activación de la glutamato deshidrogenasa (GDH) para canalizar el amonio a la síntesis de glutamato",
+     "en": "Activation of glutamate dehydrogenase (GDH) to channel ammonium into glutamate synthesis"
+    },
+    "e": {
+     "es": "Mantener el pH constantemente bajo (ácido) para inhibir la amonificación",
+     "en": "Keeping the pH constantly low (acidic) to inhibit ammonification"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento del ciclo del nitrógeno a aguas residuales: predecir el rol de la nitrificación/desnitrificación",
+    "en": "Applying knowledge of the nitrogen cycle to wastewater: predicting the role of nitrification/denitrification"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.1.10",
+   "num": "5.1.10",
+   "tema": 5,
+   "seccion": "5.1",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "La aplicación masiva de fertilizantes nitrogenados sintéticos (NH<sub>4</sub><sup>+</sup>) en la agricultura moderna ha alterado significativamente el ciclo del nitrógeno global. ¿Cuál(es) de las siguientes afirmaciones evalúa(n) correctamente el impacto ecológico de este exceso de nitrógeno antropogénico?",
+    "en": "The massive application of synthetic nitrogen fertilizers (NH<sub>4</sub><sup>+</sup>) in modern agriculture has significantly altered the global nitrogen cycle. Which of the following statements correctly evaluate(s) the ecological impact of this excess anthropogenic nitrogen?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La fijación biológica de nitrógeno en la glutamina sintetasa se duplica para compensar el exceso de amonio en el suelo",
+     "en": "Biological nitrogen fixation in glutamine synthetase doubles to compensate for the excess ammonium in the soil"
+    },
+    "b": {
+     "es": "El exceso de nitrato lixiviado (escorrentía) se evalúa como la causa principal de la eutrofización de cuerpos de agua, lo que lleva a la creación de zonas muertas anóxicas",
+     "en": "Leached excess nitrate (runoff) is judged to be the main cause of eutrophication of water bodies, leading to the creation of anoxic dead zones"
+    },
+    "c": {
+     "es": "El incremento de amonio en el suelo inhibe la nitrificación, deteniendo por completo la producción de nitrato y nitrito",
+     "en": "The increase in soil ammonium inhibits nitrification, completely stopping the production of nitrate and nitrite"
+    },
+    "d": {
+     "es": "Se incrementan las emisiones de óxido nitroso, un gas de efecto invernadero potente",
+     "en": "Emissions of nitrous oxide, a potent greenhouse gas, increase"
+    },
+    "e": {
+     "es": "El impacto más severo es la sobreactivación de la glutamato deshidrogenasa en las plantas, volviéndolas tóxicas",
+     "en": "The most severe impact is the overactivation of glutamate dehydrogenase in plants, making them toxic"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Evaluar impacto de fertilizantes nitrogenados en ecosistemas: desequilibrio del ciclo de N",
+    "en": "Evaluating the impact of nitrogen fertilizers on ecosystems: imbalance of the N cycle"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.1",
+   "num": "5.2.1",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué papel desempeña el ATP en la reacción de la glutamina sintetasa (GS), que hace de esta vía la preferida para la asimilación a bajas concentraciones de amonio?",
+    "en": "What role does ATP play in the glutamine synthetase (GS) reaction that makes this pathway the preferred one for assimilation at low ammonium concentrations?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El ATP actúa como inhibidor alostérico, lo que reduce la velocidad de reacción",
+     "en": "ATP acts as an allosteric inhibitor, which reduces the reaction rate"
+    },
+    "b": {
+     "es": "La hidrólisis de ATP proporciona la energía libre (ΔG negativa) necesaria para impulsar la síntesis de glutamina, haciéndola irreversible",
+     "en": "ATP hydrolysis provides the free energy (negative ΔG) needed to drive glutamine synthesis, making it irreversible"
+    },
+    "c": {
+     "es": "El ATP se consume para la fosforilación del NH<sub>4</sub><sup>+</sup> antes de la reacción",
+     "en": "ATP is consumed to phosphorylate NH<sub>4</sub><sup>+</sup> before the reaction"
+    },
+    "d": {
+     "es": "El ATP activa al glutamato creando el intermediario γ-glutamil fosfato, que aumenta la afinidad de la enzima por el NH<sub>4</sub><sup>+</sup>",
+     "en": "ATP activates glutamate by creating the intermediate γ-glutamyl phosphate, which increases the enzyme's affinity for NH<sub>4</sub><sup>+</sup>"
+    },
+    "e": {
+     "es": "El ATP se regenera en la reacción de GS, haciéndola energéticamente favorable",
+     "en": "ATP is regenerated in the GS reaction, making it energetically favorable"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento del mecanismo de la GS para determinar el doble rol del ATP: termodinámico (hacer la reacción irreversible) y mecanístico (activación del glutamato)",
+    "en": "Applying knowledge of the GS mechanism to determine the dual role of ATP: thermodynamic (making the reaction irreversible) and mechanistic (activating glutamate)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.2",
+   "num": "5.2.2",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Cuál de las siguientes afirmaciones refleja correctamente la importancia funcional del recambio proteico (<i>turnover</i>) en la economía celular?",
+    "en": "Which of the following statements correctly reflects the functional importance of protein turnover in the cellular economy?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Permite a la célula responder rápidamente a señales externas (hormonas o factores de crecimiento) mediante la eliminación selectiva de proteínas regulatorias",
+     "en": "It allows the cell to respond quickly to external signals (hormones or growth factors) through the selective removal of regulatory proteins"
+    },
+    "b": {
+     "es": "Es un proceso catabólico utilizado únicamente para obtener energía en condiciones de ayuno",
+     "en": "It is a catabolic process used only to obtain energy during fasting"
+    },
+    "c": {
+     "es": "Asegura un control de calidad constante, eliminando proteínas mal plegadas o dañadas que podrían formar agregados tóxicos",
+     "en": "It ensures constant quality control by removing misfolded or damaged proteins that could form toxic aggregates"
+    },
+    "d": {
+     "es": "Es el principal mecanismo para la degradación de proteínas de la dieta en el intestino",
+     "en": "It is the main mechanism for the degradation of dietary proteins in the intestine"
+    },
+    "e": {
+     "es": "Consume ADP y NADH como fuente de energía",
+     "en": "It consumes ADP and NADH as an energy source"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el concepto de recambio proteico a funciones celulares específicas de regulación y control de calidad, más allá de la función básica de obtención de AA",
+    "en": "Applying the concept of protein turnover to specific cellular functions of regulation and quality control, beyond the basic function of obtaining AA"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.3",
+   "num": "5.2.3",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Si un animal presenta inhibición de la glutamina sintetasa, ¿qué metabolito se acumulará en el citosol?",
+    "en": "If an animal shows inhibition of glutamine synthetase, which metabolite will accumulate in the cytosol?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Alanina",
+     "en": "Alanine"
+    },
+    "b": {
+     "es": "Glutamato",
+     "en": "Glutamate"
+    },
+    "c": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    },
+    "d": {
+     "es": "Amonio libre",
+     "en": "Free ammonium"
+    },
+    "e": {
+     "es": "Citrulina",
+     "en": "Citrulline"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar la reacción de la GS (glutamato + NH<sub>4</sub><sup>+</sup> + ATP → glutamina) para predecir que su inhibición acumula los sustratos: glutamato y amonio libre",
+    "en": "Applying the GS reaction (glutamate + NH<sub>4</sub><sup>+</sup> + ATP → glutamine) to predict that its inhibition causes the substrates to accumulate: glutamate and free ammonium"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.4",
+   "num": "5.2.4",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En el recambio proteico, ¿qué señal activa la ubiquitina ligasa?",
+    "en": "In protein turnover, which signal activates ubiquitin ligase?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Desnaturalización de la proteína",
+     "en": "Protein denaturation"
+    },
+    "b": {
+     "es": "Elevada concentración de ATP",
+     "en": "High ATP concentration"
+    },
+    "c": {
+     "es": "Secuencias PEST en la proteína",
+     "en": "PEST sequences in the protein"
+    },
+    "d": {
+     "es": "Baja concentración de oxígeno",
+     "en": "Low oxygen concentration"
+    },
+    "e": {
+     "es": "Unión a ribosomas libres",
+     "en": "Binding to free ribosomes"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar los mecanismos de reconocimiento de las ubiquitina ligasas (E3): las proteínas desnaturalizadas o con secuencias PEST son marcadas para su degradación",
+    "en": "Applying the recognition mechanisms of ubiquitin ligases (E3): denatured proteins or proteins with PEST sequences are tagged for degradation"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.5",
+   "num": "5.2.5",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Una célula mutante carece de proteasoma funcional. ¿Qué consecuencias metabólicas esperarías?",
+    "en": "A mutant cell lacks a functional proteasome. What metabolic consequences would you expect?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acumulación de proteínas ubiquitinadas",
+     "en": "Accumulation of ubiquitinated proteins"
+    },
+    "b": {
+     "es": "Aumento de aminoácidos libres",
+     "en": "Increase in free amino acids"
+    },
+    "c": {
+     "es": "Alteraciones en el control del ciclo celular",
+     "en": "Alterations in cell cycle control"
+    },
+    "d": {
+     "es": "Mejora en la degradación proteica mitocondrial",
+     "en": "Improved mitochondrial protein degradation"
+    },
+    "e": {
+     "es": "Disminución de la degradación regulada de proteínas",
+     "en": "Decrease in regulated protein degradation"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar las consecuencias de la pérdida del proteasoma: acumulación de proteínas ubiquitinadas, menor degradación regulada de proteínas y alteración del control del ciclo celular (ciclinas)",
+    "en": "Analyzing the consequences of losing the proteasome: accumulation of ubiquitinated proteins, less regulated protein degradation and altered cell cycle control (cyclins)"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.6",
+   "num": "5.2.6",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Si una bacteria que utiliza el sistema GS-GOGAT se cultiva en un medio con alta concentración de amonio, ¿cuál de las siguientes enzimas vería su actividad disminuida como mecanismo de regulación?",
+    "en": "If a bacterium that uses the GS-GOGAT system is grown in a medium with a high ammonium concentration, which of the following enzymes would have its activity decreased as a regulatory mechanism?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glutamato deshidrogenasa",
+     "en": "Glutamate dehydrogenase"
+    },
+    "b": {
+     "es": "Glutamato sintasa (GOGAT)",
+     "en": "Glutamate synthase (GOGAT)"
+    },
+    "c": {
+     "es": "Glutamina sintetasa (GS)",
+     "en": "Glutamine synthetase (GS)"
+    },
+    "d": {
+     "es": "Alanina aminotransferasa",
+     "en": "Alanine aminotransferase"
+    },
+    "e": {
+     "es": "Carbamoil fosfato sintetasa I",
+     "en": "Carbamoyl phosphate synthetase I"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar la regulación del sistema GS-GOGAT: con amonio abundante, la actividad de la GS disminuye, ya que no es necesaria la asimilación de alta afinidad que consume ATP",
+    "en": "Applying the regulation of the GS-GOGAT system: when ammonium is abundant, GS activity decreases, since high-affinity assimilation that consumes ATP is not needed"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.7",
+   "num": "5.2.7",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Si una proteína reguladora del ciclo celular presenta una mutación que elimina las secuencias PEST y, al mismo tiempo, las ubiquitina ligasas están sobreexpresadas, ¿qué consecuencia metabólica prevalecería en el control celular?",
+    "en": "If a cell cycle regulatory protein carries a mutation that removes its PEST sequences and, at the same time, ubiquitin ligases are overexpressed, which metabolic consequence would prevail in cellular control?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Degradación acelerada y muerte celular",
+     "en": "Accelerated degradation and cell death"
+    },
+    "b": {
+     "es": "Estabilización de la proteína y detención del ciclo celular",
+     "en": "Stabilization of the protein and cell cycle arrest"
+    },
+    "c": {
+     "es": "Estabilización de la proteína por falta de la señal de reconocimiento, llevando a una posible proliferación descontrolada",
+     "en": "Stabilization of the protein owing to the lack of the recognition signal, possibly leading to uncontrolled proliferation"
+    },
+    "d": {
+     "es": "Acumulación de ubiquitina libre en el citosol",
+     "en": "Accumulation of free ubiquitin in the cytosol"
+    },
+    "e": {
+     "es": "La proteína se degradaría igualmente en la mitocondria",
+     "en": "The protein would still be degraded in the mitochondria"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Analizar el papel de las secuencias PEST como señal de degradación: sin ellas la proteína no es reconocida aunque haya exceso de ubiquitina ligasas, se estabiliza y puede favorecer una proliferación descontrolada",
+    "en": "Analyzing the role of PEST sequences as a degradation signal: without them the protein is not recognized even when ubiquitin ligases are in excess, so it is stabilized and may favor uncontrolled proliferation"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.8",
+   "num": "5.2.8",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En una célula hepática en un estado de alta energía (ATP elevado) y baja concentración de NH<sub>4</sub><sup>+</sup>, ¿qué ajuste regulatorio se espera ver en las enzimas glutamato deshidrogenasa (GDH) y glutamina sintetasa (GS)?",
+    "en": "In a liver cell in a high-energy state (high ATP) with a low NH<sub>4</sub><sup>+</sup> concentration, what regulatory adjustment is expected in the enzymes glutamate dehydrogenase (GDH) and glutamine synthetase (GS)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "GDH se activa por ATP para iniciar el catabolismo de aminoácidos",
+     "en": "GDH is activated by ATP to initiate amino acid catabolism"
+    },
+    "b": {
+     "es": "GDH se inhibe por la alta carga energética (GTP o ATP) para conservar el glutamato",
+     "en": "GDH is inhibited by the high energy charge (GTP or ATP) to conserve glutamate"
+    },
+    "c": {
+     "es": "GS se hiperactiva por ATP para almacenar el glutamato como glutamina",
+     "en": "GS is hyperactivated by ATP to store glutamate as glutamine"
+    },
+    "d": {
+     "es": "Ambas enzimas se activan simultáneamente",
+     "en": "Both enzymes are activated simultaneously"
+    },
+    "e": {
+     "es": "GDH se activa para conservar el glutamato",
+     "en": "GDH is activated to conserve glutamate"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar la regulación alostérica de la GDH: una carga energética alta (GTP, ATP) la inhibe y se conserva el glutamato",
+    "en": "Applying the allosteric regulation of GDH: a high energy charge (GTP, ATP) inhibits it and glutamate is conserved"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.9",
+   "num": "5.2.9",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En un hepatocito periportal con una alta carga energética (elevado GTP y ATP) después de una comida rica en proteínas, ¿cómo se regularía la enzima glutamato deshidrogenasa (GDH) y cuál sería la principal ruta de eliminación del amonio (NH<sub>4</sub><sup>+</sup>)?",
+    "en": "In a periportal hepatocyte with a high energy charge (high GTP and ATP) after a protein-rich meal, how would the enzyme glutamate dehydrogenase (GDH) be regulated, and what would be the main route for eliminating ammonium (NH<sub>4</sub><sup>+</sup>)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La GDH se activa por el GTP y el glutamato se desamina en la mitocondria",
+     "en": "GDH is activated by GTP and glutamate is deaminated in the mitochondria"
+    },
+    "b": {
+     "es": "La GDH se inhibe alostéricamente por el GTP para conservar el glutamato para otras vías biosintéticas",
+     "en": "GDH is allosterically inhibited by GTP to conserve glutamate for other biosynthetic pathways"
+    },
+    "c": {
+     "es": "La GDH se activa por el ATP para canalizar el glutamato a la síntesis de glutamina",
+     "en": "GDH is activated by ATP to channel glutamate into glutamine synthesis"
+    },
+    "d": {
+     "es": "La GDH se inhibe por ADP, y el NH<sub>4</sub><sup>+</sup> se elimina mediante el sistema GS-GOGAT",
+     "en": "GDH is inhibited by ADP, and NH<sub>4</sub><sup>+</sup> is eliminated through the GS-GOGAT system"
+    },
+    "e": {
+     "es": "La GDH no se regula en este estado; el exceso de glutamato se exporta",
+     "en": "GDH is not regulated in this state; excess glutamate is exported"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Analizar la regulación de la GDH en el hepatocito periportal con alta carga energética: el GTP la inhibe alostéricamente y el glutamato se conserva para otras vías biosintéticas",
+    "en": "Analyzing the regulation of GDH in the periportal hepatocyte with a high energy charge: GTP inhibits it allosterically and glutamate is conserved for other biosynthetic pathways"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.10",
+   "num": "5.2.10",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "El sistema GS-GOGAT y la glutamato deshidrogenasa (GDH) tienen diferentes eficiencias para asimilar NH<sub>4</sub><sup>+</sup>. ¿Qué afirmación describe correctamente el contexto metabólico en el que cada vía es la preferida?",
+    "en": "The GS-GOGAT system and glutamate dehydrogenase (GDH) differ in their efficiency at assimilating NH<sub>4</sub><sup>+</sup>. Which statement correctly describes the metabolic context in which each pathway is preferred?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La GDH se prefiere cuando las concentraciones de NH<sub>4</sub><sup>+</sup> son bajas",
+     "en": "GDH is preferred when NH<sub>4</sub><sup>+</sup> concentrations are low"
+    },
+    "b": {
+     "es": "La GDH se activa en estados de baja energía (ADP alto) para el catabolismo de aminoácidos, pero no para la asimilación",
+     "en": "GDH is activated in low-energy states (high ADP) for amino acid catabolism, but not for assimilation"
+    },
+    "c": {
+     "es": "El sistema GS-GOGAT es metabólicamente más económico que la GDH",
+     "en": "The GS-GOGAT system is metabolically cheaper than GDH"
+    },
+    "d": {
+     "es": "El sistema GS-GOGAT es más eficiente a bajas concentraciones de NH<sub>4</sub><sup>+</sup> porque usa ATP para la activación del glutamato (alta afinidad)",
+     "en": "The GS-GOGAT system is more efficient at low NH<sub>4</sub><sup>+</sup> concentrations because it uses ATP to activate glutamate (high affinity)"
+    },
+    "e": {
+     "es": "La GDH solo funciona en el músculo esquelético",
+     "en": "GDH works only in skeletal muscle"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar las diferencias entre GS-GOGAT (alta afinidad por el NH<sub>4</sub><sup>+</sup>, con gasto de ATP) y GDH (baja afinidad) para identificar el contexto en que se prefiere cada vía",
+    "en": "Applying the differences between GS-GOGAT (high affinity for NH<sub>4</sub><sup>+</sup>, with ATP expenditure) and GDH (low affinity) to identify the context in which each pathway is preferred"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.11",
+   "num": "5.2.11",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Tras la ingesta de una comida rica en proteínas, la mayoría de los aminoácidos liberados pasan al hígado. ¿Cuál es el destino metabólico dominante de estos AA recién absorbidos en el hepatocito?",
+    "en": "After eating a protein-rich meal, most of the amino acids released pass to the liver. What is the dominant metabolic fate of these newly absorbed AA in the hepatocyte?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La síntesis de glucosa vía gluconeogénesis es el destino primario",
+     "en": "Glucose synthesis via gluconeogenesis is the primary fate"
+    },
+    "b": {
+     "es": "La mayor parte se utiliza inmediatamente para la síntesis de proteínas séricas y estructurales del propio hígado o para la distribución de aminoácidos a otros tejidos",
+     "en": "Most are used immediately for the synthesis of serum and structural proteins of the liver itself or for the distribution of amino acids to other tissues"
+    },
+    "c": {
+     "es": "El nitrógeno del exceso de aminoácidos se elimina inmediatamente a través del ciclo de la urea",
+     "en": "The nitrogen of excess amino acids is immediately eliminated through the urea cycle"
+    },
+    "d": {
+     "es": "Se almacenan en grandes cantidades en forma de glutamina en el citosol",
+     "en": "They are stored in large amounts as glutamine in the cytosol"
+    },
+    "e": {
+     "es": "Se utilizan para la síntesis de nucleótidos y bases nitrogenadas",
+     "en": "They are used for the synthesis of nucleotides and nitrogenous bases"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento sobre el metabolismo aminoacídico hepático postprandial para priorizar las rutas: la síntesis de proteínas vs la eliminación del nitrógeno tóxico (urea)",
+    "en": "Applying knowledge of postprandial hepatic amino acid metabolism to prioritize pathways: protein synthesis vs. elimination of toxic nitrogen (urea)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.12",
+   "num": "5.2.12",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Se propone diseñar un fertilizante que inhiba selectivamente la nitrato reductasa en las bacterias desnitrificantes. Evalúe el impacto ecológico principal de esta estrategia.",
+    "en": "It is proposed to design a fertilizer that selectively inhibits nitrate reductase in denitrifying bacteria. Evaluate the main ecological impact of this strategy."
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumentaría la concentración de nitrato (NO<sub>3</sub><sup>−</sup>) en el suelo, lo que incrementaría su lixiviación a aguas subterráneas",
+     "en": "It would increase the concentration of nitrate (NO<sub>3</sub><sup>−</sup>) in the soil, which would increase its leaching into groundwater"
+    },
+    "b": {
+     "es": "Reduciría la cantidad de NH<sub>4</sub><sup>+</sup> disponible para las plantas",
+     "en": "It would reduce the amount of NH<sub>4</sub><sup>+</sup> available to plants"
+    },
+    "c": {
+     "es": "Disminuiría significativamente la emisión de óxidos de nitrógeno (N<sub>2</sub>O y NO) a la atmósfera, compuestos con alto impacto de efecto invernadero",
+     "en": "It would significantly decrease the emission of nitrogen oxides (N<sub>2</sub>O and NO) into the atmosphere, compounds with a high greenhouse impact"
+    },
+    "d": {
+     "es": "Se bloquearía la fijación de nitrógeno (N<sub>2</sub> a NH<sub>4</sub><sup>+</sup>)",
+     "en": "Nitrogen fixation (N<sub>2</sub> to NH<sub>4</sub><sup>+</sup>) would be blocked"
+    },
+    "e": {
+     "es": "Aumentaría la nitrificación en el suelo",
+     "en": "It would increase nitrification in the soil"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Evaluar las consecuencias globales de una manipulación del ciclo. El estudiante debe juzgar el efecto deseado (retención de N para la cosecha) frente a los efectos colaterales (contaminación del agua y reducción de gases de efecto invernadero)",
+    "en": "Evaluating the global consequences of manipulating the cycle. The student must weigh the desired effect (retaining N for the crop) against the side effects (water pollution and reduction of greenhouse gases)"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.13",
+   "num": "5.2.13",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "La glutamina es la molécula preferida para el transporte de nitrógeno a través de la barrera hematoencefálica y desde tejidos periféricos al hígado. ¿Qué características soportan este rol?",
+    "en": "Glutamine is the preferred molecule for transporting nitrogen across the blood–brain barrier and from peripheral tissues to the liver. Which features support this role?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La glutamina es una molécula eléctricamente neutra a pH fisiológico",
+     "en": "Glutamine is an electrically neutral molecule at physiological pH"
+    },
+    "b": {
+     "es": "Contiene solo un grupo nitrogenado, por lo que su transporte es más sencillo",
+     "en": "It contains only one nitrogen group, so its transport is simpler"
+    },
+    "c": {
+     "es": "Es el único aminoácido capaz de atravesar la barrera hematoencefálica",
+     "en": "It is the only amino acid able to cross the blood–brain barrier"
+    },
+    "d": {
+     "es": "Contiene un segundo grupo amino (grupo amida) que encapsula el NH<sub>4</sub><sup>+</sup> tóxico de forma segura",
+     "en": "It contains a second amino group (amide group) that safely sequesters toxic NH<sub>4</sub><sup>+</sup>"
+    },
+    "e": {
+     "es": "Es un aminoácido cetogénico",
+     "en": "It is a ketogenic amino acid"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar las propiedades de la glutamina (neutra a pH fisiológico y con un grupo amida adicional que retiene el NH<sub>4</sub><sup>+</sup>) para explicar su papel como transportador no tóxico de nitrógeno",
+    "en": "Applying the properties of glutamine (neutral at physiological pH and with an additional amide group that holds NH<sub>4</sub><sup>+</sup>) to explain its role as a non-toxic nitrogen carrier"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.14",
+   "num": "5.2.14",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué implicaciones funcionales tiene la localización nuclear y citosólica del proteasoma 26S en la regulación celular?",
+    "en": "What functional implications does the nuclear and cytosolic localization of the 26S proteasome have for cellular regulation?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El proteasoma está siempre activo en ambos compartimentos sin regulación",
+     "en": "The proteasome is always active in both compartments without regulation"
+    },
+    "b": {
+     "es": "Solo las proteínas citosólicas son susceptibles a la degradación por ubiquitina",
+     "en": "Only cytosolic proteins are susceptible to ubiquitin-mediated degradation"
+    },
+    "c": {
+     "es": "Permite la degradación oportuna de factores de transcripción y otras proteínas reguladoras con vida media corta en el núcleo",
+     "en": "It allows the timely degradation of transcription factors and other short-lived regulatory proteins in the nucleus"
+    },
+    "d": {
+     "es": "Asegura el control de calidad y la regulación de la señalización citosólica mediante la degradación de proteínas clave (p. ej., IκB, el inhibidor de NF-κB)",
+     "en": "It ensures quality control and the regulation of cytosolic signaling through the degradation of key proteins (e.g., IκB, the inhibitor of NF-κB)"
+    },
+    "e": {
+     "es": "La actividad proteasomal se limita a la degradación de proteínas dañadas en la mitocondria",
+     "en": "Proteasomal activity is limited to the degradation of damaged proteins in the mitochondria"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento sobre la localización subcelular para inferir el tipo de proteínas que regula en cada compartimento (factores de transcripción en núcleo vs señalización en citosol)",
+    "en": "Applying knowledge of subcellular localization to infer the type of proteins regulated in each compartment (transcription factors in the nucleus vs. signaling in the cytosol)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.15",
+   "num": "5.2.15",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En un estado de ayuno prolongado o en una dieta hiperproteica, la célula necesita degradar aminoácidos para obtener energía. ¿Qué se observa en la regulación alostérica de la glutamato deshidrogenasa (GDH) mitocondrial en estas condiciones?",
+    "en": "During prolonged fasting or on a high-protein diet, the cell needs to degrade amino acids to obtain energy. What is observed in the allosteric regulation of mitochondrial glutamate dehydrogenase (GDH) under these conditions?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La GDH se inhibe por la acumulación de ADP (baja energía)",
+     "en": "GDH is inhibited by the accumulation of ADP (low energy)"
+    },
+    "b": {
+     "es": "La GDH se activa por el GTP (alta energía)",
+     "en": "GDH is activated by GTP (high energy)"
+    },
+    "c": {
+     "es": "La GDH se activa por el ADP y la GDP, lo que indica un estado de baja carga energética y promueve la obtención de α-cetoglutarato para el ciclo de Krebs",
+     "en": "GDH is activated by ADP and GDP, which indicate a low energy charge, promoting the production of α-ketoglutarate for the Krebs cycle"
+    },
+    "d": {
+     "es": "La GDH se inhibe por el NADH (producto) y el GTP (alta energía)",
+     "en": "GDH is inhibited by NADH (product) and GTP (high energy)"
+    },
+    "e": {
+     "es": "Se promueve la síntesis de glutamina para el transporte",
+     "en": "Glutamine synthesis for transport is promoted"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar la regulación alostérica de la GDH: con baja carga energética la activan ADP y GDP, y la inhiben GTP y NADH; así se obtiene α-cetoglutarato para el ciclo de Krebs",
+    "en": "Applying the allosteric regulation of GDH: with a low energy charge it is activated by ADP and GDP and inhibited by GTP and NADH; this yields α-ketoglutarate for the Krebs cycle"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.16",
+   "num": "5.2.16",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un microorganismo GS-GOGAT mutante pierde la actividad de la glutamato sintasa (GOGAT). Este defecto causa un problema de asimilación neta de nitrógeno. ¿Qué se perdería metabólicamente en la célula debido a este fallo?",
+    "en": "A GS-GOGAT mutant microorganism loses glutamate synthase (GOGAT) activity. This defect causes a problem in net nitrogen assimilation. What would be lost metabolically in the cell because of this failure?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El nitrógeno asimilado por la GS se conservaría en la glutamina y no podría ser transferido al α-cetoglutarato para formar glutamato (el esqueleto carbonado de asimilación)",
+     "en": "The nitrogen assimilated by GS would be retained in glutamine and could not be transferred to α-ketoglutarate to form glutamate (the carbon skeleton for assimilation)"
+    },
+    "b": {
+     "es": "Se acumularía glutamato y NH<sub>4</sub><sup>+</sup> en el citosol",
+     "en": "Glutamate and NH<sub>4</sub><sup>+</sup> would accumulate in the cytosol"
+    },
+    "c": {
+     "es": "La glutamina se acumularía, provocando una inhibición por retroalimentación sobre la GS",
+     "en": "Glutamine would accumulate, causing feedback inhibition of GS"
+    },
+    "d": {
+     "es": "Aumentaría la actividad de la glutamato deshidrogenasa para compensar",
+     "en": "Glutamate dehydrogenase activity would increase to compensate"
+    },
+    "e": {
+     "es": "Se detendría el ciclo de Krebs por falta de α-cetoglutarato",
+     "en": "The Krebs cycle would stop for lack of α-ketoglutarate"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Analizar la función de la GOGAT: sin ella el nitrógeno de la glutamina no se transfiere al α-cetoglutarato para formar glutamato, y la glutamina acumulada inhibe por retroalimentación a la GS",
+    "en": "Analyzing the function of GOGAT: without it, the nitrogen of glutamine is not transferred to α-ketoglutarate to form glutamate, and the accumulated glutamine inhibits GS by feedback"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.17",
+   "num": "5.2.17",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analizando el mecanismo de ubiquitinación, ¿cuál es el rol energético y el propósito del enlace tioéster (Ub−E1 o Ub−E2) formado en el proceso?",
+    "en": "Analyzing the mechanism of ubiquitination, what is the energetic role and purpose of the thioester bond (Ub−E1 or Ub−E2) formed during the process?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El enlace tioéster es un enlace de alta energía que transfiere el grupo amino al sustrato",
+     "en": "The thioester bond is a high-energy bond that transfers the amino group to the substrate"
+    },
+    "b": {
+     "es": "El enlace tioéster activa la ubiquitina haciéndola susceptible de ser transferida al sustrato por la E3",
+     "en": "The thioester bond activates ubiquitin, making it susceptible to transfer to the substrate by E3"
+    },
+    "c": {
+     "es": "La formación del enlace tioéster requiere una enzima E4 adicional",
+     "en": "Formation of the thioester bond requires an additional E4 enzyme"
+    },
+    "d": {
+     "es": "La energía liberada por la hidrólisis del ATP por la E1 se conserva en el enlace tioéster para impulsar la posterior unión isopeptídica",
+     "en": "The energy released by ATP hydrolysis by E1 is conserved in the thioester bond to drive the subsequent isopeptide linkage"
+    },
+    "e": {
+     "es": "El enlace tioéster se forma únicamente cuando la proteína sustrato está desnaturalizada",
+     "en": "The thioester bond forms only when the substrate protein is denatured"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la transferencia de energía y el mecanismo bioquímico de la ubiquitinación. Implica descomponer el rol del ATP y del enlace tioéster como intermediarios de alta energía para la transferencia",
+    "en": "Analyzing the energy transfer and biochemical mechanism of ubiquitination. It involves breaking down the role of ATP and of the thioester bond as high-energy intermediates for the transfer"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.18",
+   "num": "5.2.18",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Las secuencias PEST (ricas en prolina, glutamato, serina y treonina) y la regla del N-terminal son vías que inician la degradación proteica. ¿Qué señales moleculares son comunes en estas vías?",
+    "en": "PEST sequences (rich in proline, glutamate, serine and threonine) and the N-end rule are pathways that initiate protein degradation. Which molecular signals are common to these pathways?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La unión de una única ubiquitina (monoubiquitinación)",
+     "en": "Binding of a single ubiquitin (monoubiquitination)"
+    },
+    "b": {
+     "es": "La fosforilación de un residuo de serina o treonina, que puede crear un sitio de reconocimiento para la E3 ligasa",
+     "en": "Phosphorylation of a serine or threonine residue, which can create a recognition site for the E3 ligase"
+    },
+    "c": {
+     "es": "La presencia de una metionina acetilada en el N-terminal",
+     "en": "The presence of an acetylated methionine at the N-terminus"
+    },
+    "d": {
+     "es": "La presencia de secuencias intrínsecas de vida media corta, como el motivo PEST",
+     "en": "The presence of intrinsic short half-life sequences, such as the PEST motif"
+    },
+    "e": {
+     "es": "El fallo del proteasoma 19S",
+     "en": "Failure of the 19S proteasome"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar las señales comunes de degradación: secuencias intrínsecas de vida media corta (PEST) y fosforilación de serina o treonina, que crea sitios de reconocimiento para la E3 ligasa",
+    "en": "Analyzing the common degradation signals: intrinsic short half-life sequences (PEST) and phosphorylation of serine or threonine, which creates recognition sites for the E3 ligase"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.19",
+   "num": "5.2.19",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "La compartimentalización de las enzimas de asimilación y destoxificación en el hígado es crucial. ¿Qué papel desempeña la glutamina sintetasa (GS) perivenosa en el contexto de la GDH periportal?",
+    "en": "The compartmentalization of assimilation and detoxification enzymes in the liver is crucial. What role does perivenous glutamine synthetase (GS) play in the context of periportal GDH?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La GS perivenosa es la principal ruta para la síntesis de glutamina para su exportación al riñón",
+     "en": "Perivenous GS is the main route for synthesizing glutamine for export to the kidney"
+    },
+    "b": {
+     "es": "Actúa como una enzima de 'rescate' o 'limpieza', capturando el NH<sub>4</sub><sup>+</sup> que haya escapado de los hepatocitos periportales para evitar que entre en la circulación sistémica (cerebral)",
+     "en": "It acts as a 'rescue' or 'scavenger' enzyme, capturing NH<sub>4</sub><sup>+</sup> that has escaped the periportal hepatocytes to prevent it from entering the systemic (cerebral) circulation"
+    },
+    "c": {
+     "es": "Sintetiza glutamato a partir de glutamina para el ciclo de Krebs",
+     "en": "It synthesizes glutamate from glutamine for the Krebs cycle"
+    },
+    "d": {
+     "es": "Regula la actividad de la GDH mediante modificación covalente",
+     "en": "It regulates GDH activity through covalent modification"
+    },
+    "e": {
+     "es": "Produce glutamato para el recambio proteico",
+     "en": "It produces glutamate for protein turnover"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Analizar la compartimentalización hepática del metabolismo del nitrógeno: la GS perivenosa actúa como sistema de rescate del NH<sub>4</sub><sup>+</sup> que escapa a los hepatocitos periportales",
+    "en": "Analyzing the hepatic compartmentalization of nitrogen metabolism: perivenous GS acts as a rescue system for NH<sub>4</sub><sup>+</sup> that escapes the periportal hepatocytes"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.20",
+   "num": "5.2.20",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En la regulación del nitrógeno, los grupos amino de la mayoría de los aminoácidos son transferidos inicialmente al α-cetoglutarato mediante transaminación. ¿Qué moléculas son transportadoras o aceptoras clave de este nitrógeno desde los tejidos periféricos al hígado?",
+    "en": "In nitrogen regulation, the amino groups of most amino acids are initially transferred to α-ketoglutarate by transamination. Which molecules are key carriers or acceptors of this nitrogen from peripheral tissues to the liver?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    },
+    "b": {
+     "es": "Glutamato",
+     "en": "Glutamate"
+    },
+    "c": {
+     "es": "Glutamina",
+     "en": "Glutamine"
+    },
+    "d": {
+     "es": "Citrulina",
+     "en": "Citrulline"
+    },
+    "e": {
+     "es": "Alanina",
+     "en": "Alanine"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar el flujo del nitrógeno de los aminoácidos: el glutamato es el primer aceptor de los grupos amino, y la glutamina (desde la mayoría de los tejidos) y la alanina (desde el músculo) los transportan al hígado",
+    "en": "Applying the flow of amino acid nitrogen: glutamate is the first acceptor of amino groups, and glutamine (from most tissues) and alanine (from muscle) carry them to the liver"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.21",
+   "num": "5.2.21",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué procesos dentro del sistema ubiquitina-proteasoma requieren el consumo directo de ATP a ADP y P<sub>i</sub> y por qué?",
+    "en": "Which processes within the ubiquitin–proteasome system require the direct consumption of ATP to ADP and P<sub>i</sub>, and why?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El reconocimiento de las secuencias PEST por la E3 ligasa",
+     "en": "Recognition of PEST sequences by the E3 ligase"
+    },
+    "b": {
+     "es": "La activación de la ubiquitina por la enzima E1 para formar un enlace tioéster",
+     "en": "Activation of ubiquitin by the E1 enzyme to form a thioester bond"
+    },
+    "c": {
+     "es": "La subunidad 19S del proteasoma requiere ATP para desplegar la proteína sustrato y translocarla al núcleo catalítico",
+     "en": "The 19S subunit of the proteasome requires ATP to unfold the substrate protein and translocate it into the catalytic core"
+    },
+    "d": {
+     "es": "La transferencia de ubiquitina de E2 a E3",
+     "en": "Transfer of ubiquitin from E2 to E3"
+    },
+    "e": {
+     "es": "La proteólisis de los péptidos dentro del núcleo 20S",
+     "en": "Proteolysis of peptides within the 20S core"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el balance energético de la ruta para identificar los dos pasos obligatorios que consumen ATP: la activación (E1) y el trabajo mecánico del proteasoma (19S)",
+    "en": "Applying the energy balance of the pathway to identify the two obligatory ATP-consuming steps: activation (E1) and the mechanical work of the proteasome (19S)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.22",
+   "num": "5.2.22",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué hace único al mecanismo del proteasoma 26S respecto a otras proteasas (como las lisosomales o digestivas) para el control celular?",
+    "en": "What makes the mechanism of the 26S proteasome unique compared with other proteases (such as lysosomal or digestive proteases) for cellular control?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Es la única proteasa capaz de degradar proteínas pequeñas",
+     "en": "It is the only protease capable of degrading small proteins"
+    },
+    "b": {
+     "es": "Es altamente selectivo porque su actividad catalítica está condicionada al reconocimiento de la etiqueta de poliubiquitina",
+     "en": "It is highly selective because its catalytic activity is conditional on recognition of the polyubiquitin tag"
+    },
+    "c": {
+     "es": "Su actividad catalítica es independiente de la energía (ATP)",
+     "en": "Its catalytic activity is independent of energy (ATP)"
+    },
+    "d": {
+     "es": "El proceso de degradación ocurre en una cámara protegida (el núcleo 20S), evitando la proteólisis indiscriminada en el citosol",
+     "en": "Degradation takes place in a protected chamber (the 20S core), preventing indiscriminate proteolysis in the cytosol"
+    },
+    "e": {
+     "es": "Solo degrada proteínas que contienen aminoácidos cetogénicos",
+     "en": "It degrades only proteins that contain ketogenic amino acids"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar los principios de funcionamiento y regulación de las proteasas para identificar las características distintivas del proteasoma: selectividad por ubiquitina y protección mecánica del sitio activo",
+    "en": "Applying the principles of protease function and regulation to identify the distinctive features of the proteasome: selectivity for ubiquitin and mechanical protection of the active site"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.23",
+   "num": "5.2.23",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Se ha identificado un inhibidor irreversible de la glutamina sintetasa (GS) en un cultivo celular. Diseñe una estrategia de rescate metabólico que permita a la célula seguir creciendo y sintetizando proteínas en presencia del inhibidor.",
+    "en": "An irreversible inhibitor of glutamine synthetase (GS) has been identified in a cell culture. Design a metabolic rescue strategy that allows the cell to keep growing and synthesizing proteins in the presence of the inhibitor."
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumentar la concentración de NH<sub>4</sub><sup>+</sup> para forzar la GDH (glutamato deshidrogenasa) en el sentido de asimilación",
+     "en": "Increase the NH<sub>4</sub><sup>+</sup> concentration to force GDH (glutamate dehydrogenase) in the direction of assimilation"
+    },
+    "b": {
+     "es": "Bloquear la actividad del proteasoma para evitar la degradación proteica",
+     "en": "Block proteasome activity to prevent protein degradation"
+    },
+    "c": {
+     "es": "Suplementar con glutamina exógena, ya que es esencial para la síntesis de purinas y otros compuestos nitrogenados",
+     "en": "Supplement with exogenous glutamine, since it is essential for the synthesis of purines and other nitrogen compounds"
+    },
+    "d": {
+     "es": "Suplementación con todos los aminoácidos no esenciales que se sintetizan a partir de la glutamina (p. ej., asparagina)",
+     "en": "Supplementation with all the nonessential amino acids synthesized from glutamine (e.g., asparagine)"
+    },
+    "e": {
+     "es": "Activar el ciclo de la urea para eliminar el inhibidor",
+     "en": "Activate the urea cycle to eliminate the inhibitor"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Crear o diseñar una solución metabólica completa. El estudiante debe sintetizar el conocimiento sobre el rol esencial de la glutamina como precursor de otros AA y nucleótidos para proponer el suplemento directo del producto y sus derivados",
+    "en": "Creating or designing a complete metabolic solution. The student must synthesize knowledge of the essential role of glutamine as a precursor of other AA and nucleotides to propose direct supplementation with the product and its derivatives"
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.2.24",
+   "num": "5.2.24",
+   "tema": 5,
+   "seccion": "5.2",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Un nuevo fármaco contra el cáncer actúa bloqueando la degradación proteasomal de las proteínas reguladoras (p. ej., p53 o ciclinas) que inducen apoptosis. Evalúe el riesgo metabólico principal y el efecto de este mecanismo.",
+    "en": "A new anticancer drug acts by blocking the proteasomal degradation of regulatory proteins (e.g., p53 or cyclins) that induce apoptosis. Evaluate the main metabolic risk and the effect of this mechanism."
+   },
+   "opciones": {
+    "a": {
+     "es": "El riesgo es una toxicidad sistémica debida a la acumulación de proteínas ubiquitinadas en células sanas",
+     "en": "The risk is systemic toxicity due to the accumulation of ubiquitinated proteins in healthy cells"
+    },
+    "b": {
+     "es": "El efecto deseado es la estabilización de la proteína p53, lo que lleva al arresto del ciclo celular y la apoptosis en las células cancerosas",
+     "en": "The desired effect is stabilization of the p53 protein, leading to cell cycle arrest and apoptosis in cancer cells"
+    },
+    "c": {
+     "es": "Bloquearía el ciclo de la urea por falta de aminoácidos",
+     "en": "It would block the urea cycle for lack of amino acids"
+    },
+    "d": {
+     "es": "El fármaco solo funciona si la célula está en alto estado energético (ATP alto)",
+     "en": "The drug works only if the cell is in a high-energy state (high ATP)"
+    },
+    "e": {
+     "es": "El riesgo es la inhibición inespecífica de la degradación de proteínas esenciales para otras funciones celulares y de control de calidad",
+     "en": "The risk is nonspecific inhibition of the degradation of proteins essential for other cellular and quality-control functions"
+    }
+   },
+   "correctas": [
+    "a",
+    "b"
+   ],
+   "justificacion": {
+    "es": "Evaluar la eficacia y los riesgos de una intervención farmacológica. El estudiante debe juzgar el mecanismo de acción deseado (b es el objetivo) frente a las consecuencias adversas de bloquear una ruta tan central (a y e son riesgos)",
+    "en": "Evaluating the efficacy and risks of a pharmacological intervention. The student must weigh the desired mechanism of action (b is the goal) against the adverse consequences of blocking such a central pathway (a and e are risks)"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.3.1",
+   "num": "5.3.1",
+   "tema": 5,
+   "seccion": "5.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuáles son los aminoácidos centrales implicados en el transporte y eliminación del amoníaco en los mamíferos?",
+    "en": "Which are the central amino acids involved in the transport and elimination of ammonia in mammals?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aspartato en la eliminación",
+     "en": "Aspartate, in elimination"
+    },
+    "b": {
+     "es": "Fenilalanina procedente del cerebro",
+     "en": "Phenylalanine from the brain"
+    },
+    "c": {
+     "es": "Alanina procedente del músculo",
+     "en": "Alanine from muscle"
+    },
+    "d": {
+     "es": "Ácido úrico",
+     "en": "Uric acid"
+    },
+    "e": {
+     "es": "Glutamina procedente del resto de tejidos",
+     "en": "Glutamine from the other tissues"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender el papel de la glutamina (desde la mayoría de los tejidos) y de la alanina (desde el músculo) en el transporte del amoníaco al hígado, y del aspartato como donador del segundo nitrógeno de la urea",
+    "en": "Understanding the role of glutamine (from most tissues) and alanine (from muscle) in transporting ammonia to the liver, and of aspartate as the donor of the second nitrogen of urea"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.3.2",
+   "num": "5.3.2",
+   "tema": 5,
+   "seccion": "5.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "En el proceso de eliminación del nitrógeno, ¿qué reacción ocurre en la mitocondria del hepatocito?",
+    "en": "In the process of nitrogen elimination, which reaction takes place in the hepatocyte mitochondria?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Transaminación de la glutamina",
+     "en": "Transamination of glutamine"
+    },
+    "b": {
+     "es": "Desaminación oxidativa del glutamato",
+     "en": "Oxidative deamination of glutamate"
+    },
+    "c": {
+     "es": "Descarboxilación de la alanina",
+     "en": "Decarboxylation of alanine"
+    },
+    "d": {
+     "es": "Unión del oxalacetato al aspartato",
+     "en": "Binding of oxaloacetate to aspartate"
+    },
+    "e": {
+     "es": "Escisión de la ornitina",
+     "en": "Cleavage of ornithine"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender que la desaminación oxidativa del glutamato por la GDH ocurre en la mitocondria del hepatocito y libera el NH<sub>4</sub><sup>+</sup> para el ciclo de la urea",
+    "en": "Understanding that the oxidative deamination of glutamate by GDH takes place in the hepatocyte mitochondria and releases NH<sub>4</sub><sup>+</sup> for the urea cycle"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.3.3",
+   "num": "5.3.3",
+   "tema": 5,
+   "seccion": "5.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "En la transaminación, el grupo amino se transfiere a…",
+    "en": "In transamination, the amino group is transferred to…"
+   },
+   "opciones": {
+    "a": {
+     "es": "Urea",
+     "en": "Urea"
+    },
+    "b": {
+     "es": "Un α-cetoácido",
+     "en": "An α-keto acid"
+    },
+    "c": {
+     "es": "Una base púrica",
+     "en": "A purine base"
+    },
+    "d": {
+     "es": "El α-cetoglutarato",
+     "en": "α-Ketoglutarate"
+    },
+    "e": {
+     "es": "NADPH",
+     "en": "NADPH"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender que en la transaminación el grupo amino se transfiere a un α-cetoácido, habitualmente el α-cetoglutarato, que se convierte en glutamato",
+    "en": "Understanding that in transamination the amino group is transferred to an α-keto acid, usually α-ketoglutarate, which is converted into glutamate"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.3.4",
+   "num": "5.3.4",
+   "tema": 5,
+   "seccion": "5.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Una mutación en la glutamato deshidrogenasa mitocondrial provocará…",
+    "en": "A mutation in mitochondrial glutamate dehydrogenase will cause…"
+   },
+   "opciones": {
+    "a": {
+     "es": "Disminución de la desaminación oxidativa",
+     "en": "Decreased oxidative deamination"
+    },
+    "b": {
+     "es": "Acumulación de oxalacetato",
+     "en": "Accumulation of oxaloacetate"
+    },
+    "c": {
+     "es": "Acumulación de glutamato",
+     "en": "Accumulation of glutamate"
+    },
+    "d": {
+     "es": "Excreción excesiva de amoníaco",
+     "en": "Excessive excretion of ammonia"
+    },
+    "e": {
+     "es": "Inhibición de la glicólisis",
+     "en": "Inhibition of glycolysis"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar la función de la GDH mitocondrial (desaminación oxidativa del glutamato) para predecir que su defecto reduce la liberación de NH<sub>4</sub><sup>+</sup> y acumula glutamato",
+    "en": "Applying the function of mitochondrial GDH (oxidative deamination of glutamate) to predict that its defect reduces the release of NH<sub>4</sub><sup>+</sup> and causes glutamate to accumulate"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.3.5",
+   "num": "5.3.5",
+   "tema": 5,
+   "seccion": "5.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué aminoácido se descarboxila para producir el neurotransmisor GABA?",
+    "en": "Which amino acid is decarboxylated to produce the neurotransmitter GABA?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Serina",
+     "en": "Serine"
+    },
+    "b": {
+     "es": "Glutamato",
+     "en": "Glutamate"
+    },
+    "c": {
+     "es": "Histidina",
+     "en": "Histidine"
+    },
+    "d": {
+     "es": "Glicina",
+     "en": "Glycine"
+    },
+    "e": {
+     "es": "Aspartato",
+     "en": "Aspartate"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender que el GABA se forma por descarboxilación del glutamato (glutamato descarboxilasa, dependiente de PLP)",
+    "en": "Understanding that GABA is formed by decarboxylation of glutamate (glutamate decarboxylase, PLP-dependent)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.3.6",
+   "num": "5.3.6",
+   "tema": 5,
+   "seccion": "5.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En un hígado con mutación que reduce el NAD<sup>+</sup> mitocondrial, ¿qué efecto tendría sobre la eliminación de nitrógeno?",
+    "en": "In a liver with a mutation that reduces mitochondrial NAD<sup>+</sup>, what effect would this have on nitrogen elimination?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se reduce la desaminación oxidativa",
+     "en": "Oxidative deamination is reduced"
+    },
+    "b": {
+     "es": "La transaminación se mantiene activa",
+     "en": "Transamination remains active"
+    },
+    "c": {
+     "es": "Se acumula amonio en sangre",
+     "en": "Ammonium accumulates in the blood"
+    },
+    "d": {
+     "es": "Se intensifica el ciclo de la urea",
+     "en": "The urea cycle is intensified"
+    },
+    "e": {
+     "es": "Se incrementa la síntesis de glutamina",
+     "en": "Glutamine synthesis increases"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar las consecuencias de un déficit de NAD<sup>+</sup> mitocondrial: disminuye la desaminación oxidativa del glutamato por la GDH, mientras la transaminación (que no depende del NAD<sup>+</sup>) se mantiene activa y el NH<sub>4</sub><sup>+</sup> se desvía hacia la síntesis de glutamina",
+    "en": "Analyzing the consequences of a mitochondrial NAD<sup>+</sup> deficit: oxidative deamination of glutamate by GDH decreases, whereas transamination (which does not depend on NAD<sup>+</sup>) remains active and NH<sub>4</sub><sup>+</sup> is diverted toward glutamine synthesis"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.3.7",
+   "num": "5.3.7",
+   "tema": 5,
+   "seccion": "5.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "La serina y la treonina son dos de los pocos aminoácidos que pueden ser desaminados directamente (sin transaminación previa) para liberar amonio. ¿Qué afirmaciones analizan correctamente el mecanismo de esta reacción de deshidratación-desaminación?",
+    "en": "Serine and threonine are two of the few amino acids that can be deaminated directly (without prior transamination) to release ammonium. Which statements correctly analyze the mechanism of this dehydration–deamination reaction?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La serina se convierte directamente a oxalacetato y amonio por la acción de la serina deshidratasa",
+     "en": "Serine is converted directly into oxaloacetate and ammonium by the action of serine dehydratase"
+    },
+    "b": {
+     "es": "La reacción es un ejemplo de desaminación oxidativa que requiere NAD<sup>+</sup>",
+     "en": "The reaction is an example of oxidative deamination that requires NAD<sup>+</sup>"
+    },
+    "c": {
+     "es": "La reacción es una desaminación no oxidativa (por deshidratación) que convierte la serina en piruvato y NH<sub>4</sub><sup>+</sup>",
+     "en": "The reaction is a non-oxidative deamination (by dehydration) that converts serine into pyruvate and NH<sub>4</sub><sup>+</sup>"
+    },
+    "d": {
+     "es": "La reacción requiere fosfato de piridoxal (PLP) como coenzima",
+     "en": "The reaction requires pyridoxal phosphate (PLP) as a coenzyme"
+    },
+    "e": {
+     "es": "Se trata de un proceso citosólico, al igual que la transaminación",
+     "en": "It is a cytosolic process, like transamination"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar el mecanismo de serina deshidratasa: reacción directa de deshidratación (PLP-dependiente) que produce piruvato y amonio",
+    "en": "Analyzing the mechanism of serine dehydratase: a direct dehydration reaction (PLP-dependent) that produces pyruvate and ammonium"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.4.1",
+   "num": "5.4.1",
+   "tema": 5,
+   "seccion": "5.4",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Señale el/los aminoácido(s) cetogénico(s).",
+    "en": "Indicate the ketogenic amino acid(s)."
+   },
+   "opciones": {
+    "a": {
+     "es": "Alanina",
+     "en": "Alanine"
+    },
+    "b": {
+     "es": "Leucina",
+     "en": "Leucine"
+    },
+    "c": {
+     "es": "Lisina",
+     "en": "Lysine"
+    },
+    "d": {
+     "es": "Aspartato",
+     "en": "Aspartate"
+    },
+    "e": {
+     "es": "Glicina",
+     "en": "Glycine"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar la clasificación de aminoácidos por el destino de su esqueleto carbonado",
+    "en": "Recalling the classification of amino acids by the fate of their carbon skeleton"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.4.2",
+   "num": "5.4.2",
+   "tema": 5,
+   "seccion": "5.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué aminoácidos producen tanto glucosa como cuerpos cetónicos?",
+    "en": "Which amino acids produce both glucose and ketone bodies?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Isoleucina",
+     "en": "Isoleucine"
+    },
+    "b": {
+     "es": "Fenilalanina",
+     "en": "Phenylalanine"
+    },
+    "c": {
+     "es": "Leucina",
+     "en": "Leucine"
+    },
+    "d": {
+     "es": "Triptófano",
+     "en": "Tryptophan"
+    },
+    "e": {
+     "es": "Glicina",
+     "en": "Glycine"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender que isoleucina, fenilalanina y triptófano (como la tirosina) son a la vez glucogénicos y cetogénicos, porque su esqueleto carbonado genera intermediarios gluconeogénicos y acetil-CoA o acetoacetil-CoA",
+    "en": "Understanding that isoleucine, phenylalanine and tryptophan (like tyrosine) are both glucogenic and ketogenic, because their carbon skeleton yields gluconeogenic intermediates and acetyl-CoA or acetoacetyl-CoA"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.4.3",
+   "num": "5.4.3",
+   "tema": 5,
+   "seccion": "5.4",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En una dieta cetogénica, ¿qué aminoácidos se emplearán preferentemente?",
+    "en": "On a ketogenic diet, which amino acids will be used preferentially?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Leucina y lisina",
+     "en": "Leucine and lysine"
+    },
+    "b": {
+     "es": "Glutamina y aspartato",
+     "en": "Glutamine and aspartate"
+    },
+    "c": {
+     "es": "Alanina y glicina",
+     "en": "Alanine and glycine"
+    },
+    "d": {
+     "es": "Fenilalanina y tirosina",
+     "en": "Phenylalanine and tyrosine"
+    },
+    "e": {
+     "es": "Valina",
+     "en": "Valine"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar la clasificación de los AA por el destino de su esqueleto carbonado: en una situación cetogénica se emplean los cetogénicos puros (leucina, lisina) y los mixtos (fenilalanina, tirosina)",
+    "en": "Applying the classification of AA by the fate of their carbon skeleton: in a ketogenic situation, the purely ketogenic (leucine, lysine) and the mixed (phenylalanine, tyrosine) amino acids are used"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.4.4",
+   "num": "5.4.4",
+   "tema": 5,
+   "seccion": "5.4",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un paciente con deficiencia en fenilalanina hidroxilasa, ¿qué alteraciones presenta en su metabolismo nitrogenado?",
+    "en": "What alterations in nitrogen metabolism does a patient with phenylalanine hydroxylase deficiency show?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acumulación de fenilalanina",
+     "en": "Accumulation of phenylalanine"
+    },
+    "b": {
+     "es": "Formación no controlada de tirosina",
+     "en": "Uncontrolled formation of tyrosine"
+    },
+    "c": {
+     "es": "Posible fenilcetonuria",
+     "en": "Possible phenylketonuria"
+    },
+    "d": {
+     "es": "Mejora de la degradación de glicina",
+     "en": "Improved degradation of glycine"
+    },
+    "e": {
+     "es": "Disminución de leucina",
+     "en": "Decrease in leucine"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Analizar las consecuencias del déficit de fenilalanina hidroxilasa: acumulación de fenilalanina (fenilcetonuria) y falta de síntesis de tirosina, que pasa a ser esencial",
+    "en": "Analyzing the consequences of phenylalanine hydroxylase deficiency: accumulation of phenylalanine (phenylketonuria) and lack of tyrosine synthesis, so tyrosine becomes essential"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.4.5",
+   "num": "5.4.5",
+   "tema": 5,
+   "seccion": "5.4",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "La valina se considera…",
+    "en": "Valine is considered…"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aminoácido cetogénico puro",
+     "en": "A purely ketogenic amino acid"
+    },
+    "b": {
+     "es": "Aminoácido glucogénico",
+     "en": "A glucogenic amino acid"
+    },
+    "c": {
+     "es": "Aminoácido aromático",
+     "en": "An aromatic amino acid"
+    },
+    "d": {
+     "es": "Precursor de succinil-CoA",
+     "en": "A precursor of succinyl-CoA"
+    },
+    "e": {
+     "es": "Aminoácido no proteinogénico",
+     "en": "A nonproteinogenic amino acid"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar la clasificación de la valina: aminoácido glucogénico de cadena ramificada cuyo esqueleto carbonado se convierte en succinil-CoA",
+    "en": "Applying the classification of valine: a branched-chain glucogenic amino acid whose carbon skeleton is converted into succinyl-CoA"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.4.6",
+   "num": "5.4.6",
+   "tema": 5,
+   "seccion": "5.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál es el esqueleto carbonado intermedio inmediato generado tras la desaminación de la alanina, que la clasifica como aminoácido glucogénico?",
+    "en": "What is the immediate carbon-skeleton intermediate generated after deamination of alanine, which classifies it as a glucogenic amino acid?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    },
+    "b": {
+     "es": "Glutamato",
+     "en": "Glutamate"
+    },
+    "c": {
+     "es": "Acetil-CoA",
+     "en": "Acetyl-CoA"
+    },
+    "d": {
+     "es": "Piruvato",
+     "en": "Pyruvate"
+    },
+    "e": {
+     "es": "α-cetoglutarato",
+     "en": "α-Ketoglutarate"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender el destino de alanina tras transaminación con α-cetoglutarato (piruvato)",
+    "en": "Understanding the fate of alanine after transamination with α-ketoglutarate (pyruvate)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.4.7",
+   "num": "5.4.7",
+   "tema": 5,
+   "seccion": "5.4",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "La enfermedad de la orina con olor a jarabe de arce (MSUD) se debe a un déficit en el complejo α-cetoácido deshidrogenasa de cadena ramificada. ¿Qué consecuencias metabólicas se esperarían en el paciente?",
+    "en": "Maple syrup urine disease (MSUD) is caused by a deficiency of the branched-chain α-keto acid dehydrogenase complex. What metabolic consequences would be expected in the patient?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acumulación de alanina y serina",
+     "en": "Accumulation of alanine and serine"
+    },
+    "b": {
+     "es": "Acumulación de leucina, isoleucina y valina (aminoácidos de cadena ramificada)",
+     "en": "Accumulation of leucine, isoleucine and valine (branched-chain amino acids)"
+    },
+    "c": {
+     "es": "Acumulación de citrulina en el hígado",
+     "en": "Accumulation of citrulline in the liver"
+    },
+    "d": {
+     "es": "Acumulación de sus cetoácidos derivados que son neurotóxicos",
+     "en": "Accumulation of their derived keto acids, which are neurotoxic"
+    },
+    "e": {
+     "es": "Inhibición del ciclo de la urea",
+     "en": "Inhibition of the urea cycle"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de MSUD (déficit cetoácido deshidrogenasa) para predecir la acumulación de AA de cadena ramificada y sus cetoácidos neurotóxicos",
+    "en": "Applying knowledge of MSUD (keto acid dehydrogenase deficiency) to predict the accumulation of branched-chain AA and their neurotoxic keto acids"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.4.8",
+   "num": "5.4.8",
+   "tema": 5,
+   "seccion": "5.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "En relación con la degradación de aminoácidos en humanos:",
+    "en": "Regarding amino acid degradation in humans:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se elimina toda la molécula en un único paso",
+     "en": "The whole molecule is eliminated in a single step"
+    },
+    "b": {
+     "es": "Se acumula el exceso de nitrógeno",
+     "en": "Excess nitrogen accumulates"
+    },
+    "c": {
+     "es": "El esqueleto de carbono se reutiliza",
+     "en": "The carbon skeleton is reused"
+    },
+    "d": {
+     "es": "Tiene relación directa con la síntesis de urea",
+     "en": "It is directly related to urea synthesis"
+    },
+    "e": {
+     "es": "El nitrógeno y el esqueleto de carbonos siguen rutas diferentes pero conectadas",
+     "en": "Nitrogen and the carbon skeleton follow different but connected pathways"
+    }
+   },
+   "correctas": [
+    "c",
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender la degradación de AA: esqueletos carbonados reutilizados (Krebs/GNG) y nitrógeno a urea",
+    "en": "Understanding AA degradation: carbon skeletons are reused (Krebs cycle/GNG) and nitrogen goes to urea"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.4.9",
+   "num": "5.4.9",
+   "tema": 5,
+   "seccion": "5.4",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Los aminoácidos que se pueden utilizar para la síntesis de glucosa se denominan glucogénicos. ¿Cuáles son?",
+    "en": "Amino acids that can be used for glucose synthesis are called glucogenic. Which are they?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Todos",
+     "en": "All of them"
+    },
+    "b": {
+     "es": "Ninguno",
+     "en": "None"
+    },
+    "c": {
+     "es": "Sólo la alanina",
+     "en": "Only alanine"
+    },
+    "d": {
+     "es": "Sólo los aromáticos",
+     "en": "Only the aromatic ones"
+    },
+    "e": {
+     "es": "Los 18 aminoácidos que generan piruvato o algún intermediario del ciclo de Krebs",
+     "en": "The 18 amino acids that generate pyruvate or a Krebs cycle intermediate"
+    }
+   },
+   "correctas": [
+    "e"
+   ],
+   "justificacion": {
+    "es": "Recordar la definición de AA glucogénicos (los 18 que generan piruvato o intermediarios de Krebs)",
+    "en": "Recalling the definition of glucogenic AA (the 18 that generate pyruvate or Krebs cycle intermediates)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.4.10",
+   "num": "5.4.10",
+   "tema": 5,
+   "seccion": "5.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿En qué situaciones metabólicas se da el catabolismo de los aminoácidos?",
+    "en": "In which metabolic situations does amino acid catabolism occur?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Nunca, los aminoácidos siempre se reutilizan",
+     "en": "Never; amino acids are always reused"
+    },
+    "b": {
+     "es": "Durante el ayuno prolongado, para obtener energía y precursores a partir de la proteína muscular",
+     "en": "During prolonged fasting, to obtain energy and precursors from muscle protein"
+    },
+    "c": {
+     "es": "En una dieta fundamentalmente proteica",
+     "en": "On a mainly protein-based diet"
+    },
+    "d": {
+     "es": "Con una dieta normal, tras la ingesta de una gran cantidad de alimentos ricos en proteínas",
+     "en": "On a normal diet, after eating a large amount of protein-rich food"
+    },
+    "e": {
+     "es": "Con una dieta cetogénica y rica en proteínas",
+     "en": "On a ketogenic, protein-rich diet"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender las situaciones de catabolismo de AA (ayuno prolongado, dieta hiperproteica e ingesta abundante de proteínas)",
+    "en": "Understanding the situations of AA catabolism (prolonged fasting, high-protein diet and large protein intake)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.1",
+   "num": "5.5.1",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Dónde se localiza la primera reacción del ciclo de la urea (carbamoil fosfato sintetasa I)?",
+    "en": "Where is the first reaction of the urea cycle (carbamoyl phosphate synthetase I) located?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Citoplasma",
+     "en": "Cytoplasm"
+    },
+    "b": {
+     "es": "Matriz mitocondrial",
+     "en": "Mitochondrial matrix"
+    },
+    "c": {
+     "es": "Retículo endoplásmico",
+     "en": "Endoplasmic reticulum"
+    },
+    "d": {
+     "es": "Núcleo",
+     "en": "Nucleus"
+    },
+    "e": {
+     "es": "Aparato de Golgi",
+     "en": "Golgi apparatus"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Recordar la localización de la carbamoil fosfato sintetasa I (CPS I) (matriz mitocondrial)",
+    "en": "Recalling the location of carbamoyl phosphate synthetase I (CPS I) (mitochondrial matrix)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.2",
+   "num": "5.5.2",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué molécula activa alostéricamente la carbamoil fosfato sintetasa I?",
+    "en": "Which molecule allosterically activates carbamoyl phosphate synthetase I?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Urea",
+     "en": "Urea"
+    },
+    "b": {
+     "es": "ATP",
+     "en": "ATP"
+    },
+    "c": {
+     "es": "N-acetilglutamato",
+     "en": "N-acetylglutamate"
+    },
+    "d": {
+     "es": "Fumarato",
+     "en": "Fumarate"
+    },
+    "e": {
+     "es": "Aspartato",
+     "en": "Aspartate"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender la regulación alostérica de la CPS I por N-acetilglutamato (NAG) (activador)",
+    "en": "Understanding the allosteric regulation of CPS I by N-acetylglutamate (NAG) (activator)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.3",
+   "num": "5.5.3",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Un paciente con déficit de argininosuccinato liasa presentará…",
+    "en": "A patient with argininosuccinate lyase deficiency will show…"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acumulación de argininosuccinato",
+     "en": "Accumulation of argininosuccinate"
+    },
+    "b": {
+     "es": "Disminución de citrulina",
+     "en": "Decrease in citrulline"
+    },
+    "c": {
+     "es": "Exceso de ornitina",
+     "en": "Excess ornithine"
+    },
+    "d": {
+     "es": "Hiperamonemia",
+     "en": "Hyperammonemia"
+    },
+    "e": {
+     "es": "Acumulación de glutamato",
+     "en": "Accumulation of glutamate"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar las consecuencias del déficit de argininosuccinato liasa: acumulación de argininosuccinato e hiperamonemia",
+    "en": "Applying the consequences of argininosuccinate lyase deficiency: accumulation of argininosuccinate and hyperammonemia"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.4",
+   "num": "5.5.4",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Qué efecto tendría la inhibición de la N-acetilglutamato sintasa en el ciclo de la urea?",
+    "en": "What effect would inhibition of N-acetylglutamate synthase have on the urea cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Incremento de fumarato",
+     "en": "Increase in fumarate"
+    },
+    "b": {
+     "es": "Disminución de la activación de carbamoil fosfato sintetasa I",
+     "en": "Decreased activation of carbamoyl phosphate synthetase I"
+    },
+    "c": {
+     "es": "Aumento de la síntesis de arginina",
+     "en": "Increased arginine synthesis"
+    },
+    "d": {
+     "es": "Acumulación de amonio en sangre",
+     "en": "Accumulation of ammonium in the blood"
+    },
+    "e": {
+     "es": "Disminución de succinil-CoA",
+     "en": "Decrease in succinyl-CoA"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar el impacto de la inhibición de NAG sintasa: ↓NAG → ↓CPS I → ↓urea → hiperamonemia",
+    "en": "Analyzing the impact of inhibiting NAG synthase: ↓NAG → ↓CPS I → ↓urea → hyperammonemia"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.5",
+   "num": "5.5.5",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué molécula conecta el ciclo de la urea con el de Krebs?",
+    "en": "Which molecule links the urea cycle to the Krebs cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Fumarato",
+     "en": "Fumarate"
+    },
+    "b": {
+     "es": "NADH",
+     "en": "NADH"
+    },
+    "c": {
+     "es": "Urea",
+     "en": "Urea"
+    },
+    "d": {
+     "es": "Arginina",
+     "en": "Arginine"
+    },
+    "e": {
+     "es": "Aspartato",
+     "en": "Aspartate"
+    }
+   },
+   "correctas": [
+    "a",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar la conexión ciclo de urea-ciclo de Krebs: aspartato y fumarato (lanzadera aspartato-argininosuccinato)",
+    "en": "Applying the urea cycle–Krebs cycle connection: aspartate and fumarate (aspartate–argininosuccinate shunt)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.6",
+   "num": "5.5.6",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe la estrategia terapéutica combinada más efectiva para manejar la crisis de hiperamonemia aguda en un neonato con un defecto genético severo en el ciclo de la urea (p. ej., déficit de OTC), priorizando la destoxificación inmediata del amonio.",
+    "en": "Design the most effective combined therapeutic strategy to manage an acute hyperammonemia crisis in a newborn with a severe genetic defect of the urea cycle (e.g., OTC deficiency), giving priority to the immediate detoxification of ammonium."
+   },
+   "opciones": {
+    "a": {
+     "es": "Administrar dosis elevadas del activador N-acetilglutamato (NAG) para forzar la activación de la CPS restante",
+     "en": "Administer high doses of the activator N-acetylglutamate (NAG) to force activation of the remaining CPS"
+    },
+    "b": {
+     "es": "Mantener una dieta hiperproteica para proporcionar esqueletos carbonados y NH<sub>4</sub><sup>+</sup> para el ciclo de Krebs, y suplementar con ATP",
+     "en": "Maintain a high-protein diet to provide carbon skeletons and NH<sub>4</sub><sup>+</sup> for the Krebs cycle, and supplement with ATP"
+    },
+    "c": {
+     "es": "Aplicar una dieta hipoproteica estricta junto con la administración de agentes \"scavenger\" (p. ej., fenilbutirato) para excretar nitrógeno en vías secundarias y suplementar con arginina/citrulina (según el defecto)",
+     "en": "Apply a strict low-protein diet together with the administration of \"scavenger\" agents (e.g., phenylbutyrate) to excrete nitrogen through secondary pathways, and supplement with arginine/citrulline (depending on the defect)"
+    },
+    "d": {
+     "es": "Promover el shunt del carbamoil fosfato hacia la síntesis de pirimidinas para eliminar el NH<sub>4</sub><sup>+</sup> a través de la aciduria orótica",
+     "en": "Promote the shunting of carbamoyl phosphate toward pyrimidine synthesis to eliminate NH<sub>4</sub><sup>+</sup> through orotic aciduria"
+    },
+    "e": {
+     "es": "Administrar inhibidores de la glutamina sintetasa para evitar que los tejidos periféricos envíen glutamina (portadora de nitrógeno)",
+     "en": "Administer glutamine synthetase inhibitors to prevent peripheral tissues from sending glutamine (a nitrogen carrier)"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Diseñar la estrategia terapéutica (dieta hipoproteica, scavengers, suplementación de intermedios esenciales) para una crisis de hiperamonemia",
+    "en": "Designing the therapeutic strategy (low-protein diet, scavengers, supplementation with essential intermediates) for a hyperammonemia crisis"
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.7",
+   "num": "5.5.7",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "El ciclo de la urea se considera un proceso anaplerótico/cataplerótico que se solapa con el ciclo de Krebs. ¿Qué rol metabólico desempeña el aspartato en el ciclo de la urea y cuál es el destino de su esqueleto carbonado?",
+    "en": "The urea cycle is considered an anaplerotic/cataplerotic process that overlaps with the Krebs cycle. What metabolic role does aspartate play in the urea cycle, and what is the fate of its carbon skeleton?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El aspartato aporta el amonio libre a la carbamoil fosfato sintetasa (CPS I)",
+     "en": "Aspartate supplies free ammonium to carbamoyl phosphate synthetase (CPS I)"
+    },
+    "b": {
+     "es": "Dona el segundo grupo amino para formar argininosuccinato",
+     "en": "It donates the second amino group to form argininosuccinate"
+    },
+    "c": {
+     "es": "Se regenera a partir de ornitina en el citosol",
+     "en": "It is regenerated from ornithine in the cytosol"
+    },
+    "d": {
+     "es": "Su esqueleto carbonado se libera como fumarato al citosol, que puede reingresar al ciclo de Krebs",
+     "en": "Its carbon skeleton is released into the cytosol as fumarate, which can re-enter the Krebs cycle"
+    },
+    "e": {
+     "es": "Es el producto de la hidrólisis de la arginina",
+     "en": "It is the product of arginine hydrolysis"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender el rol de aspartato (dona segundo N) y fumarato (esqueleto carbonado de aspartato) en la conexión con Krebs",
+    "en": "Understanding the role of aspartate (donates the second N) and fumarate (carbon skeleton of aspartate) in the connection with the Krebs cycle"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.8",
+   "num": "5.5.8",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un paciente pediátrico presenta una deficiencia en la enzima ornitina transcarbamoilasa (OTC), la enzima más común en los defectos del ciclo de la urea. ¿Qué consecuencias metabólicas y moleculares son esperadas debido a este bloqueo?",
+    "en": "A pediatric patient has a deficiency of the enzyme ornithine transcarbamoylase (OTC), the most common enzyme defect of the urea cycle. What metabolic and molecular consequences are expected as a result of this block?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La arginina se acumula en la mitocondria e inhibe la N-acetilglutamato sintasa",
+     "en": "Arginine accumulates in the mitochondria and inhibits N-acetylglutamate synthase"
+    },
+    "b": {
+     "es": "La hiperamonemia es inevitable, ya que se bloquea el principal punto de consumo de NH<sub>4</sub><sup>+</sup> unido al carbamoil fosfato",
+     "en": "Hyperammonemia is unavoidable, since the main point of consumption of NH<sub>4</sub><sup>+</sup> bound to carbamoyl phosphate is blocked"
+    },
+    "c": {
+     "es": "La ornitina se acumula y se desvía a la síntesis de glutamato",
+     "en": "Ornithine accumulates and is diverted to glutamate synthesis"
+    },
+    "d": {
+     "es": "El carbamoil fosfato producido se acumula en la matriz mitocondrial y se desvía al citosol para la síntesis de pirimidinas, causando aciduria orótica",
+     "en": "The carbamoyl phosphate produced accumulates in the mitochondrial matrix and is diverted to the cytosol for pyrimidine synthesis, causing orotic aciduria"
+    },
+    "e": {
+     "es": "El aspartato no puede ser sintetizado, deteniendo el aporte del segundo amino",
+     "en": "Aspartate cannot be synthesized, stopping the supply of the second amino group"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar las consecuencias del déficit de OTC: hiperamonemia y aciduria orótica (desvío de CP a pirimidinas)",
+    "en": "Analyzing the consequences of OTC deficiency: hyperammonemia and orotic aciduria (diversion of CP to pyrimidines)"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.9",
+   "num": "5.5.9",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "El ciclo de la urea es termodinámicamente favorable, pero requiere la hidrólisis de 4 enlaces de alta energía por molécula de urea sintetizada. Evalúe qué condiciones metabólicas justifican la activación de esta ruta, priorizando la detoxificación sobre la conservación de energía.",
+    "en": "The urea cycle is thermodynamically favorable, but it requires the hydrolysis of 4 high-energy bonds per molecule of urea synthesized. Evaluate which metabolic conditions justify the activation of this pathway, giving priority to detoxification over energy conservation."
+   },
+   "opciones": {
+    "a": {
+     "es": "La detección de un exceso de los precursores glutamato y arginina, ya que la arginina es un activador alostérico clave de la N-acetilglutamato sintasa (NAGS) que inicia el ciclo",
+     "en": "Detection of an excess of the precursors glutamate and arginine, since arginine is a key allosteric activator of N-acetylglutamate synthase (NAGS), which initiates the cycle"
+    },
+    "b": {
+     "es": "Una baja carga energética (alto ADP/AMP), que indica la necesidad de conservar ATP",
+     "en": "A low energy charge (high ADP/AMP), indicating the need to conserve ATP"
+    },
+    "c": {
+     "es": "Un estado de hiperamonemia severa causada por la desaminación oxidativa de glutamato, obligando a la destoxificación como prioridad fisiológica absoluta",
+     "en": "A state of severe hyperammonemia caused by the oxidative deamination of glutamate, making detoxification the absolute physiological priority"
+    },
+    "d": {
+     "es": "Concentración elevada de malato en el citosol para impulsar el ciclo de Krebs",
+     "en": "A high concentration of malate in the cytosol to drive the Krebs cycle"
+    },
+    "e": {
+     "es": "La inhibición de la glutaminasa para preservar la glutamina en la sangre",
+     "en": "Inhibition of glutaminase to preserve glutamine in the blood"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Evaluar las condiciones metabólicas que justifican el alto gasto energético del ciclo de la urea (hiperamonemia y activadores)",
+    "en": "Evaluating the metabolic conditions that justify the high energy cost of the urea cycle (hyperammonemia and activators)"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.10",
+   "num": "5.5.10",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué molécula dona el segundo grupo amino que se incorpora directamente al esqueleto del ciclo de la urea en el citosol?",
+    "en": "Which molecule donates the second amino group that is incorporated directly into the urea cycle skeleton in the cytosol?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glutamato",
+     "en": "Glutamate"
+    },
+    "b": {
+     "es": "Glutamina",
+     "en": "Glutamine"
+    },
+    "c": {
+     "es": "Carbamoil fosfato",
+     "en": "Carbamoyl phosphate"
+    },
+    "d": {
+     "es": "Arginina",
+     "en": "Arginine"
+    },
+    "e": {
+     "es": "Aspartato",
+     "en": "Aspartate"
+    }
+   },
+   "correctas": [
+    "e"
+   ],
+   "justificacion": {
+    "es": "Recordar el segundo donante de nitrógeno para la urea (aspartato)",
+    "en": "Recalling the second nitrogen donor for urea (aspartate)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.11",
+   "num": "5.5.11",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe el tratamiento terapéutico más adecuado para un paciente con déficit severo de argininosuccinato liasa (ASL), que priorice tanto la detoxificación del amonio como la suplementación de aminoácidos esenciales.",
+    "en": "Design the most appropriate therapeutic treatment for a patient with severe argininosuccinate lyase (ASL) deficiency, giving priority both to ammonium detoxification and to the supplementation of essential amino acids."
+   },
+   "opciones": {
+    "a": {
+     "es": "Administrar fenilbutirato junto con una dieta hiperproteica",
+     "en": "Administer phenylbutyrate together with a high-protein diet"
+    },
+    "b": {
+     "es": "Administrar arginina para compensar su déficit (que se convierte en un aminoácido esencial)",
+     "en": "Administer arginine to compensate for its deficit (it becomes an essential amino acid)"
+    },
+    "c": {
+     "es": "Administrar N-acetilglutamato (NAG) para activar la carbamoil fosfato sintetasa I (CPS I)",
+     "en": "Administer N-acetylglutamate (NAG) to activate carbamoyl phosphate synthetase I (CPS I)"
+    },
+    "d": {
+     "es": "Utilizar agentes \"scavenger\" para excretar el nitrógeno en rutas alternativas y controlar la hiperamonemia",
+     "en": "Use \"scavenger\" agents to excrete nitrogen through alternative pathways and control hyperammonemia"
+    },
+    "e": {
+     "es": "Administrar grandes dosis de aspartato",
+     "en": "Administer large doses of aspartate"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Diseñar la terapia para déficit de ASL: suplementación con arginina (se convierte en AA esencial) y uso de scavengers",
+    "en": "Designing the therapy for ASL deficiency: supplementation with arginine (which becomes an essential AA) and use of scavengers"
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.12",
+   "num": "5.5.12",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuáles son los compuestos que utilizan los animales para excretar el N?",
+    "en": "Which compounds do animals use to excrete N?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Urea, ácido úrico y amoníaco",
+     "en": "Urea, uric acid and ammonia"
+    },
+    "b": {
+     "es": "Urea, ácido úrico y glucosa",
+     "en": "Urea, uric acid and glucose"
+    },
+    "c": {
+     "es": "Los nucleótidos",
+     "en": "Nucleotides"
+    },
+    "d": {
+     "es": "El N no se elimina nunca, siempre se recicla",
+     "en": "N is never eliminated; it is always recycled"
+    },
+    "e": {
+     "es": "Todas son ciertas",
+     "en": "All are true"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Recordar los principales productos de excreción de N en animales (urea, ácido úrico, amoníaco)",
+    "en": "Recalling the main N excretion products in animals (urea, uric acid, ammonia)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.13",
+   "num": "5.5.13",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "El ciclo de la urea y el ciclo de Krebs…",
+    "en": "The urea cycle and the Krebs cycle…"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se utilizan para sintetizar glucosa a partir de los aminoácidos cetogénicos",
+     "en": "Are used to synthesize glucose from ketogenic amino acids"
+    },
+    "b": {
+     "es": "Tienen lugar íntegramente en el citosol",
+     "en": "Take place entirely in the cytosol"
+    },
+    "c": {
+     "es": "Se pueden conectar de forma que se reduce el gasto energético de la eliminación del nitrógeno",
+     "en": "Can be connected in a way that reduces the energy cost of nitrogen elimination"
+    },
+    "d": {
+     "es": "Están conectados a través del fumarato y oxaloacetato",
+     "en": "Are connected through fumarate and oxaloacetate"
+    },
+    "e": {
+     "es": "Siempre funcionan simultáneamente para obtener energía y captar nitrógeno",
+     "en": "Always operate simultaneously to obtain energy and capture nitrogen"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar la conexión ciclo de la urea-ciclo de Krebs (fumarato/aspartato) para optimizar energía",
+    "en": "Applying the urea cycle–Krebs cycle connection (fumarate/aspartate) to optimize energy"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.5.14",
+   "num": "5.5.14",
+   "tema": 5,
+   "seccion": "5.5",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es el objetivo del ciclo de la urea?",
+    "en": "What is the purpose of the urea cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Eliminar el exceso de amoníaco",
+     "en": "To eliminate excess ammonia"
+    },
+    "b": {
+     "es": "Transportar el amoníaco por la sangre",
+     "en": "To transport ammonia in the blood"
+    },
+    "c": {
+     "es": "Transportar aminoácidos",
+     "en": "To transport amino acids"
+    },
+    "d": {
+     "es": "Obtener energía a partir de moléculas sencillas",
+     "en": "To obtain energy from simple molecules"
+    },
+    "e": {
+     "es": "Almacenar el amoníaco en los riñones",
+     "en": "To store ammonia in the kidneys"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Recordar el objetivo primario del ciclo de la urea (eliminar amoníaco tóxico)",
+    "en": "Recalling the primary purpose of the urea cycle (eliminating toxic ammonia)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.6.1",
+   "num": "5.6.1",
+   "tema": 5,
+   "seccion": "5.6",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Aminoácido precursor de serotonina:",
+    "en": "Amino acid precursor of serotonin:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Triptófano",
+     "en": "Tryptophan"
+    },
+    "b": {
+     "es": "Tirosina",
+     "en": "Tyrosine"
+    },
+    "c": {
+     "es": "Glicina",
+     "en": "Glycine"
+    },
+    "d": {
+     "es": "Prolina",
+     "en": "Proline"
+    },
+    "e": {
+     "es": "Alanina",
+     "en": "Alanine"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Recordar el AA precursor de serotonina (triptófano)",
+    "en": "Recalling the AA precursor of serotonin (tryptophan)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.6.2",
+   "num": "5.6.2",
+   "tema": 5,
+   "seccion": "5.6",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Aminoácido precursor de catecolaminas:",
+    "en": "Amino acid precursor of catecholamines:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glicina",
+     "en": "Glycine"
+    },
+    "b": {
+     "es": "Tirosina",
+     "en": "Tyrosine"
+    },
+    "c": {
+     "es": "Fenilalanina",
+     "en": "Phenylalanine"
+    },
+    "d": {
+     "es": "Valina",
+     "en": "Valine"
+    },
+    "e": {
+     "es": "Alanina",
+     "en": "Alanine"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender el origen de las catecolaminas (tirosina y su precursor fenilalanina)",
+    "en": "Understanding the origin of catecholamines (tyrosine and its precursor phenylalanine)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.6.3",
+   "num": "5.6.3",
+   "tema": 5,
+   "seccion": "5.6",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Una dieta deficiente en lisina afecta a…",
+    "en": "A lysine-deficient diet affects…"
+   },
+   "opciones": {
+    "a": {
+     "es": "La síntesis de purinas",
+     "en": "Purine synthesis"
+    },
+    "b": {
+     "es": "La síntesis de colágeno",
+     "en": "Collagen synthesis"
+    },
+    "c": {
+     "es": "La producción de NADPH",
+     "en": "NADPH production"
+    },
+    "d": {
+     "es": "La estabilidad estructural de proteínas fibrosas",
+     "en": "The structural stability of fibrous proteins"
+    },
+    "e": {
+     "es": "La síntesis de creatina",
+     "en": "Creatine synthesis"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar la función de lisina (esencial) para predecir el impacto en la síntesis de colágeno y estructuras fibrosas",
+    "en": "Applying the function of lysine (essential) to predict the impact on the synthesis of collagen and fibrous structures"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.6.4",
+   "num": "5.6.4",
+   "tema": 5,
+   "seccion": "5.6",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En una deficiencia de metionina, ¿qué metabolito disminuirá?",
+    "en": "In methionine deficiency, which metabolite will decrease?"
+   },
+   "opciones": {
+    "a": {
+     "es": "<i>S</i>-adenosilmetionina (SAM)",
+     "en": "<i>S</i>-adenosylmethionine (SAM)"
+    },
+    "b": {
+     "es": "Serotonina",
+     "en": "Serotonin"
+    },
+    "c": {
+     "es": "Carnitina",
+     "en": "Carnitine"
+    },
+    "d": {
+     "es": "GABA",
+     "en": "GABA"
+    },
+    "e": {
+     "es": "Poliaminas",
+     "en": "Polyamines"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar la ruta de la metionina: metionina es precursora de SAM (donador de metilos) → síntesis de carnitina y poliaminas",
+    "en": "Applying the methionine pathway: methionine is the precursor of SAM (methyl donor) → synthesis of carnitine and polyamines"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.6.5",
+   "num": "5.6.5",
+   "tema": 5,
+   "seccion": "5.6",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Una mutación en la enzima serina hidroximetiltransferasa repercute directamente en…",
+    "en": "A mutation in the enzyme serine hydroxymethyltransferase has a direct impact on…"
+   },
+   "opciones": {
+    "a": {
+     "es": "La síntesis de nucleótidos (por falta de unidades de un carbono)",
+     "en": "Nucleotide synthesis (for lack of one-carbon units)"
+    },
+    "b": {
+     "es": "La síntesis de urea",
+     "en": "Urea synthesis"
+    },
+    "c": {
+     "es": "La disponibilidad de glicina",
+     "en": "The availability of glycine"
+    },
+    "d": {
+     "es": "El ciclo del glioxilato",
+     "en": "The glyoxylate cycle"
+    },
+    "e": {
+     "es": "La síntesis de catecolaminas",
+     "en": "Catecholamine synthesis"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Analizar la función de la serina hidroximetiltransferasa: genera glicina y unidades de un carbono (THF) esenciales para síntesis de nucleótidos",
+    "en": "Analyzing the function of serine hydroxymethyltransferase: it generates glycine and one-carbon units (THF) that are essential for nucleotide synthesis"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.6.6",
+   "num": "5.6.6",
+   "tema": 5,
+   "seccion": "5.6",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué aminoácidos no esenciales de las familias del oxalacetato y del piruvato se sintetizan directamente a partir de la reacción de transaminación con el glutamato?",
+    "en": "Which nonessential amino acids of the oxaloacetate and pyruvate families are synthesized directly by transamination with glutamate?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Serina",
+     "en": "Serine"
+    },
+    "b": {
+     "es": "Glicina",
+     "en": "Glycine"
+    },
+    "c": {
+     "es": "Aspartato",
+     "en": "Aspartate"
+    },
+    "d": {
+     "es": "Prolina",
+     "en": "Proline"
+    },
+    "e": {
+     "es": "Alanina",
+     "en": "Alanine"
+    }
+   },
+   "correctas": [
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Recordar la síntesis por transaminación directa a partir de OAA (aspartato) y piruvato (alanina)",
+    "en": "Recalling synthesis by direct transamination from OAA (aspartate) and pyruvate (alanine)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.6.7",
+   "num": "5.6.7",
+   "tema": 5,
+   "seccion": "5.6",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "El ácido fólico (vitamina B9) actúa como dador/aceptor de unidades de un carbono en forma de tetrahidrofolato (THF). ¿Qué procesos metabólicos se verían directamente afectados por una deficiencia de ácido fólico?",
+    "en": "Folic acid (vitamin B9) acts as a donor/acceptor of one-carbon units in the form of tetrahydrofolate (THF). Which metabolic processes would be directly affected by folic acid deficiency?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Biosíntesis de urea",
+     "en": "Urea biosynthesis"
+    },
+    "b": {
+     "es": "Síntesis de carnitina",
+     "en": "Carnitine synthesis"
+    },
+    "c": {
+     "es": "Biosíntesis de metionina a partir de homocisteína",
+     "en": "Biosynthesis of methionine from homocysteine"
+    },
+    "d": {
+     "es": "Biosíntesis de dTMP (timina) a partir de dUMP",
+     "en": "Biosynthesis of dTMP (thymine) from dUMP"
+    },
+    "e": {
+     "es": "Biosíntesis de nucleótidos de purina",
+     "en": "Biosynthesis of purine nucleotides"
+    }
+   },
+   "correctas": [
+    "c",
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar la función de THF (ácido fólico activo) como dador C1 en síntesis de purinas, dTMP y metionina",
+    "en": "Applying the function of THF (active folic acid) as a C1 donor in the synthesis of purines, dTMP and methionine"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.6.8",
+   "num": "5.6.8",
+   "tema": 5,
+   "seccion": "5.6",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué molécula es el precursor inmediato de los átomos de nitrógeno y carbono que se incorporan a las porfirinas y, finalmente, al grupo hemo?",
+    "en": "Which molecule is the immediate precursor of the nitrogen and carbon atoms incorporated into porphyrins and, ultimately, into the heme group?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glutamato",
+     "en": "Glutamate"
+    },
+    "b": {
+     "es": "Valina",
+     "en": "Valine"
+    },
+    "c": {
+     "es": "Triptófano",
+     "en": "Tryptophan"
+    },
+    "d": {
+     "es": "Glicina",
+     "en": "Glycine"
+    },
+    "e": {
+     "es": "Ornitina",
+     "en": "Ornithine"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar el AA precursor del hemo (glicina, junto con succinil-CoA)",
+    "en": "Recalling the AA precursor of heme (glycine, together with succinyl-CoA)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.6.9",
+   "num": "5.6.9",
+   "tema": 5,
+   "seccion": "5.6",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "En relación a la síntesis de aminoácidos en células humanas:",
+    "en": "Regarding amino acid synthesis in human cells:"
+   },
+   "opciones": {
+    "a": {
+     "es": "El α-cetoglutarato y el piruvato son precursores",
+     "en": "α-Ketoglutarate and pyruvate are precursors"
+    },
+    "b": {
+     "es": "La síntesis de aminoácidos es muy cara energéticamente y se favorece el reciclaje de estos y la obtención por la dieta",
+     "en": "Amino acid synthesis is very costly in energy, so recycling them and obtaining them from the diet are favored"
+    },
+    "c": {
+     "es": "Como excepción, la síntesis de aminoácidos no consume energía",
+     "en": "As an exception, amino acid synthesis does not consume energy"
+    },
+    "d": {
+     "es": "Sólo se pueden sintetizar los más sencillos; el resto son esenciales",
+     "en": "Only the simplest ones can be synthesized; the rest are essential"
+    },
+    "e": {
+     "es": "Se pueden sintetizar todos los que necesiten en cada momento",
+     "en": "All the amino acids needed at any given time can be synthesized"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender precursores (α-cetoglutarato/piruvato) y limitaciones de síntesis de AA en humanos (esenciales por dieta)",
+    "en": "Understanding the precursors (α-ketoglutarate/pyruvate) and the limitations of AA synthesis in humans (essential AA from the diet)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.6.10",
+   "num": "5.6.10",
+   "tema": 5,
+   "seccion": "5.6",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Los aminoácidos proteinogénicos son aquellos que se encuentran en la secuencia de las proteínas. ¿Tienen alguna función además de esta?",
+    "en": "Proteinogenic amino acids are those found in the sequence of proteins. Do they have any function besides this one?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Sí, son precursores de lípidos de membrana",
+     "en": "Yes, they are precursors of membrane lipids"
+    },
+    "b": {
+     "es": "Sí, son precursores de otros compuestos importantes, como porfirinas, neurotransmisores y nucleótidos",
+     "en": "Yes, they are precursors of other important compounds, such as porphyrins, neurotransmitters and nucleotides"
+    },
+    "c": {
+     "es": "Sí, a través de la glicina y arginina se forma la creatina y posteriormente la fosfocreatina",
+     "en": "Yes, creatine and then phosphocreatine are formed from glycine and arginine"
+    },
+    "d": {
+     "es": "Sí, glutamato, cisteína y glicina forman el péptido antioxidante más importante GSH",
+     "en": "Yes, glutamate, cysteine and glycine form the most important antioxidant peptide, GSH"
+    },
+    "e": {
+     "es": "Sí, en situación de ayuno pueden generar ácidos grasos para reserva",
+     "en": "Yes, during fasting they can generate fatty acids for storage"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender funciones adicionales de AA (porfirinas, neurotransmisores, nucleótidos, creatina, glutatión)",
+    "en": "Understanding additional functions of AA (porphyrins, neurotransmitters, nucleotides, creatine, glutathione)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.6.11",
+   "num": "5.6.11",
+   "tema": 5,
+   "seccion": "5.6",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Las células humanas pueden sintetizar todos los aminoácidos proteinogénicos?",
+    "en": "Can human cells synthesize all the proteinogenic amino acids?"
+   },
+   "opciones": {
+    "a": {
+     "es": "No pueden sintetizar ningún aminoácido, todos deben ser ingeridos en la dieta",
+     "en": "They cannot synthesize any amino acid; all must be obtained from the diet"
+    },
+    "b": {
+     "es": "No, sólo los esenciales",
+     "en": "No, only the essential ones"
+    },
+    "c": {
+     "es": "Sí, si tienen energía suficiente",
+     "en": "Yes, if they have enough energy"
+    },
+    "d": {
+     "es": "Sólo se pueden sintetizar los más sencillos; el resto son esenciales",
+     "en": "Only the simplest ones can be synthesized; the rest are essential"
+    },
+    "e": {
+     "es": "Todas las respuestas anteriores son ciertas",
+     "en": "All the previous answers are true"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar que humanos no sintetizan AA esenciales",
+    "en": "Recalling that humans do not synthesize the essential AA"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.6.12",
+   "num": "5.6.12",
+   "tema": 5,
+   "seccion": "5.6",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Los aminoácidos proteinogénicos son aquellos que se encuentran en la secuencia de las proteínas. ¿Tienen alguna función además de esta?",
+    "en": "Proteinogenic amino acids are those found in the sequence of proteins. Do they have any function besides this one?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Sí, también son precursores de otros compuestos importantes, como porfirinas, neurotransmisores y lípidos de membrana",
+     "en": "Yes, they are also precursors of other important compounds, such as porphyrins, neurotransmitters and membrane lipids"
+    },
+    "b": {
+     "es": "Sí, también son precursores de otros compuestos importantes, como porfirinas, neurotransmisores y nucleótidos",
+     "en": "Yes, they are also precursors of other important compounds, such as porphyrins, neurotransmitters and nucleotides"
+    },
+    "c": {
+     "es": "No, los aminoácidos sólo forman las proteínas y éstas sintetizan cualquier compuesto que la célula necesite",
+     "en": "No, amino acids only form proteins, and these synthesize any compound the cell needs"
+    },
+    "d": {
+     "es": "No, aunque en situaciones de estrés pueden transformarse en ácido palmítico",
+     "en": "No, although under stress they can be converted into palmitic acid"
+    },
+    "e": {
+     "es": "Sí, en situación de ayuno pueden generar ácidos grasos para reserva",
+     "en": "Yes, during fasting they can generate fatty acids for storage"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender función adicional de AA en biosíntesis (nucleótidos)",
+    "en": "Understanding an additional function of AA in biosynthesis (nucleotides)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.7.1",
+   "num": "5.7.1",
+   "tema": 5,
+   "seccion": "5.7",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es el producto final de la degradación de purinas en humanos?",
+    "en": "What is the end product of purine degradation in humans?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ácido úrico",
+     "en": "Uric acid"
+    },
+    "b": {
+     "es": "Amoníaco",
+     "en": "Ammonia"
+    },
+    "c": {
+     "es": "Urea",
+     "en": "Urea"
+    },
+    "d": {
+     "es": "Xantina",
+     "en": "Xanthine"
+    },
+    "e": {
+     "es": "Hipoxantina",
+     "en": "Hypoxanthine"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Recordar el producto final de la degradación de purinas en humanos (ácido úrico)",
+    "en": "Recalling the end product of purine degradation in humans (uric acid)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.7.2",
+   "num": "5.7.2",
+   "tema": 5,
+   "seccion": "5.7",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La inhibición de la xantina oxidasa provoca…",
+    "en": "Inhibition of xanthine oxidase causes…"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumento de ácido úrico",
+     "en": "An increase in uric acid"
+    },
+    "b": {
+     "es": "Acumulación de hipoxantina",
+     "en": "Accumulation of hypoxanthine"
+    },
+    "c": {
+     "es": "Acumulación de alopurinol",
+     "en": "Accumulation of allopurinol"
+    },
+    "d": {
+     "es": "Acumulación de xantina",
+     "en": "Accumulation of xanthine"
+    },
+    "e": {
+     "es": "Aumento de nitratos",
+     "en": "An increase in nitrates"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender las consecuencias de la inhibición de la xantina oxidasa: acumulación de sustratos (hipoxantina y xantina)",
+    "en": "Understanding the consequences of xanthine oxidase inhibition: accumulation of its substrates (hypoxanthine and xanthine)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.7.3",
+   "num": "5.7.3",
+   "tema": 5,
+   "seccion": "5.7",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "La enfermedad de la gota se asocia con…",
+    "en": "Gout is associated with…"
+   },
+   "opciones": {
+    "a": {
+     "es": "Elevados niveles de ácido úrico",
+     "en": "High uric acid levels"
+    },
+    "b": {
+     "es": "Excreción excesiva de urea",
+     "en": "Excessive urea excretion"
+    },
+    "c": {
+     "es": "Depósitos de cristales en articulaciones",
+     "en": "Crystal deposits in the joints"
+    },
+    "d": {
+     "es": "Deficiencia de aspartato",
+     "en": "Aspartate deficiency"
+    },
+    "e": {
+     "es": "Disminución de ornitina",
+     "en": "Decrease in ornithine"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar la relación gota-ácido úrico: hiperuricemia → cristalización → depósitos en articulaciones",
+    "en": "Applying the gout–uric acid relationship: hyperuricemia → crystallization → deposits in the joints"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.7.4",
+   "num": "5.7.4",
+   "tema": 5,
+   "seccion": "5.7",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En pacientes con déficit de la enzima HGPRT, ¿qué ocurre?",
+    "en": "What happens in patients with HGPRT enzyme deficiency?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se reduce la vía de salvamento de purinas",
+     "en": "The purine salvage pathway is reduced"
+    },
+    "b": {
+     "es": "Disminuye la degradación de pirimidinas",
+     "en": "Pyrimidine degradation decreases"
+    },
+    "c": {
+     "es": "Se acumula hipoxantina y guanina",
+     "en": "Hypoxanthine and guanine accumulate"
+    },
+    "d": {
+     "es": "Aparece síndrome de Lesch-Nyhan",
+     "en": "Lesch-Nyhan syndrome appears"
+    },
+    "e": {
+     "es": "Mejora la síntesis de nucleótidos",
+     "en": "Nucleotide synthesis improves"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar las consecuencias del déficit de HGPRT: reducción de vía de salvamento, acumulación de guanina/hipoxantina, síndrome de Lesch-Nyhan",
+    "en": "Analyzing the consequences of HGPRT deficiency: reduced salvage pathway, accumulation of guanine/hypoxanthine, Lesch-Nyhan syndrome"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.7.5",
+   "num": "5.7.5",
+   "tema": 5,
+   "seccion": "5.7",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "¿Por qué la inhibición de inosina monofosfato (IMP) deshidrogenasa puede usarse como terapia inmunosupresora?",
+    "en": "Why can inhibition of inosine monophosphate (IMP) dehydrogenase be used as immunosuppressive therapy?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Porque reduce la síntesis de GMP, esencial para proliferación linfocitaria",
+     "en": "Because it reduces the synthesis of GMP, which is essential for lymphocyte proliferation"
+    },
+    "b": {
+     "es": "Aumenta la degradación de pirimidinas",
+     "en": "It increases pyrimidine degradation"
+    },
+    "c": {
+     "es": "Incrementa la disponibilidad de ácido fólico",
+     "en": "It increases the availability of folic acid"
+    },
+    "d": {
+     "es": "Bloquea la síntesis de ADN en células inmunes",
+     "en": "It blocks DNA synthesis in immune cells"
+    },
+    "e": {
+     "es": "Mejora la síntesis de proteínas musculares",
+     "en": "It improves muscle protein synthesis"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Evaluar el uso de inhibidores de IMP deshidrogenasa (micofenolato) como inmunosupresor (↓GMP → ↓proliferación linfocitaria)",
+    "en": "Evaluating the use of IMP dehydrogenase inhibitors (mycophenolate) as immunosuppressants (↓GMP → ↓lymphocyte proliferation)"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.7.6",
+   "num": "5.7.6",
+   "tema": 5,
+   "seccion": "5.7",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué compuesto aporta el átomo N1 del anillo de purina en la síntesis de la inosina monofosfato (IMP), el nucleótido de purina central?",
+    "en": "Which compound supplies the N1 atom of the purine ring in the synthesis of inosine monophosphate (IMP), the central purine nucleotide?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glutamina",
+     "en": "Glutamine"
+    },
+    "b": {
+     "es": "Aspartato",
+     "en": "Aspartate"
+    },
+    "c": {
+     "es": "Glicina",
+     "en": "Glycine"
+    },
+    "d": {
+     "es": "Amonio libre",
+     "en": "Free ammonium"
+    },
+    "e": {
+     "es": "Urea",
+     "en": "Urea"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Recordar el compuesto que dona el N1 del anillo de purina (aspartato)",
+    "en": "Recalling the compound that donates N1 of the purine ring (aspartate)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.7.7",
+   "num": "5.7.7",
+   "tema": 5,
+   "seccion": "5.7",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En la síntesis <i>de novo</i> de purinas, el paso comprometido es la reacción catalizada por la PRPP glutamina amidotransferasa. ¿Qué factores analizan correctamente la regulación de esta enzima?",
+    "en": "In <i>de novo</i> purine synthesis, the committed step is the reaction catalyzed by PRPP glutamine amidotransferase. Which factors correctly analyze the regulation of this enzyme?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se activa por altos niveles de glutamato",
+     "en": "It is activated by high levels of glutamate"
+    },
+    "b": {
+     "es": "Se activa por ATP para garantizar la energía de la síntesis",
+     "en": "It is activated by ATP to guarantee the energy for synthesis"
+    },
+    "c": {
+     "es": "Se inhibe por retroalimentación al unirse a altas concentraciones de los productos finales (AMP y GMP)",
+     "en": "It is feedback-inhibited by binding high concentrations of the end products (AMP and GMP)"
+    },
+    "d": {
+     "es": "Es activada alostéricamente por su sustrato, el PRPP (fosforribosil pirofosfato)",
+     "en": "It is allosterically activated by its substrate, PRPP (phosphoribosyl pyrophosphate)"
+    },
+    "e": {
+     "es": "Se inhibe irreversiblemente por alopurinol",
+     "en": "It is irreversibly inhibited by allopurinol"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la regulación de PRPP glutamina amidotransferasa: activación por PRPP e inhibición por productos finales (AMP/GMP)",
+    "en": "Analyzing the regulation of PRPP glutamine amidotransferase: activation by PRPP and inhibition by the end products (AMP/GMP)"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.7.8",
+   "num": "5.7.8",
+   "tema": 5,
+   "seccion": "5.7",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "El alopurinol es el fármaco estándar para el tratamiento de la gota. ¿Cuál es la principal justificación metabólica de su uso?",
+    "en": "Allopurinol is the standard drug for the treatment of gout. What is the main metabolic rationale for its use?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Activa el reciclaje de purinas en la vía de salvamento",
+     "en": "It activates purine recycling in the salvage pathway"
+    },
+    "b": {
+     "es": "Aumenta la excreción renal de ácido úrico",
+     "en": "It increases renal excretion of uric acid"
+    },
+    "c": {
+     "es": "Inhibe la xantina oxidasa, reduciendo la producción de ácido úrico a partir de hipoxantina y xantina",
+     "en": "It inhibits xanthine oxidase, reducing the production of uric acid from hypoxanthine and xanthine"
+    },
+    "d": {
+     "es": "Bloquea la síntesis <i>de novo</i> de purinas",
+     "en": "It blocks <i>de novo</i> purine synthesis"
+    },
+    "e": {
+     "es": "Inhibe la síntesis de PRPP",
+     "en": "It inhibits PRPP synthesis"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Evaluar el mecanismo farmacológico del alopurinol: inhibidor de xantina oxidasa para ↓ácido úrico",
+    "en": "Evaluating the pharmacological mechanism of allopurinol: a xanthine oxidase inhibitor that ↓uric acid"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.8.1",
+   "num": "5.8.1",
+   "tema": 5,
+   "seccion": "5.8",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Señale el(los) precursor(es) inmediato(s) del carbamoil fosfato en la síntesis de pirimidinas.",
+    "en": "Indicate the immediate precursor(s) of carbamoyl phosphate in pyrimidine synthesis."
+   },
+   "opciones": {
+    "a": {
+     "es": "Urea",
+     "en": "Urea"
+    },
+    "b": {
+     "es": "Amonio y CO<sub>2</sub>",
+     "en": "Ammonium and CO<sub>2</sub>"
+    },
+    "c": {
+     "es": "Glicina",
+     "en": "Glycine"
+    },
+    "d": {
+     "es": "Glutamina",
+     "en": "Glutamine"
+    },
+    "e": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar los precursores de carbamoil fosfato sintetasa II para pirimidinas (glutamina y CO<sub>2</sub>)",
+    "en": "Recalling the precursors of carbamoyl phosphate synthetase II for pyrimidines (glutamine and CO<sub>2</sub>)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.8.2",
+   "num": "5.8.2",
+   "tema": 5,
+   "seccion": "5.8",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La orotato fosforribosil transferasa participa en la…",
+    "en": "Orotate phosphoribosyltransferase participates in…"
+   },
+   "opciones": {
+    "a": {
+     "es": "Biosíntesis de purinas",
+     "en": "Purine biosynthesis"
+    },
+    "b": {
+     "es": "Síntesis de UMP",
+     "en": "UMP synthesis"
+    },
+    "c": {
+     "es": "Degradación de pirimidinas",
+     "en": "Pyrimidine degradation"
+    },
+    "d": {
+     "es": "Síntesis de carbamoil fosfato",
+     "en": "Carbamoyl phosphate synthesis"
+    },
+    "e": {
+     "es": "Conversión de orotato en OMP",
+     "en": "The conversion of orotate into OMP"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender el rol de orotato fosforribosil transferasa (conversión de orotato → OMP → UMP)",
+    "en": "Understanding the role of orotate phosphoribosyltransferase (conversion of orotate → OMP → UMP)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.8.3",
+   "num": "5.8.3",
+   "tema": 5,
+   "seccion": "5.8",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Una deficiencia de orotato fosforribosil transferasa produce…",
+    "en": "A deficiency of orotate phosphoribosyltransferase causes…"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acumulación de orotato",
+     "en": "Accumulation of orotate"
+    },
+    "b": {
+     "es": "Disminución de urea",
+     "en": "Decrease in urea"
+    },
+    "c": {
+     "es": "Exceso de GMP",
+     "en": "Excess GMP"
+    },
+    "d": {
+     "es": "Anemia megaloblástica",
+     "en": "Megaloblastic anemia"
+    },
+    "e": {
+     "es": "Aumento de carbamoil fosfato",
+     "en": "Increase in carbamoyl phosphate"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar las consecuencias de déficit de orotato fosforribosil transferasa: acumulación de orotato y anemia megaloblástica (↓nucleótidos)",
+    "en": "Applying the consequences of orotate phosphoribosyltransferase deficiency: accumulation of orotate and megaloblastic anemia (↓nucleotides)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.8.4",
+   "num": "5.8.4",
+   "tema": 5,
+   "seccion": "5.8",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "El fármaco 5-fluorouracilo actúa inhibiendo la…",
+    "en": "The drug 5-fluorouracil acts by inhibiting…"
+   },
+   "opciones": {
+    "a": {
+     "es": "Adenilato sintasa",
+     "en": "Adenylate synthase"
+    },
+    "b": {
+     "es": "Timidilato sintasa",
+     "en": "Thymidylate synthase"
+    },
+    "c": {
+     "es": "La síntesis de dTMP",
+     "en": "dTMP synthesis"
+    },
+    "d": {
+     "es": "IMP deshidrogenasa",
+     "en": "IMP dehydrogenase"
+    },
+    "e": {
+     "es": "Producción de dTTP",
+     "en": "dTTP production"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar el mecanismo de acción de 5-fluorouracilo: inhibidor de timidilato sintasa (↓dTMP síntesis)",
+    "en": "Applying the mechanism of action of 5-fluorouracil: thymidylate synthase inhibitor (↓dTMP synthesis)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.8.5",
+   "num": "5.8.5",
+   "tema": 5,
+   "seccion": "5.8",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Qué efecto tendría una inhibición selectiva de la carbamoil fosfato sintetasa II?",
+    "en": "What effect would selective inhibition of carbamoyl phosphate synthetase II have?"
+   },
+   "opciones": {
+    "a": {
+     "es": "No se afectaría la síntesis de nucleótidos",
+     "en": "Nucleotide synthesis would not be affected"
+    },
+    "b": {
+     "es": "Se reduciría la síntesis de pirimidinas",
+     "en": "Pyrimidine synthesis would be reduced"
+    },
+    "c": {
+     "es": "Se incrementaría la síntesis de purinas",
+     "en": "Purine synthesis would increase"
+    },
+    "d": {
+     "es": "Se bloquearía la formación de carbamoil fosfato citosólico",
+     "en": "The formation of cytosolic carbamoyl phosphate would be blocked"
+    },
+    "e": {
+     "es": "Aumentaría la síntesis de ácido úrico",
+     "en": "Uric acid synthesis would increase"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la inhibición selectiva de CPS II: bloqueo de CP citosólico → ↓síntesis de pirimidinas",
+    "en": "Analyzing the selective inhibition of CPS II: block of cytosolic CP → ↓pyrimidine synthesis"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.8.6",
+   "num": "5.8.6",
+   "tema": 5,
+   "seccion": "5.8",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué enzima cataliza el paso comprometido en la síntesis <i>de novo</i> de pirimidinas en las células animales?",
+    "en": "Which enzyme catalyzes the committed step of <i>de novo</i> pyrimidine synthesis in animal cells?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Carbamoil fosfato sintetasa I",
+     "en": "Carbamoyl phosphate synthetase I"
+    },
+    "b": {
+     "es": "Orotato fosforribosil transferasa",
+     "en": "Orotate phosphoribosyltransferase"
+    },
+    "c": {
+     "es": "Carbamoil fosfato sintetasa II (CPS II)",
+     "en": "Carbamoyl phosphate synthetase II (CPS II)"
+    },
+    "d": {
+     "es": "PRPP glutamina amidotransferasa",
+     "en": "PRPP glutamine amidotransferase"
+    },
+    "e": {
+     "es": "Aspartato transcarbamoilasa (ATCasa)",
+     "en": "Aspartate transcarbamoylase (ATCase)"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar la enzima reguladora de la síntesis de pirimidinas en animales (CPS II; en bacterias, la ATCasa)",
+    "en": "Recalling the regulatory enzyme of pyrimidine synthesis in animals (CPS II; in bacteria, ATCase)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.8.7",
+   "num": "5.8.7",
+   "tema": 5,
+   "seccion": "5.8",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "El carbamoil fosfato (CP) es un metabolito central que se produce en dos localizaciones y rutas distintas en la célula animal. ¿Qué afirmaciones analizan correctamente el origen y el destino del CP?",
+    "en": "Carbamoyl phosphate (CP) is a central metabolite produced in two different locations and pathways in the animal cell. Which statements correctly analyze the origin and fate of CP?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El CP producido en el citosol alimenta el ciclo de la urea",
+     "en": "CP produced in the cytosol feeds the urea cycle"
+    },
+    "b": {
+     "es": "El CP mitocondrial (CPS I) es el único origen del nitrógeno para el ciclo de la urea",
+     "en": "Mitochondrial CP (CPS I) is the only source of nitrogen for the urea cycle"
+    },
+    "c": {
+     "es": "El CP citosólico (CPS II) se sintetiza a partir de glutamina y CO<sub>2</sub> para la síntesis de pirimidinas",
+     "en": "Cytosolic CP (CPS II) is synthesized from glutamine and CO<sub>2</sub> for pyrimidine synthesis"
+    },
+    "d": {
+     "es": "El CP citosólico es inhibido alostéricamente por N-acetilglutamato",
+     "en": "Cytosolic CP is allosterically inhibited by N-acetylglutamate"
+    },
+    "e": {
+     "es": "El déficit de ornitina transcarbamoilasa desvía el CP mitocondrial al citosol para síntesis de pirimidinas",
+     "en": "Ornithine transcarbamoylase deficiency diverts mitochondrial CP to the cytosol for pyrimidine synthesis"
+    }
+   },
+   "correctas": [
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar el doble origen del carbamoil fosfato: CPS I mitocondrial (a partir de NH<sub>4</sub><sup>+</sup>, para el ciclo de la urea) y CPS II citosólica (a partir de glutamina, para las pirimidinas), y su conexión en el déficit de OTC",
+    "en": "Analyzing the dual origin of carbamoyl phosphate: mitochondrial CPS I (from NH<sub>4</sub><sup>+</sup>, for the urea cycle) and cytosolic CPS II (from glutamine, for pyrimidines), and their connection in OTC deficiency"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.8.8",
+   "num": "5.8.8",
+   "tema": 5,
+   "seccion": "5.8",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuáles son los precursores de la síntesis <i>de novo</i> de las pirimidinas?",
+    "en": "What are the precursors of <i>de novo</i> pyrimidine synthesis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aspartato, carbamoil fosfato y fosforribosil pirofosfato",
+     "en": "Aspartate, carbamoyl phosphate and phosphoribosyl pyrophosphate"
+    },
+    "b": {
+     "es": "Aspartato, urea y amoníaco",
+     "en": "Aspartate, urea and ammonia"
+    },
+    "c": {
+     "es": "Alanina, adenosina y amonio",
+     "en": "Alanine, adenosine and ammonium"
+    },
+    "d": {
+     "es": "Glucosa, carbamoil fosfato y pirofosfato",
+     "en": "Glucose, carbamoyl phosphate and pyrophosphate"
+    },
+    "e": {
+     "es": "Glucosa y galactosa",
+     "en": "Glucose and galactose"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Recordar precursores <i>de novo</i> de pirimidinas (aspartato, CP, PRPP)",
+    "en": "Recalling the <i>de novo</i> precursors of pyrimidines (aspartate, CP, PRPP)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.9.1",
+   "num": "5.9.1",
+   "tema": 5,
+   "seccion": "5.9",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "La ribonucleótido reductasa convierte…",
+    "en": "Ribonucleotide reductase converts…"
+   },
+   "opciones": {
+    "a": {
+     "es": "NDP en dNDP",
+     "en": "NDP into dNDP"
+    },
+    "b": {
+     "es": "NTP en dNTP",
+     "en": "NTP into dNTP"
+    },
+    "c": {
+     "es": "NMP en NDP",
+     "en": "NMP into NDP"
+    },
+    "d": {
+     "es": "Ribonucleótidos en desoxirribonucleótidos",
+     "en": "Ribonucleotides into deoxyribonucleotides"
+    },
+    "e": {
+     "es": "ATP en dATP",
+     "en": "ATP into dATP"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar la función de ribonucleótido reductasa (RNR): NDP → dNDP",
+    "en": "Recalling the function of ribonucleotide reductase (RNR): NDP → dNDP"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.9.2",
+   "num": "5.9.2",
+   "tema": 5,
+   "seccion": "5.9",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué cofactores necesita la ribonucleótido reductasa?",
+    "en": "Which cofactors does ribonucleotide reductase require?"
+   },
+   "opciones": {
+    "a": {
+     "es": "NADH",
+     "en": "NADH"
+    },
+    "b": {
+     "es": "Tiorredoxina",
+     "en": "Thioredoxin"
+    },
+    "c": {
+     "es": "Glutatión",
+     "en": "Glutathione"
+    },
+    "d": {
+     "es": "Biotina",
+     "en": "Biotin"
+    },
+    "e": {
+     "es": "NADPH como fuente indirecta",
+     "en": "NADPH as an indirect source"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender los cofactores de RNR: tiorredoxina/glutatión (dadores directos), NADPH (fuente indirecta)",
+    "en": "Understanding the cofactors of RNR: thioredoxin/glutathione (direct donors), NADPH (indirect source)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.9.3",
+   "num": "5.9.3",
+   "tema": 5,
+   "seccion": "5.9",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Cómo regula el dATP a la ribonucleótido reductasa?",
+    "en": "How does dATP regulate ribonucleotide reductase?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La inhibe por retroalimentación",
+     "en": "It inhibits it by feedback"
+    },
+    "b": {
+     "es": "Estimula la síntesis de pirimidinas",
+     "en": "It stimulates pyrimidine synthesis"
+    },
+    "c": {
+     "es": "Evita la reducción excesiva de ribonucleótidos",
+     "en": "It prevents excessive reduction of ribonucleotides"
+    },
+    "d": {
+     "es": "Disminuye la síntesis de GTP",
+     "en": "It decreases GTP synthesis"
+    },
+    "e": {
+     "es": "Bloquea la síntesis de desoxirribonucleótidos",
+     "en": "It blocks deoxyribonucleotide synthesis"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar la regulación de RNR: inhibición por dATP (retroalimentación), ↓síntesis de dNDP",
+    "en": "Applying the regulation of RNR: inhibition by dATP (feedback), ↓dNDP synthesis"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.9.4",
+   "num": "5.9.4",
+   "tema": 5,
+   "seccion": "5.9",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En un paciente con déficit de adenosina desaminasa (ADA), ¿qué ocurre con los linfocitos?",
+    "en": "In a patient with adenosine deaminase (ADA) deficiency, what happens to the lymphocytes?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acumulan dATP, inhibiendo la ribonucleótido reductasa",
+     "en": "They accumulate dATP, which inhibits ribonucleotide reductase"
+    },
+    "b": {
+     "es": "Sufren inmunodeficiencia grave combinada (SCID)",
+     "en": "They develop severe combined immunodeficiency (SCID)"
+    },
+    "c": {
+     "es": "Aumentan la síntesis de purinas",
+     "en": "They increase purine synthesis"
+    },
+    "d": {
+     "es": "Mejoran la síntesis de pirimidinas",
+     "en": "They improve pyrimidine synthesis"
+    },
+    "e": {
+     "es": "Se reduce la proliferación celular",
+     "en": "Cell proliferation is reduced"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar la cascada de déficit de ADA: acumulación de dATP → inhibición RNR → ↓proliferación linfocitaria → SCID",
+    "en": "Analyzing the cascade of ADA deficiency: accumulation of dATP → inhibition of RNR → ↓lymphocyte proliferation → SCID"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.9.5",
+   "num": "5.9.5",
+   "tema": 5,
+   "seccion": "5.9",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "¿Por qué los inhibidores de la ribonucleótido reductasa se emplean en quimioterapia?",
+    "en": "Why are ribonucleotide reductase inhibitors used in chemotherapy?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Porque bloquean la síntesis de ADN en células proliferativas",
+     "en": "Because they block DNA synthesis in proliferating cells"
+    },
+    "b": {
+     "es": "Mejoran la síntesis de proteínas",
+     "en": "They improve protein synthesis"
+    },
+    "c": {
+     "es": "Detienen la progresión del ciclo celular",
+     "en": "They halt cell cycle progression"
+    },
+    "d": {
+     "es": "Reducen la degradación de purinas",
+     "en": "They reduce purine degradation"
+    },
+    "e": {
+     "es": "Incrementan la producción de ATP",
+     "en": "They increase ATP production"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Evaluar el uso quimioterapéutico de inhibidores de RNR: bloqueo de síntesis de ADN → detención del ciclo celular",
+    "en": "Evaluating the chemotherapeutic use of RNR inhibitors: block of DNA synthesis → cell cycle arrest"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.9.6",
+   "num": "5.9.6",
+   "tema": 5,
+   "seccion": "5.9",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "La enzima ribonucleótido reductasa (RNR) es esencial para la síntesis de ADN al convertir los ribonucleótidos (NDP) en desoxirribonucleótidos (dNDP). ¿Qué afirmaciones describen correctamente su mecanismo y regulación?",
+    "en": "The enzyme ribonucleotide reductase (RNR) is essential for DNA synthesis because it converts ribonucleotides (NDP) into deoxyribonucleotides (dNDP). Which statements correctly describe its mechanism and regulation?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Su actividad requiere la reducción de un grupo sulfhidrilo mediante la tiorredoxina o glutarredoxina para regenerar el sitio activo tras cada ciclo catalítico",
+     "en": "Its activity requires the reduction of a sulfhydryl group by thioredoxin or glutaredoxin to regenerate the active site after each catalytic cycle"
+    },
+    "b": {
+     "es": "Utiliza NADPH como poder reductor directo para la conversión de ribosa a desoxirribosa",
+     "en": "It uses NADPH as the direct reducing power for the conversion of ribose into deoxyribose"
+    },
+    "c": {
+     "es": "Su actividad se regula por un sitio alostérico primario, el sitio de actividad, que se une a ATP (activación) o dATP (inhibición)",
+     "en": "Its activity is regulated by a primary allosteric site, the activity site, which binds ATP (activation) or dATP (inhibition)"
+    },
+    "d": {
+     "es": "Es la única enzima de la ruta que se encuentra activa únicamente durante la fase G1 del ciclo celular",
+     "en": "It is the only enzyme of the pathway that is active only during the G1 phase of the cell cycle"
+    },
+    "e": {
+     "es": "Convierte dUDP en dUMP y luego en dTMP",
+     "en": "It converts dUDP into dUMP and then into dTMP"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender el mecanismo y regulación de RNR: requiere tiorredoxina (reducción) y se regula alostéricamente por ATP/dATP",
+    "en": "Understanding the mechanism and regulation of RNR: it requires thioredoxin (reduction) and is allosterically regulated by ATP/dATP"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-5.9.7",
+   "num": "5.9.7",
+   "tema": 5,
+   "seccion": "5.9",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "La síntesis del desoxirribonucleótido de timina (dTMP) es un punto clave de control en el metabolismo de nucleótidos. Si la enzima timidilato sintasa (TS) o su coenzima esencial (metilen-tetrahidrofolato) se bloquean mediante un agente quimioterapéutico, ¿qué consecuencia metabólica se espera a nivel celular?",
+    "en": "The synthesis of the thymine deoxyribonucleotide (dTMP) is a key control point in nucleotide metabolism. If the enzyme thymidylate synthase (TS) or its essential coenzyme (methylenetetrahydrofolate) is blocked by a chemotherapeutic agent, what metabolic consequence is expected at the cellular level?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acumulación de dTMP debido a la falta de dUTP como sustrato",
+     "en": "Accumulation of dTMP due to the lack of dUTP as a substrate"
+    },
+    "b": {
+     "es": "La RNR detiene completamente la síntesis de todos los dNDP debido a la inhibición por retroalimentación",
+     "en": "RNR completely stops the synthesis of all dNDP owing to feedback inhibition"
+    },
+    "c": {
+     "es": "Aumento de la síntesis de purinas para compensar la falta de timina",
+     "en": "Increased purine synthesis to compensate for the lack of thymine"
+    },
+    "d": {
+     "es": "Bloqueo de la síntesis de dTMP y consecuentemente, una incorporación de dUTP en el ADN (en lugar de dTTP), lo que desencadena ciclos de reparación que agotan los recursos celulares",
+     "en": "Blocked dTMP synthesis and, consequently, incorporation of dUTP into DNA (instead of dTTP), which triggers repair cycles that deplete cellular resources"
+    },
+    "e": {
+     "es": "Se promueve la desaminación de dUTP para formar dTMP",
+     "en": "Deamination of dUTP to form dTMP is promoted"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar el bloqueo de timidilato sintasa: ↓dTMP → incorporación de dUTP en ADN → ciclos de reparación y agotamiento celular",
+    "en": "Analyzing the block of thymidylate synthase: ↓dTMP → incorporation of dUTP into DNA → repair cycles and cellular depletion"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.1",
+   "num": "PC5.1",
+   "tema": 5,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la función biológica de la enzima nitrogenasa y qué cofactor metálico requiere para su actividad?",
+    "en": "What is the biological function of the enzyme nitrogenase, and which metal cofactor does it require for its activity?"
+   },
+   "respuesta": {
+    "es": "Su función biológica es catalizar la fijación del nitrógeno atmosférico (N<sub>2</sub>) a amonio (NH<sub>4</sub><sup>+</sup>). Requiere el cofactor metálico hierro-molibdeno (FeMo).",
+    "en": "Its biological function is to catalyze the fixation of atmospheric nitrogen (N<sub>2</sub>) into ammonium (NH<sub>4</sub><sup>+</sup>). It requires the iron–molybdenum (FeMo) metal cofactor."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación de la función enzimática y el cofactor esencial.",
+    "en": "Requires simple recall of the enzymatic function and the essential cofactor."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.2",
+   "num": "PC5.2",
+   "tema": 5,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué es la desnitrificación y cómo afecta a la fertilidad del suelo?",
+    "en": "What is denitrification, and how does it affect soil fertility?"
+   },
+   "respuesta": {
+    "es": "La desnitrificación es el proceso por el cual los microorganismos reducen los nitratos (NO<sub>3</sub><sup>−</sup>) nuevamente a N<sub>2</sub> (nitrógeno gaseoso). Afecta negativamente a la fertilidad del suelo porque elimina la forma de nitrógeno asimilable por las plantas (nitratos), devolviéndolo a la atmósfera.",
+    "en": "Denitrification is the process by which microorganisms reduce nitrates (NO<sub>3</sub><sup>−</sup>) back to N<sub>2</sub> (nitrogen gas). It reduces soil fertility because it removes the form of nitrogen that plants can assimilate (nitrates), returning it to the atmosphere."
+   },
+   "justificacion": {
+    "es": "Requiere describir el proceso biológico y explicar su consecuencia ecológica/agrícola.",
+    "en": "Requires describing the biological process and explaining its ecological/agricultural consequence."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.3",
+   "num": "PC5.3",
+   "tema": 5,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Explique el concepto de balance de nitrógeno y cómo se manifiesta en un individuo adulto que consume una dieta adecuada para mantener su peso corporal.",
+    "en": "Explain the concept of nitrogen balance and how it manifests in an adult who eats an adequate diet to maintain body weight."
+   },
+   "respuesta": {
+    "es": "El balance de nitrógeno es la diferencia entre el nitrógeno ingerido (principalmente como proteínas) y el nitrógeno excretado (principalmente como urea). Un individuo adulto con una dieta adecuada y peso corporal estable está en balance de nitrógeno neutro o cero, lo que significa que el nitrógeno ingerido es igual al nitrógeno excretado (la síntesis de proteínas es igual a la degradación).",
+    "en": "Nitrogen balance is the difference between the nitrogen ingested (mainly as proteins) and the nitrogen excreted (mainly as urea). An adult with an adequate diet and stable body weight is in neutral, or zero, nitrogen balance, which means that the nitrogen ingested equals the nitrogen excreted (protein synthesis equals degradation)."
+   },
+   "justificacion": {
+    "es": "Requiere usar el concepto de balance de nitrógeno para describir un estado fisiológico (mantenimiento del peso) y su consecuencia metabólica.",
+    "en": "Requires using the concept of nitrogen balance to describe a physiological state (weight maintenance) and its metabolic consequence."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.4",
+   "num": "PC5.4",
+   "tema": 5,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la vía principal de detoxificación del amonio libre (NH<sub>4</sub><sup>+</sup>) en los tejidos de mamíferos para evitar su toxicidad?",
+    "en": "What is the main detoxification pathway for free ammonium (NH<sub>4</sub><sup>+</sup>) in mammalian tissues that prevents its toxicity?"
+   },
+   "respuesta": {
+    "es": "La vía principal es la síntesis de glutamina, catalizada por la enzima glutamina sintetasa.",
+    "en": "The main pathway is glutamine synthesis, catalyzed by the enzyme glutamine synthetase."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación de la molécula y la enzima clave de la detoxificación inicial de NH<sub>4</sub><sup>+</sup>.",
+    "en": "Requires simple recall of the key molecule and enzyme in the initial detoxification of NH<sub>4</sub><sup>+</sup>."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.5",
+   "num": "PC5.5",
+   "tema": 5,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Explique cómo se inicia la degradación controlada de proteínas intracelulares mediante el sistema ubiquitina-proteasoma, especificando la función de la ubiquitina.",
+    "en": "Explain how the controlled degradation of intracellular proteins is initiated by the ubiquitin–proteasome system, specifying the function of ubiquitin."
+   },
+   "respuesta": {
+    "es": "La ubiquitina es una pequeña proteína que actúa como una \"etiqueta de muerte\". Se une a la proteína diana a través de enzimas E1, E2 y E3. La poliubiquitinación de la proteína la marca para su reconocimiento y degradación por el complejo 26S proteasoma.",
+    "en": "Ubiquitin is a small protein that acts as a \"death tag\". It is attached to the target protein through the enzymes E1, E2 and E3. Polyubiquitination marks the protein for recognition and degradation by the 26S proteasome complex."
+   },
+   "justificacion": {
+    "es": "Requiere usar el conocimiento del sistema de degradación para describir la función de una molécula clave (ubiquitina) en el proceso de marcaje.",
+    "en": "Requires using knowledge of the degradation system to describe the function of a key molecule (ubiquitin) in the tagging process."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.6",
+   "num": "PC5.6",
+   "tema": 5,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Describa las dos formas principales en que el NH<sub>4</sub><sup>+</sup> se transporta desde el músculo hasta el hígado de forma segura, y analice por qué esto es necesario.",
+    "en": "Describe the two main ways in which NH<sub>4</sub><sup>+</sup> is safely transported from muscle to the liver, and analyze why this is necessary."
+   },
+   "respuesta": {
+    "es": "Las dos formas son: 1) Como glutamina (vía glutamato+NH<sub>4</sub><sup>+</sup>). 2) Como alanina (vía ciclo glucosa-alanina). Es necesario porque el amonio libre es altamente tóxico para el sistema nervioso central, y debe ser transportado de forma no tóxica para su conversión final a urea en el hígado.",
+    "en": "The two forms are: 1) As glutamine (via glutamate + NH<sub>4</sub><sup>+</sup>). 2) As alanine (via the glucose–alanine cycle). This is necessary because free ammonium is highly toxic to the central nervous system and must be transported in a non-toxic form for its final conversion into urea in the liver."
+   },
+   "justificacion": {
+    "es": "Exige desglosar los dos mecanismos de transporte interorgánico y explicar la justificación fisiológica (toxicidad del NH<sub>4</sub><sup>+</sup>).",
+    "en": "Requires breaking down the two interorgan transport mechanisms and explaining the physiological rationale (toxicity of NH<sub>4</sub><sup>+</sup>)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.7",
+   "num": "PC5.7",
+   "tema": 5,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la principal enzima reguladora del ciclo de la urea y qué molécula es su activador alostérico clave?",
+    "en": "What is the main regulatory enzyme of the urea cycle, and which molecule is its key allosteric activator?"
+   },
+   "respuesta": {
+    "es": "La principal enzima reguladora es la carbamoil fosfato sintetasa I (CPS I). Su activador alostérico clave es el N-acetilglutamato (NAG).",
+    "en": "The main regulatory enzyme is carbamoyl phosphate synthetase I (CPS I). Its key allosteric activator is N-acetylglutamate (NAG)."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación de la enzima y el regulador alostérico.",
+    "en": "Requires simple recall of the enzyme and its allosteric regulator."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.8",
+   "num": "PC5.8",
+   "tema": 5,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Explique el papel del glutamato en las reacciones de transaminación (transaminasas) y la función de la enzima glutamato deshidrogenasa (GDH).",
+    "en": "Explain the role of glutamate in transamination reactions (transaminases) and the function of the enzyme glutamate dehydrogenase (GDH)."
+   },
+   "respuesta": {
+    "es": "El glutamato actúa como el colector central de grupos amino. En la transaminación, transfiere su grupo NH<sub>2</sub> a α-cetoácidos, convirtiéndose en α-cetoglutarato (y viceversa). La GDH cataliza su desaminación oxidativa para liberar el amonio libre que entra al ciclo de la urea.",
+    "en": "Glutamate acts as the central collector of amino groups. In transamination, it transfers its NH<sub>2</sub> group to α-keto acids and is converted into α-ketoglutarate (and vice versa). GDH catalyzes its oxidative deamination to release the free ammonium that enters the urea cycle."
+   },
+   "justificacion": {
+    "es": "Requiere usar el conocimiento del rol central del glutamato para describir dos funciones enzimáticas relacionadas (transaminación y GDH).",
+    "en": "Requires using knowledge of the central role of glutamate to describe two related enzymatic functions (transamination and GDH)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.9",
+   "num": "PC5.9",
+   "tema": 5,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analice la conexión metabólica entre el ciclo de la urea y el ciclo de Krebs y la consecuencia de una deficiencia en la enzima argininosuccinato liasa.",
+    "en": "Analyze the metabolic connection between the urea cycle and the Krebs cycle, and the consequence of a deficiency of the enzyme argininosuccinate lyase."
+   },
+   "respuesta": {
+    "es": "Ambos ciclos están conectados por la lanzadera aspartato-argininosuccinato. El fumarato se genera en el ciclo de la urea y es un intermediario del ciclo de Krebs. Una deficiencia de la argininosuccinato liasa (la enzima que libera el fumarato) provoca la acumulación de argininosuccinato y, crucialmente, conduce a una hiperamonemia (acumulación de NH<sub>4</sub><sup>+</sup>), ya que el ciclo queda bloqueado.",
+    "en": "The two cycles are connected by the aspartate–argininosuccinate shunt. Fumarate is generated in the urea cycle and is an intermediate of the Krebs cycle. A deficiency of argininosuccinate lyase (the enzyme that releases fumarate) causes argininosuccinate to accumulate and, crucially, leads to hyperammonemia (accumulation of NH<sub>4</sub><sup>+</sup>), since the cycle is blocked."
+   },
+   "justificacion": {
+    "es": "Exige desglosar la conexión entre los dos ciclos y predecir la consecuencia metabólica de la deficiencia de una enzima clave.",
+    "en": "Requires breaking down the connection between the two cycles and predicting the metabolic consequence of a deficiency of a key enzyme."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.10",
+   "num": "PC5.10",
+   "tema": 5,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué significa que un aminoácido sea glucogénico y cuál es el destino final del esqueleto carbonado de un AA glucogénico?",
+    "en": "What does it mean for an amino acid to be glucogenic, and what is the final fate of the carbon skeleton of a glucogenic AA?"
+   },
+   "respuesta": {
+    "es": "Significa que su esqueleto carbonado puede ser convertido en glucosa. El destino final del esqueleto carbonado es convertirse en un intermediario del ciclo de Krebs o piruvato (precursores de la gluconeogénesis).",
+    "en": "It means that its carbon skeleton can be converted into glucose. The final fate of the carbon skeleton is to become a Krebs cycle intermediate or pyruvate (precursors of gluconeogenesis)."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación de la definición y el destino metabólico del esqueleto carbonado.",
+    "en": "Requires simple recall of the definition and of the metabolic fate of the carbon skeleton."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.11",
+   "num": "PC5.11",
+   "tema": 5,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Mencione los dos aminoácidos clasificados como cetogénicos puros y explique por qué se les clasifica así.",
+    "en": "Name the two amino acids classified as purely ketogenic and explain why they are classified this way."
+   },
+   "respuesta": {
+    "es": "Los dos aminoácidos son leucina y lisina. Se clasifican como cetogénicos puros porque sus esqueletos carbonados solo se degradan a acetil-CoA o acetoacetil-CoA (que solo pueden formar cuerpos cetónicos o ácidos grasos) y no pueden producir glucosa neta.",
+    "en": "The two amino acids are leucine and lysine. They are classified as purely ketogenic because their carbon skeletons are degraded only to acetyl-CoA or acetoacetyl-CoA (which can only form ketone bodies or fatty acids) and cannot produce net glucose."
+   },
+   "justificacion": {
+    "es": "Requiere usar el conocimiento de la clasificación metabólica para nombrar los AA y justificar su destino (no glucogénico).",
+    "en": "Requires using knowledge of the metabolic classification to name the AA and justify their fate (non-glucogenic)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.12",
+   "num": "PC5.12",
+   "tema": 5,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe el impacto en el metabolismo de un ayuno prolongado si un individuo tuviera una mutación que le impidiera metabolizar aminoácidos glucogénicos.",
+    "en": "Evaluate the impact on metabolism during prolonged fasting if an individual had a mutation that prevented them from metabolizing glucogenic amino acids."
+   },
+   "respuesta": {
+    "es": "El individuo experimentaría una hipoglucemia severa e intratable después de agotar el glucógeno hepático. La gluconeogénesis (vía de supervivencia clave en ayuno prolongado) se vería gravemente comprometida, ya que los esqueletos carbonados de los AA (principal fuente de GNG en este estado) no estarían disponibles para formar glucosa para el cerebro.",
+    "en": "The individual would experience severe, intractable hypoglycemia after depleting liver glycogen. Gluconeogenesis (a key survival pathway in prolonged fasting) would be seriously compromised, since the carbon skeletons of AA (the main source for GNG in this state) would not be available to form glucose for the brain."
+   },
+   "justificacion": {
+    "es": "Requiere un juicio crítico sobre el impacto de la falla de una ruta metabólica específica (GNG a partir de AA) en la homeostasis sistémica durante una situación de estrés (ayuno).",
+    "en": "Requires a critical judgment of the impact of the failure of a specific metabolic pathway (GNG from AA) on systemic homeostasis during a stress situation (fasting)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.13",
+   "num": "PC5.13",
+   "tema": 5,
+   "concepto_clave": "V",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la ruta biosintética iniciada en el citosol que requiere la acción de la enzima carbamoil fosfato sintetasa II (CPS II)?",
+    "en": "Which biosynthetic pathway, initiated in the cytosol, requires the action of the enzyme carbamoyl phosphate synthetase II (CPS II)?"
+   },
+   "respuesta": {
+    "es": "La ruta biosintética es la síntesis de nucleótidos de pirimidina (ej., UTP, CTP).",
+    "en": "The biosynthetic pathway is pyrimidine nucleotide synthesis (e.g., UTP, CTP)."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación de la ruta biosintética asociada a la enzima citosólica.",
+    "en": "Requires simple recall of the biosynthetic pathway associated with the cytosolic enzyme."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.14",
+   "num": "PC5.14",
+   "tema": 5,
+   "concepto_clave": "V",
+   "tipo": "corta",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál es la función de la enzima ribonucleótido reductasa (RNR) y por qué es esencial para la síntesis de ADN?",
+    "en": "What is the function of the enzyme ribonucleotide reductase (RNR), and why is it essential for DNA synthesis?"
+   },
+   "respuesta": {
+    "es": "La función de la RNR es reducir los ribonucleótidos (ARN precursores) a desoxirribonucleótidos (ADN precursores). Es esencial porque el ADN requiere desoxirribosa y es la única forma en que la célula puede generar los bloques de construcción necesarios para la replicación del ADN.",
+    "en": "The function of RNR is to reduce ribonucleotides (RNA precursors) to deoxyribonucleotides (DNA precursors). It is essential because DNA requires deoxyribose, and this is the only way the cell can generate the building blocks needed for DNA replication."
+   },
+   "justificacion": {
+    "es": "Requiere describir la función de la enzima y explicar su rol en la síntesis de ADN.",
+    "en": "Requires describing the function of the enzyme and explaining its role in DNA synthesis."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": false,
+   "traduccion": "done"
+  },
+  {
+   "id": "T5-PC5.15",
+   "num": "PC5.15",
+   "tema": 5,
+   "concepto_clave": "V",
+   "tipo": "corta",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analizar: ¿Por qué la inhibición de la enzima xantina oxidasa es un tratamiento eficaz contra la gota?",
+    "en": "Analyze: why is inhibition of the enzyme xanthine oxidase an effective treatment for gout?"
+   },
+   "respuesta": {
+    "es": "La gota es causada por la acumulación de ácido úrico (producto final del catabolismo de las purinas) que precipita en las articulaciones. La xantina oxidasa es la enzima que cataliza los pasos finales de esta degradación (hipoxantina→xantina→ácido úrico). Inhibirla reduce directamente la producción de ácido úrico, disminuyendo sus niveles en sangre y aliviando los síntomas de la gota.",
+    "en": "Gout is caused by the accumulation of uric acid (the end product of purine catabolism), which precipitates in the joints. Xanthine oxidase is the enzyme that catalyzes the final steps of this degradation (hypoxanthine → xanthine → uric acid). Inhibiting it directly reduces uric acid production, lowering its blood levels and relieving the symptoms of gout."
+   },
+   "justificacion": {
+    "es": "Exige desglosar la patología de la gota y correlacionar la acción de una enzima (y su inhibición farmacológica) con el producto que causa la enfermedad.",
+    "en": "Requires breaking down the pathology of gout and correlating the action of an enzyme (and its pharmacological inhibition) with the product that causes the disease."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": false,
+   "traduccion": "done"
+  }
+ ]
+}

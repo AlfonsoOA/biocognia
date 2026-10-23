@@ -1,0 +1,4886 @@
+{
+ "schema": "metahub-tema/1",
+ "tema": 7,
+ "titulo": {
+  "es": "Integración del metabolismo",
+  "en": "Integration of metabolism"
+ },
+ "secciones": {
+  "7.1": {
+   "es": "Perfil metabólico de los principales órganos y tejidos",
+   "en": "Metabolic profile of the main organs and tissues"
+  },
+  "7.2": {
+   "es": "Visión integrada del metabolismo de glúcidos, lípidos y aminoácidos",
+   "en": "Integrated view of carbohydrate, lipid and amino acid metabolism"
+  },
+  "7.3": {
+   "es": "Interrelaciones metabólicas en situaciones fisiológicas y patológicas",
+   "en": "Metabolic interrelationships in physiological and pathological situations"
+  },
+  "7.4": {
+   "es": "Coordinación entre órganos y tejidos. Integración de la respuesta hormonal",
+   "en": "Coordination between organs and tissues. Integration of the hormonal response"
+  }
+ },
+ "conceptos_clave": {
+  "I": {
+   "es": "coordinación hígado-músculo",
+   "en": "liver–muscle coordination"
+  },
+  "II": {
+   "es": "regulación recíproca (glúcidos y lípidos)",
+   "en": "reciprocal regulation (carbohydrates and lipids)"
+  },
+  "III": {
+   "es": "estados metabólicos y patología",
+   "en": "metabolic states and disease"
+  },
+  "IV": {
+   "es": "cerebro y eritrocitos",
+   "en": "brain and erythrocytes"
+  },
+  "V": {
+   "es": "hormonas de estrés (cortisol/adrenalina)",
+   "en": "stress hormones (cortisol/epinephrine)"
+  }
+ },
+ "preguntas": [
+  {
+   "id": "T7-7.1.1",
+   "num": "7.1.1",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la función del hígado en cuanto al metabolismo de los carbohidratos?",
+    "en": "What is the function of the liver in carbohydrate metabolism?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Mantener el nivel adecuado de glucosa en la sangre (homeostasis)",
+     "en": "To maintain an adequate blood glucose level (homeostasis)"
+    },
+    "b": {
+     "es": "Eliminar toda la glucosa del torrente sanguíneo",
+     "en": "To remove all glucose from the bloodstream"
+    },
+    "c": {
+     "es": "Fosforilar los aminoácidos glucogénicos",
+     "en": "To phosphorylate glucogenic amino acids"
+    },
+    "d": {
+     "es": "Sintetizar glucosa a partir de ribosas fosfato",
+     "en": "To synthesize glucose from ribose phosphates"
+    },
+    "e": {
+     "es": "Ninguna afirmación es correcta",
+     "en": "None of the statements is correct"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Recordar las funciones del hígado respecto a la glucosa",
+    "en": "Recalling the functions of the liver with respect to glucose"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.2",
+   "num": "7.1.2",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "El tejido adiposo…",
+    "en": "Adipose tissue…"
+   },
+   "opciones": {
+    "a": {
+     "es": "nunca aumenta de tamaño",
+     "en": "never increases in size"
+    },
+    "b": {
+     "es": "sólo sirve para almacenar energía en forma de ácidos grasos",
+     "en": "serves only to store energy in the form of fatty acids"
+    },
+    "c": {
+     "es": "responde al glucagón cuando los niveles de glucosa en sangre son bajos",
+     "en": "responds to glucagon when blood glucose levels are low"
+    },
+    "d": {
+     "es": "sólo responde a señales neuronales",
+     "en": "responds only to neural signals"
+    },
+    "e": {
+     "es": "almacena triglicéridos",
+     "en": "stores triglycerides"
+    }
+   },
+   "correctas": [
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender las dos funciones principales del tejido adiposo: almacenamiento de TAG y respuesta a hormonas catabólicas como el glucagón",
+    "en": "Understanding the two main functions of adipose tissue: storage of TAG and response to catabolic hormones such as glucagon"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.3",
+   "num": "7.1.3",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "El hígado posee glucosa-6-fosfatasa, lo cual explica que…",
+    "en": "The liver has glucose-6-phosphatase, which explains why it…"
+   },
+   "opciones": {
+    "a": {
+     "es": "puede formar glucógeno",
+     "en": "can form glycogen"
+    },
+    "b": {
+     "es": "puede exportar a otros tejidos la glucosa que sintetiza",
+     "en": "can export the glucose it synthesizes to other tissues"
+    },
+    "c": {
+     "es": "es capaz de utilizar la glucosa para obtener poder reductor",
+     "en": "is able to use glucose to obtain reducing power"
+    },
+    "d": {
+     "es": "es capaz de utilizar la glucosa formada en el cerebro",
+     "en": "is able to use the glucose formed in the brain"
+    },
+    "e": {
+     "es": "puede desfosforilar la glucosa-6-fosfato y obtener glucosa",
+     "en": "can dephosphorylate glucose-6-phosphate and obtain glucose"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender la función de la glucosa-6-fosfatasa (desfosforilación) y su consecuencia funcional (exportación de glucosa)",
+    "en": "Understanding the function of glucose-6-phosphatase (dephosphorylation) and its functional consequence (glucose export)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.4",
+   "num": "7.1.4",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Un aumento sostenido de glucagón en sangre producirá:",
+    "en": "A sustained increase in blood glucagon will produce:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Estimulación de la gluconeogénesis",
+     "en": "Stimulation of gluconeogenesis"
+    },
+    "b": {
+     "es": "Estimulación de la glucogenólisis",
+     "en": "Stimulation of glycogenolysis"
+    },
+    "c": {
+     "es": "Estimulación de la glucólisis en hígado",
+     "en": "Stimulation of glycolysis in the liver"
+    },
+    "d": {
+     "es": "Estimulación de la síntesis de glucógeno",
+     "en": "Stimulation of glycogen synthesis"
+    },
+    "e": {
+     "es": "Aumento de lipólisis en tejido adiposo",
+     "en": "Increased lipolysis in adipose tissue"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender los efectos catabólicos del glucagón en hígado (GNG, glucogenólisis) y tejido adiposo (lipólisis)",
+    "en": "Understanding the catabolic effects of glucagon in the liver (GNG, glycogenolysis) and adipose tissue (lipolysis)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.5",
+   "num": "7.1.5",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué tipo de metabolismo se observa en el músculo cardíaco?",
+    "en": "What type of metabolism is observed in cardiac muscle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Exclusivamente aerobio, por lo que contiene muchas mitocondrias",
+     "en": "Exclusively aerobic, which is why it contains many mitochondria"
+    },
+    "b": {
+     "es": "Exclusivamente aerobio, aunque no tiene mitocondrias",
+     "en": "Exclusively aerobic, although it has no mitochondria"
+    },
+    "c": {
+     "es": "Aerobio o anaerobio, según la energía disponible",
+     "en": "Aerobic or anaerobic, depending on the energy available"
+    },
+    "d": {
+     "es": "Exclusivamente anaerobio",
+     "en": "Exclusively anaerobic"
+    },
+    "e": {
+     "es": "Aerobio si no hay oxígeno",
+     "en": "Aerobic if there is no oxygen"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Recordar la característica metabólica del músculo cardíaco (dependencia aerobia)",
+    "en": "Recalling the metabolic characteristic of cardiac muscle (aerobic dependence)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.6",
+   "num": "7.1.6",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es el principal sustrato energético utilizado por el cerebro en condiciones fisiológicas normales (bien alimentado)?",
+    "en": "What is the main energy substrate used by the brain under normal physiological (well-fed) conditions?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Cuerpos cetónicos",
+     "en": "Ketone bodies"
+    },
+    "b": {
+     "es": "Ácidos grasos",
+     "en": "Fatty acids"
+    },
+    "c": {
+     "es": "Glucosa",
+     "en": "Glucose"
+    },
+    "d": {
+     "es": "Aminoácidos",
+     "en": "Amino acids"
+    },
+    "e": {
+     "es": "Lactato",
+     "en": "Lactate"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar el sustrato energético primario del cerebro en condiciones normales (glucosa)",
+    "en": "Recalling the primary energy substrate of the brain under normal conditions (glucose)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.7",
+   "num": "7.1.7",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Por qué el músculo esquelético, a diferencia del hígado, no puede liberar glucosa al torrente sanguíneo?",
+    "en": "Why can skeletal muscle, unlike the liver, not release glucose into the bloodstream?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El músculo carece de transportadores GLUT2",
+     "en": "Muscle lacks GLUT2 transporters"
+    },
+    "b": {
+     "es": "El glucógeno muscular es estructuralmente diferente",
+     "en": "Muscle glycogen is structurally different"
+    },
+    "c": {
+     "es": "Carece de la enzima glucosa-6-fosfatasa",
+     "en": "It lacks the enzyme glucose-6-phosphatase"
+    },
+    "d": {
+     "es": "La hexoquinasa muscular es insensible al control hormonal",
+     "en": "Muscle hexokinase is insensitive to hormonal control"
+    },
+    "e": {
+     "es": "El músculo exporta NADH en lugar de glucosa",
+     "en": "Muscle exports NADH instead of glucose"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de la compartimentación enzimática para explicar la diferencia funcional entre órganos (el músculo no libera glucosa por falta de G6Pasa)",
+    "en": "Applying knowledge of enzyme compartmentalization to explain the functional difference between organs (muscle does not release glucose because it lacks G6Pase)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.8",
+   "num": "7.1.8",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Si un individuo ha estado en ayuno durante 48 horas, ¿qué sustratos utiliza su músculo esquelético en reposo para obtener energía?",
+    "en": "If an individual has been fasting for 48 hours, which substrates does their resting skeletal muscle use to obtain energy?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucosa proveniente del hígado",
+     "en": "Glucose from the liver"
+    },
+    "b": {
+     "es": "Ácidos grasos libres",
+     "en": "Free fatty acids"
+    },
+    "c": {
+     "es": "Lactato del cerebro",
+     "en": "Lactate from the brain"
+    },
+    "d": {
+     "es": "Cuerpos cetónicos (en menor medida)",
+     "en": "Ketone bodies (to a lesser extent)"
+    },
+    "e": {
+     "es": "Aminoácidos (principalmente BCAAs)",
+     "en": "Amino acids (mainly BCAAs)"
+    }
+   },
+   "correctas": [
+    "b",
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento del estado de ayuno prolongado al músculo: usa AG como primario, cuerpos cetónicos como secundario y AA catabolismo",
+    "en": "Applying knowledge of the prolonged fasting state to muscle: it uses FA as the primary fuel, ketone bodies as a secondary fuel, and AA catabolism"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.9",
+   "num": "7.1.9",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analice las consecuencias metabólicas de una deficiencia total de la enzima piruvato deshidrogenasa (PDH) en el cerebro.",
+    "en": "Analyze the metabolic consequences of a total deficiency of the enzyme pyruvate dehydrogenase (PDH) in the brain."
+   },
+   "opciones": {
+    "a": {
+     "es": "Reducción severa de la síntesis de acetil-CoA a partir de glucosa",
+     "en": "Severe reduction in the synthesis of acetyl-CoA from glucose"
+    },
+    "b": {
+     "es": "Aumento inmediato del uso de glucosa para ATP",
+     "en": "Immediate increase in the use of glucose for ATP"
+    },
+    "c": {
+     "es": "Desvío del piruvato a lactato y alanina",
+     "en": "Diversion of pyruvate to lactate and alanine"
+    },
+    "d": {
+     "es": "Dependencia obligada de cuerpos cetónicos como única fuente de acetil-CoA",
+     "en": "Obligatory dependence on ketone bodies as the only source of acetyl-CoA"
+    },
+    "e": {
+     "es": "Aumento de la gluconeogénesis",
+     "en": "Increased gluconeogenesis"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la ruta de la PDH: su bloqueo impide acetil-CoA a partir de glucosa, desviando a lactato/alanina y forzando el uso de cuerpos cetónicos",
+    "en": "Analyzing the PDH pathway: its block prevents acetyl-CoA formation from glucose, diverting pyruvate to lactate/alanine and forcing the use of ketone bodies"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.10",
+   "num": "7.1.10",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál de las siguientes es una función metabólica clave del tejido adiposo blanco?",
+    "en": "Which of the following is a key metabolic function of white adipose tissue?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Producir VLDL",
+     "en": "Producing VLDL"
+    },
+    "b": {
+     "es": "Exportar glucosa",
+     "en": "Exporting glucose"
+    },
+    "c": {
+     "es": "Almacenar triacilgliceroles",
+     "en": "Storing triacylglycerols"
+    },
+    "d": {
+     "es": "Realizar gluconeogénesis",
+     "en": "Carrying out gluconeogenesis"
+    },
+    "e": {
+     "es": "Exportar IDL",
+     "en": "Exporting IDL"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender la función primordial del tejido adiposo blanco (almacenamiento de TAG)",
+    "en": "Understanding the primary function of white adipose tissue (TAG storage)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.11",
+   "num": "7.1.11",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué tipo de lípidos son los principales sustratos energéticos del músculo en reposo o ejercicio moderado?",
+    "en": "Which type of lipids are the main energy substrates of muscle at rest or during moderate exercise?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucosa",
+     "en": "Glucose"
+    },
+    "b": {
+     "es": "Cuerpos cetónicos",
+     "en": "Ketone bodies"
+    },
+    "c": {
+     "es": "Colesterol",
+     "en": "Cholesterol"
+    },
+    "d": {
+     "es": "Ácidos grasos",
+     "en": "Fatty acids"
+    },
+    "e": {
+     "es": "VLDL",
+     "en": "VLDL"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar el sustrato energético preferente del músculo en reposo (ácidos grasos)",
+    "en": "Recalling the preferred energy substrate of resting muscle (fatty acids)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.12",
+   "num": "7.1.12",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Un paciente con un defecto genético en la enzima carnitina palmitoiltransferasa I (CPT-I) tendrá dificultad para utilizar:",
+    "en": "A patient with a genetic defect in the enzyme carnitine palmitoyltransferase I (CPT-I) will have difficulty using:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucosa",
+     "en": "Glucose"
+    },
+    "b": {
+     "es": "Ácidos grasos de cadena larga",
+     "en": "Long-chain fatty acids"
+    },
+    "c": {
+     "es": "Cuerpos cetónicos",
+     "en": "Ketone bodies"
+    },
+    "d": {
+     "es": "Aminoácidos",
+     "en": "Amino acids"
+    },
+    "e": {
+     "es": "Ácidos grasos de cadena corta",
+     "en": "Short-chain fatty acids"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de CPT-I: es necesaria para la β-oxidación mitocondrial de AG de cadena larga",
+    "en": "Applying knowledge of CPT-I: it is required for the mitochondrial β-oxidation of long-chain FA"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.13",
+   "num": "7.1.13",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué hormona regula la captación de glucosa por el tejido muscular y adiposo mediante el transportador GLUT4?",
+    "en": "Which hormone regulates glucose uptake by muscle and adipose tissue through the GLUT4 transporter?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucagón",
+     "en": "Glucagon"
+    },
+    "b": {
+     "es": "Adrenalina",
+     "en": "Epinephrine"
+    },
+    "c": {
+     "es": "Cortisol",
+     "en": "Cortisol"
+    },
+    "d": {
+     "es": "Insulina",
+     "en": "Insulin"
+    },
+    "e": {
+     "es": "Leptina",
+     "en": "Leptin"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar la hormona clave para la translocación de GLUT4 (insulina)",
+    "en": "Recalling the key hormone for GLUT4 translocation (insulin)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.14",
+   "num": "7.1.14",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál de las siguientes funciones es única del hígado, entre los órganos principales, en el metabolismo de los aminoácidos?",
+    "en": "Which of the following functions is unique to the liver, among the main organs, in amino acid metabolism?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Síntesis de proteínas",
+     "en": "Protein synthesis"
+    },
+    "b": {
+     "es": "Eliminación del exceso de nitrógeno en forma de urea.",
+     "en": "Elimination of excess nitrogen as urea."
+    },
+    "c": {
+     "es": "Catabolismo para obtener energía",
+     "en": "Catabolism to obtain energy"
+    },
+    "d": {
+     "es": "Síntesis de glutamina",
+     "en": "Glutamine synthesis"
+    },
+    "e": {
+     "es": "Transaminación de aminoácidos",
+     "en": "Transamination of amino acids"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender la función exclusiva del hígado en la detoxificación nitrogenada (ciclo de la urea)",
+    "en": "Understanding the exclusive function of the liver in nitrogen detoxification (urea cycle)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.15",
+   "num": "7.1.15",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En un ayuno nocturno, la principal fuente de acetil-CoA para el hígado procede de:",
+    "en": "During an overnight fast, the main source of acetyl-CoA for the liver comes from:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucosa de la dieta",
+     "en": "Dietary glucose"
+    },
+    "b": {
+     "es": "β-oxidación de ácidos grasos",
+     "en": "β-Oxidation of fatty acids"
+    },
+    "c": {
+     "es": "Catabolismo de aminoácidos ramificados",
+     "en": "Catabolism of branched-chain amino acids"
+    },
+    "d": {
+     "es": "Glucogenólisis",
+     "en": "Glycogenolysis"
+    },
+    "e": {
+     "es": "Lactato proveniente del músculo",
+     "en": "Lactate from muscle"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento del ayuno nocturno: β-oxidación de AG suministra acetil-CoA y ATP al hígado",
+    "en": "Applying knowledge of the overnight fast: β-oxidation of FA supplies acetyl-CoA and ATP to the liver"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.16",
+   "num": "7.1.16",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Cuáles de las siguientes afirmaciones son ciertas sobre el metabolismo de los ácidos grasos en el hígado?",
+    "en": "Which of the following statements about fatty acid metabolism in the liver are true?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El hígado puede formar cuerpos cetónicos (cetogénesis)",
+     "en": "The liver can form ketone bodies (ketogenesis)"
+    },
+    "b": {
+     "es": "El hígado almacena la mayor parte de los triacilgliceroles del organismo",
+     "en": "The liver stores most of the body's triacylglycerols"
+    },
+    "c": {
+     "es": "El hígado puede catabolizar ácidos grasos (β-oxidación)",
+     "en": "The liver can catabolize fatty acids (β-oxidation)"
+    },
+    "d": {
+     "es": "El hígado puede exportar triacilgliceroles en forma de VLDL",
+     "en": "The liver can export triacylglycerols in the form of VLDL"
+    },
+    "e": {
+     "es": "El hígado puede utilizar LDL como fuente principal de energía en ayuno",
+     "en": "The liver can use LDL as its main energy source during fasting"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar todas las funciones lipídicas del hígado: cetogénesis, β-oxidación y exportación de VLDL",
+    "en": "Analyzing all the lipid functions of the liver: ketogenesis, β-oxidation and VLDL export"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.17",
+   "num": "7.1.17",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué papel juega el ciclo de Cori en la interrelación entre músculo esquelético e hígado?",
+    "en": "What role does the Cori cycle play in the interrelationship between skeletal muscle and the liver?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El músculo exporta alanina que el hígado convierte en glucosa",
+     "en": "Muscle exports alanine, which the liver converts into glucose"
+    },
+    "b": {
+     "es": "El músculo exporta lactato que el hígado utiliza para gluconeogénesis",
+     "en": "Muscle exports lactate, which the liver uses for gluconeogenesis"
+    },
+    "c": {
+     "es": "El hígado exporta cuerpos cetónicos que el músculo usa",
+     "en": "The liver exports ketone bodies that muscle uses"
+    },
+    "d": {
+     "es": "El músculo exporta glucosa que el hígado almacena",
+     "en": "Muscle exports glucose that the liver stores"
+    },
+    "e": {
+     "es": "El hígado exporta urea que el músculo elimina",
+     "en": "The liver exports urea that muscle eliminates"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender el ciclo de Cori: músculo lactato → hígado glucosa (GNG)",
+    "en": "Understanding the Cori cycle: muscle lactate → liver glucose (GNG)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.18",
+   "num": "7.1.18",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "El ciclo de la alanina permite al músculo esquelético deshacerse del grupo amino de los aminoácidos. ¿Qué compuestos son transportados por este ciclo?",
+    "en": "The alanine cycle allows skeletal muscle to get rid of the amino group of amino acids. Which compounds are transported by this cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glutamato del músculo y lactato del hígado",
+     "en": "Glutamate from muscle and lactate from the liver"
+    },
+    "b": {
+     "es": "Alanina del músculo y glucosa del hígado",
+     "en": "Alanine from muscle and glucose from the liver"
+    },
+    "c": {
+     "es": "Glucosa del músculo y urea del hígado",
+     "en": "Glucose from muscle and urea from the liver"
+    },
+    "d": {
+     "es": "Piruvato del músculo y alanina del hígado",
+     "en": "Pyruvate from muscle and alanine from the liver"
+    },
+    "e": {
+     "es": "Nitrógeno (NH<sub>3</sub>) unido a un grupo carbonado y glucosa en un ciclo coordinado",
+     "en": "Nitrogen (NH<sub>3</sub>) bound to a carbon skeleton, and glucose, in a coordinated cycle"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar el concepto de transporte de nitrógeno no tóxico mediante el ciclo de la alanina como nexo entre músculo e hígado",
+    "en": "Applying the concept of nontoxic nitrogen transport via the alanine cycle as a link between muscle and liver"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.19",
+   "num": "7.1.19",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué órganos son considerados insulinoindependientes para la captación de glucosa?",
+    "en": "Which organs are considered insulin-independent for glucose uptake?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Músculo esquelético",
+     "en": "Skeletal muscle"
+    },
+    "b": {
+     "es": "Tejido adiposo",
+     "en": "Adipose tissue"
+    },
+    "c": {
+     "es": "Cerebro",
+     "en": "Brain"
+    },
+    "d": {
+     "es": "Eritrocitos",
+     "en": "Erythrocytes"
+    },
+    "e": {
+     "es": "Hígado",
+     "en": "Liver"
+    }
+   },
+   "correctas": [
+    "c",
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Recordar/comprender qué tejidos usan transportadores GLUT constitutivos (independientes de insulina)",
+    "en": "Recalling/understanding which tissues use constitutive GLUT transporters (independent of insulin)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.20",
+   "num": "7.1.20",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "El riñón puede realizar gluconeogénesis en ayuno prolongado. ¿Cuál es un sustrato preferente para esta función, que además ayuda a neutralizar la acidosis?",
+    "en": "The kidney can carry out gluconeogenesis during prolonged fasting. What is a preferred substrate for this function that also helps neutralize acidosis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Alanina",
+     "en": "Alanine"
+    },
+    "b": {
+     "es": "Lactato",
+     "en": "Lactate"
+    },
+    "c": {
+     "es": "Glicerol",
+     "en": "Glycerol"
+    },
+    "d": {
+     "es": "Piruvato",
+     "en": "Pyruvate"
+    },
+    "e": {
+     "es": "Glutamina",
+     "en": "Glutamine"
+    }
+   },
+   "correctas": [
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar la función GNG del riñón y su papel en la acidosis: glutamina proporciona C y NH<sub>4</sub><sup>+</sup> (excretado) para neutralizar H<sup>+</sup>",
+    "en": "Applying the GNG function of the kidney and its role in acidosis: glutamine provides C and NH<sub>4</sub><sup>+</sup> (excreted) to neutralize H<sup>+</sup>"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.21",
+   "num": "7.1.21",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "El tejido adiposo pardo (TAP) realiza termogénesis sin temblor. ¿Qué condición debe cumplirse para que esto ocurra?",
+    "en": "Brown adipose tissue (BAT) carries out nonshivering thermogenesis. What condition must be met for this to occur?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ausencia de UCP1",
+     "en": "Absence of UCP1"
+    },
+    "b": {
+     "es": "Activación por noradrenalina",
+     "en": "Activation by norepinephrine"
+    },
+    "c": {
+     "es": "Desacoplamiento total de la fosforilación oxidativa por UCP1",
+     "en": "Complete uncoupling of oxidative phosphorylation by UCP1"
+    },
+    "d": {
+     "es": "Producción de ATP a partir de glucosa",
+     "en": "Production of ATP from glucose"
+    },
+    "e": {
+     "es": "Uso exclusivo de cuerpos cetónicos como combustible",
+     "en": "Exclusive use of ketone bodies as fuel"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Analizar el TAP: activación por noradrenalina y el mecanismo molecular (UCP1) para desacoplar la FO",
+    "en": "Analyzing BAT: activation by norepinephrine and the molecular mechanism (UCP1) that uncouples OXPHOS"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.22",
+   "num": "7.1.22",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Si se diseñara un fármaco para tratar la obesidad, ¿cuál de los siguientes enfoques de acción en el tejido adiposo pardo (TAP) sería el más eficaz para promover la pérdida de peso?",
+    "en": "If a drug were designed to treat obesity, which of the following approaches acting on brown adipose tissue (BAT) would be the most effective at promoting weight loss?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Inhibir la lipólisis para evitar la liberación de ácidos grasos",
+     "en": "Inhibiting lipolysis to prevent the release of fatty acids"
+    },
+    "b": {
+     "es": "Promover la transcripción y activación de la UCP1 para aumentar el gasto energético",
+     "en": "Promoting the transcription and activation of UCP1 to increase energy expenditure"
+    },
+    "c": {
+     "es": "Bloquear la captación de glucosa en el TAP",
+     "en": "Blocking glucose uptake in BAT"
+    },
+    "d": {
+     "es": "Inhibir la termogénesis para conservar energía",
+     "en": "Inhibiting thermogenesis to conserve energy"
+    },
+    "e": {
+     "es": "Aumentar la síntesis de triacilgliceroles",
+     "en": "Increasing triacylglycerol synthesis"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Evaluar una estrategia para la obesidad: UCP1 promueve termogénesis sin ATP, aumentando el gasto energético",
+    "en": "Evaluating a strategy for obesity: UCP1 promotes thermogenesis without ATP, increasing energy expenditure"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.23",
+   "num": "7.1.23",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es el principal destino de la glutamina exportada por el músculo durante el ayuno?",
+    "en": "What is the main fate of the glutamine exported by muscle during fasting?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ser usada como fuente de glucosa en el hígado",
+     "en": "To be used as a source of glucose in the liver"
+    },
+    "b": {
+     "es": "Ser usada para síntesis proteica en el riñón",
+     "en": "To be used for protein synthesis in the kidney"
+    },
+    "c": {
+     "es": "Ser usada como fuente de nitrógeno en el riñón",
+     "en": "To be used as a source of nitrogen in the kidney"
+    },
+    "d": {
+     "es": "Ser usada como fuente de glucógeno en el hígado",
+     "en": "To be used as a source of glycogen in the liver"
+    },
+    "e": {
+     "es": "Ser usada como fuente de acetil-CoA en el corazón",
+     "en": "To be used as a source of acetyl-CoA in the heart"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar el destino de la glutamina en ayuno (riñón para NH<sub>4</sub><sup>+</sup>)",
+    "en": "Recalling the fate of glutamine during fasting (kidney, for NH<sub>4</sub><sup>+</sup>)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.24",
+   "num": "7.1.24",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuáles son los principales sustratos energéticos del músculo en un ejercicio de alta intensidad y corta duración (anaerobio)?",
+    "en": "What are the main energy substrates of muscle during high-intensity, short-duration (anaerobic) exercise?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ácidos grasos",
+     "en": "Fatty acids"
+    },
+    "b": {
+     "es": "Glucosa (vía glucólisis)",
+     "en": "Glucose (via glycolysis)"
+    },
+    "c": {
+     "es": "Cuerpos cetónicos",
+     "en": "Ketone bodies"
+    },
+    "d": {
+     "es": "Glucógeno (vía glucogenólisis)",
+     "en": "Glycogen (via glycogenolysis)"
+    },
+    "e": {
+     "es": "Aminoácidos",
+     "en": "Amino acids"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender la fuente energética del ejercicio intenso (glucólisis y glucogenólisis de glucosa/glucógeno)",
+    "en": "Understanding the energy source for intense exercise (glycolysis and glycogenolysis of glucose/glycogen)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.1.25",
+   "num": "7.1.25",
+   "tema": 7,
+   "seccion": "7.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué función comparten el hígado y el riñón durante la gluconeogénesis?",
+    "en": "What function do the liver and kidney share during gluconeogenesis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Usan acetil-CoA como sustrato principal",
+     "en": "They use acetyl-CoA as the main substrate"
+    },
+    "b": {
+     "es": "Convierten el lactato en glucosa",
+     "en": "They convert lactate into glucose"
+    },
+    "c": {
+     "es": "Poseen glucosa-6-fosfatasa",
+     "en": "They have glucose-6-phosphatase"
+    },
+    "d": {
+     "es": "Utilizan aminoácidos como sustrato",
+     "en": "They use amino acids as substrates"
+    },
+    "e": {
+     "es": "Están regulados por insulina",
+     "en": "They are regulated by insulin"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar qué pasos y sustratos son comunes en la GNG de hígado y riñón (lactato, G-6-Pasa, AA)",
+    "en": "Applying which steps and substrates are common to GNG in the liver and kidney (lactate, G-6-Pase, AA)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.1",
+   "num": "7.2.1",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué señales regulan la síntesis y transporte del colesterol?",
+    "en": "Which signals regulate cholesterol synthesis and transport?"
+   },
+   "opciones": {
+    "a": {
+     "es": "No hay una regulación del transporte y síntesis del colesterol",
+     "en": "Cholesterol transport and synthesis are not regulated"
+    },
+    "b": {
+     "es": "Hormonas",
+     "en": "Hormones"
+    },
+    "c": {
+     "es": "Solo hay una regulación energética",
+     "en": "There is only energy-related regulation"
+    },
+    "d": {
+     "es": "El estado energético y la concentración intracelular de esteroles",
+     "en": "The energy state and the intracellular concentration of sterols"
+    },
+    "e": {
+     "es": "Los esteroides",
+     "en": "Steroids"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender la regulación del colesterol (hormonal, energética y esteroles)",
+    "en": "Understanding the regulation of cholesterol (hormonal, energy-related and by sterols)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.2",
+   "num": "7.2.2",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál es el intermediario metabólico central que conecta directamente el catabolismo de la glucosa, los ácidos grasos y la mayoría de los aminoácidos?",
+    "en": "Which central metabolic intermediate directly connects the catabolism of glucose, fatty acids and most amino acids?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Piruvato",
+     "en": "Pyruvate"
+    },
+    "b": {
+     "es": "Acetil-CoA",
+     "en": "Acetyl-CoA"
+    },
+    "c": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    },
+    "d": {
+     "es": "Citrato",
+     "en": "Citrate"
+    },
+    "e": {
+     "es": "Lactato",
+     "en": "Lactate"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender que el acetil-CoA es el punto de convergencia del catabolismo de los tres macronutrientes",
+    "en": "Understanding that acetyl-CoA is the point of convergence of the catabolism of the three macronutrients"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.3",
+   "num": "7.2.3",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "El oxalacetato (OAA) es un metabolito clave en la integración. ¿Cuál de los siguientes procesos lo consume o lo genera?",
+    "en": "Oxaloacetate (OAA) is a key metabolite in integration. Which of the following processes consume or generate it?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Generación: piruvato carboxilasa; Consumo: aspartato aminotransferasa",
+     "en": "Generation: pyruvate carboxylase; Consumption: aspartate aminotransferase"
+    },
+    "b": {
+     "es": "Generación: ciclo de Krebs; Consumo: gluconeogénesis",
+     "en": "Generation: Krebs cycle; Consumption: gluconeogenesis"
+    },
+    "c": {
+     "es": "Generación: glucogenólisis; Consumo: síntesis de urea",
+     "en": "Generation: glycogenolysis; Consumption: urea synthesis"
+    },
+    "d": {
+     "es": "Generación: catabolismo de aminoácidos glucogénicos; Consumo: citrato sintasa",
+     "en": "Generation: catabolism of glucogenic amino acids; Consumption: citrate synthase"
+    },
+    "e": {
+     "es": "Generación: β-oxidación; Consumo: lipogénesis",
+     "en": "Generation: β-oxidation; Consumption: lipogenesis"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el rol central del OAA en GNG (consumo) y CK (citrato sintasa) / AA (transaminación) (generación)",
+    "en": "Applying the central role of OAA in GNG (consumption) and in the KC (citrate synthase) / AA (transamination) (generation)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.4",
+   "num": "7.2.4",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Para que un exceso de glucosa se convierta en ácidos grasos para almacenamiento (lipogénesis), ¿cuáles de los siguientes procesos deben activarse o aumentar?",
+    "en": "For excess glucose to be converted into fatty acids for storage (lipogenesis), which of the following processes must be activated or increased?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucólisis hasta piruvato y acetil-CoA",
+     "en": "Glycolysis to pyruvate and acetyl-CoA"
+    },
+    "b": {
+     "es": "Gluconeogénesis",
+     "en": "Gluconeogenesis"
+    },
+    "c": {
+     "es": "β-oxidación",
+     "en": "β-Oxidation"
+    },
+    "d": {
+     "es": "Transporte de citrato de la mitocondria al citosol",
+     "en": "Transport of citrate from the mitochondrion to the cytosol"
+    },
+    "e": {
+     "es": "Ciclo del glioxilato",
+     "en": "Glyoxylate cycle"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar los requisitos para la lipogénesis: glucosa a acetil-CoA y su exportación como citrato",
+    "en": "Applying the requirements for lipogenesis: glucose to acetyl-CoA and its export as citrate"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.5",
+   "num": "7.2.5",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué compuestos son considerados glucogénicos (pueden generar glucosa) y cetogénicos (pueden generar cuerpos cetónicos) a la vez?",
+    "en": "Which compounds are considered both glucogenic (able to generate glucose) and ketogenic (able to generate ketone bodies)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Piruvato",
+     "en": "Pyruvate"
+    },
+    "b": {
+     "es": "Ácidos grasos de cadena par",
+     "en": "Even-chain fatty acids"
+    },
+    "c": {
+     "es": "Glucosa",
+     "en": "Glucose"
+    },
+    "d": {
+     "es": "Aminoácidos (isoleucina, fenilalanina, tirosina, triptófano)",
+     "en": "Amino acids (isoleucine, phenylalanine, tyrosine, tryptophan)"
+    },
+    "e": {
+     "es": "Lactato",
+     "en": "Lactate"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar qué AA son glucogénicos y cetogénicos a la vez",
+    "en": "Recalling which AA are both glucogenic and ketogenic"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.6",
+   "num": "7.2.6",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un aumento en la concentración de malonil-CoA en el citosol (debido a la síntesis de ácidos grasos) provoca:",
+    "en": "An increase in the concentration of malonyl-CoA in the cytosol (due to fatty acid synthesis) causes:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Inhibición de la β-oxidación",
+     "en": "Inhibition of β-oxidation"
+    },
+    "b": {
+     "es": "Inhibición de la carnitina palmitoiltransferasa I (CPT-I)",
+     "en": "Inhibition of carnitine palmitoyltransferase I (CPT-I)"
+    },
+    "c": {
+     "es": "Inhibición de la cetogénesis",
+     "en": "Inhibition of ketogenesis"
+    },
+    "d": {
+     "es": "Activación de la gluconeogénesis",
+     "en": "Activation of gluconeogenesis"
+    },
+    "e": {
+     "es": "Aumento del transporte de citrato",
+     "en": "Increased citrate transport"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Analizar el efecto de malonil-CoA: inhibe la CPT-I para bloquear β-oxidación y cetogénesis",
+    "en": "Analyzing the effect of malonyl-CoA: it inhibits CPT-I to block β-oxidation and ketogenesis"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.7",
+   "num": "7.2.7",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la principal molécula de transporte de nitrógeno no tóxico desde el músculo esquelético hasta el hígado, especialmente durante el ayuno?",
+    "en": "What is the main nontoxic nitrogen transport molecule from skeletal muscle to the liver, especially during fasting?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Urea",
+     "en": "Urea"
+    },
+    "b": {
+     "es": "Amonio (NH<sub>4</sub><sup>+</sup>)",
+     "en": "Ammonium (NH<sub>4</sub><sup>+</sup>)"
+    },
+    "c": {
+     "es": "Glutamato",
+     "en": "Glutamate"
+    },
+    "d": {
+     "es": "Alanina",
+     "en": "Alanine"
+    },
+    "e": {
+     "es": "Aspartato",
+     "en": "Aspartate"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar el principal transportador N en ayuno (alanina)",
+    "en": "Recalling the main N carrier during fasting (alanine)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.8",
+   "num": "7.2.8",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué proceso permite al hígado producir más NADH en el citosol para soportar la gluconeogénesis?",
+    "en": "Which process allows the liver to produce more NADH in the cytosol to support gluconeogenesis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El ciclo de Cori",
+     "en": "The Cori cycle"
+    },
+    "b": {
+     "es": "La salida de malato de la mitocondria y su oxidación a OAA en el citosol",
+     "en": "The exit of malate from the mitochondrion and its oxidation to OAA in the cytosol"
+    },
+    "c": {
+     "es": "La oxidación de cuerpos cetónicos",
+     "en": "The oxidation of ketone bodies"
+    },
+    "d": {
+     "es": "La β-oxidación mitocondrial",
+     "en": "Mitochondrial β-oxidation"
+    },
+    "e": {
+     "es": "La glucogenólisis",
+     "en": "Glycogenolysis"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar que la GNG requiere NADH citosólico, suministrado por la oxidación del malato a OAA en el citosol",
+    "en": "Applying that GNG requires cytosolic NADH, supplied by the oxidation of malate to OAA in the cytosol"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.9",
+   "num": "7.2.9",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "El estado de ayuno en el hígado se caracteriza por:",
+    "en": "The fasting state in the liver is characterized by:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Alta actividad de la fructosa-1,6-bisfosfatasa (GNG)",
+     "en": "High activity of fructose-1,6-bisphosphatase (GNG)"
+    },
+    "b": {
+     "es": "Baja concentración de fructosa-2,6-bisfosfato (inhibidor de GNG)",
+     "en": "Low concentration of fructose-2,6-bisphosphate (GNG inhibitor)"
+    },
+    "c": {
+     "es": "Alta concentración de AMPc (estimulador de glucogenólisis)",
+     "en": "High concentration of cAMP (stimulator of glycogenolysis)"
+    },
+    "d": {
+     "es": "Alta actividad de la piruvato quinasa (glucólisis)",
+     "en": "High activity of pyruvate kinase (glycolysis)"
+    },
+    "e": {
+     "es": "Alta actividad de la acetil-CoA carboxilasa (lipogénesis)",
+     "en": "High activity of acetyl-CoA carboxylase (lipogenesis)"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Analizar el estado de ayuno en el hígado: GNG activada (F-1,6-BPasa alta, F-2,6-BP baja), glucogenólisis por AMPc y lipogénesis (ACC) baja",
+    "en": "Analyzing the fasting state in the liver: GNG activated (high F-1,6-BPase, low F-2,6-BP), glycogenolysis via cAMP and low lipogenesis (ACC)"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.10",
+   "num": "7.2.10",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Si un individuo consume una dieta hipercalórica rica en carbohidratos, ¿cuáles de los siguientes compuestos estarán altos y se utilizarán para la síntesis de lípidos?",
+    "en": "If an individual eats a hypercaloric, carbohydrate-rich diet, which of the following compounds will be high and used for lipid synthesis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucagón y NADH",
+     "en": "Glucagon and NADH"
+    },
+    "b": {
+     "es": "AMPc y cuerpos cetónicos",
+     "en": "cAMP and ketone bodies"
+    },
+    "c": {
+     "es": "Insulina y citrato (saliendo de mitocondria)",
+     "en": "Insulin and citrate (leaving the mitochondrion)"
+    },
+    "d": {
+     "es": "acetil-CoA y NADPH (de RPP)",
+     "en": "acetyl-CoA and NADPH (from the PPP)"
+    },
+    "e": {
+     "es": "Alanina y glutamina",
+     "en": "Alanine and glutamine"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el estado postprandial hipercalórico: insulina alta, citrato (precursor acetil-CoA) y NADPH (RPP)",
+    "en": "Applying the hypercaloric postprandial state: high insulin, citrate (acetyl-CoA precursor) and NADPH (PPP)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.11",
+   "num": "7.2.11",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Si se miden los niveles de acetil-CoA en el hígado, ¿una alta concentración de esta molécula favorece la gluconeogénesis o la glucólisis y por qué?",
+    "en": "If acetyl-CoA levels are measured in the liver, does a high concentration of this molecule favor gluconeogenesis or glycolysis, and why?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucólisis, porque activa la PDH",
+     "en": "Glycolysis, because it activates PDH"
+    },
+    "b": {
+     "es": "Glucólisis, porque es el precursor de la glucosa",
+     "en": "Glycolysis, because it is the precursor of glucose"
+    },
+    "c": {
+     "es": "Gluconeogénesis, porque activa la piruvato carboxilasa",
+     "en": "Gluconeogenesis, because it activates pyruvate carboxylase"
+    },
+    "d": {
+     "es": "Gluconeogénesis, porque inhibe la fructosa-1,6-bisfosfatasa",
+     "en": "Gluconeogenesis, because it inhibits fructose-1,6-bisphosphatase"
+    },
+    "e": {
+     "es": "Gluconeogénesis, porque es un inhibidor de la hexoquinasa",
+     "en": "Gluconeogenesis, because it is a hexokinase inhibitor"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Evaluar cómo un metabolito específico (acetil-CoA) actúa como interruptor alostérico para priorizar la gluconeogénesis sobre la glucólisis",
+    "en": "Evaluating how a specific metabolite (acetyl-CoA) acts as an allosteric switch to prioritize gluconeogenesis over glycolysis"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.12",
+   "num": "7.2.12",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analice el impacto de los siguientes metabolitos en la regulación recíproca de glucólisis y gluconeogénesis.",
+    "en": "Analyze the impact of the following metabolites on the reciprocal regulation of glycolysis and gluconeogenesis."
+   },
+   "opciones": {
+    "a": {
+     "es": "ATP: activa la glucólisis e inhibe la gluconeogénesis",
+     "en": "ATP: activates glycolysis and inhibits gluconeogenesis"
+    },
+    "b": {
+     "es": "AMP: activa glucólisis e inhibe gluconeogénesis",
+     "en": "AMP: activates glycolysis and inhibits gluconeogenesis"
+    },
+    "c": {
+     "es": "Citrato: activa la glucólisis e inhibe la gluconeogénesis",
+     "en": "Citrate: activates glycolysis and inhibits gluconeogenesis"
+    },
+    "d": {
+     "es": "Fructosa-2,6-bisfosfato: activa glucólisis e inhibe gluconeogénesis",
+     "en": "Fructose-2,6-bisphosphate: activates glycolysis and inhibits gluconeogenesis"
+    },
+    "e": {
+     "es": "Acetil-CoA: inhibe glucólisis y activa gluconeogénesis",
+     "en": "Acetyl-CoA: inhibits glycolysis and activates gluconeogenesis"
+    }
+   },
+   "correctas": [
+    "b",
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar la regulación recíproca de glucólisis/GNG por efectores alostéricos: AMP, F-2,6-BP y acetil-CoA",
+    "en": "Analyzing the reciprocal regulation of glycolysis/GNG by allosteric effectors: AMP, F-2,6-BP and acetyl-CoA"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.13",
+   "num": "7.2.13",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál es la ruta que permite la obtención de NADPH necesario para la lipogénesis en el citosol?",
+    "en": "Which pathway provides the NADPH needed for lipogenesis in the cytosol?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucólisis",
+     "en": "Glycolysis"
+    },
+    "b": {
+     "es": "Ciclo de Krebs",
+     "en": "Krebs cycle"
+    },
+    "c": {
+     "es": "Ruta de las pentosas fosfato (RPP)",
+     "en": "Pentose phosphate pathway (PPP)"
+    },
+    "d": {
+     "es": "Fosforilación oxidativa",
+     "en": "Oxidative phosphorylation"
+    },
+    "e": {
+     "es": "Gluconeogénesis",
+     "en": "Gluconeogenesis"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender que la RPP es la fuente principal de NADPH para biosíntesis (lipogénesis)",
+    "en": "Understanding that the PPP is the main source of NADPH for biosynthesis (lipogenesis)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.14",
+   "num": "7.2.14",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un aumento en la ingesta de alanina y lactato como sustratos glucogénicos durante el ayuno llevará a:",
+    "en": "An increased intake of alanine and lactate as glucogenic substrates during fasting will lead to:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumento neto de la cetogénesis",
+     "en": "A net increase in ketogenesis"
+    },
+    "b": {
+     "es": "Aumento de la síntesis de glucosa y su liberación a la sangre",
+     "en": "Increased synthesis of glucose and its release into the blood"
+    },
+    "c": {
+     "es": "Aumento de la síntesis de oxalacetato en la mitocondria",
+     "en": "Increased synthesis of oxaloacetate in the mitochondrion"
+    },
+    "d": {
+     "es": "Disminución de la urea producida",
+     "en": "A decrease in the urea produced"
+    },
+    "e": {
+     "es": "Aumento del consumo de ATP en el proceso de gluconeogénesis",
+     "en": "Increased ATP consumption in the process of gluconeogenesis"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar la entrada de lactato/alanina: →piruvato → OAA→glucosa con consumo de ATP",
+    "en": "Analyzing the entry of lactate/alanine: → pyruvate → OAA → glucose, with ATP consumption"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.15",
+   "num": "7.2.15",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué compuesto cetogénico puro no puede contribuir a la gluconeogénesis en mamíferos?",
+    "en": "Which purely ketogenic compound cannot contribute to gluconeogenesis in mammals?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Alanina",
+     "en": "Alanine"
+    },
+    "b": {
+     "es": "Piruvato",
+     "en": "Pyruvate"
+    },
+    "c": {
+     "es": "Leucina",
+     "en": "Leucine"
+    },
+    "d": {
+     "es": "Glutamato",
+     "en": "Glutamate"
+    },
+    "e": {
+     "es": "Valina",
+     "en": "Valine"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar qué AA son cetogénicos puros (leucina y lisina) y no glucogénicos",
+    "en": "Recalling which AA are purely ketogenic (leucine and lysine) and not glucogenic"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.16",
+   "num": "7.2.16",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La síntesis de glucógeno y la glucogenólisis se regulan recíprocamente por:",
+    "en": "Glycogen synthesis and glycogenolysis are reciprocally regulated by:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Regulación alostérica exclusiva",
+     "en": "Exclusively allosteric regulation"
+    },
+    "b": {
+     "es": "Modificación covalente reversible (fosforilación/desfosforilación)",
+     "en": "Reversible covalent modification (phosphorylation/dephosphorylation)"
+    },
+    "c": {
+     "es": "Concentración de acetil-CoA",
+     "en": "Acetyl-CoA concentration"
+    },
+    "d": {
+     "es": "Concentración de malonil-CoA",
+     "en": "Malonyl-CoA concentration"
+    },
+    "e": {
+     "es": "Hormonas (insulina y glucagón)",
+     "en": "Hormones (insulin and glucagon)"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Recordar/comprender los mecanismos de regulación de las vías del glucógeno (hormonal y MPT)",
+    "en": "Recalling/understanding the regulatory mechanisms of the glycogen pathways (hormonal and PTM)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.17",
+   "num": "7.2.17",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Aplicando los conceptos de compartimentalización, ¿qué acetil-CoA (citoplasmático o mitocondrial) es el precursor directo de la síntesis de colesterol y por qué?",
+    "en": "Applying the concepts of compartmentalization, which acetyl-CoA (cytoplasmic or mitochondrial) is the direct precursor of cholesterol synthesis, and why?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Mitocondrial, porque acetil-CoA se genera allí",
+     "en": "Mitochondrial, because acetyl-CoA is generated there"
+    },
+    "b": {
+     "es": "Mitocondrial, porque la HMG-CoA reductasa está en la mitocondria",
+     "en": "Mitochondrial, because HMG-CoA reductase is in the mitochondrion"
+    },
+    "c": {
+     "es": "Citoplasmático, porque el acetil-CoA sale como citrato y se escinde en el citosol",
+     "en": "Cytoplasmic, because acetyl-CoA leaves as citrate and is cleaved in the cytosol"
+    },
+    "d": {
+     "es": "Citoplasmático, porque la síntesis ocurre exclusivamente en el citosol",
+     "en": "Cytoplasmic, because synthesis occurs exclusively in the cytosol"
+    },
+    "e": {
+     "es": "Mitocondrial, porque la lipogénesis ocurre allí",
+     "en": "Mitochondrial, because lipogenesis occurs there"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de la compartimentalización: la síntesis de lípidos y colesterol ocurre en el citosol a partir de acetil-CoA transportado como citrato",
+    "en": "Applying knowledge of compartmentalization: lipid and cholesterol synthesis occur in the cytosol from acetyl-CoA transported as citrate"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.18",
+   "num": "7.2.18",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Si se inhibe la malato deshidrogenasa citosólica, ¿qué rutas metabólicas se verían comprometidas en el hígado de un animal bien alimentado?",
+    "en": "If cytosolic malate dehydrogenase is inhibited, which metabolic pathways would be compromised in the liver of a well-fed animal?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Lanzadera del citrato (lipogénesis) por falta de retorno de NAD<sup>+</sup>",
+     "en": "The citrate shuttle (lipogenesis), owing to the lack of NAD<sup>+</sup> return"
+    },
+    "b": {
+     "es": "Glucólisis por falta de NAD<sup>+</sup>",
+     "en": "Glycolysis, owing to the lack of NAD<sup>+</sup>"
+    },
+    "c": {
+     "es": "Gluconeogénesis por la incapacidad de usar piruvato",
+     "en": "Gluconeogenesis, owing to the inability to use pyruvate"
+    },
+    "d": {
+     "es": "Metabolismo del aspartato por falta de oxalacetato citosólico",
+     "en": "Aspartate metabolism, owing to the lack of cytosolic oxaloacetate"
+    },
+    "e": {
+     "es": "Ciclo de Krebs por falta de malato",
+     "en": "The Krebs cycle, owing to the lack of malate"
+    }
+   },
+   "correctas": [
+    "a",
+    "b"
+   ],
+   "justificacion": {
+    "es": "Analizar la MDH citosólica en el hígado bien alimentado: reduce el OAA a malato, regenerando NAD<sup>+</sup> para la glucólisis y permitiendo el retorno de la lanzadera del citrato (y el NADPH de la enzima málica)",
+    "en": "Analyzing cytosolic MDH in the well-fed liver: it reduces OAA to malate, regenerating NAD<sup>+</sup> for glycolysis and allowing the return of the citrate shuttle (and the NADPH of malic enzyme)"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.19",
+   "num": "7.2.19",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la molécula central en el metabolismo de los lípidos que se utiliza tanto para la cetogénesis como para la síntesis de ácidos grasos y colesterol?",
+    "en": "Which central molecule in lipid metabolism is used for ketogenesis as well as for the synthesis of fatty acids and cholesterol?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glicerol-3-fosfato",
+     "en": "Glycerol-3-phosphate"
+    },
+    "b": {
+     "es": "Acetil-CoA",
+     "en": "Acetyl-CoA"
+    },
+    "c": {
+     "es": "Malonil-CoA",
+     "en": "Malonyl-CoA"
+    },
+    "d": {
+     "es": "Triacilglicerol",
+     "en": "Triacylglycerol"
+    },
+    "e": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Recordar el precursor de todos los lípidos mencionados (acetil-CoA)",
+    "en": "Recalling the precursor of all the lipids mentioned (acetyl-CoA)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.2.20",
+   "num": "7.2.20",
+   "tema": 7,
+   "seccion": "7.2",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe una estrategia de regulación para un nuevo aminoácido glucogénico que actúa como señal de abundancia de nutrientes en el hígado. ¿Qué enzima clave del metabolismo de la glucosa debería regular y cómo?",
+    "en": "Design a regulatory strategy for a new glucogenic amino acid that acts as a signal of nutrient abundance in the liver. Which key enzyme of glucose metabolism should it regulate, and how?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Inhibir la glucosa-6-fosfatasa",
+     "en": "Inhibit glucose-6-phosphatase"
+    },
+    "b": {
+     "es": "Activar la fructosa-1,6-bisfosfatasa",
+     "en": "Activate fructose-1,6-bisphosphatase"
+    },
+    "c": {
+     "es": "Activar la piruvato quinasa (para glucólisis)",
+     "en": "Activate pyruvate kinase (for glycolysis)"
+    },
+    "d": {
+     "es": "Inhibir la piruvato carboxilasa",
+     "en": "Inhibit pyruvate carboxylase"
+    },
+    "e": {
+     "es": "Activar la glucógeno sintasa",
+     "en": "Activate glycogen synthase"
+    }
+   },
+   "correctas": [
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Crear un sistema de señalización: la abundancia requiere almacenar (glucógeno sintasa) y catabolizar (piruvato quinasa) la glucosa",
+    "en": "Creating a signaling system: abundance requires storing (glycogen synthase) and catabolizing (pyruvate kinase) glucose"
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.1",
+   "num": "7.3.1",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En un perro con hipoglucemia severa, ¿qué vías metabólicas se activan para restaurar la glucemia?",
+    "en": "In a dog with severe hypoglycemia, which metabolic pathways are activated to restore blood glucose?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Gluconeogénesis",
+     "en": "Gluconeogenesis"
+    },
+    "b": {
+     "es": "Glucogenólisis",
+     "en": "Glycogenolysis"
+    },
+    "c": {
+     "es": "Síntesis de glucógeno",
+     "en": "Glycogen synthesis"
+    },
+    "d": {
+     "es": "Lipólisis en tejido adiposo",
+     "en": "Lipolysis in adipose tissue"
+    },
+    "e": {
+     "es": "Fosforilación oxidativa",
+     "en": "Oxidative phosphorylation"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de la hipoglucemia: activa la GNG y glucogenólisis hepática",
+    "en": "Applying knowledge of hypoglycemia: it activates hepatic GNG and glycogenolysis"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.2",
+   "num": "7.3.2",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En un individuo con diabetes tipo I no tratada, ¿qué procesos metabólicos están sobreexpresados debido a la falta de insulina y el predominio de glucagón?",
+    "en": "In an individual with untreated type I diabetes, which metabolic processes are overactive because of the lack of insulin and the predominance of glucagon?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucogenogénesis",
+     "en": "Glycogenesis"
+    },
+    "b": {
+     "es": "Glucogenólisis y gluconeogénesis",
+     "en": "Glycogenolysis and gluconeogenesis"
+    },
+    "c": {
+     "es": "Síntesis de ácidos grasos",
+     "en": "Fatty acid synthesis"
+    },
+    "d": {
+     "es": "Lipólisis y cetogénesis",
+     "en": "Lipolysis and ketogenesis"
+    },
+    "e": {
+     "es": "Captación de glucosa por el músculo",
+     "en": "Glucose uptake by muscle"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la DM1 (falta de insulina): glucagón dominante → GNG/glucogenólisis y lipólisis/cetogénesis",
+    "en": "Analyzing T1DM (lack of insulin): dominant glucagon → GNG/glycogenolysis and lipolysis/ketogenesis"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.3",
+   "num": "7.3.3",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "La cetoacidosis diabética es una consecuencia patológica del metabolismo. ¿Cuáles son las causas metabólicas directas de esta condición?",
+    "en": "Diabetic ketoacidosis is a pathological consequence of metabolism. What are the direct metabolic causes of this condition?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Alta producción hepática de cuerpos cetónicos (β-hidroxibutirato y acetoacetato)",
+     "en": "High hepatic production of ketone bodies (β-hydroxybutyrate and acetoacetate)"
+    },
+    "b": {
+     "es": "Disminución de la gluconeogénesis",
+     "en": "Decreased gluconeogenesis"
+    },
+    "c": {
+     "es": "Aumento de la síntesis de glucógeno",
+     "en": "Increased glycogen synthesis"
+    },
+    "d": {
+     "es": "Consumo total de glucosa",
+     "en": "Total consumption of glucose"
+    },
+    "e": {
+     "es": "Exceso de acetil-CoA proveniente de lipólisis descontrolada",
+     "en": "Excess acetyl-CoA from uncontrolled lipolysis"
+    }
+   },
+   "correctas": [
+    "a",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar la cetoacidosis: alta producción de CC debido a un exceso de acetil-CoA",
+    "en": "Analyzing ketoacidosis: high KB production due to an excess of acetyl-CoA"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.4",
+   "num": "7.3.4",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En la diabetes tipo II, una de las características es la resistencia a la insulina. ¿Qué tejido es particularmente afectado en su capacidad de captar glucosa debido a esta resistencia?",
+    "en": "In type II diabetes, one of the features is insulin resistance. Which tissue is particularly affected in its ability to take up glucose because of this resistance?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Hígado",
+     "en": "Liver"
+    },
+    "b": {
+     "es": "Cerebro",
+     "en": "Brain"
+    },
+    "c": {
+     "es": "Músculo esquelético",
+     "en": "Skeletal muscle"
+    },
+    "d": {
+     "es": "Páncreas",
+     "en": "Pancreas"
+    },
+    "e": {
+     "es": "Riñón",
+     "en": "Kidney"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el concepto de resistencia a la insulina en DM2: afecta principalmente a GLUT4 (músculo y adiposo)",
+    "en": "Applying the concept of insulin resistance in T2DM: it mainly affects GLUT4 (muscle and adipose tissue)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.5",
+   "num": "7.3.5",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál es la principal fuente de sustrato para la gluconeogénesis hepática tras 24 horas de ayuno?",
+    "en": "What is the main source of substrate for hepatic gluconeogenesis after 24 hours of fasting?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ácidos grasos",
+     "en": "Fatty acids"
+    },
+    "b": {
+     "es": "Cuerpos cetónicos",
+     "en": "Ketone bodies"
+    },
+    "c": {
+     "es": "Aminoácidos (principalmente alanina y glutamina)",
+     "en": "Amino acids (mainly alanine and glutamine)"
+    },
+    "d": {
+     "es": "Glucógeno hepático",
+     "en": "Liver glycogen"
+    },
+    "e": {
+     "es": "Lactato",
+     "en": "Lactate"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar la fuente principal de C para GNG tras el agotamiento del glucógeno (AA del músculo)",
+    "en": "Recalling the main C source for GNG after glycogen depletion (AA from muscle)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.6",
+   "num": "7.3.6",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analice cómo la obesidad mórbida puede conducir a la resistencia a la insulina.",
+    "en": "Analyze how morbid obesity can lead to insulin resistance."
+   },
+   "opciones": {
+    "a": {
+     "es": "El exceso de lípidos en el hígado activa la gluconeogénesis",
+     "en": "Excess lipids in the liver activate gluconeogenesis"
+    },
+    "b": {
+     "es": "El tejido adiposo disfuncional libera adipocinas proinflamatorias que interfieren con la señalización de la insulina",
+     "en": "Dysfunctional adipose tissue releases proinflammatory adipokines that interfere with insulin signaling"
+    },
+    "c": {
+     "es": "La leptina aumenta la captación de glucosa por el músculo",
+     "en": "Leptin increases glucose uptake by muscle"
+    },
+    "d": {
+     "es": "El exceso de ácidos grasos y sus derivados lipídicos (diacilgliceroles) interfieren con las rutas de señalización de la insulina",
+     "en": "Excess fatty acids and their lipid derivatives (diacylglycerols) interfere with insulin signaling pathways"
+    },
+    "e": {
+     "es": "La obesidad disminuye el glucagón",
+     "en": "Obesity decreases glucagon"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la obesidad/IR: inflamación del adiposo e interferencia lipídica (DAG) con la señal insulina",
+    "en": "Analyzing obesity/IR: adipose inflammation and lipid (DAG) interference with insulin signaling"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.7",
+   "num": "7.3.7",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Si un paciente sufre una enfermedad hepática severa que impide la correcta gluconeogénesis, ¿qué sustrato energético deberá recibir de forma continua para evitar la hipoglucemia?",
+    "en": "If a patient has severe liver disease that prevents proper gluconeogenesis, which energy substrate must they receive continuously to avoid hypoglycemia?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Alanina",
+     "en": "Alanine"
+    },
+    "b": {
+     "es": "Glucosa",
+     "en": "Glucose"
+    },
+    "c": {
+     "es": "Ácidos grasos",
+     "en": "Fatty acids"
+    },
+    "d": {
+     "es": "Cuerpos cetónicos",
+     "en": "Ketone bodies"
+    },
+    "e": {
+     "es": "Lactato",
+     "en": "Lactate"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar la función del hígado: si falla la GNG, el único remedio es suministrar el producto final (glucosa)",
+    "en": "Applying the function of the liver: if GNG fails, the only remedy is to supply the end product (glucose)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.8",
+   "num": "7.3.8",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "En un ejercicio de alta intensidad y corta duración, el piruvato en el músculo se desvía principalmente hacia:",
+    "en": "During high-intensity, short-duration exercise, pyruvate in muscle is diverted mainly toward:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ciclo de Krebs",
+     "en": "The Krebs cycle"
+    },
+    "b": {
+     "es": "Gluconeogénesis",
+     "en": "Gluconeogenesis"
+    },
+    "c": {
+     "es": "Lactato (para regenerar NAD<sup>+</sup>)",
+     "en": "Lactate (to regenerate NAD<sup>+</sup>)"
+    },
+    "d": {
+     "es": "Alanina",
+     "en": "Alanine"
+    },
+    "e": {
+     "es": "Glucógeno",
+     "en": "Glycogen"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender el ejercicio anaeróbico: piruvato→lactato para regenerar NAD<sup>+</sup>",
+    "en": "Understanding anaerobic exercise: pyruvate → lactate to regenerate NAD<sup>+</sup>"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.9",
+   "num": "7.3.9",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Una mutación que hace que el receptor de insulina en el músculo permanezca constantemente activo (independiente de la insulina) resultaría en:",
+    "en": "A mutation that keeps the insulin receptor in muscle constantly active (independent of insulin) would result in:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Hipoglucemia incluso en ayuno",
+     "en": "Hypoglycemia even during fasting"
+    },
+    "b": {
+     "es": "Aumento de la síntesis de glucógeno muscular",
+     "en": "Increased muscle glycogen synthesis"
+    },
+    "c": {
+     "es": "Hiperglucemia constante",
+     "en": "Constant hyperglycemia"
+    },
+    "d": {
+     "es": "Aumento de la lipólisis en el tejido adiposo",
+     "en": "Increased lipolysis in adipose tissue"
+    },
+    "e": {
+     "es": "Resistencia a la insulina",
+     "en": "Insulin resistance"
+    }
+   },
+   "correctas": [
+    "a",
+    "b"
+   ],
+   "justificacion": {
+    "es": "Analizar la activación constitutiva del receptor de insulina: simula exceso de insulina→hipoglucemia y aumento de glucógeno muscular",
+    "en": "Analyzing constitutive activation of the insulin receptor: it mimics an excess of insulin → hypoglycemia and increased muscle glycogen"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.10",
+   "num": "7.3.10",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "El uso de cuerpos cetónicos por el cerebro en ayuno prolongado se considera un mecanismo de:",
+    "en": "The use of ketone bodies by the brain during prolonged fasting is considered a mechanism of:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ahorro de proteínas musculares",
+     "en": "Sparing of muscle protein"
+    },
+    "b": {
+     "es": "Ahorro de glucosa (disminuyendo la necesidad de GNG)",
+     "en": "Glucose sparing (reducing the need for GNG)"
+    },
+    "c": {
+     "es": "Aumento del consumo de O<sub>2</sub>",
+     "en": "Increased O<sub>2</sub> consumption"
+    },
+    "d": {
+     "es": "Adaptación metabólica para la supervivencia",
+     "en": "Metabolic adaptation for survival"
+    },
+    "e": {
+     "es": "Disminución de la lipólisis",
+     "en": "Decreased lipolysis"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Evaluar la estrategia de supervivencia del cerebro en ayuno prolongado como un mecanismo de ahorro proteico crítico",
+    "en": "Evaluating the survival strategy of the brain during prolonged fasting as a critical protein-sparing mechanism"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.11",
+   "num": "7.3.11",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En una situación de fiebre alta, ¿qué rutas metabólicas se activan para generar calor (termogénesis) en los tejidos con mayor intensidad?",
+    "en": "During a high fever, which metabolic pathways are activated most intensely in the tissues to generate heat (thermogenesis)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Síntesis de ATP",
+     "en": "ATP synthesis"
+    },
+    "b": {
+     "es": "Ciclos inútiles o desacoplamiento (p. ej., UCP1 o ciclos sustrato)",
+     "en": "Futile cycles or uncoupling (e.g., UCP1 or substrate cycles)"
+    },
+    "c": {
+     "es": "Glucogenogénesis",
+     "en": "Glycogenesis"
+    },
+    "d": {
+     "es": "Gluconeogénesis",
+     "en": "Gluconeogenesis"
+    },
+    "e": {
+     "es": "Lipogénesis",
+     "en": "Lipogenesis"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar el concepto de fiebre/termogénesis: se logra a través de ciclos sustrato (inútiles) o desacoplamiento (UCP1)",
+    "en": "Applying the concept of fever/thermogenesis: it is achieved through substrate (futile) cycles or uncoupling (UCP1)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.12",
+   "num": "7.3.12",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la principal fuente de glucosa en las primeras 12 horas de ayuno?",
+    "en": "What is the main source of glucose during the first 12 hours of fasting?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Gluconeogénesis a partir de lactato",
+     "en": "Gluconeogenesis from lactate"
+    },
+    "b": {
+     "es": "Lípidos del tejido adiposo",
+     "en": "Lipids from adipose tissue"
+    },
+    "c": {
+     "es": "Glucógeno hepático (glucogenólisis)",
+     "en": "Liver glycogen (glycogenolysis)"
+    },
+    "d": {
+     "es": "Proteínas musculares",
+     "en": "Muscle proteins"
+    },
+    "e": {
+     "es": "Glucógeno muscular",
+     "en": "Muscle glycogen"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar el primer almacén usado en el ayuno (glucógeno hepático)",
+    "en": "Recalling the first store used during fasting (liver glycogen)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.13",
+   "num": "7.3.13",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Por qué el glicerol liberado por la lipólisis se utiliza como sustrato glucogénico?",
+    "en": "Why is the glycerol released by lipolysis used as a glucogenic substrate?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Es un precursor directo del piruvato",
+     "en": "It is a direct precursor of pyruvate"
+    },
+    "b": {
+     "es": "Se convierte directamente en glucosa",
+     "en": "It is converted directly into glucose"
+    },
+    "c": {
+     "es": "Se convierte en dihidroxiacetona fosfato (DHAP), un intermediario de GNG",
+     "en": "It is converted into dihydroxyacetone phosphate (DHAP), a GNG intermediate"
+    },
+    "d": {
+     "es": "Activa la piruvato carboxilasa",
+     "en": "It activates pyruvate carboxylase"
+    },
+    "e": {
+     "es": "Es transportado directamente al cerebro",
+     "en": "It is transported directly to the brain"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender la entrada del glicerol: a DHAP, intermediario de GNG",
+    "en": "Understanding the entry of glycerol: as DHAP, a GNG intermediate"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.14",
+   "num": "7.3.14",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analice las consecuencias de un déficit de la enzima HMG-CoA liasa (necesaria para la cetogénesis).",
+    "en": "Analyze the consequences of a deficiency of the enzyme HMG-CoA lyase (required for ketogenesis)."
+   },
+   "opciones": {
+    "a": {
+     "es": "Hipoglucemia en ayuno prolongado",
+     "en": "Hypoglycemia during prolonged fasting"
+    },
+    "b": {
+     "es": "Acumulación de HMG-CoA y metabolitos precursores",
+     "en": "Accumulation of HMG-CoA and precursor metabolites"
+    },
+    "c": {
+     "es": "Hipocetonemia (niveles bajos o nulos de cuerpos cetónicos)",
+     "en": "Hypoketonemia (low or absent ketone body levels)"
+    },
+    "d": {
+     "es": "Aumento de la gluconeogénesis",
+     "en": "Increased gluconeogenesis"
+    },
+    "e": {
+     "es": "Aumento de la lipólisis",
+     "en": "Increased lipolysis"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Analizar la HMG-CoA liasa: su déficit impide cetogénesis, acumula HMG-CoA y causa hipoglucemia",
+    "en": "Analyzing HMG-CoA lyase: its deficiency prevents ketogenesis, causes HMG-CoA to accumulate and causes hypoglycemia"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.15",
+   "num": "7.3.15",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué órganos contribuyen al suministro de aminoácidos (alanina y glutamina) para la gluconeogénesis hepática en ayuno prolongado?",
+    "en": "Which organs contribute to the supply of amino acids (alanine and glutamine) for hepatic gluconeogenesis during prolonged fasting?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Músculo esquelético",
+     "en": "Skeletal muscle"
+    },
+    "b": {
+     "es": "Tejido adiposo",
+     "en": "Adipose tissue"
+    },
+    "c": {
+     "es": "Intestino delgado",
+     "en": "Small intestine"
+    },
+    "d": {
+     "es": "Cerebro",
+     "en": "Brain"
+    },
+    "e": {
+     "es": "Páncreas",
+     "en": "Pancreas"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar los órganos que suministran AA para la GNG (músculo e intestino)",
+    "en": "Recalling the organs that supply AA for GNG (muscle and intestine)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.16",
+   "num": "7.3.16",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Para un atleta que corre un maratón (ejercicio prolongado), ¿qué enfoque metabólico priorizaría su cuerpo para mantener el rendimiento y por qué?",
+    "en": "For an athlete running a marathon (prolonged exercise), which metabolic approach would the body prioritize to maintain performance, and why?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumentar el uso de glucosa para obtener ATP rápido",
+     "en": "Increasing the use of glucose to obtain ATP quickly"
+    },
+    "b": {
+     "es": "Maximizar el uso de ácidos grasos (β-oxidación) para ahorrar glucógeno",
+     "en": "Maximizing the use of fatty acids (β-oxidation) to spare glycogen"
+    },
+    "c": {
+     "es": "Aumentar la glucogenólisis muscular al máximo",
+     "en": "Increasing muscle glycogenolysis to the maximum"
+    },
+    "d": {
+     "es": "Mantener la glucemia por GNG hepática para el cerebro",
+     "en": "Maintaining blood glucose by hepatic GNG for the brain"
+    },
+    "e": {
+     "es": "Movilizar aminoácidos musculares como fuente de energía",
+     "en": "Mobilizing muscle amino acids as an energy source"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Evaluar y priorizar las rutas metabólicas necesarias para el rendimiento deportivo de larga duración (ahorro de glucógeno y uso de grasas)",
+    "en": "Evaluating and prioritizing the metabolic pathways needed for long-duration athletic performance (glycogen sparing and fat use)"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.17",
+   "num": "7.3.17",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué característica diferencia la diabetes tipo I de la tipo II a nivel hormonal?",
+    "en": "What feature distinguishes type I from type II diabetes at the hormonal level?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Tipo II no tiene glucagón",
+     "en": "Type II has no glucagon"
+    },
+    "b": {
+     "es": "Tipo I se caracteriza por una deficiencia absoluta de insulina",
+     "en": "Type I is characterized by an absolute deficiency of insulin"
+    },
+    "c": {
+     "es": "Tipo I tiene resistencia a la insulina",
+     "en": "Type I involves insulin resistance"
+    },
+    "d": {
+     "es": "Tipo II no tiene cuerpos cetónicos",
+     "en": "Type II has no ketone bodies"
+    },
+    "e": {
+     "es": "Tipo I tiene hiperglucemia",
+     "en": "Type I involves hyperglycemia"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar la diferencia clave: DM1 es déficit absoluto de insulina, DM2 es resistencia",
+    "en": "Applying the key difference: T1DM is an absolute insulin deficiency, T2DM is resistance"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.18",
+   "num": "7.3.18",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Una persona que realiza un ejercicio moderado y prolongado experimentará:",
+    "en": "A person doing moderate, prolonged exercise will experience:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumento del consumo de O<sub>2</sub> (metabolismo aeróbico)",
+     "en": "Increased O<sub>2</sub> consumption (aerobic metabolism)"
+    },
+    "b": {
+     "es": "Activación de la β-oxidación en el músculo",
+     "en": "Activation of β-oxidation in muscle"
+    },
+    "c": {
+     "es": "Acumulación de lactato en sangre",
+     "en": "Accumulation of lactate in the blood"
+    },
+    "d": {
+     "es": "Disminución de la glucemia solo si no bebe agua",
+     "en": "A drop in blood glucose only if they do not drink water"
+    },
+    "e": {
+     "es": "Uso exclusivo de glucógeno muscular",
+     "en": "Exclusive use of muscle glycogen"
+    }
+   },
+   "correctas": [
+    "a",
+    "b"
+   ],
+   "justificacion": {
+    "es": "Analizar el ejercicio moderado/prolongado: aeróbico (O<sub>2</sub>) y uso de AG (β-oxidación)",
+    "en": "Analyzing moderate/prolonged exercise: aerobic (O<sub>2</sub>) and use of FA (β-oxidation)"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.19",
+   "num": "7.3.19",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué hormona se segrega en el estómago durante el ayuno para estimular el apetito?",
+    "en": "Which hormone is secreted in the stomach during fasting to stimulate appetite?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Leptina",
+     "en": "Leptin"
+    },
+    "b": {
+     "es": "Insulina",
+     "en": "Insulin"
+    },
+    "c": {
+     "es": "Colecistoquinina (CCK)",
+     "en": "Cholecystokinin (CCK)"
+    },
+    "d": {
+     "es": "Glucagón",
+     "en": "Glucagon"
+    },
+    "e": {
+     "es": "Grelina",
+     "en": "Ghrelin"
+    }
+   },
+   "correctas": [
+    "e"
+   ],
+   "justificacion": {
+    "es": "Recordar la hormona del apetito (grelina)",
+    "en": "Recalling the appetite hormone (ghrelin)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.20",
+   "num": "7.3.20",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe una intervención nutricional para un paciente con resistencia a la insulina (DM2) dirigida a reducir la lipólisis del tejido adiposo.",
+    "en": "Design a nutritional intervention for a patient with insulin resistance (T2DM) aimed at reducing lipolysis in adipose tissue."
+   },
+   "opciones": {
+    "a": {
+     "es": "Suministrar glucagón para activar la HSL",
+     "en": "Supply glucagon to activate HSL"
+    },
+    "b": {
+     "es": "Aumentar la sensibilidad a la insulina con fármacos (p. ej., tiazolidinedionas)",
+     "en": "Increase insulin sensitivity with drugs (e.g., thiazolidinediones)"
+    },
+    "c": {
+     "es": "Reducir el consumo de carbohidratos para aumentar glucemia",
+     "en": "Reduce carbohydrate intake to raise blood glucose"
+    },
+    "d": {
+     "es": "Promover la activación de la fosfodiesterasa para degradar AMPc",
+     "en": "Promote the activation of phosphodiesterase to degrade cAMP"
+    },
+    "e": {
+     "es": "Eliminar la glucosa de la dieta",
+     "en": "Remove glucose from the diet"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Crear una estrategia para DM2/lipólisis: aumentar sensibilidad insulina o reducir AMPc",
+    "en": "Creating a strategy for T2DM/lipolysis: increasing insulin sensitivity or reducing cAMP"
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.21",
+   "num": "7.3.21",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Durante un ayuno prolongado (sin que se llegue a requerir el consumo de las propias proteínas)…",
+    "en": "During prolonged fasting (without the need to consume the body's own proteins)…"
+   },
+   "opciones": {
+    "a": {
+     "es": "se sintetizan ácidos grasos para tener reservas",
+     "en": "fatty acids are synthesized as reserves"
+    },
+    "b": {
+     "es": "el músculo esquelético utiliza los ácidos grasos del tejido adiposo para obtener energía",
+     "en": "skeletal muscle uses fatty acids from adipose tissue to obtain energy"
+    },
+    "c": {
+     "es": "el hígado forma glucógeno",
+     "en": "the liver forms glycogen"
+    },
+    "d": {
+     "es": "el cerebro consume lactato",
+     "en": "the brain consumes lactate"
+    },
+    "e": {
+     "es": "todas las afirmaciones son falsas",
+     "en": "all the statements are false"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender el ayuno: el músculo usa AG del adiposo para energía",
+    "en": "Understanding fasting: muscle uses FA from adipose tissue for energy"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.22",
+   "num": "7.3.22",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es el principal factor hormonal que promueve la lipólisis en el tejido adiposo durante el ayuno?",
+    "en": "What is the main hormonal factor that promotes lipolysis in adipose tissue during fasting?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Insulina",
+     "en": "Insulin"
+    },
+    "b": {
+     "es": "Glucagón",
+     "en": "Glucagon"
+    },
+    "c": {
+     "es": "Leptina",
+     "en": "Leptin"
+    },
+    "d": {
+     "es": "Cortisol",
+     "en": "Cortisol"
+    },
+    "e": {
+     "es": "Estrógenos",
+     "en": "Estrogens"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Recordar la hormona lipolítica clave (glucagón)",
+    "en": "Recalling the key lipolytic hormone (glucagon)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.23",
+   "num": "7.3.23",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "En un ayuno de varios días (ayuno prolongado), el cuerpo prioriza la gluconeogénesis para:",
+    "en": "During a fast of several days (prolonged fasting), the body prioritizes gluconeogenesis in order to:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Mantener la reserva de glucógeno muscular",
+     "en": "Maintain the muscle glycogen reserve"
+    },
+    "b": {
+     "es": "Producir aminoácidos",
+     "en": "Produce amino acids"
+    },
+    "c": {
+     "es": "Suministrar glucosa a las células dependientes (eritrocitos, cerebro parcial)",
+     "en": "Supply glucose to dependent cells (erythrocytes, partly the brain)"
+    },
+    "d": {
+     "es": "Aumentar la cetogénesis",
+     "en": "Increase ketogenesis"
+    },
+    "e": {
+     "es": "Aumentar la lipólisis",
+     "en": "Increase lipolysis"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender el propósito de la GNG: glucosa para órganos obligatorios",
+    "en": "Understanding the purpose of GNG: glucose for obligate organs"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.24",
+   "num": "7.3.24",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué ocurre con la glucogenólisis hepática y la gluconeogénesis a medida que el ayuno progresa de 12 a 72 horas?",
+    "en": "What happens to hepatic glycogenolysis and gluconeogenesis as fasting progresses from 12 to 72 hours?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucogenólisis aumenta y GNG disminuye",
+     "en": "Glycogenolysis increases and GNG decreases"
+    },
+    "b": {
+     "es": "Glucogenólisis se agota/disminuye y GNG aumenta drásticamente",
+     "en": "Glycogenolysis is exhausted/decreases and GNG increases sharply"
+    },
+    "c": {
+     "es": "Ambas disminuyen hasta detenerse",
+     "en": "Both decrease until they stop"
+    },
+    "d": {
+     "es": "Ambas permanecen estables",
+     "en": "Both remain stable"
+    },
+    "e": {
+     "es": "Glucogenólisis se mantiene y GNG se mantiene baja",
+     "en": "Glycogenolysis is maintained and GNG remains low"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar la progresión del ayuno: el glucógeno se agota y la GNG toma el relevo",
+    "en": "Applying the progression of fasting: glycogen is depleted and GNG takes over"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.25",
+   "num": "7.3.25",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "El paso de acetil-CoA a cuerpos cetónicos en el hígado durante el ayuno:",
+    "en": "The conversion of acetyl-CoA into ketone bodies in the liver during fasting:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Depende del flujo de ácidos grasos liberados por el tejido adiposo",
+     "en": "Depends on the flow of fatty acids released by adipose tissue"
+    },
+    "b": {
+     "es": "Ocurre porque el oxalacetato se desvía a gluconeogénesis",
+     "en": "Occurs because oxaloacetate is diverted to gluconeogenesis"
+    },
+    "c": {
+     "es": "Se realiza a través de la piruvato quinasa",
+     "en": "Takes place via pyruvate kinase"
+    },
+    "d": {
+     "es": "Está activado por la insulina",
+     "en": "Is activated by insulin"
+    },
+    "e": {
+     "es": "Es un mecanismo de exportación de energía soluble al cerebro y músculo",
+     "en": "Is a mechanism for exporting soluble energy to the brain and muscle"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar la cetogénesis: flujo AG, desvío de OAA a GNG y exportación de energía",
+    "en": "Analyzing ketogenesis: FA flow, diversion of OAA to GNG and energy export"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.26",
+   "num": "7.3.26",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál es el principal compuesto que se acumula en el músculo durante el ejercicio intenso anaeróbico?",
+    "en": "Which is the main compound that accumulates in muscle during intense anaerobic exercise?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Piruvato",
+     "en": "Pyruvate"
+    },
+    "b": {
+     "es": "Glucosa",
+     "en": "Glucose"
+    },
+    "c": {
+     "es": "Lactato",
+     "en": "Lactate"
+    },
+    "d": {
+     "es": "Alanina",
+     "en": "Alanine"
+    },
+    "e": {
+     "es": "Acetil-CoA",
+     "en": "Acetyl-CoA"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar el producto anaeróbico (lactato)",
+    "en": "Recalling the anaerobic product (lactate)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.27",
+   "num": "7.3.27",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál de las siguientes hormonas tiene un efecto hiperglucemiante (aumenta la glucemia)?",
+    "en": "Which of the following hormones has a hyperglycemic effect (raises blood glucose)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Insulina",
+     "en": "Insulin"
+    },
+    "b": {
+     "es": "Leptina",
+     "en": "Leptin"
+    },
+    "c": {
+     "es": "Adrenalina",
+     "en": "Epinephrine"
+    },
+    "d": {
+     "es": "Somatostatina",
+     "en": "Somatostatin"
+    },
+    "e": {
+     "es": "Grelina",
+     "en": "Ghrelin"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar hormonas hiperglucemiantes (adrenalina, glucagón, cortisol)",
+    "en": "Recalling hyperglycemic hormones (epinephrine, glucagon, cortisol)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.28",
+   "num": "7.3.28",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Durante el ejercicio, el músculo esquelético realiza la activación de la glucogenólisis y glucólisis. ¿Qué mecanismos hormonales y alostéricos están implicados en su activación?",
+    "en": "During exercise, skeletal muscle activates glycogenolysis and glycolysis. Which hormonal and allosteric mechanisms are involved in this activation?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Insulina y acetil-CoA",
+     "en": "Insulin and acetyl-CoA"
+    },
+    "b": {
+     "es": "Adrenalina (vía AMPc) y AMP/calcio",
+     "en": "Epinephrine (via cAMP) and AMP/calcium"
+    },
+    "c": {
+     "es": "Glucagón y citrato",
+     "en": "Glucagon and citrate"
+    },
+    "d": {
+     "es": "Leptina y malonil-CoA",
+     "en": "Leptin and malonyl-CoA"
+    },
+    "e": {
+     "es": "Cortisol y piruvato",
+     "en": "Cortisol and pyruvate"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar la regulación en el ejercicio: adrenalina (AMPc) y AMP/Ca<sup>2+</sup>",
+    "en": "Applying regulation during exercise: epinephrine (cAMP) and AMP/Ca<sup>2+</sup>"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.29",
+   "num": "7.3.29",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un paciente con DM1 se inyecta una dosis excesiva de insulina. ¿Cuáles son las consecuencias inmediatas de esta sobredosis?",
+    "en": "A patient with T1DM injects an excessive dose of insulin. What are the immediate consequences of this overdose?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Hiperglucemia",
+     "en": "Hyperglycemia"
+    },
+    "b": {
+     "es": "Aumento de la captación de glucosa por músculo y adiposo",
+     "en": "Increased glucose uptake by muscle and adipose tissue"
+    },
+    "c": {
+     "es": "Inhibición de la lipólisis y cetogénesis",
+     "en": "Inhibition of lipolysis and ketogenesis"
+    },
+    "d": {
+     "es": "Cetoacidosis",
+     "en": "Ketoacidosis"
+    },
+    "e": {
+     "es": "Hipoglucemia severa",
+     "en": "Severe hypoglycemia"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar el exceso de insulina: ↑captación, ↓catabolismo→hipoglucemia",
+    "en": "Analyzing excess insulin: ↑uptake, ↓catabolism → hypoglycemia"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.30",
+   "num": "7.3.30",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La característica distintiva de la diabetes tipo II a nivel celular es:",
+    "en": "The distinctive feature of type II diabetes at the cellular level is:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ausencia de insulina",
+     "en": "Absence of insulin"
+    },
+    "b": {
+     "es": "Ausencia de receptores de glucagón",
+     "en": "Absence of glucagon receptors"
+    },
+    "c": {
+     "es": "Resistencia de los tejidos a la acción de la insulina",
+     "en": "Resistance of the tissues to the action of insulin"
+    },
+    "d": {
+     "es": "Hiperproducción constante de insulina",
+     "en": "Constant overproduction of insulin"
+    },
+    "e": {
+     "es": "Daño directo en las células beta del páncreas",
+     "en": "Direct damage to pancreatic beta cells"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender la definición de DM2 (resistencia a la insulina)",
+    "en": "Understanding the definition of T2DM (insulin resistance)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.31",
+   "num": "7.3.31",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En un ayuno de 3 semanas, ¿cuál es el porcentaje aproximado de energía que obtiene el cerebro a partir de cuerpos cetónicos?",
+    "en": "During a 3-week fast, approximately what percentage of the brain's energy comes from ketone bodies?"
+   },
+   "opciones": {
+    "a": {
+     "es": "10%",
+     "en": "10%"
+    },
+    "b": {
+     "es": "30%",
+     "en": "30%"
+    },
+    "c": {
+     "es": "50%-70%",
+     "en": "50%-70%"
+    },
+    "d": {
+     "es": "100%",
+     "en": "100%"
+    },
+    "e": {
+     "es": "0%",
+     "en": "0%"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de la adaptación cerebral en ayuno prolongado (cambio glucosa → CC)",
+    "en": "Applying knowledge of the brain's adaptation to prolonged fasting (switch from glucose → KB)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.32",
+   "num": "7.3.32",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Si se administrara malonil-CoA (o un análogo) a un ratón en ayuno, ¿qué efecto tendría sobre la capacidad del hígado de realizar cetogénesis?",
+    "en": "If malonyl-CoA (or an analog) were administered to a fasting mouse, what effect would it have on the liver's capacity for ketogenesis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La cetogénesis aumentaría, ya que malonil-CoA es un precursor",
+     "en": "Ketogenesis would increase, since malonyl-CoA is a precursor"
+    },
+    "b": {
+     "es": "La cetogénesis se inhibiría debido al bloqueo de la CPT-I",
+     "en": "Ketogenesis would be inhibited because of the block of CPT-I"
+    },
+    "c": {
+     "es": "No tendría efecto, malonil-CoA solo regula la lipogénesis",
+     "en": "It would have no effect; malonyl-CoA regulates only lipogenesis"
+    },
+    "d": {
+     "es": "El ratón moriría por hipoglucemia inmediata",
+     "en": "The mouse would die of immediate hypoglycemia"
+    },
+    "e": {
+     "es": "Aumentaría el uso de glucosa",
+     "en": "Glucose use would increase"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Evaluar las consecuencias sistémicas de la inhibición de la carnitina palmitoiltransferasa I (CPT-I) sobre la capacidad cetogénica",
+    "en": "Evaluating the systemic consequences of inhibiting carnitine palmitoyltransferase I (CPT-I) on ketogenic capacity"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.33",
+   "num": "7.3.33",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analice las causas metabólicas de la poliuria (micción excesiva) y polidipsia (sed excesiva) en la diabetes mellitus.",
+    "en": "Analyze the metabolic causes of polyuria (excessive urination) and polydipsia (excessive thirst) in diabetes mellitus."
+   },
+   "opciones": {
+    "a": {
+     "es": "Alta glucemia que supera el umbral renal",
+     "en": "High blood glucose that exceeds the renal threshold"
+    },
+    "b": {
+     "es": "Inhibición de la hormona antidiurética (ADH)",
+     "en": "Inhibition of antidiuretic hormone (ADH)"
+    },
+    "c": {
+     "es": "Presencia de glucosa en la orina que arrastra agua (diuresis osmótica)",
+     "en": "Presence of glucose in the urine, which draws water with it (osmotic diuresis)"
+    },
+    "d": {
+     "es": "Bajos niveles de cuerpos cetónicos",
+     "en": "Low levels of ketone bodies"
+    },
+    "e": {
+     "es": "Aumento del glucógeno hepático",
+     "en": "Increased liver glycogen"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Analizar la diuresis osmótica: glucemia alta →glucosa en orina → arrastre de H<sub>2</sub>O",
+    "en": "Analyzing osmotic diuresis: high blood glucose → glucose in urine → water drawn out with it (H<sub>2</sub>O)"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.34",
+   "num": "7.3.34",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué hormona tiene la función de reducir el apetito y es secretada por el tejido adiposo?",
+    "en": "Which hormone reduces appetite and is secreted by adipose tissue?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Grelina",
+     "en": "Ghrelin"
+    },
+    "b": {
+     "es": "Glucagón",
+     "en": "Glucagon"
+    },
+    "c": {
+     "es": "Leptina",
+     "en": "Leptin"
+    },
+    "d": {
+     "es": "Insulina",
+     "en": "Insulin"
+    },
+    "e": {
+     "es": "Cortisol",
+     "en": "Cortisol"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar la hormona de la saciedad (leptina)",
+    "en": "Recalling the satiety hormone (leptin)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.35",
+   "num": "7.3.35",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Si un individuo en ayuno prolongado experimenta un estrés repentino (lucha/huida), la liberación de adrenalina provoca:",
+    "en": "If an individual who has been fasting for a prolonged period experiences sudden stress (fight or flight), the release of epinephrine causes:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Activación de la glucogenólisis hepática y muscular",
+     "en": "Activation of hepatic and muscle glycogenolysis"
+    },
+    "b": {
+     "es": "Activación de la lipogénesis",
+     "en": "Activation of lipogenesis"
+    },
+    "c": {
+     "es": "Inhibición de la insulina y aumento de glucagón",
+     "en": "Inhibition of insulin and an increase in glucagon"
+    },
+    "d": {
+     "es": "Aumento de la captación de glucosa en músculo",
+     "en": "Increased glucose uptake in muscle"
+    },
+    "e": {
+     "es": "Aumento de la lipólisis en el tejido adiposo",
+     "en": "Increased lipolysis in adipose tissue"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Evaluar la respuesta metabólica aguda ante el estrés (adrenalina) integrando la activación de rutas catabólicas en múltiples tejidos",
+    "en": "Evaluating the acute metabolic response to stress (epinephrine) by integrating the activation of catabolic pathways in multiple tissues"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.36",
+   "num": "7.3.36",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "La pérdida de masa muscular en estados patológicos avanzados se debe a:",
+    "en": "The loss of muscle mass in advanced disease states is due to:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Degradación de proteínas musculares para aportar alanina a la GNG",
+     "en": "Degradation of muscle proteins to supply alanine for GNG"
+    },
+    "b": {
+     "es": "Aumento de la síntesis de glucógeno",
+     "en": "Increased glycogen synthesis"
+    },
+    "c": {
+     "es": "Inhibición de la lipólisis",
+     "en": "Inhibition of lipolysis"
+    },
+    "d": {
+     "es": "Predominio de hormonas catabólicas (cortisol, glucagón)",
+     "en": "Predominance of catabolic hormones (cortisol, glucagon)"
+    },
+    "e": {
+     "es": "Uso preferente de glucosa por el músculo",
+     "en": "Preferential use of glucose by muscle"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la caquexia: catabolismo proteico por hormonas catabólicas",
+    "en": "Analyzing cachexia: protein catabolism driven by catabolic hormones"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.37",
+   "num": "7.3.37",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué ocurre con la acetil-CoA carboxilasa (paso limitante de la lipogénesis) durante el ayuno?",
+    "en": "What happens to acetyl-CoA carboxylase (the rate-limiting step of lipogenesis) during fasting?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se activa por insulina",
+     "en": "It is activated by insulin"
+    },
+    "b": {
+     "es": "Se inactiva por fosforilación (vía AMPK)",
+     "en": "It is inactivated by phosphorylation (via AMPK)"
+    },
+    "c": {
+     "es": "Se activa por citrato",
+     "en": "It is activated by citrate"
+    },
+    "d": {
+     "es": "Se inactiva por malonil-CoA",
+     "en": "It is inactivated by malonyl-CoA"
+    },
+    "e": {
+     "es": "No se ve afectada",
+     "en": "It is not affected"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Recordar la regulación de ACC en ayuno (inactivación por fosforilación).",
+    "en": "Recalling the regulation of ACC during fasting (inactivation by phosphorylation)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.38",
+   "num": "7.3.38",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Por qué es importante para la supervivencia el uso de cuerpos cetónicos por el cerebro en ayuno prolongado?",
+    "en": "Why is the use of ketone bodies by the brain during prolonged fasting important for survival?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Son más energéticos que la glucosa",
+     "en": "They are more energetic than glucose"
+    },
+    "b": {
+     "es": "Son los únicos combustibles del cerebro",
+     "en": "They are the brain's only fuels"
+    },
+    "c": {
+     "es": "Reduce la dependencia de glucosa, disminuyendo la proteólisis muscular",
+     "en": "It reduces dependence on glucose, decreasing muscle proteolysis"
+    },
+    "d": {
+     "es": "Elimina el exceso de acetil-CoA del hígado",
+     "en": "It eliminates excess acetyl-CoA from the liver"
+    },
+    "e": {
+     "es": "Activa la gluconeogénesis renal",
+     "en": "It activates renal gluconeogenesis"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender el beneficio evolutivo del uso de CC: ahorro de glucosa y proteína muscular",
+    "en": "Understanding the evolutionary benefit of using KB: sparing of glucose and muscle protein"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.39",
+   "num": "7.3.39",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Si se consume una comida rica en proteínas y baja en carbohidratos, ¿qué rutas se activarían en el hígado y por qué?",
+    "en": "If a high-protein, low-carbohydrate meal is eaten, which pathways would be activated in the liver, and why?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Lipogénesis por el exceso de acetil-CoA",
+     "en": "Lipogenesis, because of the excess acetyl-CoA"
+    },
+    "b": {
+     "es": "Gluconeogénesis a partir de alanina para evitar hipoglucemia",
+     "en": "Gluconeogenesis from alanine to prevent hypoglycemia"
+    },
+    "c": {
+     "es": "Glucogenogénesis por la alta insulina",
+     "en": "Glycogenesis, because of high insulin"
+    },
+    "d": {
+     "es": "Ciclo de la urea para eliminar el nitrógeno de los aminoácidos",
+     "en": "The urea cycle to eliminate the nitrogen of the amino acids"
+    },
+    "e": {
+     "es": "Cetogénesis por el exceso de acetil-CoA",
+     "en": "Ketogenesis, because of the excess acetyl-CoA"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar la comida alta en proteína: AA → GNG para mantener glucemia + urea para eliminar N",
+    "en": "Applying the high-protein meal: AA → GNG to maintain blood glucose + urea to eliminate N"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.40",
+   "num": "7.3.40",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "La glucogenólisis muscular se activa rápidamente durante el ejercicio intenso. ¿Cómo se activa la enzima glucógeno fosforilasa en este contexto?",
+    "en": "Muscle glycogenolysis is activated rapidly during intense exercise. How is the enzyme glycogen phosphorylase activated in this context?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Por la unión de calcio (Ca<sup>2+</sup>) liberado durante la contracción",
+     "en": "By the binding of calcium (Ca<sup>2+</sup>) released during contraction"
+    },
+    "b": {
+     "es": "Por glucagón liberado por el páncreas",
+     "en": "By glucagon released by the pancreas"
+    },
+    "c": {
+     "es": "Por insulina para aumentar la glucosa",
+     "en": "By insulin, to increase glucose"
+    },
+    "d": {
+     "es": "Por fosforilación (vía adrenalina)",
+     "en": "By phosphorylation (via epinephrine)"
+    },
+    "e": {
+     "es": "Por glucosa-6-fosfato",
+     "en": "By glucose-6-phosphate"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la GF muscular en ejercicio: Ca<sup>2+</sup> (alostérica) y adrenalina (fosforilación)",
+    "en": "Analyzing muscle GP during exercise: Ca<sup>2+</sup> (allosteric) and epinephrine (phosphorylation)"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.41",
+   "num": "7.3.41",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe un modelo de tratamiento farmacológico para un paciente con DM2 que actúe en el hígado. El fármaco debería:",
+    "en": "Design a model of drug treatment for a patient with T2DM that acts on the liver. The drug should:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Inhibir la glucógeno sintasa",
+     "en": "Inhibit glycogen synthase"
+    },
+    "b": {
+     "es": "Inhibir la gluconeogénesis (reducir la producción hepática de glucosa)",
+     "en": "Inhibit gluconeogenesis (reduce hepatic glucose production)"
+    },
+    "c": {
+     "es": "Activar la fructosa-1,6-bisfosfatasa",
+     "en": "Activate fructose-1,6-bisphosphatase"
+    },
+    "d": {
+     "es": "Aumentar la sensibilidad a la insulina en el hepatocito",
+     "en": "Increase insulin sensitivity in the hepatocyte"
+    },
+    "e": {
+     "es": "Bloquear la piruvato carboxilasa",
+     "en": "Block pyruvate carboxylase"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Crear un tratamiento DM2: Inhibir GNG (metformina) y/o ↑sensibilidad insulina",
+    "en": "Creating a T2DM treatment: inhibiting GNG (metformin) and/or ↑insulin sensitivity"
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.42",
+   "num": "7.3.42",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué compuesto metabólico inhibe la lipasa sensible a hormonas (HSL) en el tejido adiposo?",
+    "en": "Which metabolic compound inhibits hormone-sensitive lipase (HSL) in adipose tissue?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucagón",
+     "en": "Glucagon"
+    },
+    "b": {
+     "es": "Adrenalina",
+     "en": "Epinephrine"
+    },
+    "c": {
+     "es": "Cortisol",
+     "en": "Cortisol"
+    },
+    "d": {
+     "es": "Insulina",
+     "en": "Insulin"
+    },
+    "e": {
+     "es": "Leptina",
+     "en": "Leptin"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar el inhibidor de HSL (insulina)",
+    "en": "Recalling the inhibitor of HSL (insulin)"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.43",
+   "num": "7.3.43",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "El consumo de alcohol puede provocar hipoglucemia. ¿Cuál es la razón metabólica de esto en el hígado?",
+    "en": "Alcohol consumption can cause hypoglycemia. What is the metabolic reason for this in the liver?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El alcohol inhibe la glucogenólisis",
+     "en": "Alcohol inhibits glycogenolysis"
+    },
+    "b": {
+     "es": "El alcohol activa la insulina",
+     "en": "Alcohol activates insulin"
+    },
+    "c": {
+     "es": "El NADH generado por la oxidación del alcohol agota el NAD<sup>+</sup> citosólico necesario para la GNG",
+     "en": "The NADH generated by alcohol oxidation depletes the cytosolic NAD<sup>+</sup> needed for GNG"
+    },
+    "d": {
+     "es": "El alcohol inhibe la piruvato carboxilasa",
+     "en": "Alcohol inhibits pyruvate carboxylase"
+    },
+    "e": {
+     "es": "El alcohol se convierte en glucosa",
+     "en": "Alcohol is converted into glucose"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar la hipoglucemia por alcohol: el NADH generado consume NAD<sup>+</sup> → bloqueo de MDH citosólica (necesaria para GNG)",
+    "en": "Applying alcohol-induced hypoglycemia: the NADH generated consumes NAD<sup>+</sup> → block of cytosolic MDH (needed for GNG)"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.44",
+   "num": "7.3.44",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe las consecuencias metabólicas de la privación de agua y alimento (inanición) frente a la privación solo de alimento (ayuno con agua).",
+    "en": "Evaluate the metabolic consequences of deprivation of water and food (starvation) versus deprivation of food only (fasting with water)."
+   },
+   "opciones": {
+    "a": {
+     "es": "En inanición, la lipólisis se detiene",
+     "en": "In starvation, lipolysis stops"
+    },
+    "b": {
+     "es": "En inanición, la glucogenólisis y GNG son prioritarias para el cerebro",
+     "en": "In starvation, glycogenolysis and GNG are priorities for the brain"
+    },
+    "c": {
+     "es": "La inanición requiere un aumento en la producción de cuerpos cetónicos",
+     "en": "Starvation requires an increase in ketone body production"
+    },
+    "d": {
+     "es": "La inanición solo utiliza glucosa",
+     "en": "Starvation uses only glucose"
+    },
+    "e": {
+     "es": "La inanición disminuye el glucagón",
+     "en": "Starvation decreases glucagon"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Evaluar y comparar las adaptaciones metabólicas entre diferentes estados de privación nutricional (inanición vs. ayuno con agua)",
+    "en": "Evaluating and comparing the metabolic adaptations between different states of nutritional deprivation (starvation vs. fasting with water)"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.3.45",
+   "num": "7.3.45",
+   "tema": 7,
+   "seccion": "7.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "La resistencia a la insulina reduce la capacidad del músculo de captar glucosa. ¿Qué sucede con la fuente energética principal del músculo en un individuo DM2 no controlado?",
+    "en": "Insulin resistance reduces the ability of muscle to take up glucose. What happens to the main energy source of muscle in an individual with uncontrolled T2DM?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumenta la glucogenogénesis",
+     "en": "Glycogenesis increases"
+    },
+    "b": {
+     "es": "Dependencia aumentada de ácidos grasos como combustible",
+     "en": "Increased dependence on fatty acids as fuel"
+    },
+    "c": {
+     "es": "Disminuye el consumo de O<sub>2</sub>",
+     "en": "O<sub>2</sub> consumption decreases"
+    },
+    "d": {
+     "es": "Aumenta la glucemia postprandial",
+     "en": "Postprandial blood glucose increases"
+    },
+    "e": {
+     "es": "Aumenta la captación de alanina",
+     "en": "Alanine uptake increases"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la IR en DM2: ↓glucosa en músculo →↑AG como combustible →↑glucemia",
+    "en": "Analyzing IR in T2DM: ↓glucose in muscle → ↑FA as fuel → ↑blood glucose"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.4.1",
+   "num": "7.4.1",
+   "tema": 7,
+   "seccion": "7.4",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Una mutación en la fructosa-1,6-bisfosfatasa (enzima clave de la gluconeogénesis) tendría como consecuencia:",
+    "en": "A mutation in fructose-1,6-bisphosphatase (a key enzyme of gluconeogenesis) would result in:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Dificultad para mantener glucemia en ayuno",
+     "en": "Difficulty maintaining blood glucose during fasting"
+    },
+    "b": {
+     "es": "Acumulación de lactato en sangre",
+     "en": "Accumulation of lactate in the blood"
+    },
+    "c": {
+     "es": "Mayor producción de glucógeno hepático",
+     "en": "Greater production of liver glycogen"
+    },
+    "d": {
+     "es": "Dependencia aumentada de ácidos grasos como fuente energética",
+     "en": "Increased dependence on fatty acids as an energy source"
+    },
+    "e": {
+     "es": "Aumento de la síntesis de ácidos nucleicos",
+     "en": "Increased synthesis of nucleic acids"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar el déficit de F-1,6-BPasa: ↓GNG, ↑lactato y ↑AG para energía",
+    "en": "Analyzing F-1,6-BPase deficiency: ↓GNG, ↑lactate and ↑FA for energy"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.4.2",
+   "num": "7.4.2",
+   "tema": 7,
+   "seccion": "7.4",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "El glucagón…",
+    "en": "Glucagon…"
+   },
+   "opciones": {
+    "a": {
+     "es": "se sintetiza por las células alfa pancreáticas",
+     "en": "is synthesized by pancreatic alpha cells"
+    },
+    "b": {
+     "es": "es sintetizado por el cerebro después de una comida",
+     "en": "is synthesized by the brain after a meal"
+    },
+    "c": {
+     "es": "indica falta de nutrientes",
+     "en": "signals a lack of nutrients"
+    },
+    "d": {
+     "es": "activa el almacenamiento de lípidos",
+     "en": "activates lipid storage"
+    },
+    "e": {
+     "es": "sirve para retirar glucosa de la sangre y almacenarla en el hígado",
+     "en": "serves to remove glucose from the blood and store it in the liver"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar el origen celular y la función señalizadora básica del glucagón",
+    "en": "Recalling the cellular origin and basic signaling function of glucagon"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.4.3",
+   "num": "7.4.3",
+   "tema": 7,
+   "seccion": "7.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué relación existe entre la insulina y el glucagón?",
+    "en": "What is the relationship between insulin and glucagon?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Son hormonas con efectos contrarios",
+     "en": "They are hormones with opposite effects"
+    },
+    "b": {
+     "es": "Son nombres distintos para la misma hormona",
+     "en": "They are different names for the same hormone"
+    },
+    "c": {
+     "es": "Ambas se sintetizan en el páncreas",
+     "en": "Both are synthesized in the pancreas"
+    },
+    "d": {
+     "es": "Se sintetizan en el páncreas y nunca pasan a la sangre",
+     "en": "They are synthesized in the pancreas and never enter the blood"
+    },
+    "e": {
+     "es": "Actúan siempre ante la falta de nutrientes",
+     "en": "They always act when nutrients are lacking"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender la relación de antagonismo hormonal entre insulina y glucagón en la homeostasis global",
+    "en": "Understanding the hormonal antagonism between insulin and glucagon in overall homeostasis"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.4.4",
+   "num": "7.4.4",
+   "tema": 7,
+   "seccion": "7.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Los transportadores de glucosa responden a insulina?",
+    "en": "Do glucose transporters respond to insulin?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Sí, todos",
+     "en": "Yes, all of them"
+    },
+    "b": {
+     "es": "No, ninguno",
+     "en": "No, none of them"
+    },
+    "c": {
+     "es": "Sí, en algunos tejidos, como el músculo esquelético",
+     "en": "Yes, in some tissues, such as skeletal muscle"
+    },
+    "d": {
+     "es": "Sólo los del cerebro",
+     "en": "Only those of the brain"
+    },
+    "e": {
+     "es": "Sólo los del páncreas",
+     "en": "Only those of the pancreas"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender la regulación del GLUT4 (músculo/adiposo)",
+    "en": "Understanding the regulation of GLUT4 (muscle/adipose tissue)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.4.5",
+   "num": "7.4.5",
+   "tema": 7,
+   "seccion": "7.4",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "La cantidad de insulina en sangre…",
+    "en": "The amount of insulin in the blood…"
+   },
+   "opciones": {
+    "a": {
+     "es": "presenta valores estables durante todo el día",
+     "en": "remains stable throughout the day"
+    },
+    "b": {
+     "es": "aumenta después de cada comida",
+     "en": "increases after every meal"
+    },
+    "c": {
+     "es": "disminuye tras cada comida",
+     "en": "decreases after every meal"
+    },
+    "d": {
+     "es": "aumenta por la noche",
+     "en": "increases at night"
+    },
+    "e": {
+     "es": "disminuye justo antes de comer",
+     "en": "decreases just before eating"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Recordar la respuesta postprandial de la insulina",
+    "en": "Recalling the postprandial insulin response"
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.4.6",
+   "num": "7.4.6",
+   "tema": 7,
+   "seccion": "7.4",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "La insulina y el glucagón regulan la glucógeno sintasa y la glucógeno fosforilasa. ¿Cómo actúan recíprocamente?",
+    "en": "Insulin and glucagon regulate glycogen synthase and glycogen phosphorylase. How do they act reciprocally?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Insulina desfosforila ambas, glucagón fosforila ambas",
+     "en": "Insulin dephosphorylates both, glucagon phosphorylates both"
+    },
+    "b": {
+     "es": "Insulina fosforila sintasa y glucagón desfosforila fosforilasa",
+     "en": "Insulin phosphorylates the synthase and glucagon dephosphorylates the phosphorylase"
+    },
+    "c": {
+     "es": "Insulina activa la glucógeno sintasa (desfosforila) y glucagón activa la glucógeno fosforilasa (fosforila)",
+     "en": "Insulin activates glycogen synthase (dephosphorylates it) and glucagon activates glycogen phosphorylase (phosphorylates it)"
+    },
+    "d": {
+     "es": "Ambas hormonas utilizan la fosforilación/desfosforilación como mecanismo de control",
+     "en": "Both hormones use phosphorylation/dephosphorylation as the control mechanism"
+    },
+    "e": {
+     "es": "Ambas se regulan por el AMPc",
+     "en": "Both are regulated by cAMP"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar los mecanismos de regulación recíproca mediante modificación covalente (fosforilación) de enzimas antagónicas",
+    "en": "Analyzing the mechanisms of reciprocal regulation through covalent modification (phosphorylation) of antagonistic enzymes"
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.4.7",
+   "num": "7.4.7",
+   "tema": 7,
+   "seccion": "7.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál es el principal efecto de la insulina sobre el metabolismo lipídico?",
+    "en": "What is the main effect of insulin on lipid metabolism?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Activa la lipólisis",
+     "en": "It activates lipolysis"
+    },
+    "b": {
+     "es": "Aumenta la cetogénesis",
+     "en": "It increases ketogenesis"
+    },
+    "c": {
+     "es": "Promueve la síntesis de ácidos grasos y triacilgliceroles",
+     "en": "It promotes the synthesis of fatty acids and triacylglycerols"
+    },
+    "d": {
+     "es": "Promueve el consumo de cuerpos cetónicos",
+     "en": "It promotes the consumption of ketone bodies"
+    },
+    "e": {
+     "es": "Inhibe la lipasa sensible a hormonas (HSL)",
+     "en": "It inhibits hormone-sensitive lipase (HSL)"
+    }
+   },
+   "correctas": [
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender los efectos lipogénicos de la insulina (↑síntesis e ↓lipólisis)",
+    "en": "Understanding the lipogenic effects of insulin (↑synthesis and ↓lipolysis)"
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.4.8",
+   "num": "7.4.8",
+   "tema": 7,
+   "seccion": "7.4",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe una señal de control que asegure que las células beta del páncreas liberen insulina sólo cuando haya alta glucosa y energía celular.",
+    "en": "Design a control signal that ensures that pancreatic beta cells release insulin only when glucose and cellular energy are high."
+   },
+   "opciones": {
+    "a": {
+     "es": "La glucosa entra por GLUT2, se metaboliza a ATP, y el ATP cierra los canales de K<sup>+</sup>",
+     "en": "Glucose enters through GLUT2, is metabolized to ATP, and ATP closes the K<sup>+</sup> channels"
+    },
+    "b": {
+     "es": "La glucosa entra y activa la glucógeno sintasa",
+     "en": "Glucose enters and activates glycogen synthase"
+    },
+    "c": {
+     "es": "El glucagón cierra los canales de K<sup>+</sup>",
+     "en": "Glucagon closes the K<sup>+</sup> channels"
+    },
+    "d": {
+     "es": "El AMPc activa la liberación de insulina",
+     "en": "cAMP activates insulin release"
+    },
+    "e": {
+     "es": "La despolarización abre canales de Ca<sup>2+</sup> y la entrada de Ca<sup>2+</sup> desencadena la exocitosis de la insulina",
+     "en": "Depolarization opens Ca<sup>2+</sup> channels, and Ca<sup>2+</sup> entry triggers insulin exocytosis"
+    }
+   },
+   "correctas": [
+    "a",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Diseñar un modelo de acoplamiento estímulo-secreción basado en el estado energético celular y el flujo iónico en el páncreas",
+    "en": "Designing a stimulus–secretion coupling model based on the cellular energy state and ion flow in the pancreas"
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.4.9",
+   "num": "7.4.9",
+   "tema": 7,
+   "seccion": "7.4",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe el efecto del cortisol (hormona del estrés) en la integración del metabolismo.",
+    "en": "Evaluate the effect of cortisol (a stress hormone) on the integration of metabolism."
+   },
+   "opciones": {
+    "a": {
+     "es": "Activa la lipogénesis",
+     "en": "It activates lipogenesis"
+    },
+    "b": {
+     "es": "Disminuye la gluconeogénesis hepática",
+     "en": "It decreases hepatic gluconeogenesis"
+    },
+    "c": {
+     "es": "Aumenta la proteólisis para suministrar aminoácidos a la GNG",
+     "en": "It increases proteolysis to supply amino acids for GNG"
+    },
+    "d": {
+     "es": "Inhibe la captación de glucosa por el músculo y adiposo (efecto diabetogénico)",
+     "en": "It inhibits glucose uptake by muscle and adipose tissue (diabetogenic effect)"
+    },
+    "e": {
+     "es": "Inhibe la glucogenólisis",
+     "en": "It inhibits glycogenolysis"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Evaluar el impacto multiorgánico del cortisol y su efecto diabetogénico mediante la integración de la proteólisis y la resistencia a la insulina",
+    "en": "Evaluating the multi-organ impact of cortisol and its diabetogenic effect by integrating proteolysis and insulin resistance"
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-7.4.10",
+   "num": "7.4.10",
+   "tema": 7,
+   "seccion": "7.4",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué característica metabólica permite al páncreas actuar como un sensor de glucosa eficiente?",
+    "en": "Which metabolic feature allows the pancreas to act as an efficient glucose sensor?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Posee glucosa-6-fosfatasa",
+     "en": "It has glucose-6-phosphatase"
+    },
+    "b": {
+     "es": "Expresa GLUT4 sensible a insulina",
+     "en": "It expresses insulin-sensitive GLUT4"
+    },
+    "c": {
+     "es": "Expresa la glucoquinasa (alta K<sub>M</sub>), que sólo es activa a altas concentraciones de glucosa",
+     "en": "It expresses glucokinase (high K<sub>M</sub>), which is active only at high glucose concentrations"
+    },
+    "d": {
+     "es": "Es el único órgano con glucagón",
+     "en": "It is the only organ with glucagon"
+    },
+    "e": {
+     "es": "No consume glucosa",
+     "en": "It does not consume glucose"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el concepto de sensor glucosa: la glucoquinasa (K<sub>M</sub> alta) garantiza que solo responde a altas glucemias",
+    "en": "Applying the concept of a glucose sensor: glucokinase (high K<sub>M</sub>) ensures a response only to high blood glucose"
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.1",
+   "num": "PC7.1",
+   "tema": 7,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué enzima clave está ausente en el músculo esquelético que sí está presente en el hígado, y cuya ausencia determina que el músculo no pueda liberar glucosa a la sangre?",
+    "en": "Which key enzyme is absent in skeletal muscle but present in the liver, and whose absence means that muscle cannot release glucose into the blood?"
+   },
+   "respuesta": {
+    "es": "La enzima clave ausente es la glucosa-6-fosfatasa.",
+    "en": "The key enzyme that is absent is glucose-6-phosphatase."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación de la enzima que define la función de un órgano.",
+    "en": "Requires simple recall of the enzyme that defines the function of an organ."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.2",
+   "num": "PC7.2",
+   "tema": 7,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Explique el papel metabólico opuesto del hígado y el músculo esquelético en el metabolismo de la glucosa durante el ayuno.",
+    "en": "Explain the opposite metabolic roles of the liver and skeletal muscle in glucose metabolism during fasting."
+   },
+   "respuesta": {
+    "es": "El hígado tiene un rol catabólico/glucogénico, liberando glucosa a la sangre (vía glucogenólisis y gluconeogénesis) para mantener la glucemia sistémica. El músculo tiene un rol consumidor/almacenador, utiliza su propio glucógeno solo para sus necesidades energéticas y es incapaz de exportar glucosa.",
+    "en": "The liver has a catabolic/glucogenic role, releasing glucose into the blood (via glycogenolysis and gluconeogenesis) to maintain systemic blood glucose. Muscle has a consumer/storage role: it uses its own glycogen only for its own energy needs and cannot export glucose."
+   },
+   "justificacion": {
+    "es": "Requiere describir las funciones opuestas de los dos órganos en un estado fisiológico específico.",
+    "en": "Requires describing the opposite functions of the two organs in a specific physiological state."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.3",
+   "num": "PC7.3",
+   "tema": 7,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Compare y contraste la función metabólica de los ciclos de Cori y de la alanina durante el ejercicio intenso en el músculo. ¿Cuál es el principal sustrato exportado por el músculo en cada caso y qué destino tienen en el hígado?",
+    "en": "Compare and contrast the metabolic function of the Cori and alanine cycles during intense exercise in muscle. What is the main substrate exported by muscle in each case, and what is its fate in the liver?"
+   },
+   "respuesta": {
+    "es": "Ambos ciclos son interorgánicos y exportan metabolitos no glucémicos. Ciclo de Cori: exporta lactato. El hígado lo convierte en glucosa (GNG). Ciclo de la alanina: exporta alanina. El hígado utiliza su grupo amino para la urea y el esqueleto carbonado (piruvato) para la gluconeogénesis. La diferencia principal es que el ciclo de la alanina transporta el nitrógeno tóxico (NH<sub>4</sub><sup>+</sup>), mientras que el de Cori gestiona el subproducto de la glucólisis anaeróbica.",
+    "en": "Both cycles are interorgan cycles that export nonglucose metabolites. Cori cycle: it exports lactate, which the liver converts into glucose (GNG). Alanine cycle: it exports alanine; the liver uses its amino group for urea and its carbon skeleton (pyruvate) for gluconeogenesis. The main difference is that the alanine cycle carries toxic nitrogen (NH<sub>4</sub><sup>+</sup>), whereas the Cori cycle handles the by-product of anaerobic glycolysis."
+   },
+   "justificacion": {
+    "es": "Exige desglosar y comparar las funciones de dos rutas relacionadas en un estado fisiológico, especificando el intercambio y la finalidad.",
+    "en": "Requires breaking down and comparing the functions of two related pathways in a physiological state, specifying the exchange and the purpose."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.4",
+   "num": "PC7.4",
+   "tema": 7,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe el impacto metabólico de una deficiencia total en la enzima glucógeno fosforilasa del músculo esquelético. ¿Cómo afectaría esto la capacidad del músculo para realizar ejercicio intenso y su rol en la homeostasis de la glucosa sistémica?",
+    "en": "Evaluate the metabolic impact of a total deficiency of the enzyme glycogen phosphorylase in skeletal muscle. How would this affect the ability of muscle to perform intense exercise and its role in systemic glucose homeostasis?"
+   },
+   "respuesta": {
+    "es": "El músculo sería incapaz de degradar su glucógeno (su reserva de glucosa rápida). Esto provocaría una intolerancia severa al ejercicio intenso/anaeróbico y calambres, ya que no podría obtener energía rápidamente. Sin embargo, su impacto en la homeostasis de la glucosa sistémica (niveles en sangre) sería mínimo, ya que el músculo no tiene glucosa-6-fosfatasa y, por lo tanto, no exporta glucosa a la sangre en ninguna condición.",
+    "en": "Muscle would be unable to break down its glycogen (its rapid glucose reserve). This would cause severe intolerance to intense/anaerobic exercise and cramps, since it could not obtain energy quickly. However, its impact on systemic glucose homeostasis (blood levels) would be minimal, since muscle has no glucose-6-phosphatase and therefore never exports glucose into the blood."
+   },
+   "justificacion": {
+    "es": "Requiere juzgar el efecto de una deficiencia enzimática en dos niveles: la funcionalidad del órgano (ejercicio) y su impacto sistémico (glucemia), comparando ambos roles.",
+    "en": "Requires judging the effect of an enzyme deficiency at two levels, organ function (exercise) and systemic impact (blood glucose), comparing both roles."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.5",
+   "num": "PC7.5",
+   "tema": 7,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué es la fructosa-2,6-bisfosfato (F-2,6-BP) y cuál es su efecto sobre las enzimas clave de la glucólisis (PFK-1) y la gluconeogénesis (F-1,6-BPasa)?",
+    "en": "What is fructose-2,6-bisphosphate (F-2,6-BP), and what is its effect on the key enzymes of glycolysis (PFK-1) and gluconeogenesis (F-1,6-BPase)?"
+   },
+   "respuesta": {
+    "es": "Es una molécula reguladora alostérica del metabolismo de la glucosa. Aumenta la actividad de la PFK-1 (glucólisis) y disminuye la actividad de la F-1,6-BPasa (gluconeogénesis).",
+    "en": "It is an allosteric regulatory molecule of glucose metabolism. It increases the activity of PFK-1 (glycolysis) and decreases the activity of F-1,6-BPase (gluconeogenesis)."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación del efector alostérico y su acción recíproca.",
+    "en": "Requires simple recall of the allosteric effector and its reciprocal action."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.6",
+   "num": "PC7.6",
+   "tema": 7,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Describa cómo las hormonas insulina y adrenalina/glucagón ejercen un control recíproco sobre la lipólisis en el tejido adiposo, haciendo referencia a la enzima clave lipasa sensible a hormonas (HSL).",
+    "en": "Describe how the hormones insulin and epinephrine/glucagon exert reciprocal control over lipolysis in adipose tissue, referring to the key enzyme hormone-sensitive lipase (HSL)."
+   },
+   "respuesta": {
+    "es": "Glucagón/adrenalina: indican falta de energía, activan la ruta AMPc → PKA, la cual fosforila y activa la HSL, promoviendo la lipólisis. Insulina: indica abundancia, activa una fosfodiesterasa que reduce el AMPc y activa una fosfatasa que desfosforila e inactiva la HSL, deteniendo la lipólisis.",
+    "en": "Glucagon/epinephrine: they signal a lack of energy and activate the cAMP → PKA pathway, which phosphorylates and activates HSL, promoting lipolysis. Insulin: it signals abundance, activates a phosphodiesterase that lowers cAMP and activates a phosphatase that dephosphorylates and inactivates HSL, stopping lipolysis."
+   },
+   "justificacion": {
+    "es": "Requiere usar el conocimiento de la transducción de señales para describir la acción opuesta de las hormonas en una enzima clave.",
+    "en": "Requires using knowledge of signal transduction to describe the opposite action of the hormones on a key enzyme."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.7",
+   "num": "PC7.7",
+   "tema": 7,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe el mecanismo por el cual la desviación del oxalacetato (OAA) en el hígado durante el ayuno integra el catabolismo de lípidos (β-oxidación) y la cetogénesis.",
+    "en": "Evaluate the mechanism by which the diversion of oxaloacetate (OAA) in the liver during fasting integrates lipid catabolism (β-oxidation) and ketogenesis."
+   },
+   "respuesta": {
+    "es": "El OAA se desvía a la gluconeogénesis para producir glucosa para el cerebro. Al no haber suficiente OAA disponible en la mitocondria, el acetil-CoA proveniente de la β-oxidación no puede entrar en el ciclo de Krebs. Esto resulta en la acumulación de acetil-CoA, que se desvía obligatoriamente a la síntesis de cuerpos cetónicos como única vía de exportación de energía.",
+    "en": "OAA is diverted to gluconeogenesis to produce glucose for the brain. Because there is not enough OAA available in the mitochondrion, the acetyl-CoA from β-oxidation cannot enter the Krebs cycle. This results in the accumulation of acetyl-CoA, which is obligatorily diverted to the synthesis of ketone bodies as the only route for exporting energy."
+   },
+   "justificacion": {
+    "es": "Requiere juzgar la interconexión entre tres rutas (GNG, β-oxidación y cetogénesis) y explicar cómo el desvío de un intermediario clave (OAA) determina el flujo global.",
+    "en": "Requires judging the interconnection between three pathways (GNG, β-oxidation and ketogenesis) and explaining how the diversion of a key intermediate (OAA) determines overall flux."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.8",
+   "num": "PC7.8",
+   "tema": 7,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Describa la estrategia adaptativa del organismo durante el ayuno prolongado para conservar la proteína muscular. ¿Cuál es la nueva fuente de energía para el cerebro que permite este ahorro?",
+    "en": "Describe the adaptive strategy of the body during prolonged fasting to conserve muscle protein. What is the brain's new energy source that allows this sparing?"
+   },
+   "respuesta": {
+    "es": "La estrategia adaptativa es cambiar la principal fuente de combustible para el cerebro de glucosa a cuerpos cetónicos (acetoacetato y 3-hidroxibutirato). Este cambio reduce drásticamente la demanda de glucosa, disminuyendo la necesidad de gluconeogénesis y, por lo tanto, conservando los aminoácidos musculares (los esqueletos carbonados) que, de otro modo, se hubieran sacrificado.",
+    "en": "The adaptive strategy is to switch the brain's main fuel from glucose to ketone bodies (acetoacetate and 3-hydroxybutyrate). This switch sharply reduces the demand for glucose, decreasing the need for gluconeogenesis and thus conserving the muscle amino acids (the carbon skeletons) that would otherwise have been sacrificed."
+   },
+   "justificacion": {
+    "es": "Requiere describir la adaptación sistémica a un estado nutricional y explicar la consecuencia de ese cambio de combustible.",
+    "en": "Requires describing the systemic adaptation to a nutritional state and explaining the consequence of that change of fuel."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.9",
+   "num": "PC7.9",
+   "tema": 7,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Explique la cascada de eventos que conduce a la cetoacidosis diabética (CAD) en un paciente con DM1 (déficit absoluto de insulina), interconectando la hiperglucemia, la lipólisis descontrolada y la aceleración de la cetogénesis.",
+    "en": "Explain the cascade of events that leads to diabetic ketoacidosis (DKA) in a patient with T1DM (absolute insulin deficiency), linking hyperglycemia, uncontrolled lipolysis and the acceleration of ketogenesis."
+   },
+   "respuesta": {
+    "es": "La falta de insulina implica: 1) hiperglucemia (la glucosa no entra a los tejidos). 2) activación descontrolada de la lipólisis (no hay insulina para inhibir la HSL), liberando AG masivos. 3) el hígado recibe AG masivos y, sin insulina, el malonil-CoA es bajo, lo que desinhibe la CAT I y acelera la β-oxidación y cetogénesis. Esto produce un exceso de cuerpos cetónicos, que son ácidos, causando la acidosis metabólica característica de la CAD.",
+    "en": "The lack of insulin implies: 1) hyperglycemia (glucose does not enter the tissues). 2) uncontrolled activation of lipolysis (there is no insulin to inhibit HSL), releasing massive amounts of FA. 3) the liver receives massive amounts of FA and, without insulin, malonyl-CoA is low, which disinhibits CAT I and accelerates β-oxidation and ketogenesis. This produces an excess of ketone bodies, which are acids, causing the metabolic acidosis characteristic of DKA."
+   },
+   "justificacion": {
+    "es": "Requiere juzgar y encadenar múltiples fallos metabólicos causados por una sola deficiencia hormonal y su consecuencia patológica.",
+    "en": "Requires judging and linking multiple metabolic failures caused by a single hormonal deficiency and its pathological consequence."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.10",
+   "num": "PC7.10",
+   "tema": 7,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Proponga un fármaco hipotético que pudiese tratar la hiperglucemia y el desequilibrio lipídico en la diabetes, cuyo único mecanismo fuera la activación de la acetil-CoA carboxilasa (ACC) hepática. Justifique el doble beneficio metabólico.",
+    "en": "Propose a hypothetical drug that could treat hyperglycemia and the lipid imbalance in diabetes, whose only mechanism would be the activation of hepatic acetyl-CoA carboxylase (ACC). Justify the dual metabolic benefit."
+   },
+   "respuesta": {
+    "es": "Un activador de la ACC aumentaría el malonil-CoA hepático. Beneficio lipídico: el malonil-CoA inhibe la CAT I, reduciendo la β-oxidación y la cetogénesis. Beneficio glucídico: la reducción de la β-oxidación disminuye la producción de NADH y ATP en la mitocondria. Esto libera la inhibición de la PFK-1 por citrato y favorece el metabolismo de la glucosa (glucólisis), ayudando a reducir la glucemia.",
+    "en": "An ACC activator would increase hepatic malonyl-CoA. Lipid benefit: malonyl-CoA inhibits CAT I, reducing β-oxidation and ketogenesis. Carbohydrate benefit: the reduction in β-oxidation decreases the production of NADH and ATP in the mitochondrion. This relieves the inhibition of PFK-1 by citrate and favors glucose metabolism (glycolysis), helping to lower blood glucose."
+   },
+   "justificacion": {
+    "es": "Exige sintetizar el conocimiento de la regulación recíproca para diseñar un fármaco y justificar su efecto en dos vías metabólicas distintas (glúcidos y lípidos).",
+    "en": "Requires synthesizing knowledge of reciprocal regulation to design a drug and justify its effect on two different metabolic pathways (carbohydrates and lipids)."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.11",
+   "num": "PC7.11",
+   "tema": 7,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Además de la glucosa, ¿cuál es el único otro combustible que el cerebro puede utilizar significativamente como fuente de energía, especialmente en el ayuno prolongado?",
+    "en": "Besides glucose, what is the only other fuel that the brain can use significantly as an energy source, especially during prolonged fasting?"
+   },
+   "respuesta": {
+    "es": "Son los cuerpos cetónicos (3-hidroxibutirato y acetoacetato).",
+    "en": "They are the ketone bodies (3-hydroxybutyrate and acetoacetate)."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación de la fuente de energía alternativa del cerebro.",
+    "en": "Requires simple recall of the brain's alternative energy source."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.12",
+   "num": "PC7.12",
+   "tema": 7,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Explique el destino metabólico del lactato producido por los eritrocitos (glóbulos rojos) en el torrente sanguíneo, y cómo esta vía beneficia a otro órgano.",
+    "en": "Explain the metabolic fate of the lactate produced by erythrocytes (red blood cells) in the bloodstream, and how this pathway benefits another organ."
+   },
+   "respuesta": {
+    "es": "Los eritrocitos, al carecer de mitocondrias, solo pueden realizar la glucólisis anaeróbica, produciendo lactato constantemente. El lactato viaja por la sangre hasta el hígado, donde entra en el ciclo de Cori y es convertido en glucosa a través de la gluconeogénesis, beneficiando al hígado y al propio eritrocito.",
+    "en": "Erythrocytes lack mitochondria, so they can carry out only anaerobic glycolysis, constantly producing lactate. Lactate travels in the blood to the liver, where it enters the Cori cycle and is converted into glucose through gluconeogenesis, benefiting the liver and the erythrocyte itself."
+   },
+   "justificacion": {
+    "es": "Requiere usar el conocimiento de la limitación metabólica de los eritrocitos para describir el flujo de su producto al ciclo interorgánico.",
+    "en": "Requires using knowledge of the metabolic limitation of erythrocytes to describe the flow of their product into the interorgan cycle."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.13",
+   "num": "PC7.13",
+   "tema": 7,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe una ventaja evolutiva para la ausencia de mitocondrias en los eritrocitos en términos de homeostasis sistémica de la glucosa.",
+    "en": "Design an evolutionary advantage for the absence of mitochondria in erythrocytes in terms of systemic glucose homeostasis."
+   },
+   "respuesta": {
+    "es": "La ausencia de mitocondrias asegura que los eritrocitos no puedan oxidar la glucosa completamente a CO<sub>2</sub> (no compiten por la glucosa). Esto garantiza que la glucosa (un nutriente limitado) se preserve para los tejidos obligatorios (como el cerebro) y que el eritrocito produzca lactato que, a su vez, sirve como sustrato glucogénico para el hígado (vía ciclo de Cori), cerrando un ciclo de apoyo a la homeostasis de la glucosa.",
+    "en": "The absence of mitochondria ensures that erythrocytes cannot oxidize glucose completely to CO<sub>2</sub> (they do not compete for glucose). This ensures that glucose (a limited nutrient) is preserved for obligate tissues (such as the brain) and that the erythrocyte produces lactate, which in turn serves as a glucogenic substrate for the liver (via the Cori cycle), closing a cycle that supports glucose homeostasis."
+   },
+   "justificacion": {
+    "es": "Exige sintetizar la consecuencia de una característica estructural (ausencia de mitocondrias) y traducirla a una ventaja evolutiva en la coordinación metabólica sistémica.",
+    "en": "Requires synthesizing the consequence of a structural feature (absence of mitochondria) and translating it into an evolutionary advantage in systemic metabolic coordination."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.14",
+   "num": "PC7.14",
+   "tema": 7,
+   "concepto_clave": "V",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Nombra las dos acciones principales del cortisol (hormona del estrés) en el metabolismo de la proteína y la glucosa.",
+    "en": "Name the two main actions of cortisol (a stress hormone) on protein and glucose metabolism."
+   },
+   "respuesta": {
+    "es": "Las dos acciones principales son: 1) aumento de la proteólisis (degradación de proteínas). 2) inhibición de la captación de glucosa por el músculo y el tejido adiposo.",
+    "en": "The two main actions are: 1) increased proteolysis (protein degradation). 2) inhibition of glucose uptake by muscle and adipose tissue."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación de los efectos metabólicos de una hormona.",
+    "en": "Requires simple recall of the metabolic effects of a hormone."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.15",
+   "num": "PC7.15",
+   "tema": 7,
+   "concepto_clave": "V",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Describa el mecanismo por el cual la adrenalina afecta al metabolismo del glucógeno y del lípido en un escenario de \"lucha o huida\" (estrés agudo).",
+    "en": "Describe the mechanism by which epinephrine affects glycogen and lipid metabolism in a \"fight or flight\" scenario (acute stress)."
+   },
+   "respuesta": {
+    "es": "La adrenalina activa la ruta AMPc. El AMPc activa la glucógeno fosforilasa (degradando glucógeno) y la HSL (degradando lípidos). El efecto es la movilización inmediata de glucosa (para el cerebro y el músculo) y de ácidos grasos (para energía muscular), preparando al organismo para la acción rápida.",
+    "en": "Epinephrine activates the cAMP pathway. cAMP activates glycogen phosphorylase (breaking down glycogen) and HSL (breaking down lipids). The effect is the immediate mobilization of glucose (for the brain and muscle) and fatty acids (for muscle energy), preparing the body for rapid action."
+   },
+   "justificacion": {
+    "es": "Requiere usar el conocimiento de la transducción de señales para describir el efecto de la hormona en un contexto fisiológico específico.",
+    "en": "Requires using knowledge of signal transduction to describe the effect of the hormone in a specific physiological context."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T7-PC7.16",
+   "num": "PC7.16",
+   "tema": 7,
+   "concepto_clave": "V",
+   "tipo": "corta",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Proponga un mecanismo por el cual el cortisol (estrés crónico) contribuye a un estado de resistencia a la insulina a largo plazo en el músculo y el tejido adiposo.",
+    "en": "Propose a mechanism by which cortisol (chronic stress) contributes to a long-term state of insulin resistance in muscle and adipose tissue."
+   },
+   "respuesta": {
+    "es": "El cortisol disminuye la expresión y/o la translocación del transportador de glucosa GLUT4 en el músculo y el adipocito. Al haber menos GLUT4 en la membrana, la célula es menos sensible a la señal de la insulina para captar glucosa. Esto provoca que los niveles de glucosa en sangre permanezcan altos, creando un estado de \"efecto diabetogénico\" o resistencia.",
+    "en": "Cortisol decreases the expression and/or translocation of the glucose transporter GLUT4 in muscle and adipocytes. With less GLUT4 in the membrane, the cell is less sensitive to the insulin signal to take up glucose. This causes blood glucose levels to remain high, creating a \"diabetogenic effect\" or resistance state."
+   },
+   "justificacion": {
+    "es": "Exige sintetizar el conocimiento de la regulación hormonal (cortisol) y su efecto molecular (GLUT4) para explicar la causa de una patología compleja (resistencia a la insulina).",
+    "en": "Requires synthesizing knowledge of hormonal regulation (cortisol) and its molecular effect (GLUT4) to explain the cause of a complex disorder (insulin resistance)."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  }
+ ]
+}

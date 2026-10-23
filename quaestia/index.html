@@ -1,0 +1,1290 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="QUAESTIA: autoevaluación de Bioquímica metabólica basada en la taxonomía de Bloom (BIOCOGNIA).">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%230e6b5c%22/%3E%3Ctext x=%2216%22 y=%2223%22 font-family=%22Georgia,serif%22 font-size=%2220%22 font-weight=%22600%22 fill=%22white%22 text-anchor=%22middle%22%3EQ%3C/text%3E%3C/svg%3E">
+<title>QUAESTIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: una columna de lectura (~68ch) bajo una barra fija; el nivel de Bloom (B1→B6) es el hilo de color de toda la app. */
+:root {
+  --bg: #f4f7f6;
+  --surface: #ffffff;
+  --sunk: #e8eeec;
+  --ink: #142824;
+  --muted: #56706a;
+  --line: #cdd9d5;
+  --accent: #0e6b5c;
+  --accent-ink: #ffffff;
+  --ok: #1f7a3f;
+  --ok-bg: #e2f2e7;
+  --bad: #b3261e;
+  --bad-bg: #fbe5e3;
+  --warn-bg: #fff4d6;
+  --b1: #3d6fb6; --b2: #2f8a9a; --b3: #3a9364; --b4: #b08a1f; --b5: #c26a2b; --b6: #a8406b;
+  --f-display: "Literata", Georgia, "Times New Roman", serif;
+  --f-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1a18; --surface: #162421; --sunk: #1d2e2b; --ink: #e3ece9; --muted: #93aaa4; --line: #2c403c;
+    --accent: #4fc2ab; --accent-ink: #062520; --ok: #6fd18f; --ok-bg: #173327; --bad: #ff8a80; --bad-bg: #3a1d1b; --warn-bg: #352d14;
+    --b1: #7aa4e6; --b2: #62bccb; --b3: #6cc591; --b4: #dcb54e; --b5: #ee9a5e; --b6: #e27aa3;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1a18; --surface: #162421; --sunk: #1d2e2b; --ink: #e3ece9; --muted: #93aaa4; --line: #2c403c;
+  --accent: #4fc2ab; --accent-ink: #062520; --ok: #6fd18f; --ok-bg: #173327; --bad: #ff8a80; --bad-bg: #3a1d1b; --warn-bg: #352d14;
+  --b1: #7aa4e6; --b2: #62bccb; --b3: #6cc591; --b4: #dcb54e; --b5: #ee9a5e; --b6: #e27aa3;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-ui); font-size: 16px; line-height: 1.55; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* Barra superior */
+header.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+header.bar .wrap { max-width: 1060px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-block: 10px; }
+.mark { font-family: var(--f-display); font-weight: 600; font-size: 1.25rem; letter-spacing: 0.14em; background: none; border: 0; padding: 0; cursor: pointer; }
+.mark small { display: block; font-family: var(--f-ui); font-weight: 400; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; }
+nav.main { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+nav.main button { background: none; border: 0; padding: 6px 10px; border-radius: 6px; cursor: pointer; color: var(--muted); font-size: 0.92rem; }
+nav.main button[aria-current="page"] { color: var(--ink); background: var(--sunk); font-weight: 500; }
+.lang { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.lang button { background: none; border: 0; padding: 4px 9px; cursor: pointer; font-family: var(--f-mono); font-size: 0.8rem; color: var(--muted); }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+
+main { padding-block: 28px 64px; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 600; text-wrap: balance; line-height: 1.25; margin: 0; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.3rem); }
+h2 { font-size: 1.35rem; }
+h3 { font-size: 1.05rem; }
+p { margin: 0; max-width: 68ch; }
+.stack { display: flex; flex-direction: column; gap: 16px; }
+.stack-lg { display: flex; flex-direction: column; gap: 32px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.muted { color: var(--muted); }
+.small { font-size: 0.86rem; }
+.eyebrow { font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+.btn { border: 1px solid var(--line); background: var(--surface); padding: 9px 16px; border-radius: 8px; cursor: pointer; font-weight: 500; }
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.primary:hover { filter: brightness(1.07); }
+.btn.ghost { background: none; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; }
+.notice { background: var(--warn-bg); border-radius: var(--r); padding: 14px 16px; }
+
+/* Inicio */
+.hero { display: grid; gap: 14px; padding-block: 8px 4px; }
+.hero h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
+.modes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.mode { text-align: left; display: flex; flex-direction: column; gap: 8px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; }
+.mode:hover { border-color: var(--accent); }
+.mode h3 { font-size: 1.1rem; }
+.mode .go { margin-top: auto; color: var(--accent); font-weight: 500; font-size: 0.92rem; }
+.bloombar { display: flex; height: 14px; border-radius: 4px; overflow: hidden; }
+.bloombar span { display: block; height: 100%; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.84rem; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+table.temas { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+table.temas td, table.temas th { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+table.temas th { font-weight: 500; color: var(--muted); font-size: 0.8rem; }
+table.temas td.n { text-align: right; font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tablebox { overflow-x: auto; }
+
+/* Chips de Bloom */
+.bl { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 0.78rem; padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.bl[data-b="B1"] { color: var(--b1); } .bl[data-b="B2"] { color: var(--b2); } .bl[data-b="B3"] { color: var(--b3); }
+.bl[data-b="B4"] { color: var(--b4); } .bl[data-b="B5"] { color: var(--b5); } .bl[data-b="B6"] { color: var(--b6); }
+
+/* Formularios de configuración */
+fieldset { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
+.checks { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 6px; }
+.check { display: flex; gap: 8px; align-items: flex-start; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); cursor: pointer; }
+.check input { margin-top: 4px; accent-color: var(--accent); }
+.check:has(input:checked) { border-color: var(--accent); background: var(--sunk); }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg label { padding: 7px 14px; cursor: pointer; border-right: 1px solid var(--line); }
+.seg label:last-child { border-right: 0; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg label:has(input:checked) { background: var(--ink); color: var(--bg); }
+.seg label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: -2px; }
+details.more > summary { cursor: pointer; color: var(--accent); font-weight: 500; }
+.blchecks { display: flex; flex-wrap: wrap; gap: 8px; }
+.blchecks label { cursor: pointer; }
+.blchecks input { position: absolute; opacity: 0; pointer-events: none; }
+.blchecks label:has(input:checked) .bl { background: currentColor; }
+.blchecks label:has(input:checked) .bl span { color: var(--surface); }
+.blchecks label:has(input:focus-visible) .bl { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Pregunta */
+.qhead { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.progress { height: 4px; background: var(--sunk); border-radius: 2px; overflow: hidden; }
+.progress > span { display: block; height: 100%; background: var(--accent); transition: width .2s; }
+.stem { font-family: var(--f-display); font-size: 1.14rem; line-height: 1.6; max-width: 68ch; }
+.opts { display: flex; flex-direction: column; gap: 8px; }
+.opt { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: start; padding: 11px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); cursor: pointer; text-align: left; }
+.opt .letter { font-family: var(--f-mono); font-weight: 500; width: 1.6em; height: 1.6em; display: grid; place-items: center; border-radius: 5px; border: 1px solid var(--line); font-size: 0.85rem; }
+.opt[aria-pressed="true"] { border-color: var(--accent); }
+.opt[aria-pressed="true"] .letter { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.opt.is-correct { background: var(--ok-bg); border-color: var(--ok); }
+.opt.is-wrong { background: var(--bad-bg); border-color: var(--bad); }
+.opt .tag { font-size: 0.78rem; font-weight: 500; white-space: nowrap; }
+.opt.is-correct .tag { color: var(--ok); } .opt.is-wrong .tag { color: var(--bad); }
+.opt:disabled { cursor: default; color: inherit; }
+.hint { min-height: 1.4em; font-size: 0.88rem; color: var(--bad); }
+.explain { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; }
+.grid50 { display: grid; grid-template-columns: repeat(auto-fill, minmax(34px, 1fr)); gap: 5px; }
+.grid50 button { font-family: var(--f-mono); font-size: 0.78rem; padding: 5px 0; border: 1px solid var(--line); background: var(--surface); border-radius: 5px; cursor: pointer; }
+.grid50 button.done { background: var(--sunk); border-color: var(--muted); }
+.grid50 button.here { outline: 2px solid var(--accent); outline-offset: 1px; }
+.navrow { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.confirm { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; padding: 12px 14px; border-radius: 8px; background: var(--warn-bg); }
+
+/* Resultados */
+.score { display: flex; gap: 28px; flex-wrap: wrap; align-items: flex-end; }
+.score .big { font-family: var(--f-display); font-size: clamp(2.8rem, 9vw, 4rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.score .big small { font-size: 0.4em; color: var(--muted); }
+.kv { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px 20px; flex: 1; min-width: 0; }
+.kv div { display: flex; flex-direction: column; }
+.kv b { font-family: var(--f-mono); font-size: 1.1rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+.kv span { font-size: 0.8rem; color: var(--muted); }
+.bars { display: grid; gap: 8px; }
+.bars .r { display: grid; grid-template-columns: 7.5rem 1fr 3.4rem; gap: 10px; align-items: center; font-size: 0.88rem; }
+.bars .track { height: 10px; background: var(--sunk); border-radius: 5px; overflow: hidden; }
+.bars .track span { display: block; height: 100%; border-radius: 5px; }
+.bars .v { text-align: right; font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 0.82rem; }
+.review { display: flex; flex-direction: column; gap: 10px; }
+.review details { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+.review summary { cursor: pointer; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; list-style: none; }
+.review summary::-webkit-details-marker { display: none; }
+.review .pts { font-family: var(--f-mono); font-variant-numeric: tabular-nums; margin-left: auto; font-size: 0.86rem; }
+.pts.pos { color: var(--ok); } .pts.neg { color: var(--bad); } .pts.zero { color: var(--muted); }
+.review .body { padding-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+.review ol { margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 0.93rem; }
+.review li { padding: 4px 8px; border-radius: 5px; }
+.review li.c { background: var(--ok-bg); }
+.review li.w { background: var(--bad-bg); }
+
+/* Preguntas cortas */
+textarea { width: 100%; min-height: 120px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); resize: vertical; line-height: 1.5; }
+.answer { background: var(--sunk); border-radius: 8px; padding: 14px 16px; }
+select { padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); max-width: 100%; }
+
+/* Consentimiento */
+.consent { border: 1px solid var(--accent); border-radius: var(--r); background: var(--surface); padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+.pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 500; }
+.pill.on { background: var(--ok-bg); color: var(--ok); } .pill.off { background: var(--sunk); color: var(--muted); }
+.spark { width: 100%; height: 80px; display: block; }
+footer { border-top: 1px solid var(--line); padding-block: 22px; color: var(--muted); font-size: 0.84rem; }
+footer .wrap { display: flex; flex-direction: column; gap: 6px; }
+.sub-badge { font-size: 0.74rem; padding: 1px 8px; border-radius: 999px; background: var(--warn-bg); color: var(--ink); }
+sub, sup { font-size: 0.72em; line-height: 0; }
+
+/* Profesorado */
+.field { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.chip { cursor: pointer; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip span { display: inline-block; min-width: 2.2em; text-align: center; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; font-family: var(--f-mono); font-size: 0.85rem; background: var(--surface); }
+.chip input:checked + span { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.qlist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.qrow { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); font-size: 0.92rem; }
+.qrow .qtext { flex: 1 1 260px; min-width: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.small-btn { padding: 4px 10px; font-size: 0.85rem; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px 16px; align-items: end; }
+.optrow { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; }
+.chk { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+.chk input { accent-color: var(--accent); width: 1.1em; height: 1.1em; }
+.prose h2 { margin-top: 4px; } .prose h3 { margin-top: 12px; } .prose ul, .prose ol { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 4px; max-width: 68ch; }
+.prose a { color: var(--accent); }
+.notice ul { margin: 6px 0 0; padding-left: 1.2em; }
+/* Impresión */
+.sheet { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.sheet-h { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: flex-start; }
+.fillin { display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem; min-width: 240px; }
+.fillin i { display: inline-block; width: 200px; border-bottom: 1px solid var(--ink); }
+.pq { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: 12px; font-family: var(--f-display); }
+.pq > li { break-inside: avoid; }
+.pq p { margin: 0 0 4px; max-width: none; }
+.po { list-style: none; margin: 0; padding-left: 0.4em; display: flex; flex-direction: column; gap: 2px; font-family: var(--f-ui); font-size: 0.93rem; }
+table.answers { border-collapse: collapse; font-size: 0.9rem; }
+table.answers th, table.answers td { border: 1px solid var(--line); padding: 4px 10px; text-align: center; }
+table.answers.key td:last-child { text-align: left; }
+.box { display: inline-block; width: 14px; height: 14px; border: 1.5px solid var(--ink); border-radius: 2px; vertical-align: middle; }
+@media print {
+  :root { --bg: #fff; --surface: #fff; --ink: #000; --line: #999; --muted: #444; }
+  body { background: #fff; font-size: 11pt; }
+  header.bar, footer, .no-print, body::before { display: none !important; }
+  main { padding: 0 !important; }
+  .sheet { border: 0; padding: 0; break-after: page; }
+  .print-root { gap: 0 !important; }
+}
+@media (max-width: 560px) {
+  nav.main { margin-left: 0; width: 100%; overflow-x: auto; flex-wrap: nowrap; }
+  .bars .r { grid-template-columns: 5.6rem 1fr 3rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <button class="mark" id="home-link" type="button">QUAESTIA<small id="tagline">Bioquímica metabólica</small></button>
+    <nav class="main" id="nav" aria-label="Secciones"></nav>
+    <div class="lang" role="group" aria-label="Idioma">
+      <button type="button" id="lang-es" data-lang="es">ES</button>
+      <button type="button" id="lang-en" data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+<main class="wrap" id="main"><p class="muted">Cargando el banco de preguntas…</p></main>
+<footer><div class="wrap" id="foot"></div></footer>
+
+<script>
+"use strict";
+/* ============================================================
+   QUAESTIA — autoevaluación de Bioquímica metabólica (BIOCOGNIA)
+   Versión 0.1 (estudiante). Sin servidor: datos en el navegador.
+   ============================================================ */
+const APP_VERSION = "0.2.0";
+const TEMAS = [1, 2, 3, 4, 5, 6, 7];
+
+/* ---------- Núcleo (equivale a metahub-core.js) ---------- */
+const CONFIG = {
+  maxMarcadas: 3,
+  penalizacionError: 0.2,
+  notaSobre: 10,
+  notaMinimaCero: true,
+  examen: { 1: 5, 2: 10, 3: 10, 4: 5, 5: 6, 6: 7, 7: 7 },
+  entrenamientoTamanos: [10, 15, 20],
+  // Semana de uso: se cuenta desde el primer uso de cada persona (cada cual empieza cuando quiere).
+  // Si se fija una fecha (AAAA-MM-DD), se cuenta desde ella para todos.
+  inicioCurso: null,
+};
+function puntuarPregunta(correctas, marcadas, cfg = CONFIG) {
+  const marc = [...new Set(marcadas)];
+  if (marc.length > cfg.maxMarcadas) throw new Error("max");
+  const valor = 1 / correctas.length;
+  let p = 0, aciertos = 0, errores = 0;
+  for (const m of marc) {
+    if (correctas.includes(m)) { p += valor; aciertos++; } else { p -= cfg.penalizacionError; errores++; }
+  }
+  return { puntos: p, aciertos, errores, enBlanco: marc.length === 0 };
+}
+function corregirPrueba(respuestas, cfg = CONFIG) {
+  const detalle = respuestas.map(({ pregunta, marcadas, tiempo_s }) => ({
+    id: pregunta.id, tema: pregunta.tema, seccion: pregunta.seccion, bloom: pregunta.bloom,
+    correctas: pregunta.correctas.slice(), marcadas: [...new Set(marcadas)].sort(), tiempo_s: tiempo_s || 0,
+    ...puntuarPregunta(pregunta.correctas, marcadas, cfg),
+  }));
+  const bruto = detalle.reduce((s, d) => s + d.puntos, 0);
+  const max = respuestas.length;
+  let nota = max ? (bruto / max) * cfg.notaSobre : 0;
+  if (cfg.notaMinimaCero) nota = Math.max(0, nota);
+  return { bruto, max, nota: Math.round(nota * 100) / 100, detalle };
+}
+function muestra(arr, n) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a.slice(0, n);
+}
+function generarSimulacro(banco) {
+  const test = banco.filter((q) => q.tipo === "test");
+  const out = [];
+  for (const [tema, n] of Object.entries(CONFIG.examen)) out.push(...muestra(test.filter((q) => String(q.tema) === tema), n));
+  return out;
+}
+function generarEntrenamiento(banco, { temas, n, secciones, blooms }) {
+  let pool = banco.filter((q) => q.tipo === "test" && temas.includes(q.tema));
+  if (secciones.length) pool = pool.filter((q) => secciones.includes(q.seccion));
+  if (blooms.length) pool = pool.filter((q) => blooms.includes(q.bloom));
+  return { preguntas: muestra(pool, Math.min(n, pool.length)), disponibles: pool.length };
+}
+
+/* ---------- Textos ---------- */
+const BLOOM = ["B1", "B2", "B3", "B4", "B5", "B6"];
+const I18N = {
+  es: {
+    tagline: "Bioquímica metabólica", nav_home: "Inicio", nav_train: "Entrenamiento", nav_exam: "Simulacro", nav_short: "Preguntas cortas", nav_me: "Mi progreso",
+    loading: "Cargando el banco de preguntas…", load_error: "No se ha podido cargar el banco de preguntas. Comprueba la conexión y recarga la página.",
+    hero_title: "Pon a prueba lo que sabes de <em>metabolismo</em>, nivel a nivel.",
+    hero_text: "Preguntas del manual de Bioquímica metabólica clasificadas según la taxonomía de Bloom, desde recordar (B1) hasta crear (B6). Practica por temas, haz un simulacro de examen o repasa con preguntas cortas.",
+    m_train: "Entrenamiento", m_train_d: "Elige temas, número de preguntas y nivel. Corrección inmediata con la justificación de cada respuesta.",
+    m_exam: "Simulacro de examen", m_exam_d: "50 preguntas de los siete temas, con la puntuación del examen real. Corrección al entregar.",
+    m_short: "Preguntas cortas", m_short_d: "Escribe tu respuesta, compárala con la del manual y valora cómo te ha ido.",
+    go: "Empezar →", bank: "El banco", bank_line: (t, c, n) => `${t} preguntas test y ${c} preguntas cortas en ${n} temas.`,
+    bloom_dist: "Preguntas test por nivel de Bloom", col_topic: "Tema", col_test: "Test", col_short: "Cortas",
+    scoring_title: "Cómo se puntúa", scoring_text: "Cada pregunta vale 1 punto, repartido entre sus opciones correctas (1, ½ o ⅓). Cada opción incorrecta marcada resta 0,2, así que una pregunta puede restar. Puedes marcar como máximo 3 opciones. La nota final, sobre 10, no baja de 0.",
+    tr_title: "Entrenamiento", tr_topics: "Temas", tr_all: "Todos", tr_none: "Ninguno", tr_size: "Número de preguntas", tr_filters: "Afinar por sección o nivel de Bloom",
+    tr_sections: "Secciones", tr_sections_hint: "Si no marcas ninguna, entran todas las de los temas elegidos.", tr_bloom: "Niveles de Bloom", tr_bloom_hint: "Si no marcas ninguno, entran todos.",
+    tr_available: (n) => `${n} preguntas disponibles con estos filtros.`, tr_few: (n, k) => `Solo hay ${n} preguntas con estos filtros: la prueba tendrá ${n} en lugar de ${k}.`,
+    tr_start: "Empezar entrenamiento", tr_pick: "Elige al menos un tema.", tr_empty: "No hay preguntas con esos filtros. Quita alguno.",
+    ex_title: "Simulacro de examen", ex_text: "50 preguntas al azar con el mismo reparto que el examen: 5 del tema 1, 10 del 2, 10 del 3, 5 del 4, 6 del 5, 7 del 6 y 7 del 7. Puedes moverte entre preguntas y cambiar respuestas hasta que entregues.", ex_start: "Empezar simulacro",
+    q_of: (i, n) => `Pregunta ${i} de ${n}`, q_max: "Solo puedes marcar 3 opciones. Desmarca una para elegir otra.", q_check: "Comprobar", q_next: "Siguiente", q_prev: "Anterior", q_finish: "Ver resultados",
+    q_blank_note: "Puedes dejarla en blanco: no suma ni resta.", q_correct: "Correcta", q_wrong: "Incorrecta", q_marked_ok: "Marcada · correcta", q_marked_bad: "Marcada · incorrecta", q_missed: "Correcta · sin marcar",
+    q_points: (p) => `${fmt(p)} puntos en esta pregunta`, q_why: "Justificación del nivel", q_hand: "Entregar", q_hand_confirm: (n) => n ? `Te quedan ${n} preguntas sin responder. ¿Entregar igualmente?` : "¿Entregar el simulacro?",
+    q_hand_yes: "Sí, entregar", q_hand_no: "Seguir respondiendo", q_quit: "Abandonar", q_quit_confirm: "¿Abandonar esta prueba? No se guardará.", q_quit_yes: "Sí, abandonar", q_elapsed: "Tiempo",
+    r_title_train: "Resultado del entrenamiento", r_title_exam: "Resultado del simulacro", r_grade: "Nota", r_raw: "Puntos", r_right: "Preguntas con todo correcto", r_blank: "En blanco", r_wrongmarks: "Opciones incorrectas marcadas", r_time: "Tiempo",
+    r_by_bloom: "Por nivel de Bloom", r_by_topic: "Por tema", r_review: "Revisión pregunta a pregunta", r_again: "Otra prueba igual", r_home: "Volver al inicio", r_saved: "Guardado en tu progreso.", r_bar_note: "Porcentaje de puntos obtenidos sobre los posibles.",
+    s_title: "Preguntas cortas", s_topic: "Tema", s_your: "Tu respuesta", s_placeholder: "Escribe aquí tu respuesta antes de ver la del manual…", s_show: "Ver respuesta del manual", s_model: "Respuesta del manual",
+    s_rate: "¿Cómo ha ido tu respuesta?", s_good: "La tenía bien", s_part: "Parcialmente", s_bad: "No la sabía", s_next: "Siguiente pregunta", s_done: "Has repasado todas las preguntas cortas de este tema.", s_count: (i, n) => `${i} de ${n}`, s_concept: "Concepto clave",
+    me_title: "Mi progreso", me_none: "Todavía no has hecho ninguna prueba. Cuando termines una, aparecerá aquí.", me_attempts: "Pruebas hechas", me_avg: "Nota media", me_last: "Última nota", me_shorts: "Preguntas cortas repasadas",
+    me_trend: "Evolución de la nota", me_bloom: "Rendimiento por nivel de Bloom (todas las pruebas)", me_history: "Historial", me_research: "Investigación", me_delete: "Borrar todos mis datos", me_delete_confirm: "Se borrarán tu historial y tus respuestas de este navegador. No se puede deshacer.", me_delete_yes: "Sí, borrar", me_deleted: "Datos borrados.",
+    h_date: "Fecha", h_mode: "Modo", h_n: "Preguntas", h_grade: "Nota", mode_train: "Entrenamiento", mode_exam: "Simulacro",
+    c_title: "Antes de empezar", c_text: "Esta aplicación forma parte del estudio BIOCOGNIA sobre aprendizaje de la Bioquímica (Universidad de Córdoba; informe del comité de ética [referencia]). Si aceptas, tus respuestas se guardarán en este navegador con un código aleatorio, sin tu nombre ni tu correo. Al final podrás exportarlas y entregarlas de forma anónima, si quieres. Participar o no, y entregar o no tus datos, no afecta a tu nota. Si no aceptas, puedes usar la aplicación igual.", c_age: "Soy mayor de edad.",
+    c_yes: "Acepto participar", c_no: "Prefiero no participar", c_later: "Puedes cambiar tu decisión cuando quieras en «Mi progreso».", c_on: "Participas en el estudio", c_off: "No participas en el estudio", c_toggle_on: "Participar", c_toggle_off: "Dejar de participar",
+    x_title: "Exportar mis datos", x_text: "Genera un archivo con tus respuestas registradas mientras participabas en el estudio. Cada exportación lleva un código aleatorio nuevo; no incluye tu nombre ni tu correo.",
+    x_json: "Descargar JSON", x_csv: "Descargar CSV", x_copy: "Copiar datos", x_copied: "Copiado.", x_copy_fail: "No se ha podido copiar: selecciona el texto y cópialo a mano.", x_none: "Aún no hay respuestas registradas para el estudio.", x_off: "Para exportar datos de investigación tienes que participar en el estudio.", x_week: "Semana de uso (desde tu primera prueba)", x_group: "Grupo", x_nogroup: "El estudio de investigación solo está abierto a grupos de la Universidad de Córdoba que entran por el enlace de su curso. Puedes usar QUAESTIA igualmente: tus resultados se guardan en este navegador y no se registra nada para el estudio.",
+    f_source: "Preguntas de la Guía de Bioquímica Metabólica (Universidad de Córdoba). Recurso educativo abierto.", f_eco: "Parte de BIOCOGNIA · Open Educational Technology", f_data: "Tus datos se guardan solo en este navegador.",
+    en_draft: "", bl_names: { B1: "Recordar", B2: "Comprender", B3: "Aplicar", B4: "Analizar", B5: "Evaluar", B6: "Crear" },
+  },
+  en: {
+    tagline: "Metabolic biochemistry", nav_home: "Home", nav_train: "Practice", nav_exam: "Mock exam", nav_short: "Short questions", nav_me: "My progress",
+    loading: "Loading the question bank…", load_error: "The question bank could not be loaded. Check your connection and reload the page.",
+    hero_title: "Test what you know about <em>metabolism</em>, level by level.",
+    hero_text: "Questions from the Metabolic Biochemistry handbook, classified by Bloom's taxonomy from remembering (B1) to creating (B6). Practice by topic, take a mock exam or review with short-answer questions.",
+    m_train: "Practice", m_train_d: "Choose topics, number of questions and level. Immediate feedback with the rationale for each answer.",
+    m_exam: "Mock exam", m_exam_d: "50 questions from all seven topics, scored like the real exam. Marked when you hand it in.",
+    m_short: "Short questions", m_short_d: "Write your answer, compare it with the handbook's and rate how you did.",
+    go: "Start →", bank: "The bank", bank_line: (t, c, n) => `${t} multiple-choice and ${c} short-answer questions across ${n} topics.`,
+    bloom_dist: "Multiple-choice questions by Bloom level", col_topic: "Topic", col_test: "MCQ", col_short: "Short",
+    scoring_title: "How scoring works", scoring_text: "Each question is worth 1 point, shared among its correct options (1, ½ or ⅓). Each wrong option you mark subtracts 0.2, so a question can score below zero. You can mark at most 3 options. The final grade, out of 10, never goes below 0.",
+    tr_title: "Practice", tr_topics: "Topics", tr_all: "All", tr_none: "None", tr_size: "Number of questions", tr_filters: "Refine by section or Bloom level",
+    tr_sections: "Sections", tr_sections_hint: "If you mark none, all sections of the chosen topics are included.", tr_bloom: "Bloom levels", tr_bloom_hint: "If you mark none, all levels are included.",
+    tr_available: (n) => `${n} questions available with these filters.`, tr_few: (n, k) => `Only ${n} questions match these filters: the test will have ${n} instead of ${k}.`,
+    tr_start: "Start practice", tr_pick: "Choose at least one topic.", tr_empty: "No questions match these filters. Remove some.",
+    ex_title: "Mock exam", ex_text: "50 random questions with the same distribution as the exam: 5 from topic 1, 10 from 2, 10 from 3, 5 from 4, 6 from 5, 7 from 6 and 7 from 7. You can move between questions and change answers until you hand it in.", ex_start: "Start mock exam",
+    q_of: (i, n) => `Question ${i} of ${n}`, q_max: "You can mark only 3 options. Unmark one to choose another.", q_check: "Check", q_next: "Next", q_prev: "Previous", q_finish: "See results",
+    q_blank_note: "You can leave it blank: it neither adds nor subtracts.", q_correct: "Correct", q_wrong: "Wrong", q_marked_ok: "Marked · correct", q_marked_bad: "Marked · wrong", q_missed: "Correct · not marked",
+    q_points: (p) => `${fmt(p)} points on this question`, q_why: "Rationale for the level", q_hand: "Hand in", q_hand_confirm: (n) => n ? `${n} questions are still unanswered. Hand in anyway?` : "Hand in the mock exam?",
+    q_hand_yes: "Yes, hand in", q_hand_no: "Keep answering", q_quit: "Quit", q_quit_confirm: "Quit this test? It will not be saved.", q_quit_yes: "Yes, quit", q_elapsed: "Time",
+    r_title_train: "Practice result", r_title_exam: "Mock exam result", r_grade: "Grade", r_raw: "Points", r_right: "Fully correct questions", r_blank: "Blank", r_wrongmarks: "Wrong options marked", r_time: "Time",
+    r_by_bloom: "By Bloom level", r_by_topic: "By topic", r_review: "Question-by-question review", r_again: "Another test like this", r_home: "Back to home", r_saved: "Saved to your progress.", r_bar_note: "Percentage of possible points obtained.",
+    s_title: "Short questions", s_topic: "Topic", s_your: "Your answer", s_placeholder: "Write your answer here before seeing the handbook's…", s_show: "Show the handbook answer", s_model: "Handbook answer",
+    s_rate: "How did your answer go?", s_good: "I had it right", s_part: "Partly", s_bad: "I didn't know it", s_next: "Next question", s_done: "You have reviewed all the short questions in this topic.", s_count: (i, n) => `${i} of ${n}`, s_concept: "Key concept",
+    me_title: "My progress", me_none: "You haven't taken any test yet. When you finish one, it will appear here.", me_attempts: "Tests taken", me_avg: "Average grade", me_last: "Latest grade", me_shorts: "Short questions reviewed",
+    me_trend: "Grade over time", me_bloom: "Performance by Bloom level (all tests)", me_history: "History", me_research: "Research", me_delete: "Delete all my data", me_delete_confirm: "Your history and answers will be deleted from this browser. This cannot be undone.", me_delete_yes: "Yes, delete", me_deleted: "Data deleted.",
+    h_date: "Date", h_mode: "Mode", h_n: "Questions", h_grade: "Grade", mode_train: "Practice", mode_exam: "Mock exam",
+    c_title: "Before you start", c_text: "This app is part of the BIOCOGNIA study on learning biochemistry (University of Córdoba; ethics committee report [reference]). If you agree, your answers will be stored in this browser under a random code, without your name or email. At the end you can export them and hand them in anonymously, if you wish. Taking part or not, and handing in your data or not, does not affect your grade. If you don't agree, you can still use the app.", c_age: "I am 18 or older.",
+    c_yes: "I agree to take part", c_no: "I'd rather not take part", c_later: "You can change your decision at any time in “My progress”.", c_on: "You are taking part in the study", c_off: "You are not taking part in the study", c_toggle_on: "Take part", c_toggle_off: "Stop taking part",
+    x_title: "Export my data", x_text: "Creates a file with the answers recorded while you were taking part in the study. Each export gets a new random code and does not include your name or email.",
+    x_json: "Download JSON", x_csv: "Download CSV", x_copy: "Copy data", x_copied: "Copied.", x_copy_fail: "Copying failed: select the text and copy it by hand.", x_none: "No answers have been recorded for the study yet.", x_off: "To export research data you need to take part in the study.", x_week: "Week of use (since your first test)", x_group: "Group", x_nogroup: "The research study is open only to University of Córdoba groups who enter through their course link. You can still use QUAESTIA: your results are stored in this browser and nothing is recorded for the study.",
+    f_source: "Questions from the Metabolic Biochemistry Guide (University of Córdoba). Open educational resource.", f_eco: "Part of BIOCOGNIA · Open Educational Technology", f_data: "Your data are stored only in this browser.",
+    en_draft: "English translation under review", bl_names: { B1: "Remember", B2: "Understand", B3: "Apply", B4: "Analyze", B5: "Evaluate", B6: "Create" },
+  },
+};
+
+/* ---------- Estado y almacenamiento ---------- */
+const S = { lang: "es", banco: [], meta: {}, view: "home", run: null, result: null, short: null };
+const KEY = "quaestia.v1";
+// Capa de almacenamiento: hoy el navegador; mañana se puede cambiar por un servidor sin tocar el resto.
+const Store = {
+  _read() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } },
+  _write(d) { try { localStorage.setItem(KEY, JSON.stringify(d)); return true; } catch (e) { return false; } },
+  get(k, def) { const d = this._read(); return k in d ? d[k] : def; },
+  set(k, v) { const d = this._read(); d[k] = v; this._write(d); },
+  clear() { try { localStorage.removeItem(KEY); } catch (e) {} },
+};
+const T = (k, ...a) => { const v = I18N[S.lang][k]; return typeof v === "function" ? v(...a) : v; };
+const tx = (o) => (o && (o[S.lang] || o.es)) || "";
+function fmt(n, d = 2) { const r = Math.round(n * 100) / 100; const s = (Number.isInteger(r) ? String(r) : r.toFixed(d).replace(/0+$/, "").replace(/\.$/, "")); return S.lang === "es" ? s.replace(".", ",") : s; }
+function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+// Texto del banco: admite solo <sub>, <sup> e <i>; todo lo demás se escapa.
+function rich(s) { return String(s || "").replace(/<(?!\/?(?:sub|sup|i)>)/g, "&lt;"); }
+const $ = (sel, root = document) => root.querySelector(sel);
+const main = () => $("#main");
+function bl(b) { return `<span class="bl" data-b="${b}"><span>${b}</span> ${esc(I18N[S.lang].bl_names[b])}</span>`; }
+function hm(sec) { const m = Math.floor(sec / 60), s = Math.round(sec % 60); return `${m}:${String(s).padStart(2, "0")}`; }
+function uid(n = 10) { const a = new Uint8Array(n); (crypto || window.crypto).getRandomValues(a); return Array.from(a, (x) => "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"[x % 32]).join(""); }
+function semanaCurso(fecha = new Date()) {
+  let ini = CONFIG.inicioCurso ? new Date(CONFIG.inicioCurso) : null;
+  if (!ini) { const f = Store.get("primerUso", null); ini = f ? new Date(f) : fecha; }
+  return Math.max(1, Math.floor((fecha - ini) / (7 * 864e5)) + 1);
+}
+
+/* ---------- Carga del banco ---------- */
+async function cargar() {
+  const datos = await Promise.all(TEMAS.map((t) => fetch(`data/tema0${t}.json`).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })));
+  for (const d of datos) {
+    S.meta[d.tema] = { titulo: d.titulo, secciones: d.secciones || {}, conceptos: d.conceptos_clave || {} };
+    for (const q of d.preguntas) S.banco.push(q);
+  }
+}
+
+/* ---------- Navegación ---------- */
+const VIEWS = [["home", "nav_home"], ["train", "nav_train"], ["exam", "nav_exam"], ["short", "nav_short"], ["me", "nav_me"], ["teach", "nav_teach"]];
+function go(view) {
+  if (S.run && view !== "run" && !S.run.done) { S.pendingNav = view; return askQuit(); }
+  S.view = view; render(); window.scrollTo(0, 0);
+}
+function renderChrome() {
+  document.documentElement.lang = S.lang;
+  $("#tagline").textContent = T("tagline");
+  $("#nav").innerHTML = VIEWS.map(([v, k]) => `<button type="button" data-go="${v}" ${S.view === v ? 'aria-current="page"' : ""}>${T(k)}</button>`).join("");
+  for (const b of document.querySelectorAll(".lang button")) b.setAttribute("aria-pressed", b.dataset.lang === S.lang ? "true" : "false");
+  $("#foot").innerHTML = `<span>${T("f_source")}</span><span>${T("f_eco")} · v${APP_VERSION}</span><span>${T("f_data")}</span>`;
+}
+function render() {
+  renderChrome();
+  const fn = { home: vHome, train: vTrain, exam: vExam, short: vShort, me: vMe, run: vRun, result: vResult, teach: vTeach, print: vPrint, testIntro: vTestIntro }[S.view] || vHome;
+  main().innerHTML = fn();
+  if (S.view === "train") trainUpdate();
+  if (S.view === "run") runAfter();
+}
+
+/* ---------- Consentimiento ---------- */
+function consentBox() {
+  if (!Store.get("grupo", null) || Store.get("consent", null) !== null) return "";
+  return `<section class="consent" aria-labelledby="c-t">
+    <h2 id="c-t">${T("c_title")}</h2><p>${T("c_text")}</p>
+    <label class="check" style="max-width:max-content"><input type="checkbox" id="c-age"><span>${T("c_age")}</span></label>
+    <div class="row"><button class="btn primary" type="button" data-consent="1" id="c-yes" disabled>${T("c_yes")}</button><button class="btn" type="button" data-consent="0">${T("c_no")}</button></div>
+    <p class="small muted">${T("c_later")}</p></section>`;
+}
+function setConsent(v) {
+  const age = $("#c-age");
+  if (v && age && age.checked) Store.set("mayorEdad", true);
+  if (v && !Store.get("mayorEdad", false)) { Store.set("consent", null); render(); window.scrollTo(0, 0); return; }
+  Store.set("consent", v); Store.set("consentFecha", new Date().toISOString());
+  if (!Store.get("primerUso", null)) Store.set("primerUso", new Date().toISOString());
+  render();
+}
+
+/* ---------- Inicio ---------- */
+function vHome() {
+  const test = S.banco.filter((q) => q.tipo === "test"), cortas = S.banco.filter((q) => q.tipo === "corta");
+  const cnt = Object.fromEntries(BLOOM.map((b) => [b, test.filter((q) => q.bloom === b).length]));
+  const bar = BLOOM.map((b) => `<span style="width:${(100 * cnt[b]) / test.length}%;background:var(--${b.toLowerCase()})" title="${b}: ${cnt[b]}"></span>`).join("");
+  const leg = BLOOM.map((b) => `<span><i style="background:var(--${b.toLowerCase()})"></i>${b} ${esc(I18N[S.lang].bl_names[b])} <span class="num muted">${cnt[b]}</span></span>`).join("");
+  const filas = TEMAS.map((t) => `<tr><td><span class="num muted">${t}</span>&nbsp; ${esc(tx(S.meta[t].titulo))}</td><td class="n">${test.filter((q) => q.tema === t).length}</td><td class="n">${cortas.filter((q) => q.tema === t).length}</td></tr>`).join("");
+  return `<div class="stack-lg">
+    ${consentBox()}
+    <section class="hero"><p class="eyebrow">QUAESTIA</p><h1>${T("hero_title")}</h1><p class="muted">${T("hero_text")}</p></section>
+    <section class="modes">
+      <button class="mode" type="button" data-go="train"><h3>${T("m_train")}</h3><p class="small muted">${T("m_train_d")}</p><span class="go">${T("go")}</span></button>
+      <button class="mode" type="button" data-go="exam"><h3>${T("m_exam")}</h3><p class="small muted">${T("m_exam_d")}</p><span class="go">${T("go")}</span></button>
+      <button class="mode" type="button" data-go="short"><h3>${T("m_short")}</h3><p class="small muted">${T("m_short_d")}</p><span class="go">${T("go")}</span></button>
+    </section>
+    <section class="stack"><h2>${T("bank")}</h2><p>${T("bank_line", test.length, cortas.length, TEMAS.length)}</p>
+      <p class="eyebrow">${T("bloom_dist")}</p><div class="bloombar" role="img" aria-label="${T("bloom_dist")}">${bar}</div><div class="legend">${leg}</div>
+      <div class="tablebox"><table class="temas"><thead><tr><th>${T("col_topic")}</th><th style="text-align:right">${T("col_test")}</th><th style="text-align:right">${T("col_short")}</th></tr></thead><tbody>${filas}</tbody></table></div>
+    </section>
+    <section class="panel stack"><h3>${T("scoring_title")}</h3><p class="small">${T("scoring_text")}</p></section>
+  </div>`;
+}
+
+/* ---------- Entrenamiento: configuración ---------- */
+function vTrain() {
+  const cfg = Store.get("trainCfg", { temas: [], n: 10, secciones: [], blooms: [] });
+  const temas = TEMAS.map((t) => `<label class="check"><input type="checkbox" name="tema" id="tema-${t}" value="${t}" ${cfg.temas.includes(t) ? "checked" : ""}><span><span class="num muted">${t}</span>&nbsp; ${esc(tx(S.meta[t].titulo))}</span></label>`).join("");
+  const sizes = CONFIG.entrenamientoTamanos.map((n) => `<label><input type="radio" name="n" id="n-${n}" value="${n}" ${cfg.n === n ? "checked" : ""}>${n}</label>`).join("");
+  const blooms = BLOOM.map((b) => `<label><input type="checkbox" name="bloom" id="bloom-${b}" value="${b}" ${cfg.blooms.includes(b) ? "checked" : ""}>${bl(b)}</label>`).join("");
+  return `<div class="stack-lg">${consentBox()}
+    <h1>${T("tr_title")}</h1>
+    <form id="train-form" class="stack-lg" novalidate>
+      <fieldset><legend>${T("tr_topics")}</legend>
+        <div class="row small"><button class="btn ghost" type="button" data-all="1">${T("tr_all")}</button><button class="btn ghost" type="button" data-all="0">${T("tr_none")}</button></div>
+        <div class="checks">${temas}</div></fieldset>
+      <fieldset><legend>${T("tr_size")}</legend><div class="seg">${sizes}</div></fieldset>
+      <details class="more" ${cfg.secciones.length || cfg.blooms.length ? "open" : ""}><summary>${T("tr_filters")}</summary>
+        <div class="stack" style="padding-top:14px">
+          <fieldset><legend>${T("tr_bloom")}</legend><div class="blchecks">${blooms}</div><p class="small muted">${T("tr_bloom_hint")}</p></fieldset>
+          <fieldset><legend>${T("tr_sections")}</legend><div class="checks" id="secs"></div><p class="small muted">${T("tr_sections_hint")}</p></fieldset>
+        </div></details>
+      <div class="stack"><p class="small" id="train-info" aria-live="polite"></p><div><button class="btn primary" type="submit" id="train-go">${T("tr_start")}</button></div></div>
+    </form></div>`;
+}
+function trainRead() {
+  const f = $("#train-form");
+  return {
+    temas: [...f.querySelectorAll('input[name="tema"]:checked')].map((i) => +i.value),
+    n: +(f.querySelector('input[name="n"]:checked') || { value: 10 }).value,
+    secciones: [...f.querySelectorAll('input[name="sec"]:checked')].map((i) => i.value),
+    blooms: [...f.querySelectorAll('input[name="bloom"]:checked')].map((i) => i.value),
+  };
+}
+function trainUpdate(rebuildSecs = true) {
+  const cfg = rebuildSecs ? Store.get("trainCfg", { temas: [], n: 10, secciones: [], blooms: [] }) : null;
+  let c = trainRead();
+  if (rebuildSecs) {
+    const prev = new Set(cfg.secciones);
+    $("#secs").innerHTML = c.temas.flatMap((t) => Object.entries(S.meta[t].secciones).map(([k, v]) =>
+      `<label class="check"><input type="checkbox" name="sec" id="sec-${k}" value="${k}" ${prev.has(k) ? "checked" : ""}><span><span class="num muted">${k}</span>&nbsp; ${esc(tx(v))}</span></label>`)).join("") || `<p class="small muted">—</p>`;
+    c = trainRead();
+  }
+  Store.set("trainCfg", c);
+  const info = $("#train-info"), btn = $("#train-go");
+  if (!c.temas.length) { info.textContent = T("tr_pick"); btn.disabled = true; return; }
+  const n = generarEntrenamiento(S.banco, { ...c, n: 9999 }).disponibles;
+  btn.disabled = n === 0;
+  info.textContent = n === 0 ? T("tr_empty") : n < c.n ? T("tr_few", n, c.n) : T("tr_available", n);
+}
+
+/* ---------- Simulacro: portada ---------- */
+function vExam() {
+  return `<div class="stack-lg">${consentBox()}<h1>${T("ex_title")}</h1><p>${T("ex_text")}</p>
+    <section class="panel stack"><h3>${T("scoring_title")}</h3><p class="small">${T("scoring_text")}</p></section>
+    <div><button class="btn primary" type="button" id="exam-go">${T("ex_start")}</button></div></div>`;
+}
+
+/* ---------- Ejecución de una prueba ---------- */
+function startRun(modo, preguntas, cfg) {
+  if (!Store.get("primerUso", null)) Store.set("primerUso", new Date().toISOString());
+  S.run = { modo, cfg, preguntas, idx: 0, marcadas: preguntas.map(() => []), checked: preguntas.map(() => false), t: preguntas.map(() => 0), inicio: Date.now(), tq: Date.now(), done: false, msg: "", confirm: null };
+  S.view = "run"; render(); window.scrollTo(0, 0);
+}
+function tick() { const r = S.run; if (!r) return; const now = Date.now(); r.t[r.idx] += (now - r.tq) / 1000; r.tq = now; }
+function vRun() {
+  const r = S.run, q = r.preguntas[r.idx], n = r.preguntas.length, marc = r.marcadas[r.idx], checked = r.checked[r.idx];
+  const train = r.modo === "train";
+  const opts = Object.entries(q.opciones).map(([k, v]) => {
+    let cls = "", tag = "";
+    if (checked) {
+      const ok = q.correctas.includes(k), m = marc.includes(k);
+      if (m && ok) { cls = "is-correct"; tag = T("q_marked_ok"); } else if (m) { cls = "is-wrong"; tag = T("q_marked_bad"); } else if (ok) { cls = "is-correct"; tag = T("q_missed"); }
+    }
+    return `<button type="button" class="opt ${cls}" data-opt="${k}" aria-pressed="${marc.includes(k)}" ${checked ? "disabled" : ""}><span class="letter">${k}</span><span>${rich(tx(v))}</span><span class="tag">${tag}</span></button>`;
+  }).join("");
+  let feedback = "";
+  if (checked) {
+    const p = puntuarPregunta(q.correctas, marc).puntos;
+    feedback = `<div class="explain stack"><p><b class="${p > 0 ? "pts pos" : p < 0 ? "pts neg" : "pts zero"}">${T("q_points", p)}</b></p><p class="small"><span class="eyebrow">${T("q_why")}</span><br>${rich(tx(q.justificacion))}</p></div>`;
+  }
+  const grid = !train ? `<div class="grid50" aria-label="Preguntas">${r.preguntas.map((_, i) => `<button type="button" data-jump="${i}" class="${r.marcadas[i].length ? "done" : ""} ${i === r.idx ? "here" : ""}" aria-label="${T("q_of", i + 1, n)}">${i + 1}</button>`).join("")}</div>` : "";
+  const draft = S.lang === "en" && q.traduccion !== "done" ? `<span class="sub-badge">${T("en_draft")}</span>` : "";
+  let nav;
+  if (train) {
+    nav = !checked ? `<div class="navrow"><button class="btn ghost" type="button" id="quit">${T("q_quit")}</button><button class="btn primary" type="button" id="check">${T("q_check")}</button></div>`
+      : `<div class="navrow"><button class="btn ghost" type="button" id="quit">${T("q_quit")}</button><button class="btn primary" type="button" id="next">${r.idx === n - 1 ? T("q_finish") : T("q_next")}</button></div>`;
+  } else {
+    nav = `<div class="navrow"><div class="row"><button class="btn" type="button" id="prev" ${r.idx === 0 ? "disabled" : ""}>${T("q_prev")}</button><button class="btn" type="button" id="next" ${r.idx === n - 1 ? "disabled" : ""}>${T("q_next")}</button></div>
+      <div class="row"><button class="btn ghost" type="button" id="quit">${T("q_quit")}</button><button class="btn primary" type="button" id="hand">${T("q_hand")}</button></div></div>`;
+  }
+  const conf = r.confirm ? `<div class="confirm" role="alert"><span>${r.confirm.text}</span><button class="btn primary" type="button" id="conf-yes">${r.confirm.yes}</button><button class="btn" type="button" id="conf-no">${r.confirm.no}</button></div>` : "";
+  return `<div class="stack">
+    <div class="qhead"><span class="eyebrow">${modeLabel(r.modo)} · ${T("q_of", r.idx + 1, n)}</span><span class="row small muted"><span class="num">${q.num}</span>${bl(q.bloom)}${byLine(q)}${draft}<span class="num" id="clock" aria-label="${T("q_elapsed")}"></span></span></div>
+    <div class="progress"><span style="width:${(100 * (r.idx + (checked ? 1 : 0))) / n}%"></span></div>
+    ${conf}
+    <p class="stem">${rich(tx(q.enunciado))}</p>
+    <div class="opts" role="group" aria-label="Opciones">${opts}</div>
+    <p class="hint" aria-live="polite">${r.msg || (!checked && train ? `<span class="muted">${T("q_blank_note")}</span>` : "")}</p>
+    ${feedback}${nav}${grid}</div>`;
+}
+let clockTimer = null;
+function runAfter() {
+  clearInterval(clockTimer);
+  const upd = () => { const c = $("#clock"); if (c && S.run) c.textContent = hm((Date.now() - S.run.inicio) / 1000); };
+  upd(); clockTimer = setInterval(upd, 1000);
+}
+function toggleOpt(k) {
+  const r = S.run; if (r.checked[r.idx]) return;
+  const m = r.marcadas[r.idx];
+  if (m.includes(k)) { r.marcadas[r.idx] = m.filter((x) => x !== k); r.msg = ""; }
+  else if (m.length >= CONFIG.maxMarcadas) { r.msg = T("q_max"); }
+  else { m.push(k); r.msg = ""; }
+  render();
+}
+function move(i) { tick(); S.run.idx = i; S.run.msg = ""; S.run.confirm = null; render(); window.scrollTo(0, 0); }
+function askQuit() {
+  S.run.confirm = { text: T("q_quit_confirm"), yes: T("q_quit_yes"), no: T("q_hand_no"), act: () => { S.run = null; clearInterval(clockTimer); S.view = S.pendingNav || "home"; S.pendingNav = null; render(); } };
+  if (S.view !== "run") S.view = "run";
+  render(); window.scrollTo(0, 0);
+}
+function finishRun() {
+  tick(); clearInterval(clockTimer);
+  const r = S.run; r.done = true;
+  const res = corregirPrueba(r.preguntas.map((p, i) => ({ pregunta: p, marcadas: r.marcadas[i], tiempo_s: Math.round(r.t[i]) })));
+  const hist = Store.get("historial", []);
+  const consent = Store.get("consent", null) === true && !!Store.get("grupo", null);
+  const rec = { id: uid(12), modo: r.modo === "train" ? "entrenamiento" : r.modo === "test" ? "test" : "simulacro", fecha: new Date().toISOString(), semana_curso: semanaCurso(), n_intento: hist.length + 1, investigacion: consent, grupo: Store.get("grupo", null),
+    config: r.modo !== "exam" ? r.cfg : null, duracion_s: Math.round((Date.now() - r.inicio) / 1000), nota: res.nota, bruto: Math.round(res.bruto * 1000) / 1000, max: res.max, lang: S.lang, detalle: res.detalle };
+  hist.push(rec); Store.set("historial", hist);
+  S.result = { rec, preguntas: r.preguntas, modo: r.modo, cfg: r.cfg };
+  S.run = null; S.view = "result"; render(); window.scrollTo(0, 0);
+}
+
+/* ---------- Resultados ---------- */
+function barsBy(detalle, keyFn, labelFn, colorFn) {
+  const g = new Map();
+  for (const d of detalle) { const k = keyFn(d); const a = g.get(k) || { p: 0, n: 0 }; a.p += d.puntos; a.n += 1; g.set(k, a); }
+  return [...g.entries()].sort((a, b) => String(a[0]).localeCompare(String(b[0]), undefined, { numeric: true })).map(([k, a]) => {
+    const pct = Math.max(0, (100 * a.p) / a.n);
+    return `<div class="r"><span>${labelFn(k)}</span><span class="track"><span style="width:${pct}%;background:${colorFn(k)}"></span></span><span class="v">${Math.round(pct)}%<span class="muted"> ·${a.n}</span></span></div>`;
+  }).join("");
+}
+function vResult() {
+  const { rec, preguntas, modo } = S.result, d = rec.detalle;
+  const full = d.filter((x) => x.aciertos === x.correctas.length && x.errores === 0).length;
+  const blank = d.filter((x) => x.enBlanco).length, wrong = d.reduce((s, x) => s + x.errores, 0);
+  const byId = Object.fromEntries(preguntas.map((p) => [p.id, p]));
+  const review = d.map((x, i) => {
+    const q = byId[x.id];
+    const cls = x.puntos > 0.0001 ? "pos" : x.puntos < -0.0001 ? "neg" : "zero";
+    const items = Object.entries(q.opciones).map(([k, v]) => {
+      const ok = q.correctas.includes(k), m = x.marcadas.includes(k);
+      const c = ok ? "c" : m ? "w" : "";
+      const t = m && ok ? T("q_marked_ok") : m ? T("q_marked_bad") : ok ? T("q_missed") : "";
+      return `<li class="${c}"><b class="num">${k})</b> ${rich(tx(v))}${t ? ` <span class="small muted">— ${t}</span>` : ""}</li>`;
+    }).join("");
+    return `<details><summary><span class="num muted">${i + 1}.</span><span class="num">${q.num}</span>${bl(q.bloom)}${byLine(q)}<span class="pts ${cls}">${x.puntos > 0 ? "+" : ""}${fmt(x.puntos)}</span></summary>
+      <div class="body"><p class="stem" style="font-size:1rem">${rich(tx(q.enunciado))}</p><ol>${items}</ol><p class="small"><span class="eyebrow">${T("q_why")}</span><br>${rich(tx(q.justificacion))}</p></div></details>`;
+  }).join("");
+  return `<div class="stack-lg">
+    <div class="stack"><p class="eyebrow">${modo === "train" ? T("r_title_train") : modo === "test" ? T("r_title_test") : T("r_title_exam")}</p>
+    <div class="score"><div class="big num" aria-label="${T("r_grade")}">${fmt(rec.nota)}<small> / 10</small></div>
+      <div class="kv"><div><b>${fmt(rec.bruto)} / ${rec.max}</b><span>${T("r_raw")}</span></div><div><b>${full}</b><span>${T("r_right")}</span></div><div><b>${blank}</b><span>${T("r_blank")}</span></div><div><b>${wrong}</b><span>${T("r_wrongmarks")}</span></div><div><b>${hm(rec.duracion_s)}</b><span>${T("r_time")}</span></div></div></div>
+    <p class="small muted">${T("r_saved")}</p></div>
+    <div class="row"><button class="btn primary" type="button" id="again">${T("r_again")}</button><button class="btn" type="button" data-go="home">${T("r_home")}</button></div>
+    <section class="stack"><h2>${T("r_by_bloom")}</h2><div class="bars">${barsBy(d, (x) => x.bloom, (b) => `${b} ${esc(I18N[S.lang].bl_names[b])}`, (b) => `var(--${b.toLowerCase()})`)}</div>
+      <h2 style="margin-top:12px">${T("r_by_topic")}</h2><div class="bars">${barsBy(d, (x) => x.tema, (t) => `${T("col_topic")} ${t}`, () => "var(--accent)")}</div><p class="small muted">${T("r_bar_note")}</p></section>
+    <section class="stack"><h2>${T("r_review")}</h2><div class="review">${review}</div></section></div>`;
+}
+
+/* ---------- Preguntas cortas ---------- */
+function vShort() {
+  if (!S.short) S.short = { tema: Store.get("shortTema", 1), idx: 0, shown: false, rated: null };
+  const st = S.short, lista = S.banco.filter((q) => q.tipo === "corta" && q.tema === st.tema);
+  const sel = `<select id="short-tema" aria-label="${T("s_topic")}">${TEMAS.map((t) => `<option value="${t}" ${t === st.tema ? "selected" : ""}>${T("s_topic")} ${t} · ${esc(tx(S.meta[t].titulo))}</option>`).join("")}</select>`;
+  if (st.idx >= lista.length) return `<div class="stack-lg"><h1>${T("s_title")}</h1>${sel}<p>${T("s_done")}</p><div><button class="btn" type="button" id="short-restart">${T("r_again")}</button></div></div>`;
+  const q = lista[st.idx];
+  const concepto = q.concepto_clave ? tx(S.meta[q.tema].conceptos[q.concepto_clave]) : "";
+  const draft = S.lang === "en" && q.traduccion !== "done" ? `<span class="sub-badge">${T("en_draft")}</span>` : "";
+  const saved = (Store.get("cortas", {})[q.id] || {}).borrador || "";
+  return `<div class="stack-lg">${consentBox()}<h1>${T("s_title")}</h1>${sel}
+    <section class="stack">
+      <div class="qhead"><span class="eyebrow">${T("s_count", st.idx + 1, lista.length)}${concepto ? ` · ${T("s_concept")}: ${rich(concepto)}` : ""}</span><span class="row small"><span class="num muted">${q.num}</span>${bl(q.bloom)}${draft}</span></div>
+      <p class="stem">${rich(tx(q.enunciado))}</p>
+      <label for="short-ans" class="eyebrow">${T("s_your")}</label>
+      <textarea id="short-ans" placeholder="${T("s_placeholder")}" ${st.shown ? "readonly" : ""}>${esc(saved)}</textarea>
+      ${!st.shown ? `<div><button class="btn primary" type="button" id="short-show">${T("s_show")}</button></div>` : `
+        <div class="answer stack"><p class="eyebrow">${T("s_model")}</p><p>${rich(tx(q.respuesta))}</p></div>
+        <p class="small"><span class="eyebrow">${T("q_why")}</span><br>${rich(tx(q.justificacion))}</p>
+        <fieldset><legend>${T("s_rate")}</legend><div class="row">${[["bien", "s_good"], ["parcial", "s_part"], ["mal", "s_bad"]].map(([v, k]) => `<button type="button" class="btn ${st.rated === v ? "primary" : ""}" data-rate="${v}">${T(k)}</button>`).join("")}</div></fieldset>
+        <div><button class="btn primary" type="button" id="short-next" ${st.rated ? "" : "disabled"}>${T("s_next")}</button></div>`}
+    </section></div>`;
+}
+function shortRate(v) {
+  const st = S.short, lista = S.banco.filter((q) => q.tipo === "corta" && q.tema === st.tema), q = lista[st.idx];
+  st.rated = v;
+  const all = Store.get("cortas", {});
+  const prev = all[q.id] || {};
+  const consent = Store.get("consent", null) === true && !!Store.get("grupo", null);
+  const reg = { autoeval: v, fecha: new Date().toISOString(), semana_curso: semanaCurso(), investigacion: consent, longitud: (($("#short-ans") || {}).value || "").length };
+  all[q.id] = { ...prev, borrador: ($("#short-ans") || {}).value || prev.borrador || "", registros: [...(prev.registros || []), reg] };
+  Store.set("cortas", all);
+  render();
+}
+
+/* ---------- Mi progreso ---------- */
+function vMe() {
+  const hist = Store.get("historial", []), cortas = Store.get("cortas", {}), consent = Store.get("consent", null);
+  const nC = Object.values(cortas).filter((c) => (c.registros || []).length).length;
+  const pill = consent === true ? `<span class="pill on">${T("c_on")}</span>` : `<span class="pill off">${T("c_off")}</span>`;
+  const grupo = Store.get("grupo", null);
+  let research = `<section class="panel stack"><h2>${T("me_research")}</h2><p class="small muted">${T("x_group")}: <span class="num">${esc(grupo || "")}</span></p><div class="row">${pill}<button class="btn" type="button" data-consent="${consent === true ? 0 : 1}">${consent === true ? T("c_toggle_off") : T("c_toggle_on")}</button></div>
+    <h3>${T("x_title")}</h3><p class="small">${T("x_text")}</p><p class="small muted">${T("x_week")}: <span class="num">${semanaCurso()}</span></p>
+    ${consent !== true ? `<p class="small muted">${T("x_off")}</p>` : `<div class="row"><button class="btn primary" type="button" id="x-json">${T("x_json")}</button><button class="btn" type="button" id="x-csv">${T("x_csv")}</button><button class="btn" type="button" id="x-copy">${T("x_copy")}</button></div><p class="small" id="x-msg" aria-live="polite"></p><textarea id="x-out" readonly hidden aria-label="Datos"></textarea>`}</section>`;
+  if (!grupo) research = `<section class="panel stack"><h2>${T("me_research")}</h2><p class="small muted">${T("x_nogroup")}</p></section>`;
+  if (!hist.length) return `<div class="stack-lg">${consentBox()}<h1>${T("me_title")}</h1><p class="muted">${T("me_none")}</p>${nC ? `<p>${T("me_shorts")}: <b class="num">${nC}</b></p>` : ""}${research}${delBox()}</div>`;
+  const notas = hist.map((h) => h.nota), avg = notas.reduce((a, b) => a + b, 0) / notas.length;
+  const allDet = hist.flatMap((h) => h.detalle);
+  const W = 600, H = 80, pad = 6, xs = (i) => pad + (notas.length === 1 ? (W - 2 * pad) / 2 : (i * (W - 2 * pad)) / (notas.length - 1)), ys = (v) => H - pad - (v / 10) * (H - 2 * pad);
+  const pts = notas.map((v, i) => `${xs(i).toFixed(1)},${ys(v).toFixed(1)}`).join(" ");
+  const spark = `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${T("me_trend")}"><line x1="0" x2="${W}" y1="${ys(5)}" y2="${ys(5)}" stroke="var(--line)" stroke-dasharray="4 4"/><polyline fill="none" stroke="var(--accent)" stroke-width="2" points="${pts}" vector-effect="non-scaling-stroke"/>${notas.map((v, i) => `<circle cx="${xs(i)}" cy="${ys(v)}" r="${i === notas.length - 1 ? 4 : 2.5}" fill="var(--accent)"/>`).join("")}</svg>`;
+  const rows = hist.slice().reverse().map((h) => `<tr><td>${new Date(h.fecha).toLocaleDateString(S.lang === "es" ? "es-ES" : "en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}</td><td>${modeLabel(h.modo)}</td><td class="n">${h.max}</td><td class="n">${fmt(h.nota)}</td></tr>`).join("");
+  return `<div class="stack-lg">${consentBox()}<h1>${T("me_title")}</h1>
+    <div class="kv"><div><b>${hist.length}</b><span>${T("me_attempts")}</span></div><div><b>${fmt(avg)}</b><span>${T("me_avg")}</span></div><div><b>${fmt(notas[notas.length - 1])}</b><span>${T("me_last")}</span></div><div><b>${nC}</b><span>${T("me_shorts")}</span></div></div>
+    <section class="stack"><h2>${T("me_trend")}</h2>${spark}</section>
+    <section class="stack"><h2>${T("me_bloom")}</h2><div class="bars">${barsBy(allDet, (x) => x.bloom, (b) => `${b} ${esc(I18N[S.lang].bl_names[b])}`, (b) => `var(--${b.toLowerCase()})`)}</div><p class="small muted">${T("r_bar_note")}</p></section>
+    <section class="stack"><h2>${T("me_history")}</h2><div class="tablebox"><table class="temas"><thead><tr><th>${T("h_date")}</th><th>${T("h_mode")}</th><th style="text-align:right">${T("h_n")}</th><th style="text-align:right">${T("h_grade")}</th></tr></thead><tbody>${rows}</tbody></table></div></section>
+    ${research}${delBox()}</div>`;
+}
+function delBox() {
+  if (S.delConfirm) return `<div class="confirm" role="alert"><span>${T("me_delete_confirm")}</span><button class="btn primary" type="button" id="del-yes">${T("me_delete_yes")}</button><button class="btn" type="button" id="del-no">${T("q_hand_no")}</button></div>`;
+  return `<div><button class="btn ghost" type="button" id="del">${T("me_delete")}</button>${S.delMsg ? ` <span class="small muted">${S.delMsg}</span>` : ""}</div>`;
+}
+
+/* ---------- Exportación para investigación ---------- */
+function exportData() {
+  const hist = Store.get("historial", []).filter((h) => h.investigacion);
+  const cortas = Object.entries(Store.get("cortas", {})).flatMap(([id, c]) => (c.registros || []).filter((r) => r.investigacion).map((r) => ({ id, autoeval: r.autoeval, fecha: r.fecha, semana_curso: r.semana_curso, longitud: r.longitud })));
+  return {
+    schema: "quaestia-export/1", app_version: APP_VERSION, codigo: uid(8), grupo: Store.get("grupo", null), exportado: new Date().toISOString(), semana_exportacion: semanaCurso(),
+    consentimiento: { fecha: Store.get("consentFecha", null) },
+    intentos: hist.map((h, i) => ({ n_intento: i + 1, modo: h.modo, fecha: h.fecha, semana_curso: h.semana_curso, duracion_s: h.duracion_s, nota: h.nota, bruto: h.bruto, max: h.max, lang: h.lang, config: h.config,
+      items: h.detalle.map((d) => ({ id: d.id, tema: d.tema, seccion: d.seccion, bloom: d.bloom, correctas: d.correctas, marcadas: d.marcadas, puntos: Math.round(d.puntos * 1000) / 1000, aciertos: d.aciertos, errores: d.errores, en_blanco: d.enBlanco, tiempo_s: d.tiempo_s })) })),
+    cortas,
+  };
+}
+function toCSV(x) {
+  const head = ["codigo", "grupo", "n_intento", "modo", "fecha", "semana_curso", "item_id", "tema", "seccion", "bloom", "n_correctas", "correctas", "marcadas", "aciertos", "errores", "en_blanco", "puntos", "tiempo_s"];
+  const rows = [head.join(",")];
+  for (const a of x.intentos) for (const d of a.items) rows.push([x.codigo, x.grupo || "", a.n_intento, a.modo, a.fecha, a.semana_curso, d.id, d.tema, d.seccion || "", d.bloom, d.correctas.length, d.correctas.join(""), d.marcadas.join(""), d.aciertos, d.errores, d.en_blanco ? 1 : 0, d.puntos, d.tiempo_s].join(","));
+  return rows.join("\n");
+}
+function download(name, text, type) {
+  try { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); } catch (e) {}
+  const out = $("#x-out"); if (out) { out.hidden = false; out.value = text; }
+}
+function doExport(kind) {
+  const x = exportData(), msg = $("#x-msg");
+  if (!x.intentos.length && !x.cortas.length) { msg.textContent = T("x_none"); return; }
+  const base = `quaestia_${x.codigo}`;
+  if (kind === "json") download(`${base}.json`, JSON.stringify(x, null, 2), "application/json");
+  else if (kind === "csv") download(`${base}.csv`, toCSV(x), "text/csv");
+  else {
+    const text = JSON.stringify(x, null, 2), out = $("#x-out"); out.hidden = false; out.value = text;
+    navigator.clipboard.writeText(text).then(() => (msg.textContent = T("x_copied")), () => { msg.textContent = T("x_copy_fail"); out.select(); });
+  }
+}
+
+/* ---------- Eventos ---------- */
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("button"); if (!t) return;
+  if (t.dataset.lang) { S.lang = t.dataset.lang; Store.set("lang", S.lang); return render(); }
+  if (t.id === "home-link") return go("home");
+  if (t.dataset.go) return go(t.dataset.go);
+  if (t.dataset.consent) return setConsent(t.dataset.consent === "1");
+  if (teachClick(t)) return;
+  if (t.dataset.all) { for (const i of document.querySelectorAll('input[name="tema"]')) i.checked = t.dataset.all === "1"; return trainUpdate(); }
+  if (t.id === "exam-go") return startRun("exam", generarSimulacro(S.banco), null);
+  if (S.view === "run" && S.run) {
+    const r = S.run;
+    if (t.id === "conf-yes") return r.confirm.act();
+    if (t.id === "conf-no") { r.confirm = null; S.pendingNav = null; return render(); }
+    if (t.dataset.opt) return toggleOpt(t.dataset.opt);
+    if (t.dataset.jump) return move(+t.dataset.jump);
+    if (t.id === "prev") return move(r.idx - 1);
+    if (t.id === "check") { tick(); r.checked[r.idx] = true; r.msg = ""; return render(); }
+    if (t.id === "next") return r.modo === "train" && r.idx === r.preguntas.length - 1 ? finishRun() : move(r.idx + 1);
+    if (t.id === "quit") return askQuit();
+    if (t.id === "hand") { const left = r.marcadas.filter((m) => !m.length).length; r.confirm = { text: T("q_hand_confirm", left), yes: T("q_hand_yes"), no: T("q_hand_no"), act: finishRun }; return render(); }
+  }
+  if (t.id === "again") {
+    const { modo, cfg } = S.result;
+    if (modo === "exam") return startRun("exam", generarSimulacro(S.banco), null);
+    if (modo === "test") return startRun("test", S.result.preguntas, cfg);
+    return startRun("train", generarEntrenamiento(S.banco, cfg).preguntas, cfg);
+  }
+  if (t.id === "short-show") { const v = $("#short-ans").value; const all = Store.get("cortas", {}); const q = S.banco.filter((x) => x.tipo === "corta" && x.tema === S.short.tema)[S.short.idx]; all[q.id] = { ...(all[q.id] || {}), borrador: v }; Store.set("cortas", all); S.short.shown = true; return render(); }
+  if (t.dataset.rate) return shortRate(t.dataset.rate);
+  if (t.id === "short-next") { S.short.idx++; S.short.shown = false; S.short.rated = null; render(); return window.scrollTo(0, 0); }
+  if (t.id === "short-restart") { S.short.idx = 0; S.short.shown = false; S.short.rated = null; return render(); }
+  if (t.id === "x-json") return doExport("json");
+  if (t.id === "x-csv") return doExport("csv");
+  if (t.id === "x-copy") return doExport("copy");
+  if (t.id === "del") { S.delConfirm = true; S.delMsg = ""; return render(); }
+  if (t.id === "del-no") { S.delConfirm = false; return render(); }
+  if (t.id === "del-yes") { const lang = S.lang; Store.clear(); Store.set("lang", lang); S.delConfirm = false; S.delMsg = T("me_deleted"); return render(); }
+});
+document.addEventListener("input", (e) => { teachInput(e); });
+document.addEventListener("change", (e) => {
+  if (teachChange(e)) return;
+  if (e.target.id === "c-age") { const y = $("#c-yes"); if (y) y.disabled = !e.target.checked; return; }
+  if (e.target.closest("#train-form")) return trainUpdate(e.target.name === "tema");
+  if (e.target.id === "short-tema") { S.short = { tema: +e.target.value, idx: 0, shown: false, rated: null }; Store.set("shortTema", S.short.tema); return render(); }
+});
+document.addEventListener("submit", (e) => {
+  if (teachSubmit(e)) return;
+  if (e.target.id !== "train-form") return;
+  e.preventDefault();
+  const c = trainRead(); if (!c.temas.length) return;
+  const { preguntas } = generarEntrenamiento(S.banco, c);
+  if (preguntas.length) startRun("train", preguntas, c);
+});
+document.addEventListener("keydown", (e) => {
+  if (S.view !== "run" || !S.run || e.target.matches("input, textarea, select")) return;
+  const k = e.key.toLowerCase();
+  if ("abcde".includes(k) && k.length === 1 && S.run.preguntas[S.run.idx].opciones[k]) { e.preventDefault(); toggleOpt(k); }
+});
+
+/* ---------- Arranque ---------- */
+async function boot() {
+  // Grupo opcional desde el enlace (?grupo=BQ2627): permite al profesorado identificar a su curso sin datos personales.
+  try { const g = new URLSearchParams(location.search).get("grupo"); if (g && /^[A-Za-z0-9_-]{1,24}$/.test(g)) Store.set("grupo", g); } catch (e) {}
+  S.lang = Store.get("lang", (navigator.language || "es").toLowerCase().startsWith("es") ? "es" : "en");
+  renderChrome();
+  main().innerHTML = `<p class="muted">${T("loading")}</p>`;
+  S.testLink = parseTestParam();
+  try { await cargar(); if (S.testLink) S.view = "testIntro"; render(); }
+  catch (err) { main().innerHTML = `<div class="notice">${T("load_error")}</div>`; }
+}
+// Arranca cuando están cargados todos los scripts de la página (incluido el del profesorado).
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else setTimeout(boot);
+</script>
+<script>
+"use strict";
+/* ============================================================
+   QUAESTIA — Profesorado: crear tests, proponer preguntas,
+   cómo contribuir y colaboradores.
+   ============================================================ */
+Object.assign(CONFIG, { repo: "AlfonsoOA/biocognia", contacto: "b22olaba@uco.es", coordinador: "Alfonso Olaya Abril" });
+
+Object.assign(I18N.es, {
+  nav_teach: "Profesorado", mode_test: "Test del profesorado", r_title_test: "Resultado del test", by: "Propuesta por",
+  t_title: "Profesorado", t_intro: "Crea tests a partir del banco y compártelos con tu alumnado, o propón preguntas nuevas para QUAESTIA.",
+  t_sub_build: "Crear un test", t_sub_propose: "Proponer una pregunta", t_sub_guide: "Cómo contribuir", t_sub_credits: "Colaboradores",
+  t_open_note: "El banco es abierto: el alumnado puede ver todas las preguntas y sus respuestas practicando. Estos tests sirven para practicar o para evaluación formativa, no como examen con preguntas reservadas.",
+  tb_name: "Título del test", tb_name_ph: "Por ejemplo: Repaso del tema 3", tb_add: "Añadir preguntas", tb_filter_topics: "Temas", tb_filter_bloom: "Niveles", tb_search: "Buscar en el enunciado o por número",
+  tb_matches: (n) => `${n} preguntas coinciden con los filtros.`, tb_random: "Añadir al azar", tb_random_n: "Número", tb_show_more: "Mostrar más", tb_add_one: "Añadir", tb_added: "Añadida",
+  tb_yours: (n) => `Tu test · ${n} preguntas`, tb_empty: "Todavía no has añadido preguntas.", tb_clear: "Vaciar", tb_up: "Subir", tb_down: "Bajar", tb_remove: "Quitar",
+  tb_share: "Compartir", tb_link: "Enlace para el alumnado", tb_link_d: "Abre este test en QUAESTIA con corrección automática. Las preguntas van dentro del enlace: no hace falta servidor ni cuenta.",
+  tb_link_btn: "Generar enlace", tb_copy: "Copiar", tb_copied: "Copiado.", tb_copy_fail: "No se ha podido copiar: selecciona el texto y cópialo a mano.",
+  tb_link_note: "En esta vista previa el enlace no funciona fuera de la página; publicado en GitHub Pages, sí.",
+  tb_print: "Versión imprimible", tb_print_d: "Test en papel con hoja de respuestas y clave aparte. Con varios modelos, el orden de las preguntas cambia en cada uno.",
+  tb_models: "Modelos", tb_print_btn: "Preparar impresión", tb_moodle: "Moodle (XML)", tb_moodle_d: "Archivo para importar en el banco de preguntas de Moodle (formato Moodle XML), con la misma puntuación: cada correcta suma su parte y cada incorrecta resta un 20 %.",
+  tb_moodle_note: "Moodle no deja que una pregunta de respuesta múltiple puntúe por debajo de 0; el total del test sí refleja las penalizaciones del resto.", tb_moodle_btn: "Descargar XML",
+  tb_need: "Añade al menos una pregunta.", tb_lang: (l) => `Se usará el idioma actual (${l === "es" ? "español" : "inglés"}).`,
+  tb_dist: "Reparto por nivel de Bloom",
+  ti_title: "Test compartido", ti_text: (n) => `Un profesor ha preparado este test de ${n} preguntas. Se corrige al entregar, con la misma puntuación que el simulacro.`, ti_missing: (n) => `${n} preguntas del enlace no están en esta versión del banco y se han omitido.`,
+  ti_bad: "El enlace del test no es válido o está incompleto.", ti_start: "Empezar el test",
+  pr_back: "Volver a QUAESTIA", pr_print: "Imprimir", pr_model: "Modelo", pr_name: "Nombre y apellidos", pr_group: "Grupo", pr_rules: "Cada pregunta vale 1 punto, repartido entre sus opciones correctas. Cada opción incorrecta marcada resta 0,2. Marca como máximo 3 opciones por pregunta.",
+  pr_sheet: "Hoja de respuestas", pr_key: "Clave de respuestas", pr_q: "Pregunta", pr_correct: "Correctas", pr_print_note: "Usa la opción «Imprimir» de tu navegador si el botón no funciona aquí.",
+  pp_intro: "Rellena la pregunta, revisa la vista previa y envíala. El coordinador la revisará y, si se aprueba, se publicará en QUAESTIA con tu nombre.",
+  pp_type: "Tipo", pp_test: "Tipo test", pp_short: "Respuesta corta", pp_topic: "Tema", pp_section: "Sección", pp_concept: "Concepto clave", pp_bloom: "Nivel de Bloom", pp_lang: "Idioma en que la escribes",
+  pp_stem: "Enunciado", pp_opts: "Opciones (marca las correctas: entre 1 y 3)", pp_answer: "Respuesta modelo", pp_just: "Justificación del nivel de Bloom", pp_just_ph: "Por qué esta pregunta es de este nivel (no la respuesta).",
+  pp_source: "Fuente o referencia (opcional)", pp_author: "Tu nombre (aparecerá como autor de la propuesta)", pp_affil: "Universidad o centro", pp_email: "Correo de contacto (opcional; no se publica)",
+  pp_ok1: "La pregunta es original o tengo derecho a cederla.", pp_ok2: "Acepto que, si se aprueba, se publique en QUAESTIA bajo la licencia abierta del proyecto, con mi nombre como autor de la propuesta.",
+  pp_format: "Formato: puedes usar <sub>…</sub>, <sup>…</sup> e <i>…</i> (por ejemplo, NAD<sup>+</sup>, H<sub>2</sub>O).",
+  pp_preview: "Vista previa", pp_validate: "Comprobar y preparar envío", pp_errors: "Revisa lo siguiente:", pp_ready: "La pregunta está lista. Elige cómo enviarla:",
+  pp_gh: "Enviar por GitHub", pp_gh_d: "Abre una propuesta (issue) ya rellena en el repositorio. Necesitas cuenta de GitHub.", pp_mail: "Enviar por correo", pp_mail_d: "Abre tu correo con la propuesta. Si el texto no aparece entero, usa «Copiar» y pégalo.",
+  pp_copy: "Copiar la propuesta", pp_reset: "Empezar otra",
+  e_stem: "Escribe el enunciado.", e_opts: "Rellena las cinco opciones (a–e).", e_keys: "Marca entre 1 y 3 opciones correctas.", e_answer: "Escribe la respuesta modelo.", e_just: "Escribe la justificación del nivel.", e_author: "Escribe tu nombre.", e_ok: "Marca las dos casillas de cesión.", e_tags: "Solo se admiten las etiquetas <sub>, <sup> e <i>, bien cerradas.", e_sec: "Elige la sección o el concepto clave.",
+  cr_title: "Colaboradores", cr_intro: "Personas cuyas preguntas se han incorporado al banco tras su revisión.", cr_none: "Todavía no se ha incorporado ninguna pregunta propuesta. ¡La tuya puede ser la primera!",
+  cr_coord: "Coordinación y desarrollo", cr_bank: "Banco de preguntas original", cr_n: (n) => `${n} ${n === 1 ? "pregunta" : "preguntas"}`,
+});
+Object.assign(I18N.en, {
+  nav_teach: "Teachers", mode_test: "Teacher's test", r_title_test: "Test result", by: "Proposed by",
+  t_title: "Teachers", t_intro: "Build tests from the bank and share them with your students, or propose new questions for QUAESTIA.",
+  t_sub_build: "Build a test", t_sub_propose: "Propose a question", t_sub_guide: "How to contribute", t_sub_credits: "Contributors",
+  t_open_note: "The bank is open: students can see every question and its answer while practicing. These tests are meant for practice or formative assessment, not as an exam with secret questions.",
+  tb_name: "Test title", tb_name_ph: "For example: Topic 3 review", tb_add: "Add questions", tb_filter_topics: "Topics", tb_filter_bloom: "Levels", tb_search: "Search the question text or by number",
+  tb_matches: (n) => `${n} questions match the filters.`, tb_random: "Add at random", tb_random_n: "Number", tb_show_more: "Show more", tb_add_one: "Add", tb_added: "Added",
+  tb_yours: (n) => `Your test · ${n} questions`, tb_empty: "You haven't added any questions yet.", tb_clear: "Clear", tb_up: "Move up", tb_down: "Move down", tb_remove: "Remove",
+  tb_share: "Share", tb_link: "Link for students", tb_link_d: "Opens this test in QUAESTIA with automatic marking. The questions travel inside the link: no server or account needed.",
+  tb_link_btn: "Create link", tb_copy: "Copy", tb_copied: "Copied.", tb_copy_fail: "Copying failed: select the text and copy it by hand.",
+  tb_link_note: "In this preview the link does not work outside the page; once published on GitHub Pages, it does.",
+  tb_print: "Printable version", tb_print_d: "Paper test with an answer sheet and a separate key. With several versions, the question order changes in each.",
+  tb_models: "Versions", tb_print_btn: "Prepare for printing", tb_moodle: "Moodle (XML)", tb_moodle_d: "File to import into the Moodle question bank (Moodle XML format), with the same scoring: each correct option adds its share and each wrong one subtracts 20%.",
+  tb_moodle_note: "Moodle does not let a multiple-response question score below 0; the test total still reflects the penalties elsewhere.", tb_moodle_btn: "Download XML",
+  tb_need: "Add at least one question.", tb_lang: (l) => `The current language will be used (${l === "es" ? "Spanish" : "English"}).`,
+  tb_dist: "Distribution by Bloom level",
+  ti_title: "Shared test", ti_text: (n) => `A teacher has prepared this ${n}-question test. It is marked when you hand it in, with the same scoring as the mock exam.`, ti_missing: (n) => `${n} questions in the link are not in this version of the bank and have been skipped.`,
+  ti_bad: "The test link is invalid or incomplete.", ti_start: "Start the test",
+  pr_back: "Back to QUAESTIA", pr_print: "Print", pr_model: "Version", pr_name: "Full name", pr_group: "Group", pr_rules: "Each question is worth 1 point, shared among its correct options. Each wrong option marked subtracts 0.2. Mark at most 3 options per question.",
+  pr_sheet: "Answer sheet", pr_key: "Answer key", pr_q: "Question", pr_correct: "Correct", pr_print_note: "Use your browser's Print option if the button doesn't work here.",
+  pp_intro: "Fill in the question, check the preview and send it. The coordinator will review it and, if approved, it will be published in QUAESTIA under your name.",
+  pp_type: "Type", pp_test: "Multiple choice", pp_short: "Short answer", pp_topic: "Topic", pp_section: "Section", pp_concept: "Key concept", pp_bloom: "Bloom level", pp_lang: "Language you are writing in",
+  pp_stem: "Question", pp_opts: "Options (mark the correct ones: between 1 and 3)", pp_answer: "Model answer", pp_just: "Rationale for the Bloom level", pp_just_ph: "Why this question belongs to this level (not the answer).",
+  pp_source: "Source or reference (optional)", pp_author: "Your name (shown as the author of the proposal)", pp_affil: "University or institution", pp_email: "Contact email (optional; not published)",
+  pp_ok1: "The question is original or I have the right to contribute it.", pp_ok2: "I agree that, if approved, it will be published in QUAESTIA under the project's open license, with my name as the author of the proposal.",
+  pp_format: "Formatting: you can use <sub>…</sub>, <sup>…</sup> and <i>…</i> (for example, NAD<sup>+</sup>, H<sub>2</sub>O).",
+  pp_preview: "Preview", pp_validate: "Check and prepare to send", pp_errors: "Please check:", pp_ready: "The question is ready. Choose how to send it:",
+  pp_gh: "Send via GitHub", pp_gh_d: "Opens a pre-filled proposal (issue) in the repository. You need a GitHub account.", pp_mail: "Send by email", pp_mail_d: "Opens your email with the proposal. If the text is cut off, use “Copy” and paste it.",
+  pp_copy: "Copy the proposal", pp_reset: "Start another",
+  e_stem: "Write the question.", e_opts: "Fill in all five options (a–e).", e_keys: "Mark between 1 and 3 correct options.", e_answer: "Write the model answer.", e_just: "Write the rationale for the level.", e_author: "Write your name.", e_ok: "Tick both rights boxes.", e_tags: "Only <sub>, <sup> and <i> tags are allowed, properly closed.", e_sec: "Choose the section or key concept.",
+  cr_title: "Contributors", cr_intro: "People whose questions have been added to the bank after review.", cr_none: "No proposed question has been added yet. Yours could be the first!",
+  cr_coord: "Coordination and development", cr_bank: "Original question bank", cr_n: (n) => `${n} ${n === 1 ? "question" : "questions"}`,
+});
+
+/* ---------- Guía «Cómo contribuir» ---------- */
+const GUIA = {
+  es: `<h2>Cómo contribuir</h2>
+<p>QUAESTIA crece con las preguntas del profesorado. Cualquier docente o profesional de la Bioquímica puede proponer preguntas; cada una se revisa antes de publicarse y, si se aprueba, aparece con el nombre de quien la propuso.</p>
+<h3>Qué preguntas buscamos</h3>
+<ul><li>Sobre los contenidos de los siete temas de la Guía de Bioquímica Metabólica.</li><li>De cualquier nivel de Bloom, especialmente de analizar, evaluar y crear (B4–B6), que son las más escasas.</li><li>Originales: no copiadas de libros, exámenes publicados ni otros bancos.</li></ul>
+<h3>Requisitos de una pregunta tipo test</h3>
+<ul><li>Enunciado claro, sin ambigüedades ni dobles negaciones.</li><li>Cinco opciones (a–e) y entre una y tres correctas.</li><li>Distractores plausibles, basados en errores habituales del alumnado.</li><li>Sin «todas las anteriores» ni «ninguna de las anteriores», y sin pistas gramaticales o de longitud.</li><li>Notación correcta: subíndices y superíndices con &lt;sub&gt; y &lt;sup&gt;, nombres en cursiva con &lt;i&gt;.</li><li>Justificación del nivel de Bloom: por qué la pregunta es de ese nivel, no cuál es la respuesta.</li></ul>
+<h3>Requisitos de una pregunta de respuesta corta</h3>
+<ul><li>Pregunta que se pueda responder en pocas líneas.</li><li>Respuesta modelo concisa, con los elementos que debe contener una respuesta completa.</li></ul>
+<h3>Proceso</h3>
+<ol><li><b>Envío.</b> Desde «Proponer una pregunta», por GitHub o por correo.</li><li><b>Revisión.</b> El coordinador comprueba la corrección científica, la claridad, el nivel de Bloom y el formato.</li><li><b>Respuesta.</b> La propuesta se acepta, se acepta con cambios (que se te consultan) o no se acepta, siempre con el motivo.</li><li><b>Publicación.</b> Las preguntas aceptadas se traducen y se incorporan en la siguiente versión del banco.</li><li><b>Reconocimiento.</b> Cada pregunta muestra «Propuesta por» con tu nombre, y apareces en la página de colaboradores.</li></ol>
+<h3>Derechos</h3>
+<p>Al proponer una pregunta declaras que es original o que tienes derecho a cederla, y aceptas que se publique bajo la licencia abierta del proyecto, que se indica en el repositorio.</p>
+<h3>Contacto</h3>
+<p>Coordinación: ${CONFIG.coordinador} (<a href="mailto:${CONFIG.contacto}">${CONFIG.contacto}</a>). Repositorio: <a href="https://github.com/${CONFIG.repo}" target="_blank" rel="noopener">github.com/${CONFIG.repo}</a>.</p>`,
+  en: `<h2>How to contribute</h2>
+<p>QUAESTIA grows with teachers' questions. Any biochemistry teacher or professional can propose questions; each one is reviewed before publication and, if approved, shown with the name of the person who proposed it.</p>
+<h3>What we are looking for</h3>
+<ul><li>Questions on the seven topics of the Metabolic Biochemistry Guide.</li><li>Any Bloom level, especially analyze, evaluate and create (B4–B6), which are the scarcest.</li><li>Original questions: not copied from textbooks, published exams or other banks.</li></ul>
+<h3>Requirements for a multiple-choice question</h3>
+<ul><li>A clear stem, without ambiguity or double negatives.</li><li>Five options (a–e), with one to three correct.</li><li>Plausible distractors, based on common student errors.</li><li>No “all of the above” or “none of the above”, and no grammatical or length cues.</li><li>Correct notation: subscripts and superscripts with &lt;sub&gt; and &lt;sup&gt;, italic names with &lt;i&gt;.</li><li>A rationale for the Bloom level: why the question belongs to that level, not what the answer is.</li></ul>
+<h3>Requirements for a short-answer question</h3>
+<ul><li>A question that can be answered in a few lines.</li><li>A concise model answer listing what a complete answer must contain.</li></ul>
+<h3>Process</h3>
+<ol><li><b>Submission.</b> From “Propose a question”, via GitHub or email.</li><li><b>Review.</b> The coordinator checks scientific accuracy, clarity, Bloom level and formatting.</li><li><b>Decision.</b> The proposal is accepted, accepted with changes (agreed with you) or not accepted, always with the reason.</li><li><b>Publication.</b> Accepted questions are translated and added in the next version of the bank.</li><li><b>Credit.</b> Each question shows “Proposed by” with your name, and you are listed on the contributors page.</li></ol>
+<h3>Rights</h3>
+<p>By proposing a question you declare that it is original or that you have the right to contribute it, and you agree to its publication under the project's open license, stated in the repository.</p>
+<h3>Contact</h3>
+<p>Coordination: ${CONFIG.coordinador} (<a href="mailto:${CONFIG.contacto}">${CONFIG.contacto}</a>). Repository: <a href="https://github.com/${CONFIG.repo}" target="_blank" rel="noopener">github.com/${CONFIG.repo}</a>.</p>`,
+};
+
+/* ---------- Utilidades ---------- */
+function rngSeed(seed) { let a = seed >>> 0; return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+function shuffled(arr, rnd) { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function b64e(str) { const bytes = new TextEncoder().encode(str); let bin = ""; for (const b of bytes) bin += String.fromCharCode(b); return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); }
+function b64d(s) { s = s.replace(/-/g, "+").replace(/_/g, "/"); while (s.length % 4) s += "="; const bin = atob(s); return new TextDecoder().decode(Uint8Array.from(bin, (c) => c.charCodeAt(0))); }
+function plain(s) { return String(s || "").replace(/<[^>]+>/g, ""); }
+function tagsOk(s) {
+  if (/<(?!\/?(?:sub|sup|i)>)/.test(s)) return false;
+  const st = [];
+  for (const m of s.matchAll(/<(\/?)(sub|sup|i)>/g)) { if (m[1]) { if (st.pop() !== m[2]) return false; } else st.push(m[2]); }
+  return !st.length;
+}
+function copyText(text, msgEl, outEl) {
+  if (outEl) { outEl.hidden = false; outEl.value = text; }
+  const ok = () => { if (msgEl) msgEl.textContent = T("tb_copied"); };
+  const ko = () => { if (msgEl) msgEl.textContent = T("tb_copy_fail"); if (outEl) outEl.select(); };
+  try { navigator.clipboard.writeText(text).then(ok, ko); } catch (e) { ko(); }
+}
+function saveFile(name, text, type, outEl) {
+  try { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); } catch (e) {}
+  if (outEl) { outEl.hidden = false; outEl.value = text; }
+}
+const byNum = () => { if (!S._byNum) S._byNum = Object.fromEntries(S.banco.map((q) => [q.num, q])); return S._byNum; };
+function modeLabel(m) { return m === "train" || m === "entrenamiento" ? T("mode_train") : m === "test" ? T("mode_test") : T("mode_exam"); }
+function byLine(q) { return q && q.propuesta_por && q.propuesta_por.nombre ? `<span class="small muted">· ${T("by")} ${esc(q.propuesta_por.nombre)}</span>` : ""; }
+
+/* ---------- Vista principal del profesorado ---------- */
+function tbState() {
+  if (!S.tb) S.tb = Store.get("tb", null) || { titulo: "", sel: [], temas: [], blooms: [], q: "", n: 10, modelos: 1, shown: 30 };
+  return S.tb;
+}
+function tbSave() { const { titulo, sel, temas, blooms, q, n, modelos } = S.tb; Store.set("tb", { titulo, sel, temas, blooms, q, n, modelos, shown: 30 }); }
+function vTeach() {
+  const sub = S.tsub || "build";
+  const tabs = [["build", "t_sub_build"], ["propose", "t_sub_propose"], ["guide", "t_sub_guide"], ["credits", "t_sub_credits"]]
+    .map(([k, l]) => `<button type="button" class="btn ${sub === k ? "primary" : "ghost"}" data-tsub="${k}" ${sub === k ? 'aria-current="page"' : ""}>${T(l)}</button>`).join("");
+  const body = { build: vBuild, propose: vPropose, guide: () => `<section class="prose stack">${GUIA[S.lang]}</section>`, credits: vCredits }[sub]();
+  return `<div class="stack-lg"><div class="stack"><h1>${T("t_title")}</h1><p class="muted">${T("t_intro")}</p></div><nav class="row" aria-label="${T("t_title")}">${tabs}</nav>${body}</div>`;
+}
+
+/* ---------- Crear un test ---------- */
+function tbPool() {
+  const tb = tbState(), q = tb.q.trim().toLowerCase();
+  return S.banco.filter((x) => x.tipo === "test"
+    && (!tb.temas.length || tb.temas.includes(x.tema))
+    && (!tb.blooms.length || tb.blooms.includes(x.bloom))
+    && (!q || x.num.startsWith(q) || plain(tx(x.enunciado)).toLowerCase().includes(q)));
+}
+function vBuild() {
+  const tb = tbState(), pool = tbPool(), sel = new Set(tb.sel), bn = byNum();
+  const temas = TEMAS.map((t) => `<label class="chip"><input type="checkbox" name="tb-tema" value="${t}" ${tb.temas.includes(t) ? "checked" : ""}><span>${t}</span></label>`).join("");
+  const blooms = BLOOM.map((b) => `<label><input type="checkbox" name="tb-bloom" value="${b}" ${tb.blooms.includes(b) ? "checked" : ""}>${bl(b)}</label>`).join("");
+  const rows = pool.slice(0, tb.shown).map((x) => `<li class="qrow"><span class="num muted">${x.num}</span>${bl(x.bloom)}<span class="qtext">${rich(tx(x.enunciado))}</span>
+      <button type="button" class="btn small-btn ${sel.has(x.num) ? "" : "primary"}" data-tb-add="${x.num}" ${sel.has(x.num) ? "disabled" : ""}>${sel.has(x.num) ? T("tb_added") : T("tb_add_one")}</button></li>`).join("");
+  const mine = tb.sel.map((n, i) => { const x = bn[n]; if (!x) return ""; return `<li class="qrow"><span class="num muted">${i + 1}.</span><span class="num">${x.num}</span>${bl(x.bloom)}<span class="qtext">${rich(tx(x.enunciado))}</span>
+      <span class="row"><button type="button" class="btn ghost small-btn" data-tb-up="${i}" aria-label="${T("tb_up")}" ${i === 0 ? "disabled" : ""}>↑</button><button type="button" class="btn ghost small-btn" data-tb-down="${i}" aria-label="${T("tb_down")}" ${i === tb.sel.length - 1 ? "disabled" : ""}>↓</button><button type="button" class="btn ghost small-btn" data-tb-rm="${i}" aria-label="${T("tb_remove")}">✕</button></span></li>`; }).join("");
+  const selQ = tb.sel.map((n) => bn[n]).filter(Boolean);
+  const cnt = Object.fromEntries(BLOOM.map((b) => [b, selQ.filter((q) => q.bloom === b).length]));
+  const dist = selQ.length ? `<p class="eyebrow">${T("tb_dist")}</p><div class="bloombar">${BLOOM.map((b) => cnt[b] ? `<span style="width:${(100 * cnt[b]) / selQ.length}%;background:var(--${b.toLowerCase()})" title="${b}: ${cnt[b]}"></span>` : "").join("")}</div><div class="legend">${BLOOM.filter((b) => cnt[b]).map((b) => `<span><i style="background:var(--${b.toLowerCase()})"></i>${b} <span class="num muted">${cnt[b]}</span></span>`).join("")}</div>` : "";
+  const dis = selQ.length ? "" : "disabled";
+  return `<p class="notice small">${T("t_open_note")}</p>
+  <section class="stack"><label class="eyebrow" for="tb-title">${T("tb_name")}</label><input id="tb-title" class="field" type="text" maxlength="120" value="${esc(tb.titulo)}" placeholder="${T("tb_name_ph")}"></section>
+  <section class="panel stack"><h2>${T("tb_add")}</h2>
+    <fieldset><legend>${T("tb_filter_topics")}</legend><div class="row">${temas}</div></fieldset>
+    <fieldset><legend>${T("tb_filter_bloom")}</legend><div class="blchecks">${blooms}</div></fieldset>
+    <input id="tb-q" class="field" type="search" value="${esc(tb.q)}" placeholder="${T("tb_search")}" aria-label="${T("tb_search")}">
+    <div class="row"><span class="small muted" id="tb-count">${T("tb_matches", pool.length)}</span><span class="row" style="margin-left:auto"><label class="small" for="tb-n">${T("tb_random_n")}</label><input id="tb-n" class="field num" type="number" min="1" max="100" value="${tb.n}" style="width:5.5em"><button type="button" class="btn" id="tb-random" ${pool.length ? "" : "disabled"}>${T("tb_random")}</button></span></div>
+    <ul class="qlist">${rows}</ul>${pool.length > tb.shown ? `<div><button type="button" class="btn ghost" id="tb-more">${T("tb_show_more")}</button></div>` : ""}
+  </section>
+  <section class="stack"><div class="row"><h2>${T("tb_yours", selQ.length)}</h2>${selQ.length ? `<button type="button" class="btn ghost" id="tb-clear" style="margin-left:auto">${T("tb_clear")}</button>` : ""}</div>
+    ${selQ.length ? `${dist}<ol class="qlist plainol">${mine}</ol>` : `<p class="muted">${T("tb_empty")}</p>`}</section>
+  <section class="stack"><h2>${T("tb_share")}</h2><p class="small muted">${T("tb_lang", S.lang)}</p>
+    <div class="panel stack"><h3>${T("tb_link")}</h3><p class="small">${T("tb_link_d")}</p><div class="row"><button type="button" class="btn primary" id="tb-link" ${dis}>${T("tb_link_btn")}</button></div>
+      <div id="tb-link-out" hidden class="stack"><input class="field num" id="tb-link-url" readonly><div class="row"><button type="button" class="btn" id="tb-link-copy">${T("tb_copy")}</button><span class="small" id="tb-link-msg" aria-live="polite"></span></div><p class="small muted">${T("tb_link_note")}</p></div></div>
+    <div class="panel stack"><h3>${T("tb_print")}</h3><p class="small">${T("tb_print_d")}</p><div class="row"><label for="tb-models" class="small">${T("tb_models")}</label><select id="tb-models">${[1, 2, 3, 4].map((m) => `<option value="${m}" ${tb.modelos === m ? "selected" : ""}>${m}</option>`).join("")}</select><button type="button" class="btn" id="tb-print" ${dis}>${T("tb_print_btn")}</button></div></div>
+    <div class="panel stack"><h3>${T("tb_moodle")}</h3><p class="small">${T("tb_moodle_d")}</p><p class="small muted">${T("tb_moodle_note")}</p><div class="row"><button type="button" class="btn" id="tb-moodle" ${dis}>${T("tb_moodle_btn")}</button><button type="button" class="btn ghost" id="tb-moodle-copy" ${dis}>${T("tb_copy")}</button><span class="small" id="tb-moodle-msg" aria-live="polite"></span></div><textarea id="tb-moodle-out" class="num" readonly hidden aria-label="Moodle XML"></textarea></div>
+    ${selQ.length ? "" : `<p class="small muted">${T("tb_need")}</p>`}
+  </section>`;
+}
+function tbLink() {
+  const tb = tbState();
+  const payload = b64e(JSON.stringify({ v: 1, t: tb.titulo.trim(), q: tb.sel }));
+  const base = location.href.split(/[?#]/)[0];
+  const g = Store.get("grupo", null);
+  return `${base}?test=${payload}${g ? `&grupo=${encodeURIComponent(g)}` : ""}`;
+}
+
+/* ---------- Moodle XML ---------- */
+function cdata(s) { return `<![CDATA[${String(s).replace(/]]>/g, "]]]]><![CDATA[>")}]]>`; }
+function fraction(n) { return { 1: "100", 2: "50", 3: "33.33333" }[n]; }
+function moodleXML() {
+  const tb = tbState(), bn = byNum(), qs = tb.sel.map((n) => bn[n]).filter(Boolean);
+  const cat = `QUAESTIA/${(tb.titulo.trim() || "Test").replace(/[\/<>&]/g, " ")}`;
+  const xml = [`<?xml version="1.0" encoding="UTF-8"?>`, `<quiz>`, `  <question type="category"><category><text>$course$/top/${cat}</text></category></question>`];
+  for (const q of qs) {
+    xml.push(`  <question type="multichoice">`, `    <name><text>${q.num}</text></name>`,
+      `    <questiontext format="html"><text>${cdata(`<p>${tx(q.enunciado)}</p>`)}</text></questiontext>`,
+      `    <generalfeedback format="html"><text>${cdata(`<p>${q.bloom}: ${tx(q.justificacion)}</p>`)}</text></generalfeedback>`,
+      `    <defaultgrade>1.0000000</defaultgrade>`, `    <penalty>0.0000000</penalty>`, `    <hidden>0</hidden>`, `    <idnumber>${q.id}</idnumber>`,
+      `    <single>false</single>`, `    <shuffleanswers>false</shuffleanswers>`, `    <answernumbering>abc</answernumbering>`,
+      `    <tags><tag><text>${q.bloom}</text></tag><tag><text>tema${q.tema}</text></tag></tags>`);
+    for (const [k, v] of Object.entries(q.opciones)) {
+      const f = q.correctas.includes(k) ? fraction(q.correctas.length) : "-20";
+      xml.push(`    <answer fraction="${f}" format="html"><text>${cdata(tx(v))}</text><feedback format="html"><text></text></feedback></answer>`);
+    }
+    xml.push(`  </question>`);
+  }
+  xml.push(`</quiz>`, "");
+  return xml.join("\n");
+}
+
+/* ---------- Versión imprimible ---------- */
+function vPrint() {
+  const tb = tbState(), bn = byNum(), base = tb.sel.map((n) => bn[n]).filter(Boolean);
+  const title = esc(tb.titulo.trim() || "QUAESTIA");
+  const seed = base.reduce((s, q) => s + q.num.length * 31 + q.tema, 7);
+  const models = Array.from({ length: tb.modelos }, (_, i) => ({ name: "ABCD"[i], qs: i === 0 ? base : shuffled(base, rngSeed(seed * (i + 1))) }));
+  const showModel = models.length > 1;
+  const test = models.map((m) => `<section class="sheet">
+      <header class="sheet-h"><div><h1 style="font-size:1.4rem">${title}</h1>${showModel ? `<p class="eyebrow">${T("pr_model")} ${m.name}</p>` : ""}</div>
+      <div class="fillin"><span>${T("pr_name")}: <i></i></span><span>${T("pr_group")}: <i></i></span></div></header>
+      <p class="small">${T("pr_rules")}</p>
+      <ol class="pq">${m.qs.map((q) => `<li><p>${rich(tx(q.enunciado))}</p><ol class="po">${Object.entries(q.opciones).map(([k, v]) => `<li><b>${k})</b> ${rich(tx(v))}</li>`).join("")}</ol></li>`).join("")}</ol>
+    </section>
+    <section class="sheet"><h2>${T("pr_sheet")}${showModel ? ` · ${T("pr_model")} ${m.name}` : ""}</h2><div class="fillin"><span>${T("pr_name")}: <i></i></span></div>
+      <table class="answers"><thead><tr><th>${T("pr_q")}</th>${"abcde".split("").map((l) => `<th>${l}</th>`).join("")}</tr></thead><tbody>${m.qs.map((_, i) => `<tr><td class="num">${i + 1}</td>${"abcde".split("").map(() => `<td><span class="box"></span></td>`).join("")}</tr>`).join("")}</tbody></table></section>`).join("");
+  const keys = models.map((m) => `<section class="sheet"><h2>${T("pr_key")}${showModel ? ` · ${T("pr_model")} ${m.name}` : ""}</h2>
+      <table class="answers key"><thead><tr><th>${T("pr_q")}</th><th>${T("pr_correct")}</th><th>Bloom</th><th>ID</th></tr></thead><tbody>${m.qs.map((q, i) => `<tr><td class="num">${i + 1}</td><td class="num">${q.correctas.join(", ")}</td><td>${q.bloom}</td><td class="num muted">${q.num}</td></tr>`).join("")}</tbody></table></section>`).join("");
+  return `<div class="stack print-root"><div class="row no-print"><button type="button" class="btn" id="pr-back">← ${T("pr_back")}</button><button type="button" class="btn primary" id="pr-print">${T("pr_print")}</button><span class="small muted">${T("pr_print_note")}</span></div>${test}${keys}</div>`;
+}
+
+/* ---------- Test compartido por enlace ---------- */
+function parseTestParam() {
+  try {
+    const p = new URLSearchParams(location.search).get("test");
+    if (!p) return null;
+    const d = JSON.parse(b64d(p));
+    if (!d || !Array.isArray(d.q)) return { bad: true };
+    return { titulo: String(d.t || "").slice(0, 120), nums: d.q.map(String).slice(0, 200) };
+  } catch (e) { return { bad: true }; }
+}
+function vTestIntro() {
+  const tl = S.testLink;
+  if (!tl || tl.bad) return `<div class="stack-lg"><h1>${T("ti_title")}</h1><div class="notice">${T("ti_bad")}</div></div>`;
+  const bn = byNum(), qs = tl.nums.map((n) => bn[n]).filter((q) => q && q.tipo === "test"), missing = tl.nums.length - qs.length;
+  const cnt = Object.fromEntries(BLOOM.map((b) => [b, qs.filter((q) => q.bloom === b).length]));
+  return `<div class="stack-lg">${consentBox()}<div class="stack"><p class="eyebrow">${T("ti_title")}</p><h1>${esc(tl.titulo || T("mode_test"))}</h1><p>${T("ti_text", qs.length)}</p>
+    ${missing ? `<p class="notice small">${T("ti_missing", missing)}</p>` : ""}
+    <div class="bloombar">${BLOOM.map((b) => cnt[b] ? `<span style="width:${(100 * cnt[b]) / Math.max(1, qs.length)}%;background:var(--${b.toLowerCase()})"></span>` : "").join("")}</div>
+    <div class="legend">${BLOOM.filter((b) => cnt[b]).map((b) => `<span><i style="background:var(--${b.toLowerCase()})"></i>${b} ${esc(I18N[S.lang].bl_names[b])} <span class="num muted">${cnt[b]}</span></span>`).join("")}</div></div>
+    <section class="panel stack"><h3>${T("scoring_title")}</h3><p class="small">${T("scoring_text")}</p></section>
+    <div><button type="button" class="btn primary" id="ti-start" ${qs.length ? "" : "disabled"}>${T("ti_start")}</button></div></div>`;
+}
+
+/* ---------- Proponer una pregunta ---------- */
+function ppState() {
+  if (!S.pp) S.pp = Store.get("pp", null) || { tipo: "test", tema: 1, seccion: "", concepto: "", bloom: "B2", idioma: S.lang, enunciado: "", op: { a: "", b: "", c: "", d: "", e: "" }, correctas: [], respuesta: "", justificacion: "", fuente: "", nombre: "", afiliacion: "", correo: "", ok1: false, ok2: false };
+  return S.pp;
+}
+function vPropose() {
+  const p = ppState(), m = S.meta[p.tema];
+  const secOpts = p.tipo === "test"
+    ? Object.entries(m.secciones).map(([k, v]) => `<option value="${k}" ${p.seccion === k ? "selected" : ""}>${k} · ${esc(plain(tx(v)))}</option>`).join("")
+    : Object.entries(m.conceptos).map(([k, v]) => `<option value="${k}" ${p.concepto === k ? "selected" : ""}>${k} · ${esc(plain(tx(v)))}</option>`).join("");
+  const opts = "abcde".split("").map((k) => `<div class="optrow"><label class="chk"><input type="checkbox" name="pp-key" value="${k}" ${p.correctas.includes(k) ? "checked" : ""} aria-label="${k} ${T("q_correct")}"><b class="num">${k})</b></label><input class="field" name="pp-op" data-k="${k}" value="${esc(p.op[k])}" aria-label="${T("pp_opts")} ${k}"></div>`).join("");
+  const err = S.ppErrors && S.ppErrors.length ? `<div class="notice" role="alert"><b>${T("pp_errors")}</b><ul>${S.ppErrors.map((e) => `<li>${T(e)}</li>`).join("")}</ul></div>` : "";
+  const ready = S.ppOut ? `<section class="panel stack" id="pp-ready"><p><b>${T("pp_ready")}</b></p>
+      <div class="row"><button type="button" class="btn primary" id="pp-gh">${T("pp_gh")}</button><span class="small muted">${T("pp_gh_d")}</span></div>
+      <div class="row"><button type="button" class="btn" id="pp-mail">${T("pp_mail")}</button><span class="small muted">${T("pp_mail_d")}</span></div>
+      <div class="row"><button type="button" class="btn ghost" id="pp-copy">${T("pp_copy")}</button><span class="small" id="pp-msg" aria-live="polite"></span><button type="button" class="btn ghost" id="pp-reset" style="margin-left:auto">${T("pp_reset")}</button></div>
+      <textarea id="pp-out" class="num" readonly hidden aria-label="JSON"></textarea></section>` : "";
+  return `<form id="pp-form" class="stack-lg" novalidate>
+    <p>${T("pp_intro")}</p>
+    <div class="grid2">
+      <fieldset><legend>${T("pp_type")}</legend><div class="seg"><label><input type="radio" name="pp-tipo" value="test" ${p.tipo === "test" ? "checked" : ""}>${T("pp_test")}</label><label><input type="radio" name="pp-tipo" value="corta" ${p.tipo === "corta" ? "checked" : ""}>${T("pp_short")}</label></div></fieldset>
+      <label class="stack small">${T("pp_lang")}<select name="pp-idioma"><option value="es" ${p.idioma === "es" ? "selected" : ""}>Español</option><option value="en" ${p.idioma === "en" ? "selected" : ""}>English</option></select></label>
+      <label class="stack small">${T("pp_topic")}<select name="pp-tema">${TEMAS.map((t) => `<option value="${t}" ${p.tema === t ? "selected" : ""}>${t} · ${esc(tx(S.meta[t].titulo))}</option>`).join("")}</select></label>
+      <label class="stack small">${p.tipo === "test" ? T("pp_section") : T("pp_concept")}<select name="pp-sec"><option value=""></option>${secOpts}</select></label>
+      <label class="stack small">${T("pp_bloom")}<select name="pp-bloom">${BLOOM.map((b) => `<option value="${b}" ${p.bloom === b ? "selected" : ""}>${b} · ${esc(I18N[S.lang].bl_names[b])}</option>`).join("")}</select></label>
+    </div>
+    <p class="small muted">${esc(T("pp_format"))}</p>
+    <label class="stack small">${T("pp_stem")}<textarea name="pp-enunciado" rows="3">${esc(p.enunciado)}</textarea></label>
+    ${p.tipo === "test" ? `<fieldset><legend>${T("pp_opts")}</legend><div class="stack">${opts}</div></fieldset>` : `<label class="stack small">${T("pp_answer")}<textarea name="pp-respuesta" rows="4">${esc(p.respuesta)}</textarea></label>`}
+    <label class="stack small">${T("pp_just")}<textarea name="pp-just" rows="2" placeholder="${T("pp_just_ph")}">${esc(p.justificacion)}</textarea></label>
+    <label class="stack small">${T("pp_source")}<input class="field" name="pp-fuente" value="${esc(p.fuente)}"></label>
+    <div class="grid2"><label class="stack small">${T("pp_author")}<input class="field" name="pp-nombre" value="${esc(p.nombre)}" autocomplete="name"></label><label class="stack small">${T("pp_affil")}<input class="field" name="pp-afil" value="${esc(p.afiliacion)}" autocomplete="organization"></label><label class="stack small">${T("pp_email")}<input class="field" type="email" name="pp-correo" value="${esc(p.correo)}" autocomplete="email"></label></div>
+    <label class="check"><input type="checkbox" name="pp-ok1" ${p.ok1 ? "checked" : ""}><span>${T("pp_ok1")}</span></label>
+    <label class="check"><input type="checkbox" name="pp-ok2" ${p.ok2 ? "checked" : ""}><span>${T("pp_ok2")}</span></label>
+    <section class="stack"><p class="eyebrow">${T("pp_preview")}</p><div class="panel stack" id="pp-preview">${ppPreview()}</div></section>
+    ${err}<div><button type="submit" class="btn primary">${T("pp_validate")}</button></div>${ready}
+  </form>`;
+}
+function ppPreview() {
+  const p = ppState();
+  const head = `<div class="row small"><span class="num muted">${p.tema}.?.?</span>${bl(p.bloom)}${p.nombre ? `<span class="small muted">· ${T("by")} ${esc(p.nombre)}</span>` : ""}</div>`;
+  const stem = `<p class="stem">${rich(p.enunciado) || "<span class='muted'>…</span>"}</p>`;
+  const body = p.tipo === "test"
+    ? `<div class="opts">${"abcde".split("").map((k) => `<div class="opt ${p.correctas.includes(k) ? "is-correct" : ""}"><span class="letter">${k}</span><span>${rich(p.op[k])}</span><span class="tag">${p.correctas.includes(k) ? T("q_correct") : ""}</span></div>`).join("")}</div>`
+    : `<div class="answer"><p class="eyebrow">${T("s_model")}</p><p>${rich(p.respuesta)}</p></div>`;
+  return head + stem + body + (p.justificacion ? `<p class="small"><span class="eyebrow">${T("q_why")}</span><br>${rich(p.justificacion)}</p>` : "");
+}
+function ppRead() {
+  const f = $("#pp-form"); if (!f) return;
+  const p = ppState(), v = (n) => (f.querySelector(`[name="${n}"]`) || {}).value;
+  const tipo = (f.querySelector('input[name="pp-tipo"]:checked') || {}).value || "test";
+  const tema = +v("pp-tema");
+  if (tema !== p.tema || tipo !== p.tipo) { p.seccion = ""; p.concepto = ""; }
+  else if (tipo === "test") p.seccion = v("pp-sec") || ""; else p.concepto = v("pp-sec") || "";
+  Object.assign(p, { tipo, tema, bloom: v("pp-bloom"), idioma: v("pp-idioma"), enunciado: (v("pp-enunciado") || "").trim(), justificacion: (v("pp-just") || "").trim(), fuente: (v("pp-fuente") || "").trim(),
+    nombre: (v("pp-nombre") || "").trim(), afiliacion: (v("pp-afil") || "").trim(), correo: (v("pp-correo") || "").trim(),
+    ok1: f.querySelector('[name="pp-ok1"]').checked, ok2: f.querySelector('[name="pp-ok2"]').checked });
+  if (tipo === "test") {
+    for (const i of f.querySelectorAll('[name="pp-op"]')) p.op[i.dataset.k] = i.value.trim();
+    p.correctas = [...f.querySelectorAll('[name="pp-key"]:checked')].map((i) => i.value);
+  } else p.respuesta = (v("pp-respuesta") || "").trim();
+  Store.set("pp", p);
+}
+function ppValidate() {
+  const p = ppState(), e = [];
+  if (!(p.tipo === "test" ? p.seccion : p.concepto)) e.push("e_sec");
+  if (!p.enunciado) e.push("e_stem");
+  if (p.tipo === "test") {
+    if ("abcde".split("").some((k) => !p.op[k])) e.push("e_opts");
+    if (p.correctas.length < 1 || p.correctas.length > 3) e.push("e_keys");
+  } else if (!p.respuesta) e.push("e_answer");
+  if (!p.justificacion) e.push("e_just");
+  const texts = [p.enunciado, p.respuesta, p.justificacion, ...Object.values(p.op)];
+  if (texts.some((s) => s && !tagsOk(s))) e.push("e_tags");
+  if (!p.nombre) e.push("e_author");
+  if (!p.ok1 || !p.ok2) e.push("e_ok");
+  return e;
+}
+function ppBuild() {
+  const p = ppState(), L = p.idioma, w = (s) => ({ [L]: s });
+  const q = { schema: "quaestia-propuesta/1", fecha: new Date().toISOString().slice(0, 10), tema: p.tema, tipo: p.tipo, bloom: p.bloom, idioma: L, enunciado: w(p.enunciado) };
+  if (p.tipo === "test") { q.seccion = p.seccion; q.opciones = Object.fromEntries("abcde".split("").map((k) => [k, w(p.op[k])])); q.correctas = p.correctas.slice().sort(); }
+  else { q.concepto_clave = p.concepto; q.respuesta = w(p.respuesta); }
+  q.justificacion = w(p.justificacion);
+  if (p.fuente) q.fuente = p.fuente;
+  q.propuesta_por = { nombre: p.nombre, ...(p.afiliacion ? { afiliacion: p.afiliacion } : {}) };
+  return q;
+}
+function ppIssue(q) {
+  const p = ppState();
+  const title = `[Propuesta] Tema ${q.tema} · ${q.bloom} · ${plain(p.enunciado).slice(0, 60)}`;
+  const lines = [`**Propuesta de pregunta para QUAESTIA**`, ``, `- Tema: ${q.tema} · ${q.tipo === "test" ? `Sección ${q.seccion}` : `Concepto clave ${q.concepto_clave}`}`, `- Tipo: ${q.tipo} · Nivel: ${q.bloom} · Idioma: ${q.idioma}`,
+    `- Propuesta por: ${p.nombre}${p.afiliacion ? ` (${p.afiliacion})` : ""}`, ``, `**Enunciado:** ${p.enunciado}`];
+  if (q.tipo === "test") { lines.push(""); for (const k of "abcde") lines.push(`${q.correctas.includes(k) ? "✔" : "·"} ${k}) ${p.op[k]}`); }
+  else lines.push("", `**Respuesta modelo:** ${p.respuesta}`);
+  lines.push("", `**Justificación del nivel:** ${p.justificacion}`);
+  if (p.fuente) lines.push(`**Fuente:** ${p.fuente}`);
+  lines.push("", "El autor ha declarado que la pregunta es original o tiene derecho a cederla, y acepta su publicación bajo la licencia abierta del proyecto.", "", "```json", JSON.stringify(q, null, 2), "```");
+  return { title, body: lines.join("\n") };
+}
+
+/* ---------- Colaboradores ---------- */
+function vCredits() {
+  const g = new Map();
+  for (const q of S.banco) if (q.propuesta_por && q.propuesta_por.nombre) {
+    const k = q.propuesta_por.nombre, a = g.get(k) || { afil: q.propuesta_por.afiliacion || "", n: 0, temas: new Set() };
+    a.n++; a.temas.add(q.tema); g.set(k, a);
+  }
+  const list = [...g.entries()].sort((a, b) => b[1].n - a[1].n || a[0].localeCompare(b[0]));
+  return `<section class="stack"><h2>${T("cr_title")}</h2><p class="muted">${T("cr_intro")}</p>
+    ${list.length ? `<div class="tablebox"><table class="temas"><tbody>${list.map(([k, a]) => `<tr><td><b>${esc(k)}</b>${a.afil ? `<br><span class="small muted">${esc(a.afil)}</span>` : ""}</td><td class="n">${T("cr_n", a.n)}</td><td class="n">${[...a.temas].sort().map((t) => `${T("col_topic")} ${t}`).join(", ")}</td></tr>`).join("")}</tbody></table></div>` : `<p class="notice">${T("cr_none")}</p>`}
+    <div class="kv" style="margin-top:12px"><div><b style="font-family:var(--f-ui)">${CONFIG.coordinador}</b><span>${T("cr_coord")}</span></div><div><b style="font-family:var(--f-ui)">Guía de Bioquímica Metabólica</b><span>${T("cr_bank")}</span></div></div></section>`;
+}
+
+/* ---------- Eventos del profesorado ---------- */
+function teachClick(t) {
+  if (t.dataset.tsub) { S.tsub = t.dataset.tsub; S.ppErrors = null; S.ppOut = null; render(); return true; }
+  if (t.id === "ti-start") {
+    const bn = byNum(), qs = S.testLink.nums.map((n) => bn[n]).filter((q) => q && q.tipo === "test");
+    startRun("test", qs, { titulo: S.testLink.titulo, nums: qs.map((q) => q.num) }); return true;
+  }
+  if (S.view === "print") {
+    if (t.id === "pr-back") { S.view = "teach"; render(); window.scrollTo(0, 0); return true; }
+    if (t.id === "pr-print") { try { window.print(); } catch (e) {} return true; }
+  }
+  if (S.view !== "teach") return false;
+  const tb = tbState();
+  if (t.dataset.tbAdd) { if (!tb.sel.includes(t.dataset.tbAdd)) tb.sel.push(t.dataset.tbAdd); tbSave(); render(); return true; }
+  if (t.dataset.tbRm) { tb.sel.splice(+t.dataset.tbRm, 1); tbSave(); render(); return true; }
+  if (t.dataset.tbUp) { const i = +t.dataset.tbUp; [tb.sel[i - 1], tb.sel[i]] = [tb.sel[i], tb.sel[i - 1]]; tbSave(); render(); return true; }
+  if (t.dataset.tbDown) { const i = +t.dataset.tbDown; [tb.sel[i + 1], tb.sel[i]] = [tb.sel[i], tb.sel[i + 1]]; tbSave(); render(); return true; }
+  if (t.id === "tb-more") { tb.shown += 30; render(); return true; }
+  if (t.id === "tb-clear") { tb.sel = []; tbSave(); render(); return true; }
+  if (t.id === "tb-random") {
+    const n = Math.max(1, Math.min(100, +($("#tb-n") || {}).value || tb.n)); tb.n = n;
+    const pool = tbPool().filter((q) => !tb.sel.includes(q.num));
+    tb.sel.push(...muestra(pool, n).map((q) => q.num)); tbSave(); render(); return true;
+  }
+  if (t.id === "tb-link") { const box = $("#tb-link-out"); box.hidden = false; $("#tb-link-url").value = tbLink(); return true; }
+  if (t.id === "tb-link-copy") { copyText($("#tb-link-url").value, $("#tb-link-msg")); return true; }
+  if (t.id === "tb-print") { tb.modelos = +$("#tb-models").value; tbSave(); S.view = "print"; render(); window.scrollTo(0, 0); return true; }
+  if (t.id === "tb-moodle") { saveFile(`quaestia_${(tb.titulo.trim() || "test").replace(/[^\w-]+/g, "_").slice(0, 40)}.xml`, moodleXML(), "application/xml", $("#tb-moodle-out")); return true; }
+  if (t.id === "tb-moodle-copy") { copyText(moodleXML(), $("#tb-moodle-msg"), $("#tb-moodle-out")); return true; }
+  if (t.id === "pp-gh" && S.ppOut) {
+    const { title, body } = ppIssue(S.ppOut);
+    const url = `https://github.com/${CONFIG.repo}/issues/new?labels=propuesta&title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+    try { window.open(url.length < 7800 ? url : `https://github.com/${CONFIG.repo}/issues/new?labels=propuesta&title=${encodeURIComponent(title)}`, "_blank", "noopener"); } catch (e) {}
+    if (url.length >= 7800) copyText(body, $("#pp-msg"), $("#pp-out"));
+    return true;
+  }
+  if (t.id === "pp-mail" && S.ppOut) {
+    const { title, body } = ppIssue(S.ppOut), p = ppState();
+    const mailBody = body + (p.correo ? `\n\nCorreo de contacto: ${p.correo}` : "");
+    try { location.href = `mailto:${CONFIG.contacto}?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(mailBody.length < 1800 ? mailBody : mailBody.slice(0, 1700) + "\n\n[…] (pega aquí el texto completo copiado desde QUAESTIA)")}`; } catch (e) {}
+    if (mailBody.length >= 1800) copyText(body, $("#pp-msg"), $("#pp-out"));
+    return true;
+  }
+  if (t.id === "pp-copy" && S.ppOut) { copyText(ppIssue(S.ppOut).body, $("#pp-msg"), $("#pp-out")); return true; }
+  if (t.id === "pp-reset") { S.pp = null; Store.set("pp", null); S.ppErrors = null; S.ppOut = null; render(); window.scrollTo(0, 0); return true; }
+  return false;
+}
+function teachInput(e) {
+  if (S.view !== "teach") return false;
+  const el = e.target, tb = tbState();
+  if (el.id === "tb-title") { tb.titulo = el.value; tbSave(); return true; }
+  if (el.id === "tb-q") { tb.q = el.value; tb.shown = 30; tbSave(); clearTimeout(S._tbq); S._tbq = setTimeout(() => { render(); const i = $("#tb-q"); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }, 250); return true; }
+  if (el.closest && el.closest("#pp-form") && el.type !== "checkbox" && el.type !== "radio" && el.tagName !== "SELECT") {
+    ppRead(); S.ppOut = null; const pv = $("#pp-preview"); if (pv) pv.innerHTML = ppPreview(); const r = $("#pp-ready"); if (r) r.remove(); return true;
+  }
+  return false;
+}
+function teachChange(e) {
+  if (S.view !== "teach") return false;
+  const el = e.target, tb = tbState();
+  if (el.name === "tb-tema") { tb.temas = [...document.querySelectorAll('input[name="tb-tema"]:checked')].map((i) => +i.value); tb.shown = 30; tbSave(); render(); return true; }
+  if (el.name === "tb-bloom") { tb.blooms = [...document.querySelectorAll('input[name="tb-bloom"]:checked')].map((i) => i.value); tb.shown = 30; tbSave(); render(); return true; }
+  if (el.id === "tb-n") { tb.n = +el.value || 10; tbSave(); return true; }
+  if (el.id === "tb-models") { tb.modelos = +el.value; tbSave(); return true; }
+  if (el.closest && el.closest("#pp-form")) {
+    ppRead(); S.ppOut = null;
+    if (el.name === "pp-tipo" || el.name === "pp-tema") { render(); return true; }
+    const pv = $("#pp-preview"); if (pv) pv.innerHTML = ppPreview(); const r = $("#pp-ready"); if (r) r.remove(); return true;
+  }
+  return false;
+}
+function teachSubmit(e) {
+  if (e.target.id !== "pp-form") return false;
+  e.preventDefault(); ppRead();
+  S.ppErrors = ppValidate(); S.ppOut = S.ppErrors.length ? null : ppBuild();
+  render();
+  const target = S.ppErrors.length ? document.querySelector('[role="alert"]') : $("#pp-ready");
+  if (target) target.scrollIntoView({ block: "center" });
+  return true;
+}
+</script>
+
+</body>
+</html>

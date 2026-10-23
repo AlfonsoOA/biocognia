@@ -1,0 +1,4833 @@
+{
+ "schema": "metahub-tema/1",
+ "tema": 2,
+ "titulo": {
+  "es": "Metabolismo de glúcidos",
+  "en": "Carbohydrate metabolism"
+ },
+ "secciones": {
+  "2.1": {
+   "es": "Glucólisis: fases, reacciones y balance energético",
+   "en": "Glycolysis: phases, reactions and energy balance"
+  },
+  "2.2": {
+   "es": "Destinos fermentativos del piruvato",
+   "en": "Fermentative fates of pyruvate"
+  },
+  "2.3": {
+   "es": "Entrada de otros azúcares en la ruta glucolítica",
+   "en": "Entry of other sugars into the glycolytic pathway"
+  },
+  "2.4": {
+   "es": "Síntesis de glucosa: gluconeogénesis",
+   "en": "Glucose synthesis: gluconeogenesis"
+  },
+  "2.5": {
+   "es": "Biosíntesis de glucógeno: glucogenogénesis",
+   "en": "Glycogen biosynthesis: glycogenesis"
+  },
+  "2.6": {
+   "es": "Degradación de glucógeno: glucogenólisis",
+   "en": "Glycogen breakdown: glycogenolysis"
+  },
+  "2.7": {
+   "es": "Regulación recíproca de glucólisis y gluconeogénesis y de la síntesis y degradación del glucógeno",
+   "en": "Reciprocal regulation of glycolysis and gluconeogenesis and of glycogen synthesis and breakdown"
+  },
+  "2.8": {
+   "es": "Ruta de las pentosas fosfato",
+   "en": "Pentose phosphate pathway"
+  },
+  "2.9": {
+   "es": "Fijación fotosintética de dióxido de carbono: ciclo de Calvin-Benson",
+   "en": "Photosynthetic carbon dioxide fixation: the Calvin–Benson cycle"
+  },
+  "2.10": {
+   "es": "Fijación de CO<sub>2</sub> en plantas C4 y plantas CAM",
+   "en": "CO<sub>2</sub> fixation in C4 and CAM plants"
+  }
+ },
+ "conceptos_clave": {
+  "I": {
+   "es": "glucólisis y fermentación",
+   "en": "glycolysis and fermentation"
+  },
+  "II": {
+   "es": "GNG / regulación recíproca",
+   "en": "GNG / reciprocal regulation"
+  },
+  "III": {
+   "es": "almacenamiento y rutas alternativas",
+   "en": "storage and alternative pathways"
+  },
+  "IV": {
+   "es": "ciclos con lactato y CO<sub>2</sub>",
+   "en": "cycles involving lactate and CO<sub>2</sub>"
+  }
+ },
+ "preguntas": [
+  {
+   "id": "T2-2.1.1",
+   "num": "2.1.1",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La fosforilación inicial de la glucosa a glucosa-6-P por la hexoquinasa/glucoquinasa tiene múltiples implicaciones metabólicas, ¿cuál(es) es/son correcta(s)?",
+    "en": "The initial phosphorylation of glucose to glucose 6-P by hexokinase/glucokinase has several metabolic implications. Which is/are correct?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se evita la pérdida de glucosa a través de la membrana, que carece de transportadores para la glucosa-6-P (fenómeno de \"trampa\")",
+     "en": "Loss of glucose across the membrane, which lacks transporters for glucose 6-P, is prevented (\"trapping\" phenomenon)"
+    },
+    "b": {
+     "es": "Se libera una gran cantidad de energía en el citosol",
+     "en": "A large amount of energy is released into the cytosol"
+    },
+    "c": {
+     "es": "Aumenta la velocidad de las reacciones de la glucólisis siguientes, al activar la molécula.",
+     "en": "It increases the rate of the subsequent glycolytic reactions by activating the molecule."
+    },
+    "d": {
+     "es": "Permite que la glucosa se transporte más fácilmente por la sangre",
+     "en": "It allows glucose to be transported more easily in the blood"
+    },
+    "e": {
+     "es": "Es el paso limitante de la glucólisis en la mayoría de los tejidos",
+     "en": "It is the rate-limiting step of glycolysis in most tissues"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender el concepto de \"trampa metabólica\" y la función de activación de la fosforilación inicial.",
+    "en": "Understanding the concept of \"metabolic trapping\" and the activating function of the initial phosphorylation."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.2",
+   "num": "2.1.2",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La glucólisis es la ruta central del catabolismo de glúcidos. ¿Cuál(es) de los siguientes enunciados la describe(n) correctamente?",
+    "en": "Glycolysis is the central pathway of carbohydrate catabolism. Which of the following statements describe(s) it correctly?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Es una ruta anabólica que consume energía neta.",
+     "en": "It is an anabolic pathway that consumes net energy."
+    },
+    "b": {
+     "es": "Tiene lugar íntegramente en el citosol en las células eucariotas.",
+     "en": "In eukaryotic cells it takes place entirely in the cytosol."
+    },
+    "c": {
+     "es": "Es una ruta metabólica en la que se oxida la glucosa y se obtiene piruvato, NADH y ATP neto.",
+     "en": "It is a metabolic pathway in which glucose is oxidized to yield pyruvate, NADH and net ATP."
+    },
+    "d": {
+     "es": "Es la única forma de obtener ATP en células eucariotas.",
+     "en": "It is the only way of obtaining ATP in eukaryotic cells."
+    },
+    "e": {
+     "es": "Es la principal vía para obtener energía en condiciones anaeróbicas.",
+     "en": "It is the main pathway for obtaining energy under anaerobic conditions."
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender las características clave de la glucolisis: ruta catabólica, localización citosólica y productos netos.",
+    "en": "Understanding the key features of glycolysis: catabolic pathway, cytosolic location and net products."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.3",
+   "num": "2.1.3",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál(es) de los siguientes enunciados es/son cierto(s) sobre la localización y función de la glucólisis?",
+    "en": "Which of the following statements is/are true about the location and function of glycolysis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Todas las reacciones ocurren exclusivamente en el citosol.",
+     "en": "All the reactions occur exclusively in the cytosol."
+    },
+    "b": {
+     "es": "Sirve para obtener glucógeno a partir de glucosa.",
+     "en": "It serves to obtain glycogen from glucose."
+    },
+    "c": {
+     "es": "Es un punto de cruce (<i>hub</i>) metabólico que enlaza con rutas anaeróbicas (fermentación) y aeróbicas (ciclo de Krebs).",
+     "en": "It is a metabolic crossroads (<i>hub</i>) linking anaerobic (fermentation) and aerobic (Krebs cycle) pathways."
+    },
+    "d": {
+     "es": "Todas las reacciones tienen lugar en la matriz mitocondrial.",
+     "en": "All the reactions take place in the mitochondrial matrix."
+    },
+    "e": {
+     "es": "Su velocidad de flujo se adapta a las necesidades de energía y precursores.",
+     "en": "Its flux adapts to the cell's needs for energy and precursors."
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender la localización (citosol), el rol de encrucijada metabólica (<i>hub</i>) y la naturaleza regulada de la glucolisis.",
+    "en": "Understanding the location (cytosol), the role as a metabolic crossroads (<i>hub</i>) and the regulated nature of glycolysis."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.4",
+   "num": "2.1.4",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La regulación de la glucosa-6-P está controlada por dos enzimas con diferentes propiedades cinéticas. ¿Cuál(es) de los siguientes enunciados es/son correctos?",
+    "en": "Glucose 6-P formation is controlled by two enzymes with different kinetic properties. Which of the following statements is/are correct?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La hexoquinasa (músculo, cerebro) tiene mayor afinidad por la glucosa que la glucoquinasa (hígado).",
+     "en": "Hexokinase (muscle, brain) has a higher affinity for glucose than glucokinase (liver)."
+    },
+    "b": {
+     "es": "La hexoquinasa es inhibida por Insulina.",
+     "en": "Hexokinase is inhibited by insulin."
+    },
+    "c": {
+     "es": "La glucoquinasa actúa como un sensor de glucosa en el hígado debido a su baja afinidad (alta K<sub>M</sub>).",
+     "en": "Glucokinase acts as a glucose sensor in the liver because of its low affinity (high K<sub>M</sub>)."
+    },
+    "d": {
+     "es": "Ambas enzimas son alostéricas.",
+     "en": "Both enzymes are allosteric."
+    },
+    "e": {
+     "es": "La hexoquinasa es inhibida por su producto (glucosa-6-P).",
+     "en": "Hexokinase is inhibited by its product (glucose 6-P)."
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender las diferencias cinéticas (K<sub>M</sub>) entre hexoquinasa (alta afinidad) y glucoquinasa (sensor de glucosa) y la inhibición de la hexoquinasa por su producto.",
+    "en": "Understanding the kinetic differences (K<sub>M</sub>) between hexokinase (high affinity) and glucokinase (glucose sensor) and the product inhibition of hexokinase."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.5",
+   "num": "2.1.5",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En condiciones aeróbicas, la célula debe regenerar el NAD<sup>+</sup> necesario para que la glucólisis continúe. ¿Cuál(es) de los siguientes enunciados es/son correctos sobre el destino del NADH citosólico?",
+    "en": "Under aerobic conditions, the cell must regenerate the NAD<sup>+</sup> needed for glycolysis to continue. Which of the following statements is/are correct about the fate of cytosolic NADH?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El NADH es oxidado a NAD<sup>+</sup> a través de las lanzaderas (Malato-Aspartato o Glicerol-3P).",
+     "en": "NADH is oxidized to NAD<sup>+</sup> via the shuttles (malate–aspartate or glycerol-3-P)."
+    },
+    "b": {
+     "es": "El NADH entra directamente a la matriz mitocondrial a través de transportadores.",
+     "en": "NADH enters the mitochondrial matrix directly through transporters."
+    },
+    "c": {
+     "es": "La energía del NADH finalmente alimenta la cadena de transporte electrónico mitocondrial.",
+     "en": "The energy of NADH ultimately feeds the mitochondrial electron transport chain."
+    },
+    "d": {
+     "es": "El NADH se acumula en el citosol y bloquea la glucólisis.",
+     "en": "NADH accumulates in the cytosol and blocks glycolysis."
+    },
+    "e": {
+     "es": "El destino del NADH es siempre la fermentación láctica.",
+     "en": "The fate of NADH is always lactic acid fermentation."
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento del destino del NADH citosólico en condiciones aeróbicas (lanzaderas y cadena de transporte electrónico - CTE).",
+    "en": "Applying knowledge of the fate of cytosolic NADH under aerobic conditions (shuttles and electron transport chain, ETC)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.6",
+   "num": "2.1.6",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un paciente presenta déficit en la enzima glucosa-6-P deshidrogenasa. ¿Qué consecuencias metabólicas puedes prever?",
+    "en": "A patient has a deficiency of the enzyme glucose-6-P dehydrogenase. What metabolic consequences can you predict?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Disminuye la producción de NADH",
+     "en": "NADH production decreases"
+    },
+    "b": {
+     "es": "Disminuye la producción de NADPH",
+     "en": "NADPH production decreases"
+    },
+    "c": {
+     "es": "Aumenta la susceptibilidad al estrés oxidativo",
+     "en": "Susceptibility to oxidative stress increases"
+    },
+    "d": {
+     "es": "Se afecta la biosíntesis de ácidos grasos",
+     "en": "Fatty acid biosynthesis is affected"
+    },
+    "e": {
+     "es": "Aumenta la actividad de la fosfofructoquinasa-1",
+     "en": "Phosphofructokinase-1 activity increases"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar las consecuencias del déficit de G6PDH, la enzima que inicia la fase oxidativa de la RPP: disminuye la producción de NADPH (b), lo que aumenta la susceptibilidad al estrés oxidativo al no poder mantenerse el glutatión reducido (c) y limita la biosíntesis de ácidos grasos (d).",
+    "en": "Analyzing the consequences of G6PDH deficiency, the enzyme that initiates the oxidative phase of the PPP: NADPH production decreases (b), which increases susceptibility to oxidative stress because glutathione cannot be kept reduced (c) and limits fatty acid biosynthesis (d)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.7",
+   "num": "2.1.7",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Cuál es el balance energético neto de la glucolisis a partir de tres glucosas?",
+    "en": "What is the net energy balance of glycolysis starting from three glucose molecules?"
+   },
+   "opciones": {
+    "a": {
+     "es": "+6 ATP y +6 NADH",
+     "en": "+6 ATP and +6 NADH"
+    },
+    "b": {
+     "es": "+2 ATP y +2 NADH",
+     "en": "+2 ATP and +2 NADH"
+    },
+    "c": {
+     "es": "+10 ATP y +10 NADH",
+     "en": "+10 ATP and +10 NADH"
+    },
+    "d": {
+     "es": "-10 ATP y +20 ATP + 10 NADH, en cada una de las fases",
+     "en": "-10 ATP and +20 ATP + 10 NADH, in each of the phases"
+    },
+    "e": {
+     "es": "+10 NADH en la fase preparatoria",
+     "en": "+10 NADH in the preparatory phase"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Aplicar el balance neto de la glucolisis por molécula (2 ATP netos, 2 NADH) para 3 moléculas (6 ATP netos, 6 NADH).",
+    "en": "Applying the net balance of glycolysis per molecule (2 net ATP, 2 NADH) to 3 molecules (6 net ATP, 6 NADH)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.8",
+   "num": "2.1.8",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Cuál es el rendimiento de la fase preparatoria de la glucolisis partiendo de tres glucosas?",
+    "en": "What is the yield of the preparatory phase of glycolysis starting from three glucose molecules?"
+   },
+   "opciones": {
+    "a": {
+     "es": "-6 ATP",
+     "en": "-6 ATP"
+    },
+    "b": {
+     "es": "-2 ATP",
+     "en": "-2 ATP"
+    },
+    "c": {
+     "es": "-8 ATP",
+     "en": "-8 ATP"
+    },
+    "d": {
+     "es": "+2 ATP",
+     "en": "+2 ATP"
+    },
+    "e": {
+     "es": "+12 ATP",
+     "en": "+12 ATP"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Aplicar el gasto de la fase preparatoria (-2 ATP por glucosa) para 3 moléculas (-6 ATP).",
+    "en": "Applying the cost of the preparatory phase (-2 ATP per glucose) to 3 molecules (-6 ATP)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.9",
+   "num": "2.1.9",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Cuál es el rendimiento de la fase de ganancias de la glucolisis partiendo de tres glucosas?",
+    "en": "What is the yield of the payoff phase of glycolysis starting from three glucose molecules?"
+   },
+   "opciones": {
+    "a": {
+     "es": "12 ATP + 6 NADH",
+     "en": "12 ATP + 6 NADH"
+    },
+    "b": {
+     "es": "-12 ATP – 6 NADH",
+     "en": "-12 ATP – 6 NADH"
+    },
+    "c": {
+     "es": "3 ATP + 3 NADH",
+     "en": "3 ATP + 3 NADH"
+    },
+    "d": {
+     "es": "6 ATP + 3 NADH",
+     "en": "6 ATP + 3 NADH"
+    },
+    "e": {
+     "es": "6 ATP + 6 NADH",
+     "en": "6 ATP + 6 NADH"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Aplicar la producción bruta de la fase de ganancia (4 ATP, 2 NADH por glucosa) para 3 moléculas (12 ATP, 6 NADH).",
+    "en": "Applying the gross output of the payoff phase (4 ATP, 2 NADH per glucose) to 3 molecules (12 ATP, 6 NADH)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.10",
+   "num": "2.1.10",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Señale la opción en la que aparezcan ordenadas por orden de actuación las siguientes enzimas de la glucolisis (puede haber pasos intermedios sin mostrar):",
+    "en": "Select the option in which the following glycolytic enzymes are listed in the order in which they act (intermediate steps may be omitted):"
+   },
+   "opciones": {
+    "a": {
+     "es": "Hexoquinasa, fosfofructoquinasa-2, enolasa, fosfoglicerato quinasa",
+     "en": "Hexokinase, phosphofructokinase-2, enolase, phosphoglycerate kinase"
+    },
+    "b": {
+     "es": "Hexoquinasa, aldolasa, fosfohexosa isomerasa, fosfoglicerato quinasa, piruvato quinasa",
+     "en": "Hexokinase, aldolase, phosphohexose isomerase, phosphoglycerate kinase, pyruvate kinase"
+    },
+    "c": {
+     "es": "Fosfoglicerato quinasa, fosfoglicerato mutasa, enolasa",
+     "en": "Phosphoglycerate kinase, phosphoglycerate mutase, enolase"
+    },
+    "d": {
+     "es": "Piruvato quinasa, enolasa, fosfoglicerato mutasa, fosfoglicerato quinasa",
+     "en": "Pyruvate kinase, enolase, phosphoglycerate mutase, phosphoglycerate kinase"
+    },
+    "e": {
+     "es": "Fosfohexosa isomerasa, fosfofructoquinasa-1, aldolasa, gliceraldehído-3-fosfato-deshidrogenasa",
+     "en": "Phosphohexose isomerase, phosphofructokinase-1, aldolase, glyceraldehyde-3-phosphate dehydrogenase"
+    }
+   },
+   "correctas": [
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender la secuencia de reacciones de la glucolisis.",
+    "en": "Understanding the sequence of reactions in glycolysis."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.11",
+   "num": "2.1.11",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál(es) de los siguientes enunciados es/son correcto(s) sobre la obtención de ATP en la glucólisis?",
+    "en": "Which of the following statements is/are correct about ATP production in glycolysis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La glucólisis produce 4 ATP brutos por molécula de glucosa",
+     "en": "Glycolysis produces 4 gross ATP per glucose molecule"
+    },
+    "b": {
+     "es": "La piruvato quinasa cataliza la única reacción que produce ATP",
+     "en": "Pyruvate kinase catalyzes the only ATP-producing reaction"
+    },
+    "c": {
+     "es": "Las quinasas responsables de fosforilación a nivel de sustrato son fosfoglicerato quinasa y piruvato quinasa",
+     "en": "The kinases responsible for substrate-level phosphorylation are phosphoglycerate kinase and pyruvate kinase"
+    },
+    "d": {
+     "es": "La producción de ATP ocurre en la fase de gasto energético",
+     "en": "ATP production occurs in the energy-investment phase"
+    },
+    "e": {
+     "es": "El balance neto de ATP es de 2 ATP por molécula de glucosa",
+     "en": "The net ATP balance is 2 ATP per glucose molecule"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender los puntos de producción de ATP: 4 brutos, 2 netos y enzimas clave (fosfoglicerato quinasa y piruvato quinasa).",
+    "en": "Understanding the points of ATP production: 4 gross, 2 net, and the key enzymes (phosphoglycerate kinase and pyruvate kinase)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.12",
+   "num": "2.1.12",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué enzima cataliza el primer paso comprometido e irreversible (su producto no puede derivarse a otra ruta metabólica) de la glucólisis?",
+    "en": "Which enzyme catalyzes the first committed, irreversible step of glycolysis (its product cannot be diverted into another metabolic pathway)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucosa 6-P isomerasa",
+     "en": "Glucose 6-P isomerase"
+    },
+    "b": {
+     "es": "Hexoquinasa",
+     "en": "Hexokinase"
+    },
+    "c": {
+     "es": "Fosfofructoquinasa-1",
+     "en": "Phosphofructokinase-1"
+    },
+    "d": {
+     "es": "Piruvato quinasa",
+     "en": "Pyruvate kinase"
+    },
+    "e": {
+     "es": "Aldolasa",
+     "en": "Aldolase"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar que la fosfofructoquinasa-1 (PFK-1) cataliza el primer paso comprometido e irreversible.",
+    "en": "Recalling that phosphofructokinase-1 (PFK-1) catalyzes the first committed, irreversible step."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.13",
+   "num": "2.1.13",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuáles son los productos principales (antes de la isomerización) que resultan de la acción de la aldolasa sobre la fructosa 1,6-bisfosfato?",
+    "en": "What are the main products (before isomerization) resulting from the action of aldolase on fructose 1,6-bisphosphate?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Piruvato y ATP",
+     "en": "Pyruvate and ATP"
+    },
+    "b": {
+     "es": "Glucosa-6-P y fructosa-6-P",
+     "en": "Glucose 6-P and fructose 6-P"
+    },
+    "c": {
+     "es": "Gliceraldehído-3-P y lactato",
+     "en": "Glyceraldehyde 3-P and lactate"
+    },
+    "d": {
+     "es": "Gliceraldehído-3-P y acetona-P",
+     "en": "Glyceraldehyde 3-P and acetone-P"
+    },
+    "e": {
+     "es": "Gliceraldehído-3-fosfato y dihidroxiacetona-P",
+     "en": "Glyceraldehyde 3-phosphate and dihydroxyacetone-P"
+    }
+   },
+   "correctas": [
+    "e"
+   ],
+   "justificacion": {
+    "es": "Recordar los productos de la aldolasa: gliceraldehído-3P y dihidroxiacetona-P.",
+    "en": "Recalling the products of aldolase: glyceraldehyde 3-P and dihydroxyacetone-P."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.14",
+   "num": "2.1.14",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Si se parte de una molécula de fructosa 1,6-bisfosfato que se incorpora directamente a la fase de ganancia de la glucólisis, ¿cuál es el balance energético neto que se obtiene?",
+    "en": "If one molecule of fructose 1,6-bisphosphate enters the payoff phase of glycolysis directly, what net energy balance is obtained?"
+   },
+   "opciones": {
+    "a": {
+     "es": "+2 ATP y +2 NADH",
+     "en": "+2 ATP and +2 NADH"
+    },
+    "b": {
+     "es": "+4 ATP y +2 NADH",
+     "en": "+4 ATP and +2 NADH"
+    },
+    "c": {
+     "es": "+2 ATP y +1 NADH",
+     "en": "+2 ATP and +1 NADH"
+    },
+    "d": {
+     "es": "+4 ATP y +4 NADH",
+     "en": "+4 ATP and +4 NADH"
+    },
+    "e": {
+     "es": "+6 ATP y +2 NADH",
+     "en": "+6 ATP and +2 NADH"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar el balance energético de la fase de ganancia (a partir de fructosa 1,6-bisfosfato): 4 ATP brutos y 2 NADH (neto en esta fase).",
+    "en": "Applying the energy balance of the payoff phase (starting from fructose 1,6-bisphosphate): 4 gross ATP and 2 NADH (net for this phase)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.15",
+   "num": "2.1.15",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un paciente presenta una variante de la enzima fosfofructoquinasa 1 en el músculo que es constitutivamente inactiva. ¿Qué consecuencia metabólica puedes prever en las células musculares?",
+    "en": "A patient has a variant of the enzyme phosphofructokinase 1 in muscle that is constitutively inactive. What metabolic consequence can you predict in the muscle cells?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumento de la producción de lactato incluso en reposo",
+     "en": "Increased lactate production even at rest"
+    },
+    "b": {
+     "es": "Acumulación de fructosa-6-fosfato y glucosa-6-fosfato",
+     "en": "Accumulation of fructose 6-phosphate and glucose 6-phosphate"
+    },
+    "c": {
+     "es": "Desvío del flujo metabólico hacia la glucogenogénesis",
+     "en": "Diversion of metabolic flux toward glycogenesis"
+    },
+    "d": {
+     "es": "Disminución de la síntesis de glucógeno a partir de glucosa",
+     "en": "Decreased glycogen synthesis from glucose"
+    },
+    "e": {
+     "es": "Disminución drástica de la glucólisis y la producción de energía",
+     "en": "A drastic decrease in glycolysis and energy production"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar la consecuencia de la inactividad de una enzima clave (PFK-1 o similar) en el músculo: acumulación de sustratos anteriores e inhibición de la ruta.",
+    "en": "Analyzing the consequence of the inactivity of a key enzyme (PFK-1 or similar) in muscle: accumulation of upstream substrates and inhibition of the pathway."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.16",
+   "num": "2.1.16",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un recién nacido presenta un déficit congénito de la enzima fosfofructoquinasa-1 (PFK-1) en todos los tejidos, siendo más evidente en los eritrocitos. Analizando las consecuencias metabólicas directas en estas células, ¿qué afirmaciones son correctas?",
+    "en": "A newborn has a congenital deficiency of the enzyme phosphofructokinase-1 (PFK-1) in all tissues, most evident in erythrocytes. Analyzing the direct metabolic consequences in these cells, which statements are correct?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se producirá una acumulación de metabolitos anteriores a la enzima deficiente, como glucosa-6-P (G6P)",
+     "en": "Metabolites upstream of the deficient enzyme, such as glucose 6-P (G6P), will accumulate"
+    },
+    "b": {
+     "es": "La célula aumentará significativamente la producción de ATP para compensar la falta de PFK-1",
+     "en": "The cell will significantly increase ATP production to compensate for the lack of PFK-1"
+    },
+    "c": {
+     "es": "Disminuirá drásticamente el flujo a través de la ruta de las pentosas fosfato (RPP)",
+     "en": "Flux through the pentose phosphate pathway (PPP) will decrease drastically"
+    },
+    "d": {
+     "es": "El exceso de G6P se desviará hacia la RPP para generar más NADPH",
+     "en": "The excess G6P will be diverted to the PPP to generate more NADPH"
+    },
+    "e": {
+     "es": "Se incrementará la glucogenogénesis al estar el G6P inhibido por PFK-1",
+     "en": "Glycogenesis will increase because G6P is inhibited by PFK-1"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la acumulación de metabolitos (G6P) anterior a la PFK-1 deficiente y el desvío hacia rutas alternativas (p. ej. RPP) para consumir el exceso.",
+    "en": "Analyzing the accumulation of metabolites (G6P) upstream of the deficient PFK-1 and their diversion into alternative pathways (e.g., the PPP) to use up the excess."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.1.17",
+   "num": "2.1.17",
+   "tema": 2,
+   "seccion": "2.1",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe las consecuencias metabólicas y clínicas del déficit congénito de piruvato quinasa (PK) en un eritrocito, una célula que depende casi exclusivamente de la glucólisis para obtener ATP:",
+    "en": "Evaluate the metabolic and clinical consequences of congenital pyruvate kinase (PK) deficiency in an erythrocyte, a cell that depends almost exclusively on glycolysis for ATP:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se produce una insuficiencia energética (↓ATP) que conlleva a la lisis (ruptura) del eritrocito, causando anemia hemolítica (la principal consecuencia clínica)",
+     "en": "An energy deficit (↓ATP) arises that leads to lysis (rupture) of the erythrocyte, causing hemolytic anemia (the main clinical consequence)"
+    },
+    "b": {
+     "es": "Se acumula acetil-CoA y se desvía al ciclo de Krebs",
+     "en": "Acetyl-CoA accumulates and is diverted to the Krebs cycle"
+    },
+    "c": {
+     "es": "Se acumula Fructosa-2,6-bisfosfato y se activa la glucólisis",
+     "en": "Fructose 2,6-bisphosphate accumulates and glycolysis is activated"
+    },
+    "d": {
+     "es": "Se acumulan intermediarios de la glucólisis anteriores al piruvato quinasa, como el 2-fosfoglicerato y fosfoenolpiruvato (PEP)",
+     "en": "Glycolytic intermediates upstream of pyruvate kinase accumulate, such as 2-phosphoglycerate and phosphoenolpyruvate (PEP)"
+    },
+    "e": {
+     "es": "El déficit se compensa con la activación de la gluconeogénesis",
+     "en": "The deficiency is compensated by activation of gluconeogenesis"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Evaluar el impacto de un déficit de piruvato quinasa (PK) en un eritrocito (célula dependiente de glucolisis) que conlleva ↓ATP, lisis (anemia) y acumulación de intermediarios anteriores a PK.",
+    "en": "Evaluating the impact of pyruvate kinase (PK) deficiency in an erythrocyte (a glycolysis-dependent cell), which leads to ↓ATP, lysis (anemia) and accumulation of intermediates upstream of PK."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.2.1",
+   "num": "2.2.1",
+   "tema": 2,
+   "seccion": "2.2",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿En qué tejidos (o condiciones) tiene lugar la fermentación láctica?",
+    "en": "In which tissues (or conditions) does lactic acid fermentation take place?"
+   },
+   "opciones": {
+    "a": {
+     "es": "En tejidos tumorales, donde el aporte de oxígeno es insuficiente",
+     "en": "In tumor tissues, where the oxygen supply is insufficient"
+    },
+    "b": {
+     "es": "En el músculo durante el ejercicio intenso",
+     "en": "In muscle during intense exercise"
+    },
+    "c": {
+     "es": "En el eritrocito, que carece de mitocondrias",
+     "en": "In the erythrocyte, which lacks mitochondria"
+    },
+    "d": {
+     "es": "En el músculo en reposo tras una ingesta con alto contenido de glucosa",
+     "en": "In resting muscle after a high-glucose meal"
+    },
+    "e": {
+     "es": "En el músculo con ejercicio de baja intensidad",
+     "en": "In muscle during low-intensity exercise"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar los tejidos o condiciones donde ocurre la fermentación láctica (eritrocitos, músculo intenso, tumores hipóxicos).",
+    "en": "Recalling the tissues or conditions in which lactic acid fermentation occurs (erythrocytes, intensely working muscle, hypoxic tumors)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.2.2",
+   "num": "2.2.2",
+   "tema": 2,
+   "seccion": "2.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En condiciones de hipoxia, ¿Qué metabolito se acumula en células musculares humanas?",
+    "en": "Under hypoxic conditions, which metabolite accumulates in human muscle cells?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Lactato",
+     "en": "Lactate"
+    },
+    "b": {
+     "es": "Citrato",
+     "en": "Citrate"
+    },
+    "c": {
+     "es": "Acetil-CoA",
+     "en": "Acetyl-CoA"
+    },
+    "d": {
+     "es": "NADH, si no se desvía hacia otras rutas",
+     "en": "NADH, if it is not diverted into other pathways"
+    },
+    "e": {
+     "es": "Glucosa-6-P",
+     "en": "Glucose 6-P"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el concepto de hipoxia: se acumulan productos de desvío (lactato) y la forma reducida de los transportadores (NADH).",
+    "en": "Applying the concept of hypoxia: diversion products (lactate) and the reduced form of the carriers (NADH) accumulate."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.2.3",
+   "num": "2.2.3",
+   "tema": 2,
+   "seccion": "2.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En una fermentación alcohólica realizada por levaduras, ¿Cuál es el papel principal de la descarboxilación del piruvato?",
+    "en": "In alcoholic fermentation by yeast, what is the main role of pyruvate decarboxylation?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Generar energía directamente",
+     "en": "Generating energy directly"
+    },
+    "b": {
+     "es": "Liberar CO<sub>2</sub> como subproducto",
+     "en": "Releasing CO<sub>2</sub> as a by-product"
+    },
+    "c": {
+     "es": "Permitir la regeneración de NAD<sup>+</sup>",
+     "en": "Allowing NAD<sup>+</sup> regeneration"
+    },
+    "d": {
+     "es": "Producir acetaldehído",
+     "en": "Producing acetaldehyde"
+    },
+    "e": {
+     "es": "Reducir el pH intracelular",
+     "en": "Lowering intracellular pH"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar las reacciones de la fermentación alcohólica: la descarboxilación produce CO<sub>2</sub> y acetaldehído.",
+    "en": "Analyzing the reactions of alcoholic fermentation: decarboxylation produces CO<sub>2</sub> and acetaldehyde."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.2.4",
+   "num": "2.2.4",
+   "tema": 2,
+   "seccion": "2.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En un caballo sometido a ejercicio intenso, ¿Qué adaptaciones metabólicas se producen en el músculo?",
+    "en": "In a horse subjected to intense exercise, which metabolic adaptations occur in muscle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Mayor glucólisis anaerobia",
+     "en": "Greater anaerobic glycolysis"
+    },
+    "b": {
+     "es": "Acumulación de lactato",
+     "en": "Lactate accumulation"
+    },
+    "c": {
+     "es": "Aumento de la gluconeogénesis en el propio músculo",
+     "en": "Increased gluconeogenesis in the muscle itself"
+    },
+    "d": {
+     "es": "Depleción rápida de glucógeno muscular",
+     "en": "Rapid depletion of muscle glycogen"
+    },
+    "e": {
+     "es": "Síntesis neta de ácidos grasos",
+     "en": "Net fatty acid synthesis"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar las adaptaciones al ejercicio intenso: alta glucolisis anaerobia, ↑ lactato y ↓ glucógeno.",
+    "en": "Analyzing the adaptations to intense exercise: high anaerobic glycolysis, ↑lactate and ↓glycogen."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.2.5",
+   "num": "2.2.5",
+   "tema": 2,
+   "seccion": "2.2",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Un tumor sólido presenta un metabolismo altamente glucolítico incluso en presencia de oxígeno (efecto Warburg). ¿Qué ventaja confiere esto a las células tumorales?",
+    "en": "A solid tumor shows a highly glycolytic metabolism even in the presence of oxygen (Warburg effect). What advantage does this confer on the tumor cells?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Permite generar precursores biosintéticos rápidamente",
+     "en": "It allows biosynthetic precursors to be generated rapidly"
+    },
+    "b": {
+     "es": "Disminuye la producción de lactato",
+     "en": "It decreases lactate production"
+    },
+    "c": {
+     "es": "Facilita la proliferación rápida",
+     "en": "It facilitates rapid proliferation"
+    },
+    "d": {
+     "es": "Proporciona ventaja en ambientes hipóxicos",
+     "en": "It provides an advantage in hypoxic environments"
+    },
+    "e": {
+     "es": "Mejora la eficiencia energética global",
+     "en": "It improves overall energy efficiency"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Evaluar la ventaja del efecto Warburg: rápida generación de precursores para proliferación y supervivencia en hipoxia, aunque con menor eficiencia energética.",
+    "en": "Evaluating the advantage of the Warburg effect: rapid generation of precursors for proliferation and survival under hypoxia, albeit with lower energy efficiency."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.2.6",
+   "num": "2.2.6",
+   "tema": 2,
+   "seccion": "2.2",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Durante una septicemia bacteriana, las células inmunitarias del paciente muestran un metabolismo alterado. ¿Qué cambios se observan en macrófagos activados?",
+    "en": "During bacterial septicemia, the patient's immune cells show altered metabolism. What changes are observed in activated macrophages?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumento de glucólisis aerobia",
+     "en": "Increased aerobic glycolysis"
+    },
+    "b": {
+     "es": "Producción de lactato incluso en presencia de oxígeno",
+     "en": "Lactate production even in the presence of oxygen"
+    },
+    "c": {
+     "es": "Disminución de la glucogenólisis",
+     "en": "Decreased glycogenolysis"
+    },
+    "d": {
+     "es": "Mayor dependencia de la cadena respiratoria",
+     "en": "Greater reliance on the respiratory chain"
+    },
+    "e": {
+     "es": "Metabolismo altamente glucolítico incluso en presencia de oxígeno",
+     "en": "Highly glycolytic metabolism even in the presence of oxygen"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar el metabolismo glucolítico en macrófagos activados (similar al Warburg): ↑ glucolisis aerobia y producción de lactato en presencia de O<sub>2</sub>.",
+    "en": "Analyzing glycolytic metabolism in activated macrophages (similar to the Warburg effect): ↑aerobic glycolysis and lactate production in the presence of O<sub>2</sub>."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.2.7",
+   "num": "2.2.7",
+   "tema": 2,
+   "seccion": "2.2",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Si tuvieras que diseñar un cultivo celular para maximizar la producción de lactato, ¿qué condiciones implementarías?",
+    "en": "If you had to design a cell culture to maximize lactate production, which conditions would you implement?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Hipoxia",
+     "en": "Hypoxia"
+    },
+    "b": {
+     "es": "Alta concentración de oxígeno",
+     "en": "High oxygen concentration"
+    },
+    "c": {
+     "es": "Alta concentración de glucosa",
+     "en": "High glucose concentration"
+    },
+    "d": {
+     "es": "Inhibición de la cadena respiratoria",
+     "en": "Inhibition of the respiratory chain"
+    },
+    "e": {
+     "es": "Aumento de NADH oxidasa",
+     "en": "Increased NADH oxidase"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Diseñar condiciones para maximizar lactato: alta glucosa, hipoxia o Inhibición de CTE (para forzar la fermentación láctica).",
+    "en": "Designing conditions to maximize lactate: high glucose, hypoxia or inhibition of the ETC (to force lactic acid fermentation)."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.2.8",
+   "num": "2.2.8",
+   "tema": 2,
+   "seccion": "2.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál de las siguientes afirmaciones es correcta sobre las fermentaciones?",
+    "en": "Which of the following statements about fermentations is correct?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Permiten la regeneración de transportadores electrónicos en su forma reducida",
+     "en": "They allow electron carriers to be regenerated in their reduced form"
+    },
+    "b": {
+     "es": "Se producen subproductos como el ácido láctico o el alcohol etílico",
+     "en": "By-products such as lactic acid or ethyl alcohol are produced"
+    },
+    "c": {
+     "es": "Permiten que se siga produciendo la glucolisis en condiciones aeróbicas",
+     "en": "They allow glycolysis to keep running under aerobic conditions"
+    },
+    "d": {
+     "es": "En las fermentaciones alcohólica o láctica permite recuperar NAD<sup>+</sup>",
+     "en": "In alcoholic or lactic acid fermentation, NAD<sup>+</sup> is recovered"
+    },
+    "e": {
+     "es": "Permiten la producción de una molécula de ATP por cada piruvato consumido",
+     "en": "They allow one ATP molecule to be produced per pyruvate consumed"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender la función de las fermentaciones: regenerar NAD<sup>+</sup> y generar subproductos (láctico, etanol).",
+    "en": "Understanding the function of fermentations: regenerating NAD<sup>+</sup> and generating by-products (lactic acid, ethanol)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.2.9",
+   "num": "2.2.9",
+   "tema": 2,
+   "seccion": "2.2",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué enzima cataliza la conversión de piruvato a lactato en condiciones anaeróbicas?",
+    "en": "Which enzyme catalyzes the conversion of pyruvate to lactate under anaerobic conditions?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Piruvato deshidrogenasa",
+     "en": "Pyruvate dehydrogenase"
+    },
+    "b": {
+     "es": "Piruvato carboxilasa",
+     "en": "Pyruvate carboxylase"
+    },
+    "c": {
+     "es": "Piruvato quinasa",
+     "en": "Pyruvate kinase"
+    },
+    "d": {
+     "es": "Lactato deshidrogenasa",
+     "en": "Lactate dehydrogenase"
+    },
+    "e": {
+     "es": "Alcohol deshidrogenasa",
+     "en": "Alcohol dehydrogenase"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar la enzima clave de la fermentación láctica: lactato deshidrogenasa.",
+    "en": "Recalling the key enzyme of lactic acid fermentation: lactate dehydrogenase."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.2.10",
+   "num": "2.2.10",
+   "tema": 2,
+   "seccion": "2.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Durante el ejercicio intenso, el músculo esquelético recurre a la fermentación láctica. ¿Cuál(es) es/son la(s) consecuencia(s) o razón(es) de este proceso?",
+    "en": "During intense exercise, skeletal muscle resorts to lactic acid fermentation. What is/are the consequence(s) of, or reason(s) for, this process?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El lactato producido es exportado al hígado para la gluconeogénesis (ciclo de Cori)",
+     "en": "The lactate produced is exported to the liver for gluconeogenesis (Cori cycle)"
+    },
+    "b": {
+     "es": "El objetivo primordial es regenerar NAD<sup>+</sup> a partir de NADH para mantener la glucólisis",
+     "en": "The primary aim is to regenerate NAD<sup>+</sup> from NADH to sustain glycolysis"
+    },
+    "c": {
+     "es": "La fermentación genera más ATP que la glucólisis y la fosforilación oxidativa combinadas",
+     "en": "Fermentation generates more ATP than glycolysis and oxidative phosphorylation combined"
+    },
+    "d": {
+     "es": "Evita la acidosis celular (pH bajo)",
+     "en": "It prevents cellular acidosis (low pH)"
+    },
+    "e": {
+     "es": "Permite que la glucólisis continúe en ausencia de oxígeno o cuando la CTE está saturada",
+     "en": "It allows glycolysis to continue in the absence of oxygen or when the ETC is saturated"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar las consecuencias de la fermentación láctica en músculo: regenerar NAD<sup>+</sup> para glucolisis y lactato para ciclo de Cori.",
+    "en": "Applying the consequences of lactic acid fermentation in muscle: regenerating NAD<sup>+</sup> for glycolysis and providing lactate for the Cori cycle."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.2.11",
+   "num": "2.2.11",
+   "tema": 2,
+   "seccion": "2.2",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "¿Qué importancia tiene el ciclo de Cori en el contexto de un esfuerzo físico que induce fermentación láctica?",
+    "en": "What is the importance of the Cori cycle in the context of physical exertion that induces lactic acid fermentation?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Permite que el lactato producido en el músculo se convierta en glucosa en el hígado",
+     "en": "It allows the lactate produced in muscle to be converted into glucose in the liver"
+    },
+    "b": {
+     "es": "Garantiza que el piruvato se desvíe a la fermentación alcohólica en vez de a la glucolisis",
+     "en": "It ensures that pyruvate is diverted to alcoholic fermentation instead of glycolysis"
+    },
+    "c": {
+     "es": "Es un mecanismo para generar ATP adicional en el músculo",
+     "en": "It is a mechanism for generating additional ATP in muscle"
+    },
+    "d": {
+     "es": "Es la ruta principal para la síntesis de ácidos grasos partir de glucosa",
+     "en": "It is the main pathway for synthesizing fatty acids from glucose"
+    },
+    "e": {
+     "es": "Previene la acidosis metabólica al retirar lactato del torrente sanguíneo",
+     "en": "It prevents metabolic acidosis by removing lactate from the bloodstream"
+    }
+   },
+   "correctas": [
+    "a",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Evaluar la importancia del ciclo de Cori: convertir lactato a glucosa en el hígado y evitar acidosis.",
+    "en": "Evaluating the importance of the Cori cycle: converting lactate into glucose in the liver and preventing acidosis."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.2.12",
+   "num": "2.2.12",
+   "tema": 2,
+   "seccion": "2.2",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Si se intenta diseñar una vía metabólica para la síntesis neta de una molécula de glucosa a partir de dos moléculas de piruvato en el hígado (gluconeogénesis), ¿Qué requerimientos energéticos y logísticos son esenciales para que la ruta sea termodinámicamente favorable?",
+    "en": "If you try to design a metabolic pathway for the net synthesis of one glucose molecule from two pyruvate molecules in the liver (gluconeogenesis), which energetic and logistical requirements are essential for the pathway to be thermodynamically favorable?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La conversión inicial de piruvato a oxalacetato (OAA) debe consumir ATP",
+     "en": "The initial conversion of pyruvate to oxaloacetate (OAA) must consume ATP"
+    },
+    "b": {
+     "es": "Debe operar una lanzadera de Malato para que el OAA mitocondrial acceda al citosol",
+     "en": "A malate shuttle must operate so that mitochondrial OAA can reach the cytosol"
+    },
+    "c": {
+     "es": "La ruta no es termodinámicamente favorable si requiere GTP, por lo que este nucleótido no se consume",
+     "en": "The pathway is not thermodynamically favorable if it requires GTP, so this nucleotide is not consumed"
+    },
+    "d": {
+     "es": "La conversión de fructosa 1,6-bisfosfato a fructosa-6-P debe ser catalizada por una quinasa",
+     "en": "The conversion of fructose 1,6-bisphosphate to fructose 6-P must be catalyzed by a kinase"
+    },
+    "e": {
+     "es": "El costo energético total es de 6 enlaces de alta energía (4 ATP y 2 GTP) y 2 NADH",
+     "en": "The total energy cost is 6 high-energy bonds (4 ATP and 2 GTP) and 2 NADH"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Diseñar una ruta de gluconeogénesis a partir de piruvato: PC consume ATP, necesita la Lanzadera de malato y el coste total es 4 ATP, 2 GTP y 2 NADH.",
+    "en": "Designing a gluconeogenic pathway from pyruvate: PC consumes ATP, the malate shuttle is required, and the total cost is 4 ATP, 2 GTP and 2 NADH."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.2.13",
+   "num": "2.2.13",
+   "tema": 2,
+   "seccion": "2.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Un eritrocito humano metaboliza 5 moléculas de glucosa en condiciones anaeróbicas (fermentación láctica). Aplicando el balance neto de la ruta, ¿Cuántos productos de alta energía y producto final se generan en total?",
+    "en": "A human erythrocyte metabolizes 5 glucose molecules under anaerobic conditions (lactic acid fermentation). Applying the net balance of the pathway, how many high-energy products and end products are generated in total?"
+   },
+   "opciones": {
+    "a": {
+     "es": "10 ATP, 10 piruvato",
+     "en": "10 ATP, 10 pyruvate"
+    },
+    "b": {
+     "es": "5 ATP netos, 5 NADH",
+     "en": "5 net ATP, 5 NADH"
+    },
+    "c": {
+     "es": "20 ATP netos, 10 CO<sub>2</sub>",
+     "en": "20 net ATP, 10 CO<sub>2</sub>"
+    },
+    "d": {
+     "es": "10 ATP netos, 10 lactato",
+     "en": "10 net ATP, 10 lactate"
+    },
+    "e": {
+     "es": "5 ATP netos, 10 CO<sub>2</sub>",
+     "en": "5 net ATP, 10 CO<sub>2</sub>"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el balance de la fermentación láctica (2 ATP netos, 2 lactato por 1 glucosa) para 5 moléculas (10 ATP netos, 10 lactato).",
+    "en": "Applying the balance of lactic acid fermentation (2 net ATP, 2 lactate per 1 glucose) to 5 molecules (10 net ATP, 10 lactate)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.3.1",
+   "num": "2.3.1",
+   "tema": 2,
+   "seccion": "2.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué reacción lleva a cabo la lactasa?",
+    "en": "Which reaction does lactase carry out?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Hidrólisis de la lactosa en D-glucosa y D-galactosa",
+     "en": "Hydrolysis of lactose into D-glucose and D-galactose"
+    },
+    "b": {
+     "es": "Hidrólisis de trehalosa en D-glucosa",
+     "en": "Hydrolysis of trehalose into D-glucose"
+    },
+    "c": {
+     "es": "Hidrólisis de la sacarosa en D-glucosa y D-fructosa",
+     "en": "Hydrolysis of sucrose into D-glucose and D-fructose"
+    },
+    "d": {
+     "es": "Hidrólisis de lactosa en D-glucosa y D-fructosa",
+     "en": "Hydrolysis of lactose into D-glucose and D-fructose"
+    },
+    "e": {
+     "es": "Ninguna de las opciones anteriores es correcta",
+     "en": "None of the above options is correct"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Recordar la función de la lactasa: hidrólisis de lactosa en glucosa y galactosa.",
+    "en": "Recalling the function of lactase: hydrolysis of lactose into glucose and galactose."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.3.2",
+   "num": "2.3.2",
+   "tema": 2,
+   "seccion": "2.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál(es) de la(s) siguiente(s) enzima(s) permite la obtención de piruvato?",
+    "en": "Which of the following enzyme(s) allow(s) pyruvate to be obtained?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Piruvato quinasa",
+     "en": "Pyruvate kinase"
+    },
+    "b": {
+     "es": "Lactato deshidrogenasa",
+     "en": "Lactate dehydrogenase"
+    },
+    "c": {
+     "es": "Alanina aminotransferasa",
+     "en": "Alanine aminotransferase"
+    },
+    "d": {
+     "es": "Aspartato aminotransferasa",
+     "en": "Aspartate aminotransferase"
+    },
+    "e": {
+     "es": "Fosfoenolpiruvato carboxiquinasa",
+     "en": "Phosphoenolpyruvate carboxykinase"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Identificar las enzimas que generan piruvato (PK), que lo pueden consumir (LDH) y que lo generan a partir de aminoácidos (alanina aminotransferasa).",
+    "en": "Identifying the enzymes that generate pyruvate (PK), that can consume it (LDH) and that generate it from amino acids (alanine aminotransferase)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.3.3",
+   "num": "2.3.3",
+   "tema": 2,
+   "seccion": "2.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿A qué intermediario glucolítico se incorpora principalmente la fructosa en el hígado, una vez que ha sido fosforilada y escindida?",
+    "en": "Into which glycolytic intermediate is fructose mainly incorporated in the liver, once it has been phosphorylated and cleaved?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucosa-6-P",
+     "en": "Glucose 6-P"
+    },
+    "b": {
+     "es": "Piruvato",
+     "en": "Pyruvate"
+    },
+    "c": {
+     "es": "Fructosa-6-P",
+     "en": "Fructose 6-P"
+    },
+    "d": {
+     "es": "Gliceraldehído-3-P",
+     "en": "Glyceraldehyde 3-P"
+    },
+    "e": {
+     "es": "Acetil-CoA",
+     "en": "Acetyl-CoA"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar que la fructosa, tras la acción de la aldolasa B en el hígado, se incorpora como gliceraldehído-3P.",
+    "en": "Recalling that fructose, after the action of aldolase B in the liver, enters as glyceraldehyde 3-P."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.3.4",
+   "num": "2.3.4",
+   "tema": 2,
+   "seccion": "2.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En la galactosemia clásica (déficit de galactosa-1-fosfato uridiltransferasa) , la galactosa no puede metabolizarse. ¿Cuál(es) es/son la(s) consecuencia(s) metabólica(s) y clínica(s) directa(s) de esta deficiencia?",
+    "en": "In classic galactosemia (galactose-1-phosphate uridylyltransferase deficiency), galactose cannot be metabolized. What is/are the direct metabolic and clinical consequence(s) of this deficiency?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se acumula galactosa-1-fosfato en el hígado, lo que interfiere con el metabolismo de glucosa y causa toxicidad",
+     "en": "Galactose 1-phosphate accumulates in the liver, which interferes with glucose metabolism and causes toxicity"
+    },
+    "b": {
+     "es": "La galactosa se desvía a la ruta del poliol, formando galactitol, que se acumula en el cristalino y causa cataratas",
+     "en": "Galactose is diverted to the polyol pathway, forming galactitol, which accumulates in the lens and causes cataracts"
+    },
+    "c": {
+     "es": "La UDP-glucosa se acumula y activa la glucógeno sintasa",
+     "en": "UDP-glucose accumulates and activates glycogen synthase"
+    },
+    "d": {
+     "es": "La galactosa se convierte directamente en glucosa-6-P",
+     "en": "Galactose is converted directly into glucose 6-P"
+    },
+    "e": {
+     "es": "La enzima galactoquinasa se activa por retroalimentación",
+     "en": "The enzyme galactokinase is activated by feedback"
+    }
+   },
+   "correctas": [
+    "a",
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar las consecuencias de la galactosemia: acumulación de galactosa-1P (tóxica) y desvío a galactitol (cataratas).",
+    "en": "Applying the consequences of galactosemia: accumulation of galactose 1-P (toxic) and diversion to galactitol (cataracts)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.1",
+   "num": "2.4.1",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La gluconeogénesis es…",
+    "en": "Gluconeogenesis is…"
+   },
+   "opciones": {
+    "a": {
+     "es": "una ruta catabólica, lo cual implica consumo de energía",
+     "en": "a catabolic pathway, which implies energy consumption"
+    },
+    "b": {
+     "es": "una ruta anabólica, lo cual implica consumo de energía",
+     "en": "an anabolic pathway, which implies energy consumption"
+    },
+    "c": {
+     "es": "una ruta catabólica, implica generación de energía",
+     "en": "a catabolic pathway; it implies energy generation"
+    },
+    "d": {
+     "es": "una ruta anabólica, implica generación de energía",
+     "en": "an anabolic pathway; it implies energy generation"
+    },
+    "e": {
+     "es": "una ruta que ocurre principalmente en hígado y riñón",
+     "en": "a pathway that occurs mainly in the liver and kidney"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender la gluconeogénesis como ruta anabólica (consume energía) que ocurre principalmente en hígado y riñón.",
+    "en": "Understanding gluconeogenesis as an anabolic pathway (it consumes energy) that occurs mainly in the liver and kidney."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.2",
+   "num": "2.4.2",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué reacciones comparten la glucolisis y la gluconeogénesis?",
+    "en": "Which reactions do glycolysis and gluconeogenesis share?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Todas, excepto 3",
+     "en": "All except 3"
+    },
+    "b": {
+     "es": "Las siete primeras; las otras tres son distintas",
+     "en": "The first seven; the other three are different"
+    },
+    "c": {
+     "es": "Todas las reversibles",
+     "en": "All the reversible ones"
+    },
+    "d": {
+     "es": "Todas las irreversibles",
+     "en": "All the irreversible ones"
+    },
+    "e": {
+     "es": "Todas, excepto las irreversibles",
+     "en": "All except the irreversible ones"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender que la gluconeogénesis y glucolisis comparten las 7 reacciones reversibles, y tienen 3 (o 4 en total) distintas.",
+    "en": "Understanding that gluconeogenesis and glycolysis share the 7 reversible reactions and have 3 (or 4 in total) different ones."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.3",
+   "num": "2.4.3",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Glucólisis y gluconeogénesis son rutas opuestas que deben estar recíprocamente reguladas. ¿Cuál(es) es/son la(s) relación(es) estructural(es) o funcional(es) correcta(s)?",
+    "en": "Glycolysis and gluconeogenesis are opposing pathways that must be reciprocally regulated. What is/are the correct structural or functional relationship(s)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Comparten un total de cuatro reacciones y tienen seis distintas",
+     "en": "They share a total of four reactions and have six different ones"
+    },
+    "b": {
+     "es": "Ambas comparten siete reacciones reversibles y utilizan tres reacciones distintas (rodeos) para superar los pasos irreversibles",
+     "en": "Both share seven reversible reactions and use three different reactions (bypasses) to overcome the irreversible steps"
+    },
+    "c": {
+     "es": "Son rutas anfibólicas, ya que generan y consumen intermediarios para otras vías anabólicas",
+     "en": "They are amphibolic pathways, since they generate and consume intermediates for other anabolic pathways"
+    },
+    "d": {
+     "es": "Ambas ocurren simultáneamente en el mismo grado en el hígado",
+     "en": "Both occur simultaneously and to the same extent in the liver"
+    },
+    "e": {
+     "es": "Tienen funciones opuestas: catabolismo (glucólisis) vs anabolismo (gluconeogénesis)",
+     "en": "They have opposite functions: catabolism (glycolysis) vs. anabolism (gluconeogenesis)"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender las similitudes (7 reacciones reversibles) y diferencias (3 rodeos, funciones opuestas) de ambas rutas.",
+    "en": "Understanding the similarities (7 reversible reactions) and differences (3 bypasses, opposite functions) between the two pathways."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.4",
+   "num": "2.4.4",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "La regulación recíproca de glucólisis y gluconeogénesis es fundamental para evitar el ciclo fútil. ¿Cuál(es) de los siguientes enunciados es/son correcto(s) sobre su regulación?",
+    "en": "Reciprocal regulation of glycolysis and gluconeogenesis is essential to avoid a futile cycle. Which of the following statements is/are correct about their regulation?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La regulación alostérica se centra en las enzimas que catalizan reacciones fuertemente irreversibles",
+     "en": "Allosteric regulation focuses on the enzymes that catalyze strongly irreversible reactions"
+    },
+    "b": {
+     "es": "Las enzimas reguladoras de ambos sentidos no pueden ser afectadas por el mismo efector alostérico",
+     "en": "The regulatory enzymes of the two directions cannot be affected by the same allosteric effector"
+    },
+    "c": {
+     "es": "Los pasos reguladores están separados para permitir la activación de una ruta y la inhibición de la opuesta por el mismo metabolito",
+     "en": "The regulatory steps are separate, allowing one pathway to be activated and the opposite one inhibited by the same metabolite"
+    },
+    "d": {
+     "es": "Todas las enzimas de ambas rutas están reguladas alostéricamente",
+     "en": "All the enzymes of both pathways are allosterically regulated"
+    },
+    "e": {
+     "es": "El ATP (alta energía) generalmente inhibe la glucólisis y activa la gluconeogénesis",
+     "en": "ATP (high energy) generally inhibits glycolysis and activates gluconeogenesis"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar los principios de regulación recíproca: regulación en pasos irreversibles, separación de pasos para activación/inhibición opuesta, y el ATP inhibe glucolisis y activa gluconeogénesis.",
+    "en": "Applying the principles of reciprocal regulation: regulation at the irreversible steps, separate steps for opposite activation/inhibition, and ATP inhibiting glycolysis while activating gluconeogenesis."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.5",
+   "num": "2.4.5",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "En el primer rodeo de la gluconeogénesis, el piruvato se convierte en oxalacetato y luego en fosfoenolpiruvato (PEP). ¿Cuál(es) de los siguientes compuestos son necesarios en este primer paso?",
+    "en": "In the first bypass of gluconeogenesis, pyruvate is converted into oxaloacetate and then into phosphoenolpyruvate (PEP). Which of the following compounds are required in this first step?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Piruvato",
+     "en": "Pyruvate"
+    },
+    "b": {
+     "es": "Lactato",
+     "en": "Lactate"
+    },
+    "c": {
+     "es": "Bicarbonato (fuente de CO<sub>2</sub>)",
+     "en": "Bicarbonate (source of CO<sub>2</sub>)"
+    },
+    "d": {
+     "es": "Glucagón",
+     "en": "Glucagon"
+    },
+    "e": {
+     "es": "ATP (ya que el paso es altamente endergónico).",
+     "en": "ATP (since the step is highly endergonic)."
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Recordar los requisitos del primer rodeo: piruvato, bicarbonato y ATP (consumo).",
+    "en": "Recalling the requirements of the first bypass: pyruvate, bicarbonate and ATP (consumed)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.6",
+   "num": "2.4.6",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Respecto a la piruvato carboxilasa…",
+    "en": "Regarding pyruvate carboxylase…"
+   },
+   "opciones": {
+    "a": {
+     "es": "es la única enzima de la gluconeogénesis exclusivamente mitocondrial",
+     "en": "it is the only exclusively mitochondrial enzyme of gluconeogenesis"
+    },
+    "b": {
+     "es": "la reacción que cataliza se considera reacción anaplerótica",
+     "en": "the reaction it catalyzes is considered an anaplerotic reaction"
+    },
+    "c": {
+     "es": "genera oxalacetato, que atraviesa fácilmente la membrana mitocondrial interna",
+     "en": "it generates oxaloacetate, which readily crosses the inner mitochondrial membrane"
+    },
+    "d": {
+     "es": "genera ATP",
+     "en": "it generates ATP"
+    },
+    "e": {
+     "es": "genera un intermediario de 4 carbonos",
+     "en": "it generates a 4-carbon intermediate"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender las características de la piruvato carboxilasa: mitocondrial, reacción anaplerótica y genera un intermediario de 4 carbonos (oxalacetato).",
+    "en": "Understanding the features of pyruvate carboxylase: mitochondrial, anaplerotic reaction, and it generates a 4-carbon intermediate (oxaloacetate)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.7",
+   "num": "2.4.7",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuáles de los siguientes compuestos pueden actuar como precursores para la síntesis de glucosa?",
+    "en": "Which of the following compounds can act as precursors for glucose synthesis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Lactato",
+     "en": "Lactate"
+    },
+    "b": {
+     "es": "Glicerol",
+     "en": "Glycerol"
+    },
+    "c": {
+     "es": "Acetil CoA",
+     "en": "Acetyl-CoA"
+    },
+    "d": {
+     "es": "Alanina",
+     "en": "Alanine"
+    },
+    "e": {
+     "es": "Ácidos grasos",
+     "en": "Fatty acids"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar los precursores glucogénicos: lactato, glicerol y aminoácidos (p. ej. alanina). El acetil-CoA y los ácidos grasos no son precursores netos.",
+    "en": "Recalling the glucogenic precursors: lactate, glycerol and amino acids (e.g., alanine). Acetyl-CoA and fatty acids are not net precursors."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.8",
+   "num": "2.4.8",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La piruvato carboxilasa (PC) es clave en la gluconeogénesis. ¿Cuál(es) de los siguientes enunciados describe(n) su función o regulación?",
+    "en": "Pyruvate carboxylase (PC) is key in gluconeogenesis. Which of the following statements describe(s) its function or regulation?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Su función es activar el piruvato uniéndole un grupo carboxilo (bicarbonato)",
+     "en": "Its function is to activate pyruvate by attaching a carboxyl group (bicarbonate) to it"
+    },
+    "b": {
+     "es": "Es una enzima mitocondrial que requiere biotina como grupo prostético",
+     "en": "It is a mitochondrial enzyme that requires biotin as a prosthetic group"
+    },
+    "c": {
+     "es": "Es inhibida por altas concentraciones de acetil-CoA",
+     "en": "It is inhibited by high concentrations of acetyl-CoA"
+    },
+    "d": {
+     "es": "Su producto directo es el fosfoenolpiruvato (PEP)",
+     "en": "Its direct product is phosphoenolpyruvate (PEP)"
+    },
+    "e": {
+     "es": "Convierte oxalacetato en piruvato",
+     "en": "It converts oxaloacetate into pyruvate"
+    }
+   },
+   "correctas": [
+    "a",
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender la función de la piruvato carboxilasa (PC): enzima mitocondrial que requiere biotina y activa el piruvato por carboxilación.",
+    "en": "Understanding the function of pyruvate carboxylase (PC): a mitochondrial enzyme that requires biotin and activates pyruvate by carboxylation."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.9",
+   "num": "2.4.9",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Ciclos fútiles (cycling) y cascadas de transducción son mecanismos de control metabólico. Analice su función y consecuencias e indique cuál(es) es/son correcta(s):",
+    "en": "Futile (substrate) cycles and transduction cascades are mechanisms of metabolic control. Analyze their function and consequences and indicate which statement(s) is/are correct:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ambos mecanismos permiten la amplificación de señales metabólicas o hormonales",
+     "en": "Both mechanisms allow amplification of metabolic or hormonal signals"
+    },
+    "b": {
+     "es": "Los ciclos fútiles consumen ATP y generan calor (termogénesis)",
+     "en": "Futile cycles consume ATP and generate heat (thermogenesis)"
+    },
+    "c": {
+     "es": "La transducción de señales (p. ej., glucagón) activa la fosforilación de enzimas que regulan los ciclos fútiles",
+     "en": "Signal transduction (e.g., glucagon) triggers phosphorylation of enzymes that regulate futile cycles"
+    },
+    "d": {
+     "es": "Los ciclos fútiles se definen como un flujo neto igual a cero",
+     "en": "Futile cycles are defined as having a net flux of zero"
+    },
+    "e": {
+     "es": "Solo la transducción de señales tiene lugar en el hígado",
+     "en": "Only signal transduction takes place in the liver"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Analizar el rol de ciclos fútiles (termogénesis, consumo de ATP) y cascadas de transducción (amplificación, regulación de ciclos) en el control metabólico.",
+    "en": "Analyzing the role of futile cycles (thermogenesis, ATP consumption) and transduction cascades (amplification, regulation of cycles) in metabolic control."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.10",
+   "num": "2.4.10",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cómo vuelve el oxalacetato (presente en la mitocondria) al citoplasma para continuar la gluconeogénesis?",
+    "en": "How does oxaloacetate (present in the mitochondrion) return to the cytoplasm to continue gluconeogenesis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se transforma en malato, que pasa al citoplasma por un transportador específico, y vuelve a dar oxalacetato en el citosol",
+     "en": "It is converted into malate, which crosses into the cytoplasm via a specific transporter and is converted back into oxaloacetate in the cytosol"
+    },
+    "b": {
+     "es": "Se transforma en malato y queda unido a la membrana",
+     "en": "It is converted into malate and remains bound to the membrane"
+    },
+    "c": {
+     "es": "A través de un transportador específico de oxalacetato presente en la membrana mitocondrial",
+     "en": "Through a specific oxaloacetate transporter in the mitochondrial membrane"
+    },
+    "d": {
+     "es": "Por difusión, atravesando la membrana",
+     "en": "By diffusion across the membrane"
+    },
+    "e": {
+     "es": "El oxalacetato no necesita pasar al citoplasma, por lo que permanece en la mitocondria",
+     "en": "Oxaloacetate does not need to reach the cytoplasm, so it remains in the mitochondrion"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Comprender el transporte de oxalacetato mitocondrial: se transforma en malato (lanzadera) que pasa al citosol y revierte a oxalacetato.",
+    "en": "Understanding mitochondrial oxaloacetate transport: it is converted into malate (shuttle), which crosses into the cytosol and is converted back into oxaloacetate."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.11",
+   "num": "2.4.11",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál de las siguientes enzimas cataliza la reacción que convierte directamente fructosa 1,6-bisfosfato en fructosa 6-fosfato en la gluconeogénesis?",
+    "en": "Which of the following enzymes catalyzes the reaction that directly converts fructose 1,6-bisphosphate into fructose 6-phosphate in gluconeogenesis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Hexoquinasa",
+     "en": "Hexokinase"
+    },
+    "b": {
+     "es": "Fosfofructoquinasa-1",
+     "en": "Phosphofructokinase-1"
+    },
+    "c": {
+     "es": "Fosfoenolpiruvato carboxiquinasa",
+     "en": "Phosphoenolpyruvate carboxykinase"
+    },
+    "d": {
+     "es": "Fructosa 1,6-bisfosfatasa-1",
+     "en": "Fructose 1,6-bisphosphatase-1"
+    },
+    "e": {
+     "es": "Glucosa 6-fosfatasa",
+     "en": "Glucose 6-phosphatase"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar la enzima que cataliza el paso fructosa 1,6-bisfosfato→fructosa 6P en gluconeogénesis: fructosa 1,6-bisfosfatasa-1 (FBPasa-1).",
+    "en": "Recalling the enzyme that catalyzes the fructose 1,6-bisphosphate → fructose 6-P step in gluconeogenesis: fructose 1,6-bisphosphatase-1 (FBPase-1)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.12",
+   "num": "2.4.12",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Por qué la glucosa-6-fosfatasa se encuentra principalmente en el retículo endoplasmático del hígado y riñón, pero no en el músculo?",
+    "en": "Why is glucose 6-phosphatase found mainly in the endoplasmic reticulum of the liver and kidney, but not in muscle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Porque el músculo no puede realizar la glucolisis",
+     "en": "Because muscle cannot carry out glycolysis"
+    },
+    "b": {
+     "es": "Porque el hígado/riñón deben liberar glucosa a la sangre",
+     "en": "Because the liver/kidney must release glucose into the blood"
+    },
+    "c": {
+     "es": "Porque la glucolisis ocurre en el citosol",
+     "en": "Because glycolysis occurs in the cytosol"
+    },
+    "d": {
+     "es": "Porque es una enzima que solo se expresa en el corazón",
+     "en": "Because it is an enzyme expressed only in the heart"
+    },
+    "e": {
+     "es": "Porque el músculo carece de glucosa-6-fosfato",
+     "en": "Because muscle lacks glucose 6-phosphate"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender la razón de la localización de la glucosa-6-fosfatasa (RE del hígado/riñón): su función es liberar glucosa a la sangre.",
+    "en": "Understanding the reason for the location of glucose 6-phosphatase (ER of liver/kidney): its function is to release glucose into the blood."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.13",
+   "num": "2.4.13",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Cuál es el costo energético total (en equivalentes de alta energía) para sintetizar una molécula de glucosa a partir de dos moléculas de piruvato en la gluconeogénesis?",
+    "en": "What is the total energy cost (in high-energy equivalents) of synthesizing one glucose molecule from two pyruvate molecules in gluconeogenesis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "2 ATP y 2 NADH",
+     "en": "2 ATP and 2 NADH"
+    },
+    "b": {
+     "es": "4 ATP y 2 GTP",
+     "en": "4 ATP and 2 GTP"
+    },
+    "c": {
+     "es": "4 ATP, 2 GTP y 2 NADH",
+     "en": "4 ATP, 2 GTP and 2 NADH"
+    },
+    "d": {
+     "es": "6 ATP y 4 GTP",
+     "en": "6 ATP and 4 GTP"
+    },
+    "e": {
+     "es": "6 ATP y 2 NADPH",
+     "en": "6 ATP and 2 NADPH"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el costo energético de la gluconeogénesis a partir de 2 piruvato: 4 ATP, 2 GTP y 2 NADH (6 enlaces de alta energía).",
+    "en": "Applying the energy cost of gluconeogenesis from 2 pyruvate: 4 ATP, 2 GTP and 2 NADH (6 high-energy bonds)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.14",
+   "num": "2.4.14",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analice el rol del F2,6BP como regulador alostérico de las vías opuestas (glucólisis vs gluconeogénesis) e indique cuál(es) es/son la(s) predicción(es) correcta(s):",
+    "en": "Analyze the role of F2,6BP as an allosteric regulator of the opposing pathways (glycolysis vs. gluconeogenesis) and indicate which prediction(s) is/are correct:"
+   },
+   "opciones": {
+    "a": {
+     "es": "El F2,6BP es un activador clave de la PFK-1 (glucólisis)",
+     "en": "F2,6BP is a key activator of PFK-1 (glycolysis)"
+    },
+    "b": {
+     "es": "El F2,6BP es un inhibidor potente de la fructosa 1,6-bisfosfatasa-1 (gluconeogénesis)",
+     "en": "F2,6BP is a potent inhibitor of fructose 1,6-bisphosphatase-1 (gluconeogenesis)"
+    },
+    "c": {
+     "es": "La regulación por el F2,6BP favorece la activación simultánea de ambas rutas",
+     "en": "Regulation by F2,6BP favors the simultaneous activation of both pathways"
+    },
+    "d": {
+     "es": "El F2,6BP media la respuesta de glucagón/Insulina sobre estas rutas",
+     "en": "F2,6BP mediates the glucagon/insulin response on these pathways"
+    },
+    "e": {
+     "es": "Ambas enzimas son inhibidas por altas concentraciones de ATP",
+     "en": "Both enzymes are inhibited by high ATP concentrations"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar el rol del F2,6BP: activador de PFK-1 (glucolisis) e inhibidor de FBPasa-1 (gluconeogénesis).",
+    "en": "Analyzing the role of F2,6BP: activator of PFK-1 (glycolysis) and inhibitor of FBPase-1 (gluconeogenesis)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.15",
+   "num": "2.4.15",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe la ventaja evolutiva de tener dos enzimas diferentes y reguladas para catalizar los pasos irreversibles de rutas opuestas e indique cuál(es) de las siguientes opciones es/son correcta(s):",
+    "en": "Evaluate the evolutionary advantage of having two different, regulated enzymes catalyze the irreversible steps of opposing pathways, and indicate which of the following options is/are correct:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se asegura que ambas rutas compartan los mismos intermediarios reversibles",
+     "en": "It ensures that both pathways share the same reversible intermediates"
+    },
+    "b": {
+     "es": "Se garantiza que el gasto energético de la gluconeogénesis sea menor que la ganancia de la glucólisis",
+     "en": "It ensures that the energy cost of gluconeogenesis is lower than the energy gain of glycolysis"
+    },
+    "c": {
+     "es": "Reduce la cantidad de enzimas totales necesarias",
+     "en": "It reduces the total number of enzymes required"
+    },
+    "d": {
+     "es": "Permite regular el flujo neto de metabolito de manera eficiente y reciproca con un mínimo de cambio en la concentración de efectores",
+     "en": "It allows the net flux of metabolites to be regulated efficiently and reciprocally with minimal change in effector concentrations"
+    },
+    "e": {
+     "es": "Previene el ciclo fútil (gasto de ATP sin flujo neto productivo), asegurando que solo una ruta esté activa en un momento dado",
+     "en": "It prevents futile cycling (ATP expenditure without productive net flux), ensuring that only one pathway is active at any given time"
+    }
+   },
+   "correctas": [
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Evaluar la ventaja evolutiva de los Rodeos (enzimas diferentes) en los pasos irreversibles: Regulación recíproca eficiente y prevención del ciclo fútil.",
+    "en": "Evaluating the evolutionary advantage of bypasses (different enzymes) at the irreversible steps: efficient reciprocal regulation and prevention of futile cycling."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.16",
+   "num": "2.4.16",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analice el efecto de la disminución de F2,6BP en la regulación recíproca de glucólisis y gluconeogénesis en el hígado e indique la(s) respuesta(s) correcta(s):",
+    "en": "Analyze the effect of a decrease in F2,6BP on the reciprocal regulation of glycolysis and gluconeogenesis in the liver and indicate the correct answer(s):"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumenta el flujo a través de la glucólisis",
+     "en": "Flux through glycolysis increases"
+    },
+    "b": {
+     "es": "Activa la PFK-1",
+     "en": "PFK-1 is activated"
+    },
+    "c": {
+     "es": "El efecto neto es inhibir la glucólisis (vía PFK-1) y activar la gluconeogénesis (vía FBPasa-1)",
+     "en": "The net effect is to inhibit glycolysis (via PFK-1) and activate gluconeogenesis (via FBPase-1)"
+    },
+    "d": {
+     "es": "Se favorece la producción y salida de glucosa a la sangre para ser usada por otros tejidos (p. ej. cerebro)",
+     "en": "Production and release of glucose into the blood, for use by other tissues (e.g., the brain), are favored"
+    },
+    "e": {
+     "es": "Aumenta la conversión de fructosa-6P a fructosa-1,6BP",
+     "en": "Conversion of fructose 6-P into fructose 1,6-BP increases"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar el efecto de la ↓F2,6BP: ↓PFK-1 y ↑FBPasa-1, lo que Inhibe la glucólisis y Activa la gluconeogénesis, favoreciendo la salida de glucosa (hígado).",
+    "en": "Analyzing the effect of ↓F2,6BP: ↓PFK-1 and ↑FBPase-1, which inhibits glycolysis and activates gluconeogenesis, favoring glucose output (liver)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.4.17",
+   "num": "2.4.17",
+   "tema": 2,
+   "seccion": "2.4",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe el escenario metabólico y hormonal ideal que maximice la gluconeogénesis (producción de glucosa a partir de sustratos no glucídicos) y minimice la glucólisis en el hígado:",
+    "en": "Design the ideal metabolic and hormonal scenario that maximizes gluconeogenesis (glucose production from non-carbohydrate substrates) and minimizes glycolysis in the liver:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Alta concentración de insulina y alta concentración de fructosa-2,6-bisfosfato (F2,6BP)",
+     "en": "High insulin concentration and high fructose 2,6-bisphosphate (F2,6BP) concentration"
+    },
+    "b": {
+     "es": "Baja concentración de glucagón y alta concentración de AMP",
+     "en": "Low glucagon concentration and high AMP concentration"
+    },
+    "c": {
+     "es": "Ayuno (glucagón alto), baja acetil-CoA, y baja ATP",
+     "en": "Fasting (high glucagon), low acetyl-CoA and low ATP"
+    },
+    "d": {
+     "es": "Ayuno/estrés (glucagón/adrenalina altos), baja fructosa-2,6-bisfosfato (F2,6BP), y acetil-CoA alta (necesario para activar la piruvato carboxilasa)",
+     "en": "Fasting/stress (high glucagon/epinephrine), low fructose 2,6-bisphosphate (F2,6BP) and high acetyl-CoA (needed to activate pyruvate carboxylase)"
+    },
+    "e": {
+     "es": "Alta concentración de insulina y disponibilidad de aminoácidos",
+     "en": "High insulin concentration and availability of amino acids"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Sintetizar un escenario (condiciones metabólicas y hormonales) que optimice dos rutas opuestas (gluconeogénesis ↑ y glucolisis ↓), integrando conocimiento sobre la regulación hormonal (glucagón/adrenalina) y alostérica (F2,6BP, acetil-CoA).",
+    "en": "Synthesizing a scenario (metabolic and hormonal conditions) that optimizes two opposing pathways (gluconeogenesis ↑ and glycolysis ↓), integrating knowledge of hormonal (glucagon/epinephrine) and allosteric (F2,6BP, acetyl-CoA) regulation."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.5.1",
+   "num": "2.5.1",
+   "tema": 2,
+   "seccion": "2.5",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cómo se producen las ramificaciones del glucógeno?",
+    "en": "How are glycogen branches formed?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se corta un fragmento lineal 1,4 de un extremo y se sitúa en otra posición interna mediante enlace 1,6",
+     "en": "A linear 1,4 fragment is cut from one end and placed at another, internal position through a 1,6 bond"
+    },
+    "b": {
+     "es": "La glucógeno sintasa introduce al azar glucosas en posición 1,4 y 1,6",
+     "en": "Glycogen synthase randomly inserts glucose units at 1,4 and 1,6 positions"
+    },
+    "c": {
+     "es": "Se forman ramificaciones al menos cada 4 moléculas de glucosa lineales, normalmente cada 10",
+     "en": "Branches form at least every 4 linear glucose units, usually every 10"
+    },
+    "d": {
+     "es": "Las galactosas se colocan en posiciones centrales",
+     "en": "Galactose units are placed in central positions"
+    },
+    "e": {
+     "es": "Mediante la acción de la enzima ramificadora",
+     "en": "Through the action of the branching enzyme"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Recordar la enzima (e) y el mecanismo (a) que lleva a cabo la formación de las ramificaciones (α1→6) del glucógeno. (c) es una propiedad estructural.",
+    "en": "Recalling the enzyme (e) and the mechanism (a) responsible for forming glycogen branches (α1→6). (c) is a structural property."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.5.2",
+   "num": "2.5.2",
+   "tema": 2,
+   "seccion": "2.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Respecto a los carbohidratos de reserva…",
+    "en": "Regarding storage carbohydrates…"
+   },
+   "opciones": {
+    "a": {
+     "es": "Sólo pueden encontrarse en las plantas",
+     "en": "They are found only in plants"
+    },
+    "b": {
+     "es": "Están formados por monómeros de glucosa",
+     "en": "They are made of glucose monomers"
+    },
+    "c": {
+     "es": "Presentan la glucosa en forma alfa, excepto la celulosa",
+     "en": "They contain glucose in the alpha form, except for cellulose"
+    },
+    "d": {
+     "es": "La amilopectina y el glucógeno tienen ramificaciones",
+     "en": "Amylopectin and glycogen are branched"
+    },
+    "e": {
+     "es": "La amilosa y el glucógeno tienen ramificaciones",
+     "en": "Amylose and glycogen are branched"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Entender y distinguir las propiedades químicas y estructurales clave de los carbohidratos de reserva (monómeros, forma anomérica y presencia de ramificaciones en amilopectina/glucógeno).",
+    "en": "Understanding and distinguishing the key chemical and structural properties of storage carbohydrates (monomers, anomeric form and presence of branches in amylopectin/glycogen)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.5.3",
+   "num": "2.5.3",
+   "tema": 2,
+   "seccion": "2.5",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuáles son los principales carbohidratos de reserva en los diferentes organismos?",
+    "en": "What are the main storage carbohydrates in different organisms?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El almidón en animales",
+     "en": "Starch in animals"
+    },
+    "b": {
+     "es": "El almidón y la sacarosa en plantas",
+     "en": "Starch and sucrose in plants"
+    },
+    "c": {
+     "es": "El glucógeno en animales",
+     "en": "Glycogen in animals"
+    },
+    "d": {
+     "es": "La glucosa",
+     "en": "Glucose"
+    },
+    "e": {
+     "es": "La celulosa",
+     "en": "Cellulose"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar los principales polisacáridos de reserva en animales (glucógeno) y plantas (almidón).",
+    "en": "Recalling the main storage polysaccharides in animals (glycogen) and plants (starch)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.5.4",
+   "num": "2.5.4",
+   "tema": 2,
+   "seccion": "2.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La glucogenogénesis (síntesis de glucógeno) es una vía anabólica regulada. ¿Cuál(es) de los siguientes enunciados es/son correcto(s)?",
+    "en": "Glycogenesis (glycogen synthesis) is a regulated anabolic pathway. Which of the following statements is/are correct?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Su producto final es el glucógeno, una molécula de almacenamiento altamente ramificada",
+     "en": "Its end product is glycogen, a highly branched storage molecule"
+    },
+    "b": {
+     "es": "Ocurre principalmente en el riñón y el páncreas",
+     "en": "It occurs mainly in the kidney and pancreas"
+    },
+    "c": {
+     "es": "Requiere la activación de la glucosa en forma de UDP-glucosa para donar residuos de glucosa",
+     "en": "It requires activation of glucose in the form of UDP-glucose to donate glucose residues"
+    },
+    "d": {
+     "es": "Consume ATP neto",
+     "en": "It consumes net ATP"
+    },
+    "e": {
+     "es": "La glucógeno sintasa es la enzima limitante de la ruta",
+     "en": "Glycogen synthase is the rate-limiting enzyme of the pathway"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender los aspectos clave de la ruta de la glucogenogénesis: producto final (a) y forma activada del sustrato (c).",
+    "en": "Understanding the key aspects of glycogenesis: end product (a) and activated form of the substrate (c)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.5.5",
+   "num": "2.5.5",
+   "tema": 2,
+   "seccion": "2.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La glucogenogénesis es activada por insulina después de una comida. ¿Cuál(es) de los siguientes enunciados es/son cierto(s) sobre esta ruta?",
+    "en": "Glycogenesis is activated by insulin after a meal. Which of the following statements is/are true about this pathway?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Es una ruta anabólica que almacena glucosa en forma de glucógeno",
+     "en": "It is an anabolic pathway that stores glucose as glycogen"
+    },
+    "b": {
+     "es": "Requiere energía (uridina trifosfato, UTP) para activar los monómeros de glucosa",
+     "en": "It requires energy (uridine triphosphate, UTP) to activate the glucose monomers"
+    },
+    "c": {
+     "es": "Ocurre en la matriz mitocondrial",
+     "en": "It occurs in the mitochondrial matrix"
+    },
+    "d": {
+     "es": "Su principal enzima reguladora es la glucógeno fosforilasa",
+     "en": "Its main regulatory enzyme is glycogen phosphorylase"
+    },
+    "e": {
+     "es": "Degrada el glucógeno en glucosa-6P",
+     "en": "It degrades glycogen into glucose 6-P"
+    }
+   },
+   "correctas": [
+    "a",
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender la naturaleza de la ruta (anabólica y de almacenamiento) (a) y el requerimiento energético con UTP (b) para activar los monómeros.",
+    "en": "Understanding the nature of the pathway (anabolic, storage) (a) and the energy requirement in the form of UTP (b) to activate the monomers."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.5.6",
+   "num": "2.5.6",
+   "tema": 2,
+   "seccion": "2.5",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es el precursor activado que se añade a la cadena de glucógeno por la glucógeno sintasa?",
+    "en": "What is the activated precursor that glycogen synthase adds to the glycogen chain?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucosa-6P",
+     "en": "Glucose 6-P"
+    },
+    "b": {
+     "es": "ATP-glucosa",
+     "en": "ATP-glucose"
+    },
+    "c": {
+     "es": "Glucosa-1-fosfato",
+     "en": "Glucose 1-phosphate"
+    },
+    "d": {
+     "es": "UDP-glucosa",
+     "en": "UDP-glucose"
+    },
+    "e": {
+     "es": "Glucogenina",
+     "en": "Glycogenin"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar el sustrato activado para la glucógeno sintasa (UDP-glucosa).",
+    "en": "Recalling the activated substrate of glycogen synthase (UDP-glucose)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.5.7",
+   "num": "2.5.7",
+   "tema": 2,
+   "seccion": "2.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál es el papel de la proteína glucogenina en la glucogenogénesis?",
+    "en": "What is the role of the protein glycogenin in glycogenesis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Es el principal regulador alostérico de la glucógeno sintasa",
+     "en": "It is the main allosteric regulator of glycogen synthase"
+    },
+    "b": {
+     "es": "Actúa como una molécula cebadora (primer) y cataliza la adición de las primeras unidades de glucosa",
+     "en": "It acts as a primer molecule and catalyzes the addition of the first glucose units"
+    },
+    "c": {
+     "es": "Es la enzima que introduce las ramificaciones",
+     "en": "It is the enzyme that introduces the branches"
+    },
+    "d": {
+     "es": "Convierte la glucosa-6P en glucosa-1P",
+     "en": "It converts glucose 6-P into glucose 1-P"
+    },
+    "e": {
+     "es": "Es un transportador de glucógeno a la membrana",
+     "en": "It is a glycogen transporter to the membrane"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender la función específica de la glucogenina como molécula cebadora (primer) para iniciar la síntesis.",
+    "en": "Understanding the specific function of glycogenin as a primer molecule for initiating synthesis."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.5.8",
+   "num": "2.5.8",
+   "tema": 2,
+   "seccion": "2.5",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un individuo presenta la enfermedad de Andersen (déficit de la enzima ramificadora). ¿Cómo se alteraría la estructura del glucógeno que sintetiza?",
+    "en": "An individual has Andersen disease (branching enzyme deficiency). How would the structure of the glycogen they synthesize be altered?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se forma glucógeno con cadenas más largas y menos puntos de ramificación",
+     "en": "Glycogen with longer chains and fewer branch points is formed"
+    },
+    "b": {
+     "es": "El glucógeno sintetizado es completamente soluble",
+     "en": "The glycogen synthesized is completely soluble"
+    },
+    "c": {
+     "es": "Aumenta el número de extremos no reductores",
+     "en": "The number of non-reducing ends increases"
+    },
+    "d": {
+     "es": "Se produce glucógeno con enlaces 1,6 en lugar de 1,4",
+     "en": "Glycogen is produced with 1,6 bonds instead of 1,4 bonds"
+    },
+    "e": {
+     "es": "No se produce glucógeno en absoluto",
+     "en": "No glycogen is produced at all"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Analizar la consecuencia estructural directa de la pérdida de la enzima ramificadora (enfermedad de Andersen): se forman cadenas lineales más largas con menos ramificaciones.",
+    "en": "Analyzing the direct structural consequence of the loss of the branching enzyme (Andersen disease): longer linear chains with fewer branches are formed."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.6.1",
+   "num": "2.6.1",
+   "tema": 2,
+   "seccion": "2.6",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué beneficio aportan las ramificaciones al glucógeno?",
+    "en": "What benefit do branches provide to glycogen?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Mejoran su capacidad de atravesar la membrana mitocondrial",
+     "en": "They improve its ability to cross the mitochondrial membrane"
+    },
+    "b": {
+     "es": "Permiten la obtención simultánea de muchos monómeros de glucosa",
+     "en": "They allow many glucose monomers to be released simultaneously"
+    },
+    "c": {
+     "es": "Ninguno; el glucógeno no presenta ramificaciones",
+     "en": "None; glycogen is not branched"
+    },
+    "d": {
+     "es": "Aumentan el número de galactosas en el citosol",
+     "en": "They increase the number of galactose units in the cytosol"
+    },
+    "e": {
+     "es": "Todas son ciertas",
+     "en": "All are true"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender la ventaja funcional de la estructura ramificada: la rápida movilización de glucosa al aumentar el número de extremos no reductores disponibles para la glucógeno fosforilasa.",
+    "en": "Understanding the functional advantage of the branched structure: rapid mobilization of glucose by increasing the number of non-reducing ends available to glycogen phosphorylase."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.6.2",
+   "num": "2.6.2",
+   "tema": 2,
+   "seccion": "2.6",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En una situación de reposo, ¿En qué forma y estado esperaríamos encontrar a la glucógeno fosforilasa?",
+    "en": "In a resting situation, in which form and state would we expect to find glycogen phosphorylase?"
+   },
+   "opciones": {
+    "a": {
+     "es": "a y R",
+     "en": "a and R"
+    },
+    "b": {
+     "es": "b y R",
+     "en": "b and R"
+    },
+    "c": {
+     "es": "a y T",
+     "en": "a and T"
+    },
+    "d": {
+     "es": "b y T",
+     "en": "b and T"
+    },
+    "e": {
+     "es": "r y R",
+     "en": "r and R"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de la regulación alostérica y covalente de la glucógeno fosforilasa a un estado fisiológico (reposo): la enzima se encuentra en su forma menos activa (b, desfosforilada) y en el estado T (tensa).",
+    "en": "Applying knowledge of the allosteric and covalent regulation of glycogen phosphorylase to a physiological state (rest): the enzyme is in its less active form (b, dephosphorylated) and in the T (tense) state."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.6.3",
+   "num": "2.6.3",
+   "tema": 2,
+   "seccion": "2.6",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Si la carga energética celular es baja, ¿En qué estado estará la glucógeno fosforilasa?",
+    "en": "If the cellular energy charge is low, in which state will glycogen phosphorylase be?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Forma R, fosforilada",
+     "en": "R form, phosphorylated"
+    },
+    "b": {
+     "es": "Forma T, fosforilada",
+     "en": "T form, phosphorylated"
+    },
+    "c": {
+     "es": "Forma R, desfosforilada",
+     "en": "R form, dephosphorylated"
+    },
+    "d": {
+     "es": "Forma T, desfosforilada",
+     "en": "T form, dephosphorylated"
+    },
+    "e": {
+     "es": "Forma T, activa",
+     "en": "T form, active"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de la regulación de la glucógeno fosforilasa a un estado de baja energía: la necesidad de degradar glucógeno requiere activar la enzima, lo cual se logra con la forma más activa (forma a, fosforilada) y en el estado R (relajada).",
+    "en": "Applying knowledge of glycogen phosphorylase regulation to a low-energy state: the need to degrade glycogen requires activating the enzyme, which is achieved with the most active form (form a, phosphorylated) in the R (relaxed) state."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.6.4",
+   "num": "2.6.4",
+   "tema": 2,
+   "seccion": "2.6",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Si la carga energética celular es alta, ¿En qué estado estará la glucógeno fosforilasa?",
+    "en": "If the cellular energy charge is high, in which state will glycogen phosphorylase be?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Forma R, fosforilada",
+     "en": "R form, phosphorylated"
+    },
+    "b": {
+     "es": "Forma T, fosforilada",
+     "en": "T form, phosphorylated"
+    },
+    "c": {
+     "es": "Forma R, desfosforilada",
+     "en": "R form, dephosphorylated"
+    },
+    "d": {
+     "es": "Forma T, desfosforilada",
+     "en": "T form, dephosphorylated"
+    },
+    "e": {
+     "es": "Forma T, activa",
+     "en": "T form, active"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de la regulación alostérica por alta energía (p. ej. ↑ATP, ↑glucosa-6P) a la glucógeno fosforilasa: se favorece la forma menos activa (b, desfosforilada) y el estado T (tensa).",
+    "en": "Applying knowledge of allosteric regulation by high energy (e.g., ↑ATP, ↑glucose 6-P) to glycogen phosphorylase: the less active form (b, dephosphorylated) and the T (tense) state are favored."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.6.5",
+   "num": "2.6.5",
+   "tema": 2,
+   "seccion": "2.6",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué reacción lleva a cabo la glucógeno fosforilasa?",
+    "en": "Which reaction does glycogen phosphorylase carry out?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Hidrólisis de la lactosa en D-glucosa y D-galactosa",
+     "en": "Hydrolysis of lactose into D-glucose and D-galactose"
+    },
+    "b": {
+     "es": "Síntesis de glucógeno a partir de UDP-glucosa",
+     "en": "Synthesis of glycogen from UDP-glucose"
+    },
+    "c": {
+     "es": "Hidrólisis de la sacarosa en D-glucosa y D-fructosa",
+     "en": "Hydrolysis of sucrose into D-glucose and D-fructose"
+    },
+    "d": {
+     "es": "Fosforolisis de glucógeno a glucosa-1P",
+     "en": "Phosphorolysis of glycogen to glucose 1-P"
+    },
+    "e": {
+     "es": "Hidrólisis de glucógeno a glucosa-6P",
+     "en": "Hydrolysis of glycogen to glucose 6-P"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar la reacción catalizada por la glucógeno fosforilasa (fosforólisis para liberar glucosa-1-P).",
+    "en": "Recalling the reaction catalyzed by glycogen phosphorylase (phosphorolysis releasing glucose 1-P)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.6.6",
+   "num": "2.6.6",
+   "tema": 2,
+   "seccion": "2.6",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Se requiere de la hexoquinasa en algún momento de la glucogenólisis para catabolizar completamente el glucógeno?",
+    "en": "Is hexokinase required at any point in glycogenolysis for glycogen to be completely catabolized?"
+   },
+   "opciones": {
+    "a": {
+     "es": "No, ya que con la glucógeno fosforilasa se obtiene glucosa-1P",
+     "en": "No, because glycogen phosphorylase yields glucose 1-P"
+    },
+    "b": {
+     "es": "No, ya que con la glucógeno fosforilasa se obtiene glucosa-6P",
+     "en": "No, because glycogen phosphorylase yields glucose 6-P"
+    },
+    "c": {
+     "es": "Sí, ya que con la glucógeno fosforilasa se obtiene glucosa",
+     "en": "Yes, because glycogen phosphorylase yields glucose"
+    },
+    "d": {
+     "es": "Sí, ya que con la alfa-1,6-glucosidasa se obtiene glucosa",
+     "en": "Yes, because alpha-1,6-glucosidase yields glucose"
+    },
+    "e": {
+     "es": "Sí, ya que con la alfa-1,4-alfa1,4 glucanotransferasa se obtiene glucosa",
+     "en": "Yes, because alpha-1,4-alpha-1,4 glucanotransferase yields glucose"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender que la enzima desramificadora libera una glucosa libre (no fosforilada) mediante su actividad α−1,6-glucosidasa. Esta glucosa requiere de la hexoquinasa/glucoquinasa para ser fosforilada y entrar en glucolisis.",
+    "en": "Understanding that the debranching enzyme releases one free (non-phosphorylated) glucose through its α-1,6-glucosidase activity. This glucose requires hexokinase/glucokinase to be phosphorylated and enter glycolysis."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.6.7",
+   "num": "2.6.7",
+   "tema": 2,
+   "seccion": "2.6",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué actividad enzimática posee la enzima desramificadora que libera finalmente glucosa libre al citosol?",
+    "en": "Which enzymatic activity of the debranching enzyme ultimately releases free glucose into the cytosol?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucógeno fosforilasa",
+     "en": "Glycogen phosphorylase"
+    },
+    "b": {
+     "es": "Glucógeno sintasa",
+     "en": "Glycogen synthase"
+    },
+    "c": {
+     "es": "Glucógeno transferasa (1,4 alpha 1,4)",
+     "en": "Glycogen transferase (1,4 alpha 1,4)"
+    },
+    "d": {
+     "es": "Fosfoglucomutasa",
+     "en": "Phosphoglucomutase"
+    },
+    "e": {
+     "es": "Alfa-1,6-glucosidasa",
+     "en": "Alpha-1,6-glucosidase"
+    }
+   },
+   "correctas": [
+    "e"
+   ],
+   "justificacion": {
+    "es": "Recordar la actividad enzimática de la enzima desramificadora que libera glucosa libre (α−1,6-glucosidasa).",
+    "en": "Recalling the enzymatic activity of the debranching enzyme that releases free glucose (α-1,6-glucosidase)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.6.8",
+   "num": "2.6.8",
+   "tema": 2,
+   "seccion": "2.6",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Por qué la glucógeno fosforilasa libera glucosa-1-P y no glucosa directamente?",
+    "en": "Why does glycogen phosphorylase release glucose 1-P rather than glucose directly?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La reacción de fosforólisis es energéticamente más favorable y el producto está listo para entrar en glucolisis",
+     "en": "Phosphorolysis is energetically more favorable and the product is ready to enter glycolysis"
+    },
+    "b": {
+     "es": "Para evitar que la glucosa salga de la célula",
+     "en": "To prevent glucose from leaving the cell"
+    },
+    "c": {
+     "es": "Porque la glucosa-1-fosfato es el único producto que puede usar la glucolisis",
+     "en": "Because glucose 1-phosphate is the only product glycolysis can use"
+    },
+    "d": {
+     "es": "Se promueve la necesidad de ATP en el músculo para el primer paso glucolítico",
+     "en": "It increases the need for ATP in muscle for the first glycolytic step"
+    },
+    "e": {
+     "es": "La glucógeno fosforilasa solo actúa sobre los enlaces 1,6",
+     "en": "Glycogen phosphorylase acts only on 1,6 bonds"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Comprender la ventaja energética de la reacción de fosforólisis (ahorro de un ATP para el músculo) y el destino metabólico del producto (listo para la glucolisis).",
+    "en": "Understanding the energetic advantage of phosphorolysis (one ATP saved in muscle) and the metabolic fate of the product (ready for glycolysis)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.6.9",
+   "num": "2.6.9",
+   "tema": 2,
+   "seccion": "2.6",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En una célula muscular durante el ejercicio extenuante, ¿qué efecto tiene la alta concentración de AMP sobre la glucógeno fosforilasa?",
+    "en": "In a muscle cell during strenuous exercise, what effect does a high AMP concentration have on glycogen phosphorylase?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Actúa como activador alostérico de la forma no fosforilada (b) de la enzima",
+     "en": "It acts as an allosteric activator of the non-phosphorylated form (b) of the enzyme"
+    },
+    "b": {
+     "es": "Actúa como inhibidor alostérico de la enzima en la forma a",
+     "en": "It acts as an allosteric inhibitor of the enzyme in form a"
+    },
+    "c": {
+     "es": "Induce la desfosforilación de la enzima",
+     "en": "It induces dephosphorylation of the enzyme"
+    },
+    "d": {
+     "es": "Detiene la glucogenólisis",
+     "en": "It stops glycogenolysis"
+    },
+    "e": {
+     "es": "No tiene ningún efecto, solo las hormonas la regulan",
+     "en": "It has no effect; only hormones regulate it"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento del efecto regulatorio del AMP (indicador de baja energía) en el músculo: activa alostéricamente la forma menos activa (b) de la glucógeno fosforilasa, promoviendo la glucogenólisis.",
+    "en": "Applying knowledge of the regulatory effect of AMP (an indicator of low energy) in muscle: it allosterically activates the less active form (b) of glycogen phosphorylase, promoting glycogenolysis."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.6.10",
+   "num": "2.6.10",
+   "tema": 2,
+   "seccion": "2.6",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe el papel de las siguientes estructuras y enzimas en el metabolismo del glucógeno y seleccione la(s) afirmación(es) verdadera(s):",
+    "en": "Evaluate the role of the following structures and enzymes in glycogen metabolism and select the true statement(s):"
+   },
+   "opciones": {
+    "a": {
+     "es": "La glucógeno fosforilasa libera glucosa libre al citosol mediante una hidrólisis",
+     "en": "Glycogen phosphorylase releases free glucose into the cytosol by hydrolysis"
+    },
+    "b": {
+     "es": "La UDP-glucosa es el precursor activado necesario para que la glucógeno sintasa extienda la cadena",
+     "en": "UDP-glucose is the activated precursor that glycogen synthase needs to extend the chain"
+    },
+    "c": {
+     "es": "La glucogenina actúa como un cebador (primer) al iniciar la síntesis y formar el centro de la partícula",
+     "en": "Glycogenin acts as a primer, initiating synthesis and forming the core of the particle"
+    },
+    "d": {
+     "es": "La enzima desramificadora es la principal responsable de la producción de glucosa-1-fosfato (G1P)",
+     "en": "The debranching enzyme is mainly responsible for producing glucose 1-phosphate (G1P)"
+    },
+    "e": {
+     "es": "Las ramificaciones α1→6 disminuyen la velocidad de degradación al reducir el número de extremos no reductores",
+     "en": "α1→6 branches decrease the rate of degradation by reducing the number of non-reducing ends"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Evaluar la veracidad de múltiples afirmaciones que resumen y comparan aspectos clave de la glucogenogénesis y glucogenólisis (precursor activado, función del cebador y reacción enzimática).",
+    "en": "Evaluating the truth of several statements that summarize and compare key aspects of glycogenesis and glycogenolysis (activated precursor, role of the primer and enzymatic reaction)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.7.1",
+   "num": "2.7.1",
+   "tema": 2,
+   "seccion": "2.7",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál(es) de la(s) siguiente(s) enzimas se activan mediante desfosforilación en respuesta a la insulina?",
+    "en": "Which of the following enzymes is/are activated by dephosphorylation in response to insulin?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucoquinasa",
+     "en": "Glucokinase"
+    },
+    "b": {
+     "es": "Glucógeno fosforilasa",
+     "en": "Glycogen phosphorylase"
+    },
+    "c": {
+     "es": "Fosfofructoquinasa-1",
+     "en": "Phosphofructokinase-1"
+    },
+    "d": {
+     "es": "Fosfofructoquinasa-2",
+     "en": "Phosphofructokinase-2"
+    },
+    "e": {
+     "es": "Piruvato quinasa",
+     "en": "Pyruvate kinase"
+    }
+   },
+   "correctas": [
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender que la insulina activa el flujo glucolítico (rutas anabólicas/generadoras de energía) mediante la desfosforilación de enzimas clave como la piruvato quinasa (e), y al aumentar el flujo en la PFK-1 (c).",
+    "en": "Understanding that insulin activates glycolytic flux (anabolic/energy-generating pathways) through the dephosphorylation of key enzymes such as pyruvate kinase (e), and by increasing flux through PFK-1 (c)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.7.2",
+   "num": "2.7.2",
+   "tema": 2,
+   "seccion": "2.7",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál de las siguientes hormonas activa la glucogenólisis y desactiva la glucogenogénesis mediante un mecanismo de fosforilación?",
+    "en": "Which of the following hormones activates glycogenolysis and inactivates glycogenesis through a phosphorylation mechanism?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Insulina",
+     "en": "Insulin"
+    },
+    "b": {
+     "es": "Glucagón",
+     "en": "Glucagon"
+    },
+    "c": {
+     "es": "Cortisol",
+     "en": "Cortisol"
+    },
+    "d": {
+     "es": "Adrenalina",
+     "en": "Epinephrine"
+    },
+    "e": {
+     "es": "Somatostatina",
+     "en": "Somatostatin"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar las hormonas (glucagón y adrenalina) que activan las rutas catabólicas (glucogenólisis) y desactivan las anabólicas (glucogenogénesis) por cascadas de fosforilación (vía PKA).",
+    "en": "Recalling the hormones (glucagon and epinephrine) that activate catabolic pathways (glycogenolysis) and inactivate anabolic ones (glycogenesis) through phosphorylation cascades (via PKA)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.7.3",
+   "num": "2.7.3",
+   "tema": 2,
+   "seccion": "2.7",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La fructosa 2,6-bisfosfato (F2,6BP) es un regulador crucial en el metabolismo de los glúcidos. ¿Cuál es su función principal?",
+    "en": "Fructose 2,6-bisphosphate (F2,6BP) is a crucial regulator of carbohydrate metabolism. What is its main function?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Es el sustrato inicial de la gluconeogénesis",
+     "en": "It is the initial substrate of gluconeogenesis"
+    },
+    "b": {
+     "es": "Sirve como intermediario en la vía de las pentosas",
+     "en": "It serves as an intermediate in the pentose pathway"
+    },
+    "c": {
+     "es": "Determinar si el flujo metabólico se dirige hacia la glucolisis o la gluconeogénesis",
+     "en": "To determine whether metabolic flux is directed toward glycolysis or gluconeogenesis"
+    },
+    "d": {
+     "es": "Activar la glucógeno sintasa",
+     "en": "To activate glycogen synthase"
+    },
+    "e": {
+     "es": "Ser un cofactor esencial para la hexoquinasa",
+     "en": "To be an essential cofactor for hexokinase"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender el papel central del F2,6BP como regulador maestro que dirige el flujo metabólico entre glucolisis (activador de PFK-1) y gluconeogénesis (inhibidor de FBPase-1).",
+    "en": "Understanding the central role of F2,6BP as a master regulator that directs metabolic flux between glycolysis (activator of PFK-1) and gluconeogenesis (inhibitor of FBPase-1)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.7.4",
+   "num": "2.7.4",
+   "tema": 2,
+   "seccion": "2.7",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analice la cascada de señalización de glucagón/adrenalina sobre el metabolismo hepático de la glucosa. ¿Cuál(es) es/son la(s) consecuencia(s) correcta(s)?",
+    "en": "Analyze the glucagon/epinephrine signaling cascade on hepatic glucose metabolism. What is/are the correct consequence(s)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La fosforilación activa la FBPase-2 e inactiva la PFK-2",
+     "en": "Phosphorylation activates FBPase-2 and inactivates PFK-2"
+    },
+    "b": {
+     "es": "La F2,6BP aumenta su concentración",
+     "en": "F2,6BP concentration increases"
+    },
+    "c": {
+     "es": "El efecto neto es disminuir el F2,6BP y favorecer la gluconeogénesis",
+     "en": "The net effect is to decrease F2,6BP and favor gluconeogenesis"
+    },
+    "d": {
+     "es": "Aumenta el flujo de la glucólisis",
+     "en": "Glycolytic flux increases"
+    },
+    "e": {
+     "es": "El hígado comienza a exportar glucosa a la sangre para suplir su deficiencia",
+     "en": "The liver begins to export glucose into the blood to make up for its shortage"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar y rastrear la cascada de glucagón/adrenalina (→ PKA) y deducir sus múltiples consecuencias: fosforilación de PFK-2/FBPase-2 (a), disminución de F2,6BP y favor de GNG (c), y exportación de glucosa (e).",
+    "en": "Analyzing and tracing the glucagon/epinephrine cascade (→ PKA) and deducing its multiple consequences: phosphorylation of PFK-2/FBPase-2 (a), decrease in F2,6BP favoring GNG (c), and glucose export (e)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.7.5",
+   "num": "2.7.5",
+   "tema": 2,
+   "seccion": "2.7",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "En un hepatocito, se observa que los niveles de fructosa 2,6-bisfosfato (F2,6BP) están en su punto más alto, y el cociente ATP/AMP está en su punto más bajo. Evaluando las implicaciones de estas señales, ¿Cuál(es) es/son la(s) predicción(es) correcta(s) sobre el flujo metabólico?",
+    "en": "In a hepatocyte, fructose 2,6-bisphosphate (F2,6BP) levels are found to be at their highest and the ATP/AMP ratio at its lowest. Evaluating the implications of these signals, what is/are the correct prediction(s) about metabolic flux?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Con el tiempo, se favorecerá la gluconeogénesis",
+     "en": "Over time, gluconeogenesis will be favored"
+    },
+    "b": {
+     "es": "La enzima piruvato quinasa estará activada covalentemente por PKA",
+     "en": "Pyruvate kinase will be covalently activated by PKA"
+    },
+    "c": {
+     "es": "La alta concentración de F2,6BP activa alostéricamente a la fosfofructoquinasa-1 (PFK-1)",
+     "en": "The high F2,6BP concentration allosterically activates phosphofructokinase-1 (PFK-1)"
+    },
+    "d": {
+     "es": "La glucógeno sintasa se encontrará en su forma inactiva ('b'), ya que no se necesita almacenar glucosa",
+     "en": "Glycogen synthase will be in its inactive form ('b'), since there is no need to store glucose"
+    },
+    "e": {
+     "es": "El flujo de glucosa-6-P hacia la glucólisis será máximo",
+     "en": "The flux of glucose 6-P into glycolysis will be maximal"
+    }
+   },
+   "correctas": [
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Evaluar el impacto de un estado de alta glucólisis (↑F2,6BP y ↓ATP/AMP), concluyendo que el flujo glucolítico será máximo (e) debido a la activación alostérica de la PFK-1 (c).",
+    "en": "Evaluating the impact of a state of high glycolysis (↑F2,6BP and ↓ATP/AMP), concluding that glycolytic flux will be maximal (e) owing to the allosteric activation of PFK-1 (c)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.7.6",
+   "num": "2.7.6",
+   "tema": 2,
+   "seccion": "2.7",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analice el impacto de la cascada de señalización del cAMP/PKA (activada por glucagón/adrenalina) sobre el metabolismo del glucógeno en el hígado:",
+    "en": "Analyze the impact of the cAMP/PKA signaling cascade (activated by glucagon/epinephrine) on glycogen metabolism in the liver:"
+   },
+   "opciones": {
+    "a": {
+     "es": "La PKA fosforila a la glucógeno sintasa y la activa",
+     "en": "PKA phosphorylates glycogen synthase and activates it"
+    },
+    "b": {
+     "es": "La PKA fosforila a la glucógeno sintasa y la inactiva (reduciendo el almacenamiento de glucosa)",
+     "en": "PKA phosphorylates glycogen synthase and inactivates it (reducing glucose storage)"
+    },
+    "c": {
+     "es": "La PKA fosforila a la glucógeno fosforilasa y la inactiva",
+     "en": "PKA phosphorylates glycogen phosphorylase and inactivates it"
+    },
+    "d": {
+     "es": "La PKA fosforila a la fosforilasa quinasa, que a su vez fosforila y activa a la glucógeno fosforilasa (promoviendo la degradación)",
+     "en": "PKA phosphorylates phosphorylase kinase, which in turn phosphorylates and activates glycogen phosphorylase (promoting breakdown)"
+    },
+    "e": {
+     "es": "El efecto neto es promover la síntesis de glucógeno",
+     "en": "The net effect is to promote glycogen synthesis"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar y rastrear las consecuencias de la cascada cAMP/PKA sobre el glucógeno: activación de la degradación (glucógeno fosforilasa ↑ vía P-quinasa, d) e inactivación de la síntesis (glucógeno sintasa ↓, b).",
+    "en": "Analyzing and tracing the consequences of the cAMP/PKA cascade on glycogen: activation of breakdown (glycogen phosphorylase ↑ via phosphorylase kinase, d) and inactivation of synthesis (glycogen synthase ↓, b)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.8.1",
+   "num": "2.8.1",
+   "tema": 2,
+   "seccion": "2.8",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La ruta de las pentosas fosfato es imprescindible para la célula, especialmente en tejidos que están en fase de crecimiento rápido. El objetivo de esta ruta degradativa de la glucosa es:",
+    "en": "The pentose phosphate pathway is essential for the cell, especially in rapidly growing tissues. The purpose of this glucose-degrading pathway is:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Sintetizar glucógeno",
+     "en": "To synthesize glycogen"
+    },
+    "b": {
+     "es": "Obtener precursores para la síntesis de ADN, ARN, etc.",
+     "en": "To obtain precursors for the synthesis of DNA, RNA, etc."
+    },
+    "c": {
+     "es": "Obtener poder reductor en forma de NADPH para la biosíntesis",
+     "en": "To obtain reducing power in the form of NADPH for biosynthesis"
+    },
+    "d": {
+     "es": "Degradar pentosas",
+     "en": "To degrade pentoses"
+    },
+    "e": {
+     "es": "Obtener fosfato",
+     "en": "To obtain phosphate"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender los dos productos principales de la RPP: NADPH (poder reductor, c) y Ribosa-5P (precursor de nucleótidos, b).",
+    "en": "Understanding the two main products of the PPP: NADPH (reducing power, c) and ribose 5-P (nucleotide precursor, b)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.8.2",
+   "num": "2.8.2",
+   "tema": 2,
+   "seccion": "2.8",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Un investigador quiere maximizar la producción de NADPH en un cultivo celular. ¿Qué estrategia sería más adecuada?",
+    "en": "A researcher wants to maximize NADPH production in a cell culture. Which strategy would be most suitable?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Estimular la vía de las pentosas fosfato",
+     "en": "Stimulating the pentose phosphate pathway"
+    },
+    "b": {
+     "es": "Inhibir la gluconeogénesis",
+     "en": "Inhibiting gluconeogenesis"
+    },
+    "c": {
+     "es": "Aumentar la concentración intracelular de glucosa-6-fosfato",
+     "en": "Increasing the intracellular concentration of glucose 6-phosphate"
+    },
+    "d": {
+     "es": "Activar enzimas dependientes de insulina en hígado",
+     "en": "Activating insulin-dependent enzymes in the liver"
+    },
+    "e": {
+     "es": "Disminuir la glucólisis aerobia",
+     "en": "Decreasing aerobic glycolysis"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Diseñar una estrategia para maximizar un producto metabólico (NADPH) basada en el conocimiento de la ruta (RPP, a) y el aumento de su sustrato inicial (glucosa-6P, c) y la activación hormonal por insulina (d).",
+    "en": "Designing a strategy to maximize a metabolic product (NADPH) based on knowledge of the pathway (PPP, a), an increase in its initial substrate (glucose 6-P, c) and hormonal activation by insulin (d)."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.8.3",
+   "num": "2.8.3",
+   "tema": 2,
+   "seccion": "2.8",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En un experimento, se observa que la inhibición de la fosfofructoquinasa-1 (PFK-1) reduce drásticamente el flujo glucolítico, pero el flujo de la vía de las pentosas aumenta. ¿Cómo se interpreta este resultado?",
+    "en": "In an experiment, inhibition of phosphofructokinase-1 (PFK-1) is found to reduce glycolytic flux drastically, while flux through the pentose pathway increases. How should this result be interpreted?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La glucosa-6P se desvía hacia la vía de las pentosas",
+     "en": "Glucose 6-P is diverted into the pentose pathway"
+    },
+    "b": {
+     "es": "La hexoquinasa queda inhibida",
+     "en": "Hexokinase is inhibited"
+    },
+    "c": {
+     "es": "La célula prioriza la producción de NADPH",
+     "en": "The cell prioritizes NADPH production"
+    },
+    "d": {
+     "es": "Existe regulación por acumulación de intermediarios",
+     "en": "There is regulation through the accumulation of intermediates"
+    },
+    "e": {
+     "es": "No existe conexión entre ambas rutas",
+     "en": "There is no connection between the two pathways"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar un resultado experimental y deducir la relación reguladora entre la glucolisis y la RPP: la inhibición de PFK-1 provoca acumulación de intermediarios (d) que desvían G6P (a) hacia la RPP para generar NADPH (c).",
+    "en": "Analyzing an experimental result and deducing the regulatory relationship between glycolysis and the PPP: PFK-1 inhibition causes accumulation of intermediates (d), which divert G6P (a) into the PPP to generate NADPH (c)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.8.4",
+   "num": "2.8.4",
+   "tema": 2,
+   "seccion": "2.8",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Analice la regulación por producto de la ruta de las pentosas fosfato (RPP) e indique cómo afectarán los siguientes cambios a su flujo:",
+    "en": "Analyze the product regulation of the pentose phosphate pathway (PPP) and indicate how the following changes will affect its flux:"
+   },
+   "opciones": {
+    "a": {
+     "es": "una concentración alta de NADPH activará la G6PDH",
+     "en": "a high NADPH concentration will activate G6PDH"
+    },
+    "b": {
+     "es": "una concentración baja de NADPH favorecerá la ruta de las pentosas fosfato (RPP)",
+     "en": "a low NADPH concentration will favor the pentose phosphate pathway (PPP)"
+    },
+    "c": {
+     "es": "la inhibición por NADPH ocurre principalmente a nivel de la glucosa-6P deshidrogenasa (G6PDH)",
+     "en": "inhibition by NADPH occurs mainly at the level of glucose-6-P dehydrogenase (G6PDH)"
+    },
+    "d": {
+     "es": "la ruta de las pentosas fosfato se activa alostéricamente por fructosa-6P",
+     "en": "the pentose phosphate pathway is allosterically activated by fructose 6-P"
+    },
+    "e": {
+     "es": "una concentración baja de NADP<sup>+</sup> favorecerá la RPP",
+     "en": "a low NADP<sup>+</sup> concentration will favor the PPP"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el principio de retroalimentación por producto a la RPP: el NADPH inhibe la G6PDH (c), por lo tanto, una baja concentración de NADPH favorecerá la ruta (b).",
+    "en": "Applying the principle of product feedback to the PPP: NADPH inhibits G6PDH (c); therefore, a low NADPH concentration will favor the pathway (b)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.8.5",
+   "num": "2.8.5",
+   "tema": 2,
+   "seccion": "2.8",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Ante una situación de estrés oxidativo, ¿Qué ruta metabólica convendría reforzar para hacerle frente?",
+    "en": "In a situation of oxidative stress, which metabolic pathway should be reinforced to cope with it?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Glucolisis",
+     "en": "Glycolysis"
+    },
+    "b": {
+     "es": "Gluconeogénesis",
+     "en": "Gluconeogenesis"
+    },
+    "c": {
+     "es": "Glucogenólisis",
+     "en": "Glycogenolysis"
+    },
+    "d": {
+     "es": "Ruta de las pentosas fosfato, fase oxidativa",
+     "en": "Pentose phosphate pathway, oxidative phase"
+    },
+    "e": {
+     "es": "Ruta de las pentosas fosfato, fase no oxidativa, ya que suministra sustrato a la oxidativa",
+     "en": "Pentose phosphate pathway, non-oxidative phase, since it supplies substrate to the oxidative phase"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de la función del NADPH (generado en la fase oxidativa de RPP) a un contexto de necesidad celular (defensa antioxidante).",
+    "en": "Applying knowledge of the function of NADPH (generated in the oxidative phase of the PPP) to a context of cellular need (antioxidant defense)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.8.6",
+   "num": "2.8.6",
+   "tema": 2,
+   "seccion": "2.8",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Cómo afectará una alta concentración de NAD(P)H a la ruta de las pentosas fosfato?",
+    "en": "How will a high NAD(P)H concentration affect the pentose phosphate pathway?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La inducirá, ya que es su principal producto",
+     "en": "It will induce it, since it is its main product"
+    },
+    "b": {
+     "es": "La inhibirá, principalmente a nivel de la glucosa 6-P deshidrogenasa",
+     "en": "It will inhibit it, mainly at the level of glucose-6-P dehydrogenase"
+    },
+    "c": {
+     "es": "La favorecerá, al dar lugar a inducciones generales en todo el metabolismo",
+     "en": "It will favor it, by causing general induction throughout metabolism"
+    },
+    "d": {
+     "es": "Le ejercerá el efecto contrario que una concentración elevada de glucosa-6P",
+     "en": "It will have the opposite effect to that of a high glucose 6-P concentration"
+    },
+    "e": {
+     "es": "La ruta de las pentosas fosfato no se ve afectada por los niveles de NADH",
+     "en": "The pentose phosphate pathway is not affected by NADH levels"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el principio de inhibición por producto (el NADPH inhibe) a la enzima limitante (G6PDH), y correlacionarlo con un efecto contrario al de la G6P (d).",
+    "en": "Applying the principle of product inhibition (NADPH inhibits) to the rate-limiting enzyme (G6PDH), and relating it to an effect opposite to that of G6P (d)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.8.7",
+   "num": "2.8.7",
+   "tema": 2,
+   "seccion": "2.8",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál es el balance de la fase oxidativa de la ruta de las pentosas fosfato?",
+    "en": "What is the balance of the oxidative phase of the pentose phosphate pathway?"
+   },
+   "opciones": {
+    "a": {
+     "es": "6 G6P + 12 NADP<sup>+</sup> → 5 F6P + 6 CO<sub>2</sub> + 12 NADPH",
+     "en": "6 G6P + 12 NADP<sup>+</sup> → 5 F6P + 6 CO<sub>2</sub> + 12 NADPH"
+    },
+    "b": {
+     "es": "5 G6P + 10 NADP<sup>+</sup> → 5 F6P + 5 CO<sub>2</sub> + 10 NADPH",
+     "en": "5 G6P + 10 NADP<sup>+</sup> → 5 F6P + 5 CO<sub>2</sub> + 10 NADPH"
+    },
+    "c": {
+     "es": "1 G6P + 2 NADP<sup>+</sup> → 0,83 F6P + 1 CO<sub>2</sub> + 2 NADPH",
+     "en": "1 G6P + 2 NADP<sup>+</sup> → 0.83 F6P + 1 CO<sub>2</sub> + 2 NADPH"
+    },
+    "d": {
+     "es": "6 G6P + 10 NADP<sup>+</sup> → 5 F6P + 5 CO<sub>2</sub> + 10 NADPH",
+     "en": "6 G6P + 10 NADP<sup>+</sup> → 5 F6P + 5 CO<sub>2</sub> + 10 NADPH"
+    },
+    "e": {
+     "es": "5 G6P + 12 NADP<sup>+</sup> → 6 F6P + 6 CO<sub>2</sub> + 15 NADPH",
+     "en": "5 G6P + 12 NADP<sup>+</sup> → 6 F6P + 6 CO<sub>2</sub> + 15 NADPH"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender la estequiometría de la fase oxidativa de la RPP (oxidación de 6 G6P para regenerar 5 hexosas y producir 12 NADPH, o la estequiometría unitaria).",
+    "en": "Understanding the stoichiometry of the oxidative phase of the PPP (oxidation of 6 G6P to regenerate 5 hexoses and produce 12 NADPH, or the unit stoichiometry)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.8.8",
+   "num": "2.8.8",
+   "tema": 2,
+   "seccion": "2.8",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿En cuál(es) de la(s) siguiente(s) reacciones interviene la transcetolasa?",
+    "en": "In which of the following reactions is transketolase involved?"
+   },
+   "opciones": {
+    "a": {
+     "es": "De glucosa-6P a gluconolactona-6P",
+     "en": "Glucose 6-P to 6-phosphogluconolactone"
+    },
+    "b": {
+     "es": "De gluconolactona-6P a 6-fosfogluconato",
+     "en": "6-Phosphogluconolactone to 6-phosphogluconate"
+    },
+    "c": {
+     "es": "De 6-fosfogluconato a ribulosa-5P",
+     "en": "6-Phosphogluconate to ribulose 5-P"
+    },
+    "d": {
+     "es": "De xilulosa-5P y ribosa-5P a gliceraldehído-3P y sedoheptulosa-7P",
+     "en": "Xylulose 5-P and ribose 5-P to glyceraldehyde 3-P and sedoheptulose 7-P"
+    },
+    "e": {
+     "es": "De xilulosa-5P y eritrosa-4P a gliceraldehído-3P y fructosa-6P",
+     "en": "Xylulose 5-P and erythrose 4-P to glyceraldehyde 3-P and fructose 6-P"
+    }
+   },
+   "correctas": [
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Recordar los sustratos/productos de las dos reacciones catalizadas por la transcetolasa (transferencia de C2).",
+    "en": "Recalling the substrates/products of the two reactions catalyzed by transketolase (C2 transfer)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.8.9",
+   "num": "2.8.9",
+   "tema": 2,
+   "seccion": "2.8",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la principal pentosa fosfato que se obtiene al final de la fase oxidativa de la ruta?",
+    "en": "What is the main pentose phosphate obtained at the end of the oxidative phase of the pathway?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Sedoheptulosa-7P",
+     "en": "Sedoheptulose 7-P"
+    },
+    "b": {
+     "es": "Eritrosa-4P",
+     "en": "Erythrose 4-P"
+    },
+    "c": {
+     "es": "Ribulosa-5P",
+     "en": "Ribulose 5-P"
+    },
+    "d": {
+     "es": "Xilulosa-5P",
+     "en": "Xylulose 5-P"
+    },
+    "e": {
+     "es": "Fructosa-6P",
+     "en": "Fructose 6-P"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar el producto clave (y primera pentosa) de la fase oxidativa es la ribulosa-5P.",
+    "en": "Recalling that the key product (and first pentose) of the oxidative phase is ribulose 5-P."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.8.10",
+   "num": "2.8.10",
+   "tema": 2,
+   "seccion": "2.8",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "El NADPH es el producto clave de la ruta de las pentosas fosfato. ¿Cuál(es) de los siguientes enunciados describe(n) correctamente su función principal en distintos tejidos?",
+    "en": "NADPH is the key product of the pentose phosphate pathway. Which of the following statements correctly describe(s) its main function in different tissues?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Es el aceptor de electrones en la cadena respiratoria mitocondrial",
+     "en": "It is the electron acceptor in the mitochondrial respiratory chain"
+    },
+    "b": {
+     "es": "En el eritrocito, mantiene el glutatión en su forma reducida para combatir el estrés oxidativo (ROS)",
+     "en": "In the erythrocyte, it keeps glutathione in its reduced form to combat oxidative stress (ROS)"
+    },
+    "c": {
+     "es": "Actúa como donador de electrones en reacciones anabólicas como la biosíntesis de ácidos grasos y colesterol",
+     "en": "It acts as an electron donor in anabolic reactions such as fatty acid and cholesterol biosynthesis"
+    },
+    "d": {
+     "es": "Es esencial para la detoxificación de especies reactivas de oxígeno (ROS) en todas las células",
+     "en": "It is essential for the detoxification of reactive oxygen species (ROS) in all cells"
+    },
+    "e": {
+     "es": "Es el principal sustrato energético de la célula",
+     "en": "It is the cell's main energy substrate"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender las funciones clave del NADPH como poder reductor en anabolismo (c) y defensa antioxidante (b, d).",
+    "en": "Understanding the key functions of NADPH as reducing power in anabolism (c) and antioxidant defense (b, d)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.8.11",
+   "num": "2.8.11",
+   "tema": 2,
+   "seccion": "2.8",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En la fase no oxidativa de la ruta de las pentosas fosfato, la transaldolasa transfiere un grupo de 3 carbonos. Si reacciona sedoheptulosa-7-P con gliceraldehído-3-P, ¿Qué productos se obtienen?",
+    "en": "In the non-oxidative phase of the pentose phosphate pathway, transaldolase transfers a 3-carbon group. If sedoheptulose 7-P reacts with glyceraldehyde 3-P, which products are obtained?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ribulosa-5P y xilulosa-5P",
+     "en": "Ribulose 5-P and xylulose 5-P"
+    },
+    "b": {
+     "es": "Xilulosa-5P y eritrosa-4P",
+     "en": "Xylulose 5-P and erythrose 4-P"
+    },
+    "c": {
+     "es": "Fructosa-6P y eritrulosa-4P",
+     "en": "Fructose 6-P and erythrulose 4-P"
+    },
+    "d": {
+     "es": "Ribosa-5P y xilulosa-5P",
+     "en": "Ribose 5-P and xylulose 5-P"
+    },
+    "e": {
+     "es": "Fructosa-6P y eritrosa-4P",
+     "en": "Fructose 6-P and erythrose 4-P"
+    }
+   },
+   "correctas": [
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar la regla de transferencia de 3 carbonos de la transaldolasa a los sustratos dados (C7 + C3 → C6 + C4: fructosa-6P + eritrosa-4P).",
+    "en": "Applying the 3-carbon transfer rule of transaldolase to the given substrates (C7 + C3 → C6 + C4: fructose 6-P + erythrose 4-P)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.8.12",
+   "num": "2.8.12",
+   "tema": 2,
+   "seccion": "2.8",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "En el tejido adiposo, la ruta de las pentosas fosfato (RPP) es altamente activa, mientras que en el músculo esquelético es menos relevante. Evalúe la razón de esta diferencia.",
+    "en": "In adipose tissue the pentose phosphate pathway (PPP) is highly active, whereas in skeletal muscle it is less relevant. Evaluate the reason for this difference."
+   },
+   "opciones": {
+    "a": {
+     "es": "El músculo requiere mucho NADPH para biosíntesis.",
+     "en": "Muscle requires a lot of NADPH for biosynthesis."
+    },
+    "b": {
+     "es": "El tejido adiposo necesita ATP de manera continua",
+     "en": "Adipose tissue needs ATP continuously"
+    },
+    "c": {
+     "es": "El tejido adiposo requiere grandes cantidades de NADPH para la biosíntesis de ácidos grasos",
+     "en": "Adipose tissue requires large amounts of NADPH for fatty acid biosynthesis"
+    },
+    "d": {
+     "es": "El músculo no tiene glucosa-6-fosfato para iniciar la ruta",
+     "en": "Muscle has no glucose 6-phosphate to start the pathway"
+    },
+    "e": {
+     "es": "La transcetolasa solo está presente en el tejido adiposo",
+     "en": "Transketolase is present only in adipose tissue"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Evaluar la función metabólica específica del tejido adiposo (biosíntesis de ácidos grasos) y correlacionarla con el producto clave de la RPP (NADPH), que es esencial para este proceso.",
+    "en": "Evaluating the specific metabolic function of adipose tissue (fatty acid biosynthesis) and relating it to the key product of the PPP (NADPH), which is essential for this process."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.8.13",
+   "num": "2.8.13",
+   "tema": 2,
+   "seccion": "2.8",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En la ruta de las pentosas fosfato (RPP), la transcetolasa cataliza la transferencia de un grupo de dos carbonos de la xilulosa-5P (C5) a la ribosa-5P (C5). Aplicando la lógica de transferencia de carbono, ¿Cuál es el producto resultante de la ribosa-5P y cuál es el producto resultante de la xilulosa-5P? Señale la(s) opción(es) correcta(s):",
+    "en": "In the pentose phosphate pathway (PPP), transketolase catalyzes the transfer of a two-carbon group from xylulose 5-P (C5) to ribose 5-P (C5). Applying the logic of carbon transfer, what product results from ribose 5-P and what product results from xylulose 5-P? Select the correct option(s):"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ribosa-5P se convierte en eritrosa-4P (C4)",
+     "en": "Ribose 5-P is converted into erythrose 4-P (C4)"
+    },
+    "b": {
+     "es": "Ribosa-5P (aceptor C5) se convierte en sedoheptulosa-7P (C7) y xilulosa-5P (dador C5) se convierte en gliceraldehído-3P (C3)",
+     "en": "Ribose 5-P (C5 acceptor) is converted into sedoheptulose 7-P (C7) and xylulose 5-P (C5 donor) is converted into glyceraldehyde 3-P (C3)"
+    },
+    "c": {
+     "es": "Ambos se convierten en fructosa-6P (C6)",
+     "en": "Both are converted into fructose 6-P (C6)"
+    },
+    "d": {
+     "es": "Xilulosa-5P se convierte en eritrosa-4P (C4)",
+     "en": "Xylulose 5-P is converted into erythrose 4-P (C4)"
+    },
+    "e": {
+     "es": "Ribosa-5P se convierte en gliceraldehído-3P (C3)",
+     "en": "Ribose 5-P is converted into glyceraldehyde 3-P (C3)"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar la regla de transferencia de C2 de la transcetolasa a los sustratos (xilulosa-5P (dador C5) → C3; ribosa-5P (aceptor C5) → C7).",
+    "en": "Applying the C2 transfer rule of transketolase to the substrates (xylulose 5-P (C5 donor) → C3; ribose 5-P (C5 acceptor) → C7)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.9.1",
+   "num": "2.9.1",
+   "tema": 2,
+   "seccion": "2.9",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "El ciclo de Calvin se inicia con la fijación del CO<sub>2</sub> a una molécula preexistente. ¿Cuál es esta molécula aceptora de CO<sub>2</sub> en la primera reacción del ciclo?",
+    "en": "The Calvin cycle begins with the fixation of CO<sub>2</sub> onto a pre-existing molecule. What is this CO<sub>2</sub>-acceptor molecule in the first reaction of the cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ribulosa-1,5-bifosfato (RuBP)",
+     "en": "Ribulose 1,5-bisphosphate (RuBP)"
+    },
+    "b": {
+     "es": "Fructosa-6P (F6P)",
+     "en": "Fructose 6-P (F6P)"
+    },
+    "c": {
+     "es": "3-fosfoglicerato (3PG)",
+     "en": "3-Phosphoglycerate (3PG)"
+    },
+    "d": {
+     "es": "Fosfoenolpiruvato (PEP)",
+     "en": "Phosphoenolpyruvate (PEP)"
+    },
+    "e": {
+     "es": "Ribosa-5P (R5P)",
+     "en": "Ribose 5-P (R5P)"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Comprender cuál es la molécula aceptora inicial del ciclo de Calvin.",
+    "en": "Understanding which molecule is the initial acceptor of the Calvin cycle."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.9.2",
+   "num": "2.9.2",
+   "tema": 2,
+   "seccion": "2.9",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la fuente de carbono durante la reducción fotosintética del C (ciclo de Calvin)?",
+    "en": "What is the carbon source during photosynthetic carbon reduction (Calvin cycle)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Las reacciones luminosas de la fotosíntesis",
+     "en": "The light reactions of photosynthesis"
+    },
+    "b": {
+     "es": "La glucosa",
+     "en": "Glucose"
+    },
+    "c": {
+     "es": "La sacarosa",
+     "en": "Sucrose"
+    },
+    "d": {
+     "es": "El CO<sub>2</sub>",
+     "en": "CO<sub>2</sub>"
+    },
+    "e": {
+     "es": "El O<sub>2</sub>",
+     "en": "O<sub>2</sub>"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar la fuente de carbono (CO<sub>2</sub>) que se fija en el ciclo de Calvin.",
+    "en": "Recalling the carbon source (CO<sub>2</sub>) fixed in the Calvin cycle."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.9.3",
+   "num": "2.9.3",
+   "tema": 2,
+   "seccion": "2.9",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la fuente de NADPH y ATP durante la reducción fotosintética del C (ciclo de Calvin)?",
+    "en": "What is the source of NADPH and ATP during photosynthetic carbon reduction (Calvin cycle)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Las reacciones luminosas de la fotosíntesis",
+     "en": "The light reactions of photosynthesis"
+    },
+    "b": {
+     "es": "La glucolisis",
+     "en": "Glycolysis"
+    },
+    "c": {
+     "es": "La glucogenogénesis",
+     "en": "Glycogenesis"
+    },
+    "d": {
+     "es": "La respiración",
+     "en": "Respiration"
+    },
+    "e": {
+     "es": "La fotorrespiración",
+     "en": "Photorespiration"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Recordar las fuentes de ATP y NADPH para el ciclo de Calvin provienen de las reacciones luminosas.",
+    "en": "Recalling that the ATP and NADPH for the Calvin cycle come from the light reactions."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.9.4",
+   "num": "2.9.4",
+   "tema": 2,
+   "seccion": "2.9",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "El ciclo de Calvin es la principal ruta de fijación de carbono en plantas. ¿Cuál(es) de los siguientes enunciados es/son correctos sobre su balance?",
+    "en": "The Calvin cycle is the main carbon fixation pathway in plants. Which of the following statements is/are correct about its balance?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se forman glúcidos (gliceraldehído-3P) a partir de CO<sub>2</sub> con el gasto de ATP y NADPH",
+     "en": "Carbohydrates (glyceraldehyde 3-P) are formed from CO<sub>2</sub> at the expense of ATP and NADPH"
+    },
+    "b": {
+     "es": "El balance neto de carbono es la conversión de 6 moléculas de CO<sub>2</sub> en una molécula de ribosa",
+     "en": "The net carbon balance is the conversion of 6 CO<sub>2</sub> molecules into one ribose molecule"
+    },
+    "c": {
+     "es": "Por cada molécula de CO<sub>2</sub> fijada, se consumen 3 ATP y 2 NADPH",
+     "en": "For each CO<sub>2</sub> molecule fixed, 3 ATP and 2 NADPH are consumed"
+    },
+    "d": {
+     "es": "Tiene lugar en el citosol del cloroplasto",
+     "en": "It takes place in the cytosol of the chloroplast"
+    },
+    "e": {
+     "es": "Utiliza el ATP generado en la fosforilación oxidativa mitocondrial",
+     "en": "It uses the ATP generated by mitochondrial oxidative phosphorylation"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender el balance de entradas (ATP, NADPH, CO<sub>2</sub>) y salidas (G3P) del ciclo de Calvin.",
+    "en": "Understanding the balance of inputs (ATP, NADPH, CO<sub>2</sub>) and outputs (G3P) of the Calvin cycle."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.9.5",
+   "num": "2.9.5",
+   "tema": 2,
+   "seccion": "2.9",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿En el ciclo de Calvin, cuál es la molécula aceptora del CO<sub>2</sub>?",
+    "en": "In the Calvin cycle, which molecule is the CO<sub>2</sub> acceptor?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La glucosa-6P",
+     "en": "Glucose 6-P"
+    },
+    "b": {
+     "es": "El ATP",
+     "en": "ATP"
+    },
+    "c": {
+     "es": "La ribulosa 1,5-bisfosfato",
+     "en": "Ribulose 1,5-bisphosphate"
+    },
+    "d": {
+     "es": "No se une CO<sub>2</sub>, sino CO",
+     "en": "CO is bound, not CO<sub>2</sub>"
+    },
+    "e": {
+     "es": "La ribosa",
+     "en": "Ribose"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar la molécula aceptora del CO<sub>2</sub> en la primera etapa del ciclo (ribulosa 1,5-bisfosfato).",
+    "en": "Recalling the CO<sub>2</sub>-acceptor molecule in the first stage of the cycle (ribulose 1,5-bisphosphate)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.9.6",
+   "num": "2.9.6",
+   "tema": 2,
+   "seccion": "2.9",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuáles de estos compuestos se requieren en el ciclo de Calvin?",
+    "en": "Which of these compounds are required in the Calvin cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "ADP y NADPH",
+     "en": "ADP and NADPH"
+    },
+    "b": {
+     "es": "ADP y NAD<sup>+</sup>",
+     "en": "ADP and NAD<sup>+</sup>"
+    },
+    "c": {
+     "es": "ATP y NAD<sup>+</sup>",
+     "en": "ATP and NAD<sup>+</sup>"
+    },
+    "d": {
+     "es": "ATP y NADPH",
+     "en": "ATP and NADPH"
+    },
+    "e": {
+     "es": "ATP y glicerol",
+     "en": "ATP and glycerol"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar los cofactores energéticos necesarios para el ciclo de Calvin (ATP y NADPH).",
+    "en": "Recalling the energy cofactors required for the Calvin cycle (ATP and NADPH)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.9.7",
+   "num": "2.9.7",
+   "tema": 2,
+   "seccion": "2.9",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Los glúcidos se almacenan y estructuran en las plantas mediante diferentes polisacáridos. ¿Cuál(es) de las siguientes opciones es/son cierta(s) sobre estas moléculas?",
+    "en": "Carbohydrates are stored and structured in plants through different polysaccharides. Which of the following options is/are true about these molecules?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El almidón es el polisacárido de almacenamiento principal, similar al glucógeno",
+     "en": "Starch is the main storage polysaccharide, similar to glycogen"
+    },
+    "b": {
+     "es": "La celulosa es el principal componente estructural de la pared celular",
+     "en": "Cellulose is the main structural component of the cell wall"
+    },
+    "c": {
+     "es": "Todos están compuestos por unidades de galactosa",
+     "en": "All are made of galactose units"
+    },
+    "d": {
+     "es": "El almidón tiene más ramificaciones que el glucógeno",
+     "en": "Starch is more branched than glycogen"
+    },
+    "e": {
+     "es": "La sacarosa es el principal polisacárido de transporte",
+     "en": "Sucrose is the main transport polysaccharide"
+    }
+   },
+   "correctas": [
+    "a",
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender los principales polisacáridos en plantas: almidón como almacenamiento (a) y celulosa como estructural (b).",
+    "en": "Understanding the main polysaccharides in plants: starch for storage (a) and cellulose as a structural component (b)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.9.8",
+   "num": "2.9.8",
+   "tema": 2,
+   "seccion": "2.9",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la enzima que cataliza la reacción de fijación del CO<sub>2</sub> con la ribulosa 1,5-bisfosfato en el ciclo de Calvin?",
+    "en": "Which enzyme catalyzes the fixation of CO<sub>2</sub> onto ribulose 1,5-bisphosphate in the Calvin cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Fosfofructoquinasa-1",
+     "en": "Phosphofructokinase-1"
+    },
+    "b": {
+     "es": "PEP-carboxilasa",
+     "en": "PEP carboxylase"
+    },
+    "c": {
+     "es": "Fructosa-1,6-bisfosfatasa",
+     "en": "Fructose 1,6-bisphosphatase"
+    },
+    "d": {
+     "es": "Ribulosa 1,5-bisfosfato carboxilasa/oxigenasa (RuBisCO)",
+     "en": "Ribulose 1,5-bisphosphate carboxylase/oxygenase (RuBisCO)"
+    },
+    "e": {
+     "es": "Piruvato carboxilasa",
+     "en": "Pyruvate carboxylase"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar la enzima clave que cataliza la fijación de CO<sub>2</sub> (RuBisCO).",
+    "en": "Recalling the key enzyme that catalyzes CO<sub>2</sub> fixation (RuBisCO)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.9.9",
+   "num": "2.9.9",
+   "tema": 2,
+   "seccion": "2.9",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿En cuál de las siguientes fases del ciclo de Calvin se produce el mayor gasto energético en forma de ATP y NADPH para convertir la molécula fijada en un glúcido?",
+    "en": "In which of the following phases of the Calvin cycle is the greatest energy expenditure, in the form of ATP and NADPH, incurred to convert the fixed molecule into a carbohydrate?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Fijación del CO<sub>2</sub>",
+     "en": "CO<sub>2</sub> fixation"
+    },
+    "b": {
+     "es": "Reducción del 3-fosfoglicerato a gliceraldehído 3P",
+     "en": "Reduction of 3-phosphoglycerate to glyceraldehyde 3-P"
+    },
+    "c": {
+     "es": "Regeneración de la ribulosa 1,5-bisfosfato",
+     "en": "Regeneration of ribulose 1,5-bisphosphate"
+    },
+    "d": {
+     "es": "Fotorrespiración",
+     "en": "Photorespiration"
+    },
+    "e": {
+     "es": "Oxidación",
+     "en": "Oxidation"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender las fases del ciclo de Calvin, identificando la fase de reducción como aquella donde se consume el mayor gasto energético (ATP y NADPH).",
+    "en": "Understanding the phases of the Calvin cycle, identifying the reduction phase as the one with the greatest energy expenditure (ATP and NADPH)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.10.1",
+   "num": "2.10.1",
+   "tema": 2,
+   "seccion": "2.10",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál es el principal mecanismo metabólico que utilizan las plantas C4 y CAM para minimizar la fotorrespiración?",
+    "en": "What is the main metabolic mechanism that C4 and CAM plants use to minimize photorespiration?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El aumento de la concentración de oxígeno en el cloroplasto",
+     "en": "Increasing the oxygen concentration in the chloroplast"
+    },
+    "b": {
+     "es": "La síntesis continua de RuBisCO",
+     "en": "Continuous synthesis of RuBisCO"
+    },
+    "c": {
+     "es": "Separación espacial (C4) o temporal (CAM) de la fijación inicial del CO<sub>2</sub> y la actividad del ciclo de Calvin",
+     "en": "Spatial (C4) or temporal (CAM) separation of initial CO<sub>2</sub> fixation from Calvin cycle activity"
+    },
+    "d": {
+     "es": "La eliminación completa de la RuBisCO de sus células",
+     "en": "Complete elimination of RuBisCO from their cells"
+    },
+    "e": {
+     "es": "El uso de PEP carboxilasa en las hojas de la raíz",
+     "en": "The use of PEP carboxylase in the root leaves"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender la estrategia clave de las plantas C4 y CAM: la separación espacial o temporal de la fijación inicial del CO<sub>2</sub> para concentrarlo y minimizar la fotorrespiración.",
+    "en": "Understanding the key strategy of C4 and CAM plants: spatial or temporal separation of initial CO<sub>2</sub> fixation in order to concentrate it and minimize photorespiration."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.10.2",
+   "num": "2.10.2",
+   "tema": 2,
+   "seccion": "2.10",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Las plantas C4 utilizan diferentes estrategias para la fijación de CO<sub>2</sub> a las C3. Analizando la eficiencia y el mecanismo de ambas, ¿cuál(es) es/son la(s) diferencia(s) o similitud(es) clave(s)?",
+    "en": "C4 plants use strategies for CO<sub>2</sub> fixation that differ from those of C3 plants. Analyzing the efficiency and mechanism of both, what is/are the key difference(s) or similarity(ies)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La enzima RuBisCO no está presente en las plantas C4",
+     "en": "The enzyme RuBisCO is not present in C4 plants"
+    },
+    "b": {
+     "es": "Las C4 exhiben una mayor eficiencia fotosintética que las C3 en ambientes fríos o con baja luminosidad",
+     "en": "C4 plants show greater photosynthetic efficiency than C3 plants in cold or low-light environments"
+    },
+    "c": {
+     "es": "En las plantas C4, la PEP carboxilasa realiza la fijación inicial del CO<sub>2</sub> con una alta afinidad",
+     "en": "In C4 plants, PEP carboxylase carries out the initial CO<sub>2</sub> fixation with high affinity"
+    },
+    "d": {
+     "es": "Las plantas C4 requieren más moléculas de ATP que la C3 por cada CO<sub>2</sub> fijado para el ciclo de Calvin",
+     "en": "C4 plants require more ATP molecules than C3 plants per CO<sub>2</sub> fixed for the Calvin cycle"
+    },
+    "e": {
+     "es": "La RuBisCO sigue siendo la enzima que reduce el CO<sub>2</sub> fijado a 3-fosfoglicerato dentro de las células de la vaina del haz en C4",
+     "en": "RuBisCO is still the enzyme that reduces the fixed CO<sub>2</sub> to 3-phosphoglycerate within the bundle-sheath cells in C4 plants"
+    }
+   },
+   "correctas": [
+    "c",
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar las diferencias entre C3 y C4, enfocándose en la alta afinidad de la PEP carboxilasa (c), el costo energético adicional (d) y el rol final de la RuBisCO (e).",
+    "en": "Analyzing the differences between C3 and C4 plants, focusing on the high affinity of PEP carboxylase (c), the additional energy cost (d) and the final role of RuBisCO (e)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-2.10.3",
+   "num": "2.10.3",
+   "tema": 2,
+   "seccion": "2.10",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe el coste/beneficio de la estrategia de plantas C4 (separación espacial de la fijación de CO<sub>2</sub>) comparada con las plantas C3 en términos de eficiencia energética y fotorrespiración:",
+    "en": "Evaluate the cost/benefit of the C4 strategy (spatial separation of CO<sub>2</sub> fixation) compared with C3 plants in terms of energy efficiency and photorespiration:"
+   },
+   "opciones": {
+    "a": {
+     "es": "La estrategia C4 requiere un gasto energético adicional de 2 ATP por molécula de CO<sub>2</sub> transportada, lo que la hace menos eficiente que la C3 en baja temperatura o baja intensidad lumínica",
+     "en": "The C4 strategy requires an additional energy expenditure of 2 ATP per CO<sub>2</sub> molecule transported, making it less efficient than C3 at low temperature or low light intensity"
+    },
+    "b": {
+     "es": "El mecanismo C4 reduce drásticamente la fotorrespiración al concentrar CO<sub>2</sub> en las células de la vaina del haz, aumentando la eficiencia a alta temperatura y luz intensa",
+     "en": "The C4 mechanism drastically reduces photorespiration by concentrating CO<sub>2</sub> in the bundle-sheath cells, increasing efficiency at high temperature and high light"
+    },
+    "c": {
+     "es": "En las C4 se necesita más O<sub>2</sub> para que funcione la RuBisCO",
+     "en": "C4 plants need more O<sub>2</sub> for RuBisCO to work"
+    },
+    "d": {
+     "es": "Las C4 solo usan PEP carboxilasa y no RuBisCO, por lo que no gastan energía",
+     "en": "C4 plants use only PEP carboxylase and not RuBisCO, so they expend no energy"
+    },
+    "e": {
+     "es": "Las C4 tienen menos ATP disponible porque realizan el ciclo de Calvin por la noche",
+     "en": "C4 plants have less ATP available because they run the Calvin cycle at night"
+    }
+   },
+   "correctas": [
+    "a",
+    "b"
+   ],
+   "justificacion": {
+    "es": "Evaluar el equilibrio costo/beneficio de la estrategia C4: el gasto energético extra (a) se compensa con una mayor eficiencia al reducir drásticamente la fotorrespiración a altas temperaturas/luz (b).",
+    "en": "Evaluating the cost/benefit balance of the C4 strategy: the extra energy expenditure (a) is offset by greater efficiency as photorespiration is drastically reduced at high temperature/light (b)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-PC2.1",
+   "num": "PC2.1",
+   "tema": 2,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Mencione los dos productos de alto valor energético que se obtienen en la segunda fase (de beneficios) de la glucólisis, además del piruvato.",
+    "en": "Name the two high-energy products obtained in the second (payoff) phase of glycolysis, in addition to pyruvate."
+   },
+   "respuesta": {
+    "es": "Los dos productos de alto valor energético, por cada glucosa, son el ATP (neto de 2 ATP) y el NADH.",
+    "en": "The two high-energy products, per glucose, are ATP (2 net ATP) and NADH."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación de la información (productos principales) de una ruta conocida.",
+    "en": "Requires simple retrieval of information (main products) about a known pathway."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-PC2.2",
+   "num": "PC2.2",
+   "tema": 2,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En condiciones anaeróbicas (p. ej. ejercicio intenso), el piruvato muscular se desvía a lactato. ¿Cuál es el propósito biológico fundamental de esta reacción, más allá de poder seguir produciendo ATP?",
+    "en": "Under anaerobic conditions (e.g., intense exercise), muscle pyruvate is diverted to lactate. What is the fundamental biological purpose of this reaction, beyond being able to keep producing ATP?"
+   },
+   "respuesta": {
+    "es": "El propósito fundamental es regenerar el NAD<sup>+</sup> a partir de NADH. El NAD<sup>+</sup> regenerado es esencial para que la glucólisis (paso de la gliceraldehído-3-fosfato deshidrogenasa) pueda continuar produciendo ATP en ausencia de oxígeno.",
+    "en": "The fundamental purpose is to regenerate NAD<sup>+</sup> from NADH. The regenerated NAD<sup>+</sup> is essential for glycolysis (the glyceraldehyde-3-phosphate dehydrogenase step) to keep producing ATP in the absence of oxygen."
+   },
+   "justificacion": {
+    "es": "Requiere usar el conocimiento de la fermentación para explicar la función de una ruta metabólica en una situación específica (condición anaeróbica).",
+    "en": "Requires using knowledge of fermentation to explain the function of a metabolic pathway in a specific situation (anaerobic conditions)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-PC2.3",
+   "num": "PC2.3",
+   "tema": 2,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Si una célula muscular defectuosa no pudiera desviar el piruvato a lactato durante el ejercicio intenso, evalúe la consecuencia inmediata en su capacidad de generar energía.",
+    "en": "If a defective muscle cell could not divert pyruvate to lactate during intense exercise, evaluate the immediate consequence for its ability to generate energy."
+   },
+   "respuesta": {
+    "es": "La consecuencia inmediata sería el colapso de la glucólisis, ya que no se regeneraría el NAD<sup>+</sup>. La ruta se detendría en el paso de la gliceraldehído-3-fosfato deshidrogenasa, y la célula dejaría de generar ATP por esa vía, obligando a detener el ejercicio.",
+    "en": "The immediate consequence would be the collapse of glycolysis, since NAD<sup>+</sup> would not be regenerated. The pathway would stop at the glyceraldehyde-3-phosphate dehydrogenase step, and the cell would stop generating ATP by this route, forcing exercise to stop."
+   },
+   "justificacion": {
+    "es": "Requiere un juicio crítico sobre el efecto del fallo de una enzima clave en el flujo metabólico y la consecuencia funcional (producción de energía).",
+    "en": "Requires critical judgment on the effect of the failure of a key enzyme on metabolic flux and its functional consequence (energy production)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-PC2.4",
+   "num": "PC2.4",
+   "tema": 2,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Nombra las enzimas clave de la gluconeogénesis (GNG) que \"rodean\" los pasos irreversibles de la glucólisis.",
+    "en": "Name the key enzymes of gluconeogenesis (GNG) that “bypass” the irreversible steps of glycolysis."
+   },
+   "respuesta": {
+    "es": "Las enzimas clave son: piruvato carboxilasa (y PEPCK), fructosa-1,6-bisfosfatasa y glucosa-6-fosfatasa.",
+    "en": "The key enzymes are pyruvate carboxylase (and PEPCK), fructose 1,6-bisphosphatase and glucose 6-phosphatase."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación de la información (nombres de enzimas).",
+    "en": "Requires simple retrieval of information (enzyme names)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-PC2.5",
+   "num": "PC2.5",
+   "tema": 2,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Cuál es la función principal de la molécula reguladora fructosa-2,6-bisfosfato (F2,6BP) en el control recíproco de la glucólisis y la gluconeogénesis?",
+    "en": "What is the main function of the regulatory molecule fructose 2,6-bisphosphate (F2,6BP) in the reciprocal control of glycolysis and gluconeogenesis?"
+   },
+   "respuesta": {
+    "es": "La F2,6BP es un regulador alostérico clave. Activa la enzima clave de la glucólisis (PFK-1) e inhibe la enzima clave de la GNG (fructosa-1,6-bisfosfatasa). Asegura que sólo una de las dos rutas sea activa en un momento dado.",
+    "en": "F2,6BP is a key allosteric regulator. It activates the key enzyme of glycolysis (PFK-1) and inhibits the key enzyme of GNG (fructose 1,6-bisphosphatase). It ensures that only one of the two pathways is active at any given time."
+   },
+   "justificacion": {
+    "es": "Requiere desglosar la doble función de la molécula reguladora y explicar cómo esta acción opuesta coordina la actividad de las rutas.",
+    "en": "Requires breaking down the dual function of the regulatory molecule and explaining how this opposing action coordinates the activity of the pathways."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-PC2.6",
+   "num": "PC2.6",
+   "tema": 2,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe una estrategia de regulación para el hígado, basada en F2,6BP y AMP, que asegure la activación de la gluconeogénesis en un estado de bajo aporte energético (AMP alto).",
+    "en": "Design a regulatory strategy for the liver, based on F2,6BP and AMP, that ensures activation of gluconeogenesis in a state of low energy supply (high AMP)."
+   },
+   "respuesta": {
+    "es": "El AMP, a alta concentración, inhibiría la GNG. Sin embargo, hay otra señal que debe ser más fuerte: el glucagón que excreta el páncreas en respuesta a la falta de glucosa en sangre. El glucagón reduciría la concentración de F2,6BP (mediante la activación de la actividad fosfatasa de la PFK-2/FBPasa-2). Al no haber F2,6BP que inhiba a la fructosa-1,6-bisfosfatasa se permitiría el flujo de la GNG, priorizando la producción de glucosa para el resto del cuerpo.",
+    "en": "AMP, at high concentration, would inhibit GNG. However, another signal must be stronger: glucagon, secreted by the pancreas in response to low blood glucose. Glucagon would reduce the F2,6BP concentration (by activating the phosphatase activity of PFK-2/FBPase-2). With no F2,6BP to inhibit fructose 1,6-bisphosphatase, flux through GNG would be allowed, prioritizing glucose production for the rest of the body."
+   },
+   "justificacion": {
+    "es": "Exige sintetizar cómo dos señales (hormonal → F2,6BP y energética → AMP) interactúan en el hígado para lograr un objetivo fisiológico complejo.",
+    "en": "Requires synthesizing how two signals (hormonal → F2,6BP and energetic → AMP) interact in the liver to achieve a complex physiological goal."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-PC2.7",
+   "num": "PC2.7",
+   "tema": 2,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Por qué la reacción catalizada por la hexoquinasa en la glucolisis (glucosa→glucosa-6-fosfato) es fundamental para evitar la pérdida de glucosa en la célula?",
+    "en": "Why is the hexokinase reaction in glycolysis (glucose → glucose 6-phosphate) essential to prevent the loss of glucose from the cell?"
+   },
+   "respuesta": {
+    "es": "La fosforilación a glucosa-6-fosfato (G6P) es crucial porque la G6P es una molécula cargada negativamente. Al ser cargada, y al no haber transportador específico para ésta, no puede atravesar la membrana plasmática (es atrapada en la célula), evitando su difusión y su pérdida.",
+    "en": "Phosphorylation to glucose 6-phosphate (G6P) is crucial because G6P is a negatively charged molecule. Being charged, and in the absence of a specific transporter for it, it cannot cross the plasma membrane (it is trapped in the cell), which prevents its diffusion and loss."
+   },
+   "justificacion": {
+    "es": "Requiere entender la implicación física de un paso bioquímico (la fosforilación) en la compartimentalización celular.",
+    "en": "Requires understanding the physical implication of a biochemical step (phosphorylation) for cellular compartmentalization."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-PC2.8",
+   "num": "PC2.8",
+   "tema": 2,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Explica la ventaja energética de la glucogenólisis (degradación del glucógeno) en el músculo en comparación con una simple hidrólisis del glucógeno.",
+    "en": "Explain the energetic advantage of glycogenolysis (glycogen breakdown) in muscle compared with simple hydrolysis of glycogen."
+   },
+   "respuesta": {
+    "es": "La glucogenólisis usa la glucógeno fosforilasa, que produce glucosa-1-fosfato. Este producto (tras convertirse a glucosa-6-fosfato) ya está fosforilado y evita el gasto de un ATP de la hexoquinasa en el inicio de la glucólisis. La ventaja es un mayor rendimiento neto de ATP, además de garantizar que no se pierda.",
+    "en": "Glycogenolysis uses glycogen phosphorylase, which produces glucose 1-phosphate. This product (after conversion to glucose 6-phosphate) is already phosphorylated and avoids the expenditure of one ATP by hexokinase at the start of glycolysis. The advantage is a higher net ATP yield, besides ensuring that the glucose is not lost."
+   },
+   "justificacion": {
+    "es": "Requiere usar el conocimiento de la ruta de degradación para calcular y justificar una ventaja funcional (ahorro de ATP).",
+    "en": "Requires using knowledge of the degradative pathway to calculate and justify a functional advantage (ATP saving)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-PC2.9",
+   "num": "PC2.9",
+   "tema": 2,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Nombra los dos productos principales de la ruta de las pentosas fosfato (RPP) y analice su función en la célula.",
+    "en": "Name the two main products of the pentose phosphate pathway (PPP) and analyze their function in the cell."
+   },
+   "respuesta": {
+    "es": "<i>Los productos son:</i> - NADPH: se usa como poder reductor en rutas anabólicas (principalmente lipogénesis y síntesis de colesterol) y para proteger a la célula del estrés oxidativo (manteniendo el glutatión reducido). - Ribosa-5-fosfato: se usa como precursor en la síntesis de ácidos nucleicos (ADN y ARN) y coenzimas (ATP, NAD<sup>+</sup>).",
+    "en": "<i>The products are:</i> - NADPH: used as reducing power in anabolic pathways (mainly lipogenesis and cholesterol synthesis) and to protect the cell from oxidative stress (by keeping glutathione reduced). - Ribose 5-phosphate: used as a precursor in the synthesis of nucleic acids (DNA and RNA) and coenzymes (ATP, NAD<sup>+</sup>)."
+   },
+   "justificacion": {
+    "es": "Exige desglosar los productos de la RPP y explicar los distintos roles funcionales de cada uno en la célula.",
+    "en": "Requires breaking down the products of the PPP and explaining the distinct functional roles of each in the cell."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-PC2.10",
+   "num": "PC2.10",
+   "tema": 2,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Describe brevemente el ciclo de Cori, especificando qué molécula se transporta del músculo al hígado y cuál es el coste energético que asume el hígado.",
+    "en": "Briefly describe the Cori cycle, specifying which molecule is transported from muscle to liver and the energy cost borne by the liver."
+   },
+   "respuesta": {
+    "es": "La molécula que se transporta del músculo al hígado es el lactato (producto de la fermentación). El hígado lo usa para hacer glucosa mediante gluconeogénesis, la cual vuelve a la sangre. La gluconeogénesis cuesta 6 equivalentes de ATP (4 ATP + 2 GTP) por glucosa; como la glucólisis en el músculo recupera 2 ATP, el coste neto del ciclo para el organismo es de 4 ATP.",
+    "en": "The molecule transported from muscle to liver is lactate (the product of fermentation). The liver uses it to make glucose through gluconeogenesis, and the glucose returns to the blood. Gluconeogenesis costs 6 ATP equivalents (4 ATP + 2 GTP) per glucose; since glycolysis in muscle recovers 2 ATP, the net cost of the cycle for the body is 4 ATP."
+   },
+   "justificacion": {
+    "es": "Requiere describir un ciclo interorgánico, nombrar la molécula y describir la consecuencia energética (coste de ATP).",
+    "en": "Requires describing an inter-organ cycle, naming the molecule and describing the energetic consequence (ATP cost)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-PC2.11",
+   "num": "PC2.11",
+   "tema": 2,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe el impacto metabólico de una mutación que impide la captación de lactato por el hígado durante el ejercicio intenso. ¿Cómo intentaría el organismo compensar la hipoglucemia y la acidosis resultante?",
+    "en": "Evaluate the metabolic impact of a mutation that prevents lactate uptake by the liver during intense exercise. How would the body try to compensate for the resulting hypoglycemia and acidosis?"
+   },
+   "respuesta": {
+    "es": "El organismo sufriría acidosis láctica (el lactato se acumula) e hipoglucemia postejercicio. Intentaría compensar aumentando la GNG a partir de otras fuentes (p. ej. desde alanina) y maximizaría el uso de cuerpos cetónicos y ácidos grasos para reducir la demanda de glucosa por parte del cerebro.",
+    "en": "The body would suffer lactic acidosis (lactate accumulates) and post-exercise hypoglycemia. It would try to compensate by increasing GNG from other sources (e.g., from alanine) and by maximizing the use of ketone bodies and fatty acids to reduce the brain's demand for glucose."
+   },
+   "justificacion": {
+    "es": "Requiere juzgar el impacto de un fallo en una ruta interorgánica e hipotetizar las respuestas compensatorias sistémicas.",
+    "en": "Requires judging the impact of a failure in an inter-organ pathway and hypothesizing the systemic compensatory responses."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T2-PC2.12",
+   "num": "PC2.12",
+   "tema": 2,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe la estrategia bioquímica que deben aplicar las plantas C4 para evitar la fotorrespiración en condiciones de calor y alta luminosidad. ¿Qué enzima y qué producto se utiliza inicialmente?",
+    "en": "Design the biochemical strategy that C4 plants must apply to avoid photorespiration under hot, high-light conditions. Which enzyme and which product are used initially?"
+   },
+   "respuesta": {
+    "es": "En estas condiciones hay mucho O<sub>2</sub> disuelto y la actividad oxigenasa de la RuBisCO comprometería la fijación del CO<sub>2</sub>. Las plantas C4 separan espacialmente los procesos de captación y fijación del CO<sub>2</sub>. En las células más externas (mesófilo), la fosfoenolpiruvato carboxilasa (PEP carboxilasa) une CO<sub>2</sub> al Fosfoenolpiruvato (PEP). El oxalacetato (OAA) formado se reduce a malato por la malato deshidrogenasa y se transporta a las células de la vaina del haz, donde se encuentra la RuBisCO. Allí el malato se descarboxila y la RuBisCO utiliza el CO<sub>2</sub> liberado, sin riesgo de “equivocarse” con O<sub>2</sub>.",
+    "en": "Under these conditions there is a lot of dissolved O<sub>2</sub>, and the oxygenase activity of RuBisCO would compromise CO<sub>2</sub> fixation. C4 plants spatially separate CO<sub>2</sub> capture from fixation. In the outer cells (mesophyll), phosphoenolpyruvate carboxylase (PEP carboxylase) binds CO<sub>2</sub> to phosphoenolpyruvate (PEP). The oxaloacetate (OAA) formed is reduced to malate by malate dehydrogenase and transported to the bundle-sheath cells, where RuBisCO is located. There, malate is decarboxylated and RuBisCO uses the released CO<sub>2</sub>, with no risk of “mistaking” it for O<sub>2</sub>."
+   },
+   "justificacion": {
+    "es": "Exige sintetizar una estrategia bioquímica compleja de la fotosíntesis (separación espacial) para resolver un problema ambiental (fotorrespiración), nombrando las enzimas y productos clave.",
+    "en": "Requires synthesizing a complex biochemical strategy of photosynthesis (spatial separation) to solve an environmental problem (photorespiration), naming the key enzymes and products."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  }
+ ]
+}

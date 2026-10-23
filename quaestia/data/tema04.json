@@ -1,0 +1,4832 @@
+{
+ "schema": "metahub-tema/1",
+ "tema": 4,
+ "titulo": {
+  "es": "Ciclo de Krebs y ciclo del glioxilato",
+  "en": "Krebs cycle and glyoxylate cycle"
+ },
+ "secciones": {
+  "4.1": {
+   "es": "Papel central del ciclo de Krebs en el metabolismo intermediario",
+   "en": "Central role of the Krebs cycle in intermediary metabolism"
+  },
+  "4.2": {
+   "es": "Oxidación del piruvato a acetil-CoA",
+   "en": "Oxidation of pyruvate to acetyl-CoA"
+  },
+  "4.3": {
+   "es": "Ciclo de Krebs",
+   "en": "Krebs cycle"
+  },
+  "4.4": {
+   "es": "Carácter anfibólico y reacciones anapleróticas",
+   "en": "Amphibolic nature and anaplerotic reactions"
+  },
+  "4.5": {
+   "es": "Ciclo del glioxilato",
+   "en": "Glyoxylate cycle"
+  }
+ },
+ "conceptos_clave": {
+  "I": {
+   "es": "complejo piruvato deshidrogenasa (CPD)",
+   "en": "pyruvate dehydrogenase complex (PDC)"
+  },
+  "II": {
+   "es": "ciclo de Krebs (CK)",
+   "en": "Krebs cycle (KC)"
+  },
+  "III": {
+   "es": "anaplerosis y anfibolismo",
+   "en": "anaplerosis and amphibolism"
+  },
+  "IV": {
+   "es": "ciclo del glioxilato (CG)",
+   "en": "glyoxylate cycle (GC)"
+  }
+ },
+ "preguntas": [
+  {
+   "id": "T4-4.1.1",
+   "num": "4.1.1",
+   "tema": 4,
+   "seccion": "4.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué ocurrirá en un perro con deficiencia de vitamina B<sub>1</sub> (tiamina) ?",
+    "en": "What will happen in a dog with vitamin B<sub>1</sub> (thiamine) deficiency?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Disminuirá la β-oxidación",
+     "en": "β-Oxidation will decrease"
+    },
+    "b": {
+     "es": "Se reducirá la actividad de la piruvato deshidrogenasa",
+     "en": "Pyruvate dehydrogenase activity will be reduced"
+    },
+    "c": {
+     "es": "Se acumulará piruvato y lactato en sangre",
+     "en": "Pyruvate and lactate will accumulate in the blood"
+    },
+    "d": {
+     "es": "Mejorará la síntesis de glucógeno",
+     "en": "Glycogen synthesis will improve"
+    },
+    "e": {
+     "es": "Aumentará la fosforilación oxidativa",
+     "en": "Oxidative phosphorylation will increase"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de la función coenzimática de la tiamina (TPP) en la piruvato deshidrogenasa (PDH) para predecir las consecuencias metabólicas directas de su deficiencia (inhibición de PDH y desvío de piruvato a lactato).",
+    "en": "Applying knowledge of the coenzyme function of thiamine (TPP) in pyruvate dehydrogenase (PDH) to predict the direct metabolic consequences of its deficiency (inhibition of PDH and diversion of pyruvate to lactate)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.1.2",
+   "num": "4.1.2",
+   "tema": 4,
+   "seccion": "4.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué metabolito serviría como indicador en una analítica para confirmar una deficiencia de PDH?",
+    "en": "Which metabolite would serve as a marker in a laboratory test to confirm PDH deficiency?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Lactato",
+     "en": "Lactate"
+    },
+    "b": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    },
+    "c": {
+     "es": "Piruvato",
+     "en": "Pyruvate"
+    },
+    "d": {
+     "es": "Alanina",
+     "en": "Alanine"
+    },
+    "e": {
+     "es": "Citrato",
+     "en": "Citrate"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento del bloqueo de la PDH para identificar los metabolitos que se acumularán inmediatamente aguas arriba del punto de bloqueo o a través de rutas de desvío (piruvato, lactato, alanina).",
+    "en": "Applying knowledge of the PDH block to identify the metabolites that will accumulate immediately upstream of the block or through diversion pathways (pyruvate, lactate, alanine)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.1.3",
+   "num": "4.1.3",
+   "tema": 4,
+   "seccion": "4.1",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "¿Qué prueba de laboratorio confirmaría déficit de PDH en un paciente pediátrico?",
+    "en": "Which laboratory test would confirm PDH deficiency in a pediatric patient?"
+   },
+   "opciones": {
+    "a": {
+     "es": "pH sanguíneo alto",
+     "en": "High blood pH"
+    },
+    "b": {
+     "es": "Acidosis láctica",
+     "en": "Lactic acidosis"
+    },
+    "c": {
+     "es": "Elevación de piruvato",
+     "en": "Elevated pyruvate"
+    },
+    "d": {
+     "es": "Hiperglucemia",
+     "en": "Hyperglycemia"
+    },
+    "e": {
+     "es": "Aumento de GTP",
+     "en": "Increased GTP"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Evaluar la información clínica y analítica de un déficit de PDH para seleccionar las pruebas de laboratorio más confirmatorias (elevación de sustrato/producto y consecuencia clínica), descartando indicadores menos específicos.",
+    "en": "Evaluating the clinical and laboratory information on PDH deficiency to select the most confirmatory tests (elevated substrate/product and clinical consequence), ruling out less specific markers."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.2.1",
+   "num": "4.2.1",
+   "tema": 4,
+   "seccion": "4.2",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué enzimas permiten la generación de piruvato a partir de alanina y serina respectivamente?",
+    "en": "Which enzymes allow pyruvate to be generated from alanine and serine, respectively?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Alanina y serina aminotransferasas, respectivamente",
+     "en": "Alanine and serine aminotransferases, respectively"
+    },
+    "b": {
+     "es": "Alanina dehidratasa y serina aminotransferasa, respectivamente",
+     "en": "Alanine dehydratase and serine aminotransferase, respectively"
+    },
+    "c": {
+     "es": "Treonina deshidrogenasa, alanina aminotransferasa y serina dehidratasa, respectivamente",
+     "en": "Threonine dehydrogenase, alanine aminotransferase and serine dehydratase, respectively"
+    },
+    "d": {
+     "es": "Alanina aminotransferasa y serina dehidratasa, respectivamente",
+     "en": "Alanine aminotransferase and serine dehydratase, respectively"
+    },
+    "e": {
+     "es": "Treonina aldolasa, aldehído deshidrogenasa y acetato tioquinasa",
+     "en": "Threonine aldolase, aldehyde dehydrogenase and acetate thiokinase"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar la enzima específica (alanina aminotransferasa y serina dehidratasa) responsable de la generación de piruvato a partir de aminoácidos glucogénicos.",
+    "en": "Recalling the specific enzymes (alanine aminotransferase and serine dehydratase) responsible for generating pyruvate from glucogenic amino acids."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.2.2",
+   "num": "4.2.2",
+   "tema": 4,
+   "seccion": "4.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué coenzima del complejo piruvato deshidrogenasa se encarga de la descarboxilación y transferencia del grupo aldehído (A) y del transporte de grupos acilo (B)?",
+    "en": "Which coenzyme of the pyruvate dehydrogenase complex is responsible for decarboxylation and transfer of the aldehyde group (A) and for the transport of acyl groups (B)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El lipoato para A y el TPP para B",
+     "en": "Lipoate for A and TPP for B"
+    },
+    "b": {
+     "es": "El NADH, tanto de A como de B",
+     "en": "NADH, for both A and B"
+    },
+    "c": {
+     "es": "La tiamina pirofosfato (TPP) para A y la coenzima A para B",
+     "en": "Thiamine pyrophosphate (TPP) for A and coenzyme A for B"
+    },
+    "d": {
+     "es": "El TPP para A y el lipoato para B",
+     "en": "TPP for A and lipoate for B"
+    },
+    "e": {
+     "es": "El TPP tanto para A como para B",
+     "en": "TPP for both A and B"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Relacionar las funciones específicas (descarboxilación, transporte de acilo) con la coenzima correspondiente (TPP y lipoato), demostrando entendimiento del mecanismo secuencial del complejo PDH.",
+    "en": "Relating the specific functions (decarboxylation, acyl transport) to the corresponding coenzyme (TPP and lipoate), showing understanding of the sequential mechanism of the PDH complex."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.2.3",
+   "num": "4.2.3",
+   "tema": 4,
+   "seccion": "4.2",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué enzima(s) del complejo piruvato deshidrogenasa se encarga(n) de la descarboxilación del piruvato?",
+    "en": "Which enzyme(s) of the pyruvate dehydrogenase complex is/are responsible for the decarboxylation of pyruvate?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La dihidrolipoil transacetilasa y la dihidrolipoil deshidrogenasa",
+     "en": "Dihydrolipoyl transacetylase and dihydrolipoyl dehydrogenase"
+    },
+    "b": {
+     "es": "La piruvato deshidrogenasa y la dihidrolipoil transacetilasa",
+     "en": "Pyruvate dehydrogenase and dihydrolipoyl transacetylase"
+    },
+    "c": {
+     "es": "La piruvato deshidrogenasa",
+     "en": "Pyruvate dehydrogenase"
+    },
+    "d": {
+     "es": "La dihidrolipoil transacetilasa",
+     "en": "Dihydrolipoyl transacetylase"
+    },
+    "e": {
+     "es": "La dihidrolipoil deshidrogenasa",
+     "en": "Dihydrolipoyl dehydrogenase"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar la subunidad enzimática específica del complejo PDH (piruvato deshidrogenasa, E1) que cataliza la reacción de descarboxilación.",
+    "en": "Recalling the specific enzyme subunit of the PDH complex (pyruvate dehydrogenase, E1) that catalyzes the decarboxylation reaction."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.2.4",
+   "num": "4.2.4",
+   "tema": 4,
+   "seccion": "4.2",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "De las coenzimas del complejo piruvato deshidrogenasa, ¿cuál se encarga de la descarboxilación?",
+    "en": "Of the coenzymes of the pyruvate dehydrogenase complex, which is responsible for decarboxylation?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Lipoato",
+     "en": "Lipoate"
+    },
+    "b": {
+     "es": "Tiamina pirofosfato",
+     "en": "Thiamine pyrophosphate"
+    },
+    "c": {
+     "es": "NADH",
+     "en": "NADH"
+    },
+    "d": {
+     "es": "FADH<sub>2</sub>",
+     "en": "FADH<sub>2</sub>"
+    },
+    "e": {
+     "es": "Coenzima A",
+     "en": "Coenzyme A"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Recordar la coenzima específica (TPP) que facilita la descarboxilación dentro del complejo PDH.",
+    "en": "Recalling the specific coenzyme (TPP) that facilitates decarboxylation within the PDH complex."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.2.5",
+   "num": "4.2.5",
+   "tema": 4,
+   "seccion": "4.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cómo afectará una alta concentración de NADH al complejo piruvato deshidrogenasa considerando el mecanismo de modificación covalente?",
+    "en": "How will a high NADH concentration affect the pyruvate dehydrogenase complex, considering the covalent modification mechanism?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La inhibirá alostéricamente.",
+     "en": "It will inhibit it allosterically."
+    },
+    "b": {
+     "es": "Permitirá su actividad al reprimir a la piruvato deshidrogenasa quinasa.",
+     "en": "It will allow its activity by repressing pyruvate dehydrogenase kinase."
+    },
+    "c": {
+     "es": "Lo inhibirá mediante la activación de la piruvato deshidrogenasa quinasa.",
+     "en": "It will inhibit it by activating pyruvate dehydrogenase kinase."
+    },
+    "d": {
+     "es": "Permitirá su activación mediante la desfosforilación de la piruvato deshidrogenasa quinasa.",
+     "en": "It will allow its activation through the dephosphorylation of pyruvate dehydrogenase kinase."
+    },
+    "e": {
+     "es": "Lo inhibirá mediante la fosforilación de la dihidrolipoil transacetilasa.",
+     "en": "It will inhibit it through the phosphorylation of dihydrolipoyl transacetylase."
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Explicar el mecanismo de regulación del PDH: interpretar cómo un alto nivel de NADH (señal energética) conduce a la activación de la PDH quinasa y, por ende, a la inhibición covalente del complejo.",
+    "en": "Explaining the regulatory mechanism of PDH: interpreting how a high NADH level (an energy signal) leads to the activation of PDH kinase and, hence, to covalent inhibition of the complex."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.2.6",
+   "num": "4.2.6",
+   "tema": 4,
+   "seccion": "4.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Los alcohólicos frecuentemente desarrollan deficiencias de tiamina porque el etanol disminuye la absorción de la vitamina. ¿Cuál de las siguientes enzimas se vería más afectada por una deficiencia de tiamina?",
+    "en": "Alcoholics frequently develop thiamine deficiencies because ethanol decreases the absorption of the vitamin. Which of the following enzymes would be most affected by thiamine deficiency?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Piruvato deshidrogenasa",
+     "en": "Pyruvate dehydrogenase"
+    },
+    "b": {
+     "es": "Succinato deshidrogenasa",
+     "en": "Succinate dehydrogenase"
+    },
+    "c": {
+     "es": "Malato deshidrogenasa",
+     "en": "Malate dehydrogenase"
+    },
+    "d": {
+     "es": "Alfa-cetoglutarato deshidrogenasa",
+     "en": "Alpha-ketoglutarate dehydrogenase"
+    },
+    "e": {
+     "es": "Fumarasa",
+     "en": "Fumarase"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Relacionar la deficiencia de la vitamina (tiamina) con la función de su coenzima (TPP) para identificar la enzima dependiente más afectada, en un contexto fisiológico/clínico (alcoholismo).",
+    "en": "Relating the vitamin deficiency (thiamine) to the function of its coenzyme (TPP) to identify the most affected dependent enzyme, in a physiological/clinical context (alcoholism)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.2.7",
+   "num": "4.2.7",
+   "tema": 4,
+   "seccion": "4.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La conversión de piruvato en acetil CoA y CO<sub>2</sub>:",
+    "en": "The conversion of pyruvate into acetyl-CoA and CO<sub>2</sub>:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se inhibe cuando la piruvato deshidrogenasa quinasa se activa por NADH",
+     "en": "Is inhibited when pyruvate dehydrogenase kinase is activated by NADH"
+    },
+    "b": {
+     "es": "Es reversible",
+     "en": "Is reversible"
+    },
+    "c": {
+     "es": "Implica la participación del ácido lipoico",
+     "en": "Involves the participation of lipoic acid"
+    },
+    "d": {
+     "es": "Es fosforilado por una proteína quinasa en presencia de ATP",
+     "en": "Is phosphorylated by a protein kinase in the presence of ATP"
+    },
+    "e": {
+     "es": "Ocurre en el citosol",
+     "en": "Occurs in the cytosol"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Interpretar las características fundamentales de la reacción de la PDH, incluyendo su regulación por la quinasa/NADH y la participación esencial del ácido lipoico.",
+    "en": "Interpreting the fundamental characteristics of the PDH reaction, including its regulation by the kinase/NADH and the essential participation of lipoic acid."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.2.8",
+   "num": "4.2.8",
+   "tema": 4,
+   "seccion": "4.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Ante una situación de suficiencia energética, ¿Qué papel jugará la piruvato deshidrogenasa quinasa?",
+    "en": "In a situation of energy sufficiency, what role will pyruvate dehydrogenase kinase play?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Fosforilará residuos de serina de la piruvato deshidrogenasa (E1)",
+     "en": "It will phosphorylate serine residues of pyruvate dehydrogenase (E1)"
+    },
+    "b": {
+     "es": "Inactivará a la piruvato deshidrogenasa (E1) mediante fosforilación",
+     "en": "It will inactivate pyruvate dehydrogenase (E1) by phosphorylation"
+    },
+    "c": {
+     "es": "Inactivará a la dihidrolipoil deshidrogenasa (E3) mediante fosforilación",
+     "en": "It will inactivate dihydrolipoyl dehydrogenase (E3) by phosphorylation"
+    },
+    "d": {
+     "es": "Activará a la piruvato deshidrogenasa (E1) mediante fosforilación",
+     "en": "It will activate pyruvate dehydrogenase (E1) by phosphorylation"
+    },
+    "e": {
+     "es": "Activará a la dihidrolipoil transacetilasa (E2) mediante fosforilación",
+     "en": "It will activate dihydrolipoyl transacetylase (E2) by phosphorylation"
+    }
+   },
+   "correctas": [
+    "a",
+    "b"
+   ],
+   "justificacion": {
+    "es": "Describir el papel de la PDH quinasa en un estado de suficiencia energética, identificando las acciones específicas de fosforilación e inactivación del complejo.",
+    "en": "Describing the role of PDH kinase in a state of energy sufficiency, identifying the specific actions of phosphorylation and inactivation of the complex."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.2.9",
+   "num": "4.2.9",
+   "tema": 4,
+   "seccion": "4.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Ante una situación de deficiencia energética, ¿Qué papel jugará la piruvato deshidrogenasa quinasa?",
+    "en": "In a situation of energy deficiency, what role will pyruvate dehydrogenase kinase play?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Estará inactivada, permitiendo la actividad del complejo piruvato deshidrogenasa",
+     "en": "It will be inactive, allowing pyruvate dehydrogenase complex activity"
+    },
+    "b": {
+     "es": "Activará a la piruvato deshidrogenasa (E1) mediante fosforilación",
+     "en": "It will activate pyruvate dehydrogenase (E1) by phosphorylation"
+    },
+    "c": {
+     "es": "Inactivará a la piruvato deshidrogenasa (E1) mediante fosforilación",
+     "en": "It will inactivate pyruvate dehydrogenase (E1) by phosphorylation"
+    },
+    "d": {
+     "es": "Activará a la dihidrolipoil transacetilasa (E2) mediante fosforilación",
+     "en": "It will activate dihydrolipoyl transacetylase (E2) by phosphorylation"
+    },
+    "e": {
+     "es": "Fosforilará residuos de serina de la piruvato deshidrogenasa (E1)",
+     "en": "It will phosphorylate serine residues of pyruvate dehydrogenase (E1)"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Describir el papel de la PDH quinasa en un estado de deficiencia energética, identificando que la quinasa está inactiva, permitiendo la actividad del complejo.",
+    "en": "Describing the role of PDH kinase in a state of energy deficiency, identifying that the kinase is inactive, which allows the complex to be active."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.2.10",
+   "num": "4.2.10",
+   "tema": 4,
+   "seccion": "4.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En un paciente con déficit de piruvato deshidrogenasa, ¿Qué consecuencia metabólica inmediata se observa?",
+    "en": "In a patient with pyruvate dehydrogenase deficiency, what immediate metabolic consequence is observed?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acumulación de lactato",
+     "en": "Lactate accumulation"
+    },
+    "b": {
+     "es": "Disminución de acetil-CoA",
+     "en": "Decreased acetyl-CoA"
+    },
+    "c": {
+     "es": "Disminución de la β-oxidación",
+     "en": "Decreased β-oxidation"
+    },
+    "d": {
+     "es": "Acidosis metabólica",
+     "en": "Metabolic acidosis"
+    },
+    "e": {
+     "es": "Aumento del ciclo de Krebs",
+     "en": "Increased Krebs cycle activity"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar la consecuencia de la PDH bloqueada para predecir las manifestaciones metabólicas inmediatas derivadas de la acumulación de piruvato (acumulación de lactato y, consecuentemente, acidosis metabólica).",
+    "en": "Applying the consequence of a blocked PDH to predict the immediate metabolic manifestations arising from pyruvate accumulation (lactate accumulation and, consequently, metabolic acidosis)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.2.11",
+   "num": "4.2.11",
+   "tema": 4,
+   "seccion": "4.2",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Un paciente pediátrico padece de un déficit congénito y severo de la piruvato deshidrogenasa (PDH). ¿Qué estrategia metabólica o farmacológica, en conjunto, propondría usted para minimizar la acidosis láctica y proveer de energía al cerebro?",
+    "en": "A pediatric patient has a severe congenital deficiency of pyruvate dehydrogenase (PDH). Which combined metabolic or pharmacological strategy would you propose to minimize lactic acidosis and supply energy to the brain?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Dieta cetogénica, aumentando la ingesta de lípidos",
+     "en": "Ketogenic diet, increasing lipid intake"
+    },
+    "b": {
+     "es": "Inhibir la piruvato carboxilasa (PC) para reducir la demanda de oxalacetato (OAA)",
+     "en": "Inhibiting pyruvate carboxylase (PC) to reduce the demand for oxaloacetate (OAA)"
+    },
+    "c": {
+     "es": "Administrar dicloroacetato (DCA) para inhibir la piruvato deshidrogenasa quinasa (PDK)",
+     "en": "Administering dichloroacetate (DCA) to inhibit pyruvate dehydrogenase kinase (PDK)"
+    },
+    "d": {
+     "es": "Administrar suplementos de tiamina y lipoato para maximizar la actividad residual del complejo",
+     "en": "Administering thiamine and lipoate supplements to maximize the residual activity of the complex"
+    },
+    "e": {
+     "es": "Favorecer la producción de glucosa mediante una dieta rica en carbohidratos",
+     "en": "Promoting glucose production through a carbohydrate-rich diet"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Diseñar una terapia compleja para un déficit enzimático grave (PDH), integrando conceptos de rutas alternativas (cetogénesis como fuente de energía cerebral), regulación alostérica (DCA inhibe PDK, activando la PDH) y corrección coenzimática.",
+    "en": "Designing a complex therapy for a severe enzyme deficiency (PDH), integrating concepts of alternative pathways (ketogenesis as a brain energy source), allosteric regulation (DCA inhibits PDK, activating PDH) and coenzyme correction."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.2.12",
+   "num": "4.2.12",
+   "tema": 4,
+   "seccion": "4.2",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "El arsénico (As<sup>3+</sup>) se une covalentemente a los grupos tiol (-SH) del lipoato. Evalúe las consecuencias inmediatas y a corto plazo de una intoxicación por arsénico en el metabolismo cerebral.",
+    "en": "Arsenic (As<sup>3+</sup>) binds covalently to the thiol (-SH) groups of lipoate. Evaluate the immediate and short-term consequences of arsenic poisoning on brain metabolism."
+   },
+   "opciones": {
+    "a": {
+     "es": "Se incrementará el flujo del ciclo de Krebs al inhibirse la isocitrato deshidrogenasa",
+     "en": "Krebs cycle flux will increase as isocitrate dehydrogenase is inhibited"
+    },
+    "b": {
+     "es": "Acumulación de piruvato y α-cetoglutarato por el bloqueo de complejos con lipoato",
+     "en": "Accumulation of pyruvate and α-ketoglutarate owing to the blockade of lipoate-containing complexes"
+    },
+    "c": {
+     "es": "Una disminución drástica en la producción de acetil-CoA y succinil-CoA mitocondriales",
+     "en": "A drastic decrease in mitochondrial acetyl-CoA and succinyl-CoA production"
+    },
+    "d": {
+     "es": "Desvío del piruvato citosólico hacia la producción de lactato, generando acidosis láctica",
+     "en": "Diversion of cytosolic pyruvate toward lactate production, causing lactic acidosis"
+    },
+    "e": {
+     "es": "Aumento significativo en la producción de GTP/ATP debido a una vía compensatoria",
+     "en": "A significant increase in GTP/ATP production through a compensatory pathway"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Evaluar el impacto de la inhibición de un cofactor esencial (lipoato en As<sup>3+</sup>) que afecta a dos complejos clave (PDH y α-cetoglutarato DH) para deducir una cadena causal de acumulación de sustratos y las consecuencias clínicas (acidosis láctica).",
+    "en": "Evaluating the impact of inhibiting an essential cofactor (lipoate, by As<sup>3+</sup>) that affects two key complexes (PDH and α-ketoglutarate DH) to deduce a causal chain of substrate accumulation and the clinical consequences (lactic acidosis)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.2.13",
+   "num": "4.2.13",
+   "tema": 4,
+   "seccion": "4.2",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe cómo una alta concentración de ATP, NADH y acetil-CoA en la matriz mitocondrial regula la entrada de carbono al ciclo de Krebs a partir del piruvato.",
+    "en": "Evaluate how a high concentration of ATP, NADH and acetyl-CoA in the mitochondrial matrix regulates the entry of carbon from pyruvate into the Krebs cycle."
+   },
+   "opciones": {
+    "a": {
+     "es": "El acetil-CoA activa alostéricamente a la piruvato deshidrogenasa quinasa (PDK)",
+     "en": "Acetyl-CoA allosterically activates pyruvate dehydrogenase kinase (PDK)"
+    },
+    "b": {
+     "es": "El ATP actúa como aceptor de fosfato para desfosforilar e inactivar a la PDH",
+     "en": "ATP acts as a phosphate acceptor to dephosphorylate and inactivate PDH"
+    },
+    "c": {
+     "es": "La activación de la PDK conduce a la fosforilación e inactivación de la piruvato deshidrogenasa (PDH)",
+     "en": "Activation of PDK leads to the phosphorylation and inactivation of pyruvate dehydrogenase (PDH)"
+    },
+    "d": {
+     "es": "El aumento de NADH y acetil-CoA inhibe directamente al complejo PDH (E3 y E2, respectivamente) por retroalimentación",
+     "en": "The increase in NADH and acetyl-CoA directly inhibits the PDH complex (E3 and E2, respectively) by feedback"
+    },
+    "e": {
+     "es": "La concentración alta de acetil-CoA actúa como un activador para la citrato sintasa, forzando la entrada al ciclo",
+     "en": "A high acetyl-CoA concentration acts as an activator of citrate synthase, forcing entry into the cycle"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Evaluar cómo múltiples señales de alto estado energético (ATP, NADH, acetil-CoA) convergen para regular un paso irreversible, distinguiendo entre mecanismos alostéricos directos (NADH, acetil-CoA) y el mecanismo de modificación covalente (activación de PDK por acetil-CoA).",
+    "en": "Evaluating how multiple signals of a high energy state (ATP, NADH, acetyl-CoA) converge to regulate an irreversible step, distinguishing between direct allosteric mechanisms (NADH, acetyl-CoA) and the covalent modification mechanism (activation of PDK by acetyl-CoA)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.1",
+   "num": "4.3.1",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál de las siguientes enzimas se encargan de la formación de FADH<sub>2</sub> en el ciclo de Krebs?",
+    "en": "Which of the following enzymes is responsible for the formation of FADH<sub>2</sub> in the Krebs cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Succinato deshidrogenasa y malato deshidrogenasa",
+     "en": "Succinate dehydrogenase and malate dehydrogenase"
+    },
+    "b": {
+     "es": "Isocitrato deshidrogenasa, cetoglutarato deshidrogenasa y malato deshidrogenasa",
+     "en": "Isocitrate dehydrogenase, ketoglutarate dehydrogenase and malate dehydrogenase"
+    },
+    "c": {
+     "es": "Succinil-CoA sintetasa",
+     "en": "Succinyl-CoA synthetase"
+    },
+    "d": {
+     "es": "Succinato deshidrogenasa",
+     "en": "Succinate dehydrogenase"
+    },
+    "e": {
+     "es": "Citrato sintasa, aconitasa y fumarasa",
+     "en": "Citrate synthase, aconitase and fumarase"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar la enzima específica del ciclo de Krebs que reduce FAD a FADH<sub>2</sub> (succinato deshidrogenasa).",
+    "en": "Recalling the specific Krebs cycle enzyme that reduces FAD to FADH<sub>2</sub> (succinate dehydrogenase)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.2",
+   "num": "4.3.2",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuáles de las siguientes son afirmaciones verdaderas sobre los diferentes tipos de sistemas de energía en el cuerpo humano?",
+    "en": "Which of the following statements about the different energy systems of the human body are true?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El sistema ATP-PCr se utiliza principalmente para movimientos cortos y explosivos",
+     "en": "The ATP-PCr system is used mainly for short, explosive movements"
+    },
+    "b": {
+     "es": "El sistema ATP-PCr requiere oxígeno para funcionar eficazmente",
+     "en": "The ATP-PCr system requires oxygen to work effectively"
+    },
+    "c": {
+     "es": "El sistema oxidativo sólo utiliza carbohidratos como fuente de combustible",
+     "en": "The oxidative system uses only carbohydrates as fuel"
+    },
+    "d": {
+     "es": "El sistema oxidativo es la principal fuente de ATP durante el ejercicio prolongado en estado estable",
+     "en": "The oxidative system is the main source of ATP during prolonged steady-state exercise"
+    },
+    "e": {
+     "es": "El sistema glucolítico puede provocar la acumulación de lactato en los músculos",
+     "en": "The glycolytic system can cause lactate to accumulate in the muscles"
+    }
+   },
+   "correctas": [
+    "a",
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender las características, cinética y papel funcional de los tres sistemas energéticos humanos (ATP-PCr para explosividad, glucolítico para lactato, y oxidativo para ejercicio prolongado).",
+    "en": "Understanding the characteristics, kinetics and functional role of the three human energy systems (ATP-PCr for explosive effort, glycolytic for lactate, and oxidative for prolonged exercise)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.3",
+   "num": "4.3.3",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué enzimas se encargan, respectivamente, de la generación de α-cetoglutarato y de succinato en el ciclo de Krebs?",
+    "en": "Which enzymes are responsible, respectively, for generating α-ketoglutarate and succinate in the Krebs cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Isocitrato deshidrogenasa y succinil-CoA hidratasa",
+     "en": "Isocitrate dehydrogenase and succinyl-CoA hydratase"
+    },
+    "b": {
+     "es": "Fumarasa e isocitrato deshidrogenasa",
+     "en": "Fumarase and isocitrate dehydrogenase"
+    },
+    "c": {
+     "es": "Isocitrato deshidrogenasa y succinil-CoA sintasa",
+     "en": "Isocitrate dehydrogenase and succinyl-CoA synthase"
+    },
+    "d": {
+     "es": "Isocitrato deshidrogenasa y complejo cetoglutarato deshidrogenasa",
+     "en": "Isocitrate dehydrogenase and the ketoglutarate dehydrogenase complex"
+    },
+    "e": {
+     "es": "α-cetoglutarato deshidrogenasa y citrato sintasa",
+     "en": "α-Ketoglutarate dehydrogenase and citrate synthase"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar la secuencia del ciclo de Krebs e identificar las enzimas que catalizan la formación de los intermediarios α-cetoglutarato (isocitrato deshidrogenasa) y succinato (succinil-CoA sintasa).",
+    "en": "Recalling the sequence of the Krebs cycle and identifying the enzymes that catalyze the formation of the intermediates α-ketoglutarate (isocitrate dehydrogenase) and succinate (succinyl-CoA synthase)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.4",
+   "num": "4.3.4",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué enzimas se encargan de la generación de succinato y de fumarato en el ciclo de Krebs?",
+    "en": "Which enzymes are responsible for generating succinate and fumarate in the Krebs cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Isocitrato deshidrogenasa y succinil-CoA sintasa",
+     "en": "Isocitrate dehydrogenase and succinyl-CoA synthase"
+    },
+    "b": {
+     "es": "Succinato deshidrogenasa y fumarasa, respectivamente",
+     "en": "Succinate dehydrogenase and fumarase, respectively"
+    },
+    "c": {
+     "es": "Succinil-CoA sintetasa y succinato deshidrogenasa, respectivamente",
+     "en": "Succinyl-CoA synthetase and succinate dehydrogenase, respectively"
+    },
+    "d": {
+     "es": "Complejo cetoglutarato deshidrogenasa e isocitrato deshidrogenasa, respectivamente",
+     "en": "The ketoglutarate dehydrogenase complex and isocitrate dehydrogenase, respectively"
+    },
+    "e": {
+     "es": "α-cetoglutarato deshidrogenasa y fumarasa",
+     "en": "α-Ketoglutarate dehydrogenase and fumarase"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar la secuencia del ciclo de Krebs e identificar las enzimas que catalizan la formación de succinato (succinil-CoA sintasa) y fumarato (succinato deshidrogenasa).",
+    "en": "Recalling the sequence of the Krebs cycle and identifying the enzymes that catalyze the formation of succinate (succinyl-CoA synthase) and fumarate (succinate dehydrogenase)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.5",
+   "num": "4.3.5",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué enzimas se encargan de la generación de isocitrato y de succinil-CoA en el ciclo de Krebs?",
+    "en": "Which enzymes are responsible for generating isocitrate and succinyl-CoA in the Krebs cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Isocitrato deshidrogenasa y succinil-CoA sintasa, respectivamente",
+     "en": "Isocitrate dehydrogenase and succinyl-CoA synthase, respectively"
+    },
+    "b": {
+     "es": "Aconitasa y succinil-CoA sintasa, respectivamente",
+     "en": "Aconitase and succinyl-CoA synthase, respectively"
+    },
+    "c": {
+     "es": "Aconitasa y complejo α-cetoglutarato deshidrogenasa, respectivamente",
+     "en": "Aconitase and the α-ketoglutarate dehydrogenase complex, respectively"
+    },
+    "d": {
+     "es": "Citrato sintasa y complejo α-cetoglutarato deshidrogenasa, respectivamente",
+     "en": "Citrate synthase and the α-ketoglutarate dehydrogenase complex, respectively"
+    },
+    "e": {
+     "es": "Malato deshidrogenasa e isocitrato deshidrogenasa, respectivamente",
+     "en": "Malate dehydrogenase and isocitrate dehydrogenase, respectively"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar la secuencia del ciclo de Krebs e identificar las enzimas que catalizan la formación de isocitrato (aconitasa) y succinil-CoA (complejo α-cetoglutarato deshidrogenasa).",
+    "en": "Recalling the sequence of the Krebs cycle and identifying the enzymes that catalyze the formation of isocitrate (aconitase) and succinyl-CoA (α-ketoglutarate dehydrogenase complex)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.6",
+   "num": "4.3.6",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuáles de las siguientes características posee el succinato deshidrogenasa?",
+    "en": "Which of the following characteristics does succinate dehydrogenase have?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Estereoselectividad",
+     "en": "Stereoselectivity"
+    },
+    "b": {
+     "es": "Estereoespecificidad",
+     "en": "Stereospecificity"
+    },
+    "c": {
+     "es": "Acoplamiento con la cadena de transporte electrónico",
+     "en": "Coupling to the electron transport chain"
+    },
+    "d": {
+     "es": "Es capaz de alterar el equilibrio de la reacción",
+     "en": "It is able to alter the equilibrium of the reaction"
+    },
+    "e": {
+     "es": "Reacción reversible",
+     "en": "Reversible reaction"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender las propiedades cinéticas y estructurales de la succinato deshidrogenasa: su capacidad para distinguir y actuar sobre un único estereoisómero (a) y su acoplamiento con la cadena de transporte electrónico como complejo II (c).",
+    "en": "Understanding the kinetic and structural properties of succinate dehydrogenase: its ability to distinguish and act on a single stereoisomer (a) and its coupling to the electron transport chain as complex II (c)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.7",
+   "num": "4.3.7",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuáles de las siguientes características posee la fumarasa?",
+    "en": "Which of the following characteristics does fumarase have?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Estereoselectividad",
+     "en": "Stereoselectivity"
+    },
+    "b": {
+     "es": "Estereoespecificidad",
+     "en": "Stereospecificity"
+    },
+    "c": {
+     "es": "Acoplamiento con la cadena de transporte electrónico",
+     "en": "Coupling to the electron transport chain"
+    },
+    "d": {
+     "es": "Es capaz de alterar el equilibrio de la reacción",
+     "en": "It is able to alter the equilibrium of the reaction"
+    },
+    "e": {
+     "es": "Reacción reversible",
+     "en": "Reversible reaction"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender las propiedades cinéticas y estructurales de la fumarasa: su capacidad para distinguir y actuar sobre un único estereoisómero (b) y la reversibilidad de la reacción de hidratación del fumarato (e).",
+    "en": "Understanding the kinetic and structural properties of fumarase: its ability to distinguish and act on a single stereoisomer (b) and the reversibility of the fumarate hydration reaction (e)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.8",
+   "num": "4.3.8",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Número de NADH, FADH<sub>2</sub> y GTP que se generan a partir de cinco moléculas de acetil-CoA en el ciclo de Krebs?",
+    "en": "How many NADH, FADH<sub>2</sub> and GTP are generated from five molecules of acetyl-CoA in the Krebs cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "5 NADH, 5 FADH<sub>2</sub> y 10 GTP",
+     "en": "5 NADH, 5 FADH<sub>2</sub> and 10 GTP"
+    },
+    "b": {
+     "es": "3 NADH, 1 FADH<sub>2</sub> y 1 GTP",
+     "en": "3 NADH, 1 FADH<sub>2</sub> and 1 GTP"
+    },
+    "c": {
+     "es": "15 NADH, 5 FADH<sub>2</sub> y 5 GTP",
+     "en": "15 NADH, 5 FADH<sub>2</sub> and 5 GTP"
+    },
+    "d": {
+     "es": "10 NADH, 5 FADH<sub>2</sub> y 10 GTP",
+     "en": "10 NADH, 5 FADH<sub>2</sub> and 10 GTP"
+    },
+    "e": {
+     "es": "De forma neta, no se forma ninguno de los anteriores compuestos",
+     "en": "In net terms, none of the above compounds is formed"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar la estequiometría de una vuelta del ciclo de Krebs (3 NADH, 1 FADH<sub>2</sub>, 1 GTP) para calcular los productos netos a partir de 5 moléculas de acetil-CoA.",
+    "en": "Applying the stoichiometry of one turn of the Krebs cycle (3 NADH, 1 FADH<sub>2</sub>, 1 GTP) to calculate the net products from 5 molecules of acetyl-CoA."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.9",
+   "num": "4.3.9",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Cuántos NADH, FADH<sub>2</sub> y GTP que se generan a partir de tres moléculas de acetil-CoA en el ciclo de Krebs?",
+    "en": "How many NADH, FADH<sub>2</sub> and GTP are generated from three molecules of acetyl-CoA in the Krebs cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "9 NADH, 3 FADH<sub>2</sub> y 3 GTP",
+     "en": "9 NADH, 3 FADH<sub>2</sub> and 3 GTP"
+    },
+    "b": {
+     "es": "3 NADH, 1 FADH<sub>2</sub> y 1 GTP",
+     "en": "3 NADH, 1 FADH<sub>2</sub> and 1 GTP"
+    },
+    "c": {
+     "es": "15 NADH, 5 FADH<sub>2</sub> y 5 GTP",
+     "en": "15 NADH, 5 FADH<sub>2</sub> and 5 GTP"
+    },
+    "d": {
+     "es": "10 NADH, 5 FADH<sub>2</sub> y 10 GTP",
+     "en": "10 NADH, 5 FADH<sub>2</sub> and 10 GTP"
+    },
+    "e": {
+     "es": "6 NADH, 2 FADH<sub>2</sub> y 2 GTP",
+     "en": "6 NADH, 2 FADH<sub>2</sub> and 2 GTP"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Aplicar la estequiometría de una vuelta del ciclo de Krebs (3 NADH, 1 FADH<sub>2</sub>, 1 GTP) para calcular los productos netos a partir de 3 moléculas de acetil-CoA.",
+    "en": "Applying the stoichiometry of one turn of the Krebs cycle (3 NADH, 1 FADH<sub>2</sub>, 1 GTP) to calculate the net products from 3 molecules of acetyl-CoA."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.10",
+   "num": "4.3.10",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué enzima del ciclo de Krebs se encuentra anclada a la membrana mitocondrial interna?",
+    "en": "Which Krebs cycle enzyme is anchored to the inner mitochondrial membrane?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Isocitrato deshidrogenasa",
+     "en": "Isocitrate dehydrogenase"
+    },
+    "b": {
+     "es": "Citrato sintasa",
+     "en": "Citrate synthase"
+    },
+    "c": {
+     "es": "Malato deshidrogenasa",
+     "en": "Malate dehydrogenase"
+    },
+    "d": {
+     "es": "Succinato deshidrogenasa",
+     "en": "Succinate dehydrogenase"
+    },
+    "e": {
+     "es": "Fumarasa",
+     "en": "Fumarase"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar la única enzima del ciclo de Krebs que se encuentra anclada a la membrana mitocondrial interna (succinato deshidrogenasa, complejo II).",
+    "en": "Recalling the only Krebs cycle enzyme that is anchored to the inner mitochondrial membrane (succinate dehydrogenase, complex II)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.11",
+   "num": "4.3.11",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué coenzima es esencial para la α-cetoglutarato deshidrogenasa?",
+    "en": "Which coenzyme is essential for α-ketoglutarate dehydrogenase?"
+   },
+   "opciones": {
+    "a": {
+     "es": "TPP (tiamina pirofosfato)",
+     "en": "TPP (thiamine pyrophosphate)"
+    },
+    "b": {
+     "es": "NAD<sup>+</sup>",
+     "en": "NAD<sup>+</sup>"
+    },
+    "c": {
+     "es": "FADH<sub>2</sub>",
+     "en": "FADH<sub>2</sub>"
+    },
+    "d": {
+     "es": "Biotina",
+     "en": "Biotin"
+    },
+    "e": {
+     "es": "Lipoato",
+     "en": "Lipoate"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Recordar las coenzimas esenciales para el complejo α-cetoglutarato deshidrogenasa (un complejo α-cetoácido DH dependiente de TPP, lipoato y NAD<sup>+</sup> entre otros).",
+    "en": "Recalling the essential coenzymes of the α-ketoglutarate dehydrogenase complex (an α-keto acid DH complex that depends on TPP, lipoate and NAD<sup>+</sup>, among others)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.12",
+   "num": "4.3.12",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué molécula es el punto de entrada común al ciclo de Krebs para los carbohidratos, lípidos y aminoácidos?",
+    "en": "Which molecule is the common entry point into the Krebs cycle for carbohydrates, lipids and amino acids?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Lactato",
+     "en": "Lactate"
+    },
+    "b": {
+     "es": "Succinato",
+     "en": "Succinate"
+    },
+    "c": {
+     "es": "Acetil-CoA",
+     "en": "Acetyl-CoA"
+    },
+    "d": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    },
+    "e": {
+     "es": "Citrato",
+     "en": "Citrate"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Recordar el rol del acetil-CoA como metabolito central de la oxidación de carbohidratos, lípidos y aminoácidos que alimenta el ciclo de Krebs.",
+    "en": "Recalling the role of acetyl-CoA as the central metabolite of carbohydrate, lipid and amino acid oxidation that feeds the Krebs cycle."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.13",
+   "num": "4.3.13",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "En condiciones aeróbicas, ¿Cuál es la localización principal del ciclo de Krebs en células eucariotas?",
+    "en": "Under aerobic conditions, what is the main location of the Krebs cycle in eukaryotic cells?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Citoplasma",
+     "en": "Cytoplasm"
+    },
+    "b": {
+     "es": "Núcleo",
+     "en": "Nucleus"
+    },
+    "c": {
+     "es": "Membrana plasmática",
+     "en": "Plasma membrane"
+    },
+    "d": {
+     "es": "Matriz mitocondrial",
+     "en": "Mitochondrial matrix"
+    },
+    "e": {
+     "es": "Retículo endoplásmico",
+     "en": "Endoplasmic reticulum"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar la principal localización subcelular del ciclo de Krebs en eucariotas (matriz mitocondrial).",
+    "en": "Recalling the main subcellular location of the Krebs cycle in eukaryotes (mitochondrial matrix)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.14",
+   "num": "4.3.14",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué ocurrirá en una célula si se inhibe la succinato deshidrogenasa con malonato?",
+    "en": "What will happen in a cell if succinate dehydrogenase is inhibited with malonate?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se acumula succinato",
+     "en": "Succinate accumulates"
+    },
+    "b": {
+     "es": "Disminuye el flujo de electrones en la cadena respiratoria",
+     "en": "Electron flow through the respiratory chain decreases"
+    },
+    "c": {
+     "es": "Aumenta la síntesis de GTP",
+     "en": "GTP synthesis increases"
+    },
+    "d": {
+     "es": "Se favorece la gluconeogénesis",
+     "en": "Gluconeogenesis is favored"
+    },
+    "e": {
+     "es": "Se reduce la producción de ATP oxidativo",
+     "en": "Oxidative ATP production is reduced"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar la inhibición por malonato a la succinato deshidrogenasa para predecir la ↑succinato y el impacto directo en la CTE (↓flujo →↓ATP).",
+    "en": "Applying malonate inhibition of succinate dehydrogenase to predict ↑succinate and the direct impact on the ETC (↓flux → ↓ATP)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.15",
+   "num": "4.3.15",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué metabolito se acumularía si se inhibe la fumarasa?",
+    "en": "Which metabolite would accumulate if fumarase were inhibited?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Citrato",
+     "en": "Citrate"
+    },
+    "b": {
+     "es": "Malato",
+     "en": "Malate"
+    },
+    "c": {
+     "es": "Fumarato",
+     "en": "Fumarate"
+    },
+    "d": {
+     "es": "Succinato",
+     "en": "Succinate"
+    },
+    "e": {
+     "es": "α-cetoglutarato",
+     "en": "α-Ketoglutarate"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de la fumarasa para predecir la acumulación de su sustrato inmediato (fumarato) ante una inhibición.",
+    "en": "Applying knowledge of fumarase to predict the accumulation of its immediate substrate (fumarate) upon inhibition."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.16",
+   "num": "4.3.16",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En una intoxicación por cianuro, ¿Qué ocurre con el ciclo de Krebs?",
+    "en": "In cyanide poisoning, what happens to the Krebs cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se bloquea la reoxidación de NADH y FADH<sub>2</sub>",
+     "en": "The reoxidation of NADH and FADH<sub>2</sub> is blocked"
+    },
+    "b": {
+     "es": "Aumenta el consumo de oxígeno",
+     "en": "Oxygen consumption increases"
+    },
+    "c": {
+     "es": "Se detiene progresivamente por falta de aceptores de electrones",
+     "en": "It gradually stops for lack of electron acceptors"
+    },
+    "d": {
+     "es": "Se acumula acetil-CoA",
+     "en": "Acetyl-CoA accumulates"
+    },
+    "e": {
+     "es": "Se favorece la producción de lactato",
+     "en": "Lactate production is favored"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar el bloqueo de la CTE por cianuro (complejo IV) para deducir ↑NADH/FADH<sub>2</sub>, detención del ciclo y desvío a fermentación láctica (↑lactato).",
+    "en": "Applying the blockade of the ETC by cyanide (complex IV) to deduce ↑NADH/FADH<sub>2</sub>, the halting of the cycle and the diversion to lactic acid fermentation (↑lactate)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.17",
+   "num": "4.3.17",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En un perro tratado con un inhibidor de la α-cetoglutarato deshidrogenasa, ¿Qué metabolito se acumularía?",
+    "en": "In a dog treated with an inhibitor of α-ketoglutarate dehydrogenase, which metabolite would accumulate?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Citrato",
+     "en": "Citrate"
+    },
+    "b": {
+     "es": "α-cetoglutarato",
+     "en": "α-Ketoglutarate"
+    },
+    "c": {
+     "es": "Malato",
+     "en": "Malate"
+    },
+    "d": {
+     "es": "Succinato",
+     "en": "Succinate"
+    },
+    "e": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de la α-cetoglutarato DH para predecir la acumulación de su sustrato inmediato (α-cetoglutarato) ante una inhibición.",
+    "en": "Applying knowledge of α-ketoglutarate DH to predict the accumulation of its immediate substrate (α-ketoglutarate) upon inhibition."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.18",
+   "num": "4.3.18",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En un cultivo bacteriano se observa acumulación de succinato. ¿Qué hipótesis es más consistente?",
+    "en": "Succinate accumulation is observed in a bacterial culture. Which hypothesis is most consistent?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Inhibición de la succinato deshidrogenasa",
+     "en": "Inhibition of succinate dehydrogenase"
+    },
+    "b": {
+     "es": "Activación de la fumarasa",
+     "en": "Activation of fumarase"
+    },
+    "c": {
+     "es": "Deficiencia de O<sub>2</sub> en el medio",
+     "en": "O<sub>2</sub> deficiency in the medium"
+    },
+    "d": {
+     "es": "Incremento de citrato sintasa",
+     "en": "Increase in citrate synthase"
+    },
+    "e": {
+     "es": "Aumento de α-cetoglutarato deshidrogenasa",
+     "en": "Increase in α-ketoglutarate dehydrogenase"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Analizar las causas de ↑succinato: inhibición directa (succinato deshidrogenasa) o bloqueo indirecto por ↓O<sub>2</sub> (que frena toda la respiración y, por ende, el ciclo).",
+    "en": "Analyzing the causes of ↑succinate: direct inhibition (succinate dehydrogenase) or indirect blockade by ↓O<sub>2</sub> (which slows all of respiration and, hence, the cycle)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.19",
+   "num": "4.3.19",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un paciente presenta déficit en fumarasa. ¿Qué efectos metabólicos se esperan?",
+    "en": "A patient has fumarase deficiency. What metabolic effects are expected?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumento de malato",
+     "en": "Increased malate"
+    },
+    "b": {
+     "es": "Acumulación de fumarato",
+     "en": "Fumarate accumulation"
+    },
+    "c": {
+     "es": "Disminución de la producción de NADH",
+     "en": "Decreased NADH production"
+    },
+    "d": {
+     "es": "Aumento del ciclo de la urea",
+     "en": "Increased urea cycle activity"
+    },
+    "e": {
+     "es": "Reducción del flujo de electrones a la cadena respiratoria",
+     "en": "Reduced electron flow to the respiratory chain"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar el efecto de la deficiencia de fumarasa: ↑fumarato y ↓NADH (por la malato DH subsiguiente), resultando en una ↓ en el flujo de electrones y ATP.",
+    "en": "Analyzing the effect of fumarase deficiency: ↑fumarate and ↓NADH (because of the subsequent malate DH step), resulting in ↓ electron flow and ATP."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.20",
+   "num": "4.3.20",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En la enfermedad de Leigh (déficit de PDH), ¿qué vía metabólica compensatoria se activa?",
+    "en": "In Leigh disease (PDH deficiency), which compensatory metabolic pathway is activated?"
+   },
+   "opciones": {
+    "a": {
+     "es": "β-oxidación",
+     "en": "β-Oxidation"
+    },
+    "b": {
+     "es": "Glucólisis",
+     "en": "Glycolysis"
+    },
+    "c": {
+     "es": "Ciclo del glioxilato",
+     "en": "Glyoxylate cycle"
+    },
+    "d": {
+     "es": "Síntesis de colesterol",
+     "en": "Cholesterol synthesis"
+    },
+    "e": {
+     "es": "Fermentación láctica",
+     "en": "Lactic acid fermentation"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar las consecuencias de un déficit en PDH (↑piruvato) para deducir la activación de la glucólisis y la fermentación láctica como vías compensatorias para generar ATP y NAD<sup>+</sup>.",
+    "en": "Analyzing the consequences of PDH deficiency (↑pyruvate) to deduce the activation of glycolysis and lactic acid fermentation as compensatory pathways to generate ATP and NAD<sup>+</sup>."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.21",
+   "num": "4.3.21",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un tumor depende del metabolismo de glutamina (glutaminólisis). ¿Qué metabolito del ciclo de Krebs se incrementa principalmente?",
+    "en": "A tumor depends on glutamine metabolism (glutaminolysis). Which Krebs cycle metabolite mainly increases?"
+   },
+   "opciones": {
+    "a": {
+     "es": "α-cetoglutarato",
+     "en": "α-Ketoglutarate"
+    },
+    "b": {
+     "es": "Succinil-CoA",
+     "en": "Succinyl-CoA"
+    },
+    "c": {
+     "es": "Malato",
+     "en": "Malate"
+    },
+    "d": {
+     "es": "Citrato",
+     "en": "Citrate"
+    },
+    "e": {
+     "es": "GTP",
+     "en": "GTP"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Analizar la glutaminólisis como vía anaplerótica clave, identificando al α-cetoglutarato como el principal metabolito que ingresa al ciclo a partir de la glutamina.",
+    "en": "Analyzing glutaminolysis as a key anaplerotic pathway, identifying α-ketoglutarate as the main metabolite that enters the cycle from glutamine."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.22",
+   "num": "4.3.22",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En condiciones de hipoxia, ¿Cómo se ve alterado el ciclo de Krebs?",
+    "en": "Under hypoxic conditions, how is the Krebs cycle altered?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se acumulan NADH y FADH<sub>2</sub> por falta de reoxidación",
+     "en": "NADH and FADH<sub>2</sub> accumulate for lack of reoxidation"
+    },
+    "b": {
+     "es": "Se ralentiza la producción de ATP oxidativo",
+     "en": "Oxidative ATP production slows down"
+    },
+    "c": {
+     "es": "La glucólisis se detiene",
+     "en": "Glycolysis stops"
+    },
+    "d": {
+     "es": "Se incrementa la conversión de piruvato a lactato",
+     "en": "The conversion of pyruvate to lactate increases"
+    },
+    "e": {
+     "es": "Se activa la cadena respiratoria",
+     "en": "The respiratory chain is activated"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar el impacto de la hipoxia: bloqueo de la CTE (↑NADH/FADH<sub>2</sub>), ↓ATP oxidativo y activación de la fermentación láctica para compensar la falta de NAD<sup>+</sup>.",
+    "en": "Analyzing the impact of hypoxia: blockade of the ETC (↑NADH/FADH<sub>2</sub>), ↓oxidative ATP and activation of lactic acid fermentation to compensate for the lack of NAD<sup>+</sup>."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.23",
+   "num": "4.3.23",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Qué cambios en el ciclo de Krebs explicarían la producción de lactato en tejidos musculares durante ejercicio intenso?",
+    "en": "What changes in the Krebs cycle would explain lactate production in muscle tissue during intense exercise?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acumulación de NADH por falta de oxígeno",
+     "en": "NADH accumulation for lack of oxygen"
+    },
+    "b": {
+     "es": "Disminución de OAA",
+     "en": "Decreased OAA"
+    },
+    "c": {
+     "es": "Inhibición de fumarasa",
+     "en": "Inhibition of fumarase"
+    },
+    "d": {
+     "es": "Reducción de la actividad de PDH",
+     "en": "Reduced PDH activity"
+    },
+    "e": {
+     "es": "Aumento de malato",
+     "en": "Increased malate"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la conexión entre ejercicio intenso y ↑lactato: ↓O<sub>2</sub>→↑NADH (frena PDH y TCA) →↑piruvato→lactato (para regenerar NAD<sup>+</sup>).",
+    "en": "Analyzing the connection between intense exercise and ↑lactate: ↓O<sub>2</sub> → ↑NADH (slows PDH and the TCA cycle) → ↑pyruvate → lactate (to regenerate NAD<sup>+</sup>)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.24",
+   "num": "4.3.24",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En un ensayo enzimático se inhibe específicamente la α-cetoglutarato deshidrogenasa. ¿Qué metabolitos cambian?",
+    "en": "In an enzyme assay, α-ketoglutarate dehydrogenase is specifically inhibited. Which metabolites change?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Disminuye succinato",
+     "en": "Succinate decreases"
+    },
+    "b": {
+     "es": "Se acumula α-cetoglutarato",
+     "en": "α-Ketoglutarate accumulates"
+    },
+    "c": {
+     "es": "Aumenta la producción de NADH en el ciclo",
+     "en": "NADH production in the cycle increases"
+    },
+    "d": {
+     "es": "Se reduce la producción de GTP en el ciclo",
+     "en": "GTP production in the cycle is reduced"
+    },
+    "e": {
+     "es": "Aumenta fumarato",
+     "en": "Fumarate increases"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar el bloqueo de la α-cetoglutarato DH: ↑α-cetoglutarato, ↓succinato (a), ↓ producción de NADH y ↓GTP (por falta de succinil-CoA).",
+    "en": "Analyzing the blockade of α-ketoglutarate DH: ↑α-ketoglutarate, ↓succinate (a), ↓ NADH production and ↓GTP (for lack of succinyl-CoA)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.25",
+   "num": "4.3.25",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Qué conclusión se obtiene si un paciente presenta niveles altos de citrato en sangre?",
+    "en": "What conclusion can be drawn if a patient has high blood citrate levels?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Exceso de acetil-CoA mitocondrial",
+     "en": "Excess mitochondrial acetyl-CoA"
+    },
+    "b": {
+     "es": "Disminución de β-oxidación",
+     "en": "Decreased β-oxidation"
+    },
+    "c": {
+     "es": "Desviación hacia lipogénesis",
+     "en": "Diversion toward lipogenesis"
+    },
+    "d": {
+     "es": "Deficiencia en glucólisis",
+     "en": "Glycolytic deficiency"
+    },
+    "e": {
+     "es": "Inhibición de PFK-1",
+     "en": "Inhibition of PFK-1"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar el significado de ↑citrato (alto estado energético/ ↑acetil-CoA) y su doble función como inhibidor alostérico de PFK-1 y precursor para la lipogénesis.",
+    "en": "Analyzing the meaning of ↑citrate (high energy state/↑acetyl-CoA) and its dual function as an allosteric inhibitor of PFK-1 and a precursor for lipogenesis."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.26",
+   "num": "4.3.26",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En células proliferativas, ¿qué rol del ciclo de Krebs es más relevante?",
+    "en": "In proliferating cells, which role of the Krebs cycle is most relevant?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Generar ATP exclusivamente",
+     "en": "Generating ATP exclusively"
+    },
+    "b": {
+     "es": "Aportar intermediarios para biosíntesis",
+     "en": "Supplying intermediates for biosynthesis"
+    },
+    "c": {
+     "es": "Reducir lactato",
+     "en": "Reducing lactate"
+    },
+    "d": {
+     "es": "Proveer citrato para síntesis de lípidos",
+     "en": "Providing citrate for lipid synthesis"
+    },
+    "e": {
+     "es": "Generar propionato",
+     "en": "Generating propionate"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar el rol prioritario del ciclo de Krebs en células proliferativas: su carácter anfibólico, aportando intermediarios (citrato) para la biosíntesis de lípidos.",
+    "en": "Analyzing the priority role of the Krebs cycle in proliferating cells: its amphibolic nature, supplying intermediates (citrate) for lipid biosynthesis."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.27",
+   "num": "4.3.27",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Qué alteraciones metabólicas indicarían una inhibición de malato deshidrogenasa?",
+    "en": "Which metabolic alterations would indicate inhibition of malate dehydrogenase?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acumulación de malato",
+     "en": "Malate accumulation"
+    },
+    "b": {
+     "es": "Disminución de OAA",
+     "en": "Decreased OAA"
+    },
+    "c": {
+     "es": "Reducción de NADH mitocondrial",
+     "en": "Reduced mitochondrial NADH"
+    },
+    "d": {
+     "es": "Acumulación de fumarato",
+     "en": "Fumarate accumulation"
+    },
+    "e": {
+     "es": "Incremento de GTP",
+     "en": "Increased GTP"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Analizar la inhibición de malato deshidrogenasa: ↑malato (sustrato), ↓OAA (producto/sustrato limitante) y ↓NADH (cofactor producido en la reacción).",
+    "en": "Analyzing the inhibition of malate dehydrogenase: ↑malate (substrate), ↓OAA (product/limiting substrate) and ↓NADH (the cofactor produced in the reaction)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.28",
+   "num": "4.3.28",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un ratón con mutación en citrato sintasa presenta baja producción de citrato. ¿Qué consecuencias se esperan?",
+    "en": "A mouse with a citrate synthase mutation shows low citrate production. What consequences are expected?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Disminución de la entrada de acetil-CoA al ciclo",
+     "en": "Decreased entry of acetyl-CoA into the cycle"
+    },
+    "b": {
+     "es": "Menor producción de NADH",
+     "en": "Lower NADH production"
+    },
+    "c": {
+     "es": "Incremento de fumarato",
+     "en": "Increased fumarate"
+    },
+    "d": {
+     "es": "Mayor exportación de citrato al citosol",
+     "en": "Greater export of citrate to the cytosol"
+    },
+    "e": {
+     "es": "Deficiencia en lipogénesis hepática",
+     "en": "Deficient hepatic lipogenesis"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar la inhibición de citrato sintasa: ↓ entrada de acetil-CoA, ↓ flujo general y ↓ producción de NADH, con la consecuente ↓lipogénesis (vía citrato).",
+    "en": "Analyzing the inhibition of citrate synthase: ↓ entry of acetyl-CoA, ↓ overall flux and ↓ NADH production, with the consequent ↓lipogenesis (via citrate)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.29",
+   "num": "4.3.29",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Qué enzima del ciclo de Krebs es también parte de la cadena de transporte de electrones?",
+    "en": "Which Krebs cycle enzyme is also part of the electron transport chain?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Citrato sintasa",
+     "en": "Citrate synthase"
+    },
+    "b": {
+     "es": "Aconitasa",
+     "en": "Aconitase"
+    },
+    "c": {
+     "es": "Isocitrato deshidrogenasa",
+     "en": "Isocitrate dehydrogenase"
+    },
+    "d": {
+     "es": "Succinato deshidrogenasa",
+     "en": "Succinate dehydrogenase"
+    },
+    "e": {
+     "es": "Malato deshidrogenasa",
+     "en": "Malate dehydrogenase"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la localización y función dual de succinato deshidrogenasa como enzima del ciclo de Krebs y componente integral de la CTE (complejo II).",
+    "en": "Analyzing the location and dual function of succinate dehydrogenase as a Krebs cycle enzyme and an integral component of the ETC (complex II)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.30",
+   "num": "4.3.30",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe la importancia del ciclo de Krebs como diana terapéutica en cáncer.",
+    "en": "Evaluate the importance of the Krebs cycle as a therapeutic target in cancer."
+   },
+   "opciones": {
+    "a": {
+     "es": "No tiene relevancia",
+     "en": "It has no relevance"
+    },
+    "b": {
+     "es": "Los tumores dependen de intermediarios biosintéticos del ciclo",
+     "en": "Tumors depend on biosynthetic intermediates from the cycle"
+    },
+    "c": {
+     "es": "Inhibidores de enzimas clave pueden limitar proliferación",
+     "en": "Inhibitors of key enzymes can limit proliferation"
+    },
+    "d": {
+     "es": "No afecta al metabolismo tumoral",
+     "en": "It does not affect tumor metabolism"
+    },
+    "e": {
+     "es": "La glutaminólisis tumoral refuerza al ciclo",
+     "en": "Tumor glutaminolysis reinforces the cycle"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Evaluar el rol del TCA en cáncer, enfocándose en la dependencia de intermediarios (glutaminólisis) y la justificación para inhibidores como estrategia para limitar la proliferación (bloqueo anabólico).",
+    "en": "Evaluating the role of the TCA cycle in cancer, focusing on the dependence on intermediates (glutaminolysis) and the rationale for inhibitors as a strategy to limit proliferation (anabolic blockade)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.31",
+   "num": "4.3.31",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "¿Qué implicaciones clínicas tiene una deficiencia de fumarasa hereditaria?",
+    "en": "What are the clinical implications of hereditary fumarase deficiency?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Es inocua",
+     "en": "It is harmless"
+    },
+    "b": {
+     "es": "Provoca acumulación de fumarato tóxico",
+     "en": "It causes accumulation of toxic fumarate"
+    },
+    "c": {
+     "es": "Asocia efectos relacionados con deficiencia energética",
+     "en": "It is associated with effects related to energy deficiency"
+    },
+    "d": {
+     "es": "Se compensa con el ciclo del glioxilato",
+     "en": "It is compensated for by the glyoxylate cycle"
+    },
+    "e": {
+     "es": "Reduce la producción de NADH y ATP",
+     "en": "It reduces NADH and ATP production"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Evaluar las consecuencias clínicas de la deficiencia de fumarasa: acumulación de fumarato (con toxicidad neurológica) y deficiencia energética (↓NADH/ATP) por el bloqueo metabólico.",
+    "en": "Evaluating the clinical consequences of fumarase deficiency: accumulation of fumarate (with neurological toxicity) and energy deficiency (↓NADH/ATP) owing to the metabolic block."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.32",
+   "num": "4.3.32",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "¿Qué estrategia sería más efectiva para evaluar la actividad del ciclo en tejidos humanos?",
+    "en": "Which strategy would be most effective for assessing cycle activity in human tissues?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Medir consumo de O<sub>2</sub> y producción de CO<sub>2</sub>",
+     "en": "Measuring O<sub>2</sub> consumption and CO<sub>2</sub> production"
+    },
+    "b": {
+     "es": "Cuantificar niveles de NADH/NAD<sup>+</sup>",
+     "en": "Quantifying NADH/NAD<sup>+</sup> levels"
+    },
+    "c": {
+     "es": "Medir pH sanguíneo",
+     "en": "Measuring blood pH"
+    },
+    "d": {
+     "es": "Determinar lactato en orina",
+     "en": "Determining urinary lactate"
+    },
+    "e": {
+     "es": "Usar trazadores isotópicos de <sup>13</sup>C en acetato",
+     "en": "Using <sup>13</sup>C isotopic tracers in acetate"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Evaluar las mejores estrategias para medir la actividad del ciclo: medidas directas de respiración (O<sub>2</sub>/CO<sub>2</sub>), redox (NADH/NAD<sup>+</sup>) y flujo de carbono (trazadores isotópicos).",
+    "en": "Evaluating the best strategies for measuring cycle activity: direct measurements of respiration (O<sub>2</sub>/CO<sub>2</sub>), redox state (NADH/NAD<sup>+</sup>) and carbon flux (isotopic tracers)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.33",
+   "num": "4.3.33",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe la siguiente afirmación: \"La β-oxidación de ácidos grasos puede generar glucosa en humanos vía ciclo de Krebs\".",
+    "en": "Evaluate the following statement: \"Fatty acid β-oxidation can generate glucose in humans via the Krebs cycle.\""
+   },
+   "opciones": {
+    "a": {
+     "es": "Falso, porque el acetil-CoA no puede convertirse en OAA",
+     "en": "False, because acetyl-CoA cannot be converted into OAA"
+    },
+    "b": {
+     "es": "Verdadero, porque se forma citrato",
+     "en": "True, because citrate is formed"
+    },
+    "c": {
+     "es": "Falso, el acetil-CoA se oxida a CO<sub>2</sub>",
+     "en": "False, acetyl-CoA is oxidized to CO<sub>2</sub>"
+    },
+    "d": {
+     "es": "Verdadero, en el hígado únicamente",
+     "en": "True, in the liver only"
+    },
+    "e": {
+     "es": "Falso, los mamíferos no tienen la ruta de glioxilato",
+     "en": "False, mammals do not have the glyoxylate pathway"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Evaluar la afirmación de GNG a partir de acetil-CoA, concluyendo que es falsa por la ausencia del ciclo del glioxilato en humanos y el balance de carbono nulo en el TCA (acetil-CoA→2CO<sub>2</sub>).",
+    "en": "Evaluating the claim of GNG from acetyl-CoA, concluding that it is false because of the absence of the glyoxylate cycle in humans and the zero carbon balance in the TCA cycle (acetyl-CoA → 2CO<sub>2</sub>)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.34",
+   "num": "4.3.34",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Un fármaco inhibe selectivamente la α-cetoglutarato deshidrogenasa. ¿Cómo evaluaría su impacto en células humanas?",
+    "en": "A drug selectively inhibits α-ketoglutarate dehydrogenase. How would you evaluate its impact on human cells?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Reducción de NADH y ATP",
+     "en": "Reduced NADH and ATP"
+    },
+    "b": {
+     "es": "Incremento de OAA",
+     "en": "Increased OAA"
+    },
+    "c": {
+     "es": "Acumulación de α-cetoglutarato",
+     "en": "Accumulation of α-ketoglutarate"
+    },
+    "d": {
+     "es": "Aumento de lipogénesis",
+     "en": "Increased lipogenesis"
+    },
+    "e": {
+     "es": "Posible efecto antitumoral por limitar intermediarios",
+     "en": "Possible antitumor effect by limiting intermediates"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Evaluar el impacto de inhibir la α-cetoglutarato DH: ↑α-cetoglutarato, ↓ energía (NADH/ATP) y la posible utilidad como fármaco antitumoral al limitar la disponibilidad de intermediarios.",
+    "en": "Evaluating the impact of inhibiting α-ketoglutarate DH: ↑α-ketoglutarate, ↓ energy (NADH/ATP) and possible usefulness as an antitumor drug by limiting the availability of intermediates."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.35",
+   "num": "4.3.35",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe un fármaco hipotético que reduzca la lipogénesis hepática. ¿Qué enzima o metabolito sería la mejor diana?",
+    "en": "Design a hypothetical drug that reduces hepatic lipogenesis. Which enzyme or metabolite would be the best target?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Inhibir citrato sintasa",
+     "en": "Inhibiting citrate synthase"
+    },
+    "b": {
+     "es": "Activar fumarasa",
+     "en": "Activating fumarase"
+    },
+    "c": {
+     "es": "Bloquear la exportación de citrato al citosol",
+     "en": "Blocking the export of citrate to the cytosol"
+    },
+    "d": {
+     "es": "Inhibir acetil-CoA carboxilasa",
+     "en": "Inhibiting acetyl-CoA carboxylase"
+    },
+    "e": {
+     "es": "Activar malato deshidrogenasa",
+     "en": "Activating malate dehydrogenase"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Diseñar una estrategia antilipogénica enfocándose en las dianas clave: el precursor (inhibir citrato sintasa), el transporte (bloquear exportación citrato) y el paso limitante de la síntesis de AG (inhibir acetil-CoA carboxilasa).",
+    "en": "Designing an antilipogenic strategy focused on the key targets: the precursor (inhibiting citrate synthase), transport (blocking citrate export) and the rate-limiting step of FA synthesis (inhibiting acetyl-CoA carboxylase)."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.36",
+   "num": "4.3.36",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Para aumentar la producción de energía en células musculares, ¿Qué modificación experimental propondría?",
+    "en": "To increase energy production in muscle cells, which experimental modification would you propose?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Inhibir la PDH",
+     "en": "Inhibiting PDH"
+    },
+    "b": {
+     "es": "Sobreexpresar malato deshidrogenasa",
+     "en": "Overexpressing malate dehydrogenase"
+    },
+    "c": {
+     "es": "Aumentar la actividad de citrato sintasa",
+     "en": "Increasing citrate synthase activity"
+    },
+    "d": {
+     "es": "Reducir fumarasa",
+     "en": "Reducing fumarase"
+    },
+    "e": {
+     "es": "Incrementar la disponibilidad de OAA",
+     "en": "Increasing OAA availability"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Diseñar una modificación para ↑energía en músculo, enfocándose en aumentar la velocidad de los pasos limitantes: citrato sintasa (entrada), OAA (co-sustrato) y malato deshidrogenasa (generación de NADH).",
+    "en": "Designing a modification to ↑energy in muscle, focusing on increasing the rate of the limiting steps: citrate synthase (entry), OAA (co-substrate) and malate dehydrogenase (NADH generation)."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.37",
+   "num": "4.3.37",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe un modelo de levaduras incapaces de oxidar completamente la glucosa (vía respiratoria). ¿Qué modificación introduciría?",
+    "en": "Design a yeast model that is unable to oxidize glucose completely (via respiration). Which modification would you introduce?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Eliminar la piruvato deshidrogenasa",
+     "en": "Deleting pyruvate dehydrogenase"
+    },
+    "b": {
+     "es": "Inhibir la fumarasa",
+     "en": "Inhibiting fumarase"
+    },
+    "c": {
+     "es": "Eliminar la isocitrato deshidrogenasa",
+     "en": "Deleting isocitrate dehydrogenase"
+    },
+    "d": {
+     "es": "Eliminar la citrato sintasa",
+     "en": "Deleting citrate synthase"
+    },
+    "e": {
+     "es": "Bloquear el transporte mitocondrial de piruvato",
+     "en": "Blocking mitochondrial pyruvate transport"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Diseñar una modificación para bloquear la entrada de glucosa al TCA y la oxidación, eliminando la PDH, el transporte de piruvato o la isocitrato deshidrogenasa (que detiene el ciclo).",
+    "en": "Designing a modification to block the entry of glucose into the TCA cycle and its oxidation, by deleting PDH, pyruvate transport or isocitrate dehydrogenase (which stops the cycle)."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.38",
+   "num": "4.3.38",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál de las siguientes reacciones del ciclo de Krebs se encuentra regulada?",
+    "en": "Which of the following Krebs cycle reactions is regulated?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El paso de α-cetoglutarato a succinato por el complejo α-cetoglutarato deshidrogenasa",
+     "en": "The conversion of α-ketoglutarate to succinate by the α-ketoglutarate dehydrogenase complex"
+    },
+    "b": {
+     "es": "El paso de fumarato a malato por la fumarasa",
+     "en": "The conversion of fumarate to malate by fumarase"
+    },
+    "c": {
+     "es": "El paso de oxalacetato y acetil-CoA a citrato por la citrato sintasa",
+     "en": "The conversion of oxaloacetate and acetyl-CoA to citrate by citrate synthase"
+    },
+    "d": {
+     "es": "El paso de isocitrato a α-cetoglutarato por la isocitrato deshidrogenasa",
+     "en": "The conversion of isocitrate to α-ketoglutarate by isocitrate dehydrogenase"
+    },
+    "e": {
+     "es": "El paso de fumarato a malato por la malato deshidrogenasa",
+     "en": "The conversion of fumarate to malate by malate dehydrogenase"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender que la regulación del flujo metabólico en el ciclo de Krebs se ejerce principalmente en sus pasos irreversibles, que son las reacciones de condensación (citrato sintasa) y las deshidrogenaciones clave (isocitrato deshidrogenasa y α-cetoglutarato deshidrogenasa).",
+    "en": "Understanding that regulation of metabolic flux in the Krebs cycle is exerted mainly at its irreversible steps, which are the condensation reaction (citrate synthase) and the key dehydrogenations (isocitrate dehydrogenase and α-ketoglutarate dehydrogenase)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.39",
+   "num": "4.3.39",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál de las siguientes reacciones del ciclo de Krebs se encuentra regulada?",
+    "en": "Which of the following Krebs cycle reactions is regulated?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El paso de α-cetoglutarato a succinato por el complejo α-cetoglutarato deshidrogenasa",
+     "en": "The conversion of α-ketoglutarate to succinate by the α-ketoglutarate dehydrogenase complex"
+    },
+    "b": {
+     "es": "El paso de α-cetoglutarato a succinil-CoA por el complejo α-cetoglutarato deshidrogenasa",
+     "en": "The conversion of α-ketoglutarate to succinyl-CoA by the α-ketoglutarate dehydrogenase complex"
+    },
+    "c": {
+     "es": "El paso de oxalacetato y acetil-CoA a citrato por la citrato sintasa",
+     "en": "The conversion of oxaloacetate and acetyl-CoA to citrate by citrate synthase"
+    },
+    "d": {
+     "es": "El paso de isocitrato a α-cetoglutarato por la isocitrato deshidrogenasa",
+     "en": "The conversion of isocitrate to α-ketoglutarate by isocitrate dehydrogenase"
+    },
+    "e": {
+     "es": "El paso de fumarato a malato por la malato deshidrogenasa",
+     "en": "The conversion of fumarate to malate by malate dehydrogenase"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Identificar y comprender que las tres enzimas alostéricamente reguladas y que controlan el flujo son citrato sintasa, isocitrato deshidrogenasa y α-cetoglutarato deshidrogenasa.",
+    "en": "Identifying and understanding that the three allosterically regulated, flux-controlling enzymes are citrate synthase, isocitrate dehydrogenase and α-ketoglutarate dehydrogenase."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.40",
+   "num": "4.3.40",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "En la regulación alostérica del ciclo, ¿qué molécula activa la isocitrato deshidrogenasa?",
+    "en": "In the allosteric regulation of the cycle, which molecule activates isocitrate dehydrogenase?"
+   },
+   "opciones": {
+    "a": {
+     "es": "NADH",
+     "en": "NADH"
+    },
+    "b": {
+     "es": "ADP",
+     "en": "ADP"
+    },
+    "c": {
+     "es": "ATP",
+     "en": "ATP"
+    },
+    "d": {
+     "es": "FAD",
+     "en": "FAD"
+    },
+    "e": {
+     "es": "Ca<sup>2+</sup>",
+     "en": "Ca<sup>2+</sup>"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender la regulación alostérica de la isocitrato deshidrogenasa, identificando los efectores que señalan un bajo estado energético o una alta demanda (ADP y Ca<sup>2+</sup>) como sus activadores.",
+    "en": "Understanding the allosteric regulation of isocitrate dehydrogenase, identifying the effectors that signal a low energy state or high demand (ADP and Ca<sup>2+</sup>) as its activators."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.41",
+   "num": "4.3.41",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En un hígado con exceso de ATP, ¿qué ocurre con la isocitrato deshidrogenasa y la acumulación de metabolitos?",
+    "en": "In a liver with excess ATP, what happens to isocitrate dehydrogenase and to the accumulation of metabolites?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La isocitrato deshidrogenasa se inhibe",
+     "en": "Isocitrate dehydrogenase is inhibited"
+    },
+    "b": {
+     "es": "Se activa la α-cetoglutarato deshidrogenasa",
+     "en": "α-Ketoglutarate dehydrogenase is activated"
+    },
+    "c": {
+     "es": "El citrato se acumula y se exporta al citosol",
+     "en": "Citrate accumulates and is exported to the cytosol"
+    },
+    "d": {
+     "es": "Aumenta la síntesis de oxalacetato",
+     "en": "Oxaloacetate synthesis increases"
+    },
+    "e": {
+     "es": "Se favorece la lipogénesis",
+     "en": "Lipogenesis is favored"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar el impacto de un ↑ATP: inhibe la isocitrato deshidrogenasa, provocando la acumulación y exportación de citrato al citosol. Este citrato citosólico es el precursor metabólico para la lipogénesis.",
+    "en": "Analyzing the impact of ↑ATP: it inhibits isocitrate dehydrogenase, causing the accumulation and export of citrate to the cytosol. This cytosolic citrate is the metabolic precursor for lipogenesis."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.42",
+   "num": "4.3.42",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Qué ocurre en células hepáticas si el citrato se acumula en el citosol?",
+    "en": "What happens in liver cells if citrate accumulates in the cytosol?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se activa la acetil-CoA carboxilasa",
+     "en": "Acetyl-CoA carboxylase is activated"
+    },
+    "b": {
+     "es": "Se estimula la síntesis de ácidos grasos",
+     "en": "Fatty acid synthesis is stimulated"
+    },
+    "c": {
+     "es": "Se inhibe la lipogénesis",
+     "en": "Lipogenesis is inhibited"
+    },
+    "d": {
+     "es": "Se activa la glucogenólisis",
+     "en": "Glycogenolysis is activated"
+    },
+    "e": {
+     "es": "Se inhibe la fosfofructoquinasa-1 (PFK-1)",
+     "en": "Phosphofructokinase-1 (PFK-1) is inhibited"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar la función dual del citrato exportado al citosol: actúa como precursor (↑síntesis de AG vía activación de acetil-CoA carboxilasa) y como señal energética de saciedad (↓glucólisis vía inhibición de PFK-1).",
+    "en": "Analyzing the dual function of citrate exported to the cytosol: it acts as a precursor (↑FA synthesis via activation of acetyl-CoA carboxylase) and as an energy-repletion signal (↓glycolysis via inhibition of PFK-1)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.43",
+   "num": "4.3.43",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe una estrategia de ingeniería genética en una bacteria para maximizar la producción de ATP (vía ciclo de Krebs) a partir de acetil-CoA, minimizando al mismo tiempo el desvío de α-cetoglutarato a la biosíntesis de aminoácidos.",
+    "en": "Design a genetic engineering strategy in a bacterium to maximize ATP production (via the Krebs cycle) from acetyl-CoA while minimizing the diversion of α-ketoglutarate to amino acid biosynthesis."
+   },
+   "opciones": {
+    "a": {
+     "es": "Introducir una mutación que haga que la isocitrato deshidrogenasa (IDH) sea constitutivamente activa (insensible a ATP/NADH).",
+     "en": "Introducing a mutation that makes isocitrate dehydrogenase (IDH) constitutively active (insensitive to ATP/NADH)."
+    },
+    "b": {
+     "es": "Sobreexpresar la citrato sintasa para aumentar el flujo inicial del ciclo.",
+     "en": "Overexpressing citrate synthase to increase the initial flux of the cycle."
+    },
+    "c": {
+     "es": "Diseñar una IDH menos sensible a la inhibición por parte de NADH y ATP.",
+     "en": "Designing an IDH that is less sensitive to inhibition by NADH and ATP."
+    },
+    "d": {
+     "es": "Diseñar una α-cetoglutarato Deshidrogenasa constitutivamente activa (insensible a inhibición por succinil-CoA/NADH).",
+     "en": "Designing a constitutively active α-ketoglutarate dehydrogenase (insensitive to inhibition by succinyl-CoA/NADH)."
+    },
+    "e": {
+     "es": "Bloquear la piruvato carboxilasa para reducir la anaplerosis al ciclo.",
+     "en": "Blocking pyruvate carboxylase to reduce anaplerosis into the cycle."
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Diseñar una estrategia para forzar un flujo oxidativo máximo (ATP) y reducir el anabolismo (α-cetoglutarato extraído), lo que exige eliminar la inhibición de las deshidrogenasas clave (IDH y α-cetoglutarato DH) por productos de alto estado energético.",
+    "en": "Designing a strategy to force maximal oxidative flux (ATP) and reduce anabolism (withdrawal of α-ketoglutarate), which requires removing the inhibition of the key dehydrogenases (IDH and α-ketoglutarate DH) by high-energy-state products."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.44",
+   "num": "4.3.44",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe la consecuencia metabólica de un aumento drástico en la relación NADH/NAD<sup>+</sup> en la matriz mitocondrial durante el ciclo de Krebs.",
+    "en": "Evaluate the metabolic consequence of a drastic increase in the NADH/NAD<sup>+</sup> ratio in the mitochondrial matrix during the Krebs cycle."
+   },
+   "opciones": {
+    "a": {
+     "es": "Activación de la citrato sintasa debido al alto nivel de energía.",
+     "en": "Activation of citrate synthase because of the high energy level."
+    },
+    "b": {
+     "es": "Inhibición de la isocitrato deshidrogenasa por exceso de producto (NADH).",
+     "en": "Inhibition of isocitrate dehydrogenase by excess product (NADH)."
+    },
+    "c": {
+     "es": "Disminución de la actividad de la α-cetoglutarato deshidrogenasa debido a la inhibición por producto (NADH).",
+     "en": "Decreased α-ketoglutarate dehydrogenase activity owing to product inhibition (NADH)."
+    },
+    "d": {
+     "es": "Ralentización general del flujo del ciclo debido a la saturación de las enzimas deshidrogenasas clave.",
+     "en": "General slowing of cycle flux owing to saturation of the key dehydrogenases."
+    },
+    "e": {
+     "es": "Desvío masivo de los intermediarios del ciclo hacia reacciones anapleróticas.",
+     "en": "Massive diversion of cycle intermediates toward anaplerotic reactions."
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Evaluar que un ↑NADH/NAD<sup>+</sup> indica que la CTE está saturada (alto estado reducido). El NADH es un inhibidor por producto de las principales deshidrogenasas del ciclo (IDH y α-cetoglutarato DH), ralentizando el flujo total para equilibrar la producción de reductores.",
+    "en": "Evaluating that ↑NADH/NAD<sup>+</sup> indicates that the ETC is saturated (highly reduced state). NADH is a product inhibitor of the main dehydrogenases of the cycle (IDH and α-ketoglutarate DH), slowing overall flux to balance the production of reducing equivalents."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.45",
+   "num": "4.3.45",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe el papel fisiológico del Ca<sup>2+</sup> como regulador de la velocidad del ciclo de Krebs en el músculo esquelético durante el ejercicio intenso.",
+    "en": "Evaluate the physiological role of Ca<sup>2+</sup> as a regulator of the rate of the Krebs cycle in skeletal muscle during intense exercise."
+   },
+   "opciones": {
+    "a": {
+     "es": "El Ca<sup>2+</sup> secuestra el citrato, reduciendo la entrada de acetil-CoA al ciclo.",
+     "en": "Ca<sup>2+</sup> sequesters citrate, reducing the entry of acetyl-CoA into the cycle."
+    },
+    "b": {
+     "es": "El Ca<sup>2+</sup> activa directamente la piruvato deshidrogenasa fosfatasa, lo que activa a la PDH.",
+     "en": "Ca<sup>2+</sup> directly activates pyruvate dehydrogenase phosphatase, which activates PDH."
+    },
+    "c": {
+     "es": "El Ca<sup>2+</sup> activa alostéricamente a la α-cetoglutarato deshidrogenasa para aumentar el flujo.",
+     "en": "Ca<sup>2+</sup> allosterically activates α-ketoglutarate dehydrogenase to increase flux."
+    },
+    "d": {
+     "es": "El aumento de Ca<sup>2+</sup> actúa como un indicador de necesidad energética (contracción) y activa enzimas clave.",
+     "en": "The increase in Ca<sup>2+</sup> acts as an indicator of energy demand (contraction) and activates key enzymes."
+    },
+    "e": {
+     "es": "El Ca<sup>2+</sup> inhibe la isocitrato deshidrogenasa, promoviendo la acumulación de citrato.",
+     "en": "Ca<sup>2+</sup> inhibits isocitrate dehydrogenase, promoting the accumulation of citrate."
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Evaluar el Ca<sup>2+</sup> como el principal mecanismo para acoplar la demanda energética (contracción muscular) con la producción de energía: activa la PDH y las dos deshidrogenasas del ciclo ( IDH y α-cetoglutarato DH), aumentando el flujo de acetil-CoA y el rendimiento del ciclo.",
+    "en": "Evaluating Ca<sup>2+</sup> as the main mechanism coupling energy demand (muscle contraction) to energy production: it activates PDH and the two dehydrogenases of the cycle (IDH and α-ketoglutarate DH), increasing acetyl-CoA flux and the yield of the cycle."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.46",
+   "num": "4.3.46",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál es el principal factor que determina la inactivación del complejo piruvato deshidrogenasa (PDH) en un estado de alta energía (↑ATP, ↑NADH)?",
+    "en": "What is the main factor that determines the inactivation of the pyruvate dehydrogenase (PDH) complex in a high-energy state (↑ATP, ↑NADH)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La activación alostérica de la succinato deshidrogenasa",
+     "en": "Allosteric activation of succinate dehydrogenase"
+    },
+    "b": {
+     "es": "La inhibición por retroalimentación del acetil-CoA",
+     "en": "Feedback inhibition by acetyl-CoA"
+    },
+    "c": {
+     "es": "La acumulación de malato",
+     "en": "Accumulation of malate"
+    },
+    "d": {
+     "es": "La fosforilación catalizada por la piruvato deshidrogenasa quinasa",
+     "en": "Phosphorylation catalyzed by pyruvate dehydrogenase kinase"
+    },
+    "e": {
+     "es": "La desfosforilación catalizada por la piruvato deshidrogenasa fosfatasa",
+     "en": "Dephosphorylation catalyzed by pyruvate dehydrogenase phosphatase"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender que la inactivación de la PDH es un control a largo plazo mediado por la fosforilación de la enzima, catalizada por la PDH quinasa.",
+    "en": "Understanding that inactivation of PDH is a longer-term control mediated by phosphorylation of the enzyme, catalyzed by PDH kinase."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.47",
+   "num": "4.3.47",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuáles de las siguientes moléculas actúan como inhibidores alostéricos de las enzimas deshidrogenasas reguladas del ciclo de Krebs (IDH y α-cetoglutarato DH), señalando un alto estado energético?",
+    "en": "Which of the following molecules act as allosteric inhibitors of the regulated dehydrogenases of the Krebs cycle (IDH and α-ketoglutarate DH), signaling a high energy state?"
+   },
+   "opciones": {
+    "a": {
+     "es": "ADP",
+     "en": "ADP"
+    },
+    "b": {
+     "es": "ATP",
+     "en": "ATP"
+    },
+    "c": {
+     "es": "Ca<sup>2+</sup>",
+     "en": "Ca<sup>2+</sup>"
+    },
+    "d": {
+     "es": "NADH",
+     "en": "NADH"
+    },
+    "e": {
+     "es": "Acetil-CoA",
+     "en": "Acetyl-CoA"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Identificar al ATP y al NADH como los efectores alostéricos que indican un alto nivel de energía y poder reductor, respectivamente, e inhiben las enzimas clave para ralentizar el ciclo.",
+    "en": "Identifying ATP and NADH as the allosteric effectors that signal a high level of energy and reducing power, respectively, and inhibit the key enzymes to slow down the cycle."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.48",
+   "num": "4.3.48",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Si una persona ingiere una dieta rica en grasas y pobre en carbohidratos (cetogénica) , ¿qué ocurrirá con la regulación de la piruvato deshidrogenasa (PDH) en el hígado?",
+    "en": "If a person eats a high-fat, low-carbohydrate (ketogenic) diet, what will happen to the regulation of pyruvate dehydrogenase (PDH) in the liver?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La PDH se activará por desfosforilación",
+     "en": "PDH will be activated by dephosphorylation"
+    },
+    "b": {
+     "es": "La PDH se inactivará por fosforilación",
+     "en": "PDH will be inactivated by phosphorylation"
+    },
+    "c": {
+     "es": "El piruvato se oxidará completamente a acetil-CoA",
+     "en": "Pyruvate will be completely oxidized to acetyl-CoA"
+    },
+    "d": {
+     "es": "El exceso de acetil-CoA activará la PDH quinasa",
+     "en": "The excess acetyl-CoA will activate PDH kinase"
+    },
+    "e": {
+     "es": "Aumentará la oxidación de glucosa",
+     "en": "Glucose oxidation will increase"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el concepto de control recíproco: el exceso de acetil-CoA (por β-oxidación) activa la PDH quinasa (d), lo que resulta en la fosforilación e inactivación de la PDH (b), desviando piruvato a gluconeogénesis.",
+    "en": "Applying the concept of reciprocal control: excess acetyl-CoA (from β-oxidation) activates PDH kinase (d), resulting in the phosphorylation and inactivation of PDH (b) and diverting pyruvate to gluconeogenesis."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.3.49",
+   "num": "4.3.49",
+   "tema": 4,
+   "seccion": "4.3",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "El fluoroacetato es un compuesto tóxico que, una vez convertido a fluoroacetil-CoA, forma fluorocitrato, un potente inhibidor de la Aconitasa. ¿Qué metabolito se acumularía inmediatamente antes del bloqueo?",
+    "en": "Fluoroacetate is a toxic compound that, once converted into fluoroacetyl-CoA, forms fluorocitrate, a potent inhibitor of aconitase. Which metabolite would accumulate immediately upstream of the block?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Isocitrato",
+     "en": "Isocitrate"
+    },
+    "b": {
+     "es": "Succinato",
+     "en": "Succinate"
+    },
+    "c": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    },
+    "d": {
+     "es": "Citrato",
+     "en": "Citrate"
+    },
+    "e": {
+     "es": "α-cetoglutarato",
+     "en": "α-Ketoglutarate"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la secuencia del ciclo e identificar el sustrato de la aconitasa: citrato. Al inhibirse esta enzima, se acumula el sustrato en ese punto del ciclo.",
+    "en": "Analyzing the sequence of the cycle and identifying the substrate of aconitase: citrate. When this enzyme is inhibited, the substrate accumulates at that point of the cycle."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.1",
+   "num": "4.4.1",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Por qué el ciclo de Krebs se considera anfibólico?",
+    "en": "Why is the Krebs cycle considered amphibolic?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Porque ocurre en la matriz mitocondrial",
+     "en": "Because it occurs in the mitochondrial matrix"
+    },
+    "b": {
+     "es": "Porque solo degrada sustratos",
+     "en": "Because it only degrades substrates"
+    },
+    "c": {
+     "es": "Porque participa en rutas catabólicas y anabólicas",
+     "en": "Because it takes part in both catabolic and anabolic pathways"
+    },
+    "d": {
+     "es": "Porque requiere oxígeno directamente",
+     "en": "Because it requires oxygen directly"
+    },
+    "e": {
+     "es": "Porque genera intermediarios útiles para biosíntesis",
+     "en": "Because it generates intermediates useful for biosynthesis"
+    }
+   },
+   "correctas": [
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender que el carácter anfibólico del ciclo de Krebs se debe a su participación tanto en rutas catabólicas (oxidación de acetil-CoA) como en rutas anabólicas (provisión de intermediarios para biosíntesis de lípidos, nucleótidos y aminoácidos).",
+    "en": "Understanding that the amphibolic nature of the Krebs cycle is due to its participation in both catabolic pathways (oxidation of acetyl-CoA) and anabolic pathways (provision of intermediates for the biosynthesis of lipids, nucleotides and amino acids)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.2",
+   "num": "4.4.2",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué ocurre con el ciclo de Krebs en condiciones anaeróbicas prolongadas en mamíferos?",
+    "en": "What happens to the Krebs cycle under prolonged anaerobic conditions in mammals?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se ralentiza por acumulación de NADH",
+     "en": "It slows down owing to NADH accumulation"
+    },
+    "b": {
+     "es": "Se activa por aumento de oxígeno",
+     "en": "It is activated by increased oxygen"
+    },
+    "c": {
+     "es": "Se detiene al acumularse acetil-CoA",
+     "en": "It stops as acetyl-CoA accumulates"
+    },
+    "d": {
+     "es": "Depende de la regeneración de NAD<sup>+</sup> por fermentación",
+     "en": "It depends on the regeneration of NAD<sup>+</sup> by fermentation"
+    },
+    "e": {
+     "es": "No se ve afectado",
+     "en": "It is not affected"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender que la ausencia de O<sub>2</sub> (anaeróbica) impide la reoxidación de NADH, lo que provoca su acumulación y la inhibición de las deshidrogenasas del ciclo, ralentizándolo. El NAD<sup>+</sup> necesario se regenera por fermentación.",
+    "en": "Understanding that the absence of O<sub>2</sub> (anaerobic conditions) prevents NADH reoxidation, which causes its accumulation and the inhibition of the dehydrogenases of the cycle, slowing it down. The NAD<sup>+</sup> needed is regenerated by fermentation."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.3",
+   "num": "4.4.3",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué efecto tiene un exceso de acetil-CoA sobre la piruvato carboxilasa?",
+    "en": "What effect does excess acetyl-CoA have on pyruvate carboxylase?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La inhibe, disminuyendo la gluconeogénesis",
+     "en": "It inhibits it, decreasing gluconeogenesis"
+    },
+    "b": {
+     "es": "La activa, favoreciendo la producción de oxalacetato",
+     "en": "It activates it, favoring the production of oxaloacetate"
+    },
+    "c": {
+     "es": "No tiene efecto",
+     "en": "It has no effect"
+    },
+    "d": {
+     "es": "Asegura disponibilidad de OAA para el ciclo de Krebs",
+     "en": "It ensures the availability of OAA for the Krebs cycle"
+    },
+    "e": {
+     "es": "La activa, favoreciendo la β-oxidación",
+     "en": "It activates it, favoring β-oxidation"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender que el acetil-CoA es un activador alostérico de la piruvato carboxilasa (PC), garantizando la producción de OAA (anaplerosis) para que pueda condensar con el exceso de acetil-CoA y permitir la entrada al ciclo.",
+    "en": "Understanding that acetyl-CoA is an allosteric activator of pyruvate carboxylase (PC), ensuring the production of OAA (anaplerosis) so that it can condense with the excess acetyl-CoA and allow its entry into the cycle."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.4",
+   "num": "4.4.4",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué ocurrirá con los niveles de OAA en un hígado sometido a ayuno prolongado?",
+    "en": "What will happen to OAA levels in a liver subjected to prolonged fasting?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Disminuyen por la desviación hacia gluconeogénesis",
+     "en": "They decrease owing to diversion toward gluconeogenesis"
+    },
+    "b": {
+     "es": "Se mantienen constantes",
+     "en": "They remain constant"
+    },
+    "c": {
+     "es": "Limitan la condensación con acetil-CoA",
+     "en": "They limit condensation with acetyl-CoA"
+    },
+    "d": {
+     "es": "Se acumulan para favorecer lipogénesis",
+     "en": "They accumulate to favor lipogenesis"
+    },
+    "e": {
+     "es": "Se transforman en lactato",
+     "en": "They are converted into lactate"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar el escenario de ayuno: el OAA se desvía a la gluconeogénesis (GNG), lo que disminuye su concentración mitocondrial y limita el paso de citrato sintasa, frenando el ciclo.",
+    "en": "Applying the fasting scenario: OAA is diverted to gluconeogenesis (GNG), which lowers its mitochondrial concentration and limits the citrate synthase step, slowing the cycle."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.5",
+   "num": "4.4.5",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En rumiantes, ¿Por qué es esencial la anaplerosis del OAA?",
+    "en": "In ruminants, why is anaplerosis of OAA essential?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Porque gran parte del OAA se desvía a la gluconeogénesis para sintetizar glucosa",
+     "en": "Because much of the OAA is diverted to gluconeogenesis to synthesize glucose"
+    },
+    "b": {
+     "es": "Porque el ciclo del glioxilato está inactivo",
+     "en": "Because the glyoxylate cycle is inactive"
+    },
+    "c": {
+     "es": "Porque el propionato no se puede metabolizar",
+     "en": "Because propionate cannot be metabolized"
+    },
+    "d": {
+     "es": "Se necesita para la síntesis de lípidos",
+     "en": "It is needed for lipid synthesis"
+    },
+    "e": {
+     "es": "Porque la abundancia de acetil-CoA de ácidos grasos requiere OAA para entrar en el ciclo",
+     "en": "Because the abundance of acetyl-CoA from fatty acids requires OAA to enter the cycle"
+    }
+   },
+   "correctas": [
+    "a",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar el metabolismo de rumiantes: ↑acetil-CoA (de AG) necesita OAA para oxidarse, pero el OAA se desvía masivamente a la GNG (ya que su principal fuente de carbono es el propionato).",
+    "en": "Applying ruminant metabolism: ↑acetyl-CoA (from FA) needs OAA to be oxidized, but OAA is massively diverted to GNG (since their main carbon source is propionate)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.6",
+   "num": "4.4.6",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En una rata sometida a dieta cetogénica, ¿Qué ocurre con el ciclo de Krebs hepático?",
+    "en": "In a rat on a ketogenic diet, what happens to the hepatic Krebs cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Disminuye la disponibilidad de OAA",
+     "en": "OAA availability decreases"
+    },
+    "b": {
+     "es": "Se incrementa la oxidación de glucosa",
+     "en": "Glucose oxidation increases"
+    },
+    "c": {
+     "es": "Aumenta la síntesis de glucógeno",
+     "en": "Glycogen synthesis increases"
+    },
+    "d": {
+     "es": "Se desvía el acetil-CoA hacia cuerpos cetónicos",
+     "en": "Acetyl-CoA is diverted toward ketone bodies"
+    },
+    "e": {
+     "es": "Se incrementa la anaplerosis con propionato",
+     "en": "Anaplerosis with propionate increases"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el escenario cetogénico: ↓OAA (por GNG) → el acetil-CoA no puede entrar al ciclo y se desvía hacia la síntesis de cuerpos cetónicos.",
+    "en": "Applying the ketogenic scenario: ↓OAA (owing to GNG) → acetyl-CoA cannot enter the cycle and is diverted toward the synthesis of ketone bodies."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.7",
+   "num": "4.4.7",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué efecto tendría la mutación en la piruvato carboxilasa sobre la gluconeogénesis?",
+    "en": "What effect would a mutation in pyruvate carboxylase have on gluconeogenesis?"
+   },
+   "opciones": {
+    "a": {
+     "es": "No se forma OAA a partir de piruvato",
+     "en": "OAA is not formed from pyruvate"
+    },
+    "b": {
+     "es": "Aumenta la síntesis de glucosa",
+     "en": "Glucose synthesis increases"
+    },
+    "c": {
+     "es": "Se incrementa la síntesis de citrato",
+     "en": "Citrate synthesis increases"
+    },
+    "d": {
+     "es": "Disminuye el reabastecimiento del ciclo de Krebs",
+     "en": "Replenishment of the Krebs cycle decreases"
+    },
+    "e": {
+     "es": "Se favorece la lipogénesis",
+     "en": "Lipogenesis is favored"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Aplicar el bloqueo de piruvato carboxilasa: se impide la formación de OAA a partir de piruvato, lo que bloquea el reabastecimiento del ciclo y detiene la gluconeogénesis (paso anaplerótico clave).",
+    "en": "Applying the blockade of pyruvate carboxylase: the formation of OAA from pyruvate is prevented, which blocks replenishment of the cycle and stops gluconeogenesis (a key anaplerotic step)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.8",
+   "num": "4.4.8",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Qué metabolito conecta el ciclo de Krebs con la síntesis de porfirinas y hemo?",
+    "en": "Which metabolite connects the Krebs cycle with the synthesis of porphyrins and heme?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Succinil-CoA",
+     "en": "Succinyl-CoA"
+    },
+    "b": {
+     "es": "Citrato",
+     "en": "Citrate"
+    },
+    "c": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    },
+    "d": {
+     "es": "α-cetoglutarato",
+     "en": "α-Ketoglutarate"
+    },
+    "e": {
+     "es": "Fumarato",
+     "en": "Fumarate"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Analizar la conexión entre el ciclo y el hemo: el succinil-CoA (intermediario del ciclo) se condensa con glicina para iniciar la síntesis de porfirinas y, por tanto, el hemo.",
+    "en": "Analyzing the connection between the cycle and heme: succinyl-CoA (a cycle intermediate) condenses with glycine to initiate the synthesis of porphyrins and, therefore, of heme."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.9",
+   "num": "4.4.9",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En un hígado en ayuno prolongado, ¿Qué rutas comparten oxalacetato como intermediario crítico?",
+    "en": "In a liver during prolonged fasting, which pathways share oxaloacetate as a critical intermediate?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ciclo de Krebs",
+     "en": "Krebs cycle"
+    },
+    "b": {
+     "es": "Gluconeogénesis",
+     "en": "Gluconeogenesis"
+    },
+    "c": {
+     "es": "β-oxidación",
+     "en": "β-Oxidation"
+    },
+    "d": {
+     "es": "Síntesis de aminoácidos",
+     "en": "Amino acid synthesis"
+    },
+    "e": {
+     "es": "Lipólisis",
+     "en": "Lipolysis"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar la centralidad del OAA en el hígado en ayuno: es un intermediario crítico en el ciclo de Krebs, precursor en la gluconeogénesis y precursor en la síntesis de aminoácidos (vía aspartato).",
+    "en": "Analyzing the centrality of OAA in the fasting liver: it is a critical intermediate in the Krebs cycle, a precursor in gluconeogenesis and a precursor in amino acid synthesis (via aspartate)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.10",
+   "num": "4.4.10",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "En un perro con fallo hepático, ¿Qué función del ciclo de Krebs estaría más comprometida?",
+    "en": "In a dog with liver failure, which function of the Krebs cycle would be most compromised?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Producción de ATP muscular",
+     "en": "Muscle ATP production"
+    },
+    "b": {
+     "es": "Provisión de intermediarios para biosíntesis hepática",
+     "en": "Provision of intermediates for hepatic biosynthesis"
+    },
+    "c": {
+     "es": "Captación de lactato muscular",
+     "en": "Uptake of muscle lactate"
+    },
+    "d": {
+     "es": "Generación de glucógeno",
+     "en": "Glycogen generation"
+    },
+    "e": {
+     "es": "Producción de NADH para fosforilación oxidativa",
+     "en": "NADH production for oxidative phosphorylation"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Evaluar el fallo hepático: el hígado es el centro energético, y la disfunción compromete su capacidad para generar energía (↓NADH/ATP) y su rol de provisión de intermediarios clave (GNG, urea, lípidos).",
+    "en": "Evaluating liver failure: the liver is the energy hub, and its dysfunction compromises its ability to generate energy (↓NADH/ATP) and its role in providing key intermediates (GNG, urea, lipids)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.11",
+   "num": "4.4.11",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe el mecanismo por el cual la glutaminólisis se convierte en una vía metabólica central en muchas células cancerosas, permitiendo la proliferación.",
+    "en": "Design the mechanism by which glutaminolysis becomes a central metabolic pathway in many cancer cells, enabling proliferation."
+   },
+   "opciones": {
+    "a": {
+     "es": "La glutaminasa convierte la glutamina en glutamato, que alimenta el ciclo vía α-cetoglutarato",
+     "en": "Glutaminase converts glutamine into glutamate, which feeds the cycle via α-ketoglutarate"
+    },
+    "b": {
+     "es": "Se inhibe la enzima málica, forzando al piruvato a la gluconeogénesis",
+     "en": "Malic enzyme is inhibited, forcing pyruvate into gluconeogenesis"
+    },
+    "c": {
+     "es": "El α-cetoglutarato generado se desvía anapleróticamente para la síntesis de aspartato y otros precursores nucleotídicos",
+     "en": "The α-ketoglutarate generated is diverted anaplerotically to synthesize aspartate and other nucleotide precursors"
+    },
+    "d": {
+     "es": "El flujo por la mitad anaplerótica del ciclo (por α-cetoglutarato) contribuye a la síntesis de citrato, precursor de lípidos",
+     "en": "Flux through the anaplerotic half of the cycle (via α-ketoglutarate) contributes to the synthesis of citrate, a lipid precursor"
+    },
+    "e": {
+     "es": "El proceso se utiliza para generar grandes cantidades de NADH para la cadena respiratoria",
+     "en": "The process is used to generate large amounts of NADH for the respiratory chain"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Diseñar el modelo de glutaminólisis tumoral, donde a) la glutamina alimenta el ciclo vía α-cetoglutarato para bifurcarse; c) a aspartato (nucleótidos) y d) a citrato (lípidos), manteniendo el anabolismo de la célula cancerosa.",
+    "en": "Designing the model of tumor glutaminolysis, in which a) glutamine feeds the cycle via α-ketoglutarate and then branches; c) to aspartate (nucleotides) and d) to citrate (lipids), sustaining the anabolism of the cancer cell."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.12",
+   "num": "4.4.12",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "En un hígado durante el ayuno, si se inhibe la enzima clave de la gluconeogénesis PEP carboxiquinasa (PEPCK), evalúe las consecuencias inmediatas sobre el ciclo de Krebs y la cetogénesis.",
+    "en": "In a liver during fasting, if the key gluconeogenic enzyme PEP carboxykinase (PEPCK) is inhibited, evaluate the immediate consequences for the Krebs cycle and ketogenesis."
+   },
+   "opciones": {
+    "a": {
+     "es": "El oxalacetato (OAA) se acumularía en la matriz mitocondrial",
+     "en": "Oxaloacetate (OAA) would accumulate in the mitochondrial matrix"
+    },
+    "b": {
+     "es": "Aumentaría la condensación de OAA con acetil-CoA por citrato sintasa, acelerando el ciclo de Krebs",
+     "en": "Condensation of OAA with acetyl-CoA by citrate synthase would increase, speeding up the Krebs cycle"
+    },
+    "c": {
+     "es": "El acetil-CoA no podría condensar con OAA, siendo desviado hacia la cetogénesis para formar cuerpos cetónicos",
+     "en": "Acetyl-CoA could not condense with OAA and would be diverted toward ketogenesis to form ketone bodies"
+    },
+    "d": {
+     "es": "La piruvato carboxilasa (PC) se inhibiría por retroalimentación alostérica",
+     "en": "Pyruvate carboxylase (PC) would be inhibited by allosteric feedback"
+    },
+    "e": {
+     "es": "Aumentaría la producción de glucosa a partir de glicerol",
+     "en": "Glucose production from glycerol would increase"
+    }
+   },
+   "correctas": [
+    "a",
+    "b"
+   ],
+   "justificacion": {
+    "es": "Evaluar el bloqueo de PEPCK en ayuno: a) el OAA deja de convertirse en PEP y se acumula en la matriz; b) al haber más OAA disponible, aumenta su condensación con acetil-CoA por la citrato sintasa, de modo que el acetil-CoA entra en el ciclo de Krebs en lugar de desviarse a la cetogénesis.",
+    "en": "Evaluating the blockade of PEPCK during fasting: a) OAA is no longer converted into PEP and accumulates in the matrix; b) with more OAA available, its condensation with acetyl-CoA by citrate synthase increases, so acetyl-CoA enters the Krebs cycle instead of being diverted to ketogenesis."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.13",
+   "num": "4.4.13",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Para compensar el agotamiento de intermediarios del ciclo (OAA) en un modelo experimental de ayuno y alta demanda de glucosa, ¿Qué intervención anaplerótica sería más efectiva?",
+    "en": "To compensate for the depletion of cycle intermediates (OAA) in an experimental model of fasting and high glucose demand, which anaplerotic intervention would be most effective?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Administrar un precursor glucogénico como el Propionato (vía succinil-CoA) .",
+     "en": "Administering a glucogenic precursor such as propionate (via succinyl-CoA)."
+    },
+    "b": {
+     "es": "Inhibir la citrato sintasa para evitar el consumo de OAA",
+     "en": "Inhibiting citrate synthase to prevent OAA consumption"
+    },
+    "c": {
+     "es": "Sobreexpresar la piruvato carboxilasa (PC) para aumentar la conversión de piruvato a OAA",
+     "en": "Overexpressing pyruvate carboxylase (PC) to increase the conversion of pyruvate to OAA"
+    },
+    "d": {
+     "es": "Administrar aspartato/glutamato, que pueden reabastecer el ciclo por transaminación (vía OAA o α-cetoglutarato)",
+     "en": "Administering aspartate/glutamate, which can replenish the cycle by transamination (via OAA or α-ketoglutarate)"
+    },
+    "e": {
+     "es": "Aumentar la β-oxidación para producir más acetil-CoA",
+     "en": "Increasing β-oxidation to produce more acetyl-CoA"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Diseñar la anaplerosis: a) Administrar precursores que entren en la ruta (propionato). c) Sobreexpresar la enzima anaplerótica principal (PC). d) Administrar aminoácidos que se transaminen a intermediarios del ciclo (aspartato/glutamato).",
+    "en": "Designing anaplerosis: a) administering precursors that enter the pathway (propionate). c) Overexpressing the main anaplerotic enzyme (PC). d) Administering amino acids that are transaminated into cycle intermediates (aspartate/glutamate)."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.14",
+   "num": "4.4.14",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe por qué el carácter anfibólico del ciclo de Krebs, aunque esencial, hace que las reacciones anapleróticas sean estrictamente necesarias.",
+    "en": "Evaluate why the amphibolic nature of the Krebs cycle, although essential, makes anaplerotic reactions strictly necessary."
+   },
+   "opciones": {
+    "a": {
+     "es": "El ciclo de Krebs se acelera masivamente en condiciones anabólicas",
+     "en": "The Krebs cycle speeds up massively under anabolic conditions"
+    },
+    "b": {
+     "es": "Los intermediarios del ciclo (como citrato, α-cetoglutarato, OAA) son extraídos continuamente para rutas biosintéticas (anabólicas)",
+     "en": "Cycle intermediates (such as citrate, α-ketoglutarate, OAA) are continuously withdrawn for biosynthetic (anabolic) pathways"
+    },
+    "c": {
+     "es": "El acetil-CoA es constantemente desviado a la cetogénesis, lo que requiere OAA",
+     "en": "Acetyl-CoA is constantly diverted to ketogenesis, which requires OAA"
+    },
+    "d": {
+     "es": "La extracción de intermediarios disminuye la concentración de OAA, lo que frenaría la condensación con acetil-CoA",
+     "en": "The withdrawal of intermediates lowers the OAA concentration, which would slow condensation with acetyl-CoA"
+    },
+    "e": {
+     "es": "Las reacciones anapleróticas sirven para reabastecer el ciclo, manteniendo la disponibilidad del oxalacetato, sustrato limitante",
+     "en": "Anaplerotic reactions serve to replenish the cycle, maintaining the availability of oxaloacetate, the limiting substrate"
+    }
+   },
+   "correctas": [
+    "b",
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Evaluar la necesidad de anaplerosis: b) la extracción constante de intermediarios (anfibolismo) d) reduce la concentración de OAA, que es el sustrato limitante. e) Reabastecer el OAA es vital para mantener la oxidación de acetil-CoA.",
+    "en": "Evaluating the need for anaplerosis: b) the constant withdrawal of intermediates (amphibolism) d) lowers the concentration of OAA, which is the limiting substrate. e) Replenishing OAA is vital to sustain the oxidation of acetyl-CoA."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.15",
+   "num": "4.4.15",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "El proceso por el cual los intermediarios del ciclo de Krebs son extraídos para su utilización en otras rutas biosintéticas se denomina:",
+    "en": "The process by which Krebs cycle intermediates are withdrawn for use in other biosynthetic pathways is called:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Anaplerosis",
+     "en": "Anaplerosis"
+    },
+    "b": {
+     "es": "Gluconeogénesis",
+     "en": "Gluconeogenesis"
+    },
+    "c": {
+     "es": "Glucogenólisis",
+     "en": "Glycogenolysis"
+    },
+    "d": {
+     "es": "Cataplerosis",
+     "en": "Cataplerosis"
+    },
+    "e": {
+     "es": "Ciclo del Glioxilato",
+     "en": "Glyoxylate cycle"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar y comprender que anaplerosis es reabastecimiento (suministro) y cataplerosis es extracción (consumo) de intermediarios para rutas externas.",
+    "en": "Recalling and understanding that anaplerosis is replenishment (supply) and cataplerosis is the withdrawal (consumption) of intermediates for external pathways."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.16",
+   "num": "4.4.16",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuáles de los siguientes intermediarios del ciclo de Krebs se extraen de la mitocondria para servir como precursores en rutas de biosíntesis citosólica (cataplerosis)?",
+    "en": "Which of the following Krebs cycle intermediates are exported from the mitochondrion to serve as precursors in cytosolic biosynthetic pathways (cataplerosis)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Succinil-CoA",
+     "en": "Succinyl-CoA"
+    },
+    "b": {
+     "es": "Citrato",
+     "en": "Citrate"
+    },
+    "c": {
+     "es": "Isocitrato",
+     "en": "Isocitrate"
+    },
+    "d": {
+     "es": "α-cetoglutarato",
+     "en": "α-Ketoglutarate"
+    },
+    "e": {
+     "es": "Malato",
+     "en": "Malate"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Identificar los intermediarios clave de extracción: citrato (precursor de acetil-CoA para lípidos) y malato (precursor de OAA para GNG o transportador en lanzaderas).",
+    "en": "Identifying the key intermediates withdrawn: citrate (a precursor of acetyl-CoA for lipids) and malate (a precursor of OAA for GNG or a carrier in shuttles)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.17",
+   "num": "4.4.17",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En el tejido cardiaco sometido a ejercicio intenso, la anaplerosis es crucial. ¿Cuál es la principal fuente anaplerótica en este órgano, caracterizado por alta oxidación de aminoácidos?",
+    "en": "In cardiac tissue subjected to intense exercise, anaplerosis is crucial. What is the main anaplerotic source in this organ, which is characterized by high amino acid oxidation?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Piruvato vía piruvato carboxilasa",
+     "en": "Pyruvate via pyruvate carboxylase"
+    },
+    "b": {
+     "es": "Aspartato y glutamato vía transaminación",
+     "en": "Aspartate and glutamate via transamination"
+    },
+    "c": {
+     "es": "Propionato vía succinil-CoA",
+     "en": "Propionate via succinyl-CoA"
+    },
+    "d": {
+     "es": "Acetil-CoA vía acetil-CoA carboxilasa",
+     "en": "Acetyl-CoA via acetyl-CoA carboxylase"
+    },
+    "e": {
+     "es": "Lactato vía lactato deshidrogenasa",
+     "en": "Lactate via lactate dehydrogenase"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar el metabolismo específico del corazón: el músculo cardiaco y esquelético obtienen su principal aporte anaplerótico mediante la transaminación de aminoácidos como aspartato o glutamato a OAA y α-cetoglutarato, respectivamente.",
+    "en": "Applying the specific metabolism of the heart: cardiac and skeletal muscle obtain their main anaplerotic input through the transamination of amino acids such as aspartate or glutamate to OAA and α-ketoglutarate, respectively."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.4.18",
+   "num": "4.4.18",
+   "tema": 4,
+   "seccion": "4.4",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Cuál de las siguientes afirmaciones analiza correctamente la función y regulación de la piruvato carboxilasa (PC) ?",
+    "en": "Which of the following statements correctly analyzes the function and regulation of pyruvate carboxylase (PC)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Es la enzima clave de la gluconeogénesis citosólica",
+     "en": "It is the key enzyme of cytosolic gluconeogenesis"
+    },
+    "b": {
+     "es": "Es inhibida alostéricamente por acetil-CoA",
+     "en": "It is allosterically inhibited by acetyl-CoA"
+    },
+    "c": {
+     "es": "Se inactiva en condiciones de ayuno",
+     "en": "It is inactivated during fasting"
+    },
+    "d": {
+     "es": "Genera OAA a partir de piruvato solo para la GNG, nunca para el ciclo de Krebs",
+     "en": "It generates OAA from pyruvate only for GNG, never for the Krebs cycle"
+    },
+    "e": {
+     "es": "Es activada por exceso de acetil-CoA para reabastecer OAA al ciclo de Krebs",
+     "en": "It is activated by excess acetyl-CoA to replenish OAA for the Krebs cycle"
+    }
+   },
+   "correctas": [
+    "e"
+   ],
+   "justificacion": {
+    "es": "Analizar la regulación alostérica de la PC: es activada por un exceso de acetil-CoA para reabastecer el OAA, asegurando así el primer paso del ciclo de Krebs.",
+    "en": "Analyzing the allosteric regulation of PC: it is activated by excess acetyl-CoA to replenish OAA, thus ensuring the first step of the Krebs cycle."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.1",
+   "num": "4.5.1",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿En cuál de las siguientes circunstancias se movilizarían las grasas almacenadas?",
+    "en": "In which of the following circumstances would stored fats be mobilized?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ejercicio anaeróbico (rápido e intenso)",
+     "en": "Anaerobic exercise (fast and intense)"
+    },
+    "b": {
+     "es": "Germinación de una semilla",
+     "en": "Seed germination"
+    },
+    "c": {
+     "es": "Exceso de glucosa en la dieta",
+     "en": "Excess glucose in the diet"
+    },
+    "d": {
+     "es": "Exceso de grasas en la dieta",
+     "en": "Excess fat in the diet"
+    },
+    "e": {
+     "es": "Fotosíntesis",
+     "en": "Photosynthesis"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Comprender que la germinación de semillas (y el metabolismo de patógenos) dependen de la movilización de grasas (β-oxidación) como única fuente de carbono y energía, lo que requiere el ciclo del glioxilato para GNG.",
+    "en": "Understanding that seed germination (and the metabolism of pathogens) depends on fat mobilization (β-oxidation) as the only source of carbon and energy, which requires the glyoxylate cycle for GNG."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.2",
+   "num": "4.5.2",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál(es) de la(s) siguiente(s) afirmación(es) sobre el ciclo del glioxilato es(son) correcta(s)?",
+    "en": "Which of the following statements about the glyoxylate cycle is/are correct?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Impide la generación de oxalacetato suficiente como para emplearlo en la gluconeogénesis",
+     "en": "It prevents enough oxaloacetate from being generated to be used in gluconeogenesis"
+    },
+    "b": {
+     "es": "Permite la síntesis neta de carbohidratos a partir de la degradación de ácidos grasos",
+     "en": "It allows the net synthesis of carbohydrates from the breakdown of fatty acids"
+    },
+    "c": {
+     "es": "Presenta a la isocitrato liasa y a la enzima málica como enzimas exclusivas",
+     "en": "Isocitrate lyase and malic enzyme are its exclusive enzymes"
+    },
+    "d": {
+     "es": "Entran dos moléculas de 2 carbonos y se obtiene una de 4 carbonos",
+     "en": "Two 2-carbon molecules enter and one 4-carbon molecule is obtained"
+    },
+    "e": {
+     "es": "Se puede regular a nivel de la citrato sintasa",
+     "en": "It can be regulated at the level of citrate synthase"
+    }
+   },
+   "correctas": [
+    "b",
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Comprender las características del ciclo del glioxilato: b) Síntesis neta de carbohidratos a partir de grasas; d) balance neto (2 acetil-CoA→succinato de 4C); e) Regulación clave a nivel de citrato sintasa (entre otras).",
+    "en": "Understanding the characteristics of the glyoxylate cycle: b) net synthesis of carbohydrates from fats; d) net balance (2 acetyl-CoA → 4C succinate); e) key regulation at the level of citrate synthase (among others)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.3",
+   "num": "4.5.3",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál de las siguientes enzimas me permitiría confirmar que se está llevando a cabo el ciclo del glioxilato porque estaría sobrerrepresentada en un experimento de expresión diferencial frente a una condición en la que no se esté produciendo dicho ciclo?",
+    "en": "Which of the following enzymes would allow me to confirm that the glyoxylate cycle is operating, because it would be overrepresented in a differential expression experiment compared with a condition in which the cycle is not occurring?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Malato deshidrogenasa",
+     "en": "Malate dehydrogenase"
+    },
+    "b": {
+     "es": "Enzima málica",
+     "en": "Malic enzyme"
+    },
+    "c": {
+     "es": "Malato sintasa",
+     "en": "Malate synthase"
+    },
+    "d": {
+     "es": "Citrato sintasa",
+     "en": "Citrate synthase"
+    },
+    "e": {
+     "es": "Aconitasa",
+     "en": "Aconitase"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Identificar la malato sintasa como una de las enzimas exclusivas del ciclo del glioxilato, y por tanto, su sobreexpresión es un marcador inequívoco de la ruta en comparación con el ciclo de Krebs.",
+    "en": "Identifying malate synthase as one of the exclusive enzymes of the glyoxylate cycle, so its overexpression is an unequivocal marker of the pathway compared with the Krebs cycle."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.4",
+   "num": "4.5.4",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál(es) de la(s) siguiente(s) afirmación(es) sobre el ciclo del glioxilato es(son) correcta(s)?",
+    "en": "Which of the following statements about the glyoxylate cycle is/are correct?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Permite la síntesis neta de carbohidratos a partir del acetil-CoA obtenido por degradación de ácidos grasos",
+     "en": "It allows the net synthesis of carbohydrates from the acetyl-CoA obtained by fatty acid breakdown"
+    },
+    "b": {
+     "es": "Presenta a la isocitrato liasa y a la enzima málica como enzimas exclusivas",
+     "en": "Isocitrate lyase and malic enzyme are its exclusive enzymes"
+    },
+    "c": {
+     "es": "Permite evitar las dos descarboxilaciones oxidativas que tienen lugar en el ciclo de Krebs",
+     "en": "It bypasses the two oxidative decarboxylations that take place in the Krebs cycle"
+    },
+    "d": {
+     "es": "Permite la utilización de acetato como fuente de carbono",
+     "en": "It allows acetate to be used as a carbon source"
+    },
+    "e": {
+     "es": "Permite la generación de glioxilato suficiente como para realizar la fotosíntesis",
+     "en": "It allows enough glyoxylate to be generated to carry out photosynthesis"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Comprender las ventajas del ciclo del glioxilato: a) Permite la GNG neta desde acetil-CoA; c) Evita las dos descarboxilaciones del ciclo de Krebs (conservación del C); d) Utiliza acetato (acetil-CoA) como fuente de carbono.",
+    "en": "Understanding the advantages of the glyoxylate cycle: a) it allows net GNG from acetyl-CoA; c) it bypasses the two decarboxylations of the Krebs cycle (carbon conservation); d) it uses acetate (acetyl-CoA) as a carbon source."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.5",
+   "num": "4.5.5",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué función cumple el ciclo del glioxilato en bacterias patógenas dentro del huésped?",
+    "en": "What function does the glyoxylate cycle perform in pathogenic bacteria inside the host?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Permite sobrevivir en entornos pobres en glucosa usando grasas como fuente de carbono",
+     "en": "It allows survival in glucose-poor environments by using fats as a carbon source"
+    },
+    "b": {
+     "es": "Facilita la síntesis de proteínas de membrana",
+     "en": "It facilitates the synthesis of membrane proteins"
+    },
+    "c": {
+     "es": "Permite la gluconeogénesis a partir de acetato",
+     "en": "It allows gluconeogenesis from acetate"
+    },
+    "d": {
+     "es": "Desactiva la β-oxidación",
+     "en": "It deactivates β-oxidation"
+    },
+    "e": {
+     "es": "Inhibe la síntesis de carbohidratos",
+     "en": "It inhibits carbohydrate synthesis"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Comprender el rol del ciclo en patógenos: a) les permite sobrevivir usando grasas (acetil-CoA) en entornos pobres en glucosa; c) esto se logra a través de la gluconeogénesis a partir de acetato (vía acetil-CoA).",
+    "en": "Understanding the role of the cycle in pathogens: a) it allows them to survive using fats (acetyl-CoA) in glucose-poor environments; c) this is achieved through gluconeogenesis from acetate (via acetyl-CoA)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.6",
+   "num": "4.5.6",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué vía metabólica se verá más afectada en Mycobacterium tuberculosis si pierde la enzima isocitrato liasa?",
+    "en": "Which metabolic pathway will be most affected in Mycobacterium tuberculosis if it loses the enzyme isocitrate lyase?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Ciclo de Krebs",
+     "en": "Krebs cycle"
+    },
+    "b": {
+     "es": "Ciclo del glioxilato",
+     "en": "Glyoxylate cycle"
+    },
+    "c": {
+     "es": "Fosforilación oxidativa",
+     "en": "Oxidative phosphorylation"
+    },
+    "d": {
+     "es": "Glucólisis",
+     "en": "Glycolysis"
+    },
+    "e": {
+     "es": "Gluconeogénesis",
+     "en": "Gluconeogenesis"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Aplicar el conocimiento de que la isocitrato liasa es una enzima exclusiva y esencial para el ciclo del glioxilato, por lo que su pérdida bloquea directamente esta ruta.",
+    "en": "Applying the knowledge that isocitrate lyase is an exclusive and essential enzyme of the glyoxylate cycle, so its loss directly blocks this pathway."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.7",
+   "num": "4.5.7",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En bacterias que usan el ciclo del glioxilato, ¿qué ocurre si se elimina la malato sintasa?",
+    "en": "In bacteria that use the glyoxylate cycle, what happens if malate synthase is deleted?"
+   },
+   "opciones": {
+    "a": {
+     "es": "No se forma malato a partir de glioxilato",
+     "en": "Malate is not formed from glyoxylate"
+    },
+    "b": {
+     "es": "Se bloquea la entrada de acetil-CoA al ciclo",
+     "en": "The entry of acetyl-CoA into the cycle is blocked"
+    },
+    "c": {
+     "es": "Se reduce la capacidad de sintetizar carbohidratos a partir de grasas",
+     "en": "The ability to synthesize carbohydrates from fats is reduced"
+    },
+    "d": {
+     "es": "Se favorece la β-oxidación",
+     "en": "β-Oxidation is favored"
+    },
+    "e": {
+     "es": "Se acumula succinato",
+     "en": "Succinate accumulates"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Aplicar la función de la malato sintasa: a) su eliminación impide la formación de malato y, por lo tanto, c) reduce la capacidad neta de generar carbohidratos (GNG).",
+    "en": "Applying the function of malate synthase: a) its deletion prevents the formation of malate and therefore c) reduces the net capacity to generate carbohydrates (GNG)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.8",
+   "num": "4.5.8",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En bacterias que alternan entre ciclo de Krebs y glioxilato, ¿qué regula la elección de ruta?",
+    "en": "In bacteria that switch between the Krebs cycle and the glyoxylate cycle, what regulates the choice of pathway?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El nivel de ATP",
+     "en": "The ATP level"
+    },
+    "b": {
+     "es": "Disponibilidad de acetato como fuente de carbono",
+     "en": "The availability of acetate as a carbon source"
+    },
+    "c": {
+     "es": "La concentración de oxígeno",
+     "en": "The oxygen concentration"
+    },
+    "d": {
+     "es": "Necesidad de gluconeogénesis",
+     "en": "The need for gluconeogenesis"
+    },
+    "e": {
+     "es": "Presencia de NADPH",
+     "en": "The presence of NADPH"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar que la elección de ruta se basa en la función: b) acetato (fuente de C de grasas) activa el ciclo anabólico; d) Necesidad de GNG activa el ciclo anaplerótico para obtener OAA.",
+    "en": "Analyzing that the choice of pathway is based on function: b) acetate (a carbon source from fats) activates the anabolic cycle; d) the need for GNG activates the anaplerotic cycle to obtain OAA."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.9",
+   "num": "4.5.9",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En el ciclo del glioxilato, ¿qué enzimas permiten evitar las descarboxilaciones oxidativas del ciclo de Krebs?",
+    "en": "In the glyoxylate cycle, which enzymes make it possible to bypass the oxidative decarboxylations of the Krebs cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Isocitrato deshidrogenasa",
+     "en": "Isocitrate dehydrogenase"
+    },
+    "b": {
+     "es": "α-cetoglutarato deshidrogenasa",
+     "en": "α-Ketoglutarate dehydrogenase"
+    },
+    "c": {
+     "es": "Isocitrato liasa",
+     "en": "Isocitrate lyase"
+    },
+    "d": {
+     "es": "Malato sintasa",
+     "en": "Malate synthase"
+    },
+    "e": {
+     "es": "Fumarasa",
+     "en": "Fumarase"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar que las dos enzimas exclusivas (isocitrato liasa y malato sintasa) actúan como un bypass que evita las dos descarboxilaciones oxidativas (por IDH y α-cetoglutarato DH), logrando un balance positivo de carbono.",
+    "en": "Analyzing that the two exclusive enzymes (isocitrate lyase and malate synthase) act as a bypass that avoids the two oxidative decarboxylations (by IDH and α-ketoglutarate DH), achieving a positive carbon balance."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.10",
+   "num": "4.5.10",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Para diseñar bacterias capaces de sobrevivir solo con acetato, ¿qué modificación sería imprescindible?",
+    "en": "To design bacteria able to survive on acetate alone, which modification would be essential?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Introducir el ciclo del glioxilato",
+     "en": "Introducing the glyoxylate cycle"
+    },
+    "b": {
+     "es": "Eliminar fumarasa",
+     "en": "Deleting fumarase"
+    },
+    "c": {
+     "es": "Inhibir la malato sintasa",
+     "en": "Inhibiting malate synthase"
+    },
+    "d": {
+     "es": "Sobreexpresar isocitrato liasa",
+     "en": "Overexpressing isocitrate lyase"
+    },
+    "e": {
+     "es": "Reducir succinato deshidrogenasa",
+     "en": "Reducing succinate dehydrogenase"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Diseñar una bacteria acetótrofa requiere a) introducir el ciclo del glioxilato y d) sobreexpresar la isocitrato liasa (la enzima que inicia el bypass que conserva el carbono).",
+    "en": "Designing an acetate-utilizing bacterium requires a) introducing the glyoxylate cycle and d) overexpressing isocitrate lyase (the enzyme that initiates the carbon-conserving bypass)."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.11",
+   "num": "4.5.11",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe el principal beneficio evolutivo y metabólico del ciclo del glioxilato en organismos (como semillas en germinación o bacterias) que dependen de las grasas como única fuente de carbono.",
+    "en": "Evaluate the main evolutionary and metabolic benefit of the glyoxylate cycle in organisms (such as germinating seeds or bacteria) that depend on fats as their only carbon source."
+   },
+   "opciones": {
+    "a": {
+     "es": "Permite la síntesis neta de carbohidratos (gluconeogénesis) a partir de acetil-CoA derivado de lípidos",
+     "en": "It allows the net synthesis of carbohydrates (gluconeogenesis) from lipid-derived acetyl-CoA"
+    },
+    "b": {
+     "es": "Aumenta la producción de ATP a partir de la succinato deshidrogenasa",
+     "en": "It increases ATP production from succinate dehydrogenase"
+    },
+    "c": {
+     "es": "Evita la pérdida de carbono en forma de CO<sub>2</sub> que ocurre en el ciclo de Krebs",
+     "en": "It avoids the loss of carbon as CO<sub>2</sub> that occurs in the Krebs cycle"
+    },
+    "d": {
+     "es": "Genera succinato y malato como precursores de OAA y azúcares",
+     "en": "It generates succinate and malate as precursors of OAA and sugars"
+    },
+    "e": {
+     "es": "Se inhibe la Isocitrato liasa para evitar el consumo de acetil-CoA",
+     "en": "Isocitrate lyase is inhibited to prevent the consumption of acetyl-CoA"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Evaluar el beneficio evolutivo: a) Permite GNG neta a partir de acetil-CoA (lípidos); c) Evita la pérdida de carbono como CO<sub>2</sub> (las descarboxilaciones); d) Genera succinato/malato como precursores de OAA y azúcares.",
+    "en": "Evaluating the evolutionary benefit: a) it allows net GNG from acetyl-CoA (lipids); c) it avoids the loss of carbon as CO<sub>2</sub> (the decarboxylations); d) it generates succinate/malate as precursors of OAA and sugars."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.12",
+   "num": "4.5.12",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe un experimento con trazadores isotópicos (<sup>14</sup>C en acetil-CoA) para confirmar que una bacteria patógena está utilizando el ciclo del glioxilato (en lugar del ciclo de Krebs) para realizar gluconeogénesis a partir de grasas.",
+    "en": "Design an experiment with isotopic tracers (<sup>14</sup>C in acetyl-CoA) to confirm that a pathogenic bacterium is using the glyoxylate cycle (instead of the Krebs cycle) to carry out gluconeogenesis from fats."
+   },
+   "opciones": {
+    "a": {
+     "es": "Se esperaría encontrar la marca radioactiva en el succinato y el malato",
+     "en": "The radioactive label would be expected in succinate and malate"
+    },
+    "b": {
+     "es": "Se observaría una alta producción de <sup>14</sup>CO<sub>2</sub> liberado por la α-cetoglutarato deshidrogenasa",
+     "en": "A high production of <sup>14</sup>CO<sub>2</sub> released by α-ketoglutarate dehydrogenase would be observed"
+    },
+    "c": {
+     "es": "Se detectaría la radioactividad en glucosa recién sintetizada (vía OAA → PEP → glucosa)",
+     "en": "Radioactivity would be detected in newly synthesized glucose (via OAA → PEP → glucose)"
+    },
+    "d": {
+     "es": "Se observaría una ausencia de <sup>14</sup>CO<sub>2</sub> en los productos de la respiración",
+     "en": "An absence of <sup>14</sup>CO<sub>2</sub> in the respiration products would be observed"
+    },
+    "e": {
+     "es": "La radioactividad solo se encontraría en citrato e isocitrato, sin avanzar más",
+     "en": "Radioactivity would be found only in citrate and isocitrate, without going any further"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Diseñar el experimento: d) la clave es la ausencia de <sup>14</sup>CO<sub>2</sub> (no hay descarboxilaciones). a) La marca aparecería en succinato/malato y c) en la glucosa (producto final de GNG).",
+    "en": "Designing the experiment: d) the key is the absence of <sup>14</sup>CO<sub>2</sub> (there are no decarboxylations). a) The label would appear in succinate/malate and c) in glucose (the end product of GNG)."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.13",
+   "num": "4.5.13",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Evalúe por qué la β-oxidación de ácidos grasos, que produce acetil-CoA (dos carbonos) en mamíferos, no puede dar lugar a la síntesis neta de glucosa (gluconeogénesis).",
+    "en": "Evaluate why the β-oxidation of fatty acids, which produces acetyl-CoA (two carbons) in mammals, cannot give rise to the net synthesis of glucose (gluconeogenesis)."
+   },
+   "opciones": {
+    "a": {
+     "es": "El acetil-CoA es oxidado completamente a CO<sub>2</sub> por el ciclo de Krebs, sin ganancia neta de intermediarios",
+     "en": "Acetyl-CoA is completely oxidized to CO<sub>2</sub> by the Krebs cycle, with no net gain of intermediates"
+    },
+    "b": {
+     "es": "El acetil-CoA inhibe a la piruvato carboxilasa, impidiendo la formación de OAA",
+     "en": "Acetyl-CoA inhibits pyruvate carboxylase, preventing the formation of OAA"
+    },
+    "c": {
+     "es": "Por cada dos carbonos que entran como acetil-CoA, dos carbonos se pierden como CO<sub>2</sub> en las descarboxilaciones del ciclo",
+     "en": "For every two carbons that enter as acetyl-CoA, two carbons are lost as CO<sub>2</sub> in the decarboxylations of the cycle"
+    },
+    "d": {
+     "es": "Los mamíferos carecen de las enzimas exclusivas del ciclo del glioxilato (isocitrato liasa y malato sintasa)",
+     "en": "Mammals lack the exclusive enzymes of the glyoxylate cycle (isocitrate lyase and malate synthase)"
+    },
+    "e": {
+     "es": "El OAA generado a partir de acetil-CoA se consume inmediatamente para generar más citrato",
+     "en": "The OAA generated from acetyl-CoA is consumed immediately to generate more citrate"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Evaluar el balance de carbono en mamíferos: a) el acetil-CoA se oxida completamente a CO<sub>2</sub> en el ciclo de Krebs. c) balance nulo (2C entran, 2C se pierden). d) Carecen de las enzimas exclusivas del ciclo del glioxilato para evitar la pérdida de carbono.",
+    "en": "Evaluating the carbon balance in mammals: a) acetyl-CoA is completely oxidized to CO<sub>2</sub> in the Krebs cycle. c) Zero balance (2C enter, 2C are lost). d) They lack the exclusive enzymes of the glyoxylate cycle that avoid the loss of carbon."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.14",
+   "num": "4.5.14",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe un mecanismo de regulación recíproca en una bacteria para que el ciclo de Krebs se active cuando la fuente de carbono es glucosa y el ciclo del glioxilato se active cuando la fuente es acetato (derivado de grasas).",
+    "en": "Design a reciprocal regulation mechanism in a bacterium so that the Krebs cycle is activated when the carbon source is glucose and the glyoxylate cycle is activated when the source is acetate (derived from fats)."
+   },
+   "opciones": {
+    "a": {
+     "es": "La isocitrato deshidrogenasa (IDH) se activa (no fosforilada) por un bajo nivel de AMP (indicador de abundancia de energía)",
+     "en": "Isocitrate dehydrogenase (IDH) is activated (non-phosphorylated) by a low level of AMP (an indicator of energy abundance)"
+    },
+    "b": {
+     "es": "La isocitrato deshidrogenasa (IDH) es fosforilada e inactivada por una quinasa específica en presencia de acetil-CoA (indicador de fuente grasa)",
+     "en": "Isocitrate dehydrogenase (IDH) is phosphorylated and inactivated by a specific kinase in the presence of acetyl-CoA (an indicator of a fat source)"
+    },
+    "c": {
+     "es": "El isocitrato se desvía a la isocitrato liasa cuando la IDH está inactiva, activando el ciclo del glioxilato",
+     "en": "Isocitrate is diverted to isocitrate lyase when IDH is inactive, activating the glyoxylate cycle"
+    },
+    "d": {
+     "es": "La isocitrato liasa se inhibe por succinil-CoA, que solo se produce en el ciclo del glioxilato.",
+     "en": "Isocitrate lyase is inhibited by succinyl-CoA, which is produced only in the glyoxylate cycle."
+    },
+    "e": {
+     "es": "El glioxilato activa constitutivamente la isocitrato deshidrogenasa",
+     "en": "Glyoxylate constitutively activates isocitrate dehydrogenase"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Diseñar el control recíproco por modificación covalente: b) acetil-CoA (grasas) activa una quinasa que fosforila e inactiva la IDH (ciclo de Krebs). c) El isocitrato acumulado se desvía hacia la isocitrato liasa (activando el ciclo del glioxilato).",
+    "en": "Designing reciprocal control by covalent modification: b) acetyl-CoA (fats) activates a kinase that phosphorylates and inactivates IDH (Krebs cycle). c) The accumulated isocitrate is diverted toward isocitrate lyase (activating the glyoxylate cycle)."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.15",
+   "num": "4.5.15",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál es el producto neto de 4 carbonos (C) que se obtiene por cada dos moléculas de acetil-CoA que entran en el ciclo del glioxilato?",
+    "en": "What is the net 4-carbon (C) product obtained for every two molecules of acetyl-CoA that enter the glyoxylate cycle?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Citrato",
+     "en": "Citrate"
+    },
+    "b": {
+     "es": "Acetato",
+     "en": "Acetate"
+    },
+    "c": {
+     "es": "Glioxilato",
+     "en": "Glyoxylate"
+    },
+    "d": {
+     "es": "Succinato",
+     "en": "Succinate"
+    },
+    "e": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Recordar que, al evitar las descarboxilaciones, el ciclo genera succinato (4C) de manera neta, el cual se incorpora al ciclo de Krebs para GNG.",
+    "en": "Recalling that, by avoiding the decarboxylations, the cycle generates succinate (4C) in net terms, which enters the Krebs cycle for GNG."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.16",
+   "num": "4.5.16",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Si la isocitrato deshidrogenasa (IDH) del ciclo de Krebs compite con la isocitrato liasa (IL) por el sustrato isocitrato, ¿Qué consecuencia metabólica tiene que prevalezca la actividad de la IL?",
+    "en": "If isocitrate dehydrogenase (IDH) of the Krebs cycle competes with isocitrate lyase (IL) for the substrate isocitrate, what metabolic consequence does it have if IL activity prevails?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se detiene la producción de succinato",
+     "en": "Succinate production stops"
+    },
+    "b": {
+     "es": "Aumenta la producción de NADH",
+     "en": "NADH production increases"
+    },
+    "c": {
+     "es": "Aumenta la síntesis de ATP",
+     "en": "ATP synthesis increases"
+    },
+    "d": {
+     "es": "Se pierde carbono en forma de CO<sub>2</sub>",
+     "en": "Carbon is lost as CO<sub>2</sub>"
+    },
+    "e": {
+     "es": "Se permite la síntesis neta de carbohidratos",
+     "en": "The net synthesis of carbohydrates is made possible"
+    }
+   },
+   "correctas": [
+    "e"
+   ],
+   "justificacion": {
+    "es": "Aplicar la función de bypass de la isocitrato liasa: al evitar la descarboxilación se conserva el carbono y se permite la síntesis neta de carbohidratos (GNG) a partir de lípidos.",
+    "en": "Applying the bypass function of isocitrate lyase: by avoiding the decarboxylation, carbon is conserved and the net synthesis of carbohydrates (GNG) from lipids is made possible."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-4.5.17",
+   "num": "4.5.17",
+   "tema": 4,
+   "seccion": "4.5",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En semillas en germinación, el ciclo del glioxilato se lleva a cabo en un orgánulo especializado denominado glioxisoma. ¿Qué pasos o moléculas analizan correctamente el flujo de carbono entre el glioxisoma y la mitocondria?",
+    "en": "In germinating seeds, the glyoxylate cycle takes place in a specialized organelle called the glyoxysome. Which steps or molecules correctly describe the flow of carbon between the glyoxysome and the mitochondrion?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El malato se transporta del glioxisoma a la mitocondria para oxidarse",
+     "en": "Malate is transported from the glyoxysome to the mitochondrion to be oxidized"
+    },
+    "b": {
+     "es": "El OAA se exporta directamente del glioxisoma al citosol",
+     "en": "OAA is exported directly from the glyoxysome to the cytosol"
+    },
+    "c": {
+     "es": "El succinato sale del glioxisoma y entra en la mitocondria para formar OAA",
+     "en": "Succinate leaves the glyoxysome and enters the mitochondrion to form OAA"
+    },
+    "d": {
+     "es": "El OAA generado en la mitocondria se exporta al citosol para gluconeogénesis",
+     "en": "The OAA generated in the mitochondrion is exported to the cytosol for gluconeogenesis"
+    },
+    "e": {
+     "es": "El acetil-CoA se sintetiza en la mitocondria y se transporta al glioxisoma",
+     "en": "Acetyl-CoA is synthesized in the mitochondrion and transported to the glyoxysome"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Analizar el flujo interorganelar: c) el succinato (producto neto) sale del glioxisoma y entra en la mitocondria para formar OAA. d) el OAA resultante en la mitocondria se exporta al citosol (como malato/aspartato) para iniciar la gluconeogénesis.",
+    "en": "Analyzing the inter-organelle flow: c) succinate (the net product) leaves the glyoxysome and enters the mitochondrion to form OAA. d) The resulting OAA in the mitochondrion is exported to the cytosol (as malate/aspartate) to initiate gluconeogenesis."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-PC4.1",
+   "num": "PC4.1",
+   "tema": 4,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la función del complejo piruvato deshidrogenasa (CPD) y cuál es el producto principal que genera?",
+    "en": "What is the function of the pyruvate dehydrogenase complex (PDC), and what is the main product it generates?"
+   },
+   "respuesta": {
+    "es": "La función es catalizar la descarboxilación oxidativa del piruvato. El producto principal que genera es el acetil-CoA.",
+    "en": "Its function is to catalyze the oxidative decarboxylation of pyruvate. The main product it generates is acetyl-CoA."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación de la función enzimática y el producto de esta vía de transición.",
+    "en": "Requires simple retrieval of the enzymatic function and the product of this transition pathway."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-PC4.2",
+   "num": "PC4.2",
+   "tema": 4,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Explique cómo las condiciones de suficiencia energética (alta ATP) regulan el CPD.",
+    "en": "Explain how conditions of energy sufficiency (high ATP) regulate the PDC."
+   },
+   "respuesta": {
+    "es": "En condiciones de suficiencia energética, el ATP (y NADH) activan la enzima piruvato deshidrogenasa quinasa. Esta quinasa fosforila (inactiva) al CPD, deteniendo la producción de acetil-CoA a partir de piruvato y promoviendo el almacenamiento (p. ej., gluconeogénesis).",
+    "en": "Under conditions of energy sufficiency, ATP (and NADH) activate the enzyme pyruvate dehydrogenase kinase. This kinase phosphorylates (inactivates) the PDC, stopping the production of acetyl-CoA from pyruvate and promoting storage (e.g., gluconeogenesis)."
+   },
+   "justificacion": {
+    "es": "Requiere usar el conocimiento de la ruta de regulación para explicar cómo una señal metabólica específica (suficiencia de energía) afecta la actividad del complejo.",
+    "en": "Requires using knowledge of the regulatory pathway to explain how a specific metabolic signal (energy sufficiency) affects the activity of the complex."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-PC4.3",
+   "num": "PC4.3",
+   "tema": 4,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Qué consecuencia tendría un déficit de tiamina (vitamina B1) en el metabolismo energético del cerebro? Analice la ruta afectada.",
+    "en": "What consequence would a thiamine (vitamin B1) deficiency have on brain energy metabolism? Analyze the pathway affected."
+   },
+   "respuesta": {
+    "es": "Un déficit de tiamina (necesaria como tiamina pirofosfato (TPP)) afectaría gravemente la actividad del CPD y del complejo α-cetoglutarato deshidrogenasa. Esto reduciría drásticamente la capacidad de oxidar glucosa para obtener ATP en el cerebro (órgano altamente glucosa-dependiente), llevando a un déficit energético neuronal.",
+    "en": "A deficiency of thiamine (required as thiamine pyrophosphate (TPP)) would severely affect the activity of the PDC and of the α-ketoglutarate dehydrogenase complex. This would drastically reduce the brain's ability to oxidize glucose to obtain ATP (it is a highly glucose-dependent organ), leading to a neuronal energy deficit."
+   },
+   "justificacion": {
+    "es": "Exige desglosar el rol de un cofactor (vitamina B1) en la función de un complejo enzimático clave y predecir el impacto sistémico en un órgano dependiente.",
+    "en": "Requires breaking down the role of a cofactor (vitamin B1) in the function of a key enzyme complex and predicting the systemic impact on a dependent organ."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-PC4.4",
+   "num": "PC4.4",
+   "tema": 4,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué genera la oxidación completa de una molécula de acetil-CoA en el CK en términos de poder reductor?",
+    "en": "What does the complete oxidation of one acetyl-CoA molecule in the KC generate in terms of reducing power?"
+   },
+   "respuesta": {
+    "es": "Genera tres moléculas de NADH y una molécula de FADH<sub>2</sub> (por vuelta de ciclo).",
+    "en": "It generates three molecules of NADH and one molecule of FADH<sub>2</sub> (per turn of the cycle)."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación de los productos principales del CK.",
+    "en": "Requires simple retrieval of the main products of the KC."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-PC4.5",
+   "num": "PC4.5",
+   "tema": 4,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Por qué se considera al ciclo de Krebs (CK) la vía final de oxidación de esqueletos de carbono?",
+    "en": "Why is the Krebs cycle (KC) considered the final oxidation pathway for carbon skeletons?"
+   },
+   "respuesta": {
+    "es": "Se considera la vía final porque el CK acepta acetil-CoA proveniente del metabolismo de los glúcidos, lípidos y aminoácidos, y cataliza su oxidación completa a las formas más estables y energéticamente pobres (CO<sub>2</sub>).",
+    "en": "It is considered the final pathway because the KC accepts acetyl-CoA from the metabolism of carbohydrates, lipids and amino acids and catalyzes its complete oxidation to the most stable, energy-poor forms (CO<sub>2</sub>)."
+   },
+   "justificacion": {
+    "es": "Requiere explicar el rol central del CK como un punto de convergencia y el destino final de los esqueletos carbonados.",
+    "en": "Requires explaining the central role of the KC as a point of convergence and the final fate of carbon skeletons."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-PC4.6",
+   "num": "PC4.6",
+   "tema": 4,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe un mecanismo para detener la oxidación en el CK y desviar los intermediarios a la biosíntesis. Especifique qué enzima debería ser activada y cuál intermediario desviado.",
+    "en": "Design a mechanism to stop oxidation in the KC and divert the intermediates to biosynthesis. Specify which enzyme should be activated and which intermediate diverted."
+   },
+   "respuesta": {
+    "es": "Se podría activar la ATP citrato liasa (ACL) en el citosol. Esta enzima escinde el citrato (un intermediario del CK que se acumula por inhibición de la isocitrato deshidrogenasa) para regenerar acetil-CoA y OAA en el citosol, desviando así el carbono para la biosíntesis de ácidos grasos.",
+    "en": "ATP citrate lyase (ACL) in the cytosol could be activated. This enzyme cleaves citrate (a KC intermediate that accumulates when isocitrate dehydrogenase is inhibited) to regenerate acetyl-CoA and OAA in the cytosol, thereby diverting carbon to fatty acid biosynthesis."
+   },
+   "justificacion": {
+    "es": "Exige sintetizar cómo desviar el flujo de un ciclo central a un proceso biosintético, nombrando la enzima y el intermediario correcto.",
+    "en": "Requires synthesizing how to divert flux from a central cycle to a biosynthetic process, naming the correct enzyme and intermediate."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-PC4.7",
+   "num": "PC4.7",
+   "tema": 4,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Recordar: ¿Qué son las reacciones anapleróticas y cuál es la enzima que cataliza la reacción anaplerótica más importante en el hígado?",
+    "en": "Recall: what are anaplerotic reactions, and which enzyme catalyzes the most important anaplerotic reaction in the liver?"
+   },
+   "respuesta": {
+    "es": "Son reacciones que rellenan o reponen los intermediarios del ciclo de Krebs cuando estos han sido desviados para la biosíntesis. La enzima más importante en el hígado es la piruvato carboxilasa.",
+    "en": "They are reactions that refill or replenish Krebs cycle intermediates when these have been diverted to biosynthesis. The most important enzyme in the liver is pyruvate carboxylase."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación del concepto y la enzima clave.",
+    "en": "Requires simple retrieval of the concept and the key enzyme."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-PC4.8",
+   "num": "PC4.8",
+   "tema": 4,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Describe la doble función reguladora del citrato cuando se acumula en el citosol (función anabólica y función catabólica).",
+    "en": "Describe the dual regulatory function of citrate when it accumulates in the cytosol (anabolic function and catabolic function)."
+   },
+   "respuesta": {
+    "es": " - Función anabólica (biosíntesis): actúa como la fuente de acetil-CoA para la síntesis de ácidos grasos (citrato→acetil-CoA). - Función catabólica (inhibición): actúa como un regulador alostérico que inhibe la fosfofructoquinasa-1 (PFK-1), frenando la glucólisis.",
+    "en": "- Anabolic function (biosynthesis): it acts as the source of acetyl-CoA for fatty acid synthesis (citrate → acetyl-CoA). - Catabolic function (inhibition): it acts as an allosteric regulator that inhibits phosphofructokinase-1 (PFK-1), slowing glycolysis."
+   },
+   "justificacion": {
+    "es": "Requiere explicar el papel anfibólico y regulador del citrato en el citosol (convergencia de rutas).",
+    "en": "Requires explaining the amphibolic and regulatory role of citrate in the cytosol (convergence of pathways)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-PC4.9",
+   "num": "PC4.9",
+   "tema": 4,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Un hepatocito desvía continuamente OAA para la gluconeogénesis en ayuno. Evalúe qué tipo de reacción (anaplerótica o catabólica) debe aumentar el hepatocito para que el CK pueda seguir funcionando y suministrando energía al hígado.",
+    "en": "A hepatocyte continuously diverts OAA to gluconeogenesis during fasting. Evaluate which type of reaction (anaplerotic or catabolic) the hepatocyte must increase so that the KC can keep running and supplying energy to the liver."
+   },
+   "respuesta": {
+    "es": "El hepatocito debe aumentar las reacciones anapleróticas, específicamente la catalizada por la piruvato carboxilasa (piruvato→ OAA). Esto es necesario para reponer el OAA consumido por la GNG y asegurar que el CK pueda continuar su función catabólica (oxidación) para generar la energía (ATP) necesaria para la GNG y otras funciones hepáticas.",
+    "en": "The hepatocyte must increase anaplerotic reactions, specifically the one catalyzed by pyruvate carboxylase (pyruvate → OAA). This is necessary to replenish the OAA consumed by GNG and to ensure that the KC can continue its catabolic (oxidative) function to generate the energy (ATP) needed for GNG and other liver functions."
+   },
+   "justificacion": {
+    "es": "Requiere juzgar el impacto de un proceso (consumo de OAA por GNG) y determinar el mecanismo compensatorio esencial para mantener el funcionamiento del CK.",
+    "en": "Requires judging the impact of a process (consumption of OAA by GNG) and determining the essential compensatory mechanism to keep the KC working."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-PC4.10",
+   "num": "PC4.10",
+   "tema": 4,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es la diferencia fundamental entre el ciclo del glioxilato (CG) y el CK en términos de destino del carbono?",
+    "en": "What is the fundamental difference between the glyoxylate cycle (GC) and the KC in terms of the fate of carbon?"
+   },
+   "respuesta": {
+    "es": "La diferencia fundamental es que el CG evita los dos pasos de descarboxilación (CO<sub>2</sub>) del CK, permitiendo la preservación del carbono para la biosíntesis de glúcidos.",
+    "en": "The fundamental difference is that the GC bypasses the two decarboxylation steps (CO<sub>2</sub>) of the KC, allowing carbon to be conserved for carbohydrate biosynthesis."
+   },
+   "justificacion": {
+    "es": "Exige la simple recuperación de la diferencia estructural y funcional de los ciclos.",
+    "en": "Requires simple retrieval of the structural and functional difference between the cycles."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-PC4.11",
+   "num": "PC4.11",
+   "tema": 4,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué enzima única del CG permite la preservación del carbono del isocitrato?",
+    "en": "Which unique enzyme of the GC allows the carbon of isocitrate to be conserved?"
+   },
+   "respuesta": {
+    "es": "La enzima única es la isocitrato liasa. Esta enzima rompe el isocitrato en dos moléculas: glioxilato y succinato, desviando el Isocitrato antes de la primera descarboxilación.",
+    "en": "The unique enzyme is isocitrate lyase. This enzyme cleaves isocitrate into two molecules, glyoxylate and succinate, diverting isocitrate before the first decarboxylation."
+   },
+   "justificacion": {
+    "es": "Requiere entender la enzima clave y describir su acción en el contexto de la preservación del carbono.",
+    "en": "Requires understanding the key enzyme and describing its action in the context of carbon conservation."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T4-PC4.12",
+   "num": "PC4.12",
+   "tema": 4,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Por qué los ácidos grasos (y acetil-CoA) no son glucogénicos en mamíferos y cómo se relaciona esto con el CG?",
+    "en": "Why are fatty acids (and acetyl-CoA) not glucogenic in mammals, and how is this related to the GC?"
+   },
+   "respuesta": {
+    "es": "Los ácidos grasos no son glucogénicos en mamíferos porque el acetil-CoA que generan solo puede entrar al CK para ser oxidado a CO<sub>2</sub> o desviado a cetogénesis. El acetil-CoA no puede usarse para la síntesis neta de OAA (precursor de glucosa) porque los mamíferos carecen de las enzimas clave del CG (isocitrato liasa y malato sintasa).",
+    "en": "Fatty acids are not glucogenic in mammals because the acetyl-CoA they generate can only enter the KC to be oxidized to CO<sub>2</sub> or be diverted to ketogenesis. Acetyl-CoA cannot be used for the net synthesis of OAA (a glucose precursor) because mammals lack the key enzymes of the GC (isocitrate lyase and malate synthase)."
+   },
+   "justificacion": {
+    "es": "Requiere desglosar la limitación metabólica del acetil-CoA en mamíferos y correlacionarla con la ausencia de una ruta biosintética específica (CG).",
+    "en": "Requires breaking down the metabolic limitation of acetyl-CoA in mammals and relating it to the absence of a specific biosynthetic pathway (GC)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  }
+ ]
+}

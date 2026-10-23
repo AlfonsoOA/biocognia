@@ -1,0 +1,3785 @@
+{
+ "schema": "metahub-tema/1",
+ "tema": 1,
+ "titulo": {
+  "es": "Introducción al metabolismo, bioenergética y regulación metabólica",
+  "en": "Introduction to metabolism, bioenergetics and metabolic regulation"
+ },
+ "secciones": {
+  "1.1": {
+   "es": "Leyes de la termodinámica. Entalpía, entropía y energía libre",
+   "en": "Laws of thermodynamics. Enthalpy, entropy and free energy"
+  },
+  "1.2": {
+   "es": "Energética celular. Acoplamiento de reacciones",
+   "en": "Cellular energetics. Coupled reactions"
+  },
+  "1.3": {
+   "es": "ATP y transferencia de grupos fosforilo",
+   "en": "ATP and phosphoryl group transfer"
+  },
+  "1.4": {
+   "es": "Medidas del ambiente energético celular",
+   "en": "Measures of the cellular energy status"
+  },
+  "1.5": {
+   "es": "Panorámica general del metabolismo. Principales rutas metabólicas",
+   "en": "Overview of metabolism. Main metabolic pathways"
+  },
+  "1.6": {
+   "es": "Necesidad del control metabólico. Control hormonal en plantas y animales",
+   "en": "The need for metabolic control. Hormonal control in plants and animals"
+  },
+  "1.7": {
+   "es": "Transducción de señales, segundos mensajeros y mecanismos moleculares",
+   "en": "Signal transduction, second messengers and molecular mechanisms"
+  }
+ },
+ "conceptos_clave": {
+  "I": {
+   "es": "catabolismo vs. anabolismo",
+   "en": "catabolism vs. anabolism"
+  },
+  "II": {
+   "es": "energía libre de Gibbs (ΔG) y acoplamiento",
+   "en": "Gibbs free energy (ΔG) and coupling"
+  },
+  "III": {
+   "es": "ATP, hidrólisis y carga energética (AEC)",
+   "en": "ATP, hydrolysis and energy charge (AEC)"
+  },
+  "IV": {
+   "es": "Rutas metabólicas y regulación",
+   "en": "Metabolic pathways and regulation"
+  },
+  "V": {
+   "es": "transducción de señales",
+   "en": "signal transduction"
+  }
+ },
+ "preguntas": [
+  {
+   "id": "T1-1.1.1",
+   "num": "1.1.1",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál(es) de las siguientes características es/son propia(s) del catabolismo?",
+    "en": "Which of the following features is/are characteristic of catabolism?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Oxidativo",
+     "en": "Oxidative"
+    },
+    "b": {
+     "es": "Reductivo",
+     "en": "Reductive"
+    },
+    "c": {
+     "es": "Convergencia",
+     "en": "Convergence"
+    },
+    "d": {
+     "es": "Divergencia",
+     "en": "Divergence"
+    },
+    "e": {
+     "es": "Genera ATP",
+     "en": "Generates ATP"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere la memorización y asociación de las características definitorias del catabolismo (oxidativo, convergente, genera ATP).",
+    "en": "Requires memorizing and associating the defining features of catabolism (oxidative, convergent, generates ATP)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.2",
+   "num": "1.1.2",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál(es) de las siguientes características es/son propia(s) del anabolismo?",
+    "en": "Which of the following features is/are characteristic of anabolism?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Oxidativo",
+     "en": "Oxidative"
+    },
+    "b": {
+     "es": "Reductivo",
+     "en": "Reductive"
+    },
+    "c": {
+     "es": "Convergencia",
+     "en": "Convergence"
+    },
+    "d": {
+     "es": "Divergencia",
+     "en": "Divergence"
+    },
+    "e": {
+     "es": "Consume ATP",
+     "en": "Consumes ATP"
+    }
+   },
+   "correctas": [
+    "b",
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere la memorización y asociación de las características definitorias del anabolismo (reductivo, divergente, consume ATP).",
+    "en": "Requires memorizing and associating the defining features of anabolism (reductive, divergent, consumes ATP)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.3",
+   "num": "1.1.3",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Si en una determinada ruta se está generando NADPH, ¿Qué se podría decir del tipo de metabolismo que está sucediendo y/o de las consecuencias que acarreará?",
+    "en": "If NADPH is being generated in a given pathway, what could be said about the type of metabolism taking place and/or its consequences?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La generación de NADPH es independiente de los procesos metabólicos, por lo que no tendrá influencia sobre ellos.",
+     "en": "NADPH generation is independent of metabolic processes, so it will have no influence on them."
+    },
+    "b": {
+     "es": "Tras un tiempo, se activarán reacciones metabólicas reductoras",
+     "en": "After some time, reductive metabolic reactions will be activated"
+    },
+    "c": {
+     "es": "Se está llevando a cabo un metabolismo aerobio",
+     "en": "Aerobic metabolism is taking place"
+    },
+    "d": {
+     "es": "Se está llevando a cabo un metabolismo oxidativo",
+     "en": "Oxidative metabolism is taking place"
+    },
+    "e": {
+     "es": "Se está llevando a cabo un metabolismo reductor",
+     "en": "Reductive metabolism is taking place"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Exige comprender el rol del NADPH: su generación es un proceso oxidativo para el sustrato (d), y su función es impulsar futuras reacciones reductoras (b).",
+    "en": "Requires understanding the role of NADPH: its generation is an oxidative process for the substrate (d), and its function is to drive subsequent reductive reactions (b)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.4",
+   "num": "1.1.4",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Si en una determinada ruta se está consumiendo NADPH, ¿Qué se podría decir del tipo de metabolismo que está sucediendo y/o de las consecuencias que acarreará?",
+    "en": "If NADPH is being consumed in a given pathway, what could be said about the type of metabolism taking place and/or its consequences?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se está llevando a cabo un metabolismo reductor",
+     "en": "Reductive metabolism is taking place"
+    },
+    "b": {
+     "es": "La generación de NADPH es independiente de los procesos metabólicos, por lo que no tendrá influencia sobre ellos.",
+     "en": "NADPH generation is independent of metabolic processes, so it will have no influence on them."
+    },
+    "c": {
+     "es": "Se activarán reacciones metabólicas reductoras",
+     "en": "Reductive metabolic reactions will be activated"
+    },
+    "d": {
+     "es": "Se está llevando a cabo un metabolismo oxidativo",
+     "en": "Oxidative metabolism is taking place"
+    },
+    "e": {
+     "es": "Tras un tiempo, se activarán reacciones metabólicas oxidativas",
+     "en": "After some time, oxidative metabolic reactions will be activated"
+    }
+   },
+   "correctas": [
+    "a",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Exige comprender que el consumo de NADPH indica un metabolismo reductor (anabolismo) (a) y que la acumulación de NADP<sup>+</sup> resultante activa vías oxidativas (p. ej., ruta de las pentosas) para reponerlo (e).",
+    "en": "Requires understanding that NADPH consumption indicates reductive metabolism (anabolism) (a) and that the resulting accumulation of NADP<sup>+</sup> activates oxidative pathways (e.g., the pentose phosphate pathway) to replenish it (e)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.5",
+   "num": "1.1.5",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Algunos microorganismos obtienen energía mediante la transferencia de electrones a un aceptor distinto del oxígeno. ¿Cómo se denomina este tipo de metabolismo energético?",
+    "en": "Some microorganisms obtain energy by transferring electrons to an acceptor other than oxygen. What is this type of energy metabolism called?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Respiración aeróbica",
+     "en": "Aerobic respiration"
+    },
+    "b": {
+     "es": "Fotosíntesis anoxigénica",
+     "en": "Anoxygenic photosynthesis"
+    },
+    "c": {
+     "es": "Fermentación de nitrato",
+     "en": "Nitrate fermentation"
+    },
+    "d": {
+     "es": "Proceso catabólico para la obtención de energía",
+     "en": "Catabolic process for obtaining energy"
+    },
+    "e": {
+     "es": "Respiración anaeróbica",
+     "en": "Anaerobic respiration"
+    }
+   },
+   "correctas": [
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere recordar la definición de respiración anaerobia (aceptor final distinto del O<sub>2</sub>, p. ej. NO<sub>3</sub><sup>−</sup> en la desnitrificación).",
+    "en": "Requires recalling the definition of anaerobic respiration (a terminal acceptor other than O<sub>2</sub>, e.g., NO<sub>3</sub><sup>−</sup> in denitrification)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.6",
+   "num": "1.1.6",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Una bacteria anaerobia facultativa crece en un medio sin oxígeno pero con nitrato como aceptor final de electrones. ¿Qué proceso está llevando a cabo?",
+    "en": "A facultative anaerobic bacterium grows in a medium without oxygen but with nitrate as the terminal electron acceptor. What process is it carrying out?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Fermentación",
+     "en": "Fermentation"
+    },
+    "b": {
+     "es": "Respiración anaerobia",
+     "en": "Anaerobic respiration"
+    },
+    "c": {
+     "es": "Respiración aerobia",
+     "en": "Aerobic respiration"
+    },
+    "d": {
+     "es": "Fotosíntesis anoxigénica",
+     "en": "Anoxygenic photosynthesis"
+    },
+    "e": {
+     "es": "Catabolismo ineficiente",
+     "en": "Inefficient catabolism"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Exige aplicar la definición de respiración anaerobia (uso de un aceptor de electrones inorgánico distinto del O<sub>2</sub>) a un escenario biológico específico (bacteria en medio sin O<sub>2</sub> con nitrato).",
+    "en": "Requires applying the definition of anaerobic respiration (use of an inorganic electron acceptor other than O<sub>2</sub>) to a specific biological scenario (a bacterium in an O<sub>2</sub>-free medium with nitrate)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.7",
+   "num": "1.1.7",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseña un experimento sencillo para distinguir entre respiración aerobia y anaerobia en bacterias. ¿Cuál de las siguientes estrategias sería más adecuada(s) para distinguir entre respiración aeróbica y anaeróbica?",
+    "en": "Design a simple experiment to distinguish between aerobic and anaerobic respiration in bacteria. Which of the following strategies would be most suitable for distinguishing aerobic from anaerobic respiration?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Medir consumo de O<sub>2</sub> en un medio cerrado",
+     "en": "Measuring O<sub>2</sub> consumption in a closed medium"
+    },
+    "b": {
+     "es": "Analizar producción de CO<sub>2</sub> en presencia/ausencia de O<sub>2</sub>",
+     "en": "Analyzing CO<sub>2</sub> production in the presence/absence of O<sub>2</sub>"
+    },
+    "c": {
+     "es": "Inhibir la glucólisis con yodoacetato",
+     "en": "Inhibiting glycolysis with iodoacetate"
+    },
+    "d": {
+     "es": "Comparar el crecimiento con y sin aceptor final alternativo (p. ej. nitrato)",
+     "en": "Comparing growth with and without an alternative terminal acceptor (e.g., nitrate)"
+    },
+    "e": {
+     "es": "Medir pH sin condiciones controladas",
+     "en": "Measuring pH under uncontrolled conditions"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Requiere diseñar una estrategia experimental que diferencie procesos basándose en su principio fundamental (aceptor final de electrones).",
+    "en": "Requires designing an experimental strategy that distinguishes processes on the basis of their underlying principle (the terminal electron acceptor)."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.8",
+   "num": "1.1.8",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "En un cultivo mantenido en oscuridad que contiene un polímero orgánico sintético como única fuente de carbono y energía, se observa crecimiento microbiano. ¿Puede concluirse que los microorganismos están degradando dicho polímero?",
+    "en": "Microbial growth is observed in a culture kept in the dark containing a synthetic organic polymer as the sole carbon and energy source. Can it be concluded that the microorganisms are degrading the polymer?"
+   },
+   "opciones": {
+    "a": {
+     "es": "No, ya que pueden crecer fotoheterótrofos",
+     "en": "No, because photoheterotrophs may grow"
+    },
+    "b": {
+     "es": "No, ya que pueden crecer quimiolitotrofos",
+     "en": "No, because chemolithotrophs may grow"
+    },
+    "c": {
+     "es": "No, ya que podrían usar procesos de fijación de carbono más allá del ciclo de Calvin",
+     "en": "No, because they could use carbon fixation processes other than the Calvin cycle"
+    },
+    "d": {
+     "es": "Sí, ya que se está inhibiendo a los fotótrofos",
+     "en": "Yes, because phototrophs are being inhibited"
+    },
+    "e": {
+     "es": "No, ya que pueden crecer fotoautótrofos",
+     "en": "No, because photoautotrophs may grow"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Exige aplicar el concepto de quimiolitotrofía y autotrofía a un medio selectivo. El estudiante debe deducir que los quimiolitotrofos pueden crecer en oscuridad sin consumir el polímero orgánico.",
+    "en": "Requires applying the concepts of chemolithotrophy and autotrophy to a selective medium. The student must deduce that chemolithotrophs can grow in the dark without consuming the organic polymer."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.9",
+   "num": "1.1.9",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "En el diseño de un medio de cultivo selectivo que favorezca el crecimiento de bacterias quimiolitotróficas. ¿Cuál de las siguientes característica(s) debería tener?",
+    "en": "A selective culture medium is being designed to favor the growth of chemolithotrophic bacteria. Which of the following feature(s) should it have?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Alta concentración de glucosa",
+     "en": "High glucose concentration"
+    },
+    "b": {
+     "es": "Disponibilidad de compuestos inorgánicos como fuente de energía",
+     "en": "Availability of inorganic compounds as an energy source"
+    },
+    "c": {
+     "es": "Ausencia de fuentes de carbono orgánico",
+     "en": "Absence of organic carbon sources"
+    },
+    "d": {
+     "es": "Presencia de lactosa como única fuente de carbono",
+     "en": "Presence of lactose as the sole carbon source"
+    },
+    "e": {
+     "es": "Disponibilidad de CO<sub>2</sub> como fuente de carbono",
+     "en": "Availability of CO<sub>2</sub> as a carbon source"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere la síntesis de un medio de cultivo (diseño experimental) basándose en los requerimientos nutricionales de un grupo trófico específico (quimiolitótrofos autótrofos: energía inorgánica (b) y carbono inorgánico (CO<sub>2</sub>) (e), excluyendo orgánico (c)).",
+    "en": "Requires synthesizing a culture medium (experimental design) based on the nutritional requirements of a specific trophic group (autotrophic chemolithotrophs: inorganic energy (b) and inorganic carbon (CO<sub>2</sub>) (e), excluding organic carbon (c))."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.10",
+   "num": "1.1.10",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "En la fotosíntesis oxigénica, ¿Qué molécula actúa, en algún momento, como donador inicial de electrones?",
+    "en": "In oxygenic photosynthesis, which molecule acts, at some point, as the initial electron donor?"
+   },
+   "opciones": {
+    "a": {
+     "es": "NADPH",
+     "en": "NADPH"
+    },
+    "b": {
+     "es": "H<sub>2</sub>O",
+     "en": "H<sub>2</sub>O"
+    },
+    "c": {
+     "es": "O<sub>2</sub>",
+     "en": "O<sub>2</sub>"
+    },
+    "d": {
+     "es": "Clorofila excitada",
+     "en": "Excited chlorophyll"
+    },
+    "e": {
+     "es": "Glucosa",
+     "en": "Glucose"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Exige comprender el papel químico de las moléculas en la fotosíntesis oxigénica, identificando el H<sub>2</sub>O como el donador químico inicial del electrón (que es oxidado a O<sub>2</sub>).",
+    "en": "Requires understanding the chemical role of the molecules in oxygenic photosynthesis, identifying H<sub>2</sub>O as the initial chemical electron donor (which is oxidized to O<sub>2</sub>)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.11",
+   "num": "1.1.11",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Si un alqueno es transformado en un ácido carboxílico, ¿Qué tipo de metabolismo se está sucediendo?",
+    "en": "If an alkene is converted into a carboxylic acid, what type of metabolism is taking place?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Oxidativo",
+     "en": "Oxidative"
+    },
+    "b": {
+     "es": "Reductivo",
+     "en": "Reductive"
+    },
+    "c": {
+     "es": "Fermentativo",
+     "en": "Fermentative"
+    },
+    "d": {
+     "es": "Sintético",
+     "en": "Synthetic"
+    },
+    "e": {
+     "es": "Electrófilo",
+     "en": "Electrophilic"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Requiere recordar la definición de oxidación en química orgánica (aumento de enlaces C-O o pérdida de H), aplicada a la conversión de alqueno a ácido carboxílico.",
+    "en": "Requires recalling the definition of oxidation in organic chemistry (increase in C–O bonds or loss of H), applied to the conversion of an alkene into a carboxylic acid."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.12",
+   "num": "1.1.12",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Si un grupo aldehído es transformado en un grupo alcohólico, ¿Qué tipo de metabolismo se está sucediendo?",
+    "en": "If an aldehyde group is converted into an alcohol group, what type of metabolism is taking place?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Oxidativo",
+     "en": "Oxidative"
+    },
+    "b": {
+     "es": "Reductivo",
+     "en": "Reductive"
+    },
+    "c": {
+     "es": "Nucleófilo",
+     "en": "Nucleophilic"
+    },
+    "d": {
+     "es": "Sintético",
+     "en": "Synthetic"
+    },
+    "e": {
+     "es": "Electrófilo",
+     "en": "Electrophilic"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Requiere recordar la definición de reducción en química orgánica (aumento de enlaces C-H), aplicada a la conversión de aldehído a alcohol.",
+    "en": "Requires recalling the definition of reduction in organic chemistry (increase in C–H bonds), applied to the conversion of an aldehyde into an alcohol."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.13",
+   "num": "1.1.13",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué parámetro(s) termodinámico(s) tiene(n) como unidades J/mol?",
+    "en": "Which thermodynamic parameter(s) is/are expressed in J/mol?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Entropía",
+     "en": "Entropy"
+    },
+    "b": {
+     "es": "Entalpía",
+     "en": "Enthalpy"
+    },
+    "c": {
+     "es": "Energía libre de Gibbs",
+     "en": "Gibbs free energy"
+    },
+    "d": {
+     "es": "Las reacciones exergónicas",
+     "en": "Exergonic reactions"
+    },
+    "e": {
+     "es": "Entropía y entalpía",
+     "en": "Entropy and enthalpy"
+    }
+   },
+   "correctas": [
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Requiere la memorización de las unidades del ΔH y ΔG (J/mol).",
+    "en": "Requires memorizing the units of ΔH and ΔG (J/mol)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.14",
+   "num": "1.1.14",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué variable termodinámica tiene como unidades J/(mol·K)?",
+    "en": "Which thermodynamic variable is expressed in J/(mol·K)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La entropía",
+     "en": "Entropy"
+    },
+    "b": {
+     "es": "La entalpía",
+     "en": "Enthalpy"
+    },
+    "c": {
+     "es": "La energía libre de Gibbs, la entalpía y la entropía",
+     "en": "Gibbs free energy, enthalpy and entropy"
+    },
+    "d": {
+     "es": "La energía libre de Gibbs",
+     "en": "Gibbs free energy"
+    },
+    "e": {
+     "es": "Ninguna de las mostradas",
+     "en": "None of the above"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Requiere la memorización de las unidades de la entropía (J/(mol·K)).",
+    "en": "Requires memorizing the units of entropy (J/(mol·K))."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.15",
+   "num": "1.1.15",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Cómo podrá ser termodinámicamente favorable una reacción con ΔH = 4000 J/mol y ΔS = 10 J/(mol·K)?",
+    "en": "How could a reaction with ΔH = 4000 J/mol and ΔS = 10 J/(mol·K) be made thermodynamically favorable?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Añadiéndole más enzima, por la relación directamente proporcional entre cantidad de enzima y velocidad",
+     "en": "By adding more enzyme, given the directly proportional relationship between enzyme amount and rate"
+    },
+    "b": {
+     "es": "Calentando la mezcla de reacción",
+     "en": "By heating the reaction mixture"
+    },
+    "c": {
+     "es": "Ya sería termodinámicamente favorable",
+     "en": "It would already be thermodynamically favorable"
+    },
+    "d": {
+     "es": "Enfriando la mezcla de reacción",
+     "en": "By cooling the reaction mixture"
+    },
+    "e": {
+     "es": "Con temperatura alta",
+     "en": "At a high temperature"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Exige aplicar la ecuación de Gibbs (ΔG=ΔH−TΔS) a un escenario con signos ΔH&gt;0 y ΔS&gt;0, deduciendo que se requiere una temperatura alta para que TΔS&gt;ΔH.",
+    "en": "Requires applying the Gibbs equation (ΔG = ΔH − TΔS) to a scenario with ΔH&gt;0 and ΔS&gt;0, deducing that a high temperature is needed for TΔS&gt;ΔH."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.16",
+   "num": "1.1.16",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cómo será una reacción metabólica en condiciones estándar cuando la entalpía y la entropía son positivas?",
+    "en": "Under standard conditions, how will a metabolic reaction behave when both enthalpy and entropy are positive?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Desfavorable, si la temperatura es alta",
+     "en": "Unfavorable, if the temperature is high"
+    },
+    "b": {
+     "es": "Desfavorable, si la temperatura es baja",
+     "en": "Unfavorable, if the temperature is low"
+    },
+    "c": {
+     "es": "La entalpía y la entropía no ejercen efecto sobre las reacciones metabólicas",
+     "en": "Enthalpy and entropy have no effect on metabolic reactions"
+    },
+    "d": {
+     "es": "Favorable, si la temperatura es alta",
+     "en": "Favorable, if the temperature is high"
+    },
+    "e": {
+     "es": "Favorable, independientemente de la temperatura",
+     "en": "Favorable, regardless of temperature"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Exige comprender la relación entre los signos termodinámicos (ΔH&gt;0,ΔS&gt;0) y la dependencia de la temperatura para la espontaneidad.",
+    "en": "Requires understanding the relationship between the thermodynamic signs (ΔH&gt;0, ΔS&gt;0) and the temperature dependence of spontaneity."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.17",
+   "num": "1.1.17",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cómo será una reacción metabólica en condiciones estándar cuando la entalpía y la entropía son negativas?",
+    "en": "Under standard conditions, how will a metabolic reaction behave when both enthalpy and entropy are negative?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Desfavorable, si la temperatura es alta",
+     "en": "Unfavorable, if the temperature is high"
+    },
+    "b": {
+     "es": "Desfavorable, si la temperatura es baja",
+     "en": "Unfavorable, if the temperature is low"
+    },
+    "c": {
+     "es": "La entalpía y la entropía no ejercen efecto sobre las reacciones metabólicas",
+     "en": "Enthalpy and entropy have no effect on metabolic reactions"
+    },
+    "d": {
+     "es": "Favorable, si la temperatura es alta",
+     "en": "Favorable, if the temperature is high"
+    },
+    "e": {
+     "es": "Favorable, si la temperatura es baja",
+     "en": "Favorable, if the temperature is low"
+    }
+   },
+   "correctas": [
+    "a",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Exige comprender la relación entre los signos termodinámicos (ΔH&lt;0,ΔS&lt;0) y la dependencia de la temperatura para la espontaneidad (favorable a baja T).",
+    "en": "Requires understanding the relationship between the thermodynamic signs (ΔH&lt;0, ΔS&lt;0) and the temperature dependence of spontaneity (favorable at low T)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.18",
+   "num": "1.1.18",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "En un estudio de química se estudia la descomposición de glucosa en condiciones controladas y se observa que tanto el ΔH como el ΔS presentan valores negativos. ¿Qué deduce sobre la espontaneidad de la reacción?",
+    "en": "In a chemistry study, the decomposition of glucose is examined under controlled conditions, and both ΔH and ΔS are found to be negative. What can be deduced about the spontaneity of the reaction?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Será favorable solo a bajas temperaturas",
+     "en": "It will be favorable only at low temperatures"
+    },
+    "b": {
+     "es": "Será favorable solo a altas temperaturas",
+     "en": "It will be favorable only at high temperatures"
+    },
+    "c": {
+     "es": "Siempre será espontánea",
+     "en": "It will always be spontaneous"
+    },
+    "d": {
+     "es": "Depende de la magnitud relativa de ΔH y TΔS",
+     "en": "It depends on the relative magnitude of ΔH and TΔS"
+    },
+    "e": {
+     "es": "Nunca será espontánea",
+     "en": "It will never be spontaneous"
+    }
+   },
+   "correctas": [
+    "a",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Exige evaluar un escenario termodinámico con signos competitivos (ΔH&lt;0,ΔS&lt;0) y deducir la condición limitante (favorable solo a bajas T) y la dependencia de la magnitud relativa de los términos.",
+    "en": "Requires evaluating a thermodynamic scenario with opposing signs (ΔH&lt;0, ΔS&lt;0) and deducing the limiting condition (favorable only at low T) and the dependence on the relative magnitude of the terms."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.19",
+   "num": "1.1.19",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Un químico estudia la descomposición de glucosa en ciertas condiciones controladas y observa que ΔH es positivo pero ΔS es negativo. ¿Qué deduce sobre la espontaneidad de la reacción?",
+    "en": "A chemist studies the decomposition of glucose under certain controlled conditions and observes that ΔH is positive but ΔS is negative. What can be deduced about the spontaneity of the reaction?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Será favorable solo a bajas temperaturas",
+     "en": "It will be favorable only at low temperatures"
+    },
+    "b": {
+     "es": "La reacción inversa solo será desfavorable a altas temperaturas",
+     "en": "The reverse reaction will be unfavorable only at high temperatures"
+    },
+    "c": {
+     "es": "Siempre será espontánea la reacción de descomposición",
+     "en": "The decomposition reaction will always be spontaneous"
+    },
+    "d": {
+     "es": "La reacción inversa (síntesis de glucosa) siempre será espontánea",
+     "en": "The reverse reaction (glucose synthesis) will always be spontaneous"
+    },
+    "e": {
+     "es": "La reacción de descomposición nunca será espontánea",
+     "en": "The decomposition reaction will never be spontaneous"
+    }
+   },
+   "correctas": [
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Exige evaluar un escenario con ambos términos desfavorables (ΔH&gt;0, ΔS&lt;0): como ΔG = ΔH − TΔS es positivo a cualquier temperatura, la descomposición nunca es espontánea (e) y la reacción inversa (ΔH&lt;0, ΔS&gt;0) lo es siempre (d).",
+    "en": "Requires evaluating a scenario in which both terms are unfavorable (ΔH&gt;0, ΔS&lt;0): since ΔG = ΔH − TΔS is positive at any temperature, the decomposition is never spontaneous (e), whereas the reverse reaction (ΔH&lt;0, ΔS&gt;0) always is (d)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.20",
+   "num": "1.1.20",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Un estudiante afirma: “La entropía siempre aumenta en todas las reacciones celulares”. ¿Qué argumentos permiten rebatir su afirmación?",
+    "en": "A student claims: “Entropy always increases in all cellular reactions.” Which arguments can be used to refute this claim?"
+   },
+   "opciones": {
+    "a": {
+     "es": "En el sistema celular puede disminuir la entropía local",
+     "en": "Local entropy can decrease within the cellular system"
+    },
+    "b": {
+     "es": "En el universo la entropía puede disminuir",
+     "en": "The entropy of the universe can decrease"
+    },
+    "c": {
+     "es": "El plegamiento proteico localmente reduce entropía, pero globalmente aumenta",
+     "en": "Protein folding locally reduces entropy, but overall entropy increases"
+    },
+    "d": {
+     "es": "Las enzimas impiden que la entropía cambie",
+     "en": "Enzymes prevent entropy from changing"
+    },
+    "e": {
+     "es": "Las leyes de la termodinámica deben aplicarse considerando sistema + entorno",
+     "en": "The laws of thermodynamics must be applied by considering system + surroundings"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Exige evaluar la afirmación de un estudiante frente a la Segunda Ley de la Termodinámica (la entropía global del universo debe aumentar, pero la local puede disminuir).",
+    "en": "Requires evaluating a student's claim against the Second Law of Thermodynamics (the overall entropy of the universe must increase, but local entropy can decrease)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.21",
+   "num": "1.1.21",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Un investigador propone un modelo metabólico en el que la hidrólisis de ATP en células eucariotas tiene ΔG positivo. ¿Cómo se podría valorar este modelo?",
+    "en": "A researcher proposes a metabolic model in which ATP hydrolysis in eukaryotic cells has a positive ΔG. How could this model be assessed?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Es inviable porque contradice datos experimentales",
+     "en": "It is not viable because it contradicts experimental data"
+    },
+    "b": {
+     "es": "Es correcto porque las enzimas modifican ΔG",
+     "en": "It is correct because enzymes modify ΔG"
+    },
+    "c": {
+     "es": "Es incorrecto: la hidrólisis de ATP tiene ΔG negativo en condiciones celulares",
+     "en": "It is incorrect: ATP hydrolysis has a negative ΔG under cellular conditions"
+    },
+    "d": {
+     "es": "El ΔG positivo se observa solo en bacterias",
+     "en": "A positive ΔG is observed only in bacteria"
+    },
+    "e": {
+     "es": "Podría ocurrir solo si la [ATP]/[ADP+P<sub>i</sub>] fuese muy baja",
+     "en": "It could occur only if [ATP]/[ADP+P<sub>i</sub>] were very low"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Exige evaluar un modelo metabólico contra la realidad termodinámica celular (el ΔG de la hidrólisis de ATP es fuertemente negativo).",
+    "en": "Requires evaluating a metabolic model against cellular thermodynamic reality (the ΔG of ATP hydrolysis is strongly negative)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.22",
+   "num": "1.1.22",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuáles de los siguientes procesos son endotérmicos?",
+    "en": "Which of the following processes are endothermic?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Fusión del hielo",
+     "en": "Melting of ice"
+    },
+    "b": {
+     "es": "Desnaturalización de proteínas por calor",
+     "en": "Heat denaturation of proteins"
+    },
+    "c": {
+     "es": "Combustión de glucosa",
+     "en": "Combustion of glucose"
+    },
+    "d": {
+     "es": "Fermentación láctica",
+     "en": "Lactic acid fermentation"
+    },
+    "e": {
+     "es": "Evaporación del agua",
+     "en": "Evaporation of water"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere la memorización de ejemplos de procesos que absorben calor (ΔH&gt;0).",
+    "en": "Requires memorizing examples of processes that absorb heat (ΔH&gt;0)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.23",
+   "num": "1.1.23",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Un investigador mide ΔG de una reacción y obtiene un valor positivo. ¿Cuál sería la mejor forma de hacer que ocurra en la célula?",
+    "en": "A researcher measures the ΔG of a reaction and obtains a positive value. What would be the best way to make it occur in the cell?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Añadir más enzima",
+     "en": "Adding more enzyme"
+    },
+    "b": {
+     "es": "Acoplarla a una reacción fuertemente exergónica",
+     "en": "Coupling it to a strongly exergonic reaction"
+    },
+    "c": {
+     "es": "Cambiar las concentraciones de sustrato/producto",
+     "en": "Changing the substrate/product concentrations"
+    },
+    "d": {
+     "es": "Enfriar la mezcla",
+     "en": "Cooling the mixture"
+    },
+    "e": {
+     "es": "Acoplarla a la hidrólisis de ATP",
+     "en": "Coupling it to ATP hydrolysis"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Exige aplicar los mecanismos celulares para superar una reacción termodinámicamente desfavorable (ΔG&gt;0), centrándose en el acoplamiento o el cambio de concentraciones (Q).",
+    "en": "Requires applying the cellular mechanisms for overcoming a thermodynamically unfavorable reaction (ΔG&gt;0), focusing on coupling or changing concentrations (Q)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.24",
+   "num": "1.1.24",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "El plegamiento de proteínas en el medio acuoso es espontáneo porque:",
+    "en": "Protein folding in an aqueous medium is spontaneous because:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se libera calor al medio",
+     "en": "Heat is released to the surroundings"
+    },
+    "b": {
+     "es": "La entropía del universo aumenta",
+     "en": "The entropy of the universe increases"
+    },
+    "c": {
+     "es": "Los residuos hidrofóbicos se ocultan en el interior",
+     "en": "Hydrophobic residues are buried in the interior"
+    },
+    "d": {
+     "es": "Se forman enlaces no covalentes estabilizadores",
+     "en": "Stabilizing non-covalent bonds are formed"
+    },
+    "e": {
+     "es": "El ΔH siempre es positivo",
+     "en": "ΔH is always positive"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Requiere comprender las fuerzas termodinámicas que impulsan el plegamiento proteico, destacando el efecto hidrofóbico (aumento de la entropía del agua) y la formación de enlaces estabilizadores.",
+    "en": "Requires understanding the thermodynamic forces driving protein folding, highlighting the hydrophobic effect (increase in water entropy) and the formation of stabilizing bonds."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.25",
+   "num": "1.1.25",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La inhibición competitiva de una enzima puede revertirse, sin aplicar ingeniería genética, mediante:",
+    "en": "Competitive inhibition of an enzyme can be reversed, without genetic engineering, by:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumento de la temperatura",
+     "en": "Increasing the temperature"
+    },
+    "b": {
+     "es": "Aumento de la concentración de sustrato",
+     "en": "Increasing the substrate concentration"
+    },
+    "c": {
+     "es": "Disminución del pH",
+     "en": "Decreasing the pH"
+    },
+    "d": {
+     "es": "Aumento de la afinidad del sustrato por la enzima",
+     "en": "Increasing the affinity of the substrate for the enzyme"
+    },
+    "e": {
+     "es": "Diseño de un análogo de transición más específico",
+     "en": "Designing a more specific transition-state analog"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Exige comprender el mecanismo de la inhibición competitiva (competencia por el sitio activo) y deducir que solo un aumento del sustrato puede revertir el efecto.",
+    "en": "Requires understanding the mechanism of competitive inhibition (competition for the active site) and deducing that only an increase in substrate can reverse the effect."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.26",
+   "num": "1.1.26",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Un estudiante afirma que “las enzimas cambian el equilibrio químico de una reacción”. ¿Cómo se debe corregir esta afirmación?",
+    "en": "A student claims that “enzymes change the chemical equilibrium of a reaction.” How should this claim be corrected?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Las enzimas solo aceleran la llegada al equilibrio",
+     "en": "Enzymes only speed up the approach to equilibrium"
+    },
+    "b": {
+     "es": "El valor de ΔG de la reacción no se ve alterado por la enzima",
+     "en": "The ΔG of the reaction is not altered by the enzyme"
+    },
+    "c": {
+     "es": "Las enzimas reducen la energía de activación, no la energía libre",
+     "en": "Enzymes lower the activation energy, not the free energy"
+    },
+    "d": {
+     "es": "Las enzimas modifican ΔH y ΔS",
+     "en": "Enzymes modify ΔH and ΔS"
+    },
+    "e": {
+     "es": "El equilibrio depende de la cantidad de enzima",
+     "en": "The equilibrium depends on the amount of enzyme"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Exige evaluar el papel de las enzimas según principios termodinámicos, confirmando que solo afectan la cinética (ΔG‡) y no el equilibrio (ΔG).",
+    "en": "Requires evaluating the role of enzymes according to thermodynamic principles, confirming that they affect only the kinetics (ΔG‡) and not the equilibrium (ΔG)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.27",
+   "num": "1.1.27",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "El Metabolismo puede definirse como:",
+    "en": "Metabolism can be defined as:"
+   },
+   "opciones": {
+    "a": {
+     "es": "El conjunto de rutas que consumen energía para sintetizar biomoléculas complejas",
+     "en": "The set of pathways that consume energy to synthesize complex biomolecules"
+    },
+    "b": {
+     "es": "La suma total de todas las transformaciones químicas que ocurren en la célula",
+     "en": "The sum total of all the chemical transformations that occur in the cell"
+    },
+    "c": {
+     "es": "La ruta principal de obtención de energía a partir de glucosa",
+     "en": "The main pathway for obtaining energy from glucose"
+    },
+    "d": {
+     "es": "El equilibrio dinámico entre el catabolismo (degradación) y el anabolismo (síntesis)",
+     "en": "The dynamic balance between catabolism (degradation) and anabolism (synthesis)"
+    },
+    "e": {
+     "es": "El proceso por el cual los organismos mantienen el equilibrio con su entorno",
+     "en": "The process by which organisms maintain equilibrium with their environment"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Requiere la comprensión de la definición de metabolismo como la suma total y el equilibrio dinámico de rutas opuestas.",
+    "en": "Requires understanding the definition of metabolism as the sum total and dynamic balance of opposing pathways."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.28",
+   "num": "1.1.28",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Una reacción se considera exergónica si cumple las siguientes propiedades termodinámicas:",
+    "en": "A reaction is considered exergonic if it has the following thermodynamic properties:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se requiere un aporte neto de energía libre para que ocurra (ΔG&gt;0)",
+     "en": "A net input of free energy is required for it to occur (ΔG&gt;0)"
+    },
+    "b": {
+     "es": "El cambio de entropía (ΔS) del universo es negativo",
+     "en": "The entropy change (ΔS) of the universe is negative"
+    },
+    "c": {
+     "es": "El cambio de energía libre de Gibbs es negativo (ΔG&lt;0)",
+     "en": "The Gibbs free energy change is negative (ΔG&lt;0)"
+    },
+    "d": {
+     "es": "Es espontánea en la dirección en la que está escrita",
+     "en": "It is spontaneous in the direction in which it is written"
+    },
+    "e": {
+     "es": "Libera energía útil para realizar trabajo",
+     "en": "It releases energy that can be used to do work"
+    }
+   },
+   "correctas": [
+    "c",
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere la comprensión de las propiedades termodinámicas de una reacción exergónica (ΔG&lt;0) y su capacidad para realizar trabajo.",
+    "en": "Requires understanding the thermodynamic properties of an exergonic reaction (ΔG&lt;0) and its capacity to do work."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.29",
+   "num": "1.1.29",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analice las diferencias fundamentales entre catabolismo y anabolismo:",
+    "en": "Analyze the fundamental differences between catabolism and anabolism:"
+   },
+   "opciones": {
+    "a": {
+     "es": "El catabolismo consume ATP, mientras que el anabolismo lo genera",
+     "en": "Catabolism consumes ATP, whereas anabolism generates it"
+    },
+    "b": {
+     "es": "El catabolismo se caracteriza por ser oxidativo y generalmente convergente",
+     "en": "Catabolism is characterized by being oxidative and generally convergent"
+    },
+    "c": {
+     "es": "El anabolismo genera moléculas transportadoras de electrones como NADPH",
+     "en": "Anabolism generates electron-carrier molecules such as NADPH"
+    },
+    "d": {
+     "es": "El anabolismo es reductivo y típicamente divergente, construyendo moléculas complejas",
+     "en": "Anabolism is reductive and typically divergent, building complex molecules"
+    },
+    "e": {
+     "es": "Ambas rutas son siempre independientes y nunca comparten intermediarios",
+     "en": "Both types of pathway are always independent and never share intermediates"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Requiere analizar y contrastar las características de catabolismo (oxidativo, convergente) y anabolismo (reductivo, divergente).",
+    "en": "Requires analyzing and contrasting the features of catabolism (oxidative, convergent) and anabolism (reductive, divergent)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.30",
+   "num": "1.1.30",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La energía libre de Gibbs estándar (ΔG°) es un valor constante de referencia. ¿Por qué el valor de energía libre real (ΔG) difiere significativamente de ΔG° en el entorno celular?",
+    "en": "The standard Gibbs free energy (ΔG°) is a constant reference value. Why does the actual free energy (ΔG) differ significantly from ΔG° in the cellular environment?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Porque ΔG depende únicamente de la entalpia (ΔH)",
+     "en": "Because ΔG depends only on enthalpy (ΔH)"
+    },
+    "b": {
+     "es": "Porque la temperatura celular (37 ºC) no es la estándar (25 ºC)",
+     "en": "Because the cellular temperature (37 °C) is not the standard one (25 °C)"
+    },
+    "c": {
+     "es": "Porque las concentraciones reales de sustratos y productos <i>in vivo</i> rara vez se encuentran a la concentración estándar de 1 M",
+     "en": "Because the actual concentrations of substrates and products <i>in vivo</i> are rarely at the standard concentration of 1 M"
+    },
+    "d": {
+     "es": "Porque ΔG° no considera el pH celular (excepto ΔG′°)",
+     "en": "Because ΔG° does not take the cellular pH into account (except ΔG′°)"
+    },
+    "e": {
+     "es": "La ΔG y ΔG° son siempre iguales en sistemas biológicos",
+     "en": "ΔG and ΔG° are always equal in biological systems"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Requiere la comprensión del factor principal que hace que ΔG difiera de ΔG°: las concentraciones reales de los metabolitos <i>in vivo</i>.",
+    "en": "Requires understanding the main factor that makes ΔG differ from ΔG°: the actual metabolite concentrations <i>in vivo</i>."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.31",
+   "num": "1.1.31",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Un organismo vivo es un sistema termodinámicamente abierto. Si alcanza el equilibrio termodinámico (ΔG = 0), esto implica que:",
+    "en": "A living organism is a thermodynamically open system. If it reaches thermodynamic equilibrium (ΔG = 0), this implies that:"
+   },
+   "opciones": {
+    "a": {
+     "es": "el organismo ha muerto o ya no puede realizar trabajo",
+     "en": "the organism has died or can no longer do work"
+    },
+    "b": {
+     "es": "el organismo está en un estado estacionario (Steady State)",
+     "en": "the organism is in a steady state"
+    },
+    "c": {
+     "es": "las velocidades de las reacciones directas e inversas son iguales",
+     "en": "the rates of the forward and reverse reactions are equal"
+    },
+    "d": {
+     "es": "la entropía del sistema, en el momento de alcanzar el equilibrio, es máxima",
+     "en": "the entropy of the system, at the moment equilibrium is reached, is at its maximum"
+    },
+    "e": {
+     "es": "el flujo de materia y energía con el entorno se ha detenido",
+     "en": "the flow of matter and energy with the surroundings has stopped"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Requiere evaluar las consecuencias termodinámicas de alcanzar el equilibrio (ΔG=0), y su incompatibilidad con el estado vivo (no trabajo).",
+    "en": "Requires evaluating the thermodynamic consequences of reaching equilibrium (ΔG = 0) and its incompatibility with the living state (no work)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.32",
+   "num": "1.1.32",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La Segunda Ley de la Termodinámica establece que la Entropía del Universo siempre aumenta. ¿Cómo la cumplen los organismos vivos?",
+    "en": "The Second Law of Thermodynamics states that the entropy of the universe always increases. How do living organisms comply with it?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Reduciendo su propia entropía a un valor negativo constante",
+     "en": "By reducing their own entropy to a constant negative value"
+    },
+    "b": {
+     "es": "Importando energía libre del medio (luz o nutrientes) para mantener el orden interno",
+     "en": "By importing free energy from the environment (light or nutrients) to maintain internal order"
+    },
+    "c": {
+     "es": "Aumentando la Entropía del Entorno al liberar calor y moléculas simples",
+     "en": "By increasing the entropy of the surroundings through the release of heat and simple molecules"
+    },
+    "d": {
+     "es": "Siendo sistemas abiertos que intercambian materia y energía",
+     "en": "By being open systems that exchange matter and energy"
+    },
+    "e": {
+     "es": "Almacenando una cantidad infinita de energía libre",
+     "en": "By storing an infinite amount of free energy"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Requiere la comprensión de cómo los organismos vivos son compatibles con la Segunda Ley: siendo sistemas abiertos que aumentan la entropía del entorno para mantener el orden interno.",
+    "en": "Requires understanding how living organisms are compatible with the Second Law: they are open systems that increase the entropy of their surroundings to maintain internal order."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.33",
+   "num": "1.1.33",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Según la ecuación de Gibbs (ΔG = ΔG′°+RTlnQ), donde Q es el cociente de acción de masas, ¿Qué condición asegura que una reacción es favorable <i>in vivo</i> (ΔG&lt;0)?",
+    "en": "According to the Gibbs equation (ΔG = ΔG′° + RT ln Q), where Q is the mass-action ratio, which condition ensures that a reaction is favorable <i>in vivo</i> (ΔG&lt;0)?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El valor de la Energía Libre Estándar (ΔG′°) debe ser negativo",
+     "en": "The standard free energy (ΔG′°) must be negative"
+    },
+    "b": {
+     "es": "El valor de Q debe ser mucho mayor que K<sub>eq</sub> (constante de equilibrio)",
+     "en": "Q must be much greater than K<sub>eq</sub> (equilibrium constant)"
+    },
+    "c": {
+     "es": "El valor de Q (cociente de productos/reactantes reales) debe ser menor que la Constante de Equilibrio (K<sub>eq</sub>)",
+     "en": "Q (the actual product/reactant ratio) must be smaller than the equilibrium constant (K<sub>eq</sub>)"
+    },
+    "d": {
+     "es": "El valor de Q debe ser pequeño (alta concentración de reactantes)",
+     "en": "Q must be small (high reactant concentration)"
+    },
+    "e": {
+     "es": "La reacción debe estar en equilibrio",
+     "en": "The reaction must be at equilibrium"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Requiere aplicar la Ecuación de Gibbs (ΔG=ΔG′°+RTlnQ) para determinar que ΔG&lt;0 cuando Q&lt;K<sub>eq</sub>.",
+    "en": "Requires applying the Gibbs equation (ΔG = ΔG′° + RT ln Q) to determine that ΔG&lt;0 when Q&lt;K<sub>eq</sub>."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.1.34",
+   "num": "1.1.34",
+   "tema": 1,
+   "seccion": "1.1",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La Entropía (S) es una medida del desorden de un sistema. ¿Cuál es el principal mecanismo por el cual los organismos vivos, a pesar de ser sistemas altamente ordenados (baja Entropía interna) , son compatibles con las leyes de la termodinámica?",
+    "en": "Entropy (S) is a measure of the disorder of a system. What is the main mechanism by which living organisms, despite being highly ordered systems (low internal entropy), are compatible with the laws of thermodynamics?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Tienen ΔG siempre igual a ΔH",
+     "en": "Their ΔG is always equal to ΔH"
+    },
+    "b": {
+     "es": "Mantienen una temperatura constante (isotermia)",
+     "en": "They maintain a constant temperature (isothermy)"
+    },
+    "c": {
+     "es": "Son sistemas abiertos que aumentan la entropía del entorno al liberar calor y desechos, pagando el coste de mantener el orden interno",
+     "en": "They are open systems that increase the entropy of their surroundings by releasing heat and waste, paying the cost of maintaining internal order"
+    },
+    "d": {
+     "es": "Reciclan todos sus componentes moleculares",
+     "en": "They recycle all their molecular components"
+    },
+    "e": {
+     "es": "Operan en condiciones estándar (pH 7,0, 1 M)",
+     "en": "They operate under standard conditions (pH 7.0, 1 M)"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Requiere la comprensión de la naturaleza de sistema abierto de los seres vivos como el mecanismo para contrarrestar la tendencia a la entropía interna.",
+    "en": "Requires understanding the open-system nature of living beings as the mechanism that counteracts the tendency toward internal entropy."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.2.1",
+   "num": "1.2.1",
+   "tema": 1,
+   "seccion": "1.2",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cómo se define el cociente de acción de masas?",
+    "en": "How is the mass-action ratio defined?"
+   },
+   "opciones": {
+    "a": {
+     "es": "[Sustratos] / [Productos]",
+     "en": "[Substrates] / [Products]"
+    },
+    "b": {
+     "es": "[Sustratos]",
+     "en": "[Substrates]"
+    },
+    "c": {
+     "es": "[Productos] × [Sustratos]",
+     "en": "[Products] × [Substrates]"
+    },
+    "d": {
+     "es": "[Productos] / [Sustratos]",
+     "en": "[Products] / [Substrates]"
+    },
+    "e": {
+     "es": "[Productos]",
+     "en": "[Products]"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Requiere la memorización de la definición del cociente de acción de masas (Q).",
+    "en": "Requires memorizing the definition of the mass-action ratio (Q)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.2.2",
+   "num": "1.2.2",
+   "tema": 1,
+   "seccion": "1.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "En las siguientes parejas redox: acetoacetato + 2H<sup>+</sup> + 2e<sup>-</sup> → β-hidroxibutirato (E′° (V) -0,35) y oxalacetato + 2H<sup>+</sup> + 2 e<sup>-</sup> → malato (E′° (V) -0,17), ¿Cuál es el agente reductor?",
+    "en": "Given the following redox couples: acetoacetate + 2H<sup>+</sup> + 2e<sup>−</sup> → β-hydroxybutyrate (E′° = −0.35 V) and oxaloacetate + 2H<sup>+</sup> + 2e<sup>−</sup> → malate (E′° = −0.17 V), which is the reducing agent?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acetoacetato",
+     "en": "Acetoacetate"
+    },
+    "b": {
+     "es": "β-Hidroxibutirato",
+     "en": "β-Hydroxybutyrate"
+    },
+    "c": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    },
+    "d": {
+     "es": "Malato",
+     "en": "Malate"
+    },
+    "e": {
+     "es": "NADH",
+     "en": "NADH"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Exige comprender la relación entre el potencial redox (E′°) y la fuerza reductora. El agente reductor es la forma reducida del par con el menor potencial.",
+    "en": "Requires understanding the relationship between redox potential (E′°) and reducing strength. The reducing agent is the reduced form of the couple with the lower potential."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.2.3",
+   "num": "1.2.3",
+   "tema": 1,
+   "seccion": "1.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "En las siguientes parejas redox: acetoacetato + 2H<sup>+</sup> + 2 e<sup>-</sup> → β-hidroxibutirato (E′° (V) -0,35) y oxalacetato + 2H<sup>+</sup> + 2 e<sup>-</sup> → malato (E′° (V) -0,17), ¿cuál es el agente oxidante?",
+    "en": "Given the following redox couples: acetoacetate + 2H<sup>+</sup> + 2e<sup>−</sup> → β-hydroxybutyrate (E′° = −0.35 V) and oxaloacetate + 2H<sup>+</sup> + 2e<sup>−</sup> → malate (E′° = −0.17 V), which is the oxidizing agent?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acetoacetato",
+     "en": "Acetoacetate"
+    },
+    "b": {
+     "es": "β-Hidroxibutirato",
+     "en": "β-Hydroxybutyrate"
+    },
+    "c": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    },
+    "d": {
+     "es": "Malato",
+     "en": "Malate"
+    },
+    "e": {
+     "es": "NADH",
+     "en": "NADH"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Exige comprender la relación entre el potencial redox (E′°) y la fuerza oxidante. El agente oxidante es la forma oxidada del par con el mayor potencial.",
+    "en": "Requires understanding the relationship between redox potential (E′°) and oxidizing strength. The oxidizing agent is the oxidized form of the couple with the higher potential."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.2.4",
+   "num": "1.2.4",
+   "tema": 1,
+   "seccion": "1.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "De las siguientes parejas redox: acetoacetato + 2H<sup>+</sup> + 2 e<sup>-</sup> → β-hidroxibutirato (E′° (V) -0,35) y oxalacetato + 2H<sup>+</sup> + 2 e<sup>-</sup> → malato (E′° (V) -0,17), ¿cuál es el par reductor?",
+    "en": "Of the following redox couples: acetoacetate + 2H<sup>+</sup> + 2e<sup>−</sup> → β-hydroxybutyrate (E′° = −0.35 V) and oxaloacetate + 2H<sup>+</sup> + 2e<sup>−</sup> → malate (E′° = −0.17 V), which is the reducing couple?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acetoacetato/β-hidroxibutirato",
+     "en": "Acetoacetate/β-hydroxybutyrate"
+    },
+    "b": {
+     "es": "Acetoacetato/oxalacetato",
+     "en": "Acetoacetate/oxaloacetate"
+    },
+    "c": {
+     "es": "Acetoacetato/malato",
+     "en": "Acetoacetate/malate"
+    },
+    "d": {
+     "es": "Oxalacetato/malato",
+     "en": "Oxaloacetate/malate"
+    },
+    "e": {
+     "es": "β-Hidroxibutirato/oxalacetato",
+     "en": "β-Hydroxybutyrate/oxaloacetate"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Exige comprender qué par actuará como donador de electrones (el par reductor, con el menor potencial) en una reacción acoplada.",
+    "en": "Requires understanding which couple will act as the electron donor (the reducing couple, with the lower potential) in a coupled reaction."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.2.5",
+   "num": "1.2.5",
+   "tema": 1,
+   "seccion": "1.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "De las siguientes parejas redox: acetoacetato + 2H<sup>+</sup> + 2 e<sup>-</sup> → β-hidroxibutirato (E′° (V) -0,35) y oxalacetato + 2H<sup>+</sup> + 2 e<sup>-</sup> → malato (E′° (V) -0,17), ¿Cuál es el par oxidante?",
+    "en": "Of the following redox couples: acetoacetate + 2H<sup>+</sup> + 2e<sup>−</sup> → β-hydroxybutyrate (E′° = −0.35 V) and oxaloacetate + 2H<sup>+</sup> + 2e<sup>−</sup> → malate (E′° = −0.17 V), which is the oxidizing couple?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acetoacetato/β-hidroxibutirato",
+     "en": "Acetoacetate/β-hydroxybutyrate"
+    },
+    "b": {
+     "es": "Acetoacetato/oxalacetato",
+     "en": "Acetoacetate/oxaloacetate"
+    },
+    "c": {
+     "es": "Acetoacetato/malato",
+     "en": "Acetoacetate/malate"
+    },
+    "d": {
+     "es": "Oxalacetato/malato",
+     "en": "Oxaloacetate/malate"
+    },
+    "e": {
+     "es": "β-Hidroxibutirato/oxalacetato",
+     "en": "β-Hydroxybutyrate/oxaloacetate"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Exige comprender qué par actuará como aceptor de electrones (el par oxidante, con el mayor potencial) en una reacción acoplada.",
+    "en": "Requires understanding which couple will act as the electron acceptor (the oxidizing couple, with the higher potential) in a coupled reaction."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.2.6",
+   "num": "1.2.6",
+   "tema": 1,
+   "seccion": "1.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué característica distingue a una reacción redox biológica de una simple transferencia química de electrones?",
+    "en": "Which feature distinguishes a biological redox reaction from a simple chemical electron transfer?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Está catalizada por enzimas específicas",
+     "en": "It is catalyzed by specific enzymes"
+    },
+    "b": {
+     "es": "Se acopla frecuentemente a procesos de transferencia de energía",
+     "en": "It is often coupled to energy-transfer processes"
+    },
+    "c": {
+     "es": "Siempre ocurre en condiciones estándar",
+     "en": "It always occurs under standard conditions"
+    },
+    "d": {
+     "es": "Implica coenzimas transportadoras (p. ej. NAD<sup>+</sup>/NADH)",
+     "en": "It involves carrier coenzymes (e.g., NAD<sup>+</sup>/NADH)"
+    },
+    "e": {
+     "es": "No sigue las leyes de la termodinámica",
+     "en": "It does not obey the laws of thermodynamics"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Requiere distinguir las reacciones redox biológicas de las químicas, entendiendo el papel de los catalizadores (enzimas), el acoplamiento energético (ATP) y los transportadores (coenzimas).",
+    "en": "Requires distinguishing biological from chemical redox reactions by understanding the role of catalysts (enzymes), energy coupling (ATP) and carriers (coenzymes)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.2.7",
+   "num": "1.2.7",
+   "tema": 1,
+   "seccion": "1.2",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Una reacción altamente endergónica en la célula, como la biosíntesis de glucosa-6-fosfato a partir de glucosa y P<sub>i</sub> (ΔG ≈ +13,8kJ/mol), se hace favorable al acoplarse con la hidrólisis de ATP. ¿Qué principio termodinámico se aplica aquí?",
+    "en": "A highly endergonic reaction in the cell, such as the biosynthesis of glucose 6-phosphate from glucose and P<sub>i</sub> (ΔG ≈ +13.8 kJ/mol), becomes favorable when coupled to ATP hydrolysis. Which thermodynamic principle applies here?"
+   },
+   "opciones": {
+    "a": {
+     "es": "La primera ley de la termodinámica (conservación de la energía)",
+     "en": "The first law of thermodynamics (conservation of energy)"
+    },
+    "b": {
+     "es": "El aumento de la entropía del sistema",
+     "en": "The increase in the entropy of the system"
+    },
+    "c": {
+     "es": "El principio de acoplamiento energético, donde ΔG<sub>total</sub> = ΔG<sub>endergónica</sub> + ΔG<sub>exergónica</sub>&lt;0",
+     "en": "The principle of energy coupling, where ΔG<sub>total</sub> = ΔG<sub>endergonic</sub> + ΔG<sub>exergonic</sub>&lt;0"
+    },
+    "d": {
+     "es": "La Ley de Hess",
+     "en": "Hess's law"
+    },
+    "e": {
+     "es": "La energía de activación de la reacción disminuye",
+     "en": "The activation energy of the reaction decreases"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Requiere aplicar el principio de acoplamiento energético para explicar cómo una reacción endergónica se hace favorable con la hidrólisis de ATP.",
+    "en": "Requires applying the principle of energy coupling to explain how an endergonic reaction becomes favorable through ATP hydrolysis."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.2.8",
+   "num": "1.2.8",
+   "tema": 1,
+   "seccion": "1.2",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "En la reducción de cofactores, la molécula NAD<sup>+</sup> acepta un ion hidruro (H<sup>−</sup>, equivalente a H<sup>+</sup>+2e<sup>−</sup>), liberando H<sup>+</sup> al medio. La reducción de FAD es diferente porque:",
+    "en": "In cofactor reduction, NAD<sup>+</sup> accepts a hydride ion (H<sup>−</sup>, equivalent to H<sup>+</sup> + 2e<sup>−</sup>), releasing H<sup>+</sup> into the medium. The reduction of FAD is different because:"
+   },
+   "opciones": {
+    "a": {
+     "es": "FAD acepta dos átomos de hidrógeno (2H), sin liberar H<sup>+</sup> al medio",
+     "en": "FAD accepts two hydrogen atoms (2H) without releasing H<sup>+</sup> into the medium"
+    },
+    "b": {
+     "es": "FAD solo participa en reacciones de descarboxilación",
+     "en": "FAD participates only in decarboxylation reactions"
+    },
+    "c": {
+     "es": "FAD solo existe en la matriz mitocondrial",
+     "en": "FAD exists only in the mitochondrial matrix"
+    },
+    "d": {
+     "es": "La reducción de FAD es endergónica",
+     "en": "The reduction of FAD is endergonic"
+    },
+    "e": {
+     "es": "La forma reducida de FAD es FADH<sub>2</sub><sup>+</sup>",
+     "en": "The reduced form of FAD is FADH<sub>2</sub><sup>+</sup>"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Requiere comprender la diferencia en la química de reducción de NAD<sup>+</sup> (H<sup>−</sup>) frente a FAD (2H).",
+    "en": "Requires understanding the difference in reduction chemistry between NAD<sup>+</sup> (H<sup>−</sup>) and FAD (2H)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.3.1",
+   "num": "1.3.1",
+   "tema": 1,
+   "seccion": "1.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿De dónde proviene, en última instancia, la energía en la hidrólisis del ATP?",
+    "en": "Where does the energy released by ATP hydrolysis ultimately come from?"
+   },
+   "opciones": {
+    "a": {
+     "es": "De la diferencia entre la energía de activación de procesos catalizados y no catalizados",
+     "en": "From the difference between the activation energies of catalyzed and uncatalyzed processes"
+    },
+    "b": {
+     "es": "De la repulsión electrostática de los grupos fosfato",
+     "en": "From the electrostatic repulsion between the phosphate groups"
+    },
+    "c": {
+     "es": "Del aporte energético que le suministra una ATP sintasa",
+     "en": "From the energy supplied to it by an ATP synthase"
+    },
+    "d": {
+     "es": "De la estabilización por resonancia de la molécula, que reparte las cargas negativas",
+     "en": "From the resonance stabilization of the molecule, which distributes the negative charges"
+    },
+    "e": {
+     "es": "De la disminución de la energía de activación",
+     "en": "From the decrease in activation energy"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Requiere recordar las causas químicas de la alta energía de hidrólisis del ATP: la repulsión electrostática entre los grupos fosfato cargados negativamente (b) y la estabilización por resonancia, mayor en los productos que en el ATP (d).",
+    "en": "Requires recalling the chemical causes of the high energy of ATP hydrolysis: the electrostatic repulsion between the negatively charged phosphate groups (b) and resonance stabilization, which is greater in the products than in ATP (d)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.3.2",
+   "num": "1.3.2",
+   "tema": 1,
+   "seccion": "1.3",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La hidrólisis de ATP en condiciones celulares tiene un ΔG más negativo que en condiciones estándar porque:",
+    "en": "ATP hydrolysis under cellular conditions has a more negative ΔG than under standard conditions because:"
+   },
+   "opciones": {
+    "a": {
+     "es": "la temperatura es mayor",
+     "en": "the temperature is higher"
+    },
+    "b": {
+     "es": "la enzima reduce ΔG",
+     "en": "the enzyme lowers ΔG"
+    },
+    "c": {
+     "es": "las concentraciones intracelulares de ATP/ADP+P<sub>i</sub> están lejos del equilibrio",
+     "en": "the intracellular concentrations of ATP/ADP+P<sub>i</sub> are far from equilibrium"
+    },
+    "d": {
+     "es": "el ADP y P<sub>i</sub> se estabilizan más en la célula que en solución estándar por la solvatación y la protonación de los productos (ADP y P<sub>i</sub>)",
+     "en": "ADP and P<sub>i</sub> are more stabilized in the cell than in a standard solution owing to solvation and protonation of the products (ADP and P<sub>i</sub>)"
+    },
+    "e": {
+     "es": "el ATP intracelular se mantiene en concentraciones elevadas",
+     "en": "intracellular ATP is maintained at high concentrations"
+    }
+   },
+   "correctas": [
+    "c",
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Exige comprender cómo las condiciones celulares (concentraciones ATP&gt;ADP+P<sub>i</sub> y mayor hidratación/estabilización de productos) hacen que el ΔG celular sea más negativo.",
+    "en": "Requires understanding how cellular conditions (concentrations with ATP&gt;ADP+P<sub>i</sub> and greater hydration/stabilization of the products) make the cellular ΔG more negative."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.3.3",
+   "num": "1.3.3",
+   "tema": 1,
+   "seccion": "1.3",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál de los siguientes componentes estructurales NO forma parte de la molécula de trifosfato de adenosina (ATP)?",
+    "en": "Which of the following structural components is NOT part of the adenosine triphosphate (ATP) molecule?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Tres grupos fosfato unidos en tándem",
+     "en": "Three phosphate groups linked in tandem"
+    },
+    "b": {
+     "es": "Un grupo adenina",
+     "en": "An adenine group"
+    },
+    "c": {
+     "es": "Desoxirribosa",
+     "en": "Deoxyribose"
+    },
+    "d": {
+     "es": "Un grupo ribosa",
+     "en": "A ribose group"
+    },
+    "e": {
+     "es": "Un enlace N-glucosídico entre la adenina y la ribosa",
+     "en": "An N-glycosidic bond between adenine and ribose"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Requiere recordar la estructura básica del ATP e identificar un componente que NO forma parte (desoxirribosa).",
+    "en": "Requires recalling the basic structure of ATP and identifying a component that is NOT part of it (deoxyribose)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.3.4",
+   "num": "1.3.4",
+   "tema": 1,
+   "seccion": "1.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "El ATP posee un alto potencial de transferencia de fosforilo que se debe principalmente a:",
+    "en": "The high phosphoryl group transfer potential of ATP is mainly due to:"
+   },
+   "opciones": {
+    "a": {
+     "es": "la reducción de la repulsión electrostática entre las cargas negativas de los grupos fosfato terminales al hidrolizarse",
+     "en": "the relief, upon hydrolysis, of the electrostatic repulsion between the negative charges of the terminal phosphate groups"
+    },
+    "b": {
+     "es": "la naturaleza endergónica de su hidrólisis",
+     "en": "the endergonic nature of its hydrolysis"
+    },
+    "c": {
+     "es": "la mayor estabilización por resonancia de los productos de la hidrólisis (ADP y P<sub>i</sub>) en comparación con la molécula de ATP intacta",
+     "en": "the greater resonance stabilization of the hydrolysis products (ADP and P<sub>i</sub>) compared with the intact ATP molecule"
+    },
+    "d": {
+     "es": "la alta entropía del ATP",
+     "en": "the high entropy of ATP"
+    },
+    "e": {
+     "es": "la alta energía de activación del ATP",
+     "en": "the high activation energy of ATP"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Requiere aplicar el conocimiento estructural del ATP para explicar su alto potencial de transferencia (reducción de repulsión y estabilización de productos).",
+    "en": "Requires applying structural knowledge of ATP to explain its high transfer potential (relief of repulsion and stabilization of the products)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.3.5",
+   "num": "1.3.5",
+   "tema": 1,
+   "seccion": "1.3",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Qué condición termodinámica debe cumplir una molécula con alto potencial de transferencia de fosforilo (p. ej., fosfoenolpiruvato, PEP) para poder generar ATP?",
+    "en": "Which thermodynamic condition must a molecule with a high phosphoryl group transfer potential (e.g., phosphoenolpyruvate, PEP) meet in order to generate ATP?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Debe ser un aldehído fosforilado",
+     "en": "It must be a phosphorylated aldehyde"
+    },
+    "b": {
+     "es": "Debe ser un producto final de una ruta catabólica",
+     "en": "It must be an end product of a catabolic pathway"
+    },
+    "c": {
+     "es": "Su ΔG<sub>hidrólisis</sub> debe ser más negativa que la hidrólisis de ATP",
+     "en": "Its ΔG<sub>hydrolysis</sub> must be more negative than that of ATP hydrolysis"
+    },
+    "d": {
+     "es": "Debe tener un enlace fosfato de baja energía",
+     "en": "It must have a low-energy phosphate bond"
+    },
+    "e": {
+     "es": "Debe ser un nucleótido diferente de ATP",
+     "en": "It must be a nucleotide other than ATP"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Requiere aplicar el concepto de Potencial de Transferencia de Fosforilo para determinar la condición termodinámica necesaria para generar ATP (ΔG<sub>hidrólisis</sub> más negativa).",
+    "en": "Requires applying the concept of phosphoryl group transfer potential to determine the thermodynamic condition needed to generate ATP (a more negative ΔG<sub>hydrolysis</sub>)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.4.1",
+   "num": "1.4.1",
+   "tema": 1,
+   "seccion": "1.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La carga energética se define como ([ATP] + ½[ADP]) / ([ATP] + [ADP] + [AMP]). Un valor de 0,98, ¿Qué determinará?",
+    "en": "The energy charge is defined as ([ATP] + ½[ADP]) / ([ATP] + [ADP] + [AMP]). What will a value of 0.98 lead to?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se favorecerá la fosforilación a nivel de sustrato",
+     "en": "Substrate-level phosphorylation will be favored"
+    },
+    "b": {
+     "es": "En cuanto al metabolismo, ningún efecto",
+     "en": "No effect on metabolism"
+    },
+    "c": {
+     "es": "Se favorecerán las reacciones anabólicas",
+     "en": "Anabolic reactions will be favored"
+    },
+    "d": {
+     "es": "Se favorecerán las reacciones que forman ADP+P<sub>i</sub>",
+     "en": "Reactions that form ADP + P<sub>i</sub> will be favored"
+    },
+    "e": {
+     "es": "Se favorecerán las reacciones catabólicas",
+     "en": "Catabolic reactions will be favored"
+    }
+   },
+   "correctas": [
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Exige comprender la definición de Carga Energética (EC) e interpretar que un valor alto (≈1) favorece el anabolismo (c) y el consumo de ATP (d).",
+    "en": "Requires understanding the definition of energy charge (EC) and interpreting that a high value (≈1) favors anabolism (c) and ATP consumption (d)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.4.2",
+   "num": "1.4.2",
+   "tema": 1,
+   "seccion": "1.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "La carga energética se define como ([ATP] + ½[ADP]) / ([ATP] + [ADP] + [AMP]). Un valor de 0,5, ¿Qué determinará?",
+    "en": "The energy charge is defined as ([ATP] + ½[ADP]) / ([ATP] + [ADP] + [AMP]). What will a value of 0.5 lead to?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se favorecerán las reacciones que forman ATP",
+     "en": "Reactions that form ATP will be favored"
+    },
+    "b": {
+     "es": "Se favorecerán las reacciones catabólicas",
+     "en": "Catabolic reactions will be favored"
+    },
+    "c": {
+     "es": "Se favorecerán las reacciones que forman ADP+P<sub>i</sub>",
+     "en": "Reactions that form ADP + P<sub>i</sub> will be favored"
+    },
+    "d": {
+     "es": "En cuanto al metabolismo, ningún efecto",
+     "en": "No effect on metabolism"
+    },
+    "e": {
+     "es": "Se favorecerán las reacciones anabólicas",
+     "en": "Anabolic reactions will be favored"
+    }
+   },
+   "correctas": [
+    "a",
+    "b"
+   ],
+   "justificacion": {
+    "es": "Exige comprender la definición de EC e interpretar que un valor bajo (≈0,5) favorece el catabolismo (b) y la generación de ATP (a).",
+    "en": "Requires understanding the definition of EC and interpreting that a low value (≈0.5) favors catabolism (b) and ATP generation (a)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.4.3",
+   "num": "1.4.3",
+   "tema": 1,
+   "seccion": "1.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál(es) de los siguientes parámetros son útiles para determinar el ambiente energético celular?",
+    "en": "Which of the following parameters is/are useful for determining the cellular energy status?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El potencial de desfosforilación",
+     "en": "The dephosphorylation potential"
+    },
+    "b": {
+     "es": "Los moles de ATP y glucosa",
+     "en": "The moles of ATP and glucose"
+    },
+    "c": {
+     "es": "La carga energética",
+     "en": "The energy charge"
+    },
+    "d": {
+     "es": "El potencial de fosforilación",
+     "en": "The phosphorylation potential"
+    },
+    "e": {
+     "es": "La relación ([ATP] + ½[ADP]) / ([ATP] + [ADP] + [AMP])",
+     "en": "The ratio ([ATP] + ½[ADP]) / ([ATP] + [ADP] + [AMP])"
+    }
+   },
+   "correctas": [
+    "c",
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere recordar los parámetros estándar utilizados para cuantificar el estado energético de la célula (EC y ΔG<sub>p</sub> o Potencial de Fosforilación).",
+    "en": "Requires recalling the standard parameters used to quantify the energy status of the cell (EC and ΔG<sub>p</sub>, or phosphorylation potential)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.4.4",
+   "num": "1.4.4",
+   "tema": 1,
+   "seccion": "1.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Si aumenta el flujo de las reacciones catabólicas, ¿Cómo se afectará la carga energética?",
+    "en": "If the flux through catabolic reactions increases, how will the energy charge be affected?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Disminuirá, al ser una relación",
+     "en": "It will decrease, because it is a ratio"
+    },
+    "b": {
+     "es": "Aumentará",
+     "en": "It will increase"
+    },
+    "c": {
+     "es": "Disminuirá, al consumirse ATP y producirse ADP+P<sub>i</sub>",
+     "en": "It will decrease, because ATP is consumed and ADP + P<sub>i</sub> are produced"
+    },
+    "d": {
+     "es": "No variará, al no haber relación entre el catabolismo y el cálculo de la carga energética",
+     "en": "It will not change, because there is no relationship between catabolism and the calculation of the energy charge"
+    },
+    "e": {
+     "es": "Aumentará, al aumentar el numerador de la ecuación que la define",
+     "en": "It will increase, because the numerator of the defining equation increases"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Exige comprender la relación causal: ↑Catabolismo→↑[ATP]→↑Carga Energética.",
+    "en": "Requires understanding the causal relationship: ↑catabolism → ↑[ATP] → ↑energy charge."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.4.5",
+   "num": "1.4.5",
+   "tema": 1,
+   "seccion": "1.4",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Si aumenta el flujo de las reacciones anabólicas, ¿Cómo se afectará la carga energética?",
+    "en": "If the flux through anabolic reactions increases, how will the energy charge be affected?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Disminuirá, al ser una relación en la que está disminuyendo el numerador",
+     "en": "It will decrease, because it is a ratio whose numerator is decreasing"
+    },
+    "b": {
+     "es": "Aumentará",
+     "en": "It will increase"
+    },
+    "c": {
+     "es": "Disminuirá, al consumirse ADP y producirse ATP",
+     "en": "It will decrease, because ADP is consumed and ATP is produced"
+    },
+    "d": {
+     "es": "No variará, al no haber relación entre el catabolismo y el cálculo de la carga energética",
+     "en": "It will not change, because there is no relationship between catabolism and the calculation of the energy charge"
+    },
+    "e": {
+     "es": "Aumentará, al aumentar el numerador de la ecuación que la define",
+     "en": "It will increase, because the numerator of the defining equation increases"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Exige comprender la relación causal: ↑Anabolismo→↓[ATP]→↓Carga Energética.",
+    "en": "Requires understanding the causal relationship: ↑anabolism → ↓[ATP] → ↓energy charge."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.4.6",
+   "num": "1.4.6",
+   "tema": 1,
+   "seccion": "1.4",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Se dispone de dos cultivos celulares: uno en hipoxia y otro en normoxia. ¿Qué resultados se esperaría(n) al medir ATP total?",
+    "en": "Two cell cultures are available: one under hypoxia and the other under normoxia. What result(s) would be expected when measuring total ATP?"
+   },
+   "opciones": {
+    "a": {
+     "es": "El cultivo en hipoxia producirá menos ATP por célula",
+     "en": "The hypoxic culture will produce less ATP per cell"
+    },
+    "b": {
+     "es": "El cultivo en hipoxia dependerá más de la glucólisis anaerobia",
+     "en": "The hypoxic culture will rely more on anaerobic glycolysis"
+    },
+    "c": {
+     "es": "Ambos producirán igual ATP porque la glucólisis compensa",
+     "en": "Both will produce the same amount of ATP because glycolysis compensates"
+    },
+    "d": {
+     "es": "El cultivo en normoxia producirá más ATP mitocondrial",
+     "en": "The normoxic culture will produce more mitochondrial ATP"
+    },
+    "e": {
+     "es": "Ninguna diferencia significativa",
+     "en": "No significant difference"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Exige analizar la diferencia entre dos estados metabólicos (normoxia/hipoxia) y deducir sus consecuencias sobre el rendimiento energético (OP <i>vs</i>. Glucólisis).",
+    "en": "Requires analyzing the difference between two metabolic states (normoxia/hypoxia) and deducing their consequences for energy yield (OXPHOS <i>vs</i>. glycolysis)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.4.7",
+   "num": "1.4.7",
+   "tema": 1,
+   "seccion": "1.4",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Un nuevo fármaco aumenta artificialmente la relación [ATP]/[ADP]. ¿Qué rutas metabólicas tenderán a disminuir?",
+    "en": "A new drug artificially increases the [ATP]/[ADP] ratio. Which metabolic pathways will tend to decrease?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Catabolismo",
+     "en": "Catabolism"
+    },
+    "b": {
+     "es": "Glucogenólisis",
+     "en": "Glycogenolysis"
+    },
+    "c": {
+     "es": "Gluconeogénesis",
+     "en": "Gluconeogenesis"
+    },
+    "d": {
+     "es": "β-oxidación",
+     "en": "β-Oxidation"
+    },
+    "e": {
+     "es": "Síntesis proteica",
+     "en": "Protein synthesis"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Exige aplicar el principio regulador de la EC (alta EC inhibe el catabolismo) para identificar y seleccionar las rutas catabólicas que se verán afectadas (catabolismo, glucogenólisis, β-oxidación).",
+    "en": "Requires applying the regulatory principle of EC (high EC inhibits catabolism) to identify and select the catabolic pathways that will be affected (catabolism, glycogenolysis, β-oxidation)."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.4.8",
+   "num": "1.4.8",
+   "tema": 1,
+   "seccion": "1.4",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "El cociente ATP/ADP funciona como un sensor de la carga energética celular. ¿Qué sucede cuando este cociente es alto?",
+    "en": "The ATP/ADP ratio acts as a sensor of the cellular energy charge. What happens when this ratio is high?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se activa el catabolismo (rutas de degradación)",
+     "en": "Catabolism (degradative pathways) is activated"
+    },
+    "b": {
+     "es": "Se inhiben las rutas generadoras de ATP (p. ej., ciclo de Krebs, glucólisis)",
+     "en": "ATP-generating pathways (e.g., the Krebs cycle, glycolysis) are inhibited"
+    },
+    "c": {
+     "es": "Se desactiva la síntesis de lípidos",
+     "en": "Lipid synthesis is switched off"
+    },
+    "d": {
+     "es": "Se favorecen las rutas anabólicas (biosíntesis que consumen ATP)",
+     "en": "Anabolic pathways (ATP-consuming biosynthesis) are favored"
+    },
+    "e": {
+     "es": "La célula entra en ayuno",
+     "en": "The cell enters a fasting state"
+    }
+   },
+   "correctas": [
+    "b",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Requiere analizar el impacto de un cociente ATP/ADP alto (carga energética alta): inhibe catabolismo y activa anabolismo.",
+    "en": "Requires analyzing the impact of a high ATP/ADP ratio (high energy charge): it inhibits catabolism and activates anabolism."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.4.9",
+   "num": "1.4.9",
+   "tema": 1,
+   "seccion": "1.4",
+   "tipo": "test",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Ordene las moléculas ATP, creatina fosfato (PCr), fosfoenolpiruvato (PEP) y glucosa-6-fosfato (G6P) de mayor a menor potencial de transferencia de fosforilo (liberación de energía libre al hidrolizar el grupo fosfato):",
+    "en": "Rank the molecules ATP, creatine phosphate (PCr), phosphoenolpyruvate (PEP) and glucose 6-phosphate (G6P) from highest to lowest phosphoryl group transfer potential (free energy released on hydrolysis of the phosphate group):"
+   },
+   "opciones": {
+    "a": {
+     "es": "PEP&gt;PCr&gt;ATP&gt;G6P",
+     "en": "PEP&gt;PCr&gt;ATP&gt;G6P"
+    },
+    "b": {
+     "es": "PCr&gt;PEP&gt;ATP&gt;G6P",
+     "en": "PCr&gt;PEP&gt;ATP&gt;G6P"
+    },
+    "c": {
+     "es": "ATP&gt;PCr&gt;PEP&gt;G6P",
+     "en": "ATP&gt;PCr&gt;PEP&gt;G6P"
+    },
+    "d": {
+     "es": "G6P&gt;ATP&gt;PCr&gt;PEP",
+     "en": "G6P&gt;ATP&gt;PCr&gt;PEP"
+    },
+    "e": {
+     "es": "PEP&gt;ATP&gt;PCr&gt;G6P",
+     "en": "PEP&gt;ATP&gt;PCr&gt;G6P"
+    }
+   },
+   "correctas": [
+    "a"
+   ],
+   "justificacion": {
+    "es": "Requiere evaluar y ordenar correctamente las moléculas según su Potencial de Transferencia de Fosforilo (PEP&gt;PCr&gt;ATP&gt;G6P).",
+    "en": "Requires evaluating and correctly ranking the molecules by their phosphoryl group transfer potential (PEP&gt;PCr&gt;ATP&gt;G6P)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.4.10",
+   "num": "1.4.10",
+   "tema": 1,
+   "seccion": "1.4",
+   "tipo": "test",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Suponga que un paso de una vía lineal es ligeramente endergónico (ΔG ≈ +2,0 kJ/mol). ¿Qué estrategia celular permite que el flujo neto de la vía continúe en la dirección favorable?",
+    "en": "Suppose that one step of a linear pathway is slightly endergonic (ΔG ≈ +2.0 kJ/mol). Which cellular strategy allows the net flux through the pathway to continue in the favorable direction?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Acoplar ese paso con una hidrólisis de ATP inmediata",
+     "en": "Coupling that step to an immediate ATP hydrolysis"
+    },
+    "b": {
+     "es": "Aumentar la entropía de la reacción",
+     "en": "Increasing the entropy of the reaction"
+    },
+    "c": {
+     "es": "Mantener la concentración del producto de esa reacción muy baja (eliminándolo rápidamente en el siguiente paso exergónico)",
+     "en": "Keeping the concentration of that reaction's product very low (removing it rapidly in the next, exergonic step)"
+    },
+    "d": {
+     "es": "Asegurar una alta concentración del sustrato de esa reacción",
+     "en": "Ensuring a high concentration of that reaction's substrate"
+    },
+    "e": {
+     "es": "Acoplar la energía liberada por los pasos exergónicos subsiguientes de la vía",
+     "en": "Coupling the energy released by the subsequent exergonic steps of the pathway"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere diseñar/establecer estrategias para superar un paso endergónico (acoplamiento directo o mantener Q bajo mediante flujo).",
+    "en": "Requires designing/establishing strategies to overcome an endergonic step (direct coupling, or keeping Q low through flux)."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.4.11",
+   "num": "1.4.11",
+   "tema": 1,
+   "seccion": "1.4",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "La carga energética de la célula se refleja en el cociente ATP/AMP. Si una enzima alostérica es regulada por la carga energética, ¿cómo esperaría que respondiera una AMPK (proteína quinasa activada por AMP)?",
+    "en": "The energy charge of the cell is reflected in the ATP/AMP ratio. If an allosteric enzyme is regulated by the energy charge, how would you expect AMPK (AMP-activated protein kinase) to respond?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Se activa cuando la carga energética es baja (↑AMP) para activar rutas de producción de ATP",
+     "en": "It is activated when the energy charge is low (↑AMP) in order to activate ATP-producing pathways"
+    },
+    "b": {
+     "es": "Se activa cuando la carga energética es alta (↑ATP)",
+     "en": "It is activated when the energy charge is high (↑ATP)"
+    },
+    "c": {
+     "es": "Se inactiva cuando la carga energética es alta (↓AMP) para inhibir el catabolismo y favorecer el anabolismo",
+     "en": "It is inactivated when the energy charge is high (↓AMP) in order to inhibit catabolism and favor anabolism"
+    },
+    "d": {
+     "es": "Activa directamente la glucólisis por fosforilación",
+     "en": "It directly activates glycolysis by phosphorylation"
+    },
+    "e": {
+     "es": "Su actividad es independiente de la concentración de AMP",
+     "en": "Its activity is independent of the AMP concentration"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Requiere aplicar el concepto de Carga Energética y su efecto regulador: baja carga (↑AMP) →activa catabolismo e inhibe anabolismo.",
+    "en": "Requires applying the concept of energy charge and its regulatory effect: low charge (↑AMP) → activates catabolism and inhibits anabolism."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.5.1",
+   "num": "1.5.1",
+   "tema": 1,
+   "seccion": "1.5",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál es el metabolito final de la primera etapa de la respiración?",
+    "en": "What is the end metabolite of the first stage of respiration?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Piruvato",
+     "en": "Pyruvate"
+    },
+    "b": {
+     "es": "Glucosa",
+     "en": "Glucose"
+    },
+    "c": {
+     "es": "ATP",
+     "en": "ATP"
+    },
+    "d": {
+     "es": "Acetil-CoA",
+     "en": "Acetyl-CoA"
+    },
+    "e": {
+     "es": "Oxalacetato",
+     "en": "Oxaloacetate"
+    }
+   },
+   "correctas": [
+    "d"
+   ],
+   "justificacion": {
+    "es": "Requiere recordar que el acetil-CoA es el metabolito de convergencia universal que marca el fin de la etapa de preparación.",
+    "en": "Requires recalling that acetyl-CoA is the universal convergence metabolite marking the end of the preparatory stage."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.5.2",
+   "num": "1.5.2",
+   "tema": 1,
+   "seccion": "1.5",
+   "tipo": "test",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "¿Cuál(es) de las siguientes moléculas tiene potencial para producir una mayor cantidad de ATP por oxidación completa en condiciones aeróbicas?",
+    "en": "Which of the following molecules has/have the potential to produce a larger amount of ATP by complete oxidation under aerobic conditions?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Palmitato",
+     "en": "Palmitate"
+    },
+    "b": {
+     "es": "Glucosa",
+     "en": "Glucose"
+    },
+    "c": {
+     "es": "Triglicérido",
+     "en": "Triglyceride"
+    },
+    "d": {
+     "es": "Ácido esteárico",
+     "en": "Stearic acid"
+    },
+    "e": {
+     "es": "Ácido láctico",
+     "en": "Lactic acid"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "d"
+   ],
+   "justificacion": {
+    "es": "Exige aplicar el principio de que el rendimiento energético es proporcional al grado de reducción de la molécula, identificando los lípidos (ácidos grasos C16,C18) como el combustible más reducido.",
+    "en": "Requires applying the principle that energy yield is proportional to the degree of reduction of the molecule, identifying lipids (C16 and C18 fatty acids) as the most reduced fuel."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.5.3",
+   "num": "1.5.3",
+   "tema": 1,
+   "seccion": "1.5",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Un investigador quiere aumentar el flujo de la glucólisis en una célula cultivada. ¿Cuál(es) de las siguientes estrategias sería más eficaz?",
+    "en": "A researcher wants to increase glycolytic flux in a cultured cell. Which of the following strategies would be most effective?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumentar la concentración de glucosa",
+     "en": "Increasing the glucose concentration"
+    },
+    "b": {
+     "es": "Inhibir las enzimas que promueven la degradación de la glucosa",
+     "en": "Inhibiting the enzymes that promote glucose breakdown"
+    },
+    "c": {
+     "es": "Disminuir la concentración de ATP intracelular",
+     "en": "Decreasing the intracellular ATP concentration"
+    },
+    "d": {
+     "es": "Impedir la entrada de glucosa en la célula",
+     "en": "Preventing glucose entry into the cell"
+    },
+    "e": {
+     "es": "Aumentar la concentración de ADP",
+     "en": "Increasing the ADP concentration"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Exige analizar el complejo sistema de regulación de la PFK−1 (punto de control clave) para determinar estrategias que aumenten el flujo ( ↑ Sustrato, ↓ATP, ↑ADP/AMP).",
+    "en": "Requires analyzing the complex regulatory system of PFK-1 (a key control point) to determine strategies that increase flux (↑substrate, ↓ATP, ↑ADP/AMP)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.5.4",
+   "num": "1.5.4",
+   "tema": 1,
+   "seccion": "1.5",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuáles de los siguientes cofactores son moléculas clave en el metabolismo por su capacidad de transportar electrones y átomos de hidrógeno?",
+    "en": "Which of the following cofactors are key molecules in metabolism because of their ability to carry electrons and hydrogen atoms?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Piridoxal-fosfato (PLP)",
+     "en": "Pyridoxal phosphate (PLP)"
+    },
+    "b": {
+     "es": "Nicotinamida Adenina Dinucleótido (NAD<sup>+</sup>)",
+     "en": "Nicotinamide adenine dinucleotide (NAD<sup>+</sup>)"
+    },
+    "c": {
+     "es": "Flavina Adenina Dinucleótido (FAD)",
+     "en": "Flavin adenine dinucleotide (FAD)"
+    },
+    "d": {
+     "es": "Tiamina Pirofosfato (TPP)",
+     "en": "Thiamine pyrophosphate (TPP)"
+    },
+    "e": {
+     "es": "Nicotinamida Adenina Dinucleótido Fosfato (NADP<sup>+</sup>)",
+     "en": "Nicotinamide adenine dinucleotide phosphate (NADP<sup>+</sup>)"
+    }
+   },
+   "correctas": [
+    "b",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere recordar cuáles son los principales cofactores transportadores de electrones en el metabolismo (NAD<sup>+</sup>, FAD, NADP<sup>+</sup>).",
+    "en": "Requires recalling the main electron-carrying cofactors in metabolism (NAD<sup>+</sup>, FAD, NADP<sup>+</sup>)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.5.5",
+   "num": "1.5.5",
+   "tema": 1,
+   "seccion": "1.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Además de los electrones y los grupos fosforilo, ¿Cuáles de los siguientes grupos químicos se transfieren frecuentemente en el metabolismo mediante cofactores?",
+    "en": "Apart from electrons and phosphoryl groups, which of the following chemical groups are frequently transferred in metabolism by cofactors?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Grupos acilo (transportados por coenzima A)",
+     "en": "Acyl groups (carried by coenzyme A)"
+    },
+    "b": {
+     "es": "Grupos hidroxilo (-OH)",
+     "en": "Hydroxyl groups (–OH)"
+    },
+    "c": {
+     "es": "Grupos metilo (-CH<sub>3</sub>, transportados por SAM)",
+     "en": "Methyl groups (–CH<sub>3</sub>, carried by SAM)"
+    },
+    "d": {
+     "es": "Grupos carboxilo (-COOH)",
+     "en": "Carboxyl groups (–COOH)"
+    },
+    "e": {
+     "es": "Moléculas de agua (H<sub>2</sub>O)",
+     "en": "Water molecules (H<sub>2</sub>O)"
+    }
+   },
+   "correctas": [
+    "a",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Requiere comprender cuáles grupos químicos son transportados por cofactores en el metabolismo (Acilo por CoA, Metilo por SAM).",
+    "en": "Requires understanding which chemical groups are carried by cofactors in metabolism (acyl by CoA, methyl by SAM)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.5.6",
+   "num": "1.5.6",
+   "tema": 1,
+   "seccion": "1.5",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál de los siguientes procesos metabólicos se clasifica fundamentalmente como catabólico?",
+    "en": "Which of the following metabolic processes is fundamentally classified as catabolic?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Síntesis de ácidos grasos",
+     "en": "Fatty acid synthesis"
+    },
+    "b": {
+     "es": "Glucólisis",
+     "en": "Glycolysis"
+    },
+    "c": {
+     "es": "Gluconeogénesis",
+     "en": "Gluconeogenesis"
+    },
+    "d": {
+     "es": "Síntesis de proteínas",
+     "en": "Protein synthesis"
+    },
+    "e": {
+     "es": "Ciclo de Krebs",
+     "en": "Krebs cycle"
+    }
+   },
+   "correctas": [
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere comprender la clasificación de rutas como Catabólica (Glucólisis y ciclo de Krebs).",
+    "en": "Requires understanding the classification of pathways as catabolic (glycolysis and the Krebs cycle)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.6.1",
+   "num": "1.6.1",
+   "tema": 1,
+   "seccion": "1.6",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué características tienen las reacciones que son exclusivas de una ruta que tiene otra antiparalela?",
+    "en": "What features do the reactions that are exclusive to a pathway with an antiparallel counterpart have?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Siempre se controlan por hormonas",
+     "en": "They are always hormonally controlled"
+    },
+    "b": {
+     "es": "No necesitan ningún control",
+     "en": "They do not need any control"
+    },
+    "c": {
+     "es": "Son irreversibles, requiriéndose de otra enzima(s) para el proceso contrario",
+     "en": "They are irreversible, so other enzyme(s) are required for the opposite process"
+    },
+    "d": {
+     "es": "Suelen concentrarse en puntos intermedios de las rutas",
+     "en": "They tend to be concentrated at intermediate points of the pathways"
+    },
+    "e": {
+     "es": "Suelen llevarse a cabo simultáneamente",
+     "en": "They tend to take place simultaneously"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Requiere comprender el requisito termodinámico para rutas antiparalelas: la existencia de pasos irreversibles y únicos que requieren enzimas distintas para el camino opuesto.",
+    "en": "Requires understanding the thermodynamic requirement for antiparallel pathways: the existence of unique, irreversible steps that require different enzymes for the opposite route."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.6.2",
+   "num": "1.6.2",
+   "tema": 1,
+   "seccion": "1.6",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué características tienen las rutas que tienen otra antiparalela?",
+    "en": "What features do pathways that have an antiparallel counterpart have?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Suele haber pasos exclusivos e irreversibles, catalizados por enzimas distintas",
+     "en": "There are usually exclusive, irreversible steps, catalyzed by different enzymes"
+    },
+    "b": {
+     "es": "Las reacciones clave son termodinámicamente desfavorables",
+     "en": "The key reactions are thermodynamically unfavorable"
+    },
+    "c": {
+     "es": "Suelen darse, cuando es posible, en compartimentos celulares diferentes",
+     "en": "Where possible, they tend to take place in different cellular compartments"
+    },
+    "d": {
+     "es": "La concentración de los metabolitos no influye en el control de “encendido” o “apagado” de dichas rutas",
+     "en": "Metabolite concentrations do not influence the switching “on” or “off” of these pathways"
+    },
+    "e": {
+     "es": "Los sustratos y productos ejercen una gran influencia sobre las enzimas que controlan el flujo",
+     "en": "Substrates and products have a strong influence on the enzymes that control flux"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere comprender los mecanismos utilizados para el control recíproco y la prevención de ciclos fútiles: irreversibilidad (a), compartimentación (c) y control alostérico por metabolitos clave (e).",
+    "en": "Requires understanding the mechanisms used for reciprocal control and the prevention of futile cycles: irreversibility (a), compartmentalization (c) and allosteric control by key metabolites (e)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.6.3",
+   "num": "1.6.3",
+   "tema": 1,
+   "seccion": "1.6",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Durante una sepsis (respuesta frente a una infección caracterizada por una disfunción circulatoria aguda que resulta en una perfusión tisular deficiente (choque séptico) que provoca una hipoxia celular o falta de oxígeno), el metabolismo celular cambia drásticamente. ¿Qué efectos metabólicos se esperarían?",
+    "en": "During sepsis (a response to infection characterized by acute circulatory dysfunction resulting in poor tissue perfusion (septic shock), which causes cellular hypoxia, or lack of oxygen), cellular metabolism changes drastically. Which metabolic effects would be expected?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Aumento de glucólisis anaerobia",
+     "en": "Increased anaerobic glycolysis"
+    },
+    "b": {
+     "es": "Mayor producción de ATP mitocondrial",
+     "en": "Greater mitochondrial ATP production"
+    },
+    "c": {
+     "es": "Aumento de lactato en sangre",
+     "en": "Increased blood lactate"
+    },
+    "d": {
+     "es": "Disminución de la glucogenólisis",
+     "en": "Decreased glycogenolysis"
+    },
+    "e": {
+     "es": "Alteración del control hormonal (p. ej. resistencia a insulina)",
+     "en": "Altered hormonal control (e.g., insulin resistance)"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Exige analizar las consecuencias de un estado fisiopatológico complejo (sepsis) en el metabolismo, deduciendo el paso a un metabolismo anaerobio (↑glucólisis/lactato) y el impacto sistémico en la regulación hormonal.",
+    "en": "Requires analyzing the metabolic consequences of a complex pathophysiological state (sepsis), deducing the shift to anaerobic metabolism (↑glycolysis/lactate) and the systemic impact on hormonal regulation."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.7.1",
+   "num": "1.7.1",
+   "tema": 1,
+   "seccion": "1.7",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál(es) de los siguientes mecanismos de control metabólico se pueden considerar de respuesta rápida?",
+    "en": "Which of the following metabolic control mechanisms can be considered fast-response mechanisms?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Disponibilidad de sustrato",
+     "en": "Substrate availability"
+    },
+    "b": {
+     "es": "Regulación alostérica",
+     "en": "Allosteric regulation"
+    },
+    "c": {
+     "es": "Modificaciones postraduccionales",
+     "en": "Post-translational modifications"
+    },
+    "d": {
+     "es": "Regulación hormonal",
+     "en": "Hormonal regulation"
+    },
+    "e": {
+     "es": "Regulación por síntesis/degradación",
+     "en": "Regulation by synthesis/degradation"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "c"
+   ],
+   "justificacion": {
+    "es": "Requiere distinguir los mecanismos de control por su cinética (rápida = segundos), que implican cambios en la actividad de las enzimas existentes (sustrato, alosterismo, MPT).",
+    "en": "Requires distinguishing control mechanisms by their kinetics (fast = seconds), which involve changes in the activity of existing enzymes (substrate, allostery, PTMs)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.7.2",
+   "num": "1.7.2",
+   "tema": 1,
+   "seccion": "1.7",
+   "tipo": "test",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Cuál de los siguientes es un segundo mensajero intracelular?",
+    "en": "Which of the following is an intracellular second messenger?"
+   },
+   "opciones": {
+    "a": {
+     "es": "AMPc",
+     "en": "cAMP"
+    },
+    "b": {
+     "es": "Ca<sup>2+</sup>",
+     "en": "Ca<sup>2+</sup>"
+    },
+    "c": {
+     "es": "Glucosa",
+     "en": "Glucose"
+    },
+    "d": {
+     "es": "NADH",
+     "en": "NADH"
+    },
+    "e": {
+     "es": "IP<sub>3</sub>",
+     "en": "IP<sub>3</sub>"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere la memorización de ejemplos de segundos mensajeros comunes (AMPc, Ca<sup>2+</sup>,IP<sub>3</sub>).",
+    "en": "Requires memorizing examples of common second messengers (cAMP, Ca<sup>2+</sup>, IP<sub>3</sub>)."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.7.3",
+   "num": "1.7.3",
+   "tema": 1,
+   "seccion": "1.7",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál de los siguientes mecanismos de control metabólico se pueden considerar de respuesta lenta?",
+    "en": "Which of the following metabolic control mechanisms can be considered slow-response mechanisms?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Disponibilidad de sustrato",
+     "en": "Substrate availability"
+    },
+    "b": {
+     "es": "Regulación alostérica",
+     "en": "Allosteric regulation"
+    },
+    "c": {
+     "es": "Modificaciones postraduccionales",
+     "en": "Post-translational modifications"
+    },
+    "d": {
+     "es": "Regulación hormonal",
+     "en": "Hormonal regulation"
+    },
+    "e": {
+     "es": "Regulación por síntesis/degradación de las enzimas",
+     "en": "Regulation by enzyme synthesis/degradation"
+    }
+   },
+   "correctas": [
+    "d",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere distinguir los mecanismos de control por su cinética (lenta = horas/días), que implican cambios en la cantidad de la enzima (síntesis/degradación o cambios en transcripción génica).",
+    "en": "Requires distinguishing control mechanisms by their kinetics (slow = hours/days), which involve changes in the amount of enzyme (synthesis/degradation or changes in gene transcription)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.7.4",
+   "num": "1.7.4",
+   "tema": 1,
+   "seccion": "1.7",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuál de las siguientes características describe el proceso por el cual una única molécula señalizadora al unirse a un receptor genera una gran cantidad de moléculas de segundo mensajero dentro de la célula?",
+    "en": "Which of the following features describes the process by which a single signaling molecule, upon binding to a receptor, generates a large number of second-messenger molecules inside the cell?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Especificidad",
+     "en": "Specificity"
+    },
+    "b": {
+     "es": "Amplificación",
+     "en": "Amplification"
+    },
+    "c": {
+     "es": "Divergencia",
+     "en": "Divergence"
+    },
+    "d": {
+     "es": "Desensibilización",
+     "en": "Desensitization"
+    },
+    "e": {
+     "es": "Integración",
+     "en": "Integration"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Requiere una comprensión contextual de la función de cada término dentro del proceso biológico",
+    "en": "Requires a contextual understanding of the function of each term within the biological process."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.7.5",
+   "num": "1.7.5",
+   "tema": 1,
+   "seccion": "1.7",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "El cambio conformacional en una enzima al unirse un efector alostérico es un ejemplo de:",
+    "en": "The conformational change in an enzyme upon binding of an allosteric effector is an example of:"
+   },
+   "opciones": {
+    "a": {
+     "es": "Regulación hormonal",
+     "en": "Hormonal regulation"
+    },
+    "b": {
+     "es": "Regulación alostérica",
+     "en": "Allosteric regulation"
+    },
+    "c": {
+     "es": "Disponibilidad de sustrato",
+     "en": "Substrate availability"
+    },
+    "d": {
+     "es": "Modificación postraduccional",
+     "en": "Post-translational modification"
+    },
+    "e": {
+     "es": "Ninguna de las anteriores",
+     "en": "None of the above"
+    }
+   },
+   "correctas": [
+    "b"
+   ],
+   "justificacion": {
+    "es": "Requiere conocer la definición precisa de la regulación alostérica (cambio conformacional inducido por un efector no covalente). La opción (d) es incorrecta, ya que MPT se refiere a modificaciones covalentes.",
+    "en": "Requires knowing the precise definition of allosteric regulation (a conformational change induced by a non-covalent effector). Option (d) is incorrect because PTMs are covalent modifications."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.7.6",
+   "num": "1.7.6",
+   "tema": 1,
+   "seccion": "1.7",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En un experimento, se observa que una mutación en una enzima reguladora impide su fosforilación. ¿Qué efecto metabólico se esperaría?",
+    "en": "In an experiment, a mutation in a regulatory enzyme is found to prevent its phosphorylation. What metabolic effect would be expected?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Pérdida de regulación por segundos mensajeros",
+     "en": "Loss of regulation by second messengers"
+    },
+    "b": {
+     "es": "Mayor sensibilidad a los cambios de sustrato",
+     "en": "Greater sensitivity to changes in substrate"
+    },
+    "c": {
+     "es": "Incapacidad de respuesta a señales hormonales específicas",
+     "en": "Inability to respond to specific hormonal signals"
+    },
+    "d": {
+     "es": "Aumento de la velocidad catalítica en todas las condiciones",
+     "en": "Increased catalytic rate under all conditions"
+    },
+    "e": {
+     "es": "Alteración del control del flujo metabólico",
+     "en": "Altered control of metabolic flux"
+    }
+   },
+   "correctas": [
+    "a",
+    "c",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Exige analizar el impacto de la pérdida de una modificación postraduccional (fosforilación) sobre la regulación, deduciendo la desconexión del control hormonal y de segundos mensajeros.",
+    "en": "Requires analyzing the impact of losing a post-translational modification (phosphorylation) on regulation, deducing the disconnection from hormonal and second-messenger control."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.7.7",
+   "num": "1.7.7",
+   "tema": 1,
+   "seccion": "1.7",
+   "tipo": "test",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Cuáles de los siguientes ejemplos corresponden a mecanismos de regulación metabólica de respuesta lenta?",
+    "en": "Which of the following examples correspond to slow-response metabolic regulation mechanisms?"
+   },
+   "opciones": {
+    "a": {
+     "es": "Regulación hormonal",
+     "en": "Hormonal regulation"
+    },
+    "b": {
+     "es": "Síntesis/degradación de enzimas",
+     "en": "Enzyme synthesis/degradation"
+    },
+    "c": {
+     "es": "Regulación alostérica",
+     "en": "Allosteric regulation"
+    },
+    "d": {
+     "es": "Disponibilidad de sustrato",
+     "en": "Substrate availability"
+    },
+    "e": {
+     "es": "Cambios en la transcripción génica",
+     "en": "Changes in gene transcription"
+    }
+   },
+   "correctas": [
+    "a",
+    "b",
+    "e"
+   ],
+   "justificacion": {
+    "es": "Requiere distinguir los mecanismos de control por su cinética (lenta), que se basan en la regulación de la expresión génica (transcripción, síntesis/degradación enzimática, control hormonal a largo plazo).",
+    "en": "Requires distinguishing control mechanisms by their kinetics (slow), which rely on the regulation of gene expression (transcription, enzyme synthesis/degradation, long-term hormonal control)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-1.7.8",
+   "num": "1.7.8",
+   "tema": 1,
+   "seccion": "1.7",
+   "tipo": "test",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "En una vía metabólica, los pasos que se encuentran lejos del equilibrio (ΔG real muy negativa) y son irreversibles se consideran cruciales porque:",
+    "en": "In a metabolic pathway, steps that are far from equilibrium (very negative actual ΔG) and irreversible are considered crucial because:"
+   },
+   "opciones": {
+    "a": {
+     "es": "no necesitan enzimas para llevarse a cabo",
+     "en": "they do not need enzymes to take place"
+    },
+    "b": {
+     "es": "son los pasos más lentos de toda la ruta (pasos limitantes)",
+     "en": "they are the slowest steps of the whole pathway (rate-limiting steps)"
+    },
+    "c": {
+     "es": "son los principales puntos de control y regulación de la velocidad de la ruta",
+     "en": "they are the main points of control and regulation of the pathway rate"
+    },
+    "d": {
+     "es": "son los únicos pasos que consumen ATP",
+     "en": "they are the only steps that consume ATP"
+    },
+    "e": {
+     "es": "no se ven afectados por los cambios en las concentraciones de sustrato y producto",
+     "en": "they are unaffected by changes in substrate and product concentrations"
+    }
+   },
+   "correctas": [
+    "c"
+   ],
+   "justificacion": {
+    "es": "Requiere analizar la función regulatoria de los pasos irreversibles (lejos del equilibrio) como puntos de control clave de la vía.",
+    "en": "Requires analyzing the regulatory role of irreversible steps (far from equilibrium) as key control points of the pathway."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.1",
+   "num": "PC1.1",
+   "tema": 1,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Mencione dos características opuestas que distinguen al catabolismo del anabolismo en términos de complejidad de moléculas.",
+    "en": "State two opposing features that distinguish catabolism from anabolism in terms of molecular complexity."
+   },
+   "respuesta": {
+    "es": "El catabolismo degrada moléculas complejas a sencillas y es convergente. El anabolismo sintetiza moléculas complejas a partir de sencillas y es divergente.",
+    "en": "Catabolism breaks down complex molecules into simple ones and is convergent. Anabolism synthesizes complex molecules from simple ones and is divergent."
+   },
+   "justificacion": {
+    "es": "Exige solo la memorización de la definición básica y opuesta de ambas rutas.",
+    "en": "Requires only memorizing the basic, opposing definitions of the two types of pathway."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.2",
+   "num": "PC1.2",
+   "tema": 1,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Si una célula activa predominantemente rutas que consumen ATP y NADPH, ¿Qué estado metabólico (catabólico o anabólico) está aplicando y cuál es la finalidad de dicho proceso?",
+    "en": "If a cell predominantly activates pathways that consume ATP and NADPH, which metabolic state (catabolic or anabolic) is it adopting, and what is the purpose of this process?"
+   },
+   "respuesta": {
+    "es": "Está aplicando el estado anabólico. La finalidad es la síntesis de biomoléculas complejas (p. ej., proteínas, lípidos, glucógeno) para el crecimiento o almacenamiento.",
+    "en": "It is adopting the anabolic state. The purpose is the synthesis of complex biomolecules (e.g., proteins, lipids, glycogen) for growth or storage."
+   },
+   "justificacion": {
+    "es": "Requiere usar la regla memorizada (consumo de energía/poder reductor) para clasificar un proceso celular hipotético.",
+    "en": "Requires using the memorized rule (consumption of energy/reducing power) to classify a hypothetical cellular process."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.3",
+   "num": "PC1.3",
+   "tema": 1,
+   "concepto_clave": "I",
+   "tipo": "corta",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Argumente por qué una ruta metabólica no puede ser simultáneamente regulada como catabólica y anabólica en un organismo, considerando las leyes de la termodinámica.",
+    "en": "Argue why a metabolic pathway cannot be regulated as both catabolic and anabolic at the same time in an organism, taking the laws of thermodynamics into account."
+   },
+   "respuesta": {
+    "es": "No pueden serlo porque sus efectos energéticos son opuestos. El ΔG de la ruta neta debe ser negativo (catabolismo, liberación) o positivo (anabolismo, consumo). Regular ambas simultáneamente llevaría a un ciclo fútil que disiparía ATP sin beneficio neto, violando la eficiencia termodinámica.",
+    "en": "It cannot, because their energetic effects are opposite. The ΔG of the net pathway must be either negative (catabolism, release) or positive (anabolism, consumption). Regulating both simultaneously would lead to a futile cycle that would dissipate ATP with no net benefit, undermining thermodynamic efficiency."
+   },
+   "justificacion": {
+    "es": "Requiere juicio crítico sobre la eficiencia termodinámica y la necesidad de una regulación recíproca (evitar ciclos fútiles).",
+    "en": "Requires critical judgment on thermodynamic efficiency and the need for reciprocal regulation (avoiding futile cycles)."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.4",
+   "num": "PC1.4",
+   "tema": 1,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "¿Qué indica un valor de energía libre de Gibbs (ΔG) negativo en una reacción química celular?",
+    "en": "What does a negative Gibbs free energy (ΔG) value indicate for a cellular chemical reaction?"
+   },
+   "respuesta": {
+    "es": "Indica que la reacción es espontánea (favorecida termodinámicamente) o exergónica.",
+    "en": "It indicates that the reaction is spontaneous (thermodynamically favored), or exergonic."
+   },
+   "justificacion": {
+    "es": "Exige recordar la convención de signo de ΔG para una reacción espontánea.",
+    "en": "Requires recalling the sign convention of ΔG for a spontaneous reaction."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.5",
+   "num": "PC1.5",
+   "tema": 1,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Si una reacción en la célula tiene un ΔG&gt;0 y necesita ocurrir para la supervivencia celular, ¿Qué estrategia debe aplicar la célula para hacer que el proceso sea favorable (ΔG<sub>neto</sub>&lt;0)?",
+    "en": "If a reaction in the cell has ΔG&gt;0 and must take place for the cell to survive, what strategy must the cell apply to make the process favorable (ΔG<sub>net</sub>&lt;0)?"
+   },
+   "respuesta": {
+    "es": "Debe aplicar el acoplamiento de reacciones, uniendo la reacción endergónica (ΔG&gt;0) a una reacción altamente exergónica (típicamente la hidrólisis del ATP).",
+    "en": "It must apply reaction coupling, linking the endergonic reaction (ΔG&gt;0) to a highly exergonic reaction (typically ATP hydrolysis)."
+   },
+   "justificacion": {
+    "es": "Exige saber cómo la célula resuelve un problema energético real (reacción ΔG&gt;0) utilizando la estrategia de acoplamiento.",
+    "en": "Requires knowing how the cell solves a real energetic problem (a reaction with ΔG&gt;0) using the coupling strategy."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.6",
+   "num": "PC1.6",
+   "tema": 1,
+   "concepto_clave": "II",
+   "tipo": "corta",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Proponga un ejemplo de acoplamiento termodinámico utilizando una reacción exergónica común (p. ej., hidrólisis de ATP) para impulsar una reacción endergónica (A→ B) y escriba la expresión termodinámica neta resultante.",
+    "en": "Propose an example of thermodynamic coupling that uses a common exergonic reaction (e.g., ATP hydrolysis) to drive an endergonic reaction (A → B), and write the resulting net thermodynamic expression."
+   },
+   "respuesta": {
+    "es": "Ejemplo: Acoplar ATP+H<sub>2</sub>O → ADP+P<sub>i</sub> (ΔG<sub>1</sub>&lt;&lt;0) a A → B (ΔG<sub>2</sub>&gt;0). Expresión Neta: A+ATP+H<sub>2</sub>O → B+ADP+P<sub>i</sub>. Condición: ΔG<sub>Neto</sub>=ΔG<sub>1</sub>+ΔG<sub>2</sub>&lt;0.",
+    "en": "Example: couple ATP + H<sub>2</sub>O → ADP + P<sub>i</sub> (ΔG<sub>1</sub>&lt;&lt;0) to A → B (ΔG<sub>2</sub>&gt;0). Net expression: A + ATP + H<sub>2</sub>O → B + ADP + P<sub>i</sub>. Condition: ΔG<sub>net</sub> = ΔG<sub>1</sub> + ΔG<sub>2</sub>&lt;0."
+   },
+   "justificacion": {
+    "es": "Requiere sintetizar los conceptos de ΔG, acoplamiento y ATP para construir una ecuación química y termodinámica completa que resuelva el problema.",
+    "en": "Requires synthesizing the concepts of ΔG, coupling and ATP to build a complete chemical and thermodynamic equation that solves the problem."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.7",
+   "num": "PC1.7",
+   "tema": 1,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B1",
+   "enunciado": {
+    "es": "Defina el concepto de carga energética (AEC) del adenilato.",
+    "en": "Define the concept of adenylate energy charge (AEC)."
+   },
+   "respuesta": {
+    "es": "Es el índice que mide la proporción de ATP disponible respecto a la reserva total de adenilatos (ATP+ADP+AMP) en la célula.",
+    "en": "It is the index that measures the proportion of available ATP relative to the total adenylate pool (ATP + ADP + AMP) in the cell."
+   },
+   "justificacion": {
+    "es": "Exige solo la memorización de la fórmula o la definición de AEC.",
+    "en": "Requires only memorizing the formula or definition of AEC."
+   },
+   "bloom_nivel": "recordar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.8",
+   "num": "PC1.8",
+   "tema": 1,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Explique la principal razón molecular por la que la hidrólisis del ATP a ADP+P<sub>i</sub> es tan exergónica, haciendo referencia al concepto de repulsión electrostática.",
+    "en": "Explain the main molecular reason why the hydrolysis of ATP to ADP + P<sub>i</sub> is so exergonic, referring to the concept of electrostatic repulsion."
+   },
+   "respuesta": {
+    "es": "Se debe a la reducción de la repulsión electrostática entre las cargas negativas de los grupos fosfato unidos cuando el fosfato terminal es liberado. Los productos (ADP y P<sub>i</sub>) son más estables que el ATP.",
+    "en": "It is due to the relief of electrostatic repulsion between the negative charges of the linked phosphate groups when the terminal phosphate is released. The products (ADP and P<sub>i</sub>) are more stable than ATP."
+   },
+   "justificacion": {
+    "es": "Requiere asociar la liberación de energía a una causa física (repulsión electrostática) y la estabilidad de los productos.",
+    "en": "Requires associating the release of energy with a physical cause (electrostatic repulsion) and with the stability of the products."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.9",
+   "num": "PC1.9",
+   "tema": 1,
+   "concepto_clave": "III",
+   "tipo": "corta",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "Analice las consecuencias metabólicas de un valor de AEC que se aproxima a 1 y qué tipo de rutas (anabólicas o catabólicas) serían inhibidas y cuáles activadas por esta señal.",
+    "en": "Analyze the metabolic consequences of an AEC value approaching 1, and which types of pathways (anabolic or catabolic) would be inhibited and which activated by this signal."
+   },
+   "respuesta": {
+    "es": "Un AEC≈1 indica alta energía celular (ATP alto). Esto inhibe las rutas Catabólicas (productoras de ATP) y activa las rutas Anabólicas (consumidoras de ATP), ya que la célula tiene energía suficiente para construir macromoléculas.",
+    "en": "An AEC≈1 indicates high cellular energy (high ATP). This inhibits catabolic (ATP-producing) pathways and activates anabolic (ATP-consuming) pathways, since the cell has enough energy to build macromolecules."
+   },
+   "justificacion": {
+    "es": "Exige desglosar la señal (AEC≈1) y determinar su efecto bidireccional sobre las rutas opuestas del metabolismo.",
+    "en": "Requires breaking down the signal (AEC≈1) and determining its two-way effect on the opposing pathways of metabolism."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.10",
+   "num": "PC1.10",
+   "tema": 1,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "Nombra los tres productos ricos en energía que se generan en la segunda etapa del metabolismo aerobio (el ciclo de Krebs).",
+    "en": "Name the three energy-rich products generated in the second stage of aerobic metabolism (the Krebs cycle)."
+   },
+   "respuesta": {
+    "es": "Los tres productos son: NADH, FADH<sub>2</sub> y GTP (o ATP).",
+    "en": "The three products are NADH, FADH<sub>2</sub> and GTP (or ATP)."
+   },
+   "justificacion": {
+    "es": "Exige entender el propósito del ciclo de Krebs más allá del CO<sub>2</sub> (generar transportadores de electrones y ATP).",
+    "en": "Requires understanding the purpose of the Krebs cycle beyond CO<sub>2</sub> (generating electron carriers and ATP)."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.11",
+   "num": "PC1.11",
+   "tema": 1,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B4",
+   "enunciado": {
+    "es": "¿Por qué la existencia de rutas metabólicas antiparalelas (p. ej. glucólisis/gluconeogénesis) requiere que haya pasos exclusivos e irreversibles en lugar de ser meramente reacciones reversas?",
+    "en": "Why does the existence of antiparallel metabolic pathways (e.g., glycolysis/gluconeogenesis) require exclusive, irreversible steps rather than simply reversed reactions?"
+   },
+   "respuesta": {
+    "es": "Porque los pasos irreversibles (grandes ΔG&lt;0) son los puntos de control. Necesitan ser diferentes en cada dirección (vías separadas) para permitir la regulación recíproca (activar una e inhibir la otra) y evitar los ciclos fútiles que desperdiciarían energía.",
+    "en": "Because the irreversible steps (large ΔG&lt;0) are the control points. They need to be different in each direction (separate routes) to allow reciprocal regulation (activating one while inhibiting the other) and to avoid futile cycles that would waste energy."
+   },
+   "justificacion": {
+    "es": "Exige desglosar la necesidad biológica de la irreversibilidad y de la diferencia de las rutas (regulación recíproca y prevención de ciclos fútiles).",
+    "en": "Requires breaking down the biological need for irreversibility and for the pathways to differ (reciprocal regulation and prevention of futile cycles)."
+   },
+   "bloom_nivel": "analizar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.12",
+   "num": "PC1.12",
+   "tema": 1,
+   "concepto_clave": "IV",
+   "tipo": "corta",
+   "bloom": "B5",
+   "enunciado": {
+    "es": "Si el único punto de control de dos rutas antiparalelas fuera la modificación covalente, evalúe si sería más eficiente regular solo ese paso o también incluir un control alostérico basado en la AEC de la célula.",
+    "en": "If the only control point of two antiparallel pathways were covalent modification, evaluate whether it would be more efficient to regulate only that step or also to include allosteric control based on the cell's AEC."
+   },
+   "respuesta": {
+    "es": "Sería más eficiente incluir el control alostérico basado en AEC. La modificación covalente (hormonal) es una señal lenta de largo alcance. El control por AEC es una señal rápida y local del estado energético de la célula, esencial para ajustes inmediatos en el flujo metabólico.",
+    "en": "It would be more efficient to include allosteric control based on AEC. Covalent (hormonal) modification is a slow, long-range signal. Control by AEC is a fast, local signal of the cell's energy status, essential for immediate adjustments in metabolic flux."
+   },
+   "justificacion": {
+    "es": "Exige comparar la eficiencia de dos tipos de control (covalente vs. alostérico) y justificar por qué su combinación es superior para la supervivencia celular.",
+    "en": "Requires comparing the efficiency of two types of control (covalent vs. allosteric) and justifying why their combination is better for cell survival."
+   },
+   "bloom_nivel": "evaluar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.13",
+   "num": "PC1.13",
+   "tema": 1,
+   "concepto_clave": "V",
+   "tipo": "corta",
+   "bloom": "B2",
+   "enunciado": {
+    "es": "¿Qué son los segundos mensajeros en la transducción de señales?",
+    "en": "What are second messengers in signal transduction?"
+   },
+   "respuesta": {
+    "es": "Son moléculas intracelulares (no proteicas) que se generan o liberan en respuesta a un ligando (el \"primer mensajero\") y que se encargan de amplificar y transmitir la señal dentro de la célula.",
+    "en": "They are intracellular (non-protein) molecules that are generated or released in response to a ligand (the “first messenger”) and that amplify and relay the signal within the cell."
+   },
+   "justificacion": {
+    "es": "Exige describir la función y naturaleza del segundo mensajero en el contexto del sistema de señalización.",
+    "en": "Requires describing the function and nature of the second messenger in the context of the signaling system."
+   },
+   "bloom_nivel": "comprender",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.14",
+   "num": "PC1.14",
+   "tema": 1,
+   "concepto_clave": "V",
+   "tipo": "corta",
+   "bloom": "B3",
+   "enunciado": {
+    "es": "Menciona un ejemplo de segundo mensajero y describe su función específica al interaccionar con una proteína intracelular.",
+    "en": "Give an example of a second messenger and describe its specific function when it interacts with an intracellular protein."
+   },
+   "respuesta": {
+    "es": "Ejemplo: cAMP (Monofosfato de adenosina cíclico). Su función es activar la Proteína Quinasa A (PKA), que luego fosforila otras enzimas clave, como la glucógeno fosforilasa.",
+    "en": "Example: cAMP (cyclic adenosine monophosphate). Its function is to activate protein kinase A (PKA), which then phosphorylates other key enzymes, such as glycogen phosphorylase."
+   },
+   "justificacion": {
+    "es": "Exige nombrar un ejemplo y relacionar su acción con una consecuencia bioquímica conocida.",
+    "en": "Requires naming an example and relating its action to a known biochemical consequence."
+   },
+   "bloom_nivel": "aplicar",
+   "revisado_en": true,
+   "traduccion": "done"
+  },
+  {
+   "id": "T1-PC1.15",
+   "num": "PC1.15",
+   "tema": 1,
+   "concepto_clave": "V",
+   "tipo": "corta",
+   "bloom": "B6",
+   "enunciado": {
+    "es": "Diseñe un mecanismo de apagado (terminación de la señal) para una ruta de transducción que utilice AMPc como segundo mensajero. ¿Qué enzima sería esencial y cuál sería su producto?",
+    "en": "Design a switch-off mechanism (signal termination) for a transduction pathway that uses cAMP as a second messenger. Which enzyme would be essential, and what would its product be?"
+   },
+   "respuesta": {
+    "es": "El mecanismo de apagado requiere una enzima que inactive el AMPc. Esta es la fosfodiesterasa (PDE). Su producto sería AMP (5'-AMP), el cual no es capaz de activar la PKA.",
+    "en": "The switch-off mechanism requires an enzyme that inactivates cAMP. This is phosphodiesterase (PDE). Its product would be AMP (5′-AMP), which cannot activate PKA."
+   },
+   "justificacion": {
+    "es": "Exige sintetizar el conocimiento sobre la necesidad de terminar una señal y proponer la enzima y el producto correctos para inactivar al mensajero.",
+    "en": "Requires synthesizing knowledge about the need to terminate a signal and proposing the correct enzyme and product to inactivate the messenger."
+   },
+   "bloom_nivel": "crear",
+   "revisado_en": true,
+   "traduccion": "done"
+  }
+ ]
+}

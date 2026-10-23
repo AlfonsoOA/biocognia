@@ -3,7 +3,7 @@
 Autoevaluación y autoaprendizaje de **Bioquímica metabólica**, con preguntas clasificadas según la taxonomía de Bloom (B1 Recordar → B6 Crear). Bilingüe (ES/EN). Parte de BIOCOGNIA.
 
 - **Banco de preguntas:** Guía de Bioquímica Metabólica (Universidad de Córdoba).
-- **Versión:** 0.3.0 (estudiante, profesorado y envío automático opcional).
+- **Versión:** 0.3.1 (estudiante, profesorado y envío automático opcional).
 
 ## Qué hace
 
@@ -33,6 +33,8 @@ Sin activar, la app no envía nada a ningún servidor. Activado, las respuestas 
 3. Abre `https://alfonsooa.github.io/biocognia/quaestia/admin.html`, entra con tu cuenta de Google y copia el identificador que aparece.
 4. Copia `firestore.rules` en Firestore → Reglas, sustituye `PEGA_AQUI_TU_UID` por ese identificador y pulsa «Publicar».
 5. Cuando tengas el visto bueno del comité, cambia `envio: false` por `envio: true` en `firebase-config.js`.
+
+**Grupo de prueba.** Entrando con `?grupo=PRUEBA`, la app envía los datos aunque `envio` esté en `false`. Sirve para comprobar el circuito completo sin datos de alumnos; desde `admin.html` se borran con «Borrar datos del grupo PRUEBA».
 
 Quien participa puede borrar lo enviado desde «Mi progreso». Los envíos sin conexión se guardan y se completan en el siguiente uso.
 

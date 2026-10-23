@@ -24,7 +24,7 @@ p { margin:0; max-width:70ch; } .muted { color:var(--muted); } .small { font-siz
 select { font:inherit; padding:7px 10px; border:1px solid var(--line); border-radius:8px; background:var(--surface); color:inherit; }
 .kv { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; }
 .kv div { display:flex; flex-direction:column; } .kv b { font-family:var(--f-mono); font-size:1.3rem; font-weight:400; } .kv span { font-size:.8rem; color:var(--muted); }
-table { border-collapse:collapse; width:100%; font-size:.9rem; } td, th { padding:6px 8px; border-bottom:1px solid var(--line); text-align:left; } td.n, th.n { text-align:right; font-family:var(--f-mono); }
+table { border-collapse:collapse; width:100%; font-size:.9rem; } td, th { padding:6px 8px; border-bottom:1px solid var(--line); text-align:left; } td.n, th.n { text-align:right; } td.n { font-family:var(--f-mono); }
 .notice { background:var(--warn); border-radius:10px; padding:12px 14px; } .err { color:var(--bad); }
 code { font-family:var(--f-mono); font-size:.85em; word-break:break-all; }
 </style>
@@ -41,7 +41,8 @@ code { font-family:var(--f-mono); font-size:.85em; word-break:break-all; }
     <div class="row"><h2>Resumen</h2><span style="margin-left:auto" class="row"><label for="grupo" class="small">Grupo</label><select id="grupo"></select><button class="btn" id="reload">Actualizar</button></span></div>
     <div class="kv" id="kv"></div>
     <table><thead><tr><th>Grupo</th><th class="n">Participantes</th><th class="n">Intentos</th><th class="n">Respuestas</th><th class="n">Nota media</th><th>Último envío</th></tr></thead><tbody id="tbl"></tbody></table>
-    <div class="row"><button class="btn primary" id="csv">Descargar CSV (formato largo)</button><button class="btn" id="csvc">Descargar CSV de preguntas cortas</button><button class="btn" id="json">Descargar JSON completo</button></div>
+    <div class="row"><button class="btn primary" id="csv">Descargar CSV (formato largo)</button><button class="btn" id="csvc">Descargar CSV de preguntas cortas</button><button class="btn" id="json">Descargar JSON completo</button><button class="btn" id="delprueba" hidden>Borrar datos del grupo PRUEBA</button></div>
+    <p class="small" id="msg" aria-live="polite"></p>
     <p class="small muted">Cada fila del CSV es una pregunta respondida en un intento. «participante» es el identificador anónimo del navegador: permite seguir a cada persona a lo largo del curso sin saber quién es.</p>
   </section>
 </main>
@@ -74,6 +75,7 @@ function draw() {
   $("#kv").innerHTML = `<div><b>${parts.size}</b><span>Participantes</span></div><div><b>${s.intentos.length}</b><span>Intentos</span></div><div><b>${resp}</b><span>Respuestas a preguntas test</span></div><div><b>${s.cortas.length}</b><span>Autoevaluaciones de cortas</span></div>`;
   $("#tbl").innerHTML = grupos.map((g) => { const ia = D.intentos.filter((a) => a.grupo === g), u = new Set(ia.map((a) => a.uid)); const last = ia.map((a) => a.fecha).sort().pop() || ""; const media = ia.length ? ia.reduce((x, a) => x + (a.nota || 0), 0) / ia.length : 0;
     return `<tr><td class="num">${g}</td><td class="n">${u.size}</td><td class="n">${ia.length}</td><td class="n">${ia.reduce((n, a) => n + (a.items || []).length, 0)}</td><td class="n">${ia.length ? fmt(media) : "—"}</td><td class="small">${last ? new Date(last).toLocaleString("es-ES") : "—"}</td></tr>`; }).join("") || `<tr><td colspan="6" class="muted">Todavía no hay datos.</td></tr>`;
+  $("#delprueba").hidden = !grupos.includes("PRUEBA");
   $("#data").hidden = false;
 }
 const stamp = () => new Date().toISOString().slice(0, 10);
@@ -92,6 +94,7 @@ async function backend() {
   const app = appM.initializeApp(fc.config), auth = authM.getAuth(app), db = fsM.getFirestore(app);
   return {
     async signIn() { const r = await authM.signInWithPopup(auth, new authM.GoogleAuthProvider()); return { uid: r.user.uid, email: r.user.email }; },
+    async deleteGroup(c, g) { const snap = await fsM.getDocs(fsM.query(fsM.collection(db, c), fsM.where("grupo", "==", g))); for (const d of snap.docs) await fsM.deleteDoc(d.ref); return snap.size; },
     async load(c) { const snap = await fsM.getDocs(fsM.collection(db, c)); return snap.docs.map((d) => ({ _id: d.id, ...d.data(), creado: d.data().creado ? d.data().creado.toDate().toISOString() : null })); },
   };
 }
@@ -106,6 +109,10 @@ $("#signin").onclick = async () => {
   catch (e) { $("#err").textContent = `No se ha podido entrar: ${e.message}`; }
 };
 $("#reload").onclick = load;
+$("#delprueba").onclick = async () => {
+  try { const n = (await BE.deleteGroup("intentos", "PRUEBA")) + (await BE.deleteGroup("cortas", "PRUEBA")); $("#msg").textContent = `Borrados ${n} registros del grupo PRUEBA.`; await load(); }
+  catch (e) { $("#msg").textContent = `No se ha podido borrar: ${e.code || e.message}`; }
+};
 </script>
 </body>
 </html>

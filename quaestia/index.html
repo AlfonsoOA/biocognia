@@ -264,7 +264,7 @@ table.answers.key td:last-child { text-align: left; }
    QUAESTIA — autoevaluación de Bioquímica metabólica (BIOCOGNIA)
    Versión 0.1 (estudiante). Sin servidor: datos en el navegador.
    ============================================================ */
-const APP_VERSION = "0.3.0";
+const APP_VERSION = "0.3.1";
 const TEMAS = [1, 2, 3, 4, 5, 6, 7];
 
 /* ---------- Núcleo (equivale a metahub-core.js) ---------- */
@@ -1313,7 +1313,8 @@ Object.assign(I18N.en, {
 });
 
 const SRV = { ready: null, flushing: false };
-function srvOn() { return !!(CONFIG.envio && CONFIG.firebase) || !!window.QUAESTIA_SRV_MOCK; }
+// El grupo PRUEBA envía aunque el envío general esté apagado: sirve para comprobar el circuito sin datos de alumnos.
+function srvOn() { return !!(CONFIG.firebase && (CONFIG.envio || Store.get("grupo", null) === "PRUEBA")) || !!window.QUAESTIA_SRV_MOCK; }
 function srvParticipa() { return srvOn() && Store.get("consent", null) === true && !!Store.get("grupo", null); }
 
 // Implementación por defecto: Firebase (SDK modular cargado solo si el envío está activo).

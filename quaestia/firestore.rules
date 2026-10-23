@@ -8,8 +8,8 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     function esAdmin() {
-      // Sustituye PEGA_AQUI_TU_UID por el identificador que muestra admin.html al entrar con tu cuenta de Google.
-      return request.auth != null && request.auth.uid in ['PEGA_AQUI_TU_UID'];
+      // Identificadores de las cuentas del equipo investigador (los muestra admin.html al entrar).
+      return request.auth != null && request.auth.uid in ['cMZwT1gAQHa5EmohnmYV9YmY4XT2'];
     }
     function propio() {
       return request.auth != null && resource.data.uid == request.auth.uid;

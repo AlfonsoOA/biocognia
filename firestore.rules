@@ -1,0 +1,83 @@
+rules_version = '2';
+// Reglas de seguridad de Firestore para BIOCOGNIA (QUAESTIA y SORTIVIA).
+// Cópialas en Firebase → Firestore Database → Reglas → Publicar.
+// - Cada participante (identificación anónima) solo puede crear sus propios registros, leerlos y borrarlos.
+// - Nadie puede modificar un registro ya enviado.
+// - Solo las cuentas listadas en esAdmin() pueden leer todos los datos (paneles del profesor).
+// - SORTIVIA: cada grupo solo lee y edita su propio documento, y solo los campos y cambios de estado permitidos;
+//   los puntos, los números y el sorteo los escribe únicamente el panel del profesor. Las claves solo las lee el profesor.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function esAdmin() {
+      // Identificadores de las cuentas del equipo investigador (los muestra admin.html al entrar).
+      return request.auth != null && request.auth.uid in ['cMZwT1gAQHa5EmohnmYV9YmY4XT2'];
+    }
+    function propio() {
+      return request.auth != null && resource.data.uid == request.auth.uid;
+    }
+    function creacionValida(campos) {
+      return request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.creado == request.time
+        && request.resource.data.keys().hasOnly(campos)
+        && request.resource.data.app == 'quaestia'
+        && request.resource.data.grupo is string
+        && request.resource.data.grupo.size() <= 24;
+    }
+
+    match /intentos/{id} {
+      allow create: if creacionValida(['uid', 'creado', 'app', 'app_version', 'grupo', 'modo', 'fecha', 'semana_curso', 'n_intento',
+                                        'nota', 'bruto', 'max', 'duracion_s', 'lang', 'config', 'items'])
+                    && request.resource.data.items is list
+                    && request.resource.data.items.size() <= 200;
+      allow read, delete: if esAdmin() || propio();
+      allow update: if false;
+    }
+
+    match /cortas/{id} {
+      allow create: if creacionValida(['uid', 'creado', 'app', 'app_version', 'grupo', 'id', 'autoeval', 'fecha', 'semana_curso', 'longitud'])
+                    && request.resource.data.autoeval in ['bien', 'parcial', 'mal'];
+      allow read, delete: if esAdmin() || propio();
+      allow update: if false;
+    }
+
+    // ---------- SORTIVIA ----------
+    match /sesiones/{sid} {
+      allow read: if request.auth != null;
+      allow write: if esAdmin();
+
+      match /grupos/{gid} {
+        function camposGrupo() { return ['nombre', 'ronda', 'estado', 'eleccion', 'justif', 'coste', 'actualizado', 'elegidos']; }
+        function sesionAbierta() { return get(/databases/$(database)/documents/sesiones/$(sid)).data.estado == 'abierta'; }
+        function esGrupo() { return request.auth != null && request.auth.uid == gid; }
+        function antes() { return resource.data; }
+        function despues() { return request.resource.data; }
+
+        allow read: if esAdmin() || esGrupo();
+        allow create: if esGrupo() && sesionAbierta()
+                      && despues().keys().hasOnly(camposGrupo())
+                      && despues().estado == 'editando' && despues().ronda == 1
+                      && despues().nombre is string && despues().nombre.size() <= 40;
+        // El grupo solo puede: editar y enviar; elegir números y pedir el sorteo; pasar a la ronda siguiente tras fallar.
+        allow update: if esAdmin() || (esGrupo() && sesionAbierta()
+                      && despues().diff(antes()).affectedKeys().hasOnly(camposGrupo())
+                      && despues().nombre is string && despues().nombre.size() <= 40
+                      && despues().ronda >= antes().ronda && despues().ronda <= 5
+                      && ( (antes().estado == 'editando' && despues().estado in ['editando', 'enviado'] && despues().ronda == antes().ronda)
+                        || (antes().estado == 'puntuado' && despues().estado in ['puntuado', 'sorteo_pedido'] && despues().ronda == antes().ronda)
+                        || (antes().estado == 'fallado' && despues().estado == 'editando' && despues().ronda == antes().ronda + 1)
+                        || (antes().estado == despues().estado && despues().ronda == antes().ronda) ));
+        allow delete: if esAdmin();
+      }
+    }
+
+    match /claves/{aid} {
+      allow read, write: if esAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

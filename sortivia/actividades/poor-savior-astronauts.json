@@ -1,0 +1,1631 @@
+{
+ "schema": "sortivia-actividad/1",
+ "id": "poor-savior-astronauts",
+ "metodologia": "ESTOPA",
+ "titulo": {
+  "es": "The poor savior astronauts",
+  "en": "The poor savior astronauts"
+ },
+ "resumen": {
+  "es": "Diseñad la estrategia ómica más eficiente para demostrar la ruta biosintética de la Pepitina con un presupuesto de 17.000 €.",
+  "en": "Design the most efficient omics strategy to demonstrate the biosynthetic pathway of Pepitin with a budget of €17,000."
+ },
+ "presupuesto": 17000,
+ "moneda": "€",
+ "numeros": 10,
+ "rondas": 2,
+ "puntos_por_numero": 10,
+ "bloques_obligatorios": [
+  "global-strategy"
+ ],
+ "bloques": [
+  {
+   "id": "global-strategy",
+   "nombre": "Global strategy",
+   "decisiones": [
+    {
+     "id": "estrategia",
+     "nombre": "Global strategy",
+     "opciones": [
+      {
+       "id": "single-organisms",
+       "label": "Single organisms",
+       "grupo": "Cell-dependent system",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 500.0
+       }
+      },
+      {
+       "id": "enrichment-cultures",
+       "label": "Enrichment cultures",
+       "grupo": "Cell-dependent system",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 500.0
+       }
+      },
+      {
+       "id": "artifitial-consortia",
+       "label": "Artificial consortia",
+       "grupo": "Cell-dependent system",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 500.0
+       }
+      },
+      {
+       "id": "recombinant-proteins",
+       "label": "Recombinant proteins",
+       "grupo": "Cell-independent system",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 6000.0
+       }
+      },
+      {
+       "id": "crude-extracts",
+       "label": "Crude extracts",
+       "grupo": "Cell-independent system",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 500.0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "genomic",
+   "nombre": "Genomic",
+   "decisiones": [
+    {
+     "id": "number-of-replicates",
+     "nombre": "Number of replicates",
+     "opciones": [
+      {
+       "id": "1",
+       "label": "1",
+       "coste": {
+        "tipo": "base",
+        "valor": 200.0
+       }
+      },
+      {
+       "id": "3",
+       "label": "3",
+       "coste": {
+        "tipo": "base",
+        "valor": 600.0
+       }
+      },
+      {
+       "id": "5",
+       "label": "5",
+       "coste": {
+        "tipo": "base",
+        "valor": 1000.0
+       }
+      },
+      {
+       "id": "10",
+       "label": "10",
+       "coste": {
+        "tipo": "base",
+        "valor": 2000.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "fragmentation",
+     "nombre": "Fragmentation",
+     "opciones": [
+      {
+       "id": "tagmentation",
+       "label": "Tagmentation",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "sonication",
+       "label": "Sonication",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "nebulization",
+       "label": "Nebulization",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "library",
+     "nombre": "Library",
+     "opciones": [
+      {
+       "id": "single-end-illumina",
+       "label": "Single-end (Illumina)",
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.5
+       }
+      },
+      {
+       "id": "paired-end-illumina",
+       "label": "Paired-end (Illumina)",
+       "coste": {
+        "tipo": "mult",
+        "valor": 2.0
+       }
+      },
+      {
+       "id": "mate-pair-illumina",
+       "label": "Mate-pair (Illumina)",
+       "coste": {
+        "tipo": "mult",
+        "valor": 5.0
+       }
+      },
+      {
+       "id": "long-reads-pacbio",
+       "label": "Long reads (PacBio)",
+       "coste": {
+        "tipo": "mult",
+        "valor": 10.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "depth",
+     "nombre": "Depth",
+     "opciones": [
+      {
+       "id": "10x",
+       "label": "10X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.1
+       }
+      },
+      {
+       "id": "30x",
+       "label": "30X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 2.0
+       }
+      },
+      {
+       "id": "50x",
+       "label": "50X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 3.0
+       }
+      },
+      {
+       "id": "70x",
+       "label": "70X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 4.0
+       }
+      },
+      {
+       "id": "100x",
+       "label": "100X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 5.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "trimming",
+     "nombre": "Trimming",
+     "opciones": [
+      {
+       "id": "q20",
+       "label": "Q20",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q30",
+       "label": "Q30",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q40",
+       "label": "Q40",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q50",
+       "label": "Q50",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "assembly",
+     "nombre": "Assembly",
+     "opciones": [
+      {
+       "id": "de-novo",
+       "label": "de novo",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "reference-based",
+       "label": "Reference-based",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "number-of-assemblers",
+     "nombre": "Number of assemblers",
+     "opciones": [
+      {
+       "id": "1",
+       "label": "1",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "2",
+       "label": "2",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "3",
+       "label": "3",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "cd-hit",
+     "nombre": "CD-HIT",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "dea",
+     "nombre": "DEA",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "transcriptomic",
+   "nombre": "Transcriptomic",
+   "decisiones": [
+    {
+     "id": "number-of-replicates",
+     "nombre": "Number of replicates",
+     "opciones": [
+      {
+       "id": "1",
+       "label": "1",
+       "coste": {
+        "tipo": "base",
+        "valor": 200.0
+       }
+      },
+      {
+       "id": "3",
+       "label": "3",
+       "coste": {
+        "tipo": "base",
+        "valor": 600.0
+       }
+      },
+      {
+       "id": "5",
+       "label": "5",
+       "coste": {
+        "tipo": "base",
+        "valor": 1000.0
+       }
+      },
+      {
+       "id": "10",
+       "label": "10",
+       "coste": {
+        "tipo": "base",
+        "valor": 2000.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "rna-to-analyze",
+     "nombre": "RNA to analyze",
+     "opciones": [
+      {
+       "id": "total",
+       "label": "Total",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 200.0
+       }
+      },
+      {
+       "id": "rrna-depleted",
+       "label": "rRNA depleted",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 200.0
+       }
+      },
+      {
+       "id": "mrna-enriched",
+       "label": "mRNA enriched",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 200.0
+       }
+      },
+      {
+       "id": "cdna-capture",
+       "label": "cDNA capture",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 200.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "library",
+     "nombre": "Library",
+     "opciones": [
+      {
+       "id": "stranded",
+       "label": "Stranded",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 50.0
+       }
+      },
+      {
+       "id": "non-stranded",
+       "label": "Non-stranded",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 20.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "depth",
+     "nombre": "Depth",
+     "opciones": [
+      {
+       "id": "10x",
+       "label": "10X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.2
+       }
+      },
+      {
+       "id": "30x",
+       "label": "30X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.5
+       }
+      },
+      {
+       "id": "50x",
+       "label": "50X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 2.0
+       }
+      },
+      {
+       "id": "70x",
+       "label": "70X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 5.0
+       }
+      },
+      {
+       "id": "100x",
+       "label": "100X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 10.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "trimming",
+     "nombre": "Trimming",
+     "opciones": [
+      {
+       "id": "q20",
+       "label": "Q20",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q30",
+       "label": "Q30",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q40",
+       "label": "Q40",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q50",
+       "label": "Q50",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "assembly",
+     "nombre": "Assembly",
+     "opciones": [
+      {
+       "id": "de-novo",
+       "label": "de novo",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "reference-based",
+       "label": "Reference-based",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "number-of-assemblers",
+     "nombre": "Number of assemblers",
+     "opciones": [
+      {
+       "id": "1",
+       "label": "1",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "2",
+       "label": "2",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "3",
+       "label": "3",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "cd-hit",
+     "nombre": "CD-HIT",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "quantification",
+     "nombre": "Quantification",
+     "opciones": [
+      {
+       "id": "pseudocounts",
+       "label": "Pseudocounts",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "base-to-base",
+       "label": "Base-to-base",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "normalization",
+     "nombre": "Normalization",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "correction",
+     "nombre": "Correction",
+     "opciones": [
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "bonferroni",
+       "label": "Bonferroni",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "benjamini-hochberg",
+       "label": "Benjamini-Hochberg",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "dea",
+     "nombre": "DEA",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "metagenomics",
+   "nombre": "Metagenomics",
+   "decisiones": [
+    {
+     "id": "number-of-replicates",
+     "nombre": "Number of replicates",
+     "opciones": [
+      {
+       "id": "1",
+       "label": "1",
+       "coste": {
+        "tipo": "base",
+        "valor": 250.0
+       }
+      },
+      {
+       "id": "3",
+       "label": "3",
+       "coste": {
+        "tipo": "base",
+        "valor": 750.0
+       }
+      },
+      {
+       "id": "5",
+       "label": "5",
+       "coste": {
+        "tipo": "base",
+        "valor": 1250.0
+       }
+      },
+      {
+       "id": "10",
+       "label": "10",
+       "coste": {
+        "tipo": "base",
+        "valor": 2500.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "fragmentation",
+     "nombre": "Fragmentation",
+     "opciones": [
+      {
+       "id": "tagmentation",
+       "label": "Tagmentation",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "sonication",
+       "label": "Sonication",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "nebulization",
+       "label": "Nebulization",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "library",
+     "nombre": "Library",
+     "opciones": [
+      {
+       "id": "single-end-illumina",
+       "label": "Single-end (Illumina)",
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.5
+       }
+      },
+      {
+       "id": "paired-end-illumina",
+       "label": "Paired-end (Illumina)",
+       "coste": {
+        "tipo": "mult",
+        "valor": 2.0
+       }
+      },
+      {
+       "id": "mate-pair-illumina",
+       "label": "Mate-pair (Illumina)",
+       "coste": {
+        "tipo": "mult",
+        "valor": 5.0
+       }
+      },
+      {
+       "id": "long-reads-pacbio",
+       "label": "Long reads (PacBio)",
+       "coste": {
+        "tipo": "mult",
+        "valor": 10.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "depth",
+     "nombre": "Depth",
+     "opciones": [
+      {
+       "id": "10x",
+       "label": "10X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.2
+       }
+      },
+      {
+       "id": "30x",
+       "label": "30X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.5
+       }
+      },
+      {
+       "id": "50x",
+       "label": "50X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 2.0
+       }
+      },
+      {
+       "id": "70x",
+       "label": "70X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 5.0
+       }
+      },
+      {
+       "id": "100x",
+       "label": "100X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 10.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "trimming",
+     "nombre": "Trimming",
+     "opciones": [
+      {
+       "id": "q20",
+       "label": "Q20",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q30",
+       "label": "Q30",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q40",
+       "label": "Q40",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q50",
+       "label": "Q50",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "assembly",
+     "nombre": "Assembly",
+     "opciones": [
+      {
+       "id": "de-novo",
+       "label": "de novo",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "reference-based",
+       "label": "Reference-based",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "binning",
+     "nombre": "Binning",
+     "opciones": [
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "supervised",
+       "label": "Supervised",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "non-supervised",
+       "label": "Non-supervised",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "number-of-assemblers",
+     "nombre": "Number of assemblers",
+     "opciones": [
+      {
+       "id": "1",
+       "label": "1",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "2",
+       "label": "2",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "3",
+       "label": "3",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "cd-hit",
+     "nombre": "CD-HIT",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "variant-calling",
+     "nombre": "Variant calling",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "dea",
+     "nombre": "DEA",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "metatranscriptomic",
+   "nombre": "Metatranscriptomic",
+   "decisiones": [
+    {
+     "id": "number-of-replicates",
+     "nombre": "Number of replicates",
+     "opciones": [
+      {
+       "id": "1",
+       "label": "1",
+       "coste": {
+        "tipo": "base",
+        "valor": 250.0
+       }
+      },
+      {
+       "id": "3",
+       "label": "3",
+       "coste": {
+        "tipo": "base",
+        "valor": 750.0
+       }
+      },
+      {
+       "id": "5",
+       "label": "5",
+       "coste": {
+        "tipo": "base",
+        "valor": 1250.0
+       }
+      },
+      {
+       "id": "10",
+       "label": "10",
+       "coste": {
+        "tipo": "base",
+        "valor": 2500.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "rna-to-analyze",
+     "nombre": "RNA to analyze",
+     "opciones": [
+      {
+       "id": "total",
+       "label": "Total",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 250.0
+       }
+      },
+      {
+       "id": "rrna-depleted",
+       "label": "rRNA depleted",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 250.0
+       }
+      },
+      {
+       "id": "mrna-enriched",
+       "label": "mRNA enriched",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 250.0
+       }
+      },
+      {
+       "id": "cdna-capture",
+       "label": "cDNA capture",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 250.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "library",
+     "nombre": "Library",
+     "opciones": [
+      {
+       "id": "stranded",
+       "label": "Stranded",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 50.0
+       }
+      },
+      {
+       "id": "non-stranded",
+       "label": "Non-stranded",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 20.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "depth",
+     "nombre": "Depth",
+     "opciones": [
+      {
+       "id": "10x",
+       "label": "10X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.2
+       }
+      },
+      {
+       "id": "30x",
+       "label": "30X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.5
+       }
+      },
+      {
+       "id": "50x",
+       "label": "50X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 2.0
+       }
+      },
+      {
+       "id": "70x",
+       "label": "70X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 5.0
+       }
+      },
+      {
+       "id": "100x",
+       "label": "100X",
+       "coste": {
+        "tipo": "mult",
+        "valor": 10.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "trimming",
+     "nombre": "Trimming",
+     "opciones": [
+      {
+       "id": "q20",
+       "label": "Q20",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q30",
+       "label": "Q30",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q40",
+       "label": "Q40",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q50",
+       "label": "Q50",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "assembly",
+     "nombre": "Assembly",
+     "opciones": [
+      {
+       "id": "de-novo",
+       "label": "de novo",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "reference-based",
+       "label": "Reference-based",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "number-of-assemblers",
+     "nombre": "Number of assemblers",
+     "opciones": [
+      {
+       "id": "1",
+       "label": "1",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "2",
+       "label": "2",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "3",
+       "label": "3",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "cd-hit",
+     "nombre": "CD-HIT",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "quantification",
+     "nombre": "Quantification",
+     "opciones": [
+      {
+       "id": "pseudocounts",
+       "label": "Pseudocounts",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "base-to-base",
+       "label": "Base-to-base",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "normalization",
+     "nombre": "Normalization",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "correction",
+     "nombre": "Correction",
+     "opciones": [
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "bonferroni",
+       "label": "Bonferroni",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "benjamini-hochberg",
+       "label": "Benjamini-Hochberg",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "dea",
+     "nombre": "DEA",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "metaproteomics",
+   "nombre": "Metaproteomics",
+   "decisiones": [
+    {
+     "id": "number-of-replicates",
+     "nombre": "Number of replicates",
+     "opciones": [
+      {
+       "id": "1",
+       "label": "1",
+       "coste": {
+        "tipo": "base",
+        "valor": 150.0
+       }
+      },
+      {
+       "id": "3",
+       "label": "3",
+       "coste": {
+        "tipo": "base",
+        "valor": 450.0
+       }
+      },
+      {
+       "id": "5",
+       "label": "5",
+       "coste": {
+        "tipo": "base",
+        "valor": 750.0
+       }
+      },
+      {
+       "id": "10",
+       "label": "10",
+       "coste": {
+        "tipo": "base",
+        "valor": 1500.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "database",
+     "nombre": "Database",
+     "opciones": [
+      {
+       "id": "reference-based",
+       "label": "Reference-based",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "de-novo",
+       "label": "de novo",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "prodigal",
+     "nombre": "Prodigal",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": "No",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "htm",
+     "nombre": "HTM",
+     "opciones": [
+      {
+       "id": "t-test",
+       "label": "t-test",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "limma",
+       "label": "Limma",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "deqms",
+       "label": "DeqMS",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "msstats",
+       "label": "MSstats",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "cbr",
+     "nombre": "CBR",
+     "opciones": [
+      {
+       "id": "fc",
+       "label": "FC",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "bayesian",
+       "label": "Bayesian",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "validations",
+   "nombre": "Validations",
+   "decisiones": [
+    {
+     "id": "qrt-pcr",
+     "nombre": "qRT-PCR",
+     "opcional": true,
+     "opciones": [
+      {
+       "id": "si",
+       "label": "Each analysis",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 50.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "western-blot",
+     "nombre": "Western-blot",
+     "opcional": true,
+     "opciones": [
+      {
+       "id": "si",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 50.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "enzyme-activities",
+     "nombre": "Enzyme activities",
+     "opcional": true,
+     "opciones": [
+      {
+       "id": "si",
+       "label": "Yes",
+       "coste": {
+        "tipo": "fijo",
+        "valor": 30.0
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

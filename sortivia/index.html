@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SORTIVIA</title>
+<meta name="description" content="SORTIVIA: actividades de toma de decisiones y gamificación (metodología ESTOPA). BIOCOGNIA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="sortivia.css">
+<style>
+/* Presupuesto fijo arriba mientras se decide */
+.budget { position: sticky; top: var(--hh, 66px); z-index: 4; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 6px 16px -14px rgba(0,0,0,.4); }
+.budget .track { height: 10px; background: var(--sunk); border-radius: 5px; overflow: hidden; }
+.budget .track span { display: block; height: 100%; background: var(--accent); transition: width .2s; }
+.budget.over .track span { background: var(--bad); }
+.budget .big { font-family: var(--f-mono); font-size: 1.15rem; }
+.blk { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+.blk > header { display: flex; align-items: center; gap: 12px; padding: 14px 16px; flex-wrap: wrap; }
+.blk > header h2 { font-size: 1.1rem; }
+.blk.on { border-color: var(--accent); }
+.blk .body { border-top: 1px solid var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 16px; }
+.toggle { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.92rem; }
+.toggle input { width: 1.15em; height: 1.15em; accent-color: var(--accent); }
+.dec { display: grid; grid-template-columns: minmax(150px, 210px) 1fr; gap: 6px 14px; align-items: start; }
+.dec > .lbl { font-weight: 500; font-size: 0.93rem; padding-top: 6px; }
+.opts { display: flex; flex-wrap: wrap; gap: 6px; }
+.grp { width: 100%; font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+.opt { position: relative; }
+.opt input { position: absolute; opacity: 0; pointer-events: none; }
+.opt span { display: inline-flex; gap: 8px; align-items: baseline; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); cursor: pointer; font-size: 0.92rem; }
+.opt span i { font-style: normal; font-family: var(--f-mono); font-size: 0.78rem; color: var(--muted); }
+.opt input:checked + span { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.opt input:checked + span i { color: inherit; opacity: .75; }
+.opt input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.opt input:disabled + span { cursor: default; opacity: .7; }
+.sub { font-family: var(--f-mono); font-size: 0.95rem; margin-left: auto; }
+@media (max-width: 600px) { .dec { grid-template-columns: 1fr; } .dec > .lbl { padding-top: 0; } header.bar { position: static; } }
+/* Sorteo */
+.draw { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 520px; }
+.draw button { aspect-ratio: 1; border-radius: 14px; border: 2px solid var(--line); background: var(--surface); font-family: var(--f-display); font-size: clamp(1.4rem, 5vw, 2rem); font-weight: 600; cursor: pointer; }
+.draw button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.draw button:disabled { cursor: default; }
+.draw.spin button { animation: pulse 0.9s infinite; }
+.draw.spin button:nth-child(2n) { animation-delay: .15s; } .draw.spin button:nth-child(3n) { animation-delay: .3s; } .draw.spin button:nth-child(5n) { animation-delay: .45s; }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(.9); filter: brightness(1.15); } }
+.draw button.hit { outline: 4px solid var(--ok); outline-offset: 3px; }
+.draw button.miss { outline: 4px solid var(--bad); outline-offset: 3px; }
+.result { font-family: var(--f-display); font-size: clamp(1.8rem, 6vw, 2.6rem); font-weight: 600; }
+.result.ok { color: var(--ok); } .result.bad { color: var(--bad); }
+.wait { display: flex; gap: 12px; align-items: center; }
+.dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); animation: pulse 1s infinite; }
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="mark" href="../">SORTIVIA<small id="tagline">Decisiones y gamificación</small></a>
+  <span class="small muted spacer" id="who"></span>
+  <div class="lang" role="group" aria-label="Idioma"><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
+</div></header>
+<main class="wrap" id="main"><p class="muted">…</p></main>
+<footer><div class="wrap" id="foot"></div></footer>
+<script src="../quaestia/firebase-config.js"></script>
+<script src="sortivia.js"></script>
+<script>
+"use strict";
+const I = {
+  es: {
+    tagline: "Decisiones y gamificación", join_t: "Entrar en la actividad", join_code: "Código de la sesión", join_name: "Nombre del grupo", join_name_ph: "Por ejemplo: Grupo 3",
+    join_hint: "No pongáis vuestros nombres: basta con el número o el nombre del grupo.", join_btn: "Entrar", join_bad: "No existe ninguna sesión abierta con ese código.", join_err: "No se ha podido entrar. Comprobad la conexión e intentadlo de nuevo.",
+    round: (r, n) => `Ronda ${r} de ${n}`, budget: "Presupuesto", spent: "Gastado", left: "Disponible", over: (x) => `Os pasáis del presupuesto en ${x}. Quitad algo antes de enviar.`,
+    include: "Incluir este bloque", required: "Obligatorio", subtotal: "Coste del bloque", just: "¿Por qué habéis tomado estas decisiones?", just_ph: "Justificad vuestras elecciones en este bloque…",
+    pending: (n) => `Faltan ${n} decisiones por tomar:`, send: "Enviar la estrategia", send_confirm: "Una vez enviada no podréis cambiarla en esta ronda. ¿Enviar?", yes: "Sí, enviar", no: "Seguir revisando",
+    prev: (p, n) => `En la ronda anterior conseguisteis ${p} puntos, es decir, ${n} números de 10. Revisad la estrategia para subir vuestra probabilidad de éxito.`,
+    sent_t: "Estrategia enviada", sent_d: "El profesor está calculando vuestra probabilidad de éxito…",
+    nums_t: (n) => `Vuestra estrategia os da ${n} ${n === 1 ? "número" : "números"} de 10`, nums_d: (n) => n === 0 ? "No tenéis ningún número: si no sale ninguno de los vuestros, perderéis esta ronda." : n >= 10 ? "¡Tenéis todos los números! El éxito está asegurado." : `Elegid ${n} números. Si en el sorteo sale uno de ellos, la misión triunfa.`,
+    picked: (k, n) => `${k} de ${n} elegidos`, draw: "¡Sortear!", drawing: "Sorteando…",
+    win_t: "¡Misión cumplida!", win_d: (x) => `Ha salido el ${x}, uno de vuestros números. ¡Habéis salvado a la humanidad!`,
+    lose_t: "La misión ha fracasado", lose_d: (x) => `Ha salido el ${x}, que no estaba entre vuestros números.`,
+    retry: "Revisar la estrategia (siguiente ronda)", over_t: "Fin de la actividad", over_d: "Se han agotado las rondas. Comentad con el profesor qué decisiones han restado probabilidad.",
+    aviso: "Aviso del profesor", changed: "Cambios guardados", saving: "Guardando…", demo: "Modo demostración: los datos se guardan solo en este navegador.",
+    f: "SORTIVIA · Metodología ESTOPA · Parte de BIOCOGNIA · Open Educational Technology",
+  },
+  en: {
+    tagline: "Decisions and gamification", join_t: "Join the activity", join_code: "Session code", join_name: "Group name", join_name_ph: "For example: Group 3",
+    join_hint: "Don't use your names: the group number or name is enough.", join_btn: "Join", join_bad: "There is no open session with that code.", join_err: "Could not join. Check your connection and try again.",
+    round: (r, n) => `Round ${r} of ${n}`, budget: "Budget", spent: "Spent", left: "Remaining", over: (x) => `You are ${x} over budget. Remove something before sending.`,
+    include: "Include this block", required: "Required", subtotal: "Block cost", just: "Why did you make these decisions?", just_ph: "Justify your choices in this block…",
+    pending: (n) => `${n} decisions are still missing:`, send: "Send the strategy", send_confirm: "Once sent, you cannot change it in this round. Send?", yes: "Yes, send", no: "Keep reviewing",
+    prev: (p, n) => `In the previous round you got ${p} points, that is, ${n} numbers out of 10. Review your strategy to raise your probability of success.`,
+    sent_t: "Strategy sent", sent_d: "The teacher is calculating your probability of success…",
+    nums_t: (n) => `Your strategy gives you ${n} ${n === 1 ? "number" : "numbers"} out of 10`, nums_d: (n) => n === 0 ? "You have no numbers, so you cannot win this round." : n >= 10 ? "You have every number! Success is guaranteed." : `Choose ${n} numbers. If one of them comes up in the draw, the mission succeeds.`,
+    picked: (k, n) => `${k} of ${n} chosen`, draw: "Draw!", drawing: "Drawing…",
+    win_t: "Mission accomplished!", win_d: (x) => `${x} came up, one of your numbers. You have saved humanity!`,
+    lose_t: "The mission has failed", lose_d: (x) => `${x} came up, which was not one of your numbers.`,
+    retry: "Review the strategy (next round)", over_t: "End of the activity", over_d: "No rounds left. Discuss with the teacher which decisions lowered your probability.",
+    aviso: "Message from the teacher", changed: "Changes saved", saving: "Saving…", demo: "Demo mode: data are stored only in this browser.",
+    f: "SORTIVIA · ESTOPA methodology · Part of BIOCOGNIA · Open Educational Technology",
+  },
+};
+const S = { lang: svLang(), sid: null, act: null, g: null, el: null, just: {}, picked: [], confirm: false, saveT: null, saving: false };
+const T = (k, ...a) => { const v = I[S.lang][k]; return typeof v === "function" ? v(...a) : v; };
+const main = () => $("#main");
+
+function chrome() {
+  document.documentElement.lang = S.lang;
+  $("#tagline").textContent = T("tagline");
+  for (const b of document.querySelectorAll(".lang button")) b.setAttribute("aria-pressed", b.dataset.lang === S.lang);
+  $("#who").textContent = S.g && S.sid ? `${S.g.nombre} · ${S.sid}` : "";
+  $("#foot").innerHTML = `${T("f")} · v${SV_VERSION}${SVB.demo ? ` · <span class="pill go">${T("demo")}</span>` : ""}`;
+}
+
+/* ---------- Entrar ---------- */
+function vJoin(msg) {
+  const q = new URLSearchParams(location.search);
+  return `<section class="panel stack" style="max-width:520px"><h1>${T("join_t")}</h1>
+    <form id="join" class="stack" novalidate>
+      <label class="stack small">${T("join_code")}<input class="field num" name="code" autocomplete="off" maxlength="8" value="${esc((q.get("s") || "").toUpperCase())}" style="text-transform:uppercase;letter-spacing:.15em;font-size:1.2rem"></label>
+      <label class="stack small">${T("join_name")}<input class="field" name="name" maxlength="40" placeholder="${T("join_name_ph")}" value="${esc(localStorage.getItem("sv.nombre") || "")}"></label>
+      <p class="small muted">${T("join_hint")}</p>
+      ${msg ? `<p class="notice small" role="alert">${msg}</p>` : ""}
+      <div><button class="btn primary" type="submit">${T("join_btn")}</button></div>
+    </form></section>`;
+}
+
+/* ---------- Editor de la estrategia ---------- */
+function coste() { return svCosteTotal(S.act, S.el); }
+function vBudget() {
+  const c = coste(), P = S.act.presupuesto, over = c > P;
+  return `<div class="budget ${over ? "over" : ""}" id="budget"><div class="row"><span class="eyebrow">${T("round", S.g.ronda, S.act.rondas)}</span><span class="spacer small muted" id="saved"></span></div>
+    <div class="row"><span>${T("spent")} <b class="big">${svEur(c, S.lang)}</b> <span class="muted">/ ${svEur(P, S.lang)}</span></span><span class="spacer">${T("left")} <b class="big">${svEur(Math.max(0, P - c), S.lang)}</b></span></div>
+    <div class="track"><span style="width:${Math.min(100, (100 * c) / P)}%"></span></div>
+    ${over ? `<p class="small" style="color:var(--bad)">${T("over", svEur(c - P, S.lang))}</p>` : ""}</div>`;
+}
+function vBlock(b) {
+  const req = S.act.bloques_obligatorios.includes(b.id), sel = S.el.bloques[b.id], on = req || sel.incluido;
+  const head = `<header><h2>${esc(b.nombre)}</h2>${req ? `<span class="pill">${T("required")}</span>` : `<label class="toggle"><input type="checkbox" data-inc="${b.id}" ${on ? "checked" : ""}>${T("include")}</label>`}
+    ${on ? `<span class="sub" title="${T("subtotal")}">${svEur(svCosteBloque(b, sel), S.lang)}</span>` : ""}</header>`;
+  if (!on) return `<section class="blk">${head}</section>`;
+  const decs = b.decisiones.map((d) => {
+    let last = null;
+    const opts = d.opciones.map((o) => {
+      const g = o.grupo && o.grupo !== last ? `<span class="grp">${esc(o.grupo)}</span>` : ""; last = o.grupo || last;
+      const name = `${b.id}__${d.id}`;
+      const checked = d.opcional ? !!sel.dec[d.id] : sel.dec[d.id] === o.id;
+      return `${g}<label class="opt"><input type="${d.opcional ? "checkbox" : "radio"}" name="${name}" data-b="${b.id}" data-d="${d.id}" value="${esc(o.id)}" ${checked ? "checked" : ""}><span>${esc(o.label)}${o.coste.valor && !(o.coste.tipo === "mult" && o.coste.valor === 1) ? ` <i>${svPrecio(o, S.lang)}</i>` : ""}</span></label>`;
+    }).join("");
+    return `<div class="dec"><span class="lbl">${esc(d.nombre)}</span><div class="opts">${opts}</div></div>`;
+  }).join("");
+  return `<section class="blk on">${head}<div class="body">${decs}
+    <label class="stack small">${T("just")}<textarea class="field" data-just="${b.id}" placeholder="${T("just_ph")}">${esc(S.just[b.id] || "")}</textarea></label></div></section>`;
+}
+function vEditor() {
+  const falta = svPendientes(S.act, S.el), over = coste() > S.act.presupuesto;
+  const prev = (S.g.historial || []).slice(-1)[0];
+  return `<div class="stack-lg"><div class="stack"><p class="eyebrow">ESTOPA</p><h1>${esc(S.act.titulo[S.lang] || S.act.titulo.es)}</h1><p class="muted">${esc(S.act.resumen[S.lang] || S.act.resumen.es)}</p>
+      ${S.g.ronda > 1 && prev ? `<p class="notice">${T("prev", prev.puntos, prev.numeros)}</p>` : ""}${S.g.aviso ? `<p class="notice"><b>${T("aviso")}:</b> ${esc(S.g.aviso)}</p>` : ""}</div>
+    ${vBudget()}
+    <div class="stack">${S.act.bloques.map(vBlock).join("")}</div>
+    <section class="stack" id="sendbox">${falta.length ? `<div class="notice small"><b>${T("pending", falta.length)}</b><br>${falta.slice(0, 8).map(esc).join(" · ")}${falta.length > 8 ? " …" : ""}</div>` : ""}
+      ${S.confirm ? `<div class="notice row" role="alert"><span>${T("send_confirm")}</span><button class="btn primary" id="send-yes">${T("yes")}</button><button class="btn" id="send-no">${T("no")}</button></div>`
+        : `<div><button class="btn primary" id="send" ${falta.length || over ? "disabled" : ""}>${T("send")}</button></div>`}</section></div>`;
+}
+
+/* ---------- Sorteo ---------- */
+function vDraw() {
+  const g = S.g, n = g.numeros ?? 0, st = g.estado;
+  const fixed = st !== "puntuado";
+  const chosen = fixed ? (g.elegidos || []) : S.picked;
+  const cells = Array.from({ length: S.act.numeros }, (_, i) => i + 1).map((k) => {
+    const on = chosen.includes(k); let cls = "";
+    if (g.sorteo && k === g.sorteo) cls = on ? "hit" : "miss";
+    return `<button type="button" data-num="${k}" aria-pressed="${on}" class="${cls}" ${fixed || n >= S.act.numeros ? "disabled" : ""}>${k}</button>`;
+  }).join("");
+  let top = `<p class="eyebrow">${T("round", g.ronda, S.act.rondas)}</p><h1>${T("nums_t", n)}</h1>`;
+  let bottom = "";
+  if (st === "puntuado") {
+    top += `<p>${T("nums_d", n)}</p>`;
+    bottom = `<div class="row"><button class="btn primary" id="draw" ${S.picked.length === Math.min(n, S.act.numeros) ? "" : "disabled"} style="font-size:1.1rem;padding:12px 26px">${T("draw")}</button><span class="small muted">${T("picked", S.picked.length, Math.min(n, S.act.numeros))}</span></div>`;
+  } else if (st === "sorteo_pedido") {
+    bottom = `<div class="wait"><span class="dot"></span><span>${T("drawing")}</span></div>`;
+  } else if (st === "ganado") {
+    bottom = `<p class="result ok">${T("win_t")}</p><p>${T("win_d", g.sorteo)}</p>`;
+  } else {
+    bottom = `<p class="result bad">${T("lose_t")}</p><p>${T("lose_d", g.sorteo)}</p>` +
+      (st === "fallado" ? `<div><button class="btn primary" id="retry">${T("retry")}</button></div>` : `<p class="notice">${T("over_t")}. ${T("over_d")}</p>`);
+  }
+  return `<div class="stack-lg"><div class="stack">${top}</div><div class="draw ${st === "sorteo_pedido" ? "spin" : ""}">${cells}</div><div class="stack">${bottom}</div></div>`;
+}
+
+function render() {
+  chrome();
+  if (!S.g) return;
+  const st = S.g.estado;
+  if (st === "editando") main().innerHTML = vEditor();
+  else if (st === "enviado") main().innerHTML = `<div class="stack"><h1>${T("sent_t")}</h1><div class="wait"><span class="dot"></span><span>${T("sent_d")}</span></div></div>`;
+  else main().innerHTML = vDraw();
+}
+function renderBudget() { const b = $("#budget"); if (b) b.outerHTML = vBudget(); const sb = $("#sendbox"); if (sb) { const tmp = document.createElement("div"); tmp.innerHTML = vEditor(); sb.replaceWith(tmp.querySelector("#sendbox")); } }
+
+/* ---------- Guardado ---------- */
+function guardar() {
+  clearTimeout(S.saveT);
+  const s = $("#saved"); if (s) s.textContent = T("saving");
+  S.saveT = setTimeout(async () => {
+    try { await SVB.cambiarGrupo(S.sid, { eleccion: S.el, justif: S.just, coste: coste() }); const s2 = $("#saved"); if (s2) s2.textContent = T("changed"); } catch (e) {}
+  }, 700);
+}
+
+/* ---------- Eventos ---------- */
+document.addEventListener("click", async (e) => {
+  const t = e.target.closest("button"); if (!t) return;
+  if (t.dataset.lang) { S.lang = t.dataset.lang; svSetLang(S.lang); return S.g ? render() : (chrome(), main().innerHTML = vJoin()); }
+  if (t.id === "send") { S.confirm = true; return render(); }
+  if (t.id === "send-no") { S.confirm = false; return render(); }
+  if (t.id === "send-yes") { S.confirm = false; clearTimeout(S.saveT); await SVB.cambiarGrupo(S.sid, { eleccion: S.el, justif: S.just, coste: coste(), estado: "enviado" }); window.scrollTo(0, 0); return; }
+  if (t.dataset.num && S.g.estado === "puntuado") {
+    const k = +t.dataset.num, n = Math.min(S.g.numeros || 0, S.act.numeros);
+    if (S.picked.includes(k)) S.picked = S.picked.filter((x) => x !== k); else if (S.picked.length < n) S.picked.push(k);
+    return render();
+  }
+  if (t.id === "draw") { await SVB.cambiarGrupo(S.sid, { elegidos: S.picked.slice().sort((a, b) => a - b), estado: "sorteo_pedido" }); return; }
+  if (t.id === "retry") { S.picked = []; await SVB.cambiarGrupo(S.sid, { estado: "editando", ronda: S.g.ronda + 1, elegidos: [] }); window.scrollTo(0, 0); return; }
+});
+document.addEventListener("change", (e) => {
+  const el = e.target;
+  if (el.dataset.inc) { S.el.bloques[el.dataset.inc].incluido = el.checked; guardar(); const y = window.scrollY; render(); window.scrollTo(0, y); return; }
+  if (el.dataset.b) {
+    const sel = S.el.bloques[el.dataset.b], d = S.act.bloques.find((b) => b.id === el.dataset.b).decisiones.find((x) => x.id === el.dataset.d);
+    sel.dec[d.id] = d.opcional ? el.checked : el.value;
+    guardar();
+    const blk = el.closest(".blk"), sub = blk && blk.querySelector(".sub"); if (sub) sub.textContent = svEur(svCosteBloque(S.act.bloques.find((b) => b.id === el.dataset.b), sel), S.lang);
+    renderBudget(); return;
+  }
+});
+document.addEventListener("input", (e) => { if (e.target.dataset.just) { S.just[e.target.dataset.just] = e.target.value; guardar(); } });
+document.addEventListener("submit", async (e) => {
+  if (e.target.id !== "join") return;
+  e.preventDefault();
+  const f = e.target, sid = f.code.value.trim().toUpperCase(), nombre = f.name.value.trim() || "Grupo";
+  try {
+    await SVB.init();
+    const ses = await SVB.sesion(sid);
+    if (!ses || ses.estado !== "abierta") { main().innerHTML = vJoin(T("join_bad")); return; }
+    await SVB.unirse(sid, nombre);
+    try { localStorage.setItem("sv.nombre", nombre); localStorage.setItem("sv.sesion", sid); } catch (err) {}
+    await empezar(sid, ses);
+  } catch (err) { main().innerHTML = vJoin(T("join_err")); }
+});
+
+async function empezar(sid, ses) {
+  S.sid = sid; S.act = await svCargarActividad(ses.actividad);
+  history.replaceState(null, "", `?s=${sid}${SVB.demo && new URLSearchParams(location.search).has("demo") ? "&demo" : ""}`);
+  SVB.verGrupo(sid, (g) => {
+    if (!g) return;
+    const prevEstado = S.g && S.g.estado, prevRonda = S.g && S.g.ronda;
+    S.g = g;
+    if (!S.el || (g.estado === "editando" && (prevEstado !== "editando" || prevRonda !== g.ronda))) {
+      S.el = g.eleccion || svEleccionVacia(S.act); S.just = g.justif || {};
+      for (const b of S.act.bloques) if (!S.el.bloques[b.id]) S.el.bloques[b.id] = { incluido: false, dec: {} };
+    }
+    if (g.estado === "puntuado" && prevEstado !== "puntuado") S.picked = (g.numeros || 0) >= S.act.numeros ? Array.from({ length: S.act.numeros }, (_, i) => i + 1) : [];
+    // No re-pintar el editor en cada guardado propio (se perdería el foco al escribir).
+    if (g.estado === "editando" && prevEstado === "editando" && prevRonda === g.ronda && !g.aviso) { chrome(); return; }
+    render();
+  });
+}
+
+// La barra de presupuesto se coloca justo debajo de la cabecera (si la cabecera es fija).
+function ajustarCabecera() { const h = $("header.bar"); const fija = getComputedStyle(h).position === "sticky"; document.documentElement.style.setProperty("--hh", (fija ? h.offsetHeight : 0) + "px"); }
+window.addEventListener("resize", ajustarCabecera);
+(async function boot() {
+  chrome(); ajustarCabecera();
+  const q = new URLSearchParams(location.search);
+  const sid = (q.get("s") || "").toUpperCase();
+  try {
+    await SVB.init();
+    if (sid) {
+      const ses = await SVB.sesion(sid);
+      if (ses && ses.estado === "abierta" && (await new Promise((res) => { let done = false; SVB.verGrupo(sid, (g) => { if (!done) { done = true; res(!!g); } }); }))) return empezar(sid, ses);
+    }
+  } catch (e) {}
+  main().innerHTML = vJoin();
+})();
+</script>
+</body>
+</html>

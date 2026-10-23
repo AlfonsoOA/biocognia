@@ -1,6 +1,6 @@
 # BIOCOGNIA · Open Educational Technology
 
-**🌐 [Web](https://alfonsooa.github.io/biocognia/)** · **🧪 [QUAESTIA](https://alfonsooa.github.io/biocognia/quaestia/)** · **🔒 [Panel de datos del estudio](https://alfonsooa.github.io/biocognia/quaestia/admin.html)** (solo equipo investigador)
+**🌐 [Web](https://alfonsooa.github.io/biocognia/)** · **🧪 [QUAESTIA](https://alfonsooa.github.io/biocognia/quaestia/)** · **🔒 [Panel de datos del estudio](https://alfonsooa.github.io/biocognia/quaestia/admin.html)** · **🎲 [Panel de SORTIVIA](https://alfonsooa.github.io/biocognia/sortivia/panel.html)** (solo profesorado)
 
 Ecosistema de herramientas educativas abiertas para aprender Bioquímica, basadas en la taxonomía de Bloom.
 
@@ -9,7 +9,7 @@ Ecosistema de herramientas educativas abiertas para aprender Bioquímica, basada
 | Aplicación | Función | Base metodológica | Carpeta | Estado |
 | --- | --- | --- | --- | --- |
 | QUAESTIA | Evaluación y autoaprendizaje | Guía de Bioquímica Metabólica | `quaestia/` | v0.3 |
-| SORTIVIA | Gamificación y toma de decisiones | ESTOPA | `sortivia/` | En desarrollo |
+| SORTIVIA | Gamificación y toma de decisiones | ESTOPA | `sortivia/` | v0.1 |
 | DEAba Digital | Aprendizaje activo | DEAba | `deaba-digital/` | En desarrollo |
 
 Cada aplicación es independiente (su propia carpeta, versión y registro), pero comparten portada, diseño, procedimiento de consentimiento y formato de exportación.
@@ -31,6 +31,10 @@ No hay servidor ni cuentas: todo se guarda en el navegador de cada persona. La o
 ## Propuestas de preguntas
 
 Las propuestas del profesorado llegan como *issues* con la etiqueta `propuesta` (o por correo). Crea esa etiqueta en el repositorio. Las preguntas aprobadas se añaden al JSON del tema con el campo `"propuesta_por": {"nombre": "…", "afiliacion": "…"}`, y la app muestra el crédito y la lista de colaboradores automáticamente.
+
+## Reglas de seguridad de Firebase
+
+`firestore.rules` contiene las reglas de todo el ecosistema (QUAESTIA y SORTIVIA). Cópialas en Firebase → Firestore → Reglas → Publicar cada vez que cambien.
 
 ## Licencia
 

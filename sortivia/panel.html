@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>SORTIVIA · Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="sortivia.css">
+<style>
+main.wrap { max-width: 1060px; }
+.code { font-family: var(--f-mono); font-size: clamp(2.2rem, 7vw, 3.4rem); letter-spacing: .18em; font-weight: 500; }
+.kv { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+.kv div { display: flex; flex-direction: column; } .kv b { font-family: var(--f-mono); font-size: 1.3rem; font-weight: 400; } .kv span { font-size: .8rem; color: var(--muted); }
+details.g > summary { cursor: pointer; list-style: none; }
+details.g > summary::-webkit-details-marker { display: none; }
+.det { padding: 10px 0 4px; display: flex; flex-direction: column; gap: 10px; font-size: .9rem; }
+.det table td, .det table th { padding: 4px 6px; }
+.pos { color: var(--ok); } .neg { color: var(--bad); }
+.just { background: var(--sunk); border-radius: 8px; padding: 8px 10px; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="mark" href="./">SORTIVIA<small>Panel del profesor</small></a>
+  <span class="small muted spacer" id="who"></span>
+</div></header>
+<main class="wrap stack-lg" id="main">
+  <section class="panel stack" id="login">
+    <p>Panel del profesor: crea sesiones, sigue a los grupos en directo y haz de árbitro (calcula los puntos y los sorteos). Solo funciona con la cuenta autorizada.</p>
+    <div class="row"><button class="btn primary" id="signin">Entrar con Google</button></div>
+    <p class="small" id="err" role="alert" style="color:var(--bad)"></p>
+  </section>
+</main>
+<footer><div class="wrap" id="foot"></div></footer>
+<script src="../quaestia/firebase-config.js"></script>
+<script src="sortivia.js"></script>
+<script>
+"use strict";
+const P = { acts: [], claves: {}, sesiones: [], sid: null, ses: null, act: null, grupos: [], auto: true, busy: new Set(), open: new Set(), msg: "" };
+const ESTADOS = { editando: ["Decidiendo", ""], enviado: ["Enviada", "go"], puntuado: ["Eligiendo números", "go"], sorteo_pedido: ["Sorteo pedido", "go"], ganado: ["Ganado", "ok"], fallado: ["Fallado", "bad"], terminado: ["Terminado", "bad"] };
+const fmt = (n) => svEur(n, "es");
+$("#foot").innerHTML = `SORTIVIA · panel · v${SV_VERSION}${SVB.demo ? ` · <span class="pill go">Modo demostración: todo se guarda en este navegador</span>` : ""}`;
+
+async function cargarActividades() {
+  const r = await fetch("actividades/index.json"); P.acts = r.ok ? await r.json() : [];
+  for (const a of P.acts) P.claves[a.id] = await SVB.clave(a.id).catch(() => null);
+}
+async function cargarSesiones() { P.sesiones = await SVB.sesiones().catch(() => []); }
+
+/* ---------- Árbitro ---------- */
+async function arbitrar() {
+  if (!P.auto || !P.act) return;
+  const clave = P.claves[P.act.id];
+  for (const g of P.grupos) {
+    const k = g.id + ":" + g.estado + ":" + g.ronda;
+    if (P.busy.has(k)) continue;
+    if (g.estado === "enviado") {
+      if (!clave) continue;
+      P.busy.add(k);
+      const el = g.eleccion || svEleccionVacia(P.act), c = svCosteTotal(P.act, el), falta = svPendientes(P.act, el);
+      if (c > P.act.presupuesto || falta.length) {
+        await SVB.cambiarGrupoAdmin(P.sid, g.id, { estado: "editando", aviso: c > P.act.presupuesto ? "La estrategia supera el presupuesto." : "Faltan decisiones por tomar." });
+        continue;
+      }
+      const { total, detalle } = svPuntos(P.act, clave, el), n = svNumeros(P.act, total);
+      const h = (g.historial || []).concat([{ ronda: g.ronda, coste: c, puntos: total, numeros: n, detalle, eleccion: el, justif: g.justif || {}, fecha: new Date().toISOString() }]);
+      await SVB.cambiarGrupoAdmin(P.sid, g.id, { estado: "puntuado", puntos: total, numeros: n, sorteo: null, aviso: null, historial: h });
+    } else if (g.estado === "sorteo_pedido") {
+      P.busy.add(k);
+      const n = Math.min(g.numeros || 0, P.act.numeros), el = [...new Set((g.elegidos || []).map(Number))].filter((x) => x >= 1 && x <= P.act.numeros);
+      if (el.length !== n) { await SVB.cambiarGrupoAdmin(P.sid, g.id, { estado: "puntuado", aviso: `Hay que elegir exactamente ${n} números.` }); continue; }
+      const x = svAleatorio(P.act.numeros), gana = el.includes(x);
+      const h = (g.historial || []).slice(); if (h.length) Object.assign(h[h.length - 1], { elegidos: el, sorteo: x, resultado: gana ? "ganado" : "fallado" });
+      await SVB.cambiarGrupoAdmin(P.sid, g.id, { sorteo: x, estado: gana ? "ganado" : (g.ronda >= P.act.rondas ? "terminado" : "fallado"), historial: h, aviso: null });
+    }
+  }
+}
+
+/* ---------- Vistas ---------- */
+function vActividades() {
+  return `<section class="panel stack"><h2>Actividades y claves</h2>
+    <p class="small muted">La clave (puntos de cada opción) no está en la web pública: se carga aquí desde tu ordenador y se guarda en Firebase, donde solo tú puedes leerla.</p>
+    <table><thead><tr><th>Actividad</th><th>Clave</th><th></th></tr></thead><tbody>${P.acts.map((a) => `<tr><td>${esc(a.titulo)}</td><td>${P.claves[a.id] ? `<span class="pill ok">Cargada (${Object.keys(P.claves[a.id].puntos || {}).length} opciones)</span>` : `<span class="pill bad">Sin cargar</span>`}</td>
+      <td class="n"><label class="btn small">${P.claves[a.id] ? "Sustituir" : "Cargar"} clave<input type="file" accept=".json" data-key="${a.id}" hidden></label></td></tr>`).join("")}</tbody></table></section>`;
+}
+function vNueva() {
+  return `<section class="panel stack"><h2>Nueva sesión</h2><form id="nueva" class="row">
+    <select class="field" name="act">${P.acts.map((a) => `<option value="${a.id}">${esc(a.titulo)}</option>`).join("")}</select>
+    <input class="field" name="nombre" placeholder="Nombre (p. ej., BMSi 2026-27 · grupo A)" style="flex:1;min-width:220px" maxlength="80">
+    <button class="btn primary" type="submit">Crear sesión</button></form></section>`;
+}
+function vSesiones() {
+  const abiertas = P.sesiones.filter((s) => s.estado === "abierta"), cerradas = P.sesiones.filter((s) => s.estado !== "abierta");
+  const fila = (s) => `<tr><td class="num">${s.id}</td><td>${esc(s.nombre || "")}</td><td>${esc((P.acts.find((a) => a.id === s.actividad) || {}).titulo || s.actividad)}</td><td class="small muted">${new Date(s.creada).toLocaleString("es-ES")}</td><td class="n"><button class="btn small" data-open="${s.id}">Abrir</button></td></tr>`;
+  return `<section class="panel stack"><h2>Sesiones</h2>${P.sesiones.length ? `<div class="tablebox"><table><thead><tr><th>Código</th><th>Nombre</th><th>Actividad</th><th>Creada</th><th></th></tr></thead><tbody>${abiertas.map(fila).join("")}${cerradas.length ? `<tr><td colspan="5" class="small muted">Cerradas</td></tr>${cerradas.map(fila).join("")}` : ""}</tbody></table></div>` : `<p class="muted">Todavía no hay sesiones.</p>`}</section>`;
+}
+function vInicio() { return vActividades() + vNueva() + vSesiones(); }
+
+function enlace(sid) { return location.href.replace(/panel\.html.*$/, "") + `?s=${sid}${SVB.demo && new URLSearchParams(location.search).has("demo") ? "&demo" : ""}`; }
+function vGrupoDet(g) {
+  const h = g.historial || [];
+  const rondas = h.map((r) => {
+    const filas = r.detalle.map((d) => {
+      const b = P.act.bloques.find((x) => x.id === d.bloque), dec = b && b.decisiones.find((x) => x.id === d.decision), o = dec && (dec.opcional ? dec.opciones[0] : dec.opciones.find((x) => x.id === d.opcion));
+      return `<tr><td>${esc(b ? b.nombre : d.bloque)}</td><td>${esc(dec ? dec.nombre : d.decision)}</td><td>${esc(o ? (dec.opcional ? "Sí" : o.label) : d.opcion)}</td><td class="n ${d.puntos > 0 ? "pos" : d.puntos < 0 ? "neg" : ""}">${d.puntos > 0 ? "+" : ""}${d.puntos}</td></tr>`;
+    }).join("");
+    const js = Object.entries(r.justif || {}).filter(([, t]) => t && t.trim()).map(([b, t]) => `<div><span class="eyebrow">${esc((P.act.bloques.find((x) => x.id === b) || {}).nombre || b)}</span><div class="just">${esc(t)}</div></div>`).join("");
+    return `<div class="stack"><h3>Ronda ${r.ronda}: ${r.puntos} puntos → ${r.numeros} números · ${fmt(r.coste)}${r.sorteo ? ` · sorteo ${r.sorteo} (${r.resultado})` : ""}</h3>
+      <div class="tablebox"><table><thead><tr><th>Bloque</th><th>Decisión</th><th>Opción</th><th class="n">Puntos</th></tr></thead><tbody>${filas}</tbody></table></div>${js ? `<div class="stack">${js}</div>` : ""}</div>`;
+  }).join("");
+  return `<div class="det">${rondas || `<p class="muted">Aún no ha enviado ninguna estrategia. Gasto actual: ${fmt(g.coste || 0)}.</p>`}
+    <div class="row"><button class="btn small" data-reabrir="${g.id}">Reabrir edición (misma ronda)</button><button class="btn small" data-reset="${g.id}">Reiniciar grupo</button><button class="btn small ghost" data-borrar="${g.id}">Eliminar grupo</button></div></div>`;
+}
+function vSesion() {
+  const s = P.ses, gs = P.grupos.slice().sort((a, b) => String(a.nombre).localeCompare(String(b.nombre), "es", { numeric: true }));
+  const gan = gs.filter((g) => g.estado === "ganado").length;
+  const filas = gs.map((g) => { const [lab, cls] = ESTADOS[g.estado] || [g.estado, ""];
+    return `<tr><td colspan="7" style="padding:0"><details class="g" ${P.open.has(g.id) ? "open" : ""} data-g="${g.id}"><summary><table><tr>
+      <td style="width:22%"><b>${esc(g.nombre)}</b></td><td class="n" style="width:9%">${g.ronda}</td><td style="width:20%"><span class="pill ${cls}">${lab}</span></td>
+      <td class="n" style="width:14%">${fmt(g.coste || 0)}</td><td class="n" style="width:10%">${g.puntos ?? "—"}</td><td class="n" style="width:10%">${g.numeros ?? "—"}</td><td class="n" style="width:15%">${g.sorteo ? `${g.sorteo} ${g.estado === "ganado" ? "✓" : "✗"}` : "—"}</td></tr></table></summary>${vGrupoDet(g)}</details></td></tr>`; }).join("");
+  return `<section class="panel stack"><div class="row"><button class="btn ghost small" id="volver">← Sesiones</button><span class="spacer"></span>${s.estado === "abierta" ? `<button class="btn small" id="cerrar">Cerrar sesión</button>` : `<span class="pill">Cerrada</span>`}</div>
+      <div class="row" style="align-items:flex-end;gap:24px"><div><p class="eyebrow">Código para los grupos</p><div class="code">${P.sid}</div></div>
+      <div class="stack" style="flex:1;min-width:240px"><p><b>${esc(s.nombre || "")}</b> · ${esc(P.act.titulo.es)}</p><div class="row"><input class="field num small" id="link" readonly value="${esc(enlace(P.sid))}" style="flex:1"><button class="btn small" id="copiar">Copiar enlace</button></div></div></div>
+      ${P.claves[P.act.id] ? "" : `<p class="notice">Falta cargar la clave de esta actividad: sin ella no se pueden calcular los puntos.</p>`}
+      <label class="row small"><input type="checkbox" id="auto" ${P.auto ? "checked" : ""}> Árbitro automático: calcular puntos y hacer los sorteos en cuanto los grupos lo pidan (deja esta página abierta durante la clase).</label></section>
+    <section class="stack"><div class="kv"><div><b>${gs.length}</b><span>Grupos</span></div><div><b>${gs.filter((g) => g.estado === "editando").length}</b><span>Decidiendo</span></div><div><b>${gan}</b><span>Han ganado</span></div><div><b>${gs.filter((g) => g.estado === "terminado").length}</b><span>Sin rondas</span></div></div>
+      <div class="tablebox"><table><thead><tr><th style="width:22%">Grupo</th><th class="n" style="width:9%">Ronda</th><th style="width:20%">Estado</th><th class="n" style="width:14%">Gasto</th><th class="n" style="width:10%">Puntos</th><th class="n" style="width:10%">Números</th><th class="n" style="width:15%">Sorteo</th></tr></thead>
+      <tbody>${filas || `<tr><td colspan="7" class="muted">Esperando a que entren los grupos…</td></tr>`}</tbody></table></div>
+      <div class="row"><button class="btn" id="csv" ${gs.length ? "" : "disabled"}>Descargar CSV de decisiones</button><button class="btn" id="csvj" ${gs.length ? "" : "disabled"}>Descargar CSV de justificaciones</button><button class="btn ghost" id="json" ${gs.length ? "" : "disabled"}>JSON completo</button><span class="small muted">${esc(P.msg)}</span></div></section>`;
+}
+function render() { const m = $("#main"); m.innerHTML = P.sid ? vSesion() : vInicio(); }
+
+/* ---------- Exportación ---------- */
+function cell(v) { const s = v == null ? "" : String(v); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; }
+function save(name, text, type) { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+function csvDecisiones() {
+  const out = [["sesion", "actividad", "grupo", "ronda", "coste_ronda", "puntos_ronda", "numeros", "elegidos", "sorteo", "resultado", "bloque", "decision", "opcion", "puntos_opcion"].join(",")];
+  for (const g of P.grupos) for (const r of g.historial || []) for (const d of r.detalle) out.push([P.sid, P.act.id, g.nombre, r.ronda, r.coste, r.puntos, r.numeros, (r.elegidos || []).join(" "), r.sorteo || "", r.resultado || "", d.bloque, d.decision, d.opcion, d.puntos].map(cell).join(","));
+  return out.join("\n");
+}
+function csvJust() {
+  const out = [["sesion", "grupo", "ronda", "bloque", "justificacion"].join(",")];
+  for (const g of P.grupos) for (const r of g.historial || []) for (const [b, t] of Object.entries(r.justif || {})) if (t && t.trim()) out.push([P.sid, g.nombre, r.ronda, b, t].map(cell).join(","));
+  return out.join("\n");
+}
+
+/* ---------- Eventos ---------- */
+async function abrir(sid) {
+  P.sid = sid; P.ses = P.sesiones.find((s) => s.id === sid) || await SVB.sesion(sid); P.act = await svCargarActividad(P.ses.actividad); P.grupos = []; P.open = new Set();
+  SVB.verGrupos(sid, (gs) => { if (P.sid !== sid) return; P.grupos = gs; render(); arbitrar(); });
+  render();
+}
+document.addEventListener("click", async (e) => {
+  const t = e.target.closest("button"); if (!t) return;
+  try {
+    if (t.id === "signin") { const u = await SVB.entrarAdmin(); $("#who").textContent = `${u.email} · ${u.uid}`; await cargarActividades(); await cargarSesiones(); render(); return; }
+    if (t.dataset.open) return abrir(t.dataset.open);
+    if (t.id === "volver") { P.sid = null; await cargarSesiones(); return render(); }
+    if (t.id === "copiar") { try { await navigator.clipboard.writeText($("#link").value); P.msg = "Enlace copiado."; } catch (er) { $("#link").select(); } return render(); }
+    if (t.id === "cerrar") { await SVB.cerrarSesion(P.sid); P.ses.estado = "cerrada"; return render(); }
+    if (t.dataset.reabrir) return SVB.cambiarGrupoAdmin(P.sid, t.dataset.reabrir, { estado: "editando", aviso: null });
+    if (t.dataset.reset) return SVB.cambiarGrupoAdmin(P.sid, t.dataset.reset, { estado: "editando", ronda: 1, puntos: null, numeros: null, sorteo: null, elegidos: [], historial: [], aviso: null });
+    if (t.dataset.borrar) return SVB.borrarGrupo(P.sid, t.dataset.borrar);
+    const stamp = new Date().toISOString().slice(0, 10);
+    if (t.id === "csv") return save(`sortivia_${P.act.id}_${P.sid}_decisiones_${stamp}.csv`, csvDecisiones(), "text/csv");
+    if (t.id === "csvj") return save(`sortivia_${P.act.id}_${P.sid}_justificaciones_${stamp}.csv`, csvJust(), "text/csv");
+    if (t.id === "json") return save(`sortivia_${P.act.id}_${P.sid}_${stamp}.json`, JSON.stringify({ sesion: { id: P.sid, ...P.ses }, actividad: P.act.id, grupos: P.grupos }, null, 1), "application/json");
+  } catch (er) { const m = $("#err"); if (m) m.textContent = `Error: ${er.code || er.message}`; else { P.msg = `Error: ${er.code || er.message}`; render(); } }
+});
+document.addEventListener("toggle", (e) => { const d = e.target; if (d.dataset && d.dataset.g) { if (d.open) P.open.add(d.dataset.g); else P.open.delete(d.dataset.g); } }, true);
+document.addEventListener("change", async (e) => {
+  if (e.target.id === "auto") { P.auto = e.target.checked; return arbitrar(); }
+  if (e.target.dataset.key) {
+    const aid = e.target.dataset.key, f = e.target.files[0]; if (!f) return;
+    try { const k = JSON.parse(await f.text()); if (k.schema !== "sortivia-clave/1" || k.actividad !== aid) throw new Error("Este archivo no es la clave de esta actividad."); await SVB.guardarClave(aid, k); P.claves[aid] = k; render(); }
+    catch (er) { P.msg = er.message; render(); }
+  }
+});
+document.addEventListener("submit", async (e) => {
+  if (e.target.id !== "nueva") return; e.preventDefault();
+  const f = e.target, sid = await SVB.crearSesion({ actividad: f.act.value, nombre: f.nombre.value.trim() });
+  await cargarSesiones(); abrir(sid);
+});
+if (SVB.demo) $("#signin").click();
+</script>
+</body>
+</html>

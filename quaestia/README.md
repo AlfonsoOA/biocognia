@@ -31,7 +31,7 @@ Sin activar, la app no envía nada a ningún servidor. Activado, las respuestas 
 1. Firebase: proyecto con Firestore en región UE, Authentication con los métodos «Anónimo» y «Google», y `alfonsooa.github.io` en los dominios autorizados.
 2. Edita `firebase-config.js`: pega el bloque `firebaseConfig` en `config` (no es secreto) y deja `envio: false` de momento.
 3. Abre `https://alfonsooa.github.io/biocognia/quaestia/admin.html`, entra con tu cuenta de Google y copia el identificador que aparece.
-4. Copia `firestore.rules` en Firestore → Reglas, sustituye `PEGA_AQUI_TU_UID` por ese identificador y pulsa «Publicar».
+4. Copia `../firestore.rules` (en la raíz del repositorio) en Firestore → Reglas, sustituye `PEGA_AQUI_TU_UID` por ese identificador y pulsa «Publicar».
 5. Cuando tengas el visto bueno del comité, cambia `envio: false` por `envio: true` en `firebase-config.js`.
 
 **Grupo de prueba.** Entrando con `?grupo=PRUEBA`, la app envía los datos aunque `envio` esté en `false`. Sirve para comprobar el circuito completo sin datos de alumnos; desde `admin.html` se borran con «Borrar datos del grupo PRUEBA».

@@ -191,6 +191,7 @@ select { padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; b
 .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 500; }
 .pill.on { background: var(--ok-bg); color: var(--ok); } .pill.off { background: var(--sunk); color: var(--muted); }
 .spark { width: 100%; height: 80px; display: block; }
+footer a { color: inherit; }
 footer { border-top: 1px solid var(--line); padding-block: 22px; color: var(--muted); font-size: 0.84rem; }
 footer .wrap { display: flex; flex-direction: column; gap: 6px; }
 .sub-badge { font-size: 0.74rem; padding: 1px 8px; border-radius: 999px; background: var(--warn-bg); color: var(--ink); }
@@ -353,7 +354,7 @@ const I18N = {
     c_yes: "Acepto participar", c_no: "Prefiero no participar", c_later: "Puedes cambiar tu decisión cuando quieras en «Mi progreso».", c_on: "Participas en el estudio", c_off: "No participas en el estudio", c_toggle_on: "Participar", c_toggle_off: "Dejar de participar",
     x_title: "Exportar mis datos", x_text: "Genera un archivo con tus respuestas registradas mientras participabas en el estudio. Cada exportación lleva un código aleatorio nuevo; no incluye tu nombre ni tu correo.",
     x_json: "Descargar JSON", x_csv: "Descargar CSV", x_copy: "Copiar datos", x_copied: "Copiado.", x_copy_fail: "No se ha podido copiar: selecciona el texto y cópialo a mano.", x_none: "Aún no hay respuestas registradas para el estudio.", x_off: "Para exportar datos de investigación tienes que participar en el estudio.", x_week: "Semana de uso (desde tu primera prueba)", x_group: "Grupo", x_nogroup: "El estudio de investigación solo está abierto a grupos de la Universidad de Córdoba que entran por el enlace de su curso. Puedes usar QUAESTIA igualmente: tus resultados se guardan en este navegador y no se registra nada para el estudio.",
-    f_source: "Preguntas de la Guía de Bioquímica Metabólica (Universidad de Córdoba). Recurso educativo abierto.", f_eco: "Parte de BIOCOGNIA · Open Educational Technology", f_data: "Tus datos se guardan solo en este navegador.",
+    f_source: "Preguntas de la Guía de Bioquímica Metabólica (Universidad de Córdoba). Recurso educativo abierto.", f_eco: "Parte de BIOCOGNIA · Open Educational Technology", f_data: "Tus datos se guardan solo en este navegador.", f_admin: "Acceso del equipo investigador",
     en_draft: "", bl_names: { B1: "Recordar", B2: "Comprender", B3: "Aplicar", B4: "Analizar", B5: "Evaluar", B6: "Crear" },
   },
   en: {
@@ -387,7 +388,7 @@ const I18N = {
     c_yes: "I agree to take part", c_no: "I'd rather not take part", c_later: "You can change your decision at any time in “My progress”.", c_on: "You are taking part in the study", c_off: "You are not taking part in the study", c_toggle_on: "Take part", c_toggle_off: "Stop taking part",
     x_title: "Export my data", x_text: "Creates a file with the answers recorded while you were taking part in the study. Each export gets a new random code and does not include your name or email.",
     x_json: "Download JSON", x_csv: "Download CSV", x_copy: "Copy data", x_copied: "Copied.", x_copy_fail: "Copying failed: select the text and copy it by hand.", x_none: "No answers have been recorded for the study yet.", x_off: "To export research data you need to take part in the study.", x_week: "Week of use (since your first test)", x_group: "Group", x_nogroup: "The research study is open only to University of Córdoba groups who enter through their course link. You can still use QUAESTIA: your results are stored in this browser and nothing is recorded for the study.",
-    f_source: "Questions from the Metabolic Biochemistry Guide (University of Córdoba). Open educational resource.", f_eco: "Part of BIOCOGNIA · Open Educational Technology", f_data: "Your data are stored only in this browser.",
+    f_source: "Questions from the Metabolic Biochemistry Guide (University of Córdoba). Open educational resource.", f_eco: "Part of BIOCOGNIA · Open Educational Technology", f_data: "Your data are stored only in this browser.", f_admin: "Research team access",
     en_draft: "English translation under review", bl_names: { B1: "Remember", B2: "Understand", B3: "Apply", B4: "Analyze", B5: "Evaluate", B6: "Create" },
   },
 };
@@ -440,7 +441,7 @@ function renderChrome() {
   $("#tagline").textContent = T("tagline");
   $("#nav").innerHTML = VIEWS.map(([v, k]) => `<button type="button" data-go="${v}" ${S.view === v ? 'aria-current="page"' : ""}>${T(k)}</button>`).join("");
   for (const b of document.querySelectorAll(".lang button")) b.setAttribute("aria-pressed", b.dataset.lang === S.lang ? "true" : "false");
-  $("#foot").innerHTML = `<span>${T("f_source")}</span><span>${T("f_eco")} · v${APP_VERSION}</span><span>${T("f_data")}</span>`;
+  $("#foot").innerHTML = `<span>${T("f_source")}</span><span>${T("f_eco")} · v${APP_VERSION}</span><span>${T("f_data")} · <a href="admin.html" class="muted">${T("f_admin")}</a></span>`;
 }
 function render() {
   renderChrome();

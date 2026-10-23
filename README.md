@@ -1,5 +1,7 @@
 # BIOCOGNIA · Open Educational Technology
 
+**🌐 [Web](https://alfonsooa.github.io/biocognia/)** · **🧪 [QUAESTIA](https://alfonsooa.github.io/biocognia/quaestia/)** · **🔒 [Panel de datos del estudio](https://alfonsooa.github.io/biocognia/quaestia/admin.html)** (solo equipo investigador)
+
 Ecosistema de herramientas educativas abiertas para aprender Bioquímica, basadas en la taxonomía de Bloom.
 
 - **Autoría y desarrollo:** Alfonso Olaya Abril (Departamento de Bioquímica y Biología Molecular, Universidad de Córdoba).

@@ -5,7 +5,8 @@
    ============================================================ */
 "use strict";
 const SV_TIPOS = { "réplicas": "replicas", "replicas": "replicas", "por muestra": "muestra", "multiplicador": "mult", "fijo": "fijo", "por unidad": "unidad", "condiciones": "condiciones" };
-function svSlug(s) { return String(s).normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/[^\x00-\x7f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); }
+// Lo que va entre corchetes no forma parte del identificador: «de novo [SPAdes, Flye]» → de-novo.
+function svSlug(s) { s = String(s); s = s.replace(/\[[^\]]*\]/g, "").trim() || s; return s.normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/[^\x00-\x7f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); }
 function svNum(v) { if (typeof v === "number") return v; const s = String(v == null ? "" : v).trim().toLowerCase().replace(/^x/, "").replace(",", "."); return s ? Number(s) : 0; }
 function svTxt(en, es) { en = en == null ? "" : String(en).trim(); es = es ? String(es).trim() : ""; return { en, es: es || en }; }
 function svFilas(wb, nombre) { const ws = wb.Sheets[nombre]; return ws ? XLSX.utils.sheet_to_json(ws, { header: 1, defval: null, raw: true }) : null; }

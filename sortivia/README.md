@@ -3,7 +3,7 @@
 Actividades de toma de decisiones y gamificación basadas en la metodología **ESTOPA**. Parte de BIOCOGNIA · Open Educational Technology.
 
 - **Autoría y desarrollo:** Alfonso Olaya Abril (Departamento de Bioquímica y Biología Molecular, Universidad de Córdoba).
-- **Versión:** 0.6.0.
+- **Versión:** 0.6.1.
 
 ## Cómo funciona una actividad
 
@@ -38,6 +38,13 @@ Quien no tenga cuenta puede proponer una actividad desde `proponer.html`: envía
 ## Modo demostración
 
 Añadiendo `?demo` a la dirección (`…/sortivia/panel.html?demo` y `…/sortivia/?s=CÓDIGO&demo`), todo funciona sin servidor dentro de un mismo navegador: útil para probar una actividad con dos pestañas. `panel.html?demo&rol=profesor` simula una cuenta de profesor (el UID de demostración es `demo-profesor`).
+
+## Actualizar una actividad sin romperla
+
+- Precios, puntos, textos en español y el orden de las filas se cambian libremente.
+- Los identificadores salen de los textos en inglés (Bloque, Decisión, Opción). **Lo que va entre corchetes no cuenta**: «de novo [SPAdes, Flye]» → `de-novo`. Pon entre corchetes los programas o ejemplos que se quedan anticuados y podrás actualizarlos sin tocar las reglas.
+- Si cambias el resto del texto en inglés o borras una opción que usa una regla, el conversor avisa de qué regla falla.
+- No modifiques una actividad mientras haya una sesión en marcha con ella.
 
 ## Cómo se puntúa
 

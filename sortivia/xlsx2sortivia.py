@@ -32,7 +32,10 @@ RAPIDO = "--rapido" in sys.argv
 TIPOS = {"réplicas": "replicas", "replicas": "replicas", "por muestra": "muestra", "multiplicador": "mult", "fijo": "fijo", "por unidad": "unidad", "condiciones": "condiciones"}
 
 def slug(s):
-    s = unicodedata.normalize("NFKD", str(s)).encode("ascii", "ignore").decode().lower()
+    # Lo que va entre corchetes (p. ej., «de novo [SPAdes, Flye]») no forma parte del identificador:
+    # se pueden actualizar los programas sin romper las reglas.
+    s = re.sub(r"\[[^\]]*\]", "", str(s)).strip() or str(s)
+    s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower()
     return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
 def num(v):
     if isinstance(v, (int, float)): return float(v)

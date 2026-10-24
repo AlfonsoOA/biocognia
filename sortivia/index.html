@@ -80,7 +80,7 @@ const I = {
     win_t: "¡Misión cumplida!", win_d: (x) => `Ha salido el ${x}, uno de vuestros números. ¡Habéis salvado a la humanidad!`,
     lose_t: "La misión ha fracasado", lose_d: (x) => `Ha salido el ${x}, que no estaba entre vuestros números.`,
     retry: "Revisar la estrategia (siguiente ronda)", over_t: "Fin de la actividad", over_d: "Se han agotado las rondas. Comentad con el profesor qué decisiones han restado probabilidad.",
-    aviso: "Aviso del profesor", varias: "(podéis elegir varias)", formula: "Coste de cada ómica = condiciones × réplicas × (precio por muestra) × profundidad + costes fijos.", changed: "Cambios guardados", saving: "Guardando…", demo: "Modo demostración: los datos se guardan solo en este navegador.",
+    aviso: "Aviso del profesor", fb_wait: "Cuando el profesor lo publique, aquí veréis las mejores elecciones de cada etapa.", fb_t: "Las mejores elecciones", fb_d: "Vuestra estrategia de la última ronda, comparada con las opciones que más puntuaban en cada etapa. Es una guía por etapas: hacerlo todo no cabría en el presupuesto.", fb_dec: "Decisión", fb_mine: "Vuestra elección", fb_best: "Mejor opción", fb_notinc: "no lo incluisteis", fb_rules: "Incoherencias de vuestra estrategia:", varias: "(podéis elegir varias)", formula: "Coste de cada ómica = condiciones × réplicas × (precio por muestra) × profundidad + costes fijos.", changed: "Cambios guardados", saving: "Guardando…", demo: "Modo demostración: los datos se guardan solo en este navegador.",
     f: "SORTIVIA · Metodología ESTOPA · Parte de BIOCOGNIA · Open Educational Technology",
   },
   en: {
@@ -96,7 +96,7 @@ const I = {
     win_t: "Mission accomplished!", win_d: (x) => `${x} came up, one of your numbers. You have saved humanity!`,
     lose_t: "The mission has failed", lose_d: (x) => `${x} came up, which was not one of your numbers.`,
     retry: "Review the strategy (next round)", over_t: "End of the activity", over_d: "No rounds left. Discuss with the teacher which decisions lowered your probability.",
-    aviso: "Message from the teacher", varias: "(you may choose several)", formula: "Cost of each omics block = conditions × replicates × (price per sample) × depth + fixed costs.", changed: "Changes saved", saving: "Saving…", demo: "Demo mode: data are stored only in this browser.",
+    aviso: "Message from the teacher", fb_wait: "When the teacher publishes it, you will see the best choices for each stage here.", fb_t: "The best choices", fb_d: "Your strategy from the last round compared with the highest-scoring options at each stage. It is a stage-by-stage guide: doing everything would not fit the budget.", fb_dec: "Decision", fb_mine: "Your choice", fb_best: "Best option", fb_notinc: "not included", fb_rules: "Inconsistencies in your strategy:", varias: "(you may choose several)", formula: "Cost of each omics block = conditions × replicates × (price per sample) × depth + fixed costs.", changed: "Changes saved", saving: "Saving…", demo: "Demo mode: data are stored only in this browser.",
     f: "SORTIVIA · ESTOPA methodology · Part of BIOCOGNIA · Open Educational Technology",
   },
 };
@@ -109,7 +109,7 @@ function chrome() {
   $("#tagline").textContent = T("tagline");
   for (const b of document.querySelectorAll(".lang button")) b.setAttribute("aria-pressed", b.dataset.lang === S.lang);
   $("#who").textContent = S.g && S.sid ? `${S.g.nombre} · ${S.sid}` : "";
-  $("#foot").innerHTML = `${T("f")} · v${SV_VERSION}${SVB.demo ? ` · <span class="pill go">${T("demo")}</span>` : ""}`;
+  $("#foot").innerHTML = `${T("f")} · v${SV_VERSION} · <a href="panel.html">${S.lang === "en" ? "Teachers" : "Profesorado"}</a> · <a href="proponer.html">${S.lang === "en" ? "Propose an activity" : "Proponer una actividad"}</a>${SVB.demo ? ` · <span class="pill go">${T("demo")}</span>` : ""}`;
 }
 
 /* ---------- Entrar ---------- */
@@ -137,30 +137,30 @@ function vBudget() {
 }
 function vBlock(b) {
   const req = S.act.bloques_obligatorios.includes(b.id), sel = S.el.bloques[b.id], on = req || sel.incluido;
-  const head = `<header><h2>${esc(b.nombre)}</h2>${req ? `<span class="pill">${T("required")}</span>` : `<label class="toggle"><input type="checkbox" data-inc="${b.id}" ${on ? "checked" : ""}>${T("include")}</label>`}
+  const head = `<header><h2>${esc(svT(b.nombre, S.lang))}</h2>${req ? `<span class="pill">${T("required")}</span>` : `<label class="toggle"><input type="checkbox" data-inc="${b.id}" ${on ? "checked" : ""}>${T("include")}</label>`}
     ${on ? `<span class="sub" data-sub="${b.id}" title="${T("subtotal")}">${svEur(svCosteBloque(b, sel, svCondiciones(S.act, S.el)), S.lang)}</span>` : ""}</header>`;
   if (!on) return `<section class="blk">${head}</section>`;
   const decs = b.decisiones.map((d) => {
     if (d.tipo === "contador") {
       const o = d.opciones[0], n = Math.max(0, Number(sel.dec[d.id]) || 0);
-      return `<div class="dec"><span class="lbl">${esc(d.nombre)}</span><div class="opts counter"><button type="button" class="btn small" data-cnt="-1" data-b="${b.id}" data-d="${d.id}" aria-label="−" ${n ? "" : "disabled"}>−</button><b class="num" aria-live="polite">${n}</b><button type="button" class="btn small" data-cnt="1" data-b="${b.id}" data-d="${d.id}" aria-label="+">+</button><span class="small muted">${esc(o.label)} · ${svPrecio(o, S.lang)}</span></div></div>`;
+      return `<div class="dec"><span class="lbl">${esc(svT(d.nombre, S.lang))}</span><div class="opts counter"><button type="button" class="btn small" data-cnt="-1" data-b="${b.id}" data-d="${d.id}" aria-label="−" ${n ? "" : "disabled"}>−</button><b class="num" aria-live="polite">${n}</b><button type="button" class="btn small" data-cnt="1" data-b="${b.id}" data-d="${d.id}" aria-label="+">+</button><span class="small muted">${esc(svT(o.label, S.lang))} · ${svPrecio(o, S.lang)}</span></div></div>`;
     }
     let last = null;
     const opts = d.opciones.map((o) => {
-      const g = o.grupo && o.grupo !== last ? `<span class="grp">${esc(o.grupo)}</span>` : ""; last = o.grupo || last;
+      const gt = svT(o.grupo, S.lang), g = gt && gt !== last ? `<span class="grp">${esc(gt)}</span>` : ""; last = gt || last;
       const name = `${b.id}__${d.id}`;
       const multi = d.tipo === "multiple", v = sel.dec[d.id], checked = multi ? (Array.isArray(v) ? v : (v ? [v] : [])).includes(o.id) : v === o.id, pr = svPrecio(o, S.lang);
-      return `${g}<label class="opt"><input type="${multi ? "checkbox" : "radio"}" name="${name}" data-b="${b.id}" data-d="${d.id}" value="${esc(o.id)}" ${checked ? "checked" : ""}><span>${esc(o.label)}${pr ? ` <i>${pr}</i>` : ""}</span></label>`;
+      return `${g}<label class="opt"><input type="${multi ? "checkbox" : "radio"}" name="${name}" data-b="${b.id}" data-d="${d.id}" value="${esc(o.id)}" ${checked ? "checked" : ""}><span>${esc(svT(o.label, S.lang))}${pr ? ` <i>${pr}</i>` : ""}</span></label>`;
     }).join("");
-    return `<div class="dec"><span class="lbl">${esc(d.nombre)}${d.tipo === "multiple" ? `<br><span class="small muted">${T("varias")}</span>` : ""}</span><div class="opts">${opts}</div></div>`;
+    return `<div class="dec"><span class="lbl">${esc(svT(d.nombre, S.lang))}${d.tipo === "multiple" ? `<br><span class="small muted">${T("varias")}</span>` : ""}</span><div class="opts">${opts}</div></div>`;
   }).join("");
   return `<section class="blk on">${head}<div class="body">${decs}
     <label class="stack small">${T("just")}<textarea class="field" data-just="${b.id}" placeholder="${T("just_ph")}">${esc(S.just[b.id] || "")}</textarea></label></div></section>`;
 }
 function vEditor() {
-  const falta = svPendientes(S.act, S.el), over = coste() > S.act.presupuesto;
+  const falta = svPendientes(S.act, S.el, S.lang), over = coste() > S.act.presupuesto;
   const prev = (S.g.historial || []).slice(-1)[0];
-  return `<div class="stack-lg"><div class="stack"><p class="eyebrow">ESTOPA</p><h1>${esc(S.act.titulo[S.lang] || S.act.titulo.es)}</h1><p class="muted">${esc(S.act.resumen[S.lang] || S.act.resumen.es)}</p>
+  return `<div class="stack-lg"><div class="stack"><p class="eyebrow">ESTOPA</p><h1>${esc(S.act.titulo[S.lang] || S.act.titulo.es)}</h1><p class="muted">${esc(S.act.resumen[S.lang] || S.act.resumen.es)}</p>${S.act.autor ? `<p class="small muted">${S.lang === "en" ? "Activity designed by" : "Actividad diseñada por"} ${esc(S.act.autor)}</p>` : ""}
       ${S.g.ronda > 1 && prev ? `<p class="notice">${T("prev", prev.puntos, prev.numeros)}</p>` : ""}${S.g.aviso ? `<p class="notice"><b>${T("aviso")}:</b> ${esc(S.g.aviso)}</p>` : ""}</div>
     ${vBudget()}
     <div class="stack">${S.act.bloques.map(vBlock).join("")}</div>
@@ -187,14 +187,34 @@ function vDraw() {
   } else if (st === "sorteo_pedido") {
     bottom = `<div class="wait"><span class="dot"></span><span>${T("drawing")}</span></div>`;
   } else if (st === "ganado") {
-    bottom = `<p class="result ok">${T("win_t")}</p><p>${T("win_d", g.sorteo)}</p>`;
+    bottom = `<p class="result ok">${T("win_t")}</p><p>${T("win_d", g.sorteo)}</p>` + vFeedback();
   } else {
     bottom = `<p class="result bad">${T("lose_t")}</p><p>${T("lose_d", g.sorteo)}</p>` +
-      (st === "fallado" ? `<div><button class="btn primary" id="retry">${T("retry")}</button></div>` : `<p class="notice">${T("over_t")}. ${T("over_d")}</p>`);
+      (st === "fallado" ? `<div><button class="btn primary" id="retry">${T("retry")}</button></div>` : `<p class="notice">${T("over_t")}. ${T("over_d")}</p>` + vFeedback());
   }
   return `<div class="stack-lg"><div class="stack">${top}</div><div class="draw ${st === "sorteo_pedido" ? "spin" : ""}">${cells}</div><div class="stack">${bottom}</div></div>`;
 }
 
+/* ---------- Retroalimentación final (cuando el profesor la publica) ---------- */
+function vFeedback() {
+  const sol = S.ses && S.ses.solucion; if (!sol) return `<p class="small muted">${T("fb_wait")}</p>`;
+  const h = (S.g.historial || []).slice(-1)[0], el = (h && h.eleccion) || S.el;
+  const filas = S.act.bloques.map((b) => {
+    const inc = svIncluido(S.act, el, b), sel = el.bloques[b.id] || { dec: {} };
+    const rows = b.decisiones.filter((d) => d.tipo !== "contador").map((d) => {
+      const best = sol.decisiones.find((x) => x.bloque === b.id && x.decision === d.id); if (!best) return "";
+      const mine = inc ? svElegidas(d, sel.dec[d.id]) : [];
+      const ok = mine.length && best.mejores.some((m) => mine.some((o) => o.id === m.id)) && mine.every((o) => best.mejores.some((m) => m.id === o.id));
+      const lbl = (id) => esc(svT((d.opciones.find((o) => o.id === id) || {}).label, S.lang) || id);
+      return `<tr><td>${esc(svT(d.nombre, S.lang))}</td><td>${mine.length ? mine.map((o) => esc(svT(o.label, S.lang))).join(", ") : `<span class="muted">—</span>`}</td><td>${best.mejores.map((m) => lbl(m.id)).join(", ")}</td><td class="n">${mine.length ? (ok ? "✓" : "✗") : ""}</td></tr>`;
+    }).join("");
+    return `<tr><th colspan="4" style="padding-top:14px">${esc(svT(b.nombre, S.lang))}${inc ? "" : ` <span class="muted small">· ${T("fb_notinc")}</span>`}</th></tr>${rows}`;
+  }).join("");
+  const reglas = h ? h.detalle.filter((d) => d.regla && d.puntos < 0) : [];
+  return `<section class="stack" style="margin-top:12px"><h2>${T("fb_t")}</h2><p class="small muted">${T("fb_d")}</p>
+    <div class="tablebox"><table><thead><tr><th>${T("fb_dec")}</th><th>${T("fb_mine")}</th><th>${T("fb_best")}</th><th></th></tr></thead><tbody>${filas}</tbody></table></div>
+    ${reglas.length ? `<div class="notice"><b>${T("fb_rules")}</b><ul style="margin:6px 0 0;padding-left:1.2em">${reglas.filter((r) => r.puntos < 0).map((r) => `<li>${esc(svT(r.texto, S.lang))}</li>`).join("")}</ul></div>` : ""}</section>`;
+}
 function render() {
   chrome();
   if (!S.g) return;
@@ -269,7 +289,8 @@ document.addEventListener("submit", async (e) => {
 });
 
 async function empezar(sid, ses) {
-  S.sid = sid; S.act = await svCargarActividad(ses.actividad);
+  S.sid = sid; S.ses = ses; S.act = await svCargarActividad(ses.actividad);
+  SVB.verSesion(sid, (se) => { if (!se) return; const antes = S.ses && S.ses.solucion; S.ses = se; if (S.g && ["ganado", "terminado"].includes(S.g.estado) && !!antes !== !!se.solucion) render(); });
   history.replaceState(null, "", `?s=${sid}${SVB.demo && new URLSearchParams(location.search).has("demo") ? "&demo" : ""}`);
   SVB.verGrupo(sid, (g) => {
     if (!g) return;

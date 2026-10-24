@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORTIVIA · Proponer una actividad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="sortivia.css">
+<style>
+main.wrap { max-width: 860px; }
+html:not([lang="en"]) [data-l="en"], html[lang="en"] [data-l="es"] { display: none !important; }
+a.btn { text-decoration: none; }
+form.stack label.chk { flex-direction: row; align-items: flex-start; gap: 8px; }
+ol.pasos { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; }
+code { font-family: var(--f-mono); font-size: .88em; background: var(--sunk); padding: 1px 5px; border-radius: 5px; }
+form.stack label { display: flex; flex-direction: column; gap: 4px; font-size: .9rem; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="mark" href="./">SORTIVIA<small data-l="es">Proponer una actividad</small><small data-l="en">Propose an activity</small></a>
+  <span class="spacer"></span>
+  <div class="lang" role="group" aria-label="Idioma / Language"><button data-lang="es">ES</button><button data-lang="en">EN</button></div>
+</div></header>
+<main class="wrap stack-lg">
+
+<section class="stack">
+  <p class="eyebrow">ESTOPA · SORTIVIA</p>
+  <h1 data-l="es">Diseña tu propia actividad</h1><h1 data-l="en">Design your own activity</h1>
+  <p data-l="es">Una actividad de SORTIVIA es un reto con presupuesto: los grupos toman decisiones (técnicas, réplicas, controles…), cada opción cuesta dinero y vale puntos, y los puntos se convierten en números para un sorteo. Ganar depende de decidir bien, no de gastar más. Cualquier docente puede diseñar una y proponerla: se revisa, se publica en abierto y se acredita a su autor.</p>
+  <p data-l="en">A SORTIVIA activity is a challenge with a budget: groups make decisions (techniques, replicates, controls…), each option costs money and is worth points, and points become numbers for a draw. Winning depends on deciding well, not on spending more. Any teacher can design one and propose it: it is reviewed, published openly and credited to its author.</p>
+  <div class="row"><a class="btn primary" href="plantilla/Plantilla_SORTIVIA.xlsx" download><span data-l="es">Descargar la plantilla en blanco</span><span data-l="en">Download the blank template</span></a>
+    <a class="btn" href="plantilla/Ejemplo_SORTIVIA.xlsx" download><span data-l="es">Ejemplo resuelto (El misterio del lago verde)</span><span data-l="en">Worked example (The green lake mystery)</span></a></div>
+</section>
+
+<section class="panel stack">
+  <h2 data-l="es">Cómo se rellena</h2><h2 data-l="en">How to fill it in</h2>
+  <ol class="pasos" data-l="es">
+    <li><b>Actividad.</b> Título, resumen, presupuesto, rondas y bloques obligatorios. <code>puntos_objetivo</code> (recomendado 99) son los puntos que obtendrá la mejor estrategia posible: el resto se reescala en proporción.</li>
+    <li><b>Bloques.</b> Cada bloque es una parte de la estrategia (p. ej., metagenómica). Los bloques con el mismo <i>objetivo</i> compiten: solo cuenta el mejor, pero los errores de cualquiera restan.</li>
+    <li><b>Opciones.</b> Una fila por opción, con su tipo de coste (réplicas, por muestra, multiplicador, fijo, por unidad o condiciones), su precio y sus puntos. Las trampas llevan puntos negativos. En las decisiones «múltiples» cuenta la mejor opción positiva y restan todas las negativas.</li>
+    <li><b>Reglas (opcional).</b> Combinaciones que suman o restan, p. ej. <code>metabolomics &amp; sampling-design/design=problem-only</code>. La pestaña Instrucciones explica la sintaxis.</li>
+    <li><b>Textos en dos idiomas.</b> Inglés en las columnas principales y español en las columnas (ES).</li>
+  </ol>
+  <ol class="pasos" data-l="en">
+    <li><b>Activity.</b> Title, summary, budget, rounds and mandatory blocks. <code>puntos_objetivo</code> (99 recommended) is the score of the best possible strategy; everything else is rescaled proportionally.</li>
+    <li><b>Blocks.</b> Each block is part of the strategy (e.g., metagenomics). Blocks sharing an <i>objective</i> compete: only the best one counts, but mistakes in any of them subtract.</li>
+    <li><b>Options.</b> One row per option, with its cost type (replicates, per sample, multiplier, fixed, per unit or conditions), price and points. Traps get negative points. In “multiple” decisions the best positive option counts and all negative ones subtract.</li>
+    <li><b>Rules (optional).</b> Combinations that add or subtract, e.g. <code>metabolomics &amp; sampling-design/design=problem-only</code>. The Instructions sheet explains the syntax.</li>
+    <li><b>Two languages.</b> English in the main columns and Spanish in the (ES) columns.</li>
+  </ol>
+  <p class="small muted" data-l="es">Coste de cada bloque = condiciones × réplicas × (suma de precios por muestra) × multiplicadores + fijos + unidades × precio por unidad.</p>
+  <p class="small muted" data-l="en">Block cost = conditions × replicates × (sum of per-sample prices) × multipliers + fixed costs + units × unit price.</p>
+</section>
+
+<section class="panel stack">
+  <h2 data-l="es">Enviar la propuesta</h2><h2 data-l="en">Submit your proposal</h2>
+  <p class="notice small" data-l="es"><b>Importante:</b> el Excel contiene la clave (los puntos de cada opción). No lo subas a ningún sitio público: envíalo por correo. En GitHub, abre solo la propuesta (sin el archivo).</p>
+  <p class="notice small" data-l="en"><b>Important:</b> the spreadsheet contains the answer key (the points of each option). Do not upload it anywhere public: send it by email. On GitHub, open only the proposal (without the file).</p>
+  <form class="stack" id="f">
+    <div class="cols">
+      <label><span data-l="es">Nombre y apellidos</span><span data-l="en">Full name</span><input class="field" name="nombre" required maxlength="80"></label>
+      <label><span data-l="es">Centro o universidad</span><span data-l="en">Institution</span><input class="field" name="centro" maxlength="120"></label>
+      <label><span data-l="es">Título de la actividad</span><span data-l="en">Activity title</span><input class="field" name="titulo" required maxlength="120"></label>
+      <label><span data-l="es">Asignatura y nivel</span><span data-l="en">Course and level</span><input class="field" name="asignatura" maxlength="120"></label>
+    </div>
+    <label><span data-l="es">Breve descripción (qué tienen que decidir los grupos y qué se aprende)</span><span data-l="en">Short description (what groups decide and what they learn)</span><textarea class="field" name="desc" rows="4" maxlength="1500"></textarea></label>
+    <label class="chk small"><input type="checkbox" name="ok" required style="margin-top:3px"><span><span data-l="es">Soy autor/a de la actividad y acepto que, si se publica, se distribuya en abierto dentro de BIOCOGNIA con mi nombre como autor/a.</span><span data-l="en">I am the author of this activity and agree that, if published, it will be distributed openly within BIOCOGNIA with my name as its author.</span></span></label>
+    <div class="row">
+      <button class="btn primary" type="submit" data-via="correo"><span data-l="es">Enviar por correo (con el Excel adjunto)</span><span data-l="en">Send by email (attach the spreadsheet)</span></button>
+      <button class="btn" type="submit" data-via="github"><span data-l="es">Abrir la propuesta en GitHub</span><span data-l="en">Open the proposal on GitHub</span></button>
+    </div>
+    <p class="small muted" data-l="es">«Enviar por correo» abre tu programa de correo con el mensaje preparado: <b>adjunta el Excel antes de enviarlo</b>. Si no se abre, escribe a <a href="mailto:b22olaba@uco.es">b22olaba@uco.es</a>.</p>
+    <p class="small muted" data-l="en">“Send by email” opens your mail app with the message ready: <b>attach the spreadsheet before sending</b>. If nothing opens, write to <a href="mailto:b22olaba@uco.es">b22olaba@uco.es</a>.</p>
+  </form>
+</section>
+
+<section class="panel stack">
+  <h2 data-l="es">Qué pasa después</h2><h2 data-l="en">What happens next</h2>
+  <ol class="pasos" data-l="es">
+    <li>Se revisa la hoja: que se convierta sin errores, que la mejor estrategia tenga sentido y que precios y puntos sean realistas. Si hay que cambiar algo, te escribimos.</li>
+    <li>Se publica en SORTIVIA y aparece en la lista de actividades del panel para cualquier docente autorizado.</li>
+    <li>La actividad muestra «Actividad diseñada por …» con tu nombre, y apareces en los créditos del repositorio.</li>
+  </ol>
+  <ol class="pasos" data-l="en">
+    <li>The sheet is reviewed: it must convert without errors, the best strategy must make sense and prices and points must be realistic. If something needs changing, we will contact you.</li>
+    <li>It is published in SORTIVIA and appears in the panel's activity list for every authorised teacher.</li>
+    <li>The activity shows “Activity designed by …” with your name, and you are listed in the repository credits.</li>
+  </ol>
+  <p class="small" data-l="es"><b>¿Ya tienes cuenta en el panel?</b> Puedes cargar la hoja tú mismo en <a href="panel.html">el panel</a> («Crear actividad desde Excel»): verás los errores y la estrategia óptima al momento, podrás probarla con tus grupos y proponerla con un clic. Para tener cuenta, entra en el panel con Google y envía el identificador que te muestra a <a href="mailto:b22olaba@uco.es">b22olaba@uco.es</a>.</p>
+  <p class="small" data-l="en"><b>Already have a panel account?</b> Load the sheet yourself in <a href="panel.html">the panel</a> (“Create activity from Excel”): you will see errors and the optimal strategy instantly, test it with your groups and propose it with one click. To get an account, sign in to the panel with Google and send the identifier it shows to <a href="mailto:b22olaba@uco.es">b22olaba@uco.es</a>.</p>
+</section>
+</main>
+<footer><div class="wrap small muted">SORTIVIA · BIOCOGNIA</div></footer>
+<script>
+"use strict";
+const REPO = "AlfonsoOA/biocognia", CORREO = "b22olaba@uco.es";
+let lang = "es";
+try { lang = localStorage.getItem("sv.lang") || ((navigator.language || "es").startsWith("es") ? "es" : "en"); } catch (e) {}
+function setLang(l) { lang = l; document.documentElement.lang = l; for (const b of document.querySelectorAll(".lang button")) b.setAttribute("aria-pressed", b.dataset.lang === l); try { localStorage.setItem("sv.lang", l); } catch (e) {} }
+setLang(lang);
+document.querySelector(".lang").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) setLang(b.dataset.lang); });
+let via = "correo";
+for (const b of document.querySelectorAll("button[data-via]")) b.addEventListener("click", () => { via = b.dataset.via; });
+document.getElementById("f").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const f = e.target, v = (k) => f[k].value.trim();
+  const titulo = `[SORTIVIA] ${v("titulo")}`;
+  const cuerpo = [
+    `Actividad / Activity: ${v("titulo")}`,
+    `Autor/a / Author: ${v("nombre")}`,
+    v("centro") ? `Centro / Institution: ${v("centro")}` : null,
+    v("asignatura") ? `Asignatura / Course: ${v("asignatura")}` : null,
+    "", v("desc"), "",
+    "Acepto que, si se publica, se distribuya en abierto dentro de BIOCOGNIA con mi nombre como autor/a.",
+  ].filter((x) => x !== null).join("\n");
+  if (via === "github") {
+    const body = cuerpo + "\n\n(La hoja Excel con la clave se envía por correo, no aquí. / The spreadsheet with the key is sent by email, not here.)";
+    window.open(`https://github.com/${REPO}/issues/new?labels=propuesta-sortivia&title=${encodeURIComponent(titulo)}&body=${encodeURIComponent(body)}`, "_blank", "noopener");
+  } else {
+    location.href = `mailto:${CORREO}?subject=${encodeURIComponent(titulo)}&body=${encodeURIComponent(cuerpo + "\n\n[Adjunta aquí la hoja Excel / Attach the spreadsheet here]")}`;
+  }
+});
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # BIOCOGNIA · Open Educational Technology
 
-**🌐 [Web](https://alfonsooa.github.io/biocognia/)** · **🧪 [QUAESTIA](https://alfonsooa.github.io/biocognia/quaestia/)** · **🔒 [Panel de datos del estudio](https://alfonsooa.github.io/biocognia/quaestia/admin.html)** · **🎲 [Panel de SORTIVIA](https://alfonsooa.github.io/biocognia/sortivia/panel.html)** (solo profesorado)
+**🌐 [Web](https://alfonsooa.github.io/biocognia/)** · **🧪 [QUAESTIA](https://alfonsooa.github.io/biocognia/quaestia/)** · **🔒 [Panel de datos del estudio](https://alfonsooa.github.io/biocognia/quaestia/admin.html)** · **🎲 [Panel de SORTIVIA](https://alfonsooa.github.io/biocognia/sortivia/panel.html)** (solo profesorado) · **✍️ [Proponer una actividad de SORTIVIA](https://alfonsooa.github.io/biocognia/sortivia/proponer.html)**
 
 Ecosistema de herramientas educativas abiertas para aprender Bioquímica, basadas en la taxonomía de Bloom.
 
@@ -9,7 +9,7 @@ Ecosistema de herramientas educativas abiertas para aprender Bioquímica, basada
 | Aplicación | Función | Base metodológica | Carpeta | Estado |
 | --- | --- | --- | --- | --- |
 | QUAESTIA | Evaluación y autoaprendizaje | Guía de Bioquímica Metabólica | `quaestia/` | v0.3 |
-| SORTIVIA | Gamificación y toma de decisiones | ESTOPA | `sortivia/` | v0.1 |
+| SORTIVIA | Gamificación y toma de decisiones | ESTOPA | `sortivia/` | v0.6 |
 | DEAba Digital | Aprendizaje activo | DEAba | `deaba-digital/` | En desarrollo |
 
 Cada aplicación es independiente (su propia carpeta, versión y registro), pero comparten portada, diseño, procedimiento de consentimiento y formato de exportación.

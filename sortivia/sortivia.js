@@ -3,7 +3,7 @@
    BIOCOGNIA · Open Educational Technology · Alfonso Olaya Abril
    ============================================================ */
 "use strict";
-const SV_VERSION = "0.2.1";
+const SV_VERSION = "0.6.0";
 
 /* ---------- Cálculo de costes y puntos ---------- */
 // eleccion = { bloques: { [bloque]: { incluido: bool, dec: { [decision]: idOpcion | número (contadores) } } } }
@@ -40,13 +40,13 @@ function svCosteTotal(act, eleccion) {
   const nc = svCondiciones(act, eleccion);
   return act.bloques.reduce((s, b) => s + (svIncluido(act, eleccion, b) ? svCosteBloque(b, eleccion.bloques[b.id], nc) : 0), 0);
 }
-function svPendientes(act, eleccion) {
+function svPendientes(act, eleccion, lang = "es") {
   // Decisiones de opción única sin responder en los bloques incluidos (los contadores pueden quedarse en 0).
   const falta = [];
   for (const b of act.bloques) {
     if (!svIncluido(act, eleccion, b)) continue;
     const sel = eleccion.bloques[b.id] || { dec: {} };
-    for (const d of b.decisiones) if (d.tipo !== "contador" && !svElegidas(d, sel.dec && sel.dec[d.id]).length) falta.push(`${b.nombre} · ${d.nombre}`);
+    for (const d of b.decisiones) if (d.tipo !== "contador" && !svElegidas(d, sel.dec && sel.dec[d.id]).length) falta.push(`${svT(b.nombre, lang)} · ${svT(d.nombre, lang)}`);
   }
   return falta;
 }
@@ -61,29 +61,68 @@ function svTermino(act, eleccion, t) {
   }
   return t.no ? !ok : ok;
 }
+// Puntos de una decisión. En las de varias opciones cuenta la mejor positiva y restan todas las negativas.
+function svPuntosDecision(d, v, P, bid) {
+  if (d.tipo === "contador") {
+    if (!(Number(v) > 0)) return { p: 0, det: [] };
+    const p = Number(P[`${bid}/${d.id}/${d.opciones[0].id}`] || 0);
+    return { p, det: [{ opcion: d.opciones[0].id, cantidad: Number(v), puntos: p, cuenta: true }] };
+  }
+  const ch = svElegidas(d, v).map((o) => ({ opcion: o.id, puntos: Number(P[`${bid}/${d.id}/${o.id}`] || 0) }));
+  if (d.tipo !== "multiple") { ch.forEach((x) => (x.cuenta = true)); return { p: ch.reduce((s, x) => s + x.puntos, 0), det: ch }; }
+  const pos = ch.filter((x) => x.puntos > 0), best = pos.length ? pos.reduce((a, b) => (b.puntos > a.puntos ? b : a)).opcion : null;
+  ch.forEach((x) => (x.cuenta = x.puntos < 0 || x.opcion === best || (x.puntos === 0 && !pos.length)));
+  return { p: ch.filter((x) => x.cuenta).reduce((s, x) => s + x.puntos, 0), det: ch };
+}
+// Total bruto: los bloques se agrupan por objetivo y cuenta el mejor de cada uno; de los demás solo restan los errores.
+// Las reglas con «bloque» suman a ese bloque; las demás, al total.
 function svPuntos(act, clave, eleccion) {
-  let total = 0; const detalle = [];
+  const P = clave.puntos, porObj = {}, detalle = [];
+  const reglasOk = (clave.reglas || []).filter((r) => r.terminos.length && r.terminos.every((t) => svTermino(act, eleccion, t)));
   for (const b of act.bloques) {
     if (!svIncluido(act, eleccion, b)) continue;
     const sel = eleccion.bloques[b.id] || { dec: {} };
+    let sb = 0; const det = [];
     for (const d of b.decisiones) {
-      const v = sel.dec && sel.dec[d.id];
-      if (d.tipo === "contador") {
-        if (!(Number(v) > 0)) continue;
-        const p = Number(clave.puntos[`${b.id}/${d.id}/${d.opciones[0].id}`] || 0);
-        total += p; detalle.push({ bloque: b.id, decision: d.id, opcion: d.opciones[0].id, cantidad: Number(v), puntos: p });
-        continue;
-      }
-      for (const o of svElegidas(d, v)) {
-        const p = Number(clave.puntos[`${b.id}/${d.id}/${o.id}`] || 0);
-        total += p; detalle.push({ bloque: b.id, decision: d.id, opcion: o.id, puntos: p });
-      }
+      const r = svPuntosDecision(d, sel.dec && sel.dec[d.id], P, b.id);
+      sb += r.p; for (const x of r.det) det.push({ bloque: b.id, decision: d.id, ...x });
+    }
+    for (const r of reglasOk) if (r.bloque === b.id) { sb += r.puntos; det.push({ regla: r.id, texto: r.texto, bloque: b.id, puntos: r.puntos, cuenta: true }); }
+    const obj = (b.objetivo && b.objetivo.id) || b.id;
+    (porObj[obj] = porObj[obj] || []).push({ sb, id: b.id, det });
+  }
+  let total = 0;
+  for (const lst of Object.values(porObj)) {
+    const mejor = lst.reduce((a, b) => (b.sb > a.sb ? b : a));
+    total += mejor.sb;
+    for (const x of lst) {
+      if (x === mejor) { detalle.push(...x.det); continue; }
+      for (const e of x.det) { const cuenta = e.cuenta && e.puntos < 0; if (cuenta) total += e.puntos; detalle.push({ ...e, cuenta, noCuentaBloque: true }); }
     }
   }
-  for (const r of clave.reglas || []) {
-    if (r.terminos.length && r.terminos.every((t) => svTermino(act, eleccion, t))) { total += r.puntos; detalle.push({ regla: r.id, texto: r.texto, puntos: r.puntos }); }
-  }
+  for (const r of reglasOk) if (!r.bloque) { total += r.puntos; detalle.push({ regla: r.id, texto: r.texto, puntos: r.puntos, cuenta: true }); }
   return { total, detalle };
+}
+// Escala: la mejor estrategia posible dentro del presupuesto obtiene escala.objetivo puntos (p. ej., 99).
+function svEscalar(clave, bruto) {
+  const e = clave.escala; if (!e || !e.maximo) return Math.floor(bruto);
+  const v = (bruto * e.objetivo) / e.maximo;
+  return v > 0 ? Math.min(e.objetivo, Math.floor(v)) : Math.floor(v);
+}
+// Textos en dos idiomas ({es, en}) o texto simple.
+function svT(x, lang) { return x && typeof x === "object" ? (x[lang] || x.es || x.en || "") : (x == null ? "" : String(x)); }
+// Mejores elecciones por decisión según la clave: en las de opción única, la(s) de más puntos;
+// en las de varias, todas las que suman puntos (de más a menos). Es una guía por etapa, no un plan que quepa en el presupuesto.
+function svSolucion(act, clave) {
+  const decisiones = [];
+  for (const b of act.bloques) for (const d of b.decisiones) {
+    const pts = d.opciones.map((o) => ({ id: o.id, puntos: Number(clave.puntos[`${b.id}/${d.id}/${o.id}`] || 0) }));
+    let mejores;
+    if (d.tipo === "multiple") { mejores = pts.filter((x) => x.puntos > 0).sort((x, y) => y.puntos - x.puntos); if (!mejores.length) mejores = pts.filter((x) => x.puntos === Math.max(...pts.map((p) => p.puntos))); }
+    else { const m = Math.max(...pts.map((x) => x.puntos)); mejores = pts.filter((x) => x.puntos === m); }
+    decisiones.push({ bloque: b.id, decision: d.id, mejores });
+  }
+  return { decisiones, reglas: (clave.reglas || []).map((r) => ({ texto: r.texto, puntos: r.puntos })) };
 }
 function svNumeros(act, puntos) { return Math.max(0, Math.min(act.numeros, Math.floor(puntos / act.puntos_por_numero))); }
 function svEleccionVacia(act) { const e = { bloques: {} }; for (const b of act.bloques) e.bloques[b.id] = { incluido: act.bloques_obligatorios.includes(b.id), dec: {} }; return e; }
@@ -99,7 +138,15 @@ function svPrecio(o, lang) {
   if (c.tipo === "condiciones") return en ? `${c.valor} condition${c.valor > 1 ? "s" : ""}` : `${c.valor} ${c.valor > 1 ? "condiciones" : "condición"}`;
   return c.valor ? e(c.valor) : "";
 }
-async function svCargarActividad(id) { const r = await fetch(`actividades/${encodeURIComponent(id)}.json`); if (!r.ok) throw new Error("actividad " + id); return r.json(); }
+// Actividades: primero las del repositorio (archivos estáticos); si no está, las subidas desde el panel (Firebase).
+async function svCargarActividad(id) {
+  try { const r = await fetch(`actividades/${encodeURIComponent(id)}.json`); if (r.ok) return await r.json(); } catch (e) {}
+  const a = await SVB.actividad(id); if (!a || !a.datos) throw new Error("actividad " + id);
+  return { ...a.datos, autor: a.autor_nombre || null };
+}
+async function svIndiceRepo() { try { const r = await fetch("actividades/index.json"); return r.ok ? await r.json() : []; } catch (e) { return []; } }
+// Cuentas con permisos de administración (las mismas que en las reglas de Firestore).
+const SV_ADMINS = ["cMZwT1gAQHa5EmohnmYV9YmY4XT2"];
 
 /* ---------- Almacenamiento: Firebase o demo local ---------- */
 // Interfaz común:
@@ -115,7 +162,8 @@ function svComprobar(v, ruta = "") {
 }
 function svBackendDemo() {
   const KEY = "sortivia.demo";
-  const read = () => { try { return JSON.parse(localStorage.getItem(KEY)) || { sesiones: {}, claves: {} }; } catch (e) { return { sesiones: {}, claves: {} }; } };
+  const vacio = () => ({ sesiones: {}, claves: {}, actividades: {}, profesores: {} });
+  const read = () => { try { return { ...vacio(), ...(JSON.parse(localStorage.getItem(KEY)) || {}) }; } catch (e) { return vacio(); } };
   const write = (d) => { localStorage.setItem(KEY, JSON.stringify(d)); window.dispatchEvent(new Event("sv-demo")); };
   let me; try { me = sessionStorage.getItem("sv.uid") || ("demo-" + svCodigo(8)); sessionStorage.setItem("sv.uid", me); } catch (e) { me = "demo-" + svCodigo(8); }
   const watchers = [];
@@ -130,13 +178,26 @@ function svBackendDemo() {
     async unirse(sid, nombre) { const d = read(); const s = d.sesiones[sid]; if (!s || s.estado !== "abierta") throw new Error("sesion"); s.grupos[me] = s.grupos[me] || { nombre, ronda: 1, estado: "editando", eleccion: null, justif: {}, coste: 0, actualizado: Date.now() }; s.grupos[me].nombre = nombre; write(d); },
     verGrupo(sid, cb) { watch(() => { const s = read().sesiones[sid]; cb(s && s.grupos[me] ? s.grupos[me] : null); }); },
     async cambiarGrupo(sid, patch) { svComprobar(patch); const d = read(); Object.assign(d.sesiones[sid].grupos[me], patch, { actualizado: Date.now() }); write(d); },
-    async entrarAdmin() { return { uid: me, email: "demo" }; },
-    async crearSesion(datos) { const d = read(); const sid = svCodigo(5); d.sesiones[sid] = { ...datos, estado: "abierta", creada: Date.now(), grupos: {} }; write(d); return sid; },
-    async sesiones() { const d = read(); return Object.entries(d.sesiones).map(([id, s]) => ({ id, ...s, grupos: undefined })).sort((a, b) => b.creada - a.creada); },
+    // En demo, «?rol=profesor» simula una cuenta de profesor (sin ella, administrador).
+    async entrarAdmin() { const prof = new URLSearchParams(location.search).get("rol") === "profesor"; const uid = prof ? "demo-profesor" : "demo-admin"; me = uid; return { uid, email: prof ? "profesor@demo" : "admin@demo", nombre: prof ? "Profesora de prueba" : "Administrador (demo)" }; },
+    async perfil(uid) { return read().profesores[uid] || null; },
+    async rol(uid) { if (uid === "demo-admin") return "admin"; const p = read().profesores[uid]; return p && p.activo ? "profesor" : null; },
+    async profesores() { return Object.entries(read().profesores).map(([uid, p]) => ({ uid, ...p })); },
+    async guardarProfesor(uid, datos) { svComprobar(datos); const d = read(); d.profesores[uid] = { ...(d.profesores[uid] || {}), ...datos }; write(d); },
+    async borrarProfesor(uid) { const d = read(); delete d.profesores[uid]; write(d); },
+    async actividades() { return Object.entries(read().actividades).map(([id, a]) => ({ id, ...a })); },
+    async actividad(aid) { return read().actividades[aid] || null; },
+    async guardarActividad(aid, doc) { svComprobar(doc); const d = read(); d.actividades[aid] = doc; write(d); },
+    async cambiarActividad(aid, patch) { const d = read(); Object.assign(d.actividades[aid], patch); write(d); },
+    async borrarActividad(aid) { const d = read(); delete d.actividades[aid]; delete d.claves[aid]; write(d); },
+    async crearSesion(datos) { const d = read(); const sid = svCodigo(5); d.sesiones[sid] = { ...datos, propietario: me, estado: "abierta", creada: Date.now(), grupos: {} }; write(d); return sid; },
+    async sesiones(todas) { const d = read(); return Object.entries(d.sesiones).map(([id, s]) => ({ id, ...s, grupos: undefined })).filter((s) => todas || s.propietario === me).sort((a, b) => b.creada - a.creada); },
     verGrupos(sid, cb) { watch(() => { const s = read().sesiones[sid]; cb(s ? Object.entries(s.grupos).map(([id, g]) => ({ id, ...g })) : []); }); },
     async cambiarGrupoAdmin(sid, gid, patch) { svComprobar(patch); const d = read(); Object.assign(d.sesiones[sid].grupos[gid], patch); write(d); },
     async borrarGrupo(sid, gid) { const d = read(); delete d.sesiones[sid].grupos[gid]; write(d); },
     async cerrarSesion(sid) { const d = read(); d.sesiones[sid].estado = "cerrada"; write(d); },
+    async cambiarSesion(sid, patch) { svComprobar(patch); const d = read(); Object.assign(d.sesiones[sid], patch); write(d); },
+    verSesion(sid, cb) { watch(() => { const s = read().sesiones[sid]; cb(s ? { ...s, grupos: undefined } : null); }); },
     async clave(aid) { return read().claves[aid] || null; },
     async guardarClave(aid, clave) { const d = read(); d.claves[aid] = clave; write(d); },
   };
@@ -165,13 +226,32 @@ function svBackendFirebase() {
     },
     verGrupo(sid, cb) { F().onSnapshot(gref(sid, auth.currentUser.uid), (d) => cb(d.exists() ? d.data() : null), () => cb(null)); },
     async cambiarGrupo(sid, patch) { await F().updateDoc(gref(sid, auth.currentUser.uid), { ...patch, actualizado: F().serverTimestamp() }); },
-    async entrarAdmin() { await ready; const r = await M.authM.signInWithPopup(auth, new M.authM.GoogleAuthProvider()); return { uid: r.user.uid, email: r.user.email }; },
-    async crearSesion(datos) { const sid = svCodigo(5); await F().setDoc(F().doc(db, "sesiones", sid), { ...datos, estado: "abierta", creada: Date.now() }); return sid; },
-    async sesiones() { const q = await F().getDocs(F().collection(db, "sesiones")); return q.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => b.creada - a.creada); },
+    async entrarAdmin() { await ready; const r = await M.authM.signInWithPopup(auth, new M.authM.GoogleAuthProvider()); return { uid: r.user.uid, email: r.user.email, nombre: r.user.displayName || "" }; },
+    async perfil(uid) { try { const p = await F().getDoc(F().doc(db, "profesores", uid)); return p.exists() ? p.data() : null; } catch (e) { return null; } },
+    async rol(uid) {
+      if (SV_ADMINS.includes(uid)) return "admin";
+      try { const p = await F().getDoc(F().doc(db, "profesores", uid)); return p.exists() && p.data().activo ? "profesor" : null; } catch (e) { return null; }
+    },
+    async profesores() { const q = await F().getDocs(F().collection(db, "profesores")); return q.docs.map((d) => ({ uid: d.id, ...d.data() })); },
+    async guardarProfesor(uid, datos) { await F().setDoc(F().doc(db, "profesores", uid), datos, { merge: true }); },
+    async borrarProfesor(uid) { await F().deleteDoc(F().doc(db, "profesores", uid)); },
+    async actividades() { const q = await F().getDocs(F().collection(db, "actividades")); return q.docs.map((d) => ({ id: d.id, ...d.data() })); },
+    async actividad(aid) { const s = await F().getDoc(F().doc(db, "actividades", aid)); return s.exists() ? s.data() : null; },
+    async guardarActividad(aid, doc) { await F().setDoc(F().doc(db, "actividades", aid), doc); },
+    async cambiarActividad(aid, patch) { await F().updateDoc(F().doc(db, "actividades", aid), patch); },
+    async borrarActividad(aid) { await F().deleteDoc(F().doc(db, "claves", aid)).catch(() => {}); await F().deleteDoc(F().doc(db, "actividades", aid)); },
+    async crearSesion(datos) { const sid = svCodigo(5); await F().setDoc(F().doc(db, "sesiones", sid), { ...datos, propietario: auth.currentUser.uid, estado: "abierta", creada: Date.now() }); return sid; },
+    async sesiones(todas) {
+      const col = F().collection(db, "sesiones");
+      const q = await F().getDocs(todas ? col : F().query(col, F().where("propietario", "==", auth.currentUser.uid)));
+      return q.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => b.creada - a.creada);
+    },
     verGrupos(sid, cb) { F().onSnapshot(F().collection(db, "sesiones", sid, "grupos"), (q) => cb(q.docs.map((d) => ({ id: d.id, ...d.data() })))); },
     async cambiarGrupoAdmin(sid, gid, patch) { await F().updateDoc(gref(sid, gid), patch); },
     async borrarGrupo(sid, gid) { await F().deleteDoc(gref(sid, gid)); },
     async cerrarSesion(sid) { await F().updateDoc(F().doc(db, "sesiones", sid), { estado: "cerrada" }); },
+    async cambiarSesion(sid, patch) { await F().updateDoc(F().doc(db, "sesiones", sid), patch); },
+    verSesion(sid, cb) { F().onSnapshot(F().doc(db, "sesiones", sid), (d) => cb(d.exists() ? d.data() : null), () => {}); },
     async clave(aid) { const s = await F().getDoc(F().doc(db, "claves", aid)); return s.exists() ? s.data() : null; },
     async guardarClave(aid, clave) { await F().setDoc(F().doc(db, "claves", aid), clave); },
   };

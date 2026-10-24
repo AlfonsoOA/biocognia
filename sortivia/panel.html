@@ -19,19 +19,26 @@ details.g > summary::-webkit-details-marker { display: none; }
 .det { padding: 10px 0 4px; display: flex; flex-direction: column; gap: 10px; font-size: .9rem; }
 .det table td, .det table th { padding: 4px 6px; }
 .pos { color: var(--ok); } .neg { color: var(--bad); }
-tr.regla td { background: var(--warn-bg); }
+tr.regla td { background: var(--warn-bg); } tr.nocuenta td { opacity: .55; } tr.nocuenta td.n { text-decoration: line-through; }
 .just { background: var(--sunk); border-radius: 8px; padding: 8px 10px; white-space: pre-wrap; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tabs button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.acc { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.uid { font-family: var(--f-mono); font-size: .8rem; word-break: break-all; }
+progress { width: 100%; height: 10px; accent-color: var(--accent); }
+ul.err { margin: 0; padding-left: 20px; color: var(--bad); font-size: .9rem; }
+.plan td, .plan th { font-size: .85rem; padding: 4px 6px; }
 </style>
 </head>
 <body>
 <header class="bar"><div class="wrap">
-  <a class="mark" href="./">SORTIVIA<small>Panel del profesor</small></a>
+  <a class="mark" href="./">SORTIVIA<small>Panel del profesorado</small></a>
   <span class="small muted spacer" id="who"></span>
 </div></header>
 <main class="wrap stack-lg" id="main">
   <section class="panel stack" id="login">
-    <p>Panel del profesor: crea sesiones, sigue a los grupos en directo y haz de árbitro (calcula los puntos y los sorteos). Solo funciona con la cuenta autorizada.</p>
-    <div class="row"><button class="btn primary" id="signin">Entrar con Google</button></div>
+    <p>Panel del profesorado: crea sesiones, sigue a los grupos en directo, haz de árbitro (puntos y sorteos) y convierte tus hojas de claves en actividades. Hace falta una cuenta autorizada por el administrador.</p>
+    <div class="row"><button class="btn primary" id="signin">Entrar con Google</button><a class="btn ghost" href="proponer.html">¿Quieres proponer una actividad?</a></div>
     <p class="small" id="err" role="alert" style="color:var(--bad)"></p>
   </section>
 </main>
@@ -40,16 +47,31 @@ tr.regla td { background: var(--warn-bg); }
 <script src="sortivia.js"></script>
 <script>
 "use strict";
-const P = { acts: [], claves: {}, sesiones: [], sid: null, ses: null, act: null, grupos: [], auto: true, busy: new Set(), open: new Set(), msg: "" };
+const P = { rol: null, uid: null, email: "", nombre: "", vista: "inicio", acts: [], fsActs: [], repo: [], claves: {}, sesiones: [], profs: [], conv: null,
+  sid: null, ses: null, act: null, grupos: [], auto: true, busy: new Set(), open: new Set(), msg: "" };
 const ESTADOS = { editando: ["Decidiendo", ""], enviado: ["Enviada", "go"], puntuado: ["Eligiendo números", "go"], sorteo_pedido: ["Sorteo pedido", "go"], ganado: ["Ganado", "ok"], fallado: ["Fallado", "bad"], terminado: ["Terminado", "bad"] };
+const ESTACT = { publicada: ["Publicada", "ok"], propuesta: ["Propuesta", "go"], borrador: ["Borrador", ""] };
 const fmt = (n) => svEur(n, "es");
+const admin = () => P.rol === "admin";
 $("#foot").innerHTML = `SORTIVIA · panel · v${SV_VERSION}${SVB.demo ? ` · <span class="pill go">Modo demostración: todo se guarda en este navegador</span>` : ""}`;
 
+/* ---------- Carga de datos ---------- */
 async function cargarActividades() {
-  const r = await fetch("actividades/index.json"); P.acts = r.ok ? await r.json() : [];
-  for (const a of P.acts) P.claves[a.id] = await SVB.clave(a.id).catch(() => null);
+  P.repo = await svIndiceRepo();
+  P.fsActs = await SVB.actividades().catch(() => []);
+  const enRepo = new Set(P.repo.map((a) => a.id));
+  P.acts = P.repo.map((a) => ({ id: a.id, titulo: a.titulo, origen: "repo", estado: "publicada" }));
+  for (const a of P.fsActs) {
+    if (enRepo.has(a.id)) continue;
+    if (!admin() && a.estado !== "publicada" && a.autor !== P.uid) continue;
+    P.acts.push({ id: a.id, titulo: (a.datos || {}).titulo || a.id, origen: "panel", estado: a.estado, autor: a.autor, autor_nombre: a.autor_nombre || "", actualizado: a.actualizado });
+  }
+  P.claves = {};
+  await Promise.all(P.acts.map(async (a) => { P.claves[a.id] = await SVB.clave(a.id).catch(() => null); }));
 }
-async function cargarSesiones() { P.sesiones = await SVB.sesiones().catch(() => []); }
+async function cargarSesiones() { P.sesiones = await SVB.sesiones(admin()).catch(() => []); }
+async function cargarProfes() { P.profs = admin() ? await SVB.profesores().catch(() => []) : []; }
+const nombreProf = (uid) => uid === P.uid ? "Tú" : ((P.profs.find((p) => p.uid === uid) || {}).nombre || (uid ? uid.slice(0, 8) + "…" : "—"));
 
 /* ---------- Árbitro ---------- */
 async function arbitrar() {
@@ -72,9 +94,9 @@ async function arbitrarGrupo(g, k) {
         await SVB.cambiarGrupoAdmin(P.sid, g.id, { estado: "editando", aviso: c > P.act.presupuesto ? "La estrategia supera el presupuesto." : "Faltan decisiones por tomar." });
         return;
       }
-      const { total, detalle } = svPuntos(P.act, clave, el), n = svNumeros(P.act, total);
-      const h = (g.historial || []).concat([{ ronda: g.ronda, coste: c, puntos: total, numeros: n, detalle, eleccion: el, justif: g.justif || {}, fecha: new Date().toISOString() }]);
-      await SVB.cambiarGrupoAdmin(P.sid, g.id, { estado: "puntuado", puntos: total, numeros: n, sorteo: null, aviso: null, historial: h });
+      const { total, detalle } = svPuntos(P.act, clave, el), pts = svEscalar(clave, total), n = svNumeros(P.act, pts);
+      const h = (g.historial || []).concat([{ ronda: g.ronda, coste: c, puntos: pts, puntos_brutos: total, numeros: n, detalle, eleccion: el, justif: g.justif || {}, fecha: new Date().toISOString() }]);
+      await SVB.cambiarGrupoAdmin(P.sid, g.id, { estado: "puntuado", puntos: pts, numeros: n, sorteo: null, aviso: null, historial: h });
     } else if (g.estado === "sorteo_pedido") {
       P.busy.add(k);
       const n = Math.min(g.numeros || 0, P.act.numeros), el = [...new Set((g.elegidos || []).map(Number))].filter((x) => x >= 1 && x <= P.act.numeros);
@@ -86,37 +108,143 @@ async function arbitrarGrupo(g, k) {
   }
 }
 
-/* ---------- Vistas ---------- */
+
+/* ---------- Vistas: inicio ---------- */
+function vTabs() {
+  const t = [["inicio", "Sesiones y actividades"], ["conversor", "Crear actividad desde Excel"]];
+  if (admin()) t.push(["profesorado", "Profesorado"]);
+  return `<nav class="tabs" aria-label="Secciones">${t.map(([v, l]) => `<button class="btn small" data-vista="${v}" aria-pressed="${P.vista === v}">${l}</button>`).join("")}</nav>`;
+}
 function vActividades() {
-  return `<section class="panel stack"><h2>Actividades y claves</h2>
-    <p class="small muted">La clave (puntos de cada opción) no está en la web pública: se carga aquí desde tu ordenador y se guarda en Firebase, donde solo tú puedes leerla.</p>
-    <table><thead><tr><th>Actividad</th><th>Clave</th><th></th></tr></thead><tbody>${P.acts.map((a) => `<tr><td>${esc(a.titulo)}</td><td>${P.claves[a.id] ? `<span class="pill ok">Cargada (${Object.keys(P.claves[a.id].puntos || {}).length} opciones)</span>` : `<span class="pill bad">Sin cargar</span>`}</td>
-      <td class="n"><label class="btn small">${P.claves[a.id] ? "Sustituir" : "Cargar"} clave<input type="file" accept=".json" data-key="${a.id}" hidden></label></td></tr>`).join("")}</tbody></table></section>`;
+  const filas = P.acts.map((a) => {
+    const k = P.claves[a.id], [lab, cls] = ESTACT[a.estado] || [a.estado, ""], mia = a.autor === P.uid, acc = [];
+    if (a.origen === "repo") { if (admin()) acc.push(`<label class="btn small">${k ? "Sustituir" : "Cargar"} clave<input type="file" accept=".json" data-key="${a.id}" hidden></label>`); }
+    else {
+      if (admin() && a.estado !== "publicada") acc.push(`<button class="btn small primary" data-pub="${a.id}">Publicar</button>`);
+      if (admin() && a.estado === "propuesta" && !mia) acc.push(`<button class="btn small" data-dev="${a.id}">Devolver al autor</button>`);
+      if (admin() && a.estado === "publicada") acc.push(`<button class="btn small" data-dev="${a.id}">Retirar</button>`);
+      if (!admin() && mia && a.estado === "borrador") acc.push(`<button class="btn small primary" data-prop="${a.id}">Proponer</button>`);
+      if (!admin() && mia && a.estado === "propuesta") acc.push(`<button class="btn small" data-dev="${a.id}">Retirar propuesta</button>`);
+      if (k) acc.push(`<button class="btn small ghost" data-dl="${a.id}">JSON</button>`);
+      if (admin() || (mia && a.estado !== "publicada")) acc.push(`<button class="btn small ghost" data-delact="${a.id}">Eliminar</button>`);
+    }
+    const origen = a.origen === "repo" ? "Repositorio" : `Panel · ${esc(a.autor_nombre || nombreProf(a.autor))}`;
+    return `<tr><td>${esc(svT(a.titulo, "es"))}<div class="small muted">${origen}</div></td><td><span class="pill ${cls}">${lab}</span></td>
+      <td>${k ? `<span class="pill ok">Clave (${Object.keys(k.puntos || {}).length})</span>` : `<span class="pill bad">Sin clave</span>`}</td><td class="n"><div class="acc">${acc.join("")}</div></td></tr>`;
+  }).join("");
+  const nota = admin()
+    ? "Las propuestas del profesorado aparecen aquí: revísalas (JSON, o creando una sesión de prueba) y publícalas. Publicada, cualquier profesor autorizado puede usarla en sus sesiones."
+    : "Tus borradores solo los ves tú; puedes probarlos en una sesión. Cuando estén listos, «Proponer» los envía al administrador para que los revise y los publique con tu nombre.";
+  return `<section class="panel stack"><h2>Actividades</h2><p class="small muted">${nota} Las claves (puntos de cada opción) nunca se publican en la web: solo las lee el profesorado autorizado.</p>
+    <div class="tablebox"><table><thead><tr><th>Actividad</th><th>Estado</th><th>Clave</th><th></th></tr></thead><tbody>${filas || `<tr><td colspan="4" class="muted">No hay actividades.</td></tr>`}</tbody></table></div>
+    <div class="row"><button class="btn" data-vista="conversor">Crear actividad desde una hoja Excel</button><a class="btn ghost" href="plantilla/Plantilla_SORTIVIA.xlsx" download>Plantilla en blanco</a><a class="btn ghost" href="proponer.html">Instrucciones</a></div></section>`;
 }
 function vNueva() {
+  const usables = P.acts.filter((a) => a.estado === "publicada" || a.autor === P.uid || admin());
   return `<section class="panel stack"><h2>Nueva sesión</h2><form id="nueva" class="row">
-    <select class="field" name="act">${P.acts.map((a) => `<option value="${a.id}">${esc(a.titulo)}</option>`).join("")}</select>
+    <select class="field" name="act">${usables.map((a) => `<option value="${a.id}">${esc(svT(a.titulo, "es"))}${a.estado !== "publicada" ? " (sin publicar: solo para pruebas)" : ""}</option>`).join("")}</select>
     <input class="field" name="nombre" placeholder="Nombre (p. ej., BMSi 2026-27 · grupo A)" style="flex:1;min-width:220px" maxlength="80">
     <button class="btn primary" type="submit">Crear sesión</button></form></section>`;
 }
 function vSesiones() {
   const abiertas = P.sesiones.filter((s) => s.estado === "abierta"), cerradas = P.sesiones.filter((s) => s.estado !== "abierta");
-  const fila = (s) => `<tr><td class="num">${s.id}</td><td>${esc(s.nombre || "")}</td><td>${esc((P.acts.find((a) => a.id === s.actividad) || {}).titulo || s.actividad)}</td><td class="small muted">${new Date(s.creada).toLocaleString("es-ES")}</td><td class="n"><button class="btn small" data-open="${s.id}">Abrir</button></td></tr>`;
-  return `<section class="panel stack"><h2>Sesiones</h2>${P.sesiones.length ? `<div class="tablebox"><table><thead><tr><th>Código</th><th>Nombre</th><th>Actividad</th><th>Creada</th><th></th></tr></thead><tbody>${abiertas.map(fila).join("")}${cerradas.length ? `<tr><td colspan="5" class="small muted">Cerradas</td></tr>${cerradas.map(fila).join("")}` : ""}</tbody></table></div>` : `<p class="muted">Todavía no hay sesiones.</p>`}</section>`;
+  const cols = admin() ? 6 : 5;
+  const fila = (s) => `<tr><td class="num">${s.id}</td><td>${esc(s.nombre || "")}</td><td>${esc(svT((P.acts.find((a) => a.id === s.actividad) || {}).titulo, "es") || s.actividad)}</td>${admin() ? `<td class="small">${esc(nombreProf(s.propietario))}</td>` : ""}<td class="small muted">${new Date(s.creada).toLocaleString("es-ES")}</td><td class="n"><button class="btn small" data-open="${s.id}">Abrir</button></td></tr>`;
+  return `<section class="panel stack"><h2>${admin() ? "Sesiones (todas)" : "Tus sesiones"}</h2>${P.sesiones.length ? `<div class="tablebox"><table><thead><tr><th>Código</th><th>Nombre</th><th>Actividad</th>${admin() ? "<th>Profesor</th>" : ""}<th>Creada</th><th></th></tr></thead><tbody>${abiertas.map(fila).join("")}${cerradas.length ? `<tr><td colspan="${cols}" class="small muted">Cerradas</td></tr>${cerradas.map(fila).join("")}` : ""}</tbody></table></div>` : `<p class="muted">Todavía no hay sesiones.</p>`}</section>`;
 }
-function vInicio() { return vActividades() + vNueva() + vSesiones(); }
+function vMsg() { return P.msg ? `<p class="notice small" role="status">${esc(P.msg)}</p>` : ""; }
+function vInicio() { return vTabs() + vMsg() + vNueva() + vSesiones() + vActividades(); }
 
+/* ---------- Vistas: profesorado (solo administrador) ---------- */
+function vProfesorado() {
+  const filas = P.profs.slice().sort((a, b) => String(a.nombre).localeCompare(String(b.nombre), "es")).map((p) => `<tr><td><b>${esc(p.nombre || "")}</b><div class="small muted">${esc(p.correo || "")}</div></td><td class="uid">${esc(p.uid)}</td>
+    <td>${p.activo ? `<span class="pill ok">Autorizado</span>` : `<span class="pill bad">Desactivado</span>`}</td>
+    <td class="n"><div class="acc"><button class="btn small" data-tprof="${esc(p.uid)}">${p.activo ? "Desactivar" : "Activar"}</button><button class="btn small ghost" data-dprof="${esc(p.uid)}">Eliminar</button></div></td></tr>`).join("");
+  return vTabs() + vMsg() + `<section class="panel stack"><h2>Profesorado autorizado</h2>
+    <p class="small muted">Cada profesor entra en este panel con su cuenta de Google. Si no está autorizado, el panel le muestra su identificador (UID) para que te lo envíe; pégalo aquí. Un profesor autorizado puede crear sus propias sesiones (solo ve las suyas y sus grupos), usar las actividades publicadas y convertir y proponer actividades nuevas. No ve los datos de QUAESTIA.</p>
+    <div class="tablebox"><table><thead><tr><th>Profesor</th><th>UID</th><th>Estado</th><th></th></tr></thead><tbody>${filas || `<tr><td colspan="4" class="muted">Todavía no has autorizado a nadie.</td></tr>`}</tbody></table></div></section>
+    <section class="panel stack"><h3>Autorizar a un profesor</h3><form id="nprof" class="stack">
+      <div class="row"><input class="field" name="uid" placeholder="UID (lo ve al entrar en el panel)" required pattern="[A-Za-z0-9_-]{6,128}" style="flex:2;min-width:240px">
+      <input class="field" name="nombre" placeholder="Nombre y apellidos" required maxlength="80" style="flex:1;min-width:180px">
+      <input class="field" name="correo" type="email" placeholder="Correo (opcional)" maxlength="120" style="flex:1;min-width:180px"></div>
+      <div class="row"><button class="btn primary" type="submit">Autorizar</button></div></form></section>`;
+}
+
+/* ---------- Vistas: conversor de hojas Excel ---------- */
+function choque(aid) {
+  if (P.repo.some((a) => a.id === aid)) return { error: `Ya hay una actividad del repositorio con el id «${aid}». Cambia el parámetro «id» en la pestaña Actividad.` };
+  const ex = P.fsActs.find((a) => a.id === aid);
+  if (!ex) return {};
+  if (!admin() && ex.autor !== P.uid) return { error: `Ya existe una actividad de otra persona con el id «${aid}». Cambia el parámetro «id» en la pestaña Actividad.` };
+  if (!admin() && ex.estado === "publicada") return { error: `Tu actividad «${aid}» ya está publicada. Para cambiarla, escribe al administrador (o usa otro id).` };
+  return { aviso: `Ya existe «${aid}» (${ex.estado}${ex.autor !== P.uid ? `, de ${ex.autor_nombre || "otra persona"}` : ""}): al guardar se sustituirá.`, ex };
+}
+function planFilas(act, el) {
+  const nc = svCondiciones(act, el), out = [];
+  for (const b of act.bloques) {
+    if (!svIncluido(act, el, b)) continue;
+    const sel = el.bloques[b.id], cb = svCosteBloque(b, sel, nc);
+    b.decisiones.forEach((d, i) => {
+      const v = sel.dec[d.id];
+      const txt = d.tipo === "contador" ? (Number(v) > 0 ? `${Number(v)} ×` : "—") : svElegidas(d, v).map((o) => svT(o.label, "es")).join(" + ");
+      out.push(`<tr><td>${i === 0 ? `<b>${esc(svT(b.nombre, "es"))}</b>` : ""}</td><td>${esc(svT(d.nombre, "es"))}</td><td>${esc(txt)}</td><td class="n">${i === 0 ? fmt(cb) : ""}</td></tr>`);
+    });
+  }
+  return out.join("");
+}
+function vConversor() {
+  const c = P.conv;
+  let cuerpo = "";
+  if (c && c.fase === "cargando") cuerpo = `<p class="muted">Leyendo la hoja…</p>`;
+  else if (c && c.errores && c.errores.length) cuerpo = `<div class="stack"><p><b>La hoja «${esc(c.archivo)}» tiene ${c.errores.length} problema${c.errores.length > 1 ? "s" : ""}.</b> Corrígelos en el Excel y vuelve a cargarlo:</p><ul class="err">${c.errores.slice(0, 40).map((e) => `<li>${esc(e)}</li>`).join("")}</ul>${c.errores.length > 40 ? `<p class="small muted">…y ${c.errores.length - 40} más.</p>` : ""}</div>`;
+  else if (c) {
+    const a = c.act, nd = a.bloques.reduce((s, b) => s + b.decisiones.length, 0), no = a.bloques.reduce((s, b) => s + b.decisiones.reduce((t, d) => t + d.opciones.length, 0), 0);
+    const ch = choque(a.id);
+    cuerpo = `<div class="stack"><p><b>${esc(svT(a.titulo, "es"))}</b> <span class="small muted">· id <span class="num">${esc(a.id)}</span></span></p>
+      <div class="kv"><div><b>${a.bloques.length}</b><span>Bloques</span></div><div><b>${nd}</b><span>Decisiones</span></div><div><b>${no}</b><span>Opciones</span></div><div><b>${c.clave.reglas.length}</b><span>Reglas</span></div><div><b>${fmt(a.presupuesto)}</b><span>Presupuesto</span></div><div><b>${c.objetivo}</b><span>Puntos objetivo</span></div></div>
+      ${ch.error ? `<p class="notice" style="color:var(--bad)">${esc(ch.error)}</p>` : ch.aviso ? `<p class="small notice">${esc(ch.aviso)}</p>` : ""}`;
+    if (c.fase === "optimizando") cuerpo += `<div class="stack"><p class="small">Buscando la mejor estrategia dentro del presupuesto… (unos 30 segundos; no cierres la página)</p><progress id="prog" max="1" value="${c.prog || 0}"></progress></div>`;
+    if (c.fase === "hecho") {
+      if (!(c.bruto > 0)) cuerpo += `<p class="notice" style="color:var(--bad)">No se ha encontrado ninguna estrategia con puntos positivos dentro del presupuesto. Revisa los precios, los puntos o el presupuesto.</p>`;
+      else {
+        const coste = svCosteTotal(a, c.plan), nums = svNumeros(a, svEscalar(c.clave, c.bruto));
+        cuerpo += `<div class="stack"><p>Mejor estrategia encontrada: <b>${c.bruto} puntos brutos</b> con un gasto de <b>${fmt(coste)}</b> (de ${fmt(a.presupuesto)}). Se reescalan a <b>${c.objetivo} puntos</b> → ${nums} número${nums === 1 ? "" : "s"} de ${a.numeros}. Cualquier otra estrategia obtiene puntos en proporción.</p>
+          <details><summary class="small">Ver la estrategia óptima</summary><div class="tablebox"><table class="plan"><thead><tr><th>Bloque</th><th>Decisión</th><th>Elección</th><th class="n">Coste</th></tr></thead><tbody>${planFilas(a, c.plan)}</tbody></table></div></details>
+          <p class="small muted">Si la estrategia óptima no es la que tú esperabas, suele indicar puntos o reglas que conviene revisar en el Excel.</p>
+          <div class="row">${ch.error ? "" : admin() ? `<button class="btn primary" id="c-pub">Guardar y publicar</button><button class="btn" id="c-bor">Guardar como borrador</button>` : `<button class="btn primary" id="c-bor">Guardar como borrador</button>`}<button class="btn ghost" id="c-dl">Descargar JSON (actividad y clave)</button></div></div>`;
+      }
+    }
+    cuerpo += `</div>`;
+  }
+  return vTabs() + vMsg() + `<section class="panel stack"><h2>Crear una actividad desde una hoja Excel</h2>
+    <ol class="small" style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px">
+      <li>Rellena la <a href="plantilla/Plantilla_SORTIVIA.xlsx" download>plantilla en blanco</a> (pestañas Actividad, Bloques, Opciones y Reglas; las instrucciones están dentro y en la <a href="proponer.html">página de propuestas</a>).</li>
+      <li>Cárgala aquí. El panel comprueba la hoja, busca la mejor estrategia posible dentro del presupuesto y ajusta la escala para que esa estrategia obtenga los puntos objetivo.</li>
+      <li>${admin() ? "Guárdala como borrador para probarla en una sesión, o publícala directamente." : "Guárdala como borrador, pruébala en una sesión tuya y, cuando esté lista, pulsa «Proponer» en la lista de actividades. El administrador la revisa y la publica con tu nombre."}</li></ol>
+    <div class="row"><label class="btn ${c ? "" : "primary"}">${c ? "Cargar otra hoja" : "Cargar hoja Excel (.xlsx)"}<input type="file" id="xls" accept=".xlsx,.xlsm,.xls" hidden></label>${c && c.archivo ? `<span class="small muted">${esc(c.archivo)}</span>` : ""}</div>
+    ${cuerpo}</section>`;
+}
+
+function render() {
+  const m = $("#main");
+  if (!P.rol) return;
+  m.innerHTML = P.sid ? vSesion() : P.vista === "conversor" ? vConversor() : P.vista === "profesorado" && admin() ? vProfesorado() : vInicio();
+}
 function enlace(sid) { return location.href.replace(/panel\.html.*$/, "") + `?s=${sid}${SVB.demo && new URLSearchParams(location.search).has("demo") ? "&demo" : ""}`; }
 function vGrupoDet(g) {
   const h = g.historial || [];
   const rondas = h.map((r) => {
     const filas = r.detalle.map((d) => {
-      if (d.regla) return `<tr class="regla"><td>Coherencia · ${esc(d.regla)}</td><td colspan="2">${esc(d.texto)}</td><td class="n ${d.puntos > 0 ? "pos" : d.puntos < 0 ? "neg" : ""}">${d.puntos > 0 ? "+" : ""}${d.puntos}</td></tr>`;
+      if (d.regla) return `<tr class="regla"><td>Coherencia · ${esc(d.regla)}${d.bloque ? ` <span class="small muted">(${esc(svT((P.act.bloques.find((x) => x.id === d.bloque) || {}).nombre, "es"))})</span>` : ""}</td><td colspan="2">${esc(svT(d.texto, "es"))}</td><td class="n ${d.puntos > 0 ? "pos" : d.puntos < 0 ? "neg" : ""}">${d.puntos > 0 ? "+" : ""}${d.puntos}</td></tr>`;
       const b = P.act.bloques.find((x) => x.id === d.bloque), dec = b && b.decisiones.find((x) => x.id === d.decision), cnt = dec && dec.tipo === "contador", o = dec && (cnt ? dec.opciones[0] : dec.opciones.find((x) => x.id === d.opcion));
-      return `<tr><td>${esc(b ? b.nombre : d.bloque)}</td><td>${esc(dec ? dec.nombre : d.decision)}</td><td>${esc(o ? (cnt ? `${d.cantidad} ×` : o.label) : d.opcion)}</td><td class="n ${d.puntos > 0 ? "pos" : d.puntos < 0 ? "neg" : ""}">${d.puntos > 0 ? "+" : ""}${d.puntos}</td></tr>`;
+      const best = P.sol && dec && !cnt ? P.sol.decisiones.find((x) => x.bloque === d.bloque && x.decision === d.decision) : null;
+      const ok = !best || best.mejores.some((m) => m.id === d.opcion);
+      const bestTxt = best && !ok ? `<br><span class="small muted">Mejor: ${best.mejores.map((m) => `${esc(svT((dec.opciones.find((x) => x.id === m.id) || {}).label, "es") || m.id)} (${m.puntos > 0 ? "+" : ""}${m.puntos})`).join(", ")}</span>` : "";
+      const nc = d.cuenta === false ? ` <span class="small muted">(${d.noCuentaBloque ? "bloque que no cuenta en su objetivo" : "no suma: cuenta la mejor opción"})</span>` : "";
+      return `<tr${d.cuenta === false ? ' class="nocuenta"' : ""}><td>${esc(b ? svT(b.nombre, "es") : d.bloque)}</td><td>${esc(dec ? svT(dec.nombre, "es") : d.decision)}</td><td>${esc(o ? (cnt ? `${d.cantidad} ×` : svT(o.label, "es")) : d.opcion)}${nc}${bestTxt}</td><td class="n ${d.puntos > 0 ? "pos" : d.puntos < 0 ? "neg" : ""}">${d.puntos > 0 ? "+" : ""}${d.puntos}</td></tr>`;
     }).join("");
-    const js = Object.entries(r.justif || {}).filter(([, t]) => t && t.trim()).map(([b, t]) => `<div><span class="eyebrow">${esc((P.act.bloques.find((x) => x.id === b) || {}).nombre || b)}</span><div class="just">${esc(t)}</div></div>`).join("");
-    return `<div class="stack"><h3>Ronda ${r.ronda}: ${r.puntos} puntos → ${r.numeros} números · ${fmt(r.coste)}${r.sorteo ? ` · sorteo ${r.sorteo} (${r.resultado})` : ""}</h3>
+    const js = Object.entries(r.justif || {}).filter(([, t]) => t && t.trim()).map(([b, t]) => `<div><span class="eyebrow">${esc(svT((P.act.bloques.find((x) => x.id === b) || {}).nombre, "es") || b)}</span><div class="just">${esc(t)}</div></div>`).join("");
+    return `<div class="stack"><h3>Ronda ${r.ronda}: ${r.puntos} puntos${r.puntos_brutos != null ? ` <span class="small muted">(${r.puntos_brutos} brutos)</span>` : ""} → ${r.numeros} números · ${fmt(r.coste)}${r.sorteo ? ` · sorteo ${r.sorteo} (${r.resultado})` : ""}</h3>
       <div class="tablebox"><table><thead><tr><th>Bloque</th><th>Decisión</th><th>Opción</th><th class="n">Puntos</th></tr></thead><tbody>${filas}</tbody></table></div>${js ? `<div class="stack">${js}</div>` : ""}</div>`;
   }).join("");
   return `<div class="det">${rondas || `<p class="muted">Aún no ha enviado ninguna estrategia. Gasto actual: ${fmt(g.coste || 0)}.</p>`}
@@ -129,9 +257,10 @@ function vSesion() {
     return `<tr><td colspan="7" style="padding:0"><details class="g" ${P.open.has(g.id) ? "open" : ""} data-g="${g.id}"><summary><table><tr>
       <td style="width:22%"><b>${esc(g.nombre)}</b></td><td class="n" style="width:9%">${g.ronda}</td><td style="width:20%"><span class="pill ${cls}">${lab}</span></td>
       <td class="n" style="width:14%">${fmt(g.coste || 0)}</td><td class="n" style="width:10%">${g.puntos ?? "—"}</td><td class="n" style="width:10%">${g.numeros ?? "—"}</td><td class="n" style="width:15%">${g.sorteo ? `${g.sorteo} ${g.estado === "ganado" ? "✓" : "✗"}` : "—"}</td></tr></table></summary>${vGrupoDet(g)}</details></td></tr>`; }).join("");
-  return `<section class="panel stack"><div class="row"><button class="btn ghost small" id="volver">← Sesiones</button><span class="spacer"></span>${s.estado === "abierta" ? `<button class="btn small" id="cerrar">Cerrar sesión</button>` : `<span class="pill">Cerrada</span>`}</div>
+  return `<section class="panel stack"><div class="row"><button class="btn ghost small" id="volver">← Sesiones</button><span class="spacer"></span>${P.claves[P.act.id] ? `<button class="btn small ${s.solucion ? "" : "primary"}" id="solucion">${s.solucion ? "Ocultar las mejores elecciones" : "Publicar las mejores elecciones"}</button>` : ""}${s.estado === "abierta" ? `<button class="btn small" id="cerrar">Cerrar sesión</button>` : `<span class="pill">Cerrada</span>`}</div>
+      ${s.solucion ? `<p class="small notice">Mejores elecciones publicadas: las ven los grupos que han terminado (ganado o sin rondas).</p>` : ""}
       <div class="row" style="align-items:flex-end;gap:24px"><div><p class="eyebrow">Código para los grupos</p><div class="code">${P.sid}</div></div>
-      <div class="stack" style="flex:1;min-width:240px"><p><b>${esc(s.nombre || "")}</b> · ${esc(P.act.titulo.es)}</p><div class="row"><input class="field num small" id="link" readonly value="${esc(enlace(P.sid))}" style="flex:1"><button class="btn small" id="copiar">Copiar enlace</button></div></div></div>
+      <div class="stack" style="flex:1;min-width:240px"><p><b>${esc(s.nombre || "")}</b> · ${esc(svT(P.act.titulo, "es"))}</p><div class="row"><input class="field num small" id="link" readonly value="${esc(enlace(P.sid))}" style="flex:1"><button class="btn small" id="copiar">Copiar enlace</button></div></div></div>
       ${P.claves[P.act.id] ? "" : `<p class="notice">Falta cargar la clave de esta actividad: sin ella no se pueden calcular los puntos.</p>`}
       <label class="row small"><input type="checkbox" id="auto" ${P.auto ? "checked" : ""}> Árbitro automático: calcular puntos y hacer los sorteos en cuanto los grupos lo pidan (deja esta página abierta durante la clase).</label></section>
     <section class="stack"><div class="kv"><div><b>${gs.length}</b><span>Grupos</span></div><div><b>${gs.filter((g) => g.estado === "editando").length}</b><span>Decidiendo</span></div><div><b>${gan}</b><span>Han ganado</span></div><div><b>${gs.filter((g) => g.estado === "terminado").length}</b><span>Sin rondas</span></div></div>
@@ -139,14 +268,14 @@ function vSesion() {
       <tbody>${filas || `<tr><td colspan="7" class="muted">Esperando a que entren los grupos…</td></tr>`}</tbody></table></div>
       <div class="row"><button class="btn" id="csv" ${gs.length ? "" : "disabled"}>Descargar CSV de decisiones</button><button class="btn" id="csvj" ${gs.length ? "" : "disabled"}>Descargar CSV de justificaciones</button><button class="btn ghost" id="json" ${gs.length ? "" : "disabled"}>JSON completo</button><span class="small muted">${esc(P.msg)}</span></div></section>`;
 }
-function render() { const m = $("#main"); m.innerHTML = P.sid ? vSesion() : vInicio(); }
 
+/* ---------- Exportación ---------- */
 /* ---------- Exportación ---------- */
 function cell(v) { const s = v == null ? "" : String(v); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; }
 function save(name, text, type) { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
 function csvDecisiones() {
-  const out = [["sesion", "actividad", "grupo", "ronda", "coste_ronda", "puntos_ronda", "numeros", "elegidos", "sorteo", "resultado", "bloque", "decision", "opcion", "puntos_opcion"].join(",")];
-  for (const g of P.grupos) for (const r of g.historial || []) for (const d of r.detalle) out.push([P.sid, P.act.id, g.nombre, r.ronda, r.coste, r.puntos, r.numeros, (r.elegidos || []).join(" "), r.sorteo || "", r.resultado || "", d.regla ? "coherencia" : d.bloque, d.regla || d.decision, d.regla ? d.texto : (d.cantidad != null ? d.cantidad : d.opcion), d.puntos].map(cell).join(","));
+  const out = [["sesion", "actividad", "grupo", "ronda", "coste_ronda", "puntos_ronda", "puntos_brutos", "numeros", "elegidos", "sorteo", "resultado", "bloque", "decision", "opcion", "puntos_opcion", "cuenta"].join(",")];
+  for (const g of P.grupos) for (const r of g.historial || []) for (const d of r.detalle) out.push([P.sid, P.act.id, g.nombre, r.ronda, r.coste, r.puntos, r.puntos_brutos ?? "", r.numeros, (r.elegidos || []).join(" "), r.sorteo || "", r.resultado || "", d.regla ? "coherencia" : d.bloque, d.regla || d.decision, d.regla ? svT(d.texto, "es") : (d.cantidad != null ? d.cantidad : d.opcion), d.puntos, d.cuenta === false ? 0 : 1].map(cell).join(","));
   return out.join("\n");
 }
 function csvJust() {
@@ -155,42 +284,137 @@ function csvJust() {
   return out.join("\n");
 }
 
+/* ---------- Conversor: carga perezosa de SheetJS y del conversor ---------- */
+function cargarScript(src) { return new Promise((ok, ko) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = () => ko(new Error("No se ha podido cargar " + src)); document.head.appendChild(s); }); }
+async function libsConversor() {
+  if (!window.XLSX) await cargarScript("https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js");
+  if (typeof window.svConvertir !== "function") await cargarScript(`conversor.js?v=${SV_VERSION}`);
+}
+async function convertir(f) {
+  P.msg = ""; P.conv = { fase: "cargando", archivo: f.name }; render();
+  await libsConversor();
+  const wb = XLSX.read(await f.arrayBuffer(), { type: "array" });
+  const r = svConvertir(wb);
+  P.conv = { ...r, archivo: f.name, fase: r.errores && r.errores.length ? "error" : "optimizando", prog: 0 };
+  render();
+  if (P.conv.fase !== "optimizando" || choque(r.act.id).error) { if (P.conv.fase === "optimizando") P.conv.fase = "bloqueado"; return render(); }
+  const yo = P.conv;
+  const { bruto, plan } = await svOptimizar(r.act, r.clave, r.act.presupuesto, { progreso: (x) => { yo.prog = x; const p = $("#prog"); if (p) p.value = x; } });
+  if (P.conv !== yo) return;   // se cargó otra hoja mientras tanto
+  yo.bruto = bruto; yo.plan = plan; yo.fase = "hecho";
+  if (bruto > 0) yo.clave.escala = { objetivo: yo.objetivo, maximo: bruto, presupuesto: r.act.presupuesto };
+  render();
+}
+async function guardarConv(estado) {
+  const c = P.conv, aid = c.act.id, ch = choque(aid);
+  if (ch.error) throw new Error(ch.error);
+  const ex = ch.ex;
+  const doc = { datos: c.act, autor: ex ? ex.autor : P.uid, autor_nombre: ex ? (ex.autor_nombre || "") : P.nombre, estado, actualizado: Date.now() };
+  await SVB.guardarActividad(aid, doc);
+  await SVB.guardarClave(aid, c.clave);
+  P.conv = null; P.vista = "inicio";
+  P.msg = estado === "publicada" ? `«${svT(c.act.titulo, "es")}» publicada: ya se puede usar en cualquier sesión.` : `«${svT(c.act.titulo, "es")}» guardada como borrador. Pruébala creando una sesión${admin() ? "" : " y, cuando esté lista, pulsa «Proponer»"}.`;
+  await cargarActividades(); render();
+}
+async function descargarAct(aid) {
+  const fsa = P.fsActs.find((a) => a.id === aid), act = fsa ? fsa.datos : await svCargarActividad(aid), clave = P.claves[aid];
+  save(`${aid}.json`, JSON.stringify(act, null, 1), "application/json");
+  if (clave) setTimeout(() => save(`${aid}.clave.json`, JSON.stringify(clave, null, 1), "application/json"), 300);
+}
+
 /* ---------- Eventos ---------- */
 async function abrir(sid) {
-  P.sid = sid; P.ses = P.sesiones.find((s) => s.id === sid) || await SVB.sesion(sid); P.act = await svCargarActividad(P.ses.actividad); P.grupos = []; P.open = new Set();
+  P.sid = sid; P.ses = P.sesiones.find((s) => s.id === sid) || await SVB.sesion(sid); P.act = await svCargarActividad(P.ses.actividad); P.grupos = []; P.open = new Set(); P.msg = "";
+  if (!P.claves[P.act.id]) P.claves[P.act.id] = await SVB.clave(P.act.id).catch(() => null);
+  P.sol = P.claves[P.act.id] ? svSolucion(P.act, P.claves[P.act.id]) : null;
+  SVB.verSesion(sid, (se) => { if (P.sid !== sid || !se) return; P.ses = { ...P.ses, ...se }; render(); });
   SVB.verGrupos(sid, (gs) => { if (P.sid !== sid) return; P.grupos = gs; render(); arbitrar(); });
   render();
 }
-document.addEventListener("click", async (e) => {
-  const t = e.target.closest("button"); if (!t) return;
-  try {
-    if (t.id === "signin") { const u = await SVB.entrarAdmin(); $("#who").textContent = `${u.email} · ${u.uid}`; await cargarActividades(); await cargarSesiones(); render(); return; }
-    if (t.dataset.open) return abrir(t.dataset.open);
-    if (t.id === "volver") { P.sid = null; await cargarSesiones(); return render(); }
-    if (t.id === "copiar") { try { await navigator.clipboard.writeText($("#link").value); P.msg = "Enlace copiado."; } catch (er) { $("#link").select(); } return render(); }
-    if (t.id === "cerrar") { await SVB.cerrarSesion(P.sid); P.ses.estado = "cerrada"; return render(); }
-    if (t.dataset.reabrir) return SVB.cambiarGrupoAdmin(P.sid, t.dataset.reabrir, { estado: "editando", aviso: null });
-    if (t.dataset.reset) return SVB.cambiarGrupoAdmin(P.sid, t.dataset.reset, { estado: "editando", ronda: 1, puntos: null, numeros: null, sorteo: null, elegidos: [], historial: [], aviso: null });
-    if (t.dataset.borrar) return SVB.borrarGrupo(P.sid, t.dataset.borrar);
-    const stamp = new Date().toISOString().slice(0, 10);
-    if (t.id === "csv") return save(`sortivia_${P.act.id}_${P.sid}_decisiones_${stamp}.csv`, csvDecisiones(), "text/csv");
-    if (t.id === "csvj") return save(`sortivia_${P.act.id}_${P.sid}_justificaciones_${stamp}.csv`, csvJust(), "text/csv");
-    if (t.id === "json") return save(`sortivia_${P.act.id}_${P.sid}_${stamp}.json`, JSON.stringify({ sesion: { id: P.sid, ...P.ses }, actividad: P.act.id, grupos: P.grupos }, null, 1), "application/json");
-  } catch (er) { const m = $("#err"); if (m) m.textContent = `Error: ${er.code || er.message}`; else { P.msg = `Error: ${er.code || er.message}`; render(); } }
-});
+async function entrar() {
+  const u = await SVB.entrarAdmin();
+  P.uid = u.uid; P.email = u.email || "";
+  P.rol = await SVB.rol(u.uid);
+  if (!P.rol) {
+    $("#who").textContent = P.email;
+    $("#main").innerHTML = `<section class="panel stack"><h2>Cuenta no autorizada</h2>
+      <p>Esta cuenta (${esc(P.email)}) todavía no tiene acceso al panel. Para usar SORTIVIA con tus grupos, envía al administrador (b22olaba@uco.es) tu nombre, tu centro y este identificador:</p>
+      <div class="row"><input class="field uid" id="miuid" readonly value="${esc(P.uid)}" style="flex:1"><button class="btn small" id="copiar-uid">Copiar</button></div>
+      <p class="small muted">Cuando te autorice, vuelve a entrar. Mientras tanto, puedes <a href="proponer.html">proponer una actividad</a> sin cuenta.</p></section>`;
+    return;
+  }
+  const perfil = P.rol === "profesor" ? await SVB.perfil(u.uid) : null;
+  P.nombre = (perfil && perfil.nombre) || u.nombre || P.email;
+  $("#who").textContent = `${P.nombre} · ${P.rol === "admin" ? "administrador" : "profesor"}`;
+  await Promise.all([cargarActividades(), cargarSesiones(), cargarProfes()]);
+  render();
+}
+async function accion(t) {
+  if (t.id === "signin") return entrar();
+  if (t.id === "copiar-uid") { try { await navigator.clipboard.writeText(P.uid); t.textContent = "Copiado"; } catch (er) { $("#miuid").select(); } return; }
+  if (t.dataset.vista) { P.vista = t.dataset.vista; P.msg = ""; if (P.vista === "profesorado") await cargarProfes(); return render(); }
+  if (t.dataset.open) return abrir(t.dataset.open);
+  if (t.id === "volver") { P.sid = null; P.msg = ""; await cargarSesiones(); return render(); }
+  if (t.id === "copiar") { try { await navigator.clipboard.writeText($("#link").value); P.msg = "Enlace copiado."; } catch (er) { $("#link").select(); } return render(); }
+  if (t.id === "solucion") {
+    const nuevo = P.ses.solucion ? null : svSolucion(P.act, P.claves[P.act.id]);
+    await SVB.cambiarSesion(P.sid, { solucion: nuevo }); P.ses.solucion = nuevo; return render();
+  }
+  if (t.id === "cerrar") { await SVB.cerrarSesion(P.sid); P.ses.estado = "cerrada"; return render(); }
+  if (t.dataset.reabrir) return SVB.cambiarGrupoAdmin(P.sid, t.dataset.reabrir, { estado: "editando", aviso: null });
+  if (t.dataset.reset) return SVB.cambiarGrupoAdmin(P.sid, t.dataset.reset, { estado: "editando", ronda: 1, puntos: null, numeros: null, sorteo: null, elegidos: [], historial: [], aviso: null });
+  if (t.dataset.borrar) return SVB.borrarGrupo(P.sid, t.dataset.borrar);
+  // Actividades
+  const titulo = (aid) => svT((P.acts.find((a) => a.id === aid) || {}).titulo, "es") || aid;
+  if (t.dataset.pub) { await SVB.cambiarActividad(t.dataset.pub, { estado: "publicada", actualizado: Date.now() }); P.msg = `«${titulo(t.dataset.pub)}» publicada.`; await cargarActividades(); return render(); }
+  if (t.dataset.prop) { await SVB.cambiarActividad(t.dataset.prop, { estado: "propuesta", actualizado: Date.now() }); P.msg = `«${titulo(t.dataset.prop)}» enviada al administrador para su revisión.`; await cargarActividades(); return render(); }
+  if (t.dataset.dev) { await SVB.cambiarActividad(t.dataset.dev, { estado: "borrador", actualizado: Date.now() }); P.msg = `«${titulo(t.dataset.dev)}» ha vuelto a borrador.`; await cargarActividades(); return render(); }
+  if (t.dataset.dl) return descargarAct(t.dataset.dl);
+  if (t.dataset.delact) {
+    if (t.dataset.confirm !== "1") { t.dataset.confirm = "1"; t.textContent = "¿Seguro? Pulsa otra vez"; return; }
+    const tt = titulo(t.dataset.delact);
+    await SVB.borrarActividad(t.dataset.delact); P.msg = `«${tt}» eliminada.`; await cargarActividades(); return render();
+  }
+  // Conversor
+  if (t.id === "c-pub") return guardarConv("publicada");
+  if (t.id === "c-bor") return guardarConv("borrador");
+  if (t.id === "c-dl") { save(`${P.conv.act.id}.json`, JSON.stringify(P.conv.act, null, 1), "application/json"); setTimeout(() => save(`${P.conv.act.id}.clave.json`, JSON.stringify(P.conv.clave, null, 1), "application/json"), 300); return; }
+  // Profesorado
+  if (t.dataset.tprof) { const p = P.profs.find((x) => x.uid === t.dataset.tprof); await SVB.guardarProfesor(p.uid, { activo: !p.activo }); await cargarProfes(); return render(); }
+  if (t.dataset.dprof) {
+    if (t.dataset.confirm !== "1") { t.dataset.confirm = "1"; t.textContent = "¿Seguro? Pulsa otra vez"; return; }
+    await SVB.borrarProfesor(t.dataset.dprof); await cargarProfes(); return render();
+  }
+  const stamp = new Date().toISOString().slice(0, 10);
+  if (t.id === "csv") return save(`sortivia_${P.act.id}_${P.sid}_decisiones_${stamp}.csv`, csvDecisiones(), "text/csv");
+  if (t.id === "csvj") return save(`sortivia_${P.act.id}_${P.sid}_justificaciones_${stamp}.csv`, csvJust(), "text/csv");
+  if (t.id === "json") return save(`sortivia_${P.act.id}_${P.sid}_${stamp}.json`, JSON.stringify({ sesion: { id: P.sid, ...P.ses }, actividad: P.act.id, grupos: P.grupos }, null, 1), "application/json");
+}
+function fallo(er) {
+  const txt = er.code === "permission-denied" ? "Firebase no permite esta operación con tu cuenta (¿están publicadas las reglas nuevas de Firestore?)." : (er.code || er.message);
+  const m = $("#err"); if (m) m.textContent = `Error: ${txt}`; else { P.msg = `Error: ${txt}`; if (P.conv && P.conv.fase === "cargando") P.conv = null; render(); }
+}
+document.addEventListener("click", (e) => { const t = e.target.closest("button"); if (t) accion(t).catch(fallo); });
 document.addEventListener("toggle", (e) => { const d = e.target; if (d.dataset && d.dataset.g) { if (d.open) P.open.add(d.dataset.g); else P.open.delete(d.dataset.g); } }, true);
 document.addEventListener("change", async (e) => {
   if (e.target.id === "auto") { P.auto = e.target.checked; return arbitrar(); }
+  if (e.target.id === "xls") { const f = e.target.files[0]; if (f) convertir(f).catch(fallo); return; }
   if (e.target.dataset.key) {
     const aid = e.target.dataset.key, f = e.target.files[0]; if (!f) return;
-    try { const k = JSON.parse(await f.text()); if (!/^sortivia-clave\/[12]$/.test(k.schema || "") || k.actividad !== aid) throw new Error("Este archivo no es la clave de esta actividad."); await SVB.guardarClave(aid, k); P.claves[aid] = k; render(); }
+    try { const k = JSON.parse(await f.text()); if (!/^sortivia-clave\/[123]$/.test(k.schema || "") || k.actividad !== aid) throw new Error("Este archivo no es la clave de esta actividad."); await SVB.guardarClave(aid, k); P.claves[aid] = k; if (P.act && P.act.id === aid) P.sol = svSolucion(P.act, k); P.msg = "Clave cargada."; render(); }
     catch (er) { P.msg = er.message; render(); }
   }
 });
-document.addEventListener("submit", async (e) => {
-  if (e.target.id !== "nueva") return; e.preventDefault();
-  const f = e.target, sid = await SVB.crearSesion({ actividad: f.act.value, nombre: f.nombre.value.trim() });
-  await cargarSesiones(); abrir(sid);
+document.addEventListener("submit", (e) => {
+  const f = e.target; e.preventDefault();
+  (async () => {
+    if (f.id === "nueva") { if (!f.act.value) return; const sid = await SVB.crearSesion({ actividad: f.act.value, nombre: f.nombre.value.trim() }); await cargarSesiones(); return abrir(sid); }
+    if (f.id === "nprof") {
+      const uid = f.uid.value.trim();
+      await SVB.guardarProfesor(uid, { nombre: f.nombre.value.trim(), correo: f.correo.value.trim(), activo: true, alta: Date.now() });
+      P.msg = `${f.nombre.value.trim()} ya puede entrar en el panel.`; await cargarProfes(); render();
+    }
+  })().catch(fallo);
 });
 if (SVB.demo) $("#signin").click();
 </script>

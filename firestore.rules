@@ -43,24 +43,64 @@ service cloud.firestore {
     }
 
     // ---------- SORTIVIA ----------
+    // Profesores autorizados por el administrador (documento profesores/{uid} con activo == true).
+    function esProfesor() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/profesores/$(request.auth.uid))
+        && get(/databases/$(database)/documents/profesores/$(request.auth.uid)).data.activo == true;
+    }
+    function esDocente() { return esAdmin() || esProfesor(); }
+
+    match /profesores/{uid} {
+      allow read: if esAdmin() || (request.auth != null && request.auth.uid == uid);
+      allow write: if esAdmin();
+    }
+
+    // Actividades subidas desde el panel. El contenido es público (lo necesitan los grupos);
+    // las claves están aparte, en /claves.
+    match /actividades/{aid} {
+      allow read: if request.auth != null;
+      allow create: if esAdmin()
+                    || (esProfesor() && request.resource.data.autor == request.auth.uid && request.resource.data.estado == 'borrador');
+      allow update: if esAdmin()
+                    || (esProfesor() && resource.data.autor == request.auth.uid
+                        && resource.data.estado in ['borrador', 'propuesta']
+                        && request.resource.data.autor == request.auth.uid
+                        && request.resource.data.estado in ['borrador', 'propuesta']);
+      allow delete: if esAdmin() || (esProfesor() && resource.data.autor == request.auth.uid && resource.data.estado != 'publicada');
+    }
+
+    // Claves (puntos y reglas): solo el profesorado autorizado. Un profesor solo puede escribir la de su propia actividad no publicada.
+    match /claves/{aid} {
+      allow read: if esDocente();
+      allow write: if esAdmin()
+                   || (esProfesor()
+                       && get(/databases/$(database)/documents/actividades/$(aid)).data.autor == request.auth.uid
+                       && get(/databases/$(database)/documents/actividades/$(aid)).data.estado != 'publicada');
+    }
+
     match /sesiones/{sid} {
       allow read: if request.auth != null;
-      allow write: if esAdmin();
+      allow create: if esAdmin() || (esProfesor() && request.resource.data.propietario == request.auth.uid);
+      allow update, delete: if esAdmin() || (esProfesor() && resource.data.propietario == request.auth.uid);
 
       match /grupos/{gid} {
         function camposGrupo() { return ['nombre', 'ronda', 'estado', 'eleccion', 'justif', 'coste', 'actualizado', 'elegidos']; }
-        function sesionAbierta() { return get(/databases/$(database)/documents/sesiones/$(sid)).data.estado == 'abierta'; }
+        function sesion() { return get(/databases/$(database)/documents/sesiones/$(sid)).data; }
+        function sesionAbierta() { return sesion().estado == 'abierta'; }
+        function esDueno() { return esProfesor() && sesion().propietario == request.auth.uid; }
         function esGrupo() { return request.auth != null && request.auth.uid == gid; }
         function antes() { return resource.data; }
         function despues() { return request.resource.data; }
 
-        allow read: if esAdmin() || esGrupo();
+        allow read: if esAdmin() || esDueno() || esGrupo();
         allow create: if esGrupo() && sesionAbierta()
                       && despues().keys().hasOnly(camposGrupo())
                       && despues().estado == 'editando' && despues().ronda == 1
                       && despues().nombre is string && despues().nombre.size() <= 40;
         // El grupo solo puede: editar y enviar; elegir números y pedir el sorteo; pasar a la ronda siguiente tras fallar.
-        allow update: if esAdmin() || (esGrupo() && sesionAbierta()
+        // Los puntos, los números y el sorteo los escribe el profesor de la sesión (o el administrador).
+        allow update: if esAdmin() || esDueno() || (esGrupo() && sesionAbierta()
                       && despues().diff(antes()).affectedKeys().hasOnly(camposGrupo())
                       && despues().nombre is string && despues().nombre.size() <= 40
                       && despues().ronda >= antes().ronda && despues().ronda <= 5
@@ -68,12 +108,8 @@ service cloud.firestore {
                         || (antes().estado == 'puntuado' && despues().estado in ['puntuado', 'sorteo_pedido'] && despues().ronda == antes().ronda)
                         || (antes().estado == 'fallado' && despues().estado == 'editando' && despues().ronda == antes().ronda + 1)
                         || (antes().estado == despues().estado && despues().ronda == antes().ronda) ));
-        allow delete: if esAdmin();
+        allow delete: if esAdmin() || esDueno();
       }
-    }
-
-    match /claves/{aid} {
-      allow read, write: if esAdmin();
     }
 
     match /{document=**} {

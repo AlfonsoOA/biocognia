@@ -1,5 +1,5 @@
 {
- "schema": "sortivia-actividad/2",
+ "schema": "sortivia-actividad/3",
  "id": "poor-savior-astronauts",
  "metodologia": "ESTOPA",
  "titulo": {
@@ -20,68 +20,110 @@
  "bloques": [
   {
    "id": "global-strategy",
-   "nombre": "Global strategy",
+   "nombre": {
+    "en": "Global strategy",
+    "es": "Estrategia global"
+   },
    "decisiones": [
     {
      "id": "global-strategy",
-     "nombre": "Global strategy",
+     "nombre": {
+      "en": "Global strategy",
+      "es": "Estrategia global"
+     },
      "tipo": "multiple",
      "opciones": [
       {
        "id": "single-organisms",
-       "label": "Single organisms",
+       "label": {
+        "en": "Single organisms",
+        "es": "Organismos aislados"
+       },
        "coste": {
         "tipo": "fijo",
-        "valor": 500.0
+        "valor": 850.0
        },
-       "grupo": "Cell-dependent system"
+       "grupo": {
+        "en": "Cell-dependent system",
+        "es": "Sistema dependiente de células"
+       }
       },
       {
        "id": "enrichment-cultures",
-       "label": "Enrichment cultures",
+       "label": {
+        "en": "Enrichment cultures",
+        "es": "Cultivos de enriquecimiento"
+       },
        "coste": {
         "tipo": "fijo",
-        "valor": 500.0
+        "valor": 850.0
        },
-       "grupo": "Cell-dependent system"
+       "grupo": {
+        "en": "Cell-dependent system",
+        "es": "Sistema dependiente de células"
+       }
       },
       {
        "id": "artificial-consortia",
-       "label": "Artificial consortia",
+       "label": {
+        "en": "Artificial consortia",
+        "es": "Consorcios artificiales"
+       },
        "coste": {
         "tipo": "fijo",
-        "valor": 500.0
+        "valor": 850.0
        },
-       "grupo": "Cell-dependent system"
+       "grupo": {
+        "en": "Cell-dependent system",
+        "es": "Sistema dependiente de células"
+       }
       },
       {
        "id": "recombinant-proteins",
-       "label": "Recombinant proteins",
+       "label": {
+        "en": "Recombinant proteins",
+        "es": "Proteínas recombinantes"
+       },
        "coste": {
         "tipo": "fijo",
-        "valor": 6000.0
+        "valor": 10200.0
        },
-       "grupo": "Cell-independent system"
+       "grupo": {
+        "en": "Cell-independent system",
+        "es": "Sistema independiente de células"
+       }
       },
       {
        "id": "crude-extracts",
-       "label": "Crude extracts",
+       "label": {
+        "en": "Crude extracts",
+        "es": "Extractos crudos"
+       },
        "coste": {
         "tipo": "fijo",
-        "valor": 500.0
+        "valor": 850.0
        },
-       "grupo": "Cell-independent system"
+       "grupo": {
+        "en": "Cell-independent system",
+        "es": "Sistema independiente de células"
+       }
       }
      ]
     },
     {
      "id": "experimental-design",
-     "nombre": "Experimental design",
+     "nombre": {
+      "en": "Experimental design",
+      "es": "Diseño experimental"
+     },
      "tipo": "unica",
      "opciones": [
       {
        "id": "problem-condition-only",
-       "label": "Problem condition only",
+       "label": {
+        "en": "Problem condition only",
+        "es": "Solo condición problema"
+       },
        "coste": {
         "tipo": "condiciones",
         "valor": 1.0
@@ -89,7 +131,10 @@
       },
       {
        "id": "control-vs-problem",
-       "label": "Control vs problem",
+       "label": {
+        "en": "Control vs problem",
+        "es": "Control frente a problema"
+       },
        "coste": {
         "tipo": "condiciones",
         "valor": 2.0
@@ -97,50 +142,75 @@
       }
      ]
     }
-   ]
+   ],
+   "objetivo": {
+    "id": "global-strategy",
+    "nombre": {
+     "en": "Global strategy",
+     "es": "Estrategia global"
+    }
+   }
   },
   {
    "id": "genomic",
-   "nombre": "Genomic",
+   "nombre": {
+    "en": "Genomic",
+    "es": "Genómica"
+   },
    "decisiones": [
     {
      "id": "number-of-replicates",
-     "nombre": "Number of replicates",
+     "nombre": {
+      "en": "Number of replicates",
+      "es": "Número de réplicas"
+     },
      "tipo": "unica",
      "opciones": [
       {
        "id": "1",
-       "label": "1",
+       "label": {
+        "en": "1",
+        "es": "1"
+       },
        "coste": {
         "tipo": "replicas",
-        "valor": 200.0,
+        "valor": 340.0,
         "n": 1
        }
       },
       {
        "id": "3",
-       "label": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
        "coste": {
         "tipo": "replicas",
-        "valor": 200.0,
+        "valor": 340.0,
         "n": 3
        }
       },
       {
        "id": "5",
-       "label": "5",
+       "label": {
+        "en": "5",
+        "es": "5"
+       },
        "coste": {
         "tipo": "replicas",
-        "valor": 200.0,
+        "valor": 340.0,
         "n": 5
        }
       },
       {
        "id": "10",
-       "label": "10",
+       "label": {
+        "en": "10",
+        "es": "10"
+       },
        "coste": {
         "tipo": "replicas",
-        "valor": 200.0,
+        "valor": 340.0,
         "n": 10
        }
       }
@@ -148,12 +218,18 @@
     },
     {
      "id": "fragmentation",
-     "nombre": "Fragmentation",
+     "nombre": {
+      "en": "Fragmentation",
+      "es": "Fragmentación"
+     },
      "tipo": "multiple",
      "opciones": [
       {
        "id": "tagmentation",
-       "label": "Tagmentation",
+       "label": {
+        "en": "Tagmentation",
+        "es": "Tagmentación"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -161,7 +237,10 @@
       },
       {
        "id": "sonication",
-       "label": "Sonication",
+       "label": {
+        "en": "Sonication",
+        "es": "Sonicación"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -169,7 +248,10 @@
       },
       {
        "id": "nebulization",
-       "label": "Nebulization",
+       "label": {
+        "en": "Nebulization",
+        "es": "Nebulización"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -179,51 +261,72 @@
     },
     {
      "id": "library",
-     "nombre": "Library",
+     "nombre": {
+      "en": "Library",
+      "es": "Librería"
+     },
      "tipo": "multiple",
      "opciones": [
       {
        "id": "single-end-illumina",
-       "label": "Single-end (Illumina)",
+       "label": {
+        "en": "Single-end (Illumina)",
+        "es": "Single-end (Illumina)"
+       },
        "coste": {
         "tipo": "muestra",
-        "valor": 100.0
+        "valor": 170.0
        }
       },
       {
        "id": "paired-end-illumina",
-       "label": "Paired-end (Illumina)",
+       "label": {
+        "en": "Paired-end (Illumina)",
+        "es": "Paired-end (Illumina)"
+       },
        "coste": {
         "tipo": "muestra",
-        "valor": 200.0
+        "valor": 340.0
        }
       },
       {
        "id": "mate-pair-illumina",
-       "label": "Mate-pair (Illumina)",
+       "label": {
+        "en": "Mate-pair (Illumina)",
+        "es": "Mate-pair (Illumina)"
+       },
        "coste": {
         "tipo": "muestra",
-        "valor": 800.0
+        "valor": 1360.0
        }
       },
       {
        "id": "long-reads-pacbio",
-       "label": "Long reads (PacBio)",
+       "label": {
+        "en": "Long reads (PacBio)",
+        "es": "Lecturas largas (PacBio)"
+       },
        "coste": {
         "tipo": "muestra",
-        "valor": 1800.0
+        "valor": 3060.0
        }
       }
      ]
     },
     {
      "id": "depth",
-     "nombre": "Depth",
+     "nombre": {
+      "en": "Depth",
+      "es": "Profundidad"
+     },
      "tipo": "unica",
      "opciones": [
       {
        "id": "10x",
-       "label": "10X",
+       "label": {
+        "en": "10X",
+        "es": "10X"
+       },
        "coste": {
         "tipo": "mult",
         "valor": 1.0
@@ -231,7 +334,10 @@
       },
       {
        "id": "30x",
-       "label": "30X",
+       "label": {
+        "en": "30X",
+        "es": "30X"
+       },
        "coste": {
         "tipo": "mult",
         "valor": 1.5
@@ -239,7 +345,10 @@
       },
       {
        "id": "50x",
-       "label": "50X",
+       "label": {
+        "en": "50X",
+        "es": "50X"
+       },
        "coste": {
         "tipo": "mult",
         "valor": 2.0
@@ -247,7 +356,10 @@
       },
       {
        "id": "70x",
-       "label": "70X",
+       "label": {
+        "en": "70X",
+        "es": "70X"
+       },
        "coste": {
         "tipo": "mult",
         "valor": 2.5
@@ -255,7 +367,10 @@
       },
       {
        "id": "100x",
-       "label": "100X",
+       "label": {
+        "en": "100X",
+        "es": "100X"
+       },
        "coste": {
         "tipo": "mult",
         "valor": 3.0
@@ -265,12 +380,18 @@
     },
     {
      "id": "trimming",
-     "nombre": "Trimming",
+     "nombre": {
+      "en": "Trimming",
+      "es": "Trimming (filtrado por calidad)"
+     },
      "tipo": "multiple",
      "opciones": [
       {
        "id": "q20",
-       "label": "Q20",
+       "label": {
+        "en": "Q20",
+        "es": "Q20"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -278,7 +399,10 @@
       },
       {
        "id": "q30",
-       "label": "Q30",
+       "label": {
+        "en": "Q30",
+        "es": "Q30"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -286,7 +410,10 @@
       },
       {
        "id": "q40",
-       "label": "Q40",
+       "label": {
+        "en": "Q40",
+        "es": "Q40"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -294,7 +421,10 @@
       },
       {
        "id": "q50",
-       "label": "Q50",
+       "label": {
+        "en": "Q50",
+        "es": "Q50"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -304,12 +434,18 @@
     },
     {
      "id": "assembly",
-     "nombre": "Assembly",
+     "nombre": {
+      "en": "Assembly",
+      "es": "Ensamblado"
+     },
      "tipo": "multiple",
      "opciones": [
       {
        "id": "de-novo",
-       "label": "de novo",
+       "label": {
+        "en": "de novo",
+        "es": "de novo"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -317,7 +453,10 @@
       },
       {
        "id": "reference-based",
-       "label": "Reference-based",
+       "label": {
+        "en": "Reference-based",
+        "es": "Con genoma de referencia"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -327,12 +466,18 @@
     },
     {
      "id": "number-of-assemblers",
-     "nombre": "Number of assemblers",
+     "nombre": {
+      "en": "Number of assemblers",
+      "es": "Número de ensambladores"
+     },
      "tipo": "unica",
      "opciones": [
       {
        "id": "1",
-       "label": "1",
+       "label": {
+        "en": "1",
+        "es": "1"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -340,7 +485,10 @@
       },
       {
        "id": "2",
-       "label": "2",
+       "label": {
+        "en": "2",
+        "es": "2"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -348,7 +496,10 @@
       },
       {
        "id": "3",
-       "label": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -358,12 +509,18 @@
     },
     {
      "id": "cd-hit",
-     "nombre": "CD-HIT",
+     "nombre": {
+      "en": "CD-HIT",
+      "es": "CD-HIT"
+     },
      "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
-       "label": "Yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -371,7 +528,10 @@
       },
       {
        "id": "no",
-       "label": "No",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -381,12 +541,18 @@
     },
     {
      "id": "dea",
-     "nombre": "DEA",
+     "nombre": {
+      "en": "DEA",
+      "es": "Análisis de expresión diferencial (DEA)"
+     },
      "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
-       "label": "Yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -394,7 +560,42 @@
       },
       {
        "id": "no",
-       "label": "No",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "bgc-prediction-antismash",
+     "nombre": {
+      "en": "BGC prediction (antiSMASH)",
+      "es": "Predicción de BGC (antiSMASH)"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -402,50 +603,75 @@
       }
      ]
     }
-   ]
+   ],
+   "objetivo": {
+    "id": "genome",
+    "nombre": {
+     "en": "Genome",
+     "es": "Genoma"
+    }
+   }
   },
   {
    "id": "transcriptomic",
-   "nombre": "Transcriptomic",
+   "nombre": {
+    "en": "Transcriptomic",
+    "es": "Transcriptómica"
+   },
    "decisiones": [
     {
      "id": "number-of-replicates",
-     "nombre": "Number of replicates",
+     "nombre": {
+      "en": "Number of replicates",
+      "es": "Número de réplicas"
+     },
      "tipo": "unica",
      "opciones": [
       {
        "id": "1",
-       "label": "1",
+       "label": {
+        "en": "1",
+        "es": "1"
+       },
        "coste": {
         "tipo": "replicas",
-        "valor": 200.0,
+        "valor": 340.0,
         "n": 1
        }
       },
       {
        "id": "3",
-       "label": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
        "coste": {
         "tipo": "replicas",
-        "valor": 200.0,
+        "valor": 340.0,
         "n": 3
        }
       },
       {
        "id": "5",
-       "label": "5",
+       "label": {
+        "en": "5",
+        "es": "5"
+       },
        "coste": {
         "tipo": "replicas",
-        "valor": 200.0,
+        "valor": 340.0,
         "n": 5
        }
       },
       {
        "id": "10",
-       "label": "10",
+       "label": {
+        "en": "10",
+        "es": "10"
+       },
        "coste": {
         "tipo": "replicas",
-        "valor": 200.0,
+        "valor": 340.0,
         "n": 10
        }
       }
@@ -453,74 +679,104 @@
     },
     {
      "id": "rna-to-analyze",
-     "nombre": "RNA to analyze",
+     "nombre": {
+      "en": "RNA to analyze",
+      "es": "ARN a analizar"
+     },
      "tipo": "multiple",
      "opciones": [
       {
        "id": "total",
-       "label": "Total",
+       "label": {
+        "en": "Total",
+        "es": "Total"
+       },
        "coste": {
         "tipo": "muestra",
-        "valor": 200.0
+        "valor": 340.0
        }
       },
       {
        "id": "rrna-depleted",
-       "label": "rRNA depleted",
+       "label": {
+        "en": "rRNA depleted",
+        "es": "Sin rRNA (depleción)"
+       },
        "coste": {
         "tipo": "muestra",
-        "valor": 200.0
+        "valor": 340.0
        }
       },
       {
        "id": "mrna-enriched",
-       "label": "mRNA enriched",
+       "label": {
+        "en": "mRNA enriched",
+        "es": "Enriquecido en mRNA"
+       },
        "coste": {
         "tipo": "muestra",
-        "valor": 200.0
+        "valor": 340.0
        }
       },
       {
        "id": "cdna-capture",
-       "label": "cDNA capture",
+       "label": {
+        "en": "cDNA capture",
+        "es": "Captura de cDNA"
+       },
        "coste": {
         "tipo": "muestra",
-        "valor": 200.0
+        "valor": 340.0
        }
       }
      ]
     },
     {
      "id": "library",
-     "nombre": "Library",
+     "nombre": {
+      "en": "Library",
+      "es": "Librería"
+     },
      "tipo": "multiple",
      "opciones": [
       {
        "id": "stranded",
-       "label": "Stranded",
+       "label": {
+        "en": "Stranded",
+        "es": "Direccional (stranded)"
+       },
        "coste": {
         "tipo": "muestra",
-        "valor": 50.0
+        "valor": 80.0
        }
       },
       {
        "id": "non-stranded",
-       "label": "Non-stranded",
+       "label": {
+        "en": "Non-stranded",
+        "es": "No direccional (non-stranded)"
+       },
        "coste": {
         "tipo": "muestra",
-        "valor": 20.0
+        "valor": 30.0
        }
       }
      ]
     },
     {
      "id": "depth",
-     "nombre": "Depth",
+     "nombre": {
+      "en": "Depth",
+      "es": "Profundidad"
+     },
      "tipo": "unica",
      "opciones": [
       {
        "id": "10x",
-       "label": "10X",
+       "label": {
+        "en": "10X",
+        "es": "10X"
+       },
        "coste": {
         "tipo": "mult",
         "valor": 1.0
@@ -528,7 +784,10 @@
       },
       {
        "id": "30x",
-       "label": "30X",
+       "label": {
+        "en": "30X",
+        "es": "30X"
+       },
        "coste": {
         "tipo": "mult",
         "valor": 1.5
@@ -536,7 +795,10 @@
       },
       {
        "id": "50x",
-       "label": "50X",
+       "label": {
+        "en": "50X",
+        "es": "50X"
+       },
        "coste": {
         "tipo": "mult",
         "valor": 2.0
@@ -544,7 +806,10 @@
       },
       {
        "id": "70x",
-       "label": "70X",
+       "label": {
+        "en": "70X",
+        "es": "70X"
+       },
        "coste": {
         "tipo": "mult",
         "valor": 2.5
@@ -552,7 +817,10 @@
       },
       {
        "id": "100x",
-       "label": "100X",
+       "label": {
+        "en": "100X",
+        "es": "100X"
+       },
        "coste": {
         "tipo": "mult",
         "valor": 3.0
@@ -562,12 +830,18 @@
     },
     {
      "id": "trimming",
-     "nombre": "Trimming",
+     "nombre": {
+      "en": "Trimming",
+      "es": "Trimming (filtrado por calidad)"
+     },
      "tipo": "multiple",
      "opciones": [
       {
        "id": "q20",
-       "label": "Q20",
+       "label": {
+        "en": "Q20",
+        "es": "Q20"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -575,7 +849,10 @@
       },
       {
        "id": "q30",
-       "label": "Q30",
+       "label": {
+        "en": "Q30",
+        "es": "Q30"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -583,7 +860,10 @@
       },
       {
        "id": "q40",
-       "label": "Q40",
+       "label": {
+        "en": "Q40",
+        "es": "Q40"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -591,7 +871,10 @@
       },
       {
        "id": "q50",
-       "label": "Q50",
+       "label": {
+        "en": "Q50",
+        "es": "Q50"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -601,12 +884,18 @@
     },
     {
      "id": "assembly",
-     "nombre": "Assembly",
+     "nombre": {
+      "en": "Assembly",
+      "es": "Ensamblado"
+     },
      "tipo": "multiple",
      "opciones": [
       {
        "id": "de-novo",
-       "label": "de novo",
+       "label": {
+        "en": "de novo",
+        "es": "de novo"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -614,7 +903,10 @@
       },
       {
        "id": "reference-based",
-       "label": "Reference-based",
+       "label": {
+        "en": "Reference-based",
+        "es": "Con genoma de referencia"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -624,12 +916,18 @@
     },
     {
      "id": "number-of-assemblers",
-     "nombre": "Number of assemblers",
+     "nombre": {
+      "en": "Number of assemblers",
+      "es": "Número de ensambladores"
+     },
      "tipo": "unica",
      "opciones": [
       {
        "id": "1",
-       "label": "1",
+       "label": {
+        "en": "1",
+        "es": "1"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -637,7 +935,10 @@
       },
       {
        "id": "2",
-       "label": "2",
+       "label": {
+        "en": "2",
+        "es": "2"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -645,7 +946,10 @@
       },
       {
        "id": "3",
-       "label": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -655,12 +959,18 @@
     },
     {
      "id": "cd-hit",
-     "nombre": "CD-HIT",
+     "nombre": {
+      "en": "CD-HIT",
+      "es": "CD-HIT"
+     },
      "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
-       "label": "Yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -668,7 +978,10 @@
       },
       {
        "id": "no",
-       "label": "No",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -678,12 +991,18 @@
     },
     {
      "id": "quantification",
-     "nombre": "Quantification",
+     "nombre": {
+      "en": "Quantification",
+      "es": "Cuantificación"
+     },
      "tipo": "multiple",
      "opciones": [
       {
        "id": "pseudocounts",
-       "label": "Pseudocounts",
+       "label": {
+        "en": "Pseudocounts",
+        "es": "Pseudoconteos"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -691,7 +1010,10 @@
       },
       {
        "id": "base-to-base",
-       "label": "Base-to-base",
+       "label": {
+        "en": "Base-to-base",
+        "es": "Base a base"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -701,12 +1023,18 @@
     },
     {
      "id": "normalization",
-     "nombre": "Normalization",
+     "nombre": {
+      "en": "Normalization",
+      "es": "Normalización"
+     },
      "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
-       "label": "Yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -714,7 +1042,10 @@
       },
       {
        "id": "no",
-       "label": "No",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -724,12 +1055,18 @@
     },
     {
      "id": "correction",
-     "nombre": "Correction",
+     "nombre": {
+      "en": "Correction",
+      "es": "Corrección por comparaciones múltiples"
+     },
      "tipo": "multiple",
      "opciones": [
       {
        "id": "no",
-       "label": "No",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -737,7 +1074,10 @@
       },
       {
        "id": "bonferroni",
-       "label": "Bonferroni",
+       "label": {
+        "en": "Bonferroni",
+        "es": "Bonferroni"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -745,7 +1085,10 @@
       },
       {
        "id": "benjamini-hochberg",
-       "label": "Benjamini-Hochberg",
+       "label": {
+        "en": "Benjamini-Hochberg",
+        "es": "Benjamini-Hochberg"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -755,12 +1098,18 @@
     },
     {
      "id": "dea",
-     "nombre": "DEA",
+     "nombre": {
+      "en": "DEA",
+      "es": "Análisis de expresión diferencial (DEA)"
+     },
      "tipo": "unica",
      "opciones": [
       {
        "id": "yes",
-       "label": "Yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -768,7 +1117,10 @@
       },
       {
        "id": "no",
-       "label": "No",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -776,783 +1128,75 @@
       }
      ]
     }
-   ]
-  },
-  {
-   "id": "metagenomics",
-   "nombre": "Metagenomics",
-   "decisiones": [
-    {
-     "id": "number-of-replicates",
-     "nombre": "Number of replicates",
-     "tipo": "unica",
-     "opciones": [
-      {
-       "id": "1",
-       "label": "1",
-       "coste": {
-        "tipo": "replicas",
-        "valor": 250.0,
-        "n": 1
-       }
-      },
-      {
-       "id": "3",
-       "label": "3",
-       "coste": {
-        "tipo": "replicas",
-        "valor": 250.0,
-        "n": 3
-       }
-      },
-      {
-       "id": "5",
-       "label": "5",
-       "coste": {
-        "tipo": "replicas",
-        "valor": 250.0,
-        "n": 5
-       }
-      },
-      {
-       "id": "10",
-       "label": "10",
-       "coste": {
-        "tipo": "replicas",
-        "valor": 250.0,
-        "n": 10
-       }
-      }
-     ]
-    },
-    {
-     "id": "fragmentation",
-     "nombre": "Fragmentation",
-     "tipo": "multiple",
-     "opciones": [
-      {
-       "id": "tagmentation",
-       "label": "Tagmentation",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "sonication",
-       "label": "Sonication",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "nebulization",
-       "label": "Nebulization",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "library",
-     "nombre": "Library",
-     "tipo": "multiple",
-     "opciones": [
-      {
-       "id": "single-end-illumina",
-       "label": "Single-end (Illumina)",
-       "coste": {
-        "tipo": "muestra",
-        "valor": 100.0
-       }
-      },
-      {
-       "id": "paired-end-illumina",
-       "label": "Paired-end (Illumina)",
-       "coste": {
-        "tipo": "muestra",
-        "valor": 200.0
-       }
-      },
-      {
-       "id": "mate-pair-illumina",
-       "label": "Mate-pair (Illumina)",
-       "coste": {
-        "tipo": "muestra",
-        "valor": 800.0
-       }
-      },
-      {
-       "id": "long-reads-pacbio",
-       "label": "Long reads (PacBio)",
-       "coste": {
-        "tipo": "muestra",
-        "valor": 1800.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "depth",
-     "nombre": "Depth",
-     "tipo": "unica",
-     "opciones": [
-      {
-       "id": "10x",
-       "label": "10X",
-       "coste": {
-        "tipo": "mult",
-        "valor": 1.0
-       }
-      },
-      {
-       "id": "30x",
-       "label": "30X",
-       "coste": {
-        "tipo": "mult",
-        "valor": 1.5
-       }
-      },
-      {
-       "id": "50x",
-       "label": "50X",
-       "coste": {
-        "tipo": "mult",
-        "valor": 2.0
-       }
-      },
-      {
-       "id": "70x",
-       "label": "70X",
-       "coste": {
-        "tipo": "mult",
-        "valor": 2.5
-       }
-      },
-      {
-       "id": "100x",
-       "label": "100X",
-       "coste": {
-        "tipo": "mult",
-        "valor": 3.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "trimming",
-     "nombre": "Trimming",
-     "tipo": "multiple",
-     "opciones": [
-      {
-       "id": "q20",
-       "label": "Q20",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "q30",
-       "label": "Q30",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "q40",
-       "label": "Q40",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "q50",
-       "label": "Q50",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "assembly",
-     "nombre": "Assembly",
-     "tipo": "multiple",
-     "opciones": [
-      {
-       "id": "de-novo",
-       "label": "de novo",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "reference-based",
-       "label": "Reference-based",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "binning",
-     "nombre": "Binning",
-     "tipo": "multiple",
-     "opciones": [
-      {
-       "id": "no",
-       "label": "No",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "supervised",
-       "label": "Supervised",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "non-supervised",
-       "label": "Non-supervised",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "number-of-assemblers",
-     "nombre": "Number of assemblers",
-     "tipo": "unica",
-     "opciones": [
-      {
-       "id": "1",
-       "label": "1",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "2",
-       "label": "2",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "3",
-       "label": "3",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "cd-hit",
-     "nombre": "CD-HIT",
-     "tipo": "unica",
-     "opciones": [
-      {
-       "id": "yes",
-       "label": "Yes",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "no",
-       "label": "No",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "variant-calling",
-     "nombre": "Variant calling",
-     "tipo": "unica",
-     "opciones": [
-      {
-       "id": "yes",
-       "label": "Yes",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "no",
-       "label": "No",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "dea",
-     "nombre": "DEA",
-     "tipo": "unica",
-     "opciones": [
-      {
-       "id": "yes",
-       "label": "Yes",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "no",
-       "label": "No",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
+   ],
+   "objetivo": {
+    "id": "gene-expression",
+    "nombre": {
+     "en": "Gene expression",
+     "es": "Expresión génica"
     }
-   ]
+   }
   },
   {
-   "id": "metatranscriptomic",
-   "nombre": "Metatranscriptomic",
+   "id": "proteomics",
+   "nombre": {
+    "en": "Proteomics",
+    "es": "Proteómica"
+   },
    "decisiones": [
     {
      "id": "number-of-replicates",
-     "nombre": "Number of replicates",
+     "nombre": {
+      "en": "Number of replicates",
+      "es": "Número de réplicas"
+     },
      "tipo": "unica",
      "opciones": [
       {
        "id": "1",
-       "label": "1",
+       "label": {
+        "en": "1",
+        "es": "1"
+       },
        "coste": {
         "tipo": "replicas",
-        "valor": 250.0,
+        "valor": 210.0,
         "n": 1
        }
       },
       {
        "id": "3",
-       "label": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
        "coste": {
         "tipo": "replicas",
-        "valor": 250.0,
+        "valor": 210.0,
         "n": 3
        }
       },
       {
        "id": "5",
-       "label": "5",
+       "label": {
+        "en": "5",
+        "es": "5"
+       },
        "coste": {
         "tipo": "replicas",
-        "valor": 250.0,
+        "valor": 210.0,
         "n": 5
        }
       },
       {
        "id": "10",
-       "label": "10",
+       "label": {
+        "en": "10",
+        "es": "10"
+       },
        "coste": {
         "tipo": "replicas",
-        "valor": 250.0,
-        "n": 10
-       }
-      }
-     ]
-    },
-    {
-     "id": "rna-to-analyze",
-     "nombre": "RNA to analyze",
-     "tipo": "multiple",
-     "opciones": [
-      {
-       "id": "total",
-       "label": "Total",
-       "coste": {
-        "tipo": "muestra",
-        "valor": 250.0
-       }
-      },
-      {
-       "id": "rrna-depleted",
-       "label": "rRNA depleted",
-       "coste": {
-        "tipo": "muestra",
-        "valor": 250.0
-       }
-      },
-      {
-       "id": "mrna-enriched",
-       "label": "mRNA enriched",
-       "coste": {
-        "tipo": "muestra",
-        "valor": 250.0
-       }
-      },
-      {
-       "id": "cdna-capture",
-       "label": "cDNA capture",
-       "coste": {
-        "tipo": "muestra",
-        "valor": 250.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "library",
-     "nombre": "Library",
-     "tipo": "multiple",
-     "opciones": [
-      {
-       "id": "stranded",
-       "label": "Stranded",
-       "coste": {
-        "tipo": "muestra",
-        "valor": 50.0
-       }
-      },
-      {
-       "id": "non-stranded",
-       "label": "Non-stranded",
-       "coste": {
-        "tipo": "muestra",
-        "valor": 20.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "depth",
-     "nombre": "Depth",
-     "tipo": "unica",
-     "opciones": [
-      {
-       "id": "10x",
-       "label": "10X",
-       "coste": {
-        "tipo": "mult",
-        "valor": 1.0
-       }
-      },
-      {
-       "id": "30x",
-       "label": "30X",
-       "coste": {
-        "tipo": "mult",
-        "valor": 1.5
-       }
-      },
-      {
-       "id": "50x",
-       "label": "50X",
-       "coste": {
-        "tipo": "mult",
-        "valor": 2.0
-       }
-      },
-      {
-       "id": "70x",
-       "label": "70X",
-       "coste": {
-        "tipo": "mult",
-        "valor": 2.5
-       }
-      },
-      {
-       "id": "100x",
-       "label": "100X",
-       "coste": {
-        "tipo": "mult",
-        "valor": 3.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "trimming",
-     "nombre": "Trimming",
-     "tipo": "multiple",
-     "opciones": [
-      {
-       "id": "q20",
-       "label": "Q20",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "q30",
-       "label": "Q30",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "q40",
-       "label": "Q40",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "q50",
-       "label": "Q50",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "assembly",
-     "nombre": "Assembly",
-     "tipo": "multiple",
-     "opciones": [
-      {
-       "id": "de-novo",
-       "label": "de novo",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "reference-based",
-       "label": "Reference-based",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "number-of-assemblers",
-     "nombre": "Number of assemblers",
-     "tipo": "unica",
-     "opciones": [
-      {
-       "id": "1",
-       "label": "1",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "2",
-       "label": "2",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "3",
-       "label": "3",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "cd-hit",
-     "nombre": "CD-HIT",
-     "tipo": "unica",
-     "opciones": [
-      {
-       "id": "yes",
-       "label": "Yes",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "no",
-       "label": "No",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "quantification",
-     "nombre": "Quantification",
-     "tipo": "multiple",
-     "opciones": [
-      {
-       "id": "pseudocounts",
-       "label": "Pseudocounts",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "base-to-base",
-       "label": "Base-to-base",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "normalization",
-     "nombre": "Normalization",
-     "tipo": "unica",
-     "opciones": [
-      {
-       "id": "yes",
-       "label": "Yes",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "no",
-       "label": "No",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "correction",
-     "nombre": "Correction",
-     "tipo": "multiple",
-     "opciones": [
-      {
-       "id": "no",
-       "label": "No",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "bonferroni",
-       "label": "Bonferroni",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "benjamini-hochberg",
-       "label": "Benjamini-Hochberg",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    },
-    {
-     "id": "dea",
-     "nombre": "DEA",
-     "tipo": "unica",
-     "opciones": [
-      {
-       "id": "yes",
-       "label": "Yes",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      },
-      {
-       "id": "no",
-       "label": "No",
-       "coste": {
-        "tipo": "fijo",
-        "valor": 0.0
-       }
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "metaproteomics",
-   "nombre": "Metaproteomics",
-   "decisiones": [
-    {
-     "id": "number-of-replicates",
-     "nombre": "Number of replicates",
-     "tipo": "unica",
-     "opciones": [
-      {
-       "id": "1",
-       "label": "1",
-       "coste": {
-        "tipo": "replicas",
-        "valor": 150.0,
-        "n": 1
-       }
-      },
-      {
-       "id": "3",
-       "label": "3",
-       "coste": {
-        "tipo": "replicas",
-        "valor": 150.0,
-        "n": 3
-       }
-      },
-      {
-       "id": "5",
-       "label": "5",
-       "coste": {
-        "tipo": "replicas",
-        "valor": 150.0,
-        "n": 5
-       }
-      },
-      {
-       "id": "10",
-       "label": "10",
-       "coste": {
-        "tipo": "replicas",
-        "valor": 150.0,
+        "valor": 210.0,
         "n": 10
        }
       }
@@ -1560,43 +1204,256 @@
     },
     {
      "id": "sample-preparation",
-     "nombre": "Sample preparation",
+     "nombre": {
+      "en": "Sample preparation",
+      "es": "Preparación de muestra"
+     },
      "tipo": "multiple",
      "opciones": [
       {
-       "id": "standard",
-       "label": "Standard",
+       "id": "in-solution-digestion",
+       "label": {
+        "en": "In-solution digestion",
+        "es": "Digestión en solución"
+       },
        "coste": {
         "tipo": "muestra",
         "valor": 0.0
        }
       },
       {
-       "id": "protein-corona",
-       "label": "Protein corona",
+       "id": "fasp",
+       "label": {
+        "en": "FASP",
+        "es": "FASP"
+       },
        "coste": {
         "tipo": "muestra",
-        "valor": 50.0
+        "valor": 20.0
+       }
+      },
+      {
+       "id": "s-trap",
+       "label": {
+        "en": "S-Trap",
+        "es": "S-Trap"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 30.0
+       }
+      },
+      {
+       "id": "sp3",
+       "label": {
+        "en": "SP3",
+        "es": "SP3"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 20.0
+       }
+      },
+      {
+       "id": "in-gel-digestion",
+       "label": {
+        "en": "In-gel digestion",
+        "es": "Digestión en gel"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 30.0
+       }
+      },
+      {
+       "id": "protein-corona",
+       "label": {
+        "en": "Protein corona",
+        "es": "Corona proteica (protein corona)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 80.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "fractionation",
+     "nombre": {
+      "en": "Fractionation",
+      "es": "Fraccionamiento"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "none",
+       "label": {
+        "en": "None",
+        "es": "Ninguno"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.0
+       }
+      },
+      {
+       "id": "high-ph-reversed-phase-4-fractions",
+       "label": {
+        "en": "High-pH reversed-phase (4 fractions)",
+        "es": "Fase reversa a pH alto (4 fracciones)"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 3.0
+       }
+      },
+      {
+       "id": "scx-4-fractions",
+       "label": {
+        "en": "SCX (4 fractions)",
+        "es": "SCX (4 fracciones)"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 3.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "quantification",
+     "nombre": {
+      "en": "Quantification",
+      "es": "Cuantificación"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "label-free-dda",
+       "label": {
+        "en": "Label-free (DDA)",
+        "es": "Sin marcaje (DDA)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "label-free-dia",
+       "label": {
+        "en": "Label-free (DIA)",
+        "es": "Sin marcaje (DIA)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "tmt-isobaric-labelling",
+       "label": {
+        "en": "TMT (isobaric labelling)",
+        "es": "TMT (marcaje isobárico)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 100.0
+       }
+      },
+      {
+       "id": "silac",
+       "label": {
+        "en": "SILAC",
+        "es": "SILAC"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 70.0
+       }
+      },
+      {
+       "id": "spectral-counting",
+       "label": {
+        "en": "Spectral counting",
+        "es": "Conteo espectral"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "instrument",
+     "nombre": {
+      "en": "Instrument",
+      "es": "Instrumento"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "orbitrap-astral",
+       "label": {
+        "en": "Orbitrap Astral",
+        "es": "Orbitrap Astral"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "timstof-pro-2",
+       "label": {
+        "en": "timsTOF Pro 2",
+        "es": "timsTOF Pro 2"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "ion-trap-low-resolution",
+       "label": {
+        "en": "Ion trap (low resolution)",
+        "es": "Trampa iónica (baja resolución)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 0.0
        }
       }
      ]
     },
     {
      "id": "database",
-     "nombre": "Database",
-     "tipo": "multiple",
+     "nombre": {
+      "en": "Database",
+      "es": "Base de datos"
+     },
+     "tipo": "unica",
      "opciones": [
       {
        "id": "reference-database-uniprot-ncbi",
-       "label": "Reference database (UniProt, NCBI)",
+       "label": {
+        "en": "Reference database (UniProt, NCBI)",
+        "es": "Base de datos de referencia (UniProt, NCBI)"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
        }
       },
       {
-       "id": "own-database-from-metagenome-metatranscriptome",
-       "label": "Own database (from metagenome/metatranscriptome)",
+       "id": "own-database-from-genome-transcriptome",
+       "label": {
+        "en": "Own database (from genome/transcriptome)",
+        "es": "Base de datos propia (del genoma/transcriptoma)"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -1604,7 +1461,10 @@
       },
       {
        "id": "de-novo-peptide-sequencing-no-database",
-       "label": "De novo peptide sequencing (no database)",
+       "label": {
+        "en": "De novo peptide sequencing (no database)",
+        "es": "Secuenciación de novo de péptidos (sin base de datos)"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -1613,21 +1473,138 @@
      ]
     },
     {
-     "id": "prodigal",
-     "nombre": "Prodigal",
+     "id": "fdr-control",
+     "nombre": {
+      "en": "FDR control",
+      "es": "Control del FDR"
+     },
      "tipo": "unica",
      "opciones": [
       {
-       "id": "yes",
-       "label": "Yes",
+       "id": "1-psm-and-protein",
+       "label": {
+        "en": "1% (PSM and protein)",
+        "es": "1 % (PSM y proteína)"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
        }
       },
       {
-       "id": "no",
-       "label": "No",
+       "id": "5",
+       "label": {
+        "en": "5%",
+        "es": "5 %"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no-fdr-control",
+       "label": {
+        "en": "No FDR control",
+        "es": "Sin control del FDR"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "missing-values",
+     "nombre": {
+      "en": "Missing values",
+      "es": "Valores perdidos"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "no-imputation",
+       "label": {
+        "en": "No imputation",
+        "es": "Sin imputación"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "left-censored-imputation-minprob",
+       "label": {
+        "en": "Left-censored imputation (MinProb)",
+        "es": "Imputación censurada por la izquierda (MinProb)"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "knn-imputation",
+       "label": {
+        "en": "kNN imputation",
+        "es": "Imputación kNN"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "replace-with-zero",
+       "label": {
+        "en": "Replace with zero",
+        "es": "Sustituir por cero"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "normalization",
+     "nombre": {
+      "en": "Normalization",
+      "es": "Normalización"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "none",
+       "label": {
+        "en": "None",
+        "es": "Ninguno"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "median",
+       "label": {
+        "en": "Median",
+        "es": "Mediana"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "vsn",
+       "label": {
+        "en": "VSN",
+        "es": "VSN"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -1637,12 +1614,18 @@
     },
     {
      "id": "htm",
-     "nombre": "HTM",
-     "tipo": "multiple",
+     "nombre": {
+      "en": "HTM",
+      "es": "Test de hipótesis (HTM)"
+     },
+     "tipo": "unica",
      "opciones": [
       {
        "id": "t-test",
-       "label": "t-test",
+       "label": {
+        "en": "t-test",
+        "es": "t-test"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -1650,7 +1633,10 @@
       },
       {
        "id": "limma",
-       "label": "Limma",
+       "label": {
+        "en": "Limma",
+        "es": "Limma"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -1658,7 +1644,10 @@
       },
       {
        "id": "deqms",
-       "label": "DeqMS",
+       "label": {
+        "en": "DEqMS",
+        "es": "DEqMS"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -1666,7 +1655,10 @@
       },
       {
        "id": "msstats",
-       "label": "Msstats",
+       "label": {
+        "en": "MSstats",
+        "es": "MSstats"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -1676,12 +1668,18 @@
     },
     {
      "id": "cbr",
-     "nombre": "CBR",
-     "tipo": "multiple",
+     "nombre": {
+      "en": "CBR",
+      "es": "CBR"
+     },
+     "tipo": "unica",
      "opciones": [
       {
        "id": "fc",
-       "label": "FC",
+       "label": {
+        "en": "FC",
+        "es": "FC"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -1689,7 +1687,10 @@
       },
       {
        "id": "bayesian",
-       "label": "Bayesian",
+       "label": {
+        "en": "Bayesian",
+        "es": "Bayesiano"
+       },
        "coste": {
         "tipo": "fijo",
         "valor": 0.0
@@ -1697,58 +1698,1969 @@
       }
      ]
     }
-   ]
+   ],
+   "objetivo": {
+    "id": "proteins",
+    "nombre": {
+     "en": "Proteins",
+     "es": "Proteínas"
+    }
+   }
+  },
+  {
+   "id": "metagenomics",
+   "nombre": {
+    "en": "Metagenomics",
+    "es": "Metagenómica"
+   },
+   "decisiones": [
+    {
+     "id": "number-of-replicates",
+     "nombre": {
+      "en": "Number of replicates",
+      "es": "Número de réplicas"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "1",
+       "label": {
+        "en": "1",
+        "es": "1"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 420.0,
+        "n": 1
+       }
+      },
+      {
+       "id": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 420.0,
+        "n": 3
+       }
+      },
+      {
+       "id": "5",
+       "label": {
+        "en": "5",
+        "es": "5"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 420.0,
+        "n": 5
+       }
+      },
+      {
+       "id": "10",
+       "label": {
+        "en": "10",
+        "es": "10"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 420.0,
+        "n": 10
+       }
+      }
+     ]
+    },
+    {
+     "id": "fragmentation",
+     "nombre": {
+      "en": "Fragmentation",
+      "es": "Fragmentación"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "tagmentation",
+       "label": {
+        "en": "Tagmentation",
+        "es": "Tagmentación"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "sonication",
+       "label": {
+        "en": "Sonication",
+        "es": "Sonicación"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "nebulization",
+       "label": {
+        "en": "Nebulization",
+        "es": "Nebulización"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "library",
+     "nombre": {
+      "en": "Library",
+      "es": "Librería"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "single-end-illumina",
+       "label": {
+        "en": "Single-end (Illumina)",
+        "es": "Single-end (Illumina)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 170.0
+       }
+      },
+      {
+       "id": "paired-end-illumina",
+       "label": {
+        "en": "Paired-end (Illumina)",
+        "es": "Paired-end (Illumina)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 340.0
+       }
+      },
+      {
+       "id": "mate-pair-illumina",
+       "label": {
+        "en": "Mate-pair (Illumina)",
+        "es": "Mate-pair (Illumina)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 1360.0
+       }
+      },
+      {
+       "id": "long-reads-pacbio",
+       "label": {
+        "en": "Long reads (PacBio)",
+        "es": "Lecturas largas (PacBio)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 3060.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "depth",
+     "nombre": {
+      "en": "Depth",
+      "es": "Profundidad"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "10x",
+       "label": {
+        "en": "10X",
+        "es": "10X"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.0
+       }
+      },
+      {
+       "id": "30x",
+       "label": {
+        "en": "30X",
+        "es": "30X"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.5
+       }
+      },
+      {
+       "id": "50x",
+       "label": {
+        "en": "50X",
+        "es": "50X"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 2.0
+       }
+      },
+      {
+       "id": "70x",
+       "label": {
+        "en": "70X",
+        "es": "70X"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 2.5
+       }
+      },
+      {
+       "id": "100x",
+       "label": {
+        "en": "100X",
+        "es": "100X"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 3.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "trimming",
+     "nombre": {
+      "en": "Trimming",
+      "es": "Trimming (filtrado por calidad)"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "q20",
+       "label": {
+        "en": "Q20",
+        "es": "Q20"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q30",
+       "label": {
+        "en": "Q30",
+        "es": "Q30"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q40",
+       "label": {
+        "en": "Q40",
+        "es": "Q40"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q50",
+       "label": {
+        "en": "Q50",
+        "es": "Q50"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "assembly",
+     "nombre": {
+      "en": "Assembly",
+      "es": "Ensamblado"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "de-novo",
+       "label": {
+        "en": "de novo",
+        "es": "de novo"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "reference-based",
+       "label": {
+        "en": "Reference-based",
+        "es": "Con genoma de referencia"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "binning",
+     "nombre": {
+      "en": "Binning",
+      "es": "Binning"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "no",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "supervised",
+       "label": {
+        "en": "Supervised",
+        "es": "Supervisado"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "non-supervised",
+       "label": {
+        "en": "Non-supervised",
+        "es": "No supervisado"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "number-of-assemblers",
+     "nombre": {
+      "en": "Number of assemblers",
+      "es": "Número de ensambladores"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "1",
+       "label": {
+        "en": "1",
+        "es": "1"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "2",
+       "label": {
+        "en": "2",
+        "es": "2"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "cd-hit",
+     "nombre": {
+      "en": "CD-HIT",
+      "es": "CD-HIT"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "variant-calling",
+     "nombre": {
+      "en": "Variant calling",
+      "es": "Detección de variantes"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "dea",
+     "nombre": {
+      "en": "DEA",
+      "es": "Análisis de expresión diferencial (DEA)"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "bgc-prediction-antismash",
+     "nombre": {
+      "en": "BGC prediction (antiSMASH)",
+      "es": "Predicción de BGC (antiSMASH)"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    }
+   ],
+   "objetivo": {
+    "id": "genome",
+    "nombre": {
+     "en": "Genome",
+     "es": "Genoma"
+    }
+   }
+  },
+  {
+   "id": "metatranscriptomic",
+   "nombre": {
+    "en": "Metatranscriptomic",
+    "es": "Metatranscriptómica"
+   },
+   "decisiones": [
+    {
+     "id": "number-of-replicates",
+     "nombre": {
+      "en": "Number of replicates",
+      "es": "Número de réplicas"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "1",
+       "label": {
+        "en": "1",
+        "es": "1"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 420.0,
+        "n": 1
+       }
+      },
+      {
+       "id": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 420.0,
+        "n": 3
+       }
+      },
+      {
+       "id": "5",
+       "label": {
+        "en": "5",
+        "es": "5"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 420.0,
+        "n": 5
+       }
+      },
+      {
+       "id": "10",
+       "label": {
+        "en": "10",
+        "es": "10"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 420.0,
+        "n": 10
+       }
+      }
+     ]
+    },
+    {
+     "id": "rna-to-analyze",
+     "nombre": {
+      "en": "RNA to analyze",
+      "es": "ARN a analizar"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "total",
+       "label": {
+        "en": "Total",
+        "es": "Total"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 420.0
+       }
+      },
+      {
+       "id": "rrna-depleted",
+       "label": {
+        "en": "rRNA depleted",
+        "es": "Sin rRNA (depleción)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 420.0
+       }
+      },
+      {
+       "id": "mrna-enriched",
+       "label": {
+        "en": "mRNA enriched",
+        "es": "Enriquecido en mRNA"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 420.0
+       }
+      },
+      {
+       "id": "cdna-capture",
+       "label": {
+        "en": "cDNA capture",
+        "es": "Captura de cDNA"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 420.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "library",
+     "nombre": {
+      "en": "Library",
+      "es": "Librería"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "stranded",
+       "label": {
+        "en": "Stranded",
+        "es": "Direccional (stranded)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 80.0
+       }
+      },
+      {
+       "id": "non-stranded",
+       "label": {
+        "en": "Non-stranded",
+        "es": "No direccional (non-stranded)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 30.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "depth",
+     "nombre": {
+      "en": "Depth",
+      "es": "Profundidad"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "10x",
+       "label": {
+        "en": "10X",
+        "es": "10X"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.0
+       }
+      },
+      {
+       "id": "30x",
+       "label": {
+        "en": "30X",
+        "es": "30X"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.5
+       }
+      },
+      {
+       "id": "50x",
+       "label": {
+        "en": "50X",
+        "es": "50X"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 2.0
+       }
+      },
+      {
+       "id": "70x",
+       "label": {
+        "en": "70X",
+        "es": "70X"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 2.5
+       }
+      },
+      {
+       "id": "100x",
+       "label": {
+        "en": "100X",
+        "es": "100X"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 3.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "trimming",
+     "nombre": {
+      "en": "Trimming",
+      "es": "Trimming (filtrado por calidad)"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "q20",
+       "label": {
+        "en": "Q20",
+        "es": "Q20"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q30",
+       "label": {
+        "en": "Q30",
+        "es": "Q30"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q40",
+       "label": {
+        "en": "Q40",
+        "es": "Q40"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "q50",
+       "label": {
+        "en": "Q50",
+        "es": "Q50"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "assembly",
+     "nombre": {
+      "en": "Assembly",
+      "es": "Ensamblado"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "de-novo",
+       "label": {
+        "en": "de novo",
+        "es": "de novo"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "reference-based",
+       "label": {
+        "en": "Reference-based",
+        "es": "Con genoma de referencia"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "number-of-assemblers",
+     "nombre": {
+      "en": "Number of assemblers",
+      "es": "Número de ensambladores"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "1",
+       "label": {
+        "en": "1",
+        "es": "1"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "2",
+       "label": {
+        "en": "2",
+        "es": "2"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "cd-hit",
+     "nombre": {
+      "en": "CD-HIT",
+      "es": "CD-HIT"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "quantification",
+     "nombre": {
+      "en": "Quantification",
+      "es": "Cuantificación"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "pseudocounts",
+       "label": {
+        "en": "Pseudocounts",
+        "es": "Pseudoconteos"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "base-to-base",
+       "label": {
+        "en": "Base-to-base",
+        "es": "Base a base"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "normalization",
+     "nombre": {
+      "en": "Normalization",
+      "es": "Normalización"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "correction",
+     "nombre": {
+      "en": "Correction",
+      "es": "Corrección por comparaciones múltiples"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "no",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "bonferroni",
+       "label": {
+        "en": "Bonferroni",
+        "es": "Bonferroni"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "benjamini-hochberg",
+       "label": {
+        "en": "Benjamini-Hochberg",
+        "es": "Benjamini-Hochberg"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "dea",
+     "nombre": {
+      "en": "DEA",
+      "es": "Análisis de expresión diferencial (DEA)"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    }
+   ],
+   "objetivo": {
+    "id": "gene-expression",
+    "nombre": {
+     "en": "Gene expression",
+     "es": "Expresión génica"
+    }
+   }
+  },
+  {
+   "id": "metaproteomics",
+   "nombre": {
+    "en": "Metaproteomics",
+    "es": "Metaproteómica"
+   },
+   "decisiones": [
+    {
+     "id": "number-of-replicates",
+     "nombre": {
+      "en": "Number of replicates",
+      "es": "Número de réplicas"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "1",
+       "label": {
+        "en": "1",
+        "es": "1"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 260.0,
+        "n": 1
+       }
+      },
+      {
+       "id": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 260.0,
+        "n": 3
+       }
+      },
+      {
+       "id": "5",
+       "label": {
+        "en": "5",
+        "es": "5"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 260.0,
+        "n": 5
+       }
+      },
+      {
+       "id": "10",
+       "label": {
+        "en": "10",
+        "es": "10"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 260.0,
+        "n": 10
+       }
+      }
+     ]
+    },
+    {
+     "id": "sample-preparation",
+     "nombre": {
+      "en": "Sample preparation",
+      "es": "Preparación de muestra"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "standard",
+       "label": {
+        "en": "Standard",
+        "es": "Estándar"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "protein-corona",
+       "label": {
+        "en": "Protein corona",
+        "es": "Corona proteica (protein corona)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 80.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "database",
+     "nombre": {
+      "en": "Database",
+      "es": "Base de datos"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "reference-database-uniprot-ncbi",
+       "label": {
+        "en": "Reference database (UniProt, NCBI)",
+        "es": "Base de datos de referencia (UniProt, NCBI)"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "own-database-from-metagenome-metatranscriptome",
+       "label": {
+        "en": "Own database (from metagenome/metatranscriptome)",
+        "es": "Base de datos propia (del metagenoma/metatranscriptoma)"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "de-novo-peptide-sequencing-no-database",
+       "label": {
+        "en": "De novo peptide sequencing (no database)",
+        "es": "Secuenciación de novo de péptidos (sin base de datos)"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "prodigal",
+     "nombre": {
+      "en": "Prodigal",
+      "es": "Prodigal"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "htm",
+     "nombre": {
+      "en": "HTM",
+      "es": "Test de hipótesis (HTM)"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "t-test",
+       "label": {
+        "en": "t-test",
+        "es": "t-test"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "limma",
+       "label": {
+        "en": "Limma",
+        "es": "Limma"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "deqms",
+       "label": {
+        "en": "DEqMS",
+        "es": "DEqMS"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "msstats",
+       "label": {
+        "en": "MSstats",
+        "es": "MSstats"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "cbr",
+     "nombre": {
+      "en": "CBR",
+      "es": "CBR"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "fc",
+       "label": {
+        "en": "FC",
+        "es": "FC"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "bayesian",
+       "label": {
+        "en": "Bayesian",
+        "es": "Bayesiano"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    }
+   ],
+   "objetivo": {
+    "id": "proteins",
+    "nombre": {
+     "en": "Proteins",
+     "es": "Proteínas"
+    }
+   }
+  },
+  {
+   "id": "metabolomics",
+   "nombre": {
+    "en": "Metabolomics",
+    "es": "Metabolómica"
+   },
+   "decisiones": [
+    {
+     "id": "number-of-replicates",
+     "nombre": {
+      "en": "Number of replicates",
+      "es": "Número de réplicas"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "1",
+       "label": {
+        "en": "1",
+        "es": "1"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 170.0,
+        "n": 1
+       }
+      },
+      {
+       "id": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 170.0,
+        "n": 3
+       }
+      },
+      {
+       "id": "5",
+       "label": {
+        "en": "5",
+        "es": "5"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 170.0,
+        "n": 5
+       }
+      },
+      {
+       "id": "10",
+       "label": {
+        "en": "10",
+        "es": "10"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 170.0,
+        "n": 10
+       }
+      }
+     ]
+    },
+    {
+     "id": "quenching",
+     "nombre": {
+      "en": "Quenching",
+      "es": "Quenching (parada del metabolismo)"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "no",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "extraction",
+     "nombre": {
+      "en": "Extraction",
+      "es": "Extracción"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "methanol-water-polar",
+       "label": {
+        "en": "Methanol/water (polar)",
+        "es": "Metanol/agua (polar)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "chloroform-methanol-biphasic",
+       "label": {
+        "en": "Chloroform/methanol (biphasic)",
+        "es": "Cloroformo/metanol (bifásica)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 20.0
+       }
+      },
+      {
+       "id": "acetonitrile-precipitation",
+       "label": {
+        "en": "Acetonitrile precipitation",
+        "es": "Precipitación con acetonitrilo"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "approach",
+     "nombre": {
+      "en": "Approach",
+      "es": "Enfoque"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "untargeted",
+       "label": {
+        "en": "Untargeted",
+        "es": "No dirigido"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "semi-targeted",
+       "label": {
+        "en": "Semi-targeted",
+        "es": "Semidirigido"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "targeted",
+       "label": {
+        "en": "Targeted",
+        "es": "Dirigido"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "platform",
+     "nombre": {
+      "en": "Platform",
+      "es": "Plataforma"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "lc-ms-reversed-phase",
+       "label": {
+        "en": "LC-MS (reversed phase)",
+        "es": "LC-MS (fase reversa)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "hilic-lc-ms",
+       "label": {
+        "en": "HILIC LC-MS",
+        "es": "LC-MS HILIC"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 30.0
+       }
+      },
+      {
+       "id": "gc-ms-derivatization",
+       "label": {
+        "en": "GC-MS (derivatization)",
+        "es": "GC-MS (derivatización)"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 50.0
+       }
+      },
+      {
+       "id": "nmr",
+       "label": {
+        "en": "NMR",
+        "es": "RMN"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 100.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "ionization-mode",
+     "nombre": {
+      "en": "Ionization mode",
+      "es": "Modo de ionización"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "positive",
+       "label": {
+        "en": "Positive",
+        "es": "Positivo"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.0
+       }
+      },
+      {
+       "id": "negative",
+       "label": {
+        "en": "Negative",
+        "es": "Negativo"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.0
+       }
+      },
+      {
+       "id": "both",
+       "label": {
+        "en": "Both",
+        "es": "Ambos"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.8
+       }
+      }
+     ]
+    },
+    {
+     "id": "quality-control",
+     "nombre": {
+      "en": "Quality control",
+      "es": "Control de calidad"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "pooled-qc-samples",
+       "label": {
+        "en": "Pooled QC samples",
+        "es": "Muestras QC combinadas (pooled)"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 260.0
+       }
+      },
+      {
+       "id": "extraction-blanks",
+       "label": {
+        "en": "Extraction blanks",
+        "es": "Blancos de extracción"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 170.0
+       }
+      },
+      {
+       "id": "internal-standards",
+       "label": {
+        "en": "Internal standards",
+        "es": "Estándares internos"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 10.0
+       }
+      },
+      {
+       "id": "none",
+       "label": {
+        "en": "None",
+        "es": "Ninguno"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "normalization",
+     "nombre": {
+      "en": "Normalization",
+      "es": "Normalización"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "none",
+       "label": {
+        "en": "None",
+        "es": "Ninguno"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "tic",
+       "label": {
+        "en": "TIC",
+        "es": "TIC"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "pqn",
+       "label": {
+        "en": "PQN",
+        "es": "PQN"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "annotation",
+     "nombre": {
+      "en": "Annotation",
+      "es": "Anotación"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "accurate-mass-only-msi-level-3",
+       "label": {
+        "en": "Accurate mass only (MSI level 3)",
+        "es": "Solo masa exacta (MSI nivel 3)"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "ms-ms-spectral-libraries-msi-level-2",
+       "label": {
+        "en": "MS/MS spectral libraries (MSI level 2)",
+        "es": "Librerías espectrales MS/MS (MSI nivel 2)"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "molecular-networking-gnps",
+       "label": {
+        "en": "Molecular networking (GNPS)",
+        "es": "Redes moleculares (GNPS)"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "pure-standard-msi-level-1",
+       "label": {
+        "en": "Pure standard (MSI level 1)",
+        "es": "Estándar puro (MSI nivel 1)"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 510.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "structure-elucidation",
+     "nombre": {
+      "en": "Structure elucidation",
+      "es": "Elucidación estructural"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "ms-ms-de-novo-peptide-sequencing",
+       "label": {
+        "en": "MS/MS de novo peptide sequencing",
+        "es": "Secuenciación de novo del péptido por MS/MS"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "purification-nmr-1d-2d",
+       "label": {
+        "en": "Purification + NMR (1D/2D)",
+        "es": "Purificación + RMN (1D/2D)"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 3400.0
+       }
+      },
+      {
+       "id": "marfey-s-analysis-amino-acid-configuration",
+       "label": {
+        "en": "Marfey's analysis (amino-acid configuration)",
+        "es": "Análisis de Marfey (configuración de los aminoácidos)"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 680.0
+       }
+      },
+      {
+       "id": "none",
+       "label": {
+        "en": "None",
+        "es": "Ninguno"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "statistics",
+     "nombre": {
+      "en": "Statistics",
+      "es": "Estadística"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "pca-exploratory",
+       "label": {
+        "en": "PCA (exploratory)",
+        "es": "PCA (exploratorio)"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "pls-da-with-permutation-test",
+       "label": {
+        "en": "PLS-DA with permutation test",
+        "es": "PLS-DA con test de permutaciones"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "pls-da-without-validation",
+       "label": {
+        "en": "PLS-DA without validation",
+        "es": "PLS-DA sin validación"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      },
+      {
+       "id": "univariate-tests-with-fdr",
+       "label": {
+        "en": "Univariate tests with FDR",
+        "es": "Tests univariantes con FDR"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    }
+   ],
+   "objetivo": {
+    "id": "product",
+    "nombre": {
+     "en": "Product",
+     "es": "Producto"
+    }
+   }
   },
   {
    "id": "validations",
-   "nombre": "Validations",
+   "nombre": {
+    "en": "Validations",
+    "es": "Validaciones"
+   },
    "decisiones": [
     {
      "id": "qrt-pcr",
-     "nombre": "qRT-PCR",
+     "nombre": {
+      "en": "qRT-PCR",
+      "es": "qRT-PCR"
+     },
      "tipo": "contador",
      "opciones": [
       {
        "id": "n",
-       "label": "qRT-PCR",
+       "label": {
+        "en": "qRT-PCR",
+        "es": "qRT-PCR"
+       },
        "coste": {
         "tipo": "unidad",
-        "valor": 50.0
+        "valor": 80.0
        }
       }
      ]
     },
     {
      "id": "western-blot",
-     "nombre": "Western-blot",
+     "nombre": {
+      "en": "Western-blot",
+      "es": "Western blot"
+     },
      "tipo": "contador",
      "opciones": [
       {
        "id": "n",
-       "label": "Western-blot",
+       "label": {
+        "en": "Western-blot",
+        "es": "Western blot"
+       },
        "coste": {
         "tipo": "unidad",
-        "valor": 50.0
+        "valor": 80.0
        }
       }
      ]
     },
     {
      "id": "enzyme-activities",
-     "nombre": "Enzyme activities",
+     "nombre": {
+      "en": "Enzyme activities",
+      "es": "Actividades enzimáticas"
+     },
      "tipo": "contador",
      "opciones": [
       {
        "id": "n",
-       "label": "Enzyme activities",
+       "label": {
+        "en": "Enzyme activities",
+        "es": "Actividades enzimáticas"
+       },
        "coste": {
         "tipo": "unidad",
-        "valor": 30.0
+        "valor": 50.0
        }
       }
      ]
     }
-   ]
+   ],
+   "objetivo": {
+    "id": "validation",
+    "nombre": {
+     "en": "Validation",
+     "es": "Validación"
+    }
+   }
   }
  ]
 }

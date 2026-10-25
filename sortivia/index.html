@@ -80,7 +80,7 @@ const I = {
     win_t: "¡Misión cumplida!", win_d: (x) => `Ha salido el ${x}, uno de vuestros números. ¡Habéis salvado a la humanidad!`,
     lose_t: "La misión ha fracasado", lose_d: (x) => `Ha salido el ${x}, que no estaba entre vuestros números.`,
     retry: "Revisar la estrategia (siguiente ronda)", over_t: "Fin de la actividad", over_d: "Se han agotado las rondas. Comentad con el profesor qué decisiones han restado probabilidad.",
-    aviso: "Aviso del profesor", fb_wait: "Cuando el profesor lo publique, aquí veréis las mejores elecciones de cada etapa.", fb_t: "Las mejores elecciones", fb_d: "Vuestra estrategia de la última ronda, comparada con las opciones que más puntuaban en cada etapa. Es una guía por etapas: hacerlo todo no cabría en el presupuesto.", fb_dec: "Decisión", fb_mine: "Vuestra elección", fb_best: "Mejor opción", fb_notinc: "no lo incluisteis", fb_rules: "Incoherencias de vuestra estrategia:", varias: "(podéis elegir varias)", formula: "Coste de cada ómica = condiciones × réplicas × (precio por muestra) × profundidad + costes fijos.", changed: "Cambios guardados", saving: "Guardando…", demo: "Modo demostración: los datos se guardan solo en este navegador.",
+    aviso: "Aviso del profesor", fb_wait: "Cuando el profesor lo publique, aquí veréis las mejores elecciones de cada etapa.", fb_t: "Las mejores elecciones", fb_d: "Vuestra estrategia de la última ronda, comparada con las opciones que más puntuaban en cada etapa. Es una guía por etapas: hacerlo todo no cabría en el presupuesto.", fb_dec: "Decisión", fb_mine: "Vuestra elección", fb_best: "Mejor opción", fb_notinc: "no lo incluisteis", fb_rules: "Incoherencias de vuestra estrategia:", varias: "(podéis elegir varias)", formula: "Coste de cada bloque = condiciones × réplicas × (suma de precios por muestra) × multiplicadores + costes fijos.", changed: "Cambios guardados", saving: "Guardando…", demo: "Modo demostración: los datos se guardan solo en este navegador.",
     f: "SORTIVIA · Metodología ESTOPA · Parte de BIOCOGNIA · Open Educational Technology",
   },
   en: {
@@ -96,7 +96,7 @@ const I = {
     win_t: "Mission accomplished!", win_d: (x) => `${x} came up, one of your numbers. You have saved humanity!`,
     lose_t: "The mission has failed", lose_d: (x) => `${x} came up, which was not one of your numbers.`,
     retry: "Review the strategy (next round)", over_t: "End of the activity", over_d: "No rounds left. Discuss with the teacher which decisions lowered your probability.",
-    aviso: "Message from the teacher", fb_wait: "When the teacher publishes it, you will see the best choices for each stage here.", fb_t: "The best choices", fb_d: "Your strategy from the last round compared with the highest-scoring options at each stage. It is a stage-by-stage guide: doing everything would not fit the budget.", fb_dec: "Decision", fb_mine: "Your choice", fb_best: "Best option", fb_notinc: "not included", fb_rules: "Inconsistencies in your strategy:", varias: "(you may choose several)", formula: "Cost of each omics block = conditions × replicates × (price per sample) × depth + fixed costs.", changed: "Changes saved", saving: "Saving…", demo: "Demo mode: data are stored only in this browser.",
+    aviso: "Message from the teacher", fb_wait: "When the teacher publishes it, you will see the best choices for each stage here.", fb_t: "The best choices", fb_d: "Your strategy from the last round compared with the highest-scoring options at each stage. It is a stage-by-stage guide: doing everything would not fit the budget.", fb_dec: "Decision", fb_mine: "Your choice", fb_best: "Best option", fb_notinc: "not included", fb_rules: "Inconsistencies in your strategy:", varias: "(you may choose several)", formula: "Cost of each block = conditions × replicates × (sum of per-sample prices) × multipliers + fixed costs.", changed: "Changes saved", saving: "Saving…", demo: "Demo mode: data are stored only in this browser.",
     f: "SORTIVIA · ESTOPA methodology · Part of BIOCOGNIA · Open Educational Technology",
   },
 };
@@ -138,7 +138,7 @@ function vBudget() {
 function vBlock(b) {
   const req = S.act.bloques_obligatorios.includes(b.id), sel = S.el.bloques[b.id], on = req || sel.incluido;
   const head = `<header><h2>${esc(svT(b.nombre, S.lang))}</h2>${req ? `<span class="pill">${T("required")}</span>` : `<label class="toggle"><input type="checkbox" data-inc="${b.id}" ${on ? "checked" : ""}>${T("include")}</label>`}
-    ${on ? `<span class="sub" data-sub="${b.id}" title="${T("subtotal")}">${svEur(svCosteBloque(b, sel, svCondiciones(S.act, S.el)), S.lang)}</span>` : ""}</header>`;
+    ${on ? `<span class="sub" data-sub="${b.id}" title="${T("subtotal")}">${svEur(svCosteBloque(b, sel, svCondiciones(S.act, S.el), svReplicas(S.act, S.el)), S.lang)}</span>` : ""}</header>`;
   if (!on) return `<section class="blk">${head}</section>`;
   const decs = b.decisiones.map((d) => {
     if (d.tipo === "contador") {
@@ -224,8 +224,8 @@ function render() {
   else main().innerHTML = vDraw();
 }
 function actualizarSubtotales() {
-  const nc = svCondiciones(S.act, S.el);
-  for (const el of document.querySelectorAll("[data-sub]")) { const b = S.act.bloques.find((x) => x.id === el.dataset.sub); el.textContent = svEur(svCosteBloque(b, S.el.bloques[b.id], nc), S.lang); }
+  const nc = svCondiciones(S.act, S.el), nr = svReplicas(S.act, S.el);
+  for (const el of document.querySelectorAll("[data-sub]")) { const b = S.act.bloques.find((x) => x.id === el.dataset.sub); el.textContent = svEur(svCosteBloque(b, S.el.bloques[b.id], nc, nr), S.lang); }
 }
 function renderBudget() { const b = $("#budget"); if (b) b.outerHTML = vBudget(); const sb = $("#sendbox"); if (sb) { const tmp = document.createElement("div"); tmp.innerHTML = vEditor(); sb.replaceWith(tmp.querySelector("#sendbox")); } }
 

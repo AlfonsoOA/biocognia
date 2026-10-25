@@ -3,7 +3,7 @@
    BIOCOGNIA · Open Educational Technology · Alfonso Olaya Abril
    ============================================================ */
 "use strict";
-const SV_VERSION = "0.6.1";
+const SV_VERSION = "0.6.2";
 
 /* ---------- Cálculo de costes y puntos ---------- */
 // eleccion = { bloques: { [bloque]: { incluido: bool, dec: { [decision]: idOpcion | número (contadores) } } } }
@@ -20,8 +20,20 @@ function svCondiciones(act, eleccion) {
   }
   return 1;
 }
-function svCosteBloque(b, sel, ncond = 1) {
-  let reps = 0, porMuestra = 0, mult = 1, fijo = 0, unidades = 0;
+// Réplicas comunes: un bloque sin decisión de réplicas usa las del primer bloque incluido que la tenga
+// (p. ej., un diseño experimental único para toda la actividad). Si ninguno la tiene, 0.
+function svTieneReplicas(b) { return b.decisiones.some((d) => d.opciones.some((o) => o.coste.tipo === "replicas")); }
+function svReplicas(act, eleccion) {
+  for (const b of act.bloques) {
+    if (!svIncluido(act, eleccion, b) || !svTieneReplicas(b)) continue;
+    const sel = eleccion.bloques[b.id] || { dec: {} };
+    for (const d of b.decisiones) for (const o of svElegidas(d, sel.dec && sel.dec[d.id])) if (o.coste.tipo === "replicas") return o.coste.n;
+    return 0;
+  }
+  return 0;
+}
+function svCosteBloque(b, sel, ncond = 1, nrep = 0) {
+  let reps = svTieneReplicas(b) ? 0 : nrep, porMuestra = 0, mult = 1, fijo = 0, unidades = 0;
   for (const d of b.decisiones) {
     const v = sel && sel.dec ? sel.dec[d.id] : undefined;
     if (d.tipo === "contador") { const n = Math.max(0, Number(v) || 0); unidades += n * d.opciones[0].coste.valor; continue; }
@@ -37,8 +49,8 @@ function svCosteBloque(b, sel, ncond = 1) {
   return Math.round((ncond * reps * porMuestra * mult + fijo + unidades) * 100) / 100;
 }
 function svCosteTotal(act, eleccion) {
-  const nc = svCondiciones(act, eleccion);
-  return act.bloques.reduce((s, b) => s + (svIncluido(act, eleccion, b) ? svCosteBloque(b, eleccion.bloques[b.id], nc) : 0), 0);
+  const nc = svCondiciones(act, eleccion), nr = svReplicas(act, eleccion);
+  return act.bloques.reduce((s, b) => s + (svIncluido(act, eleccion, b) ? svCosteBloque(b, eleccion.bloques[b.id], nc, nr) : 0), 0);
 }
 function svPendientes(act, eleccion, lang = "es") {
   // Decisiones de opción única sin responder en los bloques incluidos (los contadores pueden quedarse en 0).

@@ -22,8 +22,21 @@ def condiciones(act, el):
                 if o["coste"]["tipo"] == "condiciones": return o["coste"]["valor"]
     return 1
 
-def coste_bloque(b, sel, nc):
-    reps = 0; pm = 0; mult = 1; fijo = 0; uni = 0
+def tiene_replicas(b):
+    return any(o["coste"]["tipo"] == "replicas" for d in b["decisiones"] for o in d["opciones"])
+
+def replicas(act, el):
+    """Réplicas comunes: las del primer bloque incluido que tenga decisión de réplicas (para bloques sin ella)."""
+    for b in act["bloques"]:
+        if not incluido(act, el, b) or not tiene_replicas(b): continue
+        for d in b["decisiones"]:
+            for o in elegidas(d, el[b["id"]]["dec"].get(d["id"])):
+                if o["coste"]["tipo"] == "replicas": return o["coste"]["n"]
+        return 0
+    return 0
+
+def coste_bloque(b, sel, nc, nr=0):
+    reps = 0 if tiene_replicas(b) else nr; pm = 0; mult = 1; fijo = 0; uni = 0
     for d in b["decisiones"]:
         v = sel["dec"].get(d["id"])
         if d["tipo"] == "contador": uni += max(0, int(v or 0)) * d["opciones"][0]["coste"]["valor"]; continue
@@ -36,8 +49,8 @@ def coste_bloque(b, sel, nc):
     return round(nc * reps * pm * mult + fijo + uni, 2)
 
 def coste_total(act, el):
-    nc = condiciones(act, el)
-    return sum(coste_bloque(b, el[b["id"]], nc) for b in act["bloques"] if incluido(act, el, b))
+    nc = condiciones(act, el); nr = replicas(act, el)
+    return sum(coste_bloque(b, el[b["id"]], nc, nr) for b in act["bloques"] if incluido(act, el, b))
 
 def termino(act, el, t, idx):
     b = idx[t["bloque"]]; inc = incluido(act, el, b)
@@ -162,14 +175,24 @@ def optimizar(act, clave, presupuesto, reinicios=40, iteraciones=12000, semilla=
             if p2 >= p or rnd.random() < math.exp((p2 - p) / T):
                 el, p = e2, p2
                 if p > mejor_p: mejor, mejor_p = copia(el), p
+    if mejor:   # limpieza: quita opciones de más que no aportan puntos
+        total = puntos(act, clave, mejor, idx)
+        for b in act["bloques"]:
+            for d in b["decisiones"]:
+                if d["tipo"] != "multiple": continue
+                for o in list(mejor[b["id"]]["dec"].get(d["id"]) or []):
+                    cur = mejor[b["id"]]["dec"][d["id"]]
+                    if len(cur) < 2: break
+                    mejor[b["id"]]["dec"][d["id"]] = [x for x in cur if x != o]
+                    if puntos(act, clave, mejor, idx) < total: mejor[b["id"]]["dec"][d["id"]] = cur
     return (puntos(act, clave, mejor, idx) if mejor else mejor_p), mejor
 
 def describir(act, el):
     """Lista legible de la estrategia: [(bloque, decisión, elección, coste del bloque)]."""
-    nc = condiciones(act, el); filas = []
+    nc = condiciones(act, el); nr = replicas(act, el); filas = []
     for b in act["bloques"]:
         if not incluido(act, el, b): continue
-        cb = coste_bloque(b, el[b["id"]], nc)
+        cb = coste_bloque(b, el[b["id"]], nc, nr)
         for d in b["decisiones"]:
             v = el[b["id"]]["dec"].get(d["id"])
             if d["tipo"] == "contador":

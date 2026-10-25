@@ -180,10 +180,10 @@ function choque(aid) {
   return { aviso: `Ya existe «${aid}» (${ex.estado}${ex.autor !== P.uid ? `, de ${ex.autor_nombre || "otra persona"}` : ""}): al guardar se sustituirá.`, ex };
 }
 function planFilas(act, el) {
-  const nc = svCondiciones(act, el), out = [];
+  const nc = svCondiciones(act, el), nr = svReplicas(act, el), out = [];
   for (const b of act.bloques) {
     if (!svIncluido(act, el, b)) continue;
-    const sel = el.bloques[b.id], cb = svCosteBloque(b, sel, nc);
+    const sel = el.bloques[b.id], cb = svCosteBloque(b, sel, nc, nr);
     b.decisiones.forEach((d, i) => {
       const v = sel.dec[d.id];
       const txt = d.tipo === "contador" ? (Number(v) > 0 ? `${Number(v)} ×` : "—") : svElegidas(d, v).map((o) => svT(o.label, "es")).join(" + ");

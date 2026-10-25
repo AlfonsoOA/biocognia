@@ -122,5 +122,16 @@ async function svOptimizar(act, clave, presupuesto, { reinicios = 14, iteracione
       }
     }
   }
+  if (mejor) {   // limpieza: quita opciones de más que no aportan puntos (deja la estrategia mínima equivalente)
+    const total = svPuntos(act, clave, mejor).total;
+    for (const b of act.bloques) for (const d of b.decisiones) {
+      if (d.tipo !== "multiple") continue;
+      for (const o of [...(mejor.bloques[b.id].dec[d.id] || [])]) {
+        const cur = mejor.bloques[b.id].dec[d.id]; if (cur.length < 2) break;
+        mejor.bloques[b.id].dec[d.id] = cur.filter((x) => x !== o);
+        if (svPuntos(act, clave, mejor).total < total) mejor.bloques[b.id].dec[d.id] = cur;
+      }
+    }
+  }
   return { bruto: mejor ? svPuntos(act, clave, mejor).total : 0, plan: mejor };
 }

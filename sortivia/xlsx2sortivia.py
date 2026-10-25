@@ -159,10 +159,10 @@ wo["A1"].font = Font(bold=True)
 wo.append(["Es una referencia calculada automáticamente; si ves algo que no tiene sentido, ajusta los puntos o las reglas y vuelve a convertir."])
 wo.append([]); wo.append(["Bloque", "Decisión", "Elección", "Puntos que cuentan", "Coste del bloque (€)"])
 for c in wo[4]: c.font = Font(bold=True)
-nc = OPT.condiciones(act, plan)
+nc = OPT.condiciones(act, plan); nr = OPT.replicas(act, plan)
 for b in bloques:
     if not OPT.incluido(act, plan, b): continue
-    cb = OPT.coste_bloque(b, plan[b["id"]], nc)
+    cb = OPT.coste_bloque(b, plan[b["id"]], nc, nr)
     for d in b["decisiones"]:
         v = plan[b["id"]]["dec"].get(d["id"])
         if d["tipo"] == "contador":

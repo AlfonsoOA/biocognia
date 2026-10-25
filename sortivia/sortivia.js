@@ -3,7 +3,7 @@
    BIOCOGNIA · Open Educational Technology · Alfonso Olaya Abril
    ============================================================ */
 "use strict";
-const SV_VERSION = "0.6.2";
+const SV_VERSION = "0.6.4";
 
 /* ---------- Cálculo de costes y puntos ---------- */
 // eleccion = { bloques: { [bloque]: { incluido: bool, dec: { [decision]: idOpcion | número (contadores) } } } }
@@ -140,7 +140,15 @@ function svNumeros(act, puntos) { return Math.max(0, Math.min(act.numeros, Math.
 function svEleccionVacia(act) { const e = { bloques: {} }; for (const b of act.bloques) e.bloques[b.id] = { incluido: act.bloques_obligatorios.includes(b.id), dec: {} }; return e; }
 function svAleatorio(n) { const a = new Uint32Array(1); crypto.getRandomValues(a); return (a[0] % n) + 1; }
 function svCodigo(n = 5) { const a = new Uint8Array(n); crypto.getRandomValues(a); return Array.from(a, (x) => "ABCDEFGHJKMNPQRSTUVWXYZ23456789"[x % 31]).join(""); }
-function svEur(n, lang) { return new Intl.NumberFormat(lang === "en" ? "en-GB" : "es-ES", { maximumFractionDigits: 0 }).format(Math.round(n)) + " €"; }
+// Unidad del «presupuesto» de la actividad cargada: euros por defecto; una actividad puede usar otra (p. ej., días).
+let SV_UNIDAD = null;
+// «singular|plural» (p. ej., «día|días»): 1 día, 3 días.
+function svEur(n, lang) {
+  const r = Math.round(n), v = new Intl.NumberFormat(lang === "en" ? "en-GB" : "es-ES", { maximumFractionDigits: 0 }).format(r);
+  if (!SV_UNIDAD) return `${v} €`;
+  const u = svT(SV_UNIDAD, lang).split("|");
+  return `${v} ${Math.abs(r) === 1 ? u[0] : (u[1] || u[0])}`;
+}
 function svPrecio(o, lang) {
   const c = o.coste, en = lang === "en", e = (v) => svEur(v, lang);
   if (c.tipo === "mult") return c.valor === 1 ? "" : `×${String(c.valor).replace(".", en ? "." : ",")}`;
@@ -152,9 +160,11 @@ function svPrecio(o, lang) {
 }
 // Actividades: primero las del repositorio (archivos estáticos); si no está, las subidas desde el panel (Firebase).
 async function svCargarActividad(id) {
-  try { const r = await fetch(`actividades/${encodeURIComponent(id)}.json`); if (r.ok) return await r.json(); } catch (e) {}
-  const a = await SVB.actividad(id); if (!a || !a.datos) throw new Error("actividad " + id);
-  return { ...a.datos, autor: a.autor_nombre || null };
+  let act = null;
+  try { const r = await fetch(`actividades/${encodeURIComponent(id)}.json`); if (r.ok) act = await r.json(); } catch (e) {}
+  if (!act) { const a = await SVB.actividad(id); if (!a || !a.datos) throw new Error("actividad " + id); act = { ...a.datos, autor: a.autor_nombre || null }; }
+  SV_UNIDAD = act.unidad || null;
+  return act;
 }
 async function svIndiceRepo() { try { const r = await fetch("actividades/index.json"); return r.ok ? await r.json() : []; } catch (e) { return []; } }
 // Cuentas con permisos de administración (las mismas que en las reglas de Firestore).

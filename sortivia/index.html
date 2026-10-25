@@ -70,7 +70,7 @@ const I = {
   es: {
     tagline: "Decisiones y gamificación", join_t: "Entrar en la actividad", join_code: "Código de la sesión", join_name: "Nombre del grupo", join_name_ph: "Por ejemplo: Grupo 3",
     join_hint: "No pongáis vuestros nombres: basta con el número o el nombre del grupo.", join_btn: "Entrar", join_bad: "No existe ninguna sesión abierta con ese código.", join_err: "No se ha podido entrar. Comprobad la conexión e intentadlo de nuevo.",
-    round: (r, n) => `Ronda ${r} de ${n}`, budget: "Presupuesto", spent: "Gastado", left: "Disponible", over: (x) => `Os pasáis del presupuesto en ${x}. Quitad algo antes de enviar.`,
+    round: (r, n) => `Ronda ${r} de ${n}`, budget: "Presupuesto", spent: "Gastado", used: "Usado", left: "Disponible", over: (x) => `Os pasáis del límite en ${x}. Quitad algo antes de enviar.`,
     include: "Incluir este bloque", required: "Obligatorio", subtotal: "Coste del bloque", just: "¿Por qué habéis tomado estas decisiones?", just_ph: "Justificad vuestras elecciones en este bloque…",
     pending: (n) => `Faltan ${n} decisiones por tomar:`, send: "Enviar la estrategia", send_confirm: "Una vez enviada no podréis cambiarla en esta ronda. ¿Enviar?", yes: "Sí, enviar", no: "Seguir revisando",
     prev: (p, n) => `En la ronda anterior conseguisteis ${p} puntos, es decir, ${n} números de 10. Revisad la estrategia para subir vuestra probabilidad de éxito.`,
@@ -86,7 +86,7 @@ const I = {
   en: {
     tagline: "Decisions and gamification", join_t: "Join the activity", join_code: "Session code", join_name: "Group name", join_name_ph: "For example: Group 3",
     join_hint: "Don't use your names: the group number or name is enough.", join_btn: "Join", join_bad: "There is no open session with that code.", join_err: "Could not join. Check your connection and try again.",
-    round: (r, n) => `Round ${r} of ${n}`, budget: "Budget", spent: "Spent", left: "Remaining", over: (x) => `You are ${x} over budget. Remove something before sending.`,
+    round: (r, n) => `Round ${r} of ${n}`, budget: "Budget", spent: "Spent", used: "Used", left: "Remaining", over: (x) => `You are ${x} over the limit. Remove something before sending.`,
     include: "Include this block", required: "Required", subtotal: "Block cost", just: "Why did you make these decisions?", just_ph: "Justify your choices in this block…",
     pending: (n) => `${n} decisions are still missing:`, send: "Send the strategy", send_confirm: "Once sent, you cannot change it in this round. Send?", yes: "Yes, send", no: "Keep reviewing",
     prev: (p, n) => `In the previous round you got ${p} points, that is, ${n} numbers out of 10. Review your strategy to raise your probability of success.`,
@@ -130,9 +130,9 @@ function coste() { return svCosteTotal(S.act, S.el); }
 function vBudget() {
   const c = coste(), P = S.act.presupuesto, over = c > P;
   return `<div class="budget ${over ? "over" : ""}" id="budget"><div class="row"><span class="eyebrow">${T("round", S.g.ronda, S.act.rondas)}</span><span class="spacer small muted" id="saved"></span></div>
-    <div class="row"><span>${T("spent")} <b class="big">${svEur(c, S.lang)}</b> <span class="muted">/ ${svEur(P, S.lang)}</span></span><span class="spacer">${T("left")} <b class="big">${svEur(Math.max(0, P - c), S.lang)}</b></span></div>
+    <div class="row"><span>${T(S.act.unidad ? "used" : "spent")} <b class="big">${svEur(c, S.lang)}</b> <span class="muted">/ ${svEur(P, S.lang)}</span></span><span class="spacer">${T("left")} <b class="big">${svEur(Math.max(0, P - c), S.lang)}</b></span></div>
     <div class="track"><span style="width:${Math.min(100, (100 * c) / P)}%"></span></div>
-    <p class="small muted">${T("formula")}</p>
+    ${S.act.bloques.some((b) => b.decisiones.some((d) => d.opciones.some((o) => ["replicas", "muestra", "mult", "condiciones"].includes(o.coste.tipo) && o.coste.valor))) ? `<p class="small muted">${T("formula")}</p>` : ""}
     ${over ? `<p class="small" style="color:var(--bad)">${T("over", svEur(c - P, S.lang))}</p>` : ""}</div>`;
 }
 function vBlock(b) {

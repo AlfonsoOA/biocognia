@@ -76,6 +76,8 @@ function svConvertir(wb) {
     presupuesto: svNum(P.presupuesto), numeros: Math.trunc(svNum(P.numeros || 10)), rondas: Math.trunc(svNum(P.rondas || 2)),
     puntos_por_numero: svNum(P.puntos_por_numero || 10), bloques_obligatorios: obligatorios, bloques,
   };
+  if (P.unidad_es || P.unidad_en) act.unidad = { es: String(P.unidad_es || P.unidad_en).trim(), en: String(P.unidad_en || P.unidad_es).trim() };
+  if (P.asignatura) act.asignatura = String(P.asignatura).trim();
   const clave = { schema: "sortivia-clave/3", actividad: aid, puntos, reglas };
   return { act, clave, errores, objetivo: svNum(P.puntos_objetivo || 99) };
 }

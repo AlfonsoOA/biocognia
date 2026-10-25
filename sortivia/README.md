@@ -3,7 +3,7 @@
 Actividades de toma de decisiones y gamificación basadas en la metodología **ESTOPA**. Parte de BIOCOGNIA · Open Educational Technology.
 
 - **Autoría y desarrollo:** Alfonso Olaya Abril (Departamento de Bioquímica y Biología Molecular, Universidad de Córdoba).
-- **Versión:** 0.6.2.
+- **Versión:** 0.6.4.
 
 ## Cómo funciona una actividad
 
@@ -62,6 +62,10 @@ Añadiendo `?demo` a la dirección (`…/sortivia/panel.html?demo` y `…/sortiv
    - **Reglas**: ID · Condición · Puntos · Explicación (ES) · Explicación (EN) · Bloque (opcional). Ejemplo de condición: `metaproteomics/prodigal=yes & !genomic & !metagenomics`.
 2. Conviértela: `python3 xlsx2sortivia.py hoja.xlsx actividades/ claves/` (tarda unos minutos porque busca la estrategia óptima; `--rapido` para pruebas). Comprueba las reglas, genera `actividades/<id>.json` (pública) y `claves/<id>.clave.json` (privada), y añade al Excel las pestañas «Identificadores» y «Estrategia óptima».
 3. Si es una actividad nueva, añádela a `actividades/index.json`. Sube la actividad al repositorio y carga la clave en el panel (nunca la subas al repositorio).
+
+**Asignatura.** El parámetro opcional `asignatura` de la pestaña Actividad (p. ej., `BMSi`, `BAyB`) agrupa las actividades en el panel y en el desplegable de «Nueva sesión». Los grupos no la ven. Para las actividades del repositorio va en `actividades/index.json`.
+
+**Otra unidad de «presupuesto».** Con los parámetros `unidad_es` y `unidad_en` en la pestaña Actividad (p. ej., `día|días` y `day|days`, singular|plural), el límite deja de ser dinero: la actividad del escape room usa días.
 
 **Réplicas comunes.** Un bloque sin decisión de réplicas usa las del primer bloque que la tenga: así una actividad de un solo flujo (como la de LCR) define el diseño y las réplicas una vez y todos sus pasos se pagan por muestra.
 

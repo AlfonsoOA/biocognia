@@ -60,11 +60,11 @@ async function cargarActividades() {
   P.repo = await svIndiceRepo();
   P.fsActs = await SVB.actividades().catch(() => []);
   const enRepo = new Set(P.repo.map((a) => a.id));
-  P.acts = P.repo.map((a) => ({ id: a.id, titulo: a.titulo, origen: "repo", estado: "publicada" }));
+  P.acts = P.repo.map((a) => ({ id: a.id, titulo: a.titulo, asignatura: a.asignatura || "", origen: "repo", estado: "publicada" }));
   for (const a of P.fsActs) {
     if (enRepo.has(a.id)) continue;
     if (!admin() && a.estado !== "publicada" && a.autor !== P.uid) continue;
-    P.acts.push({ id: a.id, titulo: (a.datos || {}).titulo || a.id, origen: "panel", estado: a.estado, autor: a.autor, autor_nombre: a.autor_nombre || "", actualizado: a.actualizado });
+    P.acts.push({ id: a.id, titulo: (a.datos || {}).titulo || a.id, asignatura: (a.datos || {}).asignatura || "", origen: "panel", estado: a.estado, autor: a.autor, autor_nombre: a.autor_nombre || "", actualizado: a.actualizado });
   }
   P.claves = {};
   await Promise.all(P.acts.map(async (a) => { P.claves[a.id] = await SVB.clave(a.id).catch(() => null); }));
@@ -115,8 +115,15 @@ function vTabs() {
   if (admin()) t.push(["profesorado", "Profesorado"]);
   return `<nav class="tabs" aria-label="Secciones">${t.map(([v, l]) => `<button class="btn small" data-vista="${v}" aria-pressed="${P.vista === v}">${l}</button>`).join("")}</nav>`;
 }
+// Actividades agrupadas por asignatura (las que no tienen, al final) y por título dentro de cada una.
+function porAsignatura(lista) {
+  const g = new Map();
+  for (const a of lista.slice().sort((x, y) => svT(x.titulo, "es").localeCompare(svT(y.titulo, "es"), "es"))) { const k = a.asignatura || ""; if (!g.has(k)) g.set(k, []); g.get(k).push(a); }
+  return [...g.entries()].sort(([a], [b]) => (a === "") - (b === "") || a.localeCompare(b, "es"));
+}
+const etiquetaAsig = (k) => k || "Sin asignatura";
 function vActividades() {
-  const filas = P.acts.map((a) => {
+  const filaAct = (a) => {
     const k = P.claves[a.id], [lab, cls] = ESTACT[a.estado] || [a.estado, ""], mia = a.autor === P.uid, acc = [];
     if (a.origen === "repo") { if (admin()) acc.push(`<label class="btn small">${k ? "Sustituir" : "Cargar"} clave<input type="file" accept=".json" data-key="${a.id}" hidden></label>`); }
     else {
@@ -131,7 +138,9 @@ function vActividades() {
     const origen = a.origen === "repo" ? "Repositorio" : `Panel · ${esc(a.autor_nombre || nombreProf(a.autor))}`;
     return `<tr><td>${esc(svT(a.titulo, "es"))}<div class="small muted">${origen}</div></td><td><span class="pill ${cls}">${lab}</span></td>
       <td>${k ? `<span class="pill ok">Clave (${Object.keys(k.puntos || {}).length})</span>` : `<span class="pill bad">Sin clave</span>`}</td><td class="n"><div class="acc">${acc.join("")}</div></td></tr>`;
-  }).join("");
+  };
+  const grupos = porAsignatura(P.acts), conCab = grupos.length > 1 || (grupos[0] && grupos[0][0]);
+  const filas = grupos.map(([k, l]) => (conCab ? `<tr><td colspan="4" class="eyebrow" style="padding-top:14px;text-transform:none;letter-spacing:.04em">${esc(etiquetaAsig(k))}</td></tr>` : "") + l.map(filaAct).join("")).join("");
   const nota = admin()
     ? "Las propuestas del profesorado aparecen aquí: revísalas (JSON, o creando una sesión de prueba) y publícalas. Publicada, cualquier profesor autorizado puede usarla en sus sesiones."
     : "Tus borradores solo los ves tú; puedes probarlos en una sesión. Cuando estén listos, «Proponer» los envía al administrador para que los revise y los publique con tu nombre.";
@@ -142,14 +151,14 @@ function vActividades() {
 function vNueva() {
   const usables = P.acts.filter((a) => a.estado === "publicada" || a.autor === P.uid || admin());
   return `<section class="panel stack"><h2>Nueva sesión</h2><form id="nueva" class="row">
-    <select class="field" name="act">${usables.map((a) => `<option value="${a.id}">${esc(svT(a.titulo, "es"))}${a.estado !== "publicada" ? " (sin publicar: solo para pruebas)" : ""}</option>`).join("")}</select>
+    <select class="field" name="act">${porAsignatura(usables).map(([k, l]) => `<optgroup label="${esc(etiquetaAsig(k))}">${l.map((a) => `<option value="${a.id}">${esc(svT(a.titulo, "es"))}${a.estado !== "publicada" ? " (sin publicar: solo para pruebas)" : ""}</option>`).join("")}</optgroup>`).join("")}</select>
     <input class="field" name="nombre" placeholder="Nombre (p. ej., BMSi 2026-27 · grupo A)" style="flex:1;min-width:220px" maxlength="80">
     <button class="btn primary" type="submit">Crear sesión</button></form></section>`;
 }
 function vSesiones() {
   const abiertas = P.sesiones.filter((s) => s.estado === "abierta"), cerradas = P.sesiones.filter((s) => s.estado !== "abierta");
   const cols = admin() ? 6 : 5;
-  const fila = (s) => `<tr><td class="num">${s.id}</td><td>${esc(s.nombre || "")}</td><td>${esc(svT((P.acts.find((a) => a.id === s.actividad) || {}).titulo, "es") || s.actividad)}</td>${admin() ? `<td class="small">${esc(nombreProf(s.propietario))}</td>` : ""}<td class="small muted">${new Date(s.creada).toLocaleString("es-ES")}</td><td class="n"><button class="btn small" data-open="${s.id}">Abrir</button></td></tr>`;
+  const fila = (s) => `<tr><td class="num">${s.id}</td><td>${esc(s.nombre || "")}</td><td>${(() => { const a = P.acts.find((x) => x.id === s.actividad) || {}; return `${a.asignatura ? `<span class="pill">${esc(a.asignatura)}</span> ` : ""}${esc(svT(a.titulo, "es") || s.actividad)}`; })()}</td>${admin() ? `<td class="small">${esc(nombreProf(s.propietario))}</td>` : ""}<td class="small muted">${new Date(s.creada).toLocaleString("es-ES")}</td><td class="n"><button class="btn small" data-open="${s.id}">Abrir</button></td></tr>`;
   return `<section class="panel stack"><h2>${admin() ? "Sesiones (todas)" : "Tus sesiones"}</h2>${P.sesiones.length ? `<div class="tablebox"><table><thead><tr><th>Código</th><th>Nombre</th><th>Actividad</th>${admin() ? "<th>Profesor</th>" : ""}<th>Creada</th><th></th></tr></thead><tbody>${abiertas.map(fila).join("")}${cerradas.length ? `<tr><td colspan="${cols}" class="small muted">Cerradas</td></tr>${cerradas.map(fila).join("")}` : ""}</tbody></table></div>` : `<p class="muted">Todavía no hay sesiones.</p>`}</section>`;
 }
 function vMsg() { return P.msg ? `<p class="notice small" role="status">${esc(P.msg)}</p>` : ""; }
@@ -201,7 +210,7 @@ function vConversor() {
     const a = c.act, nd = a.bloques.reduce((s, b) => s + b.decisiones.length, 0), no = a.bloques.reduce((s, b) => s + b.decisiones.reduce((t, d) => t + d.opciones.length, 0), 0);
     const ch = choque(a.id);
     cuerpo = `<div class="stack"><p><b>${esc(svT(a.titulo, "es"))}</b> <span class="small muted">· id <span class="num">${esc(a.id)}</span></span></p>
-      <div class="kv"><div><b>${a.bloques.length}</b><span>Bloques</span></div><div><b>${nd}</b><span>Decisiones</span></div><div><b>${no}</b><span>Opciones</span></div><div><b>${c.clave.reglas.length}</b><span>Reglas</span></div><div><b>${fmt(a.presupuesto)}</b><span>Presupuesto</span></div><div><b>${c.objetivo}</b><span>Puntos objetivo</span></div></div>
+      <div class="kv">${a.asignatura ? `<div><b>${esc(a.asignatura)}</b><span>Asignatura</span></div>` : ""}<div><b>${a.bloques.length}</b><span>Bloques</span></div><div><b>${nd}</b><span>Decisiones</span></div><div><b>${no}</b><span>Opciones</span></div><div><b>${c.clave.reglas.length}</b><span>Reglas</span></div><div><b>${fmt(a.presupuesto)}</b><span>Presupuesto</span></div><div><b>${c.objetivo}</b><span>Puntos objetivo</span></div></div>
       ${ch.error ? `<p class="notice" style="color:var(--bad)">${esc(ch.error)}</p>` : ch.aviso ? `<p class="small notice">${esc(ch.aviso)}</p>` : ""}`;
     if (c.fase === "optimizando") cuerpo += `<div class="stack"><p class="small">Buscando la mejor estrategia dentro del presupuesto… (unos 30 segundos; no cierres la página)</p><progress id="prog" max="1" value="${c.prog || 0}"></progress></div>`;
     if (c.fase === "hecho") {
@@ -294,7 +303,7 @@ async function convertir(f) {
   P.msg = ""; P.conv = { fase: "cargando", archivo: f.name }; render();
   await libsConversor();
   const wb = XLSX.read(await f.arrayBuffer(), { type: "array" });
-  const r = svConvertir(wb);
+  const r = svConvertir(wb); SV_UNIDAD = (r.act && r.act.unidad) || null;
   P.conv = { ...r, archivo: f.name, fase: r.errores && r.errores.length ? "error" : "optimizando", prog: 0 };
   render();
   if (P.conv.fase !== "optimizando" || choque(r.act.id).error) { if (P.conv.fase === "optimizando") P.conv.fase = "bloqueado"; return render(); }

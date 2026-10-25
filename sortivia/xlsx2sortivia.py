@@ -125,6 +125,10 @@ act = {
     "presupuesto": num(P.get("presupuesto") or 0), "numeros": int(num(P.get("numeros") or 10)), "rondas": int(num(P.get("rondas") or 2)),
     "puntos_por_numero": num(P.get("puntos_por_numero") or 10), "bloques_obligatorios": obligatorios, "bloques": bloques,
 }
+if P.get("unidad_es") or P.get("unidad_en"):   # otra unidad para el «presupuesto» (p. ej., días)
+    act["unidad"] = {"es": str(P.get("unidad_es") or P.get("unidad_en")).strip(), "en": str(P.get("unidad_en") or P.get("unidad_es")).strip()}
+if P.get("asignatura"):   # solo para organizar las actividades en el panel
+    act["asignatura"] = str(P.get("asignatura")).strip()
 clave = {"schema": "sortivia-clave/3", "actividad": aid, "puntos": puntos, "reglas": reglas}
 
 # Estrategia óptima dentro del presupuesto → escala de puntos
@@ -154,10 +158,11 @@ if "Estrategia óptima" in wb.sheetnames: del wb["Estrategia óptima"]
 wo = wb.create_sheet("Estrategia óptima")
 total_coste = OPT.coste_total(act, plan)
 _, det = OPT.puntos_detalle(act, clave, plan)
-wo.append([f"Mejor estrategia encontrada con {act['presupuesto']:.0f} €: {bruto:.0f} puntos brutos → {objetivo:.0f} puntos ({int(objetivo // act['puntos_por_numero'])} números). Coste: {total_coste:.0f} €."])
+U = act["unidad"]["es"].split("|")[-1] if act.get("unidad") else "€"
+wo.append([f"Mejor estrategia encontrada con {act['presupuesto']:.0f} {U}: {bruto:.0f} puntos brutos → {objetivo:.0f} puntos ({int(objetivo // act['puntos_por_numero'])} números). Coste: {total_coste:.0f} {U}."])
 wo["A1"].font = Font(bold=True)
 wo.append(["Es una referencia calculada automáticamente; si ves algo que no tiene sentido, ajusta los puntos o las reglas y vuelve a convertir."])
-wo.append([]); wo.append(["Bloque", "Decisión", "Elección", "Puntos que cuentan", "Coste del bloque (€)"])
+wo.append([]); wo.append(["Bloque", "Decisión", "Elección", "Puntos que cuentan", f"Coste del bloque ({U})"])
 for c in wo[4]: c.font = Font(bold=True)
 nc = OPT.condiciones(act, plan); nr = OPT.replicas(act, plan)
 for b in bloques:
@@ -178,4 +183,4 @@ if reg:
 for c, w in zip("ABCDE", (20, 30, 60, 18, 20)): wo.column_dimensions[c].width = w
 wb.save(src)
 print(f"{aid}: {len(bloques)} bloques, {sum(len(b['decisiones']) for b in bloques)} decisiones, {len(puntos)} opciones, {len(reglas)} reglas")
-print(f"Mejor estrategia con {act['presupuesto']:.0f} €: {bruto:.0f} puntos brutos (coste {total_coste:.0f} €) → escala a {objetivo:.0f} puntos")
+print(f"Mejor estrategia con {act['presupuesto']:.0f} {U}: {bruto:.0f} puntos brutos (coste {total_coste:.0f} {U}) → escala a {objetivo:.0f} puntos")

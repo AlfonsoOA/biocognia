@@ -26,6 +26,8 @@ function svConvertir(wb) {
     info[svSlug(r[0])] = { nombre: svTxt(r[0], r[1]), objetivo: r[2] ? { id: svSlug(r[2]), nombre: svTxt(r[2], r[3]) } : null };
   }
   const bloques = [], idx = {}, puntos = {};
+  // Columna opcional del segundo límite (p. ej., «Tiempo» o «Coste 2»), en cualquier posición.
+  const cab2 = (filasOp[0] || []).findIndex((h) => /^(tiempo|coste 2|time|cost 2)/i.test(String(h == null ? "" : h).trim()));
   filasOp.slice(1).forEach((r, k) => {
     const i = k + 2; if (!r || !r[0]) return;
     const [B, D, G, O, TIPO, PRECIO, PTS, , SELEC, D_ES, O_ES, G_ES] = r.concat(Array(12).fill(null));
@@ -38,6 +40,7 @@ function svConvertir(wb) {
     if (!blk._d[did]) { const dec = { id: did, nombre: svTxt(D, D_ES), tipo: tipo === "unidad" ? "contador" : (String(SELEC || "").trim().toLowerCase().startsWith("m") ? "multiple" : "unica"), opciones: [] }; blk._d[did] = dec; blk.decisiones.push(dec); }
     const dec = blk._d[did], oid = tipo === "unidad" ? "n" : svSlug(O);
     const coste = { tipo, valor: svNum(PRECIO) }; if (tipo === "replicas") coste.n = Math.trunc(svNum(O));
+    if (cab2 >= 0 && r[cab2] != null && String(r[cab2]).trim() !== "") coste.v2 = svNum(r[cab2]);
     const opt = { id: oid, label: svTxt(O, O_ES), coste }; if (G) opt.grupo = svTxt(G, G_ES);
     if (dec.opciones.some((x) => x.id === oid)) errores.push(`Opciones fila ${i}: opción repetida «${O}» en ${B} · ${D}`);
     dec.opciones.push(opt); puntos[`${bid}/${did}/${oid}`] = svNum(PTS);
@@ -78,6 +81,7 @@ function svConvertir(wb) {
   };
   if (P.unidad_es || P.unidad_en) act.unidad = { es: String(P.unidad_es || P.unidad_en).trim(), en: String(P.unidad_en || P.unidad_es).trim() };
   if (P.asignatura) act.asignatura = String(P.asignatura).trim();
+  if (svNum(P.limite2) > 0) act.limite2 = { valor: svNum(P.limite2), unidad: { es: String(P.unidad2_es || P.unidad2_en || "").trim(), en: String(P.unidad2_en || P.unidad2_es || "").trim() } };
   const clave = { schema: "sortivia-clave/3", actividad: aid, puntos, reglas };
   return { act, clave, errores, objetivo: svNum(P.puntos_objetivo || 99) };
 }
@@ -105,7 +109,8 @@ async function svOptimizar(act, clave, presupuesto, { reinicios = 14, iteracione
     const nueva = (pInc) => { const el = svEleccionVacia(act); for (const [b, d, v] of fijas) el.bloques[b].dec[d] = Array.isArray(v) ? [...v] : v; for (const [b, d] of libres) el.bloques[b.id].dec[d.id] = aleatoria(d); for (const b of opcionales) el.bloques[b.id].incluido = rnd() < pInc; return el; };
     for (let r = 0; r < reinicios; r++) {
       let el = nueva(0), intentos = 0;
-      while (svCosteTotal(act, el) > presupuesto && intentos++ < 200) el = nueva(0.3);
+      const cabe = (x) => svCosteTotal(act, x) <= presupuesto && (!act.limite2 || svCoste2Total(act, x) <= act.limite2.valor);
+      while (!cabe(el) && intentos++ < 200) el = nueva(0.3);
       let v = valor(el);
       for (let i = 0; i < iteraciones; i++) {
         const T = 8 * Math.pow(0.05 / 8, i / iteraciones), e = copia(el);
@@ -116,7 +121,7 @@ async function svOptimizar(act, clave, presupuesto, { reinicios = 14, iteracione
           else if (d.tipo === "multiple") { const s = new Set(cur || []), o = pick(d.opciones).id; if (s.has(o) && s.size > 1) s.delete(o); else s.add(o); e.bloques[b.id].dec[d.id] = [...s].sort(); }
           else e.bloques[b.id].dec[d.id] = pick(d.opciones).id;
         }
-        if (svCosteTotal(act, e) <= presupuesto) {
+        if (cabe(e)) {
           const v2 = valor(e);
           if (v2 >= v || rnd() < Math.exp((v2 - v) / T)) { el = e; v = v2; if (v > mejorV) { mejorV = v; mejor = copia(el); } }
         }

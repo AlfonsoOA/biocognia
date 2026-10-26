@@ -48,6 +48,21 @@ def coste_bloque(b, sel, nc, nr=0):
             elif t == "fijo": fijo += c["valor"]
     return round(nc * reps * pm * mult + fijo + uni, 2)
 
+def coste2_total(act, el):
+    """Segundo límite (coste.v2, p. ej., minutos): suma directa; ×unidades en los contadores."""
+    if not act.get("limite2"): return 0
+    t = 0
+    for b in act["bloques"]:
+        if not incluido(act, el, b): continue
+        for d in b["decisiones"]:
+            v = el[b["id"]]["dec"].get(d["id"])
+            if d["tipo"] == "contador": t += max(0, int(v or 0)) * d["opciones"][0]["coste"].get("v2", 0); continue
+            for o in elegidas(d, v): t += o["coste"].get("v2", 0)
+    return t
+
+def cabe(act, el, presupuesto):
+    return coste_total(act, el) <= presupuesto and (not act.get("limite2") or coste2_total(act, el) <= act["limite2"]["valor"])
+
 def coste_total(act, el):
     nc = condiciones(act, el); nr = replicas(act, el)
     return sum(coste_bloque(b, el[b["id"]], nc, nr) for b in act["bloques"] if incluido(act, el, b))
@@ -162,7 +177,7 @@ def optimizar(act, clave, presupuesto, reinicios=40, iteraciones=12000, semilla=
     mejor, mejor_p = None, -math.inf
     for _ in range(reinicios):
         el = nueva()
-        while coste_total(act, el) > presupuesto:   # empezar desde algo que quepa
+        while not cabe(act, el, presupuesto):   # empezar desde algo que quepa
             el = nueva()
             for b in opcionales: el[b["id"]]["inc"] = rnd.random() < 0.3
         p = puntos(act, clave, el, idx) - coste_total(act, el) * 1e-5
@@ -170,7 +185,7 @@ def optimizar(act, clave, presupuesto, reinicios=40, iteraciones=12000, semilla=
         for i in range(iteraciones):
             T = T0 * (T1 / T0) ** (i / iteraciones)
             e2 = mover(el)
-            if coste_total(act, e2) > presupuesto: continue
+            if not cabe(act, e2, presupuesto): continue
             p2 = puntos(act, clave, e2, idx) - coste_total(act, e2) * 1e-5
             if p2 >= p or rnd.random() < math.exp((p2 - p) / T):
                 el, p = e2, p2

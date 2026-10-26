@@ -3,7 +3,7 @@
    BIOCOGNIA · Open Educational Technology · Alfonso Olaya Abril
    ============================================================ */
 "use strict";
-const SV_VERSION = "0.6.4";
+const SV_VERSION = "0.7.0";
 
 /* ---------- Cálculo de costes y puntos ---------- */
 // eleccion = { bloques: { [bloque]: { incluido: bool, dec: { [decision]: idOpcion | número (contadores) } } } }
@@ -48,6 +48,23 @@ function svCosteBloque(b, sel, ncond = 1, nrep = 0) {
   }
   return Math.round((ncond * reps * porMuestra * mult + fijo + unidades) * 100) / 100;
 }
+// Segundo límite opcional (p. ej., tiempo en minutos además del dinero): cada opción puede llevar coste.v2,
+// que se suma tal cual (×unidades en los contadores). act.limite2 = { valor, unidad: { es, en } }.
+function svCoste2Total(act, eleccion) {
+  if (!act.limite2) return 0;
+  let t = 0;
+  for (const b of act.bloques) {
+    if (!svIncluido(act, eleccion, b)) continue;
+    const sel = eleccion.bloques[b.id] || { dec: {} };
+    for (const d of b.decisiones) {
+      const v = sel.dec ? sel.dec[d.id] : undefined;
+      if (d.tipo === "contador") { t += Math.max(0, Number(v) || 0) * (d.opciones[0].coste.v2 || 0); continue; }
+      for (const o of svElegidas(d, v)) t += o.coste.v2 || 0;
+    }
+  }
+  return t;
+}
+function svCabe(act, eleccion) { return svCosteTotal(act, eleccion) <= act.presupuesto && (!act.limite2 || svCoste2Total(act, eleccion) <= act.limite2.valor); }
 function svCosteTotal(act, eleccion) {
   const nc = svCondiciones(act, eleccion), nr = svReplicas(act, eleccion);
   return act.bloques.reduce((s, b) => s + (svIncluido(act, eleccion, b) ? svCosteBloque(b, eleccion.bloques[b.id], nc, nr) : 0), 0);
@@ -141,7 +158,7 @@ function svEleccionVacia(act) { const e = { bloques: {} }; for (const b of act.b
 function svAleatorio(n) { const a = new Uint32Array(1); crypto.getRandomValues(a); return (a[0] % n) + 1; }
 function svCodigo(n = 5) { const a = new Uint8Array(n); crypto.getRandomValues(a); return Array.from(a, (x) => "ABCDEFGHJKMNPQRSTUVWXYZ23456789"[x % 31]).join(""); }
 // Unidad del «presupuesto» de la actividad cargada: euros por defecto; una actividad puede usar otra (p. ej., días).
-let SV_UNIDAD = null;
+let SV_UNIDAD = null, SV_UNIDAD2 = null;
 // «singular|plural» (p. ej., «día|días»): 1 día, 3 días.
 function svEur(n, lang) {
   const r = Math.round(n), v = new Intl.NumberFormat(lang === "en" ? "en-GB" : "es-ES", { maximumFractionDigits: 0 }).format(r);
@@ -154,16 +171,21 @@ function svPrecio(o, lang) {
   if (c.tipo === "mult") return c.valor === 1 ? "" : `×${String(c.valor).replace(".", en ? "." : ",")}`;
   if (c.tipo === "replicas") return `${e(c.valor)}${en ? "/sample" : "/muestra"}`;
   if (c.tipo === "muestra") return c.valor ? `+${e(c.valor)}${en ? "/sample" : "/muestra"}` : "";
-  if (c.tipo === "unidad") return `${e(c.valor)} ${en ? "each" : "c/u"}`;
+  if (c.tipo === "unidad") return `${[c.valor ? e(c.valor) : "", SV_UNIDAD2 && c.v2 ? svCant(c.v2, SV_UNIDAD2, lang) : ""].filter(Boolean).join(" · ")} ${en ? "each" : "c/u"}`;
   if (c.tipo === "condiciones") return en ? `${c.valor} condition${c.valor > 1 ? "s" : ""}` : `${c.valor} ${c.valor > 1 ? "condiciones" : "condición"}`;
-  return c.valor ? e(c.valor) : "";
+  const v2 = SV_UNIDAD2 && c.v2 ? svCant(c.v2, SV_UNIDAD2, lang) : "";
+  return [c.valor ? e(c.valor) : "", v2].filter(Boolean).join(" · ");
+}
+function svCant(n, unidad, lang) {
+  const r = Math.round(n), v = new Intl.NumberFormat(lang === "en" ? "en-GB" : "es-ES", { maximumFractionDigits: 0 }).format(r), u = svT(unidad, lang).split("|");
+  return `${v} ${Math.abs(r) === 1 ? u[0] : (u[1] || u[0])}`;
 }
 // Actividades: primero las del repositorio (archivos estáticos); si no está, las subidas desde el panel (Firebase).
 async function svCargarActividad(id) {
   let act = null;
   try { const r = await fetch(`actividades/${encodeURIComponent(id)}.json`); if (r.ok) act = await r.json(); } catch (e) {}
   if (!act) { const a = await SVB.actividad(id); if (!a || !a.datos) throw new Error("actividad " + id); act = { ...a.datos, autor: a.autor_nombre || null }; }
-  SV_UNIDAD = act.unidad || null;
+  SV_UNIDAD = act.unidad || null; SV_UNIDAD2 = (act.limite2 && act.limite2.unidad) || null;
   return act;
 }
 async function svIndiceRepo() { try { const r = await fetch("actividades/index.json"); return r.ok ? await r.json() : []; } catch (e) { return []; } }

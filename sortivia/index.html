@@ -128,12 +128,15 @@ function vJoin(msg) {
 /* ---------- Editor de la estrategia ---------- */
 function coste() { return svCosteTotal(S.act, S.el); }
 function vBudget() {
-  const c = coste(), P = S.act.presupuesto, over = c > P;
+  const c = coste(), P = S.act.presupuesto, L2 = S.act.limite2, c2 = L2 ? svCoste2Total(S.act, S.el) : 0, over = c > P, over2 = L2 && c2 > L2.valor;
+  const q = (n) => L2 ? svCant(n, L2.unidad, S.lang) : "";
   return `<div class="budget ${over ? "over" : ""}" id="budget"><div class="row"><span class="eyebrow">${T("round", S.g.ronda, S.act.rondas)}</span><span class="spacer small muted" id="saved"></span></div>
     <div class="row"><span>${T(S.act.unidad ? "used" : "spent")} <b class="big">${svEur(c, S.lang)}</b> <span class="muted">/ ${svEur(P, S.lang)}</span></span><span class="spacer">${T("left")} <b class="big">${svEur(Math.max(0, P - c), S.lang)}</b></span></div>
     <div class="track"><span style="width:${Math.min(100, (100 * c) / P)}%"></span></div>
+    ${L2 ? `<div class="row"><span>${T("used")} <b class="big">${q(c2)}</b> <span class="muted">/ ${q(L2.valor)}</span></span><span class="spacer">${T("left")} <b class="big">${q(Math.max(0, L2.valor - c2))}</b></span></div>
+    <div class="track${over2 ? " over2" : ""}"><span style="width:${Math.min(100, (100 * c2) / L2.valor)}%;${over2 ? "background:var(--bad)" : ""}"></span></div>` : ""}
     ${S.act.bloques.some((b) => b.decisiones.some((d) => d.opciones.some((o) => ["replicas", "muestra", "mult", "condiciones"].includes(o.coste.tipo) && o.coste.valor))) ? `<p class="small muted">${T("formula")}</p>` : ""}
-    ${over ? `<p class="small" style="color:var(--bad)">${T("over", svEur(c - P, S.lang))}</p>` : ""}</div>`;
+    ${over ? `<p class="small" style="color:var(--bad)">${T("over", svEur(c - P, S.lang))}</p>` : ""}${over2 ? `<p class="small" style="color:var(--bad)">${T("over", q(c2 - L2.valor))}</p>` : ""}</div>`;
 }
 function vBlock(b) {
   const req = S.act.bloques_obligatorios.includes(b.id), sel = S.el.bloques[b.id], on = req || sel.incluido;
@@ -152,13 +155,13 @@ function vBlock(b) {
       const multi = d.tipo === "multiple", v = sel.dec[d.id], checked = multi ? (Array.isArray(v) ? v : (v ? [v] : [])).includes(o.id) : v === o.id, pr = svPrecio(o, S.lang);
       return `${g}<label class="opt"><input type="${multi ? "checkbox" : "radio"}" name="${name}" data-b="${b.id}" data-d="${d.id}" value="${esc(o.id)}" ${checked ? "checked" : ""}><span>${esc(svT(o.label, S.lang))}${pr ? ` <i>${pr}</i>` : ""}</span></label>`;
     }).join("");
-    return `<div class="dec"><span class="lbl">${esc(svT(d.nombre, S.lang))}${d.tipo === "multiple" ? `<br><span class="small muted">${T("varias")}</span>` : ""}</span><div class="opts">${opts}</div></div>`;
+    return `<div class="dec"><span class="lbl">${b.decisiones.length === 1 && svT(d.nombre, S.lang) === svT(b.nombre, S.lang) ? "" : esc(svT(d.nombre, S.lang))}${d.tipo === "multiple" ? `<br><span class="small muted">${T("varias")}</span>` : ""}</span><div class="opts">${opts}</div></div>`;
   }).join("");
   return `<section class="blk on">${head}<div class="body">${decs}
     <label class="stack small">${T("just")}<textarea class="field" data-just="${b.id}" placeholder="${T("just_ph")}">${esc(S.just[b.id] || "")}</textarea></label></div></section>`;
 }
 function vEditor() {
-  const falta = svPendientes(S.act, S.el, S.lang), over = coste() > S.act.presupuesto;
+  const falta = svPendientes(S.act, S.el, S.lang), over = !svCabe(S.act, S.el);
   const prev = (S.g.historial || []).slice(-1)[0];
   return `<div class="stack-lg"><div class="stack"><p class="eyebrow">ESTOPA</p><h1>${esc(S.act.titulo[S.lang] || S.act.titulo.es)}</h1><p class="muted">${esc(S.act.resumen[S.lang] || S.act.resumen.es)}</p>${S.act.autor ? `<p class="small muted">${S.lang === "en" ? "Activity designed by" : "Actividad diseñada por"} ${esc(S.act.autor)}</p>` : ""}
       ${S.g.ronda > 1 && prev ? `<p class="notice">${T("prev", prev.puntos, prev.numeros)}</p>` : ""}${S.g.aviso ? `<p class="notice"><b>${T("aviso")}:</b> ${esc(S.g.aviso)}</p>` : ""}</div>

@@ -3,7 +3,7 @@
 Actividades de toma de decisiones y gamificación basadas en la metodología **ESTOPA**. Parte de BIOCOGNIA · Open Educational Technology.
 
 - **Autoría y desarrollo:** Alfonso Olaya Abril (Departamento de Bioquímica y Biología Molecular, Universidad de Córdoba).
-- **Versión:** 0.6.4.
+- **Versión:** 0.7.0.
 
 ## Cómo funciona una actividad
 
@@ -62,6 +62,8 @@ Añadiendo `?demo` a la dirección (`…/sortivia/panel.html?demo` y `…/sortiv
    - **Reglas**: ID · Condición · Puntos · Explicación (ES) · Explicación (EN) · Bloque (opcional). Ejemplo de condición: `metaproteomics/prodigal=yes & !genomic & !metagenomics`.
 2. Conviértela: `python3 xlsx2sortivia.py hoja.xlsx actividades/ claves/` (tarda unos minutos porque busca la estrategia óptima; `--rapido` para pruebas). Comprueba las reglas, genera `actividades/<id>.json` (pública) y `claves/<id>.clave.json` (privada), y añade al Excel las pestañas «Identificadores» y «Estrategia óptima».
 3. Si es una actividad nueva, añádela a `actividades/index.json`. Sube la actividad al repositorio y carga la clave en el panel (nunca la subas al repositorio).
+
+**Dos límites a la vez.** Con `limite2`, `unidad2_es` y `unidad2_en` en la pestaña Actividad (p. ej., 120 y `min|min`) y una columna «Tiempo» (o «Coste 2») en Opciones, cada opción cuesta dinero y tiempo, y la estrategia tiene que caber en los dos. Lo usan las actividades cortas de Proteómica (€ por réplica y minutos de sesión).
 
 **Asignatura.** El parámetro opcional `asignatura` de la pestaña Actividad (p. ej., `BMSi`, `BAyB`) agrupa las actividades en el panel y en el desplegable de «Nueva sesión». Los grupos no la ven. Para las actividades del repositorio va en `actividades/index.json`.
 

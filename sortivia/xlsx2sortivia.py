@@ -56,6 +56,9 @@ if "Bloques" in wb.sheetnames:
         info_bloques[slug(en)] = {"nombre": txt(en, es), "objetivo": {"id": slug(oen), "nombre": txt(oen, oes)} if oen else None}
 
 bloques, idx, puntos, errores = [], {}, {}, []
+# Columna opcional del segundo límite («Tiempo» o «Coste 2»), en cualquier posición
+_cab = next(wb["Opciones"].iter_rows(min_row=1, max_row=1, values_only=True))
+CAB2 = next((i for i, h in enumerate(_cab) if re.match(r"(tiempo|coste 2|time|cost 2)", str(h or "").strip(), re.I)), -1)
 for i, row in enumerate(wb["Opciones"].iter_rows(min_row=2, values_only=True), start=2):
     if not row or not row[0]: continue
     B, D, G, O, TIPO, PRECIO, PTS, _NOTAS, SELEC, D_ES, O_ES, G_ES = (list(row) + [None] * 12)[:12]
@@ -76,6 +79,7 @@ for i, row in enumerate(wb["Opciones"].iter_rows(min_row=2, values_only=True), s
     oid = "n" if tipo == "unidad" else slug(O)
     coste = {"tipo": tipo, "valor": num(PRECIO or 0)}
     if tipo == "replicas": coste["n"] = int(num(O))
+    if CAB2 >= 0 and CAB2 < len(row) and row[CAB2] is not None and str(row[CAB2]).strip() != "": coste["v2"] = num(row[CAB2])
     opt = {"id": oid, "label": txt(O, O_ES), "coste": coste}
     if G: opt["grupo"] = txt(G, G_ES)
     if any(o["id"] == oid for o in dec["opciones"]): errores.append(f"Opciones fila {i}: opción repetida «{O}» en {B} · {D}")
@@ -129,6 +133,8 @@ if P.get("unidad_es") or P.get("unidad_en"):   # otra unidad para el «presupues
     act["unidad"] = {"es": str(P.get("unidad_es") or P.get("unidad_en")).strip(), "en": str(P.get("unidad_en") or P.get("unidad_es")).strip()}
 if P.get("asignatura"):   # solo para organizar las actividades en el panel
     act["asignatura"] = str(P.get("asignatura")).strip()
+if num(P.get("limite2") or 0) > 0:   # segundo límite (p. ej., minutos) además del presupuesto
+    act["limite2"] = {"valor": num(P.get("limite2")), "unidad": {"es": str(P.get("unidad2_es") or P.get("unidad2_en") or "").strip(), "en": str(P.get("unidad2_en") or P.get("unidad2_es") or "").strip()}}
 clave = {"schema": "sortivia-clave/3", "actividad": aid, "puntos": puntos, "reglas": reglas}
 
 # Estrategia óptima dentro del presupuesto → escala de puntos
@@ -157,9 +163,11 @@ for c, w in zip("ABCD", (20, 24, 46, 80)): wi.column_dimensions[c].width = w
 if "Estrategia óptima" in wb.sheetnames: del wb["Estrategia óptima"]
 wo = wb.create_sheet("Estrategia óptima")
 total_coste = OPT.coste_total(act, plan)
+L2 = act.get("limite2")
+T2 = f" y {OPT.coste2_total(act, plan):.0f} de {L2['valor']:.0f} {L2['unidad']['es'].split('|')[-1]}" if L2 else ""
 _, det = OPT.puntos_detalle(act, clave, plan)
 U = act["unidad"]["es"].split("|")[-1] if act.get("unidad") else "€"
-wo.append([f"Mejor estrategia encontrada con {act['presupuesto']:.0f} {U}: {bruto:.0f} puntos brutos → {objetivo:.0f} puntos ({int(objetivo // act['puntos_por_numero'])} números). Coste: {total_coste:.0f} {U}."])
+wo.append([f"Mejor estrategia encontrada con {act['presupuesto']:.0f} {U}: {bruto:.0f} puntos brutos → {objetivo:.0f} puntos ({int(objetivo // act['puntos_por_numero'])} números). Coste: {total_coste:.0f} {U}{T2}."])
 wo["A1"].font = Font(bold=True)
 wo.append(["Es una referencia calculada automáticamente; si ves algo que no tiene sentido, ajusta los puntos o las reglas y vuelve a convertir."])
 wo.append([]); wo.append(["Bloque", "Decisión", "Elección", "Puntos que cuentan", f"Coste del bloque ({U})"])
@@ -183,4 +191,4 @@ if reg:
 for c, w in zip("ABCDE", (20, 30, 60, 18, 20)): wo.column_dimensions[c].width = w
 wb.save(src)
 print(f"{aid}: {len(bloques)} bloques, {sum(len(b['decisiones']) for b in bloques)} decisiones, {len(puntos)} opciones, {len(reglas)} reglas")
-print(f"Mejor estrategia con {act['presupuesto']:.0f} {U}: {bruto:.0f} puntos brutos (coste {total_coste:.0f} {U}) → escala a {objetivo:.0f} puntos")
+print(f"Mejor estrategia con {act['presupuesto']:.0f} {U}: {bruto:.0f} puntos brutos (coste {total_coste:.0f} {U}{T2}) → escala a {objetivo:.0f} puntos")

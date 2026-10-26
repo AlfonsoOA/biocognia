@@ -90,8 +90,8 @@ async function arbitrarGrupo(g, k) {
       if (!clave) { P.busy.delete(k); return; }
       P.busy.add(k);
       const el = g.eleccion || svEleccionVacia(P.act), c = svCosteTotal(P.act, el), falta = svPendientes(P.act, el);
-      if (c > P.act.presupuesto || falta.length) {
-        await SVB.cambiarGrupoAdmin(P.sid, g.id, { estado: "editando", aviso: c > P.act.presupuesto ? "La estrategia supera el presupuesto." : "Faltan decisiones por tomar." });
+      if (!svCabe(P.act, el) || falta.length) {
+        await SVB.cambiarGrupoAdmin(P.sid, g.id, { estado: "editando", aviso: !svCabe(P.act, el) ? "La estrategia supera el presupuesto o el tiempo disponible." : "Faltan decisiones por tomar." });
         return;
       }
       const { total, detalle } = svPuntos(P.act, clave, el), pts = svEscalar(clave, total), n = svNumeros(P.act, pts);
@@ -210,14 +210,14 @@ function vConversor() {
     const a = c.act, nd = a.bloques.reduce((s, b) => s + b.decisiones.length, 0), no = a.bloques.reduce((s, b) => s + b.decisiones.reduce((t, d) => t + d.opciones.length, 0), 0);
     const ch = choque(a.id);
     cuerpo = `<div class="stack"><p><b>${esc(svT(a.titulo, "es"))}</b> <span class="small muted">· id <span class="num">${esc(a.id)}</span></span></p>
-      <div class="kv">${a.asignatura ? `<div><b>${esc(a.asignatura)}</b><span>Asignatura</span></div>` : ""}<div><b>${a.bloques.length}</b><span>Bloques</span></div><div><b>${nd}</b><span>Decisiones</span></div><div><b>${no}</b><span>Opciones</span></div><div><b>${c.clave.reglas.length}</b><span>Reglas</span></div><div><b>${fmt(a.presupuesto)}</b><span>Presupuesto</span></div><div><b>${c.objetivo}</b><span>Puntos objetivo</span></div></div>
+      <div class="kv">${a.asignatura ? `<div><b>${esc(a.asignatura)}</b><span>Asignatura</span></div>` : ""}<div><b>${a.bloques.length}</b><span>Bloques</span></div><div><b>${nd}</b><span>Decisiones</span></div><div><b>${no}</b><span>Opciones</span></div><div><b>${c.clave.reglas.length}</b><span>Reglas</span></div><div><b>${fmt(a.presupuesto)}</b><span>Presupuesto</span></div>${a.limite2 ? `<div><b>${svCant(a.limite2.valor, a.limite2.unidad, "es")}</b><span>Segundo límite</span></div>` : ""}<div><b>${c.objetivo}</b><span>Puntos objetivo</span></div></div>
       ${ch.error ? `<p class="notice" style="color:var(--bad)">${esc(ch.error)}</p>` : ch.aviso ? `<p class="small notice">${esc(ch.aviso)}</p>` : ""}`;
     if (c.fase === "optimizando") cuerpo += `<div class="stack"><p class="small">Buscando la mejor estrategia dentro del presupuesto… (unos 30 segundos; no cierres la página)</p><progress id="prog" max="1" value="${c.prog || 0}"></progress></div>`;
     if (c.fase === "hecho") {
       if (!(c.bruto > 0)) cuerpo += `<p class="notice" style="color:var(--bad)">No se ha encontrado ninguna estrategia con puntos positivos dentro del presupuesto. Revisa los precios, los puntos o el presupuesto.</p>`;
       else {
         const coste = svCosteTotal(a, c.plan), nums = svNumeros(a, svEscalar(c.clave, c.bruto));
-        cuerpo += `<div class="stack"><p>Mejor estrategia encontrada: <b>${c.bruto} puntos brutos</b> con un gasto de <b>${fmt(coste)}</b> (de ${fmt(a.presupuesto)}). Se reescalan a <b>${c.objetivo} puntos</b> → ${nums} número${nums === 1 ? "" : "s"} de ${a.numeros}. Cualquier otra estrategia obtiene puntos en proporción.</p>
+        cuerpo += `<div class="stack"><p>Mejor estrategia encontrada: <b>${c.bruto} puntos brutos</b> con un gasto de <b>${fmt(coste)}</b> (de ${fmt(a.presupuesto)})${a.limite2 ? ` y <b>${svCant(svCoste2Total(a, c.plan), a.limite2.unidad, "es")}</b> (de ${svCant(a.limite2.valor, a.limite2.unidad, "es")})` : ""}. Se reescalan a <b>${c.objetivo} puntos</b> → ${nums} número${nums === 1 ? "" : "s"} de ${a.numeros}. Cualquier otra estrategia obtiene puntos en proporción.</p>
           <details><summary class="small">Ver la estrategia óptima</summary><div class="tablebox"><table class="plan"><thead><tr><th>Bloque</th><th>Decisión</th><th>Elección</th><th class="n">Coste</th></tr></thead><tbody>${planFilas(a, c.plan)}</tbody></table></div></details>
           <p class="small muted">Si la estrategia óptima no es la que tú esperabas, suele indicar puntos o reglas que conviene revisar en el Excel.</p>
           <div class="row">${ch.error ? "" : admin() ? `<button class="btn primary" id="c-pub">Guardar y publicar</button><button class="btn" id="c-bor">Guardar como borrador</button>` : `<button class="btn primary" id="c-bor">Guardar como borrador</button>`}<button class="btn ghost" id="c-dl">Descargar JSON (actividad y clave)</button></div></div>`;
@@ -303,7 +303,7 @@ async function convertir(f) {
   P.msg = ""; P.conv = { fase: "cargando", archivo: f.name }; render();
   await libsConversor();
   const wb = XLSX.read(await f.arrayBuffer(), { type: "array" });
-  const r = svConvertir(wb); SV_UNIDAD = (r.act && r.act.unidad) || null;
+  const r = svConvertir(wb); SV_UNIDAD = (r.act && r.act.unidad) || null; SV_UNIDAD2 = (r.act && r.act.limite2 && r.act.limite2.unidad) || null;
   P.conv = { ...r, archivo: f.name, fase: r.errores && r.errores.length ? "error" : "optimizando", prog: 0 };
   render();
   if (P.conv.fase !== "optimizando" || choque(r.act.id).error) { if (P.conv.fase === "optimizando") P.conv.fase = "bloqueado"; return render(); }

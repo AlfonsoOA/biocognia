@@ -32,7 +32,7 @@
 <main class="wrap" id="main"><p class="muted">…</p></main>
 <footer><div class="wrap" id="foot"></div></footer>
 <script src="../quaestia/firebase-config.js"></script>
-<script src="deaba.js?v=0.2.1"></script>
+<script src="deaba.js?v=0.2.2"></script>
 <script>
 "use strict";
 const I = {
@@ -52,7 +52,7 @@ const I = {
     marc_d: (e, m) => `Elegid ${e} enzimas y ${m} metabolitos que permitan contrastar la hipótesis. Para cada uno, indicad la reacción, la ruta y cómo esperáis que cambie.`,
     enzs: (k, n) => `Enzimas (${k} de ${n})`, mets: (k, n) => `Metabolitos (${k} de ${n})`, dir: "Cambio esperado", fc_est: "FC estimado", fc_ph: "p. ej., +8 o −3",
     fc_d: "Las estimaciones de fold change de cada marcador están en sus tarjetas. Añadid aquí cómo encaja el conjunto.", justif2_ph: "¿Qué demostraría vuestro experimento si los resultados salen como esperáis?",
-    pending: "Os falta:", send: "Enviar la respuesta", send_confirm: "Una vez enviada no podréis cambiarla. ¿Enviar?", yes: "Sí, enviar", no: "Seguir revisando",
+    pending: "Aún podéis completar:", send: "Enviar la respuesta", send_confirm: "Una vez enviada no podréis cambiarla. ¿Enviar?", send_confirm_inc: "Hay partes sin completar. Lo que esté en blanco contará como no respondido y, una vez enviada, no podréis cambiarla. ¿Enviar igualmente?", yes: "Sí, enviar", no: "Seguir revisando",
     saving: "Guardando…", saved: "Cambios guardados", sent_t: "Respuesta enviada", sent_d: "Todo queda abierto hasta el plenario: allí se comentarán las respuestas de todos los grupos.",
     aviso: "Aviso del profesor", vuestra: "Vuestra respuesta",
     res_t: "Resultados del experimento", res_d: (a, b) => `Fold change observado (${a} / ${b}) en los marcadores que elegisteis.`, res_ref: "Como propusisteis una condición propia, se muestran los resultados de la comparación de referencia.",
@@ -76,7 +76,7 @@ const I = {
     marc_d: (e, m) => `Choose ${e} enzymes and ${m} metabolites to test the hypothesis. For each one, give the reaction, the pathway and how you expect it to change.`,
     enzs: (k, n) => `Enzymes (${k} of ${n})`, mets: (k, n) => `Metabolites (${k} of ${n})`, dir: "Expected change", fc_est: "Estimated FC", fc_ph: "e.g. +8 or −3",
     fc_d: "Each marker's fold-change estimate is on its card. Add here how the whole set fits together.", justif2_ph: "What would your experiment show if the results come out as you expect?",
-    pending: "Still missing:", send: "Send the answer", send_confirm: "Once sent, you cannot change it. Send?", yes: "Yes, send", no: "Keep reviewing",
+    pending: "You can still complete:", send: "Send the answer", send_confirm: "Once sent, you cannot change it. Send?", send_confirm_inc: "Some parts are not complete. Anything left blank will count as unanswered and, once sent, you cannot change it. Send anyway?", yes: "Yes, send", no: "Keep reviewing",
     saving: "Saving…", saved: "Changes saved", sent_t: "Answer sent", sent_d: "Everything stays open until the plenary, where all groups' answers will be discussed.",
     aviso: "Message from the teacher", vuestra: "Your answer",
     res_t: "Results of the experiment", res_d: (a, b) => `Observed fold change (${a} / ${b}) for the markers you chose.`, res_ref: "Because you proposed your own condition, the results of the reference comparison are shown.",
@@ -205,7 +205,7 @@ function vTipo2(ro) {
 // Resultados del «experimento» (cuando el profesor los publica en el plenario).
 function vResultados() {
   const a = S.act, res = S.ses && S.ses.resultados; if (a.tipo !== 2 || !res || S.g.estado !== "enviado") return "";
-  const c = S.r.cond, propia = c.c1 === "otra" || c.c2 === "otra" || !res.niveles;
+  const c = S.r.cond || {}, propia = !c.c1 || !c.c2 || c.c1 === c.c2 || c.c1 === "otra" || c.c2 === "otra" || !res.niveles;
   const p1 = propia ? res.referencia[0] : c.c1, p2 = propia ? res.referencia[1] : c.c2;
   const ex = S.explora || [p1, p2];
   const tabla = (x1, x2) => `<div class="tablebox"><table><thead><tr><th>${T("res_marc")}</th><th>${T("res_pred")}</th><th class="n">${T("res_obs")}</th><th></th></tr></thead><tbody>
@@ -228,8 +228,8 @@ function vEnvio() {
   const falta = dbPendientes(S.act, S.r, S.lang);
   return `<section class="stack" id="sendbox"><div class="row"><span class="small muted" id="saved"></span></div>
     ${falta.length ? `<div class="notice small"><b>${T("pending")}</b> ${falta.map(esc).join(" · ")}</div>` : ""}
-    ${S.confirm ? `<div class="notice row" role="alert"><span>${T("send_confirm")}</span><button class="btn primary" id="send-yes">${T("yes")}</button><button class="btn" id="send-no">${T("no")}</button></div>`
-      : `<div><button class="btn primary" id="send" ${falta.length ? "disabled" : ""}>${T("send")}</button></div>`}</section>`;
+    ${S.confirm ? `<div class="notice row" role="alert"><span>${T(falta.length ? "send_confirm_inc" : "send_confirm")}</span><button class="btn primary" id="send-yes">${T("yes")}</button><button class="btn" id="send-no">${T("no")}</button></div>`
+      : `<div><button class="btn primary" id="send">${T("send")}</button></div>`}</section>`;
 }
 function render() {
   chrome(); if (!S.g || !S.act) return;

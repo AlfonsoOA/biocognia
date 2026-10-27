@@ -3,7 +3,7 @@
    BIOCOGNIA · Open Educational Technology · Alfonso Olaya Abril
    ============================================================ */
 "use strict";
-const DB_VERSION = "0.2.1";
+const DB_VERSION = "0.2.2";
 
 /* ---------- Utilidades ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -46,16 +46,18 @@ function dbNombres(lang, extra = []) {
   return out;
 }
 // Busca sugerencias para las últimas 1–3 palabras antes del cursor. Devuelve { n (palabras a sustituir), sug: [nombres] }.
+const DB_CORTAS = new Set("de la el en se un es no si su lo al ya le me te mi tu ni os nos y o a of to in is it on an as at by or be we he if so up do".split(" "));
 function dbSugerencias(antes, nombres, max = 6) {
   // La coma no separa: forma parte de nombres como «fructosa-1,6-bisfosfato».
   const m = antes.match(/[^\s+→=;:()\/]+(?:\s+[^\s+→=;:()\/]+){0,2}$/u); if (!m) return null;
   const pal = m[0].split(/\s+/);
   for (let k = pal.length; k >= 1; k--) {
     const q = dbNorm(pal.slice(-k).join(" ")).replace(/\|/g, "").trim();
-    if (q.length < (k === 1 ? 3 : 4)) continue;
+    // Una sola palabra: basta con 2 letras (ADP, ATP, NAD…), salvo palabras corrientes («de», «la», «en»…).
+    if (q.length < (k === 1 ? 2 : 4) || (k === 1 && q.length === 2 && DB_CORTAS.has(q))) continue;
     // Se compara con y sin espacios: «acilg» encuentra «Acil graso-CoA» y «acetilcoa», «Acetil-CoA».
     const qc = q.replace(/ /g, ""), empieza = (x) => x.k.startsWith(q) || x.kc.startsWith(qc);
-    const ini = nombres.filter(empieza), dentro = nombres.filter((x) => !empieza(x) && x.k.includes(" " + q));
+    const ini = nombres.filter(empieza).sort((a, b) => a.t.length - b.t.length), dentro = nombres.filter((x) => !empieza(x) && x.k.includes(" " + q));
     const sug = [...ini, ...dentro].slice(0, max).map((x) => x.t);
     if (sug.length && !(sug.length === 1 && dbNorm(sug[0]) === q)) return { n: k, texto: pal.slice(-k).join(" "), sug };
   }

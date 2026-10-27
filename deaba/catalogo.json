@@ -643,6 +643,26 @@
 {
 "es": "Glutatión oxidado (GSSG)",
 "en": "Oxidised glutathione (GSSG)"
+},
+{
+"es": "Ácido orótico (orotato)",
+"en": "Orotic acid (orotate)"
+},
+{
+"es": "Dihidroorotato",
+"en": "Dihydroorotate"
+},
+{
+"es": "Carbamoil aspartato",
+"en": "Carbamoyl aspartate"
+},
+{
+"es": "Uracilo",
+"en": "Uracil"
+},
+{
+"es": "N-Acetilglutamato",
+"en": "N-Acetylglutamate"
 }
 ],
 "enzimas": [
@@ -1161,6 +1181,26 @@
 {
 "es": "Sistema de fosfotransferasa (PTS)",
 "en": "Phosphotransferase system (PTS)"
+},
+{
+"es": "Carbamoil fosfato sintetasa II (CPS-II)",
+"en": "Carbamoyl phosphate synthetase II (CPS-II)"
+},
+{
+"es": "Aspartato transcarbamilasa",
+"en": "Aspartate transcarbamoylase"
+},
+{
+"es": "Dihidroorotasa",
+"en": "Dihydroorotase"
+},
+{
+"es": "Dihidroorotato deshidrogenasa",
+"en": "Dihydroorotate dehydrogenase"
+},
+{
+"es": "N-Acetilglutamato sintasa",
+"en": "N-Acetylglutamate synthase"
 }
 ]
 }

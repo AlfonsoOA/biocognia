@@ -184,6 +184,14 @@
   "asignatura": "Bioquímica"
  },
  {
+  "id": "otc_t1_high",
+  "titulo": "Niebla mental",
+  "titulo_en": "Brain fog",
+  "tipo": 1,
+  "nivel": "high",
+  "asignatura": "Bioquímica"
+ },
+ {
   "id": "pan_t1_low",
   "titulo": "Pan de molde o pan de avena",
   "titulo_en": "White sliced bread or oat bread",

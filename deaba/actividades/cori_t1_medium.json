@@ -1,0 +1,217 @@
+{
+ "schema": "deaba/1",
+ "id": "cori_t1_medium",
+ "tipo": 1,
+ "nivel": "medium",
+ "titulo": {
+  "es": "Ida y vuelta",
+  "en": "There and back again"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Se han analizado muestras de músculo esquelético y de hígado de un mismo animal en dos situaciones (condición 1 y condición 2). Los datos de los dos tejidos se presentan juntos.",
+  "en": "Skeletal muscle and liver samples from the same animal have been analysed in two situations (condition 1 and condition 2). The data for both tissues are shown together."
+ },
+ "mision": {
+  "es": "Para cada enzima y metabolito, explicad la reacción y la ruta, y proponed qué condición o actividad explica el patrón. Atención: algunas enzimas solo tienen sentido en uno de los dos tejidos.",
+  "en": "For each enzyme and metabolite, explain the reaction and the pathway, and propose which condition or activity explains the pattern. Note: some enzymes only make sense in one of the two tissues."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición 1",
+   "en": "Condition 1"
+  },
+  "c2": {
+   "es": "Condición 2",
+   "en": "Condition 2"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Hexoquinasa",
+    "en": "Hexokinase"
+   },
+   "fc": 10
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato quinasa",
+    "en": "Pyruvate kinase"
+   },
+   "fc": 5
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa",
+    "en": "Acetyl-CoA carboxylase"
+   },
+   "fc": -15
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carnitina aciltransferasa I",
+    "en": "Carnitine acyltransferase I"
+   },
+   "fc": 5
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lactato deshidrogenasa",
+    "en": "Lactate dehydrogenase"
+   },
+   "fc": 14
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno sintasa",
+    "en": "Glycogen synthase"
+   },
+   "fc": -14
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa",
+    "en": "Glycogen phosphorylase"
+   },
+   "fc": 17
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfoglucomutasa",
+    "en": "Phosphoglucomutase"
+   },
+   "fc": 10
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acil-CoA deshidrogenasa",
+    "en": "Acyl-CoA dehydrogenase"
+   },
+   "fc": 12
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Enoil-CoA hidratasa",
+    "en": "Enoyl-CoA hydratase"
+   },
+   "fc": 6
+  },
+  {
+   "id": "11",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato carboxilasa",
+    "en": "Pyruvate carboxylase"
+   },
+   "fc": 17
+  },
+  {
+   "id": "12",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucosa-6-fosfatasa",
+    "en": "Glucose-6-phosphatase"
+   },
+   "fc": 13
+  },
+  {
+   "id": "13",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Dihidrolipoil deshidrogenasa",
+    "en": "Dihydrolipoyl dehydrogenase"
+   },
+   "fc": -2
+  },
+  {
+   "id": "14",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Enzima málica",
+    "en": "Malic enzyme"
+   },
+   "fc": 10
+  },
+  {
+   "id": "15",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acilcarnitina",
+    "en": "Acylcarnitine"
+   },
+   "fc": 1
+  },
+  {
+   "id": "16",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "L-β-Hidroxiacil-CoA",
+    "en": "L-β-Hydroxyacyl-CoA"
+   },
+   "fc": 5
+  },
+  {
+   "id": "17",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acetil-CoA",
+    "en": "Acetyl-CoA"
+   },
+   "fc": 14
+  },
+  {
+   "id": "18",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
+   },
+   "fc": -8
+  },
+  {
+   "id": "19",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Oxalacetato",
+    "en": "Oxaloacetate"
+   },
+   "fc": -4
+  },
+  {
+   "id": "20",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Lactato",
+    "en": "Lactate"
+   },
+   "fc": 9
+  }
+ ]
+}

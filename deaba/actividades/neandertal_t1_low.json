@@ -1,0 +1,118 @@
+{
+ "schema": "deaba/1",
+ "id": "neandertal_t1_low",
+ "tipo": 1,
+ "nivel": "low",
+ "titulo": {
+  "es": "¿Quién es el verdadero «paleo»?",
+  "en": "Who is the real “paleo”?"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Bioquímica ficción. Un equipo de paleogenética ha reconstruido con modelos computacionales (a partir del genoma y de los isótopos de sus huesos) el perfil metabólico de un neandertal del Pleistoceno, cuya dieta era muy rica en carne. Lo compara con el de un europeo actual con una dieta variada, que asegura que va a empezar una «paleodieta estricta» para «volver a sus raíces».",
+  "en": "Biochemical fiction. A palaeogenetics team has used computational models (based on the genome and on bone isotopes) to reconstruct the metabolic profile of a Pleistocene Neanderthal, whose diet was very rich in meat. They compare it with that of a present-day European on a varied diet, who claims he is about to start a “strict paleo diet” to “go back to his roots”."
+ },
+ "mision": {
+  "es": "Explicad las reacciones y las rutas, qué dicen los datos sobre la dieta y las adaptaciones de cada uno, y si tiene sentido biológico que un humano actual «coma como un neandertal».",
+  "en": "Explain the reactions and the pathways, what the data say about each one's diet and adaptations, and whether it makes biological sense for a present-day human to “eat like a Neanderthal”."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición 1: neandertal (reconstrucción)",
+   "en": "Condition 1: Neanderthal (reconstruction)"
+  },
+  "c2": {
+   "es": "Condición 2: europeo actual",
+   "en": "Condition 2: present-day European"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "α-Amilasa (salival y pancreática)",
+    "en": "α-Amylase (salivary and pancreatic)"
+   },
+   "fc": -3
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lactasa",
+    "en": "Lactase"
+   },
+   "fc": -50
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glutaminasa (hepática)",
+    "en": "Glutaminase (liver)"
+   },
+   "fc": 12
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carbamoil fosfato sintetasa I",
+    "en": "Carbamoyl phosphate synthetase I"
+   },
+   "fc": 10
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Arginasa",
+    "en": "Arginase"
+   },
+   "fc": 9
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "PEP carboxiquinasa (PEPCK)",
+    "en": "PEP carboxykinase (PEPCK)"
+   },
+   "fc": 8
+  },
+  {
+   "id": "7",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Urea (en plasma)",
+    "en": "Urea (plasma)"
+   },
+   "fc": 14
+  },
+  {
+   "id": "8",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa basal (en sangre)",
+    "en": "Basal glucose (blood)"
+   },
+   "fc": -2
+  },
+  {
+   "id": "9",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "3-Metilhistidina",
+    "en": "3-Methylhistidine"
+   },
+   "fc": 5
+  }
+ ]
+}

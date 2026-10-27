@@ -1,0 +1,194 @@
+{
+ "schema": "deaba/1",
+ "id": "galactosemia_t2_low",
+ "tipo": 2,
+ "nivel": "low",
+ "titulo": {
+  "es": "La leche que no sienta bien",
+  "en": "The milk that does not agree"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Un recién nacido empieza a vomitar, deja de ganar peso y se pone amarillo pocos días después de empezar a tomar leche. El cribado neonatal apunta a una galactosemia clásica (tipo I). El hospital dispone de proteómica y metabolómica en sangre (eritrocitos y plasma) y en orina, y quiere un panel que confirme la alteración y sirva para hacer el seguimiento.",
+  "en": "A newborn starts vomiting, stops gaining weight and turns yellow a few days after starting milk. Newborn screening points to classic (type I) galactosaemia. The hospital has proteomics and metabolomics on blood (red cells and plasma) and urine, and wants a panel that confirms the defect and can be used for follow-up."
+ },
+ "mision": {
+  "es": "Diseñad un experimento de expresión diferencial (proteómica y metabolómica): elegid las dos condiciones que vais a comparar, 5 enzimas y 5 metabolitos que permitan distinguirlas, sus reacciones y rutas, y el fold change que esperáis para cada uno.",
+  "en": "Design a differential expression experiment (proteomics and metabolomics): choose the two conditions you will compare, 5 enzymes and 5 metabolites that can tell them apart, their reactions and pathways, and the fold change you expect for each."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "n_enzimas": 5,
+ "n_metabolitos": 5,
+ "condiciones": [
+  {
+   "id": "galt_leche",
+   "nombre": {
+    "es": "Recién nacido con galactosemia clásica alimentado con leche",
+    "en": "Newborn with classic galactosaemia fed milk"
+   }
+  },
+  {
+   "id": "sano_leche",
+   "nombre": {
+    "es": "Recién nacido sano alimentado con leche",
+    "en": "Healthy newborn fed milk"
+   }
+  },
+  {
+   "id": "galt_soja",
+   "nombre": {
+    "es": "Recién nacido con galactosemia clásica con fórmula sin lactosa",
+    "en": "Newborn with classic galactosaemia on lactose-free formula"
+   }
+  },
+  {
+   "id": "intolerante",
+   "nombre": {
+    "es": "Adulto con intolerancia a la lactosa que toma leche",
+    "en": "Lactose-intolerant adult who drinks milk"
+   }
+  },
+  {
+   "id": "portador",
+   "nombre": {
+    "es": "Recién nacido portador (heterocigoto) alimentado con leche",
+    "en": "Carrier (heterozygous) newborn fed milk"
+   }
+  }
+ ],
+ "catalogo": [
+  {
+   "id": "aldob",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Aldolasa B",
+    "en": "Aldolase B"
+   }
+  },
+  {
+   "id": "ar",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Aldosa reductasa",
+    "en": "Aldose reductase"
+   }
+  },
+  {
+   "id": "galk",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Galactoquinasa (GALK1)",
+    "en": "Galactokinase (GALK1)"
+   }
+  },
+  {
+   "id": "galt",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Galactosa-1-fosfato uridiltransferasa (GALT)",
+    "en": "Galactose-1-phosphate uridylyltransferase (GALT)"
+   }
+  },
+  {
+   "id": "hk",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Hexoquinasa",
+    "en": "Hexokinase"
+   }
+  },
+  {
+   "id": "lactasa",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lactasa",
+    "en": "Lactase"
+   }
+  },
+  {
+   "id": "gale",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "UDP-galactosa 4-epimerasa (GALE)",
+    "en": "UDP-galactose 4-epimerase (GALE)"
+   }
+  },
+  {
+   "id": "ugp",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "UDP-glucosa pirofosforilasa",
+    "en": "UDP-glucose pyrophosphorylase"
+   }
+  },
+  {
+   "id": "f1p",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fructosa-1-fosfato",
+    "en": "Fructose 1-phosphate"
+   }
+  },
+  {
+   "id": "galtol",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Galactitol (orina)",
+    "en": "Galactitol (urine)"
+   }
+  },
+  {
+   "id": "galnato",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Galactonato",
+    "en": "Galactonate"
+   }
+  },
+  {
+   "id": "gal",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Galactosa (plasma)",
+    "en": "Galactose (plasma)"
+   }
+  },
+  {
+   "id": "gal1p",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Galactosa-1-fosfato",
+    "en": "Galactose 1-phosphate"
+   }
+  },
+  {
+   "id": "glc",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa (plasma)",
+    "en": "Glucose (plasma)"
+   }
+  },
+  {
+   "id": "lactosa",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Lactosa (heces)",
+    "en": "Lactose (stool)"
+   }
+  },
+  {
+   "id": "udpgal",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "UDP-galactosa",
+    "en": "UDP-galactose"
+   }
+  }
+ ]
+}

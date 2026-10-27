@@ -1,0 +1,217 @@
+{
+ "schema": "deaba/1",
+ "id": "glioxilato_t1_medium",
+ "tipo": 1,
+ "nivel": "medium",
+ "titulo": {
+  "es": "Plántulas a oscuras",
+  "en": "Seedlings in the dark"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Se han analizado extractos de cotiledones de girasol (Helianthus annuus) en dos momentos de su desarrollo: plántulas de 3 días germinadas en oscuridad (condición 1) y plántulas verdes de 10 días cultivadas en luz (condición 2).",
+  "en": "Extracts of sunflower (Helianthus annuus) cotyledons have been analysed at two developmental stages: 3-day seedlings germinated in the dark (condition 1) and 10-day green seedlings grown in the light (condition 2)."
+ },
+ "mision": {
+  "es": "Para cada enzima y metabolito, explicad la reacción y la ruta, y proponed qué está haciendo la plántula de 3 días para sobrevivir sin luz.",
+  "en": "For each enzyme and metabolite, explain the reaction and the pathway, and propose what the 3-day seedling is doing to survive without light."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición 1: 3 días en oscuridad",
+   "en": "Condition 1: 3 days in the dark"
+  },
+  "c2": {
+   "es": "Condición 2: 10 días en luz",
+   "en": "Condition 2: 10 days in the light"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Enzima málica",
+    "en": "Malic enzyme"
+   },
+   "fc": 10
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfohexosa isomerasa",
+    "en": "Phosphohexose isomerase"
+   },
+   "fc": 6
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Isocitrato liasa",
+    "en": "Isocitrate lyase"
+   },
+   "fc": 7
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Dihidrolipoil transacetilasa (E2 de la PDH)",
+    "en": "Dihydrolipoyl transacetylase (E2 of PDH)"
+   },
+   "fc": -7
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Citocromo c oxidorreductasa (complejo III)",
+    "en": "Cytochrome c oxidoreductase (complex III)"
+   },
+   "fc": -6
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Sacarosa-fosfato sintasa",
+    "en": "Sucrose-phosphate synthase"
+   },
+   "fc": 9
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "ETF:ubiquinona oxidorreductasa",
+    "en": "ETF:ubiquinone oxidoreductase"
+   },
+   "fc": -6
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato deshidrogenasa",
+    "en": "Pyruvate dehydrogenase"
+   },
+   "fc": -5
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfoenolpiruvato carboxiquinasa (PEPCK)",
+    "en": "Phosphoenolpyruvate carboxykinase (PEPCK)"
+   },
+   "fc": 9
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Aldolasa",
+    "en": "Aldolase"
+   },
+   "fc": 11
+  },
+  {
+   "id": "11",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Citrato sintasa",
+    "en": "Citrate synthase"
+   },
+   "fc": 12
+  },
+  {
+   "id": "12",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Malato sintasa",
+    "en": "Malate synthase"
+   },
+   "fc": 15
+  },
+  {
+   "id": "13",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfoglicerato mutasa",
+    "en": "Phosphoglycerate mutase"
+   },
+   "fc": 11
+  },
+  {
+   "id": "14",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Malato deshidrogenasa",
+    "en": "Malate dehydrogenase"
+   },
+   "fc": 16
+  },
+  {
+   "id": "15",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "trans-Δ²-Enoil-CoA",
+    "en": "trans-Δ²-Enoyl-CoA"
+   },
+   "fc": 10
+  },
+  {
+   "id": "16",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Gliceraldehído-3-fosfato",
+    "en": "Glyceraldehyde 3-phosphate"
+   },
+   "fc": 11
+  },
+  {
+   "id": "17",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "β-Cetoacil-CoA",
+    "en": "β-Ketoacyl-CoA"
+   },
+   "fc": 15
+  },
+  {
+   "id": "18",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glioxilato",
+    "en": "Glyoxylate"
+   },
+   "fc": 10
+  },
+  {
+   "id": "19",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acetil-CoA",
+    "en": "Acetyl-CoA"
+   },
+   "fc": 18
+  },
+  {
+   "id": "20",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Oxalacetato",
+    "en": "Oxaloacetate"
+   },
+   "fc": 15
+  }
+ ]
+}

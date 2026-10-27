@@ -1,0 +1,172 @@
+{
+ "schema": "deaba/1",
+ "id": "maduracion_t1_medium",
+ "tipo": 1,
+ "nivel": "medium",
+ "titulo": {
+  "es": "Del músculo a la carne (II): la maduración",
+  "en": "From muscle to meat (II): ageing"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "En una sala de maduración se han tomado muestras de carne de vacuno inmediatamente después del sacrificio (condición 1) y tras 5–10 días de maduración en refrigeración (condición 2). Se quiere entender cómo el cese total del flujo de energía y la degradación de las estructuras celulares transforman las propiedades de la carne.",
+  "en": "In an ageing room, beef samples were taken immediately after slaughter (condition 1) and after 5–10 days of refrigerated ageing (condition 2). The aim is to understand how the complete halt of energy flow and the breakdown of cell structures transform the properties of the meat."
+ },
+ "mision": {
+  "es": "Analizad los resultados y proponed qué cambios metabólicos se producen durante la maduración de la carne y cómo explican que se vuelva más tierna y sabrosa.",
+  "en": "Analyse the results and propose which metabolic changes take place during meat ageing and how they explain why it becomes more tender and flavoursome."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición 1: recién sacrificado",
+   "en": "Condition 1: just slaughtered"
+  },
+  "c2": {
+   "es": "Condición 2: en maduración (5–10 días)",
+   "en": "Condition 2: ageing (5–10 days)"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa",
+    "en": "Glycogen phosphorylase"
+   },
+   "fc": 15
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfofructoquinasa",
+    "en": "Phosphofructokinase"
+   },
+   "fc": 19
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato quinasa",
+    "en": "Pyruvate kinase"
+   },
+   "fc": 13
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Superóxido dismutasa",
+    "en": "Superoxide dismutase"
+   },
+   "fc": 14
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lactato deshidrogenasa",
+    "en": "Lactate dehydrogenase"
+   },
+   "fc": 21
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Creatina quinasa",
+    "en": "Creatine kinase"
+   },
+   "fc": 21
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Citrato sintasa",
+    "en": "Citrate synthase"
+   },
+   "fc": 26
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "L-3-Hidroxiacil-CoA deshidrogenasa",
+    "en": "L-3-Hydroxyacyl-CoA dehydrogenase"
+   },
+   "fc": 17
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfolipasa",
+    "en": "Phospholipase"
+   },
+   "fc": -7
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Citocromo c oxidasa",
+    "en": "Cytochrome c oxidase"
+   },
+   "fc": 19
+  },
+  {
+   "id": "11",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acetil-CoA",
+    "en": "Acetyl-CoA"
+   },
+   "fc": 25
+  },
+  {
+   "id": "12",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucógeno",
+    "en": "Glycogen"
+   },
+   "fc": 29
+  },
+  {
+   "id": "13",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Lactato",
+    "en": "Lactate"
+   },
+   "fc": -11
+  },
+  {
+   "id": "14",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fosfocreatina",
+    "en": "Phosphocreatine"
+   },
+   "fc": 29
+  },
+  {
+   "id": "15",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "ATP",
+    "en": "ATP"
+   },
+   "fc": 33
+  }
+ ]
+}

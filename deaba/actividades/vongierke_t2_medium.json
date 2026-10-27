@@ -1,0 +1,234 @@
+{
+ "schema": "deaba/1",
+ "id": "vongierke_t2_medium",
+ "tipo": 2,
+ "nivel": "medium",
+ "titulo": {
+  "es": "Un hígado lleno que no da glucosa",
+  "en": "A full liver that gives no glucose"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Una niña de seis meses tiene el hígado muy aumentado de tamaño y se pone pálida y sudorosa si pasa más de tres o cuatro horas sin comer. Se sospecha una glucogenosis tipo I (enfermedad de Von Gierke). Se dispone de una biopsia hepática y de muestras de sangre.",
+  "en": "A six-month-old girl has a greatly enlarged liver and turns pale and sweaty if she goes more than three or four hours without eating. Type I glycogen storage disease (Von Gierke disease) is suspected. A liver biopsy and blood samples are available."
+ },
+ "mision": {
+  "es": "Diseñad un experimento de expresión diferencial (proteómica y metabolómica): elegid las dos condiciones que vais a comparar, 5 enzimas y 5 metabolitos que permitan distinguirlas, sus reacciones y rutas, y el fold change que esperáis para cada uno.",
+  "en": "Design a differential expression experiment (proteomics and metabolomics): choose the two conditions you will compare, 5 enzymes and 5 metabolites that can tell them apart, their reactions and pathways, and the fold change you expect for each."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "n_enzimas": 5,
+ "n_metabolitos": 5,
+ "condiciones": [
+  {
+   "id": "vg_ayuno",
+   "nombre": {
+    "es": "Paciente con glucogenosis Ia tras 4 h de ayuno",
+    "en": "Patient with GSD Ia after a 4-h fast"
+   }
+  },
+  {
+   "id": "sano_ayuno",
+   "nombre": {
+    "es": "Niño sano tras 4 h de ayuno",
+    "en": "Healthy child after a 4-h fast"
+   }
+  },
+  {
+   "id": "vg_almidon",
+   "nombre": {
+    "es": "Paciente tras tomar almidón de maíz crudo (tratamiento)",
+    "en": "Patient after taking uncooked cornstarch (treatment)"
+   }
+  },
+  {
+   "id": "vg_comido",
+   "nombre": {
+    "es": "Paciente recién comido",
+    "en": "Patient just after a meal"
+   }
+  },
+  {
+   "id": "sano_comido",
+   "nombre": {
+    "es": "Niño sano recién comido",
+    "en": "Healthy child just after a meal"
+   }
+  }
+ ],
+ "catalogo": [
+  {
+   "id": "acc",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa (forma activa)",
+    "en": "Acetyl-CoA carboxylase (active form)"
+   }
+  },
+  {
+   "id": "cat1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carnitina aciltransferasa I (actividad)",
+    "en": "Carnitine acyltransferase I (activity)"
+   }
+  },
+  {
+   "id": "desram",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Enzima desramificante (amilo-1,6-glucosidasa)",
+    "en": "Debranching enzyme (amylo-1,6-glucosidase)"
+   }
+  },
+  {
+   "id": "galt",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Galactosa-1-fosfato uridiltransferasa",
+    "en": "Galactose-1-phosphate uridylyltransferase"
+   }
+  },
+  {
+   "id": "g6pasa",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucosa-6-fosfatasa (G6PC1)",
+    "en": "Glucose-6-phosphatase (G6PC1)"
+   }
+  },
+  {
+   "id": "g6pdh",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucosa-6-fosfato deshidrogenasa",
+    "en": "Glucose-6-phosphate dehydrogenase"
+   }
+  },
+  {
+   "id": "gp",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa hepática (forma activa)",
+    "en": "Liver glycogen phosphorylase (active form)"
+   }
+  },
+  {
+   "id": "pygm",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa muscular",
+    "en": "Muscle glycogen phosphorylase"
+   }
+  },
+  {
+   "id": "gs",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno sintasa (forma activa)",
+    "en": "Glycogen synthase (active form)"
+   }
+  },
+  {
+   "id": "pepck",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "PEP carboxiquinasa (PEPCK)",
+    "en": "PEP carboxykinase (PEPCK)"
+   }
+  },
+  {
+   "id": "pk",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato quinasa hepática (forma activa)",
+    "en": "Liver pyruvate kinase (active form)"
+   }
+  },
+  {
+   "id": "amonio",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Amonio (sangre)",
+    "en": "Ammonia (blood)"
+   }
+  },
+  {
+   "id": "bhb",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "D-β-Hidroxibutirato",
+    "en": "D-β-Hydroxybutyrate"
+   }
+  },
+  {
+   "id": "galtol",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Galactitol",
+    "en": "Galactitol"
+   }
+  },
+  {
+   "id": "glc",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa (sangre)",
+    "en": "Glucose (blood)"
+   }
+  },
+  {
+   "id": "g6p",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa-6-fosfato",
+    "en": "Glucose 6-phosphate"
+   }
+  },
+  {
+   "id": "glucogeno",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucógeno hepático",
+    "en": "Liver glycogen"
+   }
+  },
+  {
+   "id": "lac",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Lactato (sangre)",
+    "en": "Lactate (blood)"
+   }
+  },
+  {
+   "id": "malonil",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
+   }
+  },
+  {
+   "id": "tg",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Triglicéridos (plasma)",
+    "en": "Triglycerides (plasma)"
+   }
+  },
+  {
+   "id": "urico",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Ácido úrico (sangre)",
+    "en": "Uric acid (blood)"
+   }
+  }
+ ]
+}

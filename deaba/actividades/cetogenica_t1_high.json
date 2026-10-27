@@ -1,0 +1,235 @@
+{
+ "schema": "deaba/1",
+ "id": "cetogenica_t1_high",
+ "tipo": 1,
+ "nivel": "high",
+ "titulo": {
+  "es": "Una dieta cetogénica con sorpresa",
+  "en": "A ketogenic diet with a surprise"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Una persona de 30 años sigue desde hace meses una dieta cetogénica casera: casi sin hidratos de carbono y con mucha carne, huevos y proteína en polvo. Ayer se la saltó con un gran batido de leche. Le diagnosticaron cataratas a una edad inusualmente temprana. Se comparan sus muestras (condición 1) con las de una persona sana con una dieta equilibrada (condición 2).",
+  "en": "A 30-year-old has been following a home-made ketogenic diet for months: almost no carbohydrate and lots of meat, eggs and protein powder. Yesterday they broke it with a large milkshake. They were diagnosed with cataracts at an unusually early age. Their samples (condition 1) are compared with those of a healthy person on a balanced diet (condition 2)."
+ },
+ "mision": {
+  "es": "Para cada enzima y metabolito, explicad la reacción y la ruta, y explicad qué le ocurre a esta persona. ¿Podéis concretar qué tipo de trastorno tiene?",
+  "en": "For each enzyme and metabolite, explain the reaction and the pathway, and explain what is happening to this person. Can you say exactly which type of disorder they have?"
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición 1",
+   "en": "Condition 1"
+  },
+  "c2": {
+   "es": "Condición 2",
+   "en": "Condition 2"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lactasa",
+    "en": "Lactase"
+   },
+   "fc": 23
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Quimotripsina",
+    "en": "Chymotrypsin"
+   },
+   "fc": 10
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Tripsina",
+    "en": "Trypsin"
+   },
+   "fc": 5
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carbamoil fosfato sintetasa I",
+    "en": "Carbamoyl phosphate synthetase I"
+   },
+   "fc": 22
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Alanina aminotransferasa",
+    "en": "Alanine aminotransferase"
+   },
+   "fc": 6
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glutaminasa",
+    "en": "Glutaminase"
+   },
+   "fc": 8
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Aspartato aminotransferasa",
+    "en": "Aspartate aminotransferase"
+   },
+   "fc": 11
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "HMG-CoA sintasa",
+    "en": "HMG-CoA synthase"
+   },
+   "fc": 22
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetoacetato descarboxilasa",
+    "en": "Acetoacetate decarboxylase"
+   },
+   "fc": 5
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucosa-6-fosfatasa",
+    "en": "Glucose-6-phosphatase"
+   },
+   "fc": 10
+  },
+  {
+   "id": "11",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfofructoquinasa-1",
+    "en": "Phosphofructokinase-1"
+   },
+   "fc": -9
+  },
+  {
+   "id": "12",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato quinasa",
+    "en": "Pyruvate kinase"
+   },
+   "fc": -12
+  },
+  {
+   "id": "13",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa",
+    "en": "Acetyl-CoA carboxylase"
+   },
+   "fc": -13
+  },
+  {
+   "id": "14",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carnitina aciltransferasa II",
+    "en": "Carnitine acyltransferase II"
+   },
+   "fc": 6
+  },
+  {
+   "id": "15",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Galactoquinasa",
+    "en": "Galactokinase"
+   },
+   "fc": -8
+  },
+  {
+   "id": "16",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acetil-CoA",
+    "en": "Acetyl-CoA"
+   },
+   "fc": 22
+  },
+  {
+   "id": "17",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
+   },
+   "fc": -6
+  },
+  {
+   "id": "18",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Galactitol",
+    "en": "Galactitol"
+   },
+   "fc": 10
+  },
+  {
+   "id": "19",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "D-β-Hidroxibutirato",
+    "en": "D-β-Hydroxybutyrate"
+   },
+   "fc": 13
+  },
+  {
+   "id": "20",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fosfoenolpiruvato",
+    "en": "Phosphoenolpyruvate"
+   },
+   "fc": 7
+  },
+  {
+   "id": "21",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Galactosa",
+    "en": "Galactose"
+   },
+   "fc": 5
+  },
+  {
+   "id": "22",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Galactosa-1-fosfato",
+    "en": "Galactose 1-phosphate"
+   },
+   "fc": 1
+  }
+ ]
+}

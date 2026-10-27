@@ -1,0 +1,202 @@
+{
+ "schema": "deaba/1",
+ "id": "ejercicio_ayunas_t2_high",
+ "tipo": 2,
+ "nivel": "high",
+ "titulo": {
+  "es": "¿Entrenar con el estómago vacío?",
+  "en": "Training on an empty stomach?"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Una corredora entrena muy temprano, a alta intensidad, justo después de desayunar. Unos días toma solo un café; otros, café con cereales azucarados (índice glucémico alto: pico de glucosa a los 30 min que se acaba hacia la hora y media); y otros, café con cereales integrales (índice glucémico bajo: pico menor que dura hasta 2 h). Quiere saber qué cambia en su metabolismo durante los 30 primeros minutos de ejercicio. Se pueden tomar muestras de sangre y biopsias musculares.",
+  "en": "A runner trains very early, at high intensity, right after breakfast. Some days she has only a coffee; other days coffee with sugary cereal (high glycaemic index: glucose peak at 30 min, over by about an hour and a half); and other days coffee with wholegrain cereal (low glycaemic index: a smaller peak lasting up to 2 h). She wants to know what changes in her metabolism during the first 30 minutes of exercise. Blood samples and muscle biopsies can be taken."
+ },
+ "mision": {
+  "es": "Diseñad un experimento de expresión diferencial (proteómica y metabolómica): elegid las dos condiciones que vais a comparar, 5 enzimas y 5 metabolitos que permitan distinguirlas, sus reacciones y rutas, y el fold change que esperáis para cada uno. Hay tres desayunos posibles: elegid la comparación que mejor responde a la pregunta y, cuando tengáis los resultados, explorad también las otras comparaciones (cond1 frente a cond2, cond1 frente a cond3, cond2 frente a cond3).",
+  "en": "Design a differential expression experiment (proteomics and metabolomics): choose the two conditions you will compare, 5 enzymes and 5 metabolites that can tell them apart, their reactions and pathways, and the fold change you expect for each. There are three possible breakfasts: choose the comparison that best answers the question and, once you have the results, also explore the other comparisons (cond1 vs cond2, cond1 vs cond3, cond2 vs cond3)."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "n_enzimas": 5,
+ "n_metabolitos": 5,
+ "condiciones": [
+  {
+   "id": "cafe",
+   "nombre": {
+    "es": "Ejercicio intenso tras desayunar solo café",
+    "en": "Intense exercise after coffee only"
+   }
+  },
+  {
+   "id": "azucar",
+   "nombre": {
+    "es": "Ejercicio intenso tras café con cereales azucarados",
+    "en": "Intense exercise after coffee with sugary cereal"
+   }
+  },
+  {
+   "id": "integral",
+   "nombre": {
+    "es": "Ejercicio intenso tras café con cereales integrales",
+    "en": "Intense exercise after coffee with wholegrain cereal"
+   }
+  },
+  {
+   "id": "reposo",
+   "nombre": {
+    "es": "Reposo tras desayunar solo café",
+    "en": "Rest after coffee only"
+   }
+  },
+  {
+   "id": "mediodia",
+   "nombre": {
+    "es": "Ejercicio intenso a mediodía, dos horas después de una comida completa y sin café",
+    "en": "Intense exercise at midday, two hours after a full meal and without coffee"
+   }
+  }
+ ],
+ "catalogo": [
+  {
+   "id": "acc",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa muscular (forma activa)",
+    "en": "Muscle acetyl-CoA carboxylase (active form)"
+   }
+  },
+  {
+   "id": "ampk",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "AMPK fosforilada (músculo)",
+    "en": "Phosphorylated AMPK (muscle)"
+   }
+  },
+  {
+   "id": "cat1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carnitina aciltransferasa I (actividad)",
+    "en": "Carnitine acyltransferase I (activity)"
+   }
+  },
+  {
+   "id": "cs",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Citrato sintasa (cantidad)",
+    "en": "Citrate synthase (amount)"
+   }
+  },
+  {
+   "id": "gp",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa muscular (forma activa)",
+    "en": "Muscle glycogen phosphorylase (active form)"
+   }
+  },
+  {
+   "id": "ldh",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lactato deshidrogenasa (cantidad)",
+    "en": "Lactate dehydrogenase (amount)"
+   }
+  },
+  {
+   "id": "hsl",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lipasa sensible a hormonas (fosforilada)",
+    "en": "Hormone-sensitive lipase (phosphorylated)"
+   }
+  },
+  {
+   "id": "pdh",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato deshidrogenasa (forma activa)",
+    "en": "Pyruvate dehydrogenase (active form)"
+   }
+  },
+  {
+   "id": "cafeina",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Cafeína (plasma)",
+    "en": "Caffeine (plasma)"
+   }
+  },
+  {
+   "id": "bhb",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "D-β-Hidroxibutirato (plasma)",
+    "en": "D-β-Hydroxybutyrate (plasma)"
+   }
+  },
+  {
+   "id": "glicerol",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glicerol (plasma)",
+    "en": "Glycerol (plasma)"
+   }
+  },
+  {
+   "id": "glc",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa (plasma)",
+    "en": "Glucose (plasma)"
+   }
+  },
+  {
+   "id": "glucogeno",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucógeno muscular",
+    "en": "Muscle glycogen"
+   }
+  },
+  {
+   "id": "lac",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Lactato (plasma)",
+    "en": "Lactate (plasma)"
+   }
+  },
+  {
+   "id": "malonil",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA (músculo)",
+    "en": "Malonyl-CoA (muscle)"
+   }
+  },
+  {
+   "id": "urea",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Urea (plasma)",
+    "en": "Urea (plasma)"
+   }
+  },
+  {
+   "id": "agl",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Ácidos grasos libres (plasma)",
+    "en": "Free fatty acids (plasma)"
+   }
+  }
+ ]
+}

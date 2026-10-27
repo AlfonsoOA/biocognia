@@ -1,0 +1,250 @@
+{
+ "schema": "deaba/1",
+ "id": "acetato_t2_high",
+ "tipo": 2,
+ "nivel": "high",
+ "titulo": {
+  "es": "Una bacteria que vive de vinagre",
+  "en": "A bacterium that lives on vinegar"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Escherichia coli puede crecer usando glucosa, pero también acetato como única fuente de carbono. Con acetato, todo el carbono entra como acetil-CoA y, aun así, la bacteria fabrica sus azúcares, sus aminoácidos y su pared. Un laboratorio quiere comprobar si en esas condiciones se induce el ciclo del glioxilato. Dispone de proteómica y metabolómica de cultivos en fase exponencial.",
+  "en": "Escherichia coli can grow on glucose, but also on acetate as its only carbon source. On acetate, all the carbon enters as acetyl-CoA and yet the bacterium makes its sugars, amino acids and cell wall. A laboratory wants to test whether the glyoxylate cycle is induced under these conditions. It has proteomics and metabolomics of exponential-phase cultures."
+ },
+ "mision": {
+  "es": "Diseñad un experimento de expresión diferencial (proteómica y metabolómica): elegid las dos condiciones que vais a comparar, 7 enzimas y 5 metabolitos que permitan distinguirlas, sus reacciones y rutas, y el fold change que esperáis para cada uno.",
+  "en": "Design a differential expression experiment (proteomics and metabolomics): choose the two conditions you will compare, 7 enzymes and 5 metabolites that can tell them apart, their reactions and pathways, and the fold change you expect for each."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "n_enzimas": 7,
+ "n_metabolitos": 5,
+ "condiciones": [
+  {
+   "id": "acetato",
+   "nombre": {
+    "es": "Cultivo en acetato",
+    "en": "Culture on acetate"
+   }
+  },
+  {
+   "id": "glucosa",
+   "nombre": {
+    "es": "Cultivo en glucosa",
+    "en": "Culture on glucose"
+   }
+  },
+  {
+   "id": "oleato",
+   "nombre": {
+    "es": "Cultivo en ácido oleico",
+    "en": "Culture on oleic acid"
+   }
+  },
+  {
+   "id": "mezcla",
+   "nombre": {
+    "es": "Cultivo en glucosa con acetato (primeras horas)",
+    "en": "Culture on glucose plus acetate (first hours)"
+   }
+  },
+  {
+   "id": "estacionaria",
+   "nombre": {
+    "es": "Cultivo en glucosa en fase estacionaria",
+    "en": "Culture on glucose in stationary phase"
+   }
+  }
+ ],
+ "catalogo": [
+  {
+   "id": "acs",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA sintetasa (Acs)",
+    "en": "Acetyl-CoA synthetase (Acs)"
+   }
+  },
+  {
+   "id": "fade",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acil-CoA deshidrogenasa (FadE)",
+    "en": "Acyl-CoA dehydrogenase (FadE)"
+   }
+  },
+  {
+   "id": "cpt1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carnitina aciltransferasa I",
+    "en": "Carnitine acyltransferase I"
+   }
+  },
+  {
+   "id": "cs",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Citrato sintasa (GltA)",
+    "en": "Citrate synthase (GltA)"
+   }
+  },
+  {
+   "id": "mae",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Enzima málica (MaeB)",
+    "en": "Malic enzyme (MaeB)"
+   }
+  },
+  {
+   "id": "pfk",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfofructoquinasa-1 (PfkA)",
+    "en": "Phosphofructokinase-1 (PfkA)"
+   }
+  },
+  {
+   "id": "hmgcs",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "HMG-CoA sintasa mitocondrial",
+    "en": "Mitochondrial HMG-CoA synthase"
+   }
+  },
+  {
+   "id": "idh_tot",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Isocitrato deshidrogenasa (cantidad total)",
+    "en": "Isocitrate dehydrogenase (total amount)"
+   }
+  },
+  {
+   "id": "idh_act",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Isocitrato deshidrogenasa (forma activa, desfosforilada)",
+    "en": "Isocitrate dehydrogenase (active, dephosphorylated form)"
+   }
+  },
+  {
+   "id": "acek",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Isocitrato deshidrogenasa quinasa/fosfatasa (AceK)",
+    "en": "Isocitrate dehydrogenase kinase/phosphatase (AceK)"
+   }
+  },
+  {
+   "id": "acea",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Isocitrato liasa (AceA)",
+    "en": "Isocitrate lyase (AceA)"
+   }
+  },
+  {
+   "id": "aceb",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Malato sintasa (AceB)",
+    "en": "Malate synthase (AceB)"
+   }
+  },
+  {
+   "id": "pck",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "PEP carboxiquinasa (PckA)",
+    "en": "PEP carboxykinase (PckA)"
+   }
+  },
+  {
+   "id": "rubisco",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "RuBisCO",
+    "en": "RuBisCO"
+   }
+  },
+  {
+   "id": "ptsg",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Transportador de glucosa del sistema PTS (PtsG)",
+    "en": "PTS glucose transporter (PtsG)"
+   }
+  },
+  {
+   "id": "acoa",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acetil-CoA",
+    "en": "Acetyl-CoA"
+   }
+  },
+  {
+   "id": "bhb",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "D-β-Hidroxibutirato",
+    "en": "D-β-Hydroxybutyrate"
+   }
+  },
+  {
+   "id": "pep",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fosfoenolpiruvato",
+    "en": "Phosphoenolpyruvate"
+   }
+  },
+  {
+   "id": "fbp",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fructosa-1,6-bisfosfato",
+    "en": "Fructose 1,6-bisphosphate"
+   }
+  },
+  {
+   "id": "glx",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glioxilato",
+    "en": "Glyoxylate"
+   }
+  },
+  {
+   "id": "lac",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Lactato",
+    "en": "Lactate"
+   }
+  },
+  {
+   "id": "mal",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malato",
+    "en": "Malate"
+   }
+  },
+  {
+   "id": "succ",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Succinato",
+    "en": "Succinate"
+   }
+  }
+ ]
+}

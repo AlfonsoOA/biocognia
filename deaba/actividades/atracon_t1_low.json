@@ -1,0 +1,172 @@
+{
+ "schema": "deaba/1",
+ "id": "atracon_t1_low",
+ "tipo": 1,
+ "nivel": "low",
+ "titulo": {
+  "es": "El banquete de los glúcidos",
+  "en": "The carbohydrate feast"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "El laboratorio ha recibido muestras de hígado y plasma de dos personas. Una ha mantenido una dieta equilibrada y está en estado basal; la otra acaba de darse un atracón de hidratos de carbono de absorción rápida (bollería industrial). Se comparan la condición A y la condición B.",
+  "en": "The laboratory has received liver and plasma samples from two people. One has kept a balanced diet and is in a basal state; the other has just binged on fast-absorbed carbohydrates (industrial pastries). Condition A is compared with condition B."
+ },
+ "mision": {
+  "es": "Decidid cuál de las dos condiciones corresponde a quien ha abusado de los dulces y justificad bioquímicamente cómo responde su organismo ante semejante pico de sustratos y de señal hormonal.",
+  "en": "Decide which condition corresponds to the person who overindulged in sweets and justify biochemically how their body responds to such a peak of substrates and hormonal signal."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición A",
+   "en": "Condition A"
+  },
+  "c2": {
+   "es": "Condición B",
+   "en": "Condition B"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucocinasa",
+    "en": "Glucokinase"
+   },
+   "fc": 25
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfofructoquinasa-1 (PFK-1)",
+    "en": "Phosphofructokinase-1 (PFK-1)"
+   },
+   "fc": 35
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato deshidrogenasa (PDH)",
+    "en": "Pyruvate dehydrogenase (PDH)"
+   },
+   "fc": 20
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa (ACC)",
+    "en": "Acetyl-CoA carboxylase (ACC)"
+   },
+   "fc": 30
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Ácido graso sintasa (FAS)",
+    "en": "Fatty acid synthase (FAS)"
+   },
+   "fc": 28
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno sintasa",
+    "en": "Glycogen synthase"
+   },
+   "fc": 40
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "HMG-CoA reductasa",
+    "en": "HMG-CoA reductase"
+   },
+   "fc": 22
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fructosa-1,6-bisfosfatasa (FBPasa-1)",
+    "en": "Fructose-1,6-bisphosphatase (FBPase-1)"
+   },
+   "fc": -30
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa",
+    "en": "Glycogen phosphorylase"
+   },
+   "fc": -25
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carnitina aciltransferasa I (CAT-I)",
+    "en": "Carnitine acyltransferase I (CAT-I)"
+   },
+   "fc": -18
+  },
+  {
+   "id": "11",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fructosa-2,6-bisfosfato",
+    "en": "Fructose 2,6-bisphosphate"
+   },
+   "fc": 50
+  },
+  {
+   "id": "12",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
+   },
+   "fc": 35
+  },
+  {
+   "id": "13",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Citrato",
+    "en": "Citrate"
+   },
+   "fc": 15
+  },
+  {
+   "id": "14",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "UDP-glucosa",
+    "en": "UDP-glucose"
+   },
+   "fc": 20
+  },
+  {
+   "id": "15",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Triglicéridos (en VLDL)",
+    "en": "Triglycerides (in VLDL)"
+   },
+   "fc": 12
+  }
+ ]
+}

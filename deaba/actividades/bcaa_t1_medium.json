@@ -1,0 +1,127 @@
+{
+ "schema": "deaba/1",
+ "id": "bcaa_t1_medium",
+ "tipo": 1,
+ "nivel": "medium",
+ "titulo": {
+  "es": "El suplemento milagro",
+  "en": "The miracle supplement"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Un influencer de fitness asegura que tomar solo aminoácidos ramificados (BCAA: leucina, isoleucina y valina) en ayunas basta para ganar masa muscular, porque la leucina activa la vía mTOR. Se compara a un seguidor que lleva tres meses haciéndolo (condición 1) con una persona que toma proteína completa de suero de leche (condición 2), ambos en ayunas por la mañana.",
+  "en": "A fitness influencer claims that taking only branched-chain amino acids (BCAA: leucine, isoleucine and valine) on an empty stomach is enough to gain muscle mass, because leucine activates the mTOR pathway. A follower who has been doing this for three months (condition 1) is compared with someone who takes complete whey protein (condition 2), both fasted in the morning."
+ },
+ "mision": {
+  "es": "Explicad las reacciones y las rutas y, a partir de los datos, decid si el suplemento cumple lo que promete.",
+  "en": "Explain the reactions and the pathways and, from the data, say whether the supplement delivers what it promises."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición 1: solo BCAA",
+   "en": "Condition 1: BCAA only"
+  },
+  "c2": {
+   "es": "Condición 2: proteína completa",
+   "en": "Condition 2: complete protein"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "mTOR fosforilada (activa)",
+    "en": "Phosphorylated mTOR (active)"
+   },
+   "fc": 8
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Aminotransferasa de aminoácidos ramificados (BCAT)",
+    "en": "Branched-chain aminotransferase (BCAT)"
+   },
+   "fc": 6
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Deshidrogenasa de α-cetoácidos de cadena ramificada (BCKDH)",
+    "en": "Branched-chain α-keto acid dehydrogenase (BCKDH)"
+   },
+   "fc": 12
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carbamoil fosfato sintetasa I",
+    "en": "Carbamoyl phosphate synthetase I"
+   },
+   "fc": 5
+  },
+  {
+   "id": "5",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Leucina (en plasma)",
+    "en": "Leucine (plasma)"
+   },
+   "fc": 10
+  },
+  {
+   "id": "6",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "α-Cetoisocaproato",
+    "en": "α-Ketoisocaproate"
+   },
+   "fc": 8
+  },
+  {
+   "id": "7",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Aminoácidos esenciales no ramificados (lisina, metionina, treonina…)",
+    "en": "Non-branched essential amino acids (lysine, methionine, threonine…)"
+   },
+   "fc": -15
+  },
+  {
+   "id": "8",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "3-Metilhistidina",
+    "en": "3-Methylhistidine"
+   },
+   "fc": 1
+  },
+  {
+   "id": "9",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Urea (en plasma)",
+    "en": "Urea (plasma)"
+   },
+   "fc": 4
+  },
+  {
+   "id": "10",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa (en plasma)",
+    "en": "Glucose (plasma)"
+   },
+   "fc": -3
+  }
+ ]
+}

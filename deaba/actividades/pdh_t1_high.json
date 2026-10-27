@@ -1,0 +1,172 @@
+{
+ "schema": "deaba/1",
+ "id": "pdh_t1_high",
+ "tipo": 1,
+ "nivel": "high",
+ "titulo": {
+  "es": "Agotados antes de tiempo",
+  "en": "Exhausted too soon"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Los animales de una línea que presenta episodios de fatiga extrema y acidosis tras el esfuerzo acaban de completar una sesión de ejercicio intenso en cinta (condición problema, A). Se comparan con animales control (condición B). Se ha analizado su tejido hepático por proteómica y metabolómica.",
+  "en": "Animals from a line that shows episodes of extreme fatigue and acidosis after exertion have just completed an intense treadmill session (problem condition, A). They are compared with control animals (condition B). Their liver tissue has been analysed by proteomics and metabolomics."
+ },
+ "mision": {
+  "es": "Caracterizad las alteraciones del flujo de metabolitos y de la abundancia de enzimas y determinad la naturaleza del trastorno metabólico de la condición A.",
+  "en": "Characterise the changes in metabolite flux and enzyme abundance and determine the nature of the metabolic disorder in condition A."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición problema (A)",
+   "en": "Problem condition (A)"
+  },
+  "c2": {
+   "es": "Condición control (B)",
+   "en": "Control condition (B)"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acil graso-CoA sintetasa",
+    "en": "Fatty acyl-CoA synthetase"
+   },
+   "fc": 10
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato quinasa",
+    "en": "Pyruvate kinase"
+   },
+   "fc": 5
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa (ACC)",
+    "en": "Acetyl-CoA carboxylase (ACC)"
+   },
+   "fc": -15
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lactato deshidrogenasa (LDH)",
+    "en": "Lactate dehydrogenase (LDH)"
+   },
+   "fc": 14
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno sintasa",
+    "en": "Glycogen synthase"
+   },
+   "fc": -15
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa",
+    "en": "Glycogen phosphorylase"
+   },
+   "fc": 20
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Tiolasa",
+    "en": "Thiolase"
+   },
+   "fc": 18
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Enoil-CoA hidratasa",
+    "en": "Enoyl-CoA hydratase"
+   },
+   "fc": 12
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato carboxilasa",
+    "en": "Pyruvate carboxylase"
+   },
+   "fc": 17
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Dihidrolipoil deshidrogenasa (E3)",
+    "en": "Dihydrolipoyl dehydrogenase (E3)"
+   },
+   "fc": -15
+  },
+  {
+   "id": "11",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acilcarnitina",
+    "en": "Acylcarnitine"
+   },
+   "fc": 8
+  },
+  {
+   "id": "12",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "L-3-Hidroxiacil-CoA",
+    "en": "L-3-Hydroxyacyl-CoA"
+   },
+   "fc": 19
+  },
+  {
+   "id": "13",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
+   },
+   "fc": -6
+  },
+  {
+   "id": "14",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Oxalacetato",
+    "en": "Oxaloacetate"
+   },
+   "fc": -13
+  },
+  {
+   "id": "15",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Lactato",
+    "en": "Lactate"
+   },
+   "fc": 9
+  }
+ ]
+}

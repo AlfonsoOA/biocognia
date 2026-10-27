@@ -1,0 +1,226 @@
+{
+ "schema": "deaba/1",
+ "id": "ejercicio_glucidos_t2_medium",
+ "tipo": 2,
+ "nivel": "medium",
+ "titulo": {
+  "es": "Plato de pasta y a correr",
+  "en": "A plate of pasta, then off to run"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Una jugadora de fútbol come un plato grande de pasta (rico en glúcidos) y, una hora después, hace 20 minutos de ejercicio muy intenso (series a máxima velocidad). El cuerpo técnico quiere saber qué cambia en el metabolismo energético de su músculo por el ejercicio cuando hay glúcidos de sobra. Se pueden tomar biopsias musculares y sangre.",
+  "en": "A football player eats a large plate of pasta (rich in carbohydrate) and, an hour later, does 20 minutes of very intense exercise (all-out repeated sprints). The coaching staff want to know what the exercise changes in her muscle's energy metabolism when there is plenty of carbohydrate. Muscle biopsies and blood can be taken."
+ },
+ "mision": {
+  "es": "Diseñad un experimento de expresión diferencial (proteómica y metabolómica): elegid las dos condiciones que vais a comparar, 7 enzimas y 5 metabolitos que permitan distinguirlas, sus reacciones y rutas, y el fold change que esperáis para cada uno.",
+  "en": "Design a differential expression experiment (proteomics and metabolomics): choose the two conditions you will compare, 7 enzymes and 5 metabolites that can tell them apart, their reactions and pathways, and the fold change you expect for each."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "n_enzimas": 7,
+ "n_metabolitos": 5,
+ "condiciones": [
+  {
+   "id": "ej_ch",
+   "nombre": {
+    "es": "Ejercicio intenso una hora después de la comida rica en glúcidos",
+    "en": "Intense exercise one hour after the carbohydrate-rich meal"
+   }
+  },
+  {
+   "id": "rep_ch",
+   "nombre": {
+    "es": "Reposo una hora después de la misma comida",
+    "en": "Rest one hour after the same meal"
+   }
+  },
+  {
+   "id": "ej_ay",
+   "nombre": {
+    "es": "El mismo ejercicio en ayunas",
+    "en": "The same exercise when fasted"
+   }
+  },
+  {
+   "id": "rep_ay",
+   "nombre": {
+    "es": "Reposo en ayunas",
+    "en": "Rest when fasted"
+   }
+  },
+  {
+   "id": "rec24",
+   "nombre": {
+    "es": "Reposo 24 h después del ejercicio",
+    "en": "Rest 24 h after the exercise"
+   }
+  }
+ ],
+ "catalogo": [
+  {
+   "id": "acc",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa muscular (forma activa)",
+    "en": "Muscle acetyl-CoA carboxylase (active form)"
+   }
+  },
+  {
+   "id": "ampk",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "AMPK fosforilada",
+    "en": "Phosphorylated AMPK"
+   }
+  },
+  {
+   "id": "cs",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Citrato sintasa (cantidad)",
+    "en": "Citrate synthase (amount)"
+   }
+  },
+  {
+   "id": "ck",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Creatina quinasa (flujo hacia ATP)",
+    "en": "Creatine kinase (flux towards ATP)"
+   }
+  },
+  {
+   "id": "pfk",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfofructoquinasa-1 (actividad)",
+    "en": "Phosphofructokinase-1 (activity)"
+   }
+  },
+  {
+   "id": "g6pasa",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucosa-6-fosfatasa",
+    "en": "Glucose-6-phosphatase"
+   }
+  },
+  {
+   "id": "gp",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa muscular (forma activa)",
+    "en": "Muscle glycogen phosphorylase (active form)"
+   }
+  },
+  {
+   "id": "gs",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno sintasa (forma activa)",
+    "en": "Glycogen synthase (active form)"
+   }
+  },
+  {
+   "id": "ldh",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lactato deshidrogenasa (cantidad)",
+    "en": "Lactate dehydrogenase (amount)"
+   }
+  },
+  {
+   "id": "hsl",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lipasa sensible a hormonas (fosforilada)",
+    "en": "Hormone-sensitive lipase (phosphorylated)"
+   }
+  },
+  {
+   "id": "pdh",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato deshidrogenasa (forma activa)",
+    "en": "Pyruvate dehydrogenase (active form)"
+   }
+  },
+  {
+   "id": "amp",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "AMP",
+    "en": "AMP"
+   }
+  },
+  {
+   "id": "pcr",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fosfocreatina",
+    "en": "Phosphocreatine"
+   }
+  },
+  {
+   "id": "glx",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glioxilato",
+    "en": "Glyoxylate"
+   }
+  },
+  {
+   "id": "glc",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa (plasma)",
+    "en": "Glucose (plasma)"
+   }
+  },
+  {
+   "id": "glucogeno",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucógeno muscular",
+    "en": "Muscle glycogen"
+   }
+  },
+  {
+   "id": "lac",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Lactato",
+    "en": "Lactate"
+   }
+  },
+  {
+   "id": "malonil",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA (músculo)",
+    "en": "Malonyl-CoA (muscle)"
+   }
+  },
+  {
+   "id": "urea",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Urea (plasma)",
+    "en": "Urea (plasma)"
+   }
+  },
+  {
+   "id": "agl",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Ácidos grasos libres (plasma)",
+    "en": "Free fatty acids (plasma)"
+   }
+  }
+ ]
+}

@@ -1,0 +1,127 @@
+{
+ "schema": "deaba/1",
+ "id": "zumo_t1_low",
+ "tipo": 1,
+ "nivel": "low",
+ "titulo": {
+  "es": "¿Zumo o fruta?",
+  "en": "Juice or fruit?"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Durante cuatro semanas, una persona ha sustituido su desayuno por un zumo «natural» exprimido de cinco piezas de fruta (sin la fibra). Se compara con otra que toma la misma cantidad de fruta entera, masticada. Las muestras de hígado y plasma se tomaron una hora después del desayuno del último día (condición 1: zumo; condición 2: fruta entera).",
+  "en": "For four weeks, a person has replaced their breakfast with a “natural” juice pressed from five pieces of fruit (without the fibre). They are compared with someone who eats the same amount of whole, chewed fruit. Liver and plasma samples were taken one hour after breakfast on the last day (condition 1: juice; condition 2: whole fruit)."
+ },
+ "mision": {
+  "es": "Explicad las reacciones y las rutas, por qué beberse la fruta no es lo mismo que comérsela, y qué riesgos tiene hacerlo cada día.",
+  "en": "Explain the reactions and the pathways, why drinking fruit is not the same as eating it, and what the risks of doing it every day are."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición 1: zumo",
+   "en": "Condition 1: juice"
+  },
+  "c2": {
+   "es": "Condición 2: fruta entera",
+   "en": "Condition 2: whole fruit"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fructoquinasa (cetohexoquinasa)",
+    "en": "Fructokinase (ketohexokinase)"
+   },
+   "fc": 25
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Aldolasa B",
+    "en": "Aldolase B"
+   },
+   "fc": 18
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Triosa quinasa (gliceraldehído quinasa)",
+    "en": "Triose kinase (glyceraldehyde kinase)"
+   },
+   "fc": 15
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Ácido graso sintasa",
+    "en": "Fatty acid synthase"
+   },
+   "fc": 22
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato deshidrogenasa (PDH) activa",
+    "en": "Pyruvate dehydrogenase (PDH), active"
+   },
+   "fc": 14
+  },
+  {
+   "id": "6",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fructosa-1-fosfato",
+    "en": "Fructose 1-phosphate"
+   },
+   "fc": 30
+  },
+  {
+   "id": "7",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Dihidroxiacetona fosfato (DHAP)",
+    "en": "Dihydroxyacetone phosphate (DHAP)"
+   },
+   "fc": 20
+  },
+  {
+   "id": "8",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glicerol-3-fosfato",
+    "en": "Glycerol 3-phosphate"
+   },
+   "fc": 16
+  },
+  {
+   "id": "9",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Triglicéridos en VLDL",
+    "en": "Triglycerides in VLDL"
+   },
+   "fc": 12
+  },
+  {
+   "id": "10",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Ácido úrico",
+    "en": "Uric acid"
+   },
+   "fc": 8
+  }
+ ]
+}

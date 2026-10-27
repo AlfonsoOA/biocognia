@@ -41,18 +41,21 @@ async function dbCargarCatalogo(base = "") { if (DB_CAT) return DB_CAT; try { co
 function dbNombres(lang, extra = []) {
   const vistos = new Set(), out = [];
   for (const n of [...extra, ...((DB_CAT && DB_CAT.metabolitos) || []), ...((DB_CAT && DB_CAT.enzimas) || [])]) {
-    const t = dbT(n, lang), k = dbNorm(t); if (!t || vistos.has(k)) continue; vistos.add(k); out.push({ t, k });
+    const t = dbT(n, lang), k = dbNorm(t); if (!t || vistos.has(k)) continue; vistos.add(k); out.push({ t, k, kc: k.replace(/ /g, "") });
   }
   return out;
 }
 // Busca sugerencias para las últimas 1–3 palabras antes del cursor. Devuelve { n (palabras a sustituir), sug: [nombres] }.
 function dbSugerencias(antes, nombres, max = 6) {
-  const m = antes.match(/[^\s+→=,;:()\/]+(?:\s+[^\s+→=,;:()\/]+){0,2}$/u); if (!m) return null;
+  // La coma no separa: forma parte de nombres como «fructosa-1,6-bisfosfato».
+  const m = antes.match(/[^\s+→=;:()\/]+(?:\s+[^\s+→=;:()\/]+){0,2}$/u); if (!m) return null;
   const pal = m[0].split(/\s+/);
   for (let k = pal.length; k >= 1; k--) {
     const q = dbNorm(pal.slice(-k).join(" ")).replace(/\|/g, "").trim();
     if (q.length < (k === 1 ? 3 : 4)) continue;
-    const ini = nombres.filter((x) => x.k.startsWith(q)), dentro = nombres.filter((x) => !x.k.startsWith(q) && x.k.includes(" " + q));
+    // Se compara con y sin espacios: «acilg» encuentra «Acil graso-CoA» y «acetilcoa», «Acetil-CoA».
+    const qc = q.replace(/ /g, ""), empieza = (x) => x.k.startsWith(q) || x.kc.startsWith(qc);
+    const ini = nombres.filter(empieza), dentro = nombres.filter((x) => !empieza(x) && x.k.includes(" " + q));
     const sug = [...ini, ...dentro].slice(0, max).map((x) => x.t);
     if (sug.length && !(sug.length === 1 && dbNorm(sug[0]) === q)) return { n: k, texto: pal.slice(-k).join(" "), sug };
   }

@@ -1,0 +1,199 @@
+{
+ "schema": "deaba/1",
+ "id": "alcohol_t1_high",
+ "tipo": 1,
+ "nivel": "high",
+ "titulo": {
+  "es": "Una copa cada día",
+  "en": "A drink every day"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Se compara el hígado de ratas alimentadas durante 8 semanas con una dieta líquida en la que el etanol aporta el 36 % de las calorías (condición 1) con el de ratas que recibieron la misma dieta con las calorías del etanol sustituidas por glúcidos (condición 2). Las muestras se tomaron por la mañana, unas horas después de la última toma.",
+  "en": "The livers of rats fed for 8 weeks on a liquid diet in which ethanol supplies 36 % of the calories (condition 1) are compared with those of rats that received the same diet with the ethanol calories replaced by carbohydrate (condition 2). Samples were taken in the morning, a few hours after the last intake."
+ },
+ "mision": {
+  "es": "Explicad las reacciones y las rutas, y explicad qué le está pasando a este hígado y por qué.",
+  "en": "Explain the reactions and the pathways, and explain what is happening to this liver and why."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición 1: etanol 8 semanas",
+   "en": "Condition 1: ethanol 8 weeks"
+  },
+  "c2": {
+   "es": "Condición 2: dieta control",
+   "en": "Condition 2: control diet"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Citocromo P450 2E1 (CYP2E1)",
+    "en": "Cytochrome P450 2E1 (CYP2E1)"
+   },
+   "fc": 12
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Alcohol deshidrogenasa",
+    "en": "Alcohol dehydrogenase"
+   },
+   "fc": 2
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Aldehído deshidrogenasa mitocondrial (ALDH2)",
+    "en": "Mitochondrial aldehyde dehydrogenase (ALDH2)"
+   },
+   "fc": -3
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Catalasa",
+    "en": "Catalase"
+   },
+   "fc": 3
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa",
+    "en": "Acetyl-CoA carboxylase"
+   },
+   "fc": 5
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Ácido graso sintasa",
+    "en": "Fatty acid synthase"
+   },
+   "fc": 6
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glicerol-3-fosfato deshidrogenasa",
+    "en": "Glycerol-3-phosphate dehydrogenase"
+   },
+   "fc": 6
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carnitina aciltransferasa I",
+    "en": "Carnitine acyltransferase I"
+   },
+   "fc": -6
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acil-CoA deshidrogenasa",
+    "en": "Acyl-CoA dehydrogenase"
+   },
+   "fc": -5
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "PEP carboxiquinasa (PEPCK)",
+    "en": "PEP carboxykinase (PEPCK)"
+   },
+   "fc": -4
+  },
+  {
+   "id": "11",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "NADH",
+    "en": "NADH"
+   },
+   "fc": 4
+  },
+  {
+   "id": "12",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acetaldehído",
+    "en": "Acetaldehyde"
+   },
+   "fc": 5
+  },
+  {
+   "id": "13",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glicerol-3-fosfato",
+    "en": "Glycerol 3-phosphate"
+   },
+   "fc": 8
+  },
+  {
+   "id": "14",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
+   },
+   "fc": 6
+  },
+  {
+   "id": "15",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Triacilgliceroles hepáticos",
+    "en": "Hepatic triacylglycerols"
+   },
+   "fc": 10
+  },
+  {
+   "id": "16",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Lactato",
+    "en": "Lactate"
+   },
+   "fc": 6
+  },
+  {
+   "id": "17",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glutatión reducido",
+    "en": "Reduced glutathione"
+   },
+   "fc": -6
+  },
+  {
+   "id": "18",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa (en sangre)",
+    "en": "Glucose (blood)"
+   },
+   "fc": -2
+  }
+ ]
+}

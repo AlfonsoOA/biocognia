@@ -1,0 +1,127 @@
+{
+ "schema": "deaba/1",
+ "id": "alcohol_t1_low",
+ "tipo": 1,
+ "nivel": "low",
+ "titulo": {
+  "es": "Una copa después de entrenar",
+  "en": "A drink after training"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Un usuario de gimnasio entrena a alta intensidad para perder grasa y ganar masa muscular, pero tiene la costumbre de tomarse tres o cuatro copas justo después de entrenar, convencido de que su metabolismo «acelerado» lo procesará sin problemas. Se comparan sus muestras de hígado y músculo tras el entrenamiento y las copas (condición 1) con las de otro usuario que hace el mismo entrenamiento y después una comida equilibrada (condición 2).",
+  "en": "A gym user trains at high intensity to lose fat and gain muscle, but is in the habit of having three or four drinks right after training, convinced that his “fast” metabolism will handle it. His liver and muscle samples after training and drinks (condition 1) are compared with those of another user who does the same training followed by a balanced meal (condition 2)."
+ },
+ "mision": {
+  "es": "Explicad las reacciones y las rutas e identificad el efecto del alcohol sobre el entrenamiento a partir de los datos.",
+  "en": "Explain the reactions and the pathways and identify the effect of alcohol on training from the data."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición 1: alcohol tras entrenar",
+   "en": "Condition 1: alcohol after training"
+  },
+  "c2": {
+   "es": "Condición 2: comida equilibrada",
+   "en": "Condition 2: balanced meal"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Alcohol deshidrogenasa (ADH)",
+    "en": "Alcohol dehydrogenase (ADH)"
+   },
+   "fc": 35
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "mTOR fosforilada (activa)",
+    "en": "Phosphorylated mTOR (active)"
+   },
+   "fc": -10
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "PEP carboxiquinasa (PEPCK)",
+    "en": "PEP carboxykinase (PEPCK)"
+   },
+   "fc": -15
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Malato deshidrogenasa",
+    "en": "Malate dehydrogenase"
+   },
+   "fc": 12
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato quinasa",
+    "en": "Pyruvate kinase"
+   },
+   "fc": -8
+  },
+  {
+   "id": "6",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "NADH",
+    "en": "NADH"
+   },
+   "fc": 4
+  },
+  {
+   "id": "7",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Lactato",
+    "en": "Lactate"
+   },
+   "fc": 18
+  },
+  {
+   "id": "8",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
+   },
+   "fc": 14
+  },
+  {
+   "id": "9",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acilcarnitina",
+    "en": "Acylcarnitine"
+   },
+   "fc": -20
+  },
+  {
+   "id": "10",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "L-β-Hidroxiacil-CoA",
+    "en": "L-β-Hydroxyacyl-CoA"
+   },
+   "fc": -22
+  }
+ ]
+}

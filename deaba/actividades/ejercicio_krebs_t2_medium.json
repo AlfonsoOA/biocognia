@@ -1,0 +1,234 @@
+{
+ "schema": "deaba/1",
+ "id": "ejercicio_krebs_t2_medium",
+ "tipo": 2,
+ "nivel": "medium",
+ "titulo": {
+  "es": "Las mitocondrias en una carrera larga",
+  "en": "Mitochondria in a long race"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Un grupo de fisiología del deporte quiere seguir cómo responden el ciclo de Krebs y la cadena de transporte electrónico del músculo de un ciclista durante un ejercicio intenso y prolongado (90 minutos al 70 % de su capacidad máxima). Pueden tomar biopsias del músculo de la pierna y muestras de sangre.",
+  "en": "A sports physiology group wants to follow how the citric acid cycle and the electron transport chain of a cyclist's muscle respond during intense, prolonged exercise (90 minutes at 70 % of maximal capacity). They can take leg muscle biopsies and blood samples."
+ },
+ "mision": {
+  "es": "Diseñad un experimento de expresión diferencial (proteómica y metabolómica): elegid las dos condiciones que vais a comparar, 5 enzimas y 5 metabolitos que permitan distinguirlas, sus reacciones y rutas, y el fold change que esperáis para cada uno.",
+  "en": "Design a differential expression experiment (proteomics and metabolomics): choose the two conditions you will compare, 5 enzymes and 5 metabolites that can tell them apart, their reactions and pathways, and the fold change you expect for each."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "n_enzimas": 5,
+ "n_metabolitos": 5,
+ "condiciones": [
+  {
+   "id": "post90",
+   "nombre": {
+    "es": "Músculo al final de 90 min de ejercicio",
+    "en": "Muscle at the end of 90 min of exercise"
+   }
+  },
+  {
+   "id": "reposo",
+   "nombre": {
+    "es": "Músculo del mismo ciclista en reposo",
+    "en": "Muscle of the same cyclist at rest"
+   }
+  },
+  {
+   "id": "entrenado",
+   "nombre": {
+    "es": "Músculo en reposo tras 8 semanas de entrenamiento de resistencia",
+    "en": "Resting muscle after 8 weeks of endurance training"
+   }
+  },
+  {
+   "id": "sprint",
+   "nombre": {
+    "es": "Músculo tras un esprint de 30 s",
+    "en": "Muscle after a 30-s sprint"
+   }
+  },
+  {
+   "id": "rec24",
+   "nombre": {
+    "es": "Músculo 24 h después del ejercicio",
+    "en": "Muscle 24 h after exercise"
+   }
+  }
+ ],
+ "catalogo": [
+  {
+   "id": "ogdh",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "2-Oxoglutarato deshidrogenasa (actividad)",
+    "en": "2-Oxoglutarate dehydrogenase (activity)"
+   }
+  },
+  {
+   "id": "alt",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Alanina aminotransferasa (actividad)",
+    "en": "Alanine aminotransferase (activity)"
+   }
+  },
+  {
+   "id": "ampk",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "AMPK fosforilada",
+    "en": "Phosphorylated AMPK"
+   }
+  },
+  {
+   "id": "atps",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "ATP sintasa (cantidad)",
+    "en": "ATP synthase (amount)"
+   }
+  },
+  {
+   "id": "cps1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carbamoil fosfato sintetasa I",
+    "en": "Carbamoyl phosphate synthetase I"
+   }
+  },
+  {
+   "id": "cox",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Citocromo c oxidasa (complejo IV, cantidad)",
+    "en": "Cytochrome c oxidase (complex IV, amount)"
+   }
+  },
+  {
+   "id": "cs",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Citrato sintasa (cantidad)",
+    "en": "Citrate synthase (amount)"
+   }
+  },
+  {
+   "id": "idh",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Isocitrato deshidrogenasa (actividad)",
+    "en": "Isocitrate dehydrogenase (activity)"
+   }
+  },
+  {
+   "id": "icl",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Isocitrato liasa",
+    "en": "Isocitrate lyase"
+   }
+  },
+  {
+   "id": "pgc1a",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "PGC-1α (coactivador transcripcional)",
+    "en": "PGC-1α (transcriptional coactivator)"
+   }
+  },
+  {
+   "id": "pdh",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato deshidrogenasa (forma activa)",
+    "en": "Pyruvate dehydrogenase (active form)"
+   }
+  },
+  {
+   "id": "acilcar",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acilcarnitinas",
+    "en": "Acylcarnitines"
+   }
+  },
+  {
+   "id": "amp",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "AMP",
+    "en": "AMP"
+   }
+  },
+  {
+   "id": "cit",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Citrato",
+    "en": "Citrate"
+   }
+  },
+  {
+   "id": "pcr",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fosfocreatina",
+    "en": "Phosphocreatine"
+   }
+  },
+  {
+   "id": "galtol",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Galactitol",
+    "en": "Galactitol"
+   }
+  },
+  {
+   "id": "glx",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glioxilato",
+    "en": "Glyoxylate"
+   }
+  },
+  {
+   "id": "glucogeno",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucógeno muscular",
+    "en": "Muscle glycogen"
+   }
+  },
+  {
+   "id": "lac",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Lactato",
+    "en": "Lactate"
+   }
+  },
+  {
+   "id": "mal",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malato",
+    "en": "Malate"
+   }
+  },
+  {
+   "id": "succ",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Succinato",
+    "en": "Succinate"
+   }
+  }
+ ]
+}

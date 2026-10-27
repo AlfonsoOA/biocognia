@@ -1,0 +1,217 @@
+{
+ "schema": "deaba/1",
+ "id": "carnitina_t1_high",
+ "tipo": 1,
+ "nivel": "high",
+ "titulo": {
+  "es": "Una puerta sin llave",
+  "en": "A door without a key"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Un joven se queja de debilidad y calambres cuando hace deporte, sobre todo en los esfuerzos largos. Se comparan sus muestras, tomadas justo después de una sesión de ejercicio intenso (condición 1), con las de un compañero de equipo sano tras la misma sesión (condición 2).",
+  "en": "A young man complains of weakness and cramps when doing sport, especially in long efforts. His samples, taken right after an intense exercise session (condition 1), are compared with those of a healthy teammate after the same session (condition 2)."
+ },
+ "mision": {
+  "es": "Para cada enzima y metabolito, explicad la reacción y la ruta, y proponed qué le ocurre al joven.",
+  "en": "For each enzyme and metabolite, explain the reaction and the pathway, and propose what is wrong with the young man."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición 1: el joven",
+   "en": "Condition 1: the young man"
+  },
+  "c2": {
+   "es": "Condición 2: compañero sano",
+   "en": "Condition 2: healthy teammate"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Hexoquinasa",
+    "en": "Hexokinase"
+   },
+   "fc": 10
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfofructoquinasa-1",
+    "en": "Phosphofructokinase-1"
+   },
+   "fc": 5
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfofructoquinasa-2",
+    "en": "Phosphofructokinase-2"
+   },
+   "fc": 7
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato quinasa",
+    "en": "Pyruvate kinase"
+   },
+   "fc": 8
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Aspartato aminotransferasa",
+    "en": "Aspartate aminotransferase"
+   },
+   "fc": 14
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Deshidrogenasa de α-cetoácidos de cadena ramificada (BCKDH)",
+    "en": "Branched-chain α-keto acid dehydrogenase (BCKDH)"
+   },
+   "fc": 12
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Tripsina",
+    "en": "Trypsin"
+   },
+   "fc": 15
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Alanina aminotransferasa",
+    "en": "Alanine aminotransferase"
+   },
+   "fc": 10
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acil graso-CoA sintetasa",
+    "en": "Fatty acyl-CoA synthetase"
+   },
+   "fc": 8
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acil-CoA deshidrogenasa",
+    "en": "Acyl-CoA dehydrogenase"
+   },
+   "fc": -9
+  },
+  {
+   "id": "11",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Enoil-CoA hidratasa",
+    "en": "Enoyl-CoA hydratase"
+   },
+   "fc": -10
+  },
+  {
+   "id": "12",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "L-3-Hidroxiacil-CoA deshidrogenasa",
+    "en": "L-3-Hydroxyacyl-CoA dehydrogenase"
+   },
+   "fc": -12
+  },
+  {
+   "id": "13",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Tiolasa",
+    "en": "Thiolase"
+   },
+   "fc": -10
+  },
+  {
+   "id": "14",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa",
+    "en": "Glycogen phosphorylase"
+   },
+   "fc": 15
+  },
+  {
+   "id": "15",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acetil-CoA",
+    "en": "Acetyl-CoA"
+   },
+   "fc": -19
+  },
+  {
+   "id": "16",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
+   },
+   "fc": -22
+  },
+  {
+   "id": "17",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "L-β-Hidroxiacil-CoA",
+    "en": "L-β-Hydroxyacyl-CoA"
+   },
+   "fc": -17
+  },
+  {
+   "id": "18",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "2-Fosfoglicerato",
+    "en": "2-Phosphoglycerate"
+   },
+   "fc": -5
+  },
+  {
+   "id": "19",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Oxalacetato",
+    "en": "Oxaloacetate"
+   },
+   "fc": 8
+  },
+  {
+   "id": "20",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Succinil-CoA",
+    "en": "Succinyl-CoA"
+   },
+   "fc": 9
+  }
+ ]
+}

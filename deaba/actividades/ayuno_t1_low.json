@@ -1,0 +1,172 @@
+{
+ "schema": "deaba/1",
+ "id": "ayuno_t1_low",
+ "tipo": 1,
+ "nivel": "low",
+ "titulo": {
+  "es": "El ayuno del superviviente",
+  "en": "The survivor's fast"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Se ha analizado el perfil metabólico de tejido hepático de un modelo animal en dos situaciones distintas, la condición A y la condición B. Los datos reflejan una reorganización drástica de las prioridades del hígado en el manejo de los glúcidos.",
+  "en": "The metabolic profile of liver tissue from an animal model has been analysed in two different situations, condition A and condition B. The data reflect a drastic reorganisation of the liver's priorities in handling carbohydrates."
+ },
+ "mision": {
+  "es": "Determinad la naturaleza fisiológica de la condición A respecto a la B y explicad de dónde está sacando el hígado lo que necesita.",
+  "en": "Determine the physiological nature of condition A relative to condition B and explain where the liver is getting what it needs."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición A",
+   "en": "Condition A"
+  },
+  "c2": {
+   "es": "Condición B",
+   "en": "Condition B"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato carboxilasa",
+    "en": "Pyruvate carboxylase"
+   },
+   "fc": 15
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "PEP carboxiquinasa (PEPCK)",
+    "en": "PEP carboxykinase (PEPCK)"
+   },
+   "fc": 18
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fructosa-1,6-bisfosfatasa (FBPasa-1)",
+    "en": "Fructose-1,6-bisphosphatase (FBPase-1)"
+   },
+   "fc": 22
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucosa-6-fosfatasa",
+    "en": "Glucose-6-phosphatase"
+   },
+   "fc": 20
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Alanina aminotransferasa (ALT)",
+    "en": "Alanine aminotransferase (ALT)"
+   },
+   "fc": 12
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucocinasa",
+    "en": "Glucokinase"
+   },
+   "fc": -35
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfofructoquinasa-1 (PFK-1)",
+    "en": "Phosphofructokinase-1 (PFK-1)"
+   },
+   "fc": -28
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato quinasa",
+    "en": "Pyruvate kinase"
+   },
+   "fc": -20
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa",
+    "en": "Glycogen phosphorylase"
+   },
+   "fc": 2
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno sintasa",
+    "en": "Glycogen synthase"
+   },
+   "fc": -40
+  },
+  {
+   "id": "11",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Alanina",
+    "en": "Alanine"
+   },
+   "fc": -15
+  },
+  {
+   "id": "12",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Oxalacetato",
+    "en": "Oxaloacetate"
+   },
+   "fc": -8
+  },
+  {
+   "id": "13",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fructosa-2,6-bisfosfato",
+    "en": "Fructose 2,6-bisphosphate"
+   },
+   "fc": -45
+  },
+  {
+   "id": "14",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa (en sangre periférica)",
+    "en": "Glucose (peripheral blood)"
+   },
+   "fc": -1.2
+  },
+  {
+   "id": "15",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acetil-CoA",
+    "en": "Acetyl-CoA"
+   },
+   "fc": 14
+  }
+ ]
+}

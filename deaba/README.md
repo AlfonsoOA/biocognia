@@ -13,7 +13,7 @@ Puntuación por defecto (3 + 3 + 4). Tipo 1: reacciones, rutas y diagnóstico. T
 
 - **Reacciones y frases.** Al escribir, la app sugiere nombres de metabolitos, cofactores y enzimas (`catalogo.json`, más las moléculas de la propia actividad). Se aceptan con un toque, con Enter o con Tab. Los botones «→» y «+» insertan los símbolos de la reacción. Solo se sugieren **nombres**, nunca reacciones: la app ayuda a escribir, no da la respuesta.
 - **Rutas.** Un buscador: se escribe parte del nombre («gluco», «cetog») y se elige de la lista.
-- El catálogo se amplía en `py/catalogo.py` (fuera del repositorio) o editando directamente `catalogo.json` (`{"es": …, "en": …}`).
+- **Ampliar el catálogo y las rutas** (administrador): panel del profesorado → «Catálogo y rutas». Se descarga un Excel con el catálogo actual (hojas Metabolitos, Enzimas y Rutas), se edita y se vuelve a cargar; el panel lo comprueba (repetidos, Ids de ruta, que no falte ninguna ruta que usen las actividades) y genera `catalogo.json` y `rutas.json`, que se suben a esta carpeta.
 
 ## Idiomas
 

@@ -1,0 +1,217 @@
+{
+ "schema": "deaba/1",
+ "id": "desayuno_t1_medium",
+ "tipo": 1,
+ "nivel": "medium",
+ "titulo": {
+  "es": "Un desayuno muy completo",
+  "en": "A very full breakfast"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Un voluntario participa en un estudio de nutrición. Se han analizado muestras suyas en dos momentos del mismo día (condición 1 y condición 2) mediante proteómica y metabolómica.",
+  "en": "A volunteer is taking part in a nutrition study. Samples from him have been analysed at two times on the same day (condition 1 and condition 2) by proteomics and metabolomics."
+ },
+ "mision": {
+  "es": "Para cada enzima y metabolito, explicad la reacción y la ruta, y deducid qué ha ocurrido entre los dos momentos. Si podéis, decid también qué ha comido.",
+  "en": "For each enzyme and metabolite, explain the reaction and the pathway, and work out what happened between the two times. If you can, also say what he ate."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición 1",
+   "en": "Condition 1"
+  },
+  "c2": {
+   "es": "Condición 2",
+   "en": "Condition 2"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lactasa",
+    "en": "Lactase"
+   },
+   "fc": 12
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "α-Amilasa",
+    "en": "α-Amylase"
+   },
+   "fc": 4
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fructosa-1-fosfato aldolasa (aldolasa B)",
+    "en": "Fructose-1-phosphate aldolase (aldolase B)"
+   },
+   "fc": 6
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "UDP-glucosa-4-epimerasa",
+    "en": "UDP-glucose 4-epimerase"
+   },
+   "fc": 3
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Galactoquinasa",
+    "en": "Galactokinase"
+   },
+   "fc": 7
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfofructoquinasa",
+    "en": "Phosphofructokinase"
+   },
+   "fc": 9
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "HMG-CoA reductasa",
+    "en": "HMG-CoA reductase"
+   },
+   "fc": 20
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lactonasa",
+    "en": "Lactonase"
+   },
+   "fc": 15
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Transcetolasa",
+    "en": "Transketolase"
+   },
+   "fc": 10
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa",
+    "en": "Acetyl-CoA carboxylase"
+   },
+   "fc": 25
+  },
+  {
+   "id": "11",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa",
+    "en": "Glycogen phosphorylase"
+   },
+   "fc": -15
+  },
+  {
+   "id": "12",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "ATGL (lipasa de triacilgliceroles del tejido adiposo)",
+    "en": "ATGL (adipose triglyceride lipase)"
+   },
+   "fc": -20
+  },
+  {
+   "id": "13",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acil graso-CoA sintetasa",
+    "en": "Fatty acyl-CoA synthetase"
+   },
+   "fc": -14
+  },
+  {
+   "id": "14",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "L-3-Hidroxiacil-CoA deshidrogenasa",
+    "en": "L-3-Hydroxyacyl-CoA dehydrogenase"
+   },
+   "fc": -16
+  },
+  {
+   "id": "15",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acilcarnitina",
+    "en": "Acylcarnitine"
+   },
+   "fc": -9
+  },
+  {
+   "id": "16",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "L-β-Hidroxiacil-CoA",
+    "en": "L-β-Hydroxyacyl-CoA"
+   },
+   "fc": -5
+  },
+  {
+   "id": "17",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acetil-CoA",
+    "en": "Acetyl-CoA"
+   },
+   "fc": 35
+  },
+  {
+   "id": "18",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
+   },
+   "fc": 20
+  },
+  {
+   "id": "19",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Oxalacetato",
+    "en": "Oxaloacetate"
+   },
+   "fc": 4
+  },
+  {
+   "id": "20",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fructosa-1,6-bisfosfato",
+    "en": "Fructose 1,6-bisphosphate"
+   },
+   "fc": 6
+  }
+ ]
+}

@@ -31,6 +31,7 @@ table.w td { height: 2.6em; } table.w td.e { border-left: 1px solid var(--line);
 </head>
 <body>
 <header class="bar"><div class="wrap"><a class="mark" href="./">DEABA<small>Versión en papel</small></a><span class="spacer"></span>
+  <div class="lang noprint" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
   <label class="toggle small noprint" id="op-banco" hidden><input type="checkbox" id="banco"> Incluir el banco de marcadores</label><button class="btn small" onclick="print()">Imprimir</button></div></header>
 <main class="wrap" id="main"><p class="muted">Cargando…</p></main>
 <footer><div class="wrap">DEAba Digital · BIOCOGNIA</div></footer>
@@ -38,40 +39,63 @@ table.w td { height: 2.6em; } table.w td.e { border-left: 1px solid var(--line);
 <script src="deaba.js"></script>
 <script>
 "use strict";
-const L = (x) => dbT(x, "es");
+let LANG = new URLSearchParams(location.search).get("lang") || dbLang();
+const L = (x) => dbT(x, LANG);
+const P = {
+  es: { pts: (n) => `${n} puntos`, fc: (a, b) => `FC = ${a} / ${b}. Un valor negativo equivale a −1/valor.`, nombre: "Nombre", reac: "Reacción", rutas: "Ruta(s)", ruta: "Ruta",
+    s12: "Para cada molécula, escribid la reacción y la ruta o rutas en las que participa.", prot: "Proteómica", met: "Metabolómica", frases: "Explicad el patrón con frases cortas:",
+    fr: ["sube / baja", "porque", "en"], que: (c) => `¿Qué está ocurriendo en la ${c}?`, just: "Justificación integrada", grupo: "Grupo:", fecha: "Fecha:",
+    t1: "Interpretar el experimento", t2: "Diseñar el experimento", cond: "Indicad las dos situaciones que vais a comparar (el fold change será condición 1 / condición 2) y por qué.",
+    c1: "Condición 1:", c2: "Condición 2:", porque: "¿Por qué esta comparación?", fcesp: "FC esperado (↑ ↓ ≈ y valor)", pide: (e, m) => `${e} enzimas y ${m} metabolitos que permitan contrastar la hipótesis.`,
+    enz: "Enzima", mtb: "Metabolito", demo: "¿Qué demostraría vuestro experimento?", banco: "Banco de marcadores", otros: "podéis usar otros", enzs: "Enzimas", mets: "Metabolitos", papel: "papel",
+    noact: (i) => `No se ha podido cargar la actividad «${i}».` },
+  en: { pts: (n) => `${n} points`, fc: (a, b) => `FC = ${a} / ${b}. A negative value means −1/value.`, nombre: "Name", reac: "Reaction", rutas: "Pathway(s)", ruta: "Pathway",
+    s12: "For each molecule, write the reaction and the pathway or pathways it belongs to.", prot: "Proteomics", met: "Metabolomics", frases: "Explain the pattern with short sentences:",
+    fr: ["goes up / down", "because", "in"], que: (c) => `What is happening in ${c}?`, just: "Integrated justification", grupo: "Group:", fecha: "Date:",
+    t1: "Interpret the experiment", t2: "Design the experiment", cond: "State the two situations you will compare (the fold change will be condition 1 / condition 2) and why.",
+    c1: "Condition 1:", c2: "Condition 2:", porque: "Why this comparison?", fcesp: "Expected FC (↑ ↓ ≈ and value)", pide: (e, m) => `${e} enzymes and ${m} metabolites to test the hypothesis.`,
+    enz: "Enzyme", mtb: "Metabolite", demo: "What would your experiment show?", banco: "Marker bank", otros: "you may use others", enzs: "Enzymes", mets: "Metabolites", papel: "paper",
+    noact: (i) => `The activity “${i}” could not be loaded.` },
+};
+const T = (k, ...a) => { const v = P[LANG][k]; return typeof v === "function" ? v(...a) : v; };
 const lineas = (n) => `<div class="lineas">${"<i></i>".repeat(n)}</div>`;
 let ACT = null;
-function fcTxt(fc) { return `<span class="fc ${fc > 0 ? "up" : "down"}">${dbFmtFC(fc)}</span>`; }
+function fcTxt(fc) { return `<span class="fc ${fc > 0 ? "up" : "down"}">${dbFmtFC(fc, LANG)}</span>`; }
 function render() {
-  const a = ACT, t = dbTareas(a, "es"), p = a.puntos, pts = (i) => `<small>${p[i]} puntos</small>`;
+  document.documentElement.lang = LANG;
+  for (const b of document.querySelectorAll(".lang button")) b.setAttribute("aria-pressed", b.dataset.lang === LANG);
+  const a = ACT, t = dbTareas(a, LANG), p = a.puntos, pts = (i) => `<small>${T("pts", p[i])}</small>`;
   let cuerpo;
   if (a.tipo === 1) {
     const tabla = (tipo, tit) => { const ms = a.moleculas.filter((m) => m.tipo === tipo); if (!ms.length) return "";
-      return `<h3>${tit}</h3><div class="tablebox"><table class="w"><thead><tr><th>Id</th><th>Nombre</th><th class="n">FC</th><th style="width:38%">Reacción</th><th style="width:22%">Ruta(s)</th></tr></thead><tbody>
+      return `<h3>${tit}</h3><div class="tablebox"><table class="w"><thead><tr><th>Id</th><th>${T("nombre")}</th><th class="n">FC</th><th style="width:38%">${T("reac")}</th><th style="width:22%">${T("rutas")}</th></tr></thead><tbody>
         ${ms.map((m) => `<tr><td class="num">${esc(m.id)}</td><td>${esc(L(m.nombre))}</td><td class="n">${fcTxt(m.fc)}</td><td class="e"></td><td class="e"></td></tr>`).join("")}</tbody></table></div>`; };
-    cuerpo = `<p class="small muted">FC = ${esc(L(a.condiciones.c1))} / ${esc(L(a.condiciones.c2))}. Un valor negativo equivale a −1/valor.</p>
-      <section class="stack"><h2>1. ${t[0]} · 2. ${t[1]}<small>${p[0]} + ${p[1]} puntos</small></h2><p class="small">Para cada molécula, escribid la reacción y la ruta o rutas en las que participa.</p>${tabla("enzima", "Proteómica")}${tabla("metabolito", "Metabolómica")}</section>
-      <section class="stack"><h2>3. ${t[2]}${pts(2)}</h2><p class="small">Explicad el patrón con frases cortas:</p>
-        <div class="frm">${'<div><i></i><b>sube / baja</b><b>porque</b><i></i><b>en</b><i></i></div>'.repeat(6)}</div>
-        <p class="small"><b>¿Qué está ocurriendo en la ${esc(L(a.condiciones.c1))}?</b></p>${lineas(3)}
-        <p class="small"><b>Justificación integrada</b></p>${lineas(7)}</section>`;
+    const fr = T("fr");
+    cuerpo = `<p class="small muted">${esc(T("fc", L(a.condiciones.c1), L(a.condiciones.c2)))}</p>
+      <section class="stack"><h2>1. ${t[0]} · 2. ${t[1]}<small>${T("pts", `${p[0]} + ${p[1]}`)}</small></h2><p class="small">${T("s12")}</p>${tabla("enzima", T("prot"))}${tabla("metabolito", T("met"))}</section>
+      <section class="stack"><h2>3. ${t[2]}${pts(2)}</h2><p class="small">${T("frases")}</p>
+        <div class="frm">${`<div><i></i><b>${fr[0]}</b><b>${fr[1]}</b><i></i><b>${fr[2]}</b><i></i></div>`.repeat(6)}</div>
+        <p class="small"><b>${esc(T("que", L(a.condiciones.c1)))}</b></p>${lineas(3)}
+        <p class="small"><b>${T("just")}</b></p>${lineas(7)}</section>`;
   } else {
-    const filas = (n, tit) => `<div class="tablebox"><table class="w"><thead><tr><th style="width:22%">${tit}</th><th style="width:36%">Reacción</th><th style="width:22%">Ruta</th><th>FC esperado (↑ ↓ ≈ y valor)</th></tr></thead><tbody>${'<tr><td></td><td class="e"></td><td class="e"></td><td class="e"></td></tr>'.repeat(n)}</tbody></table></div>`;
-    const banco = $("#banco") && $("#banco").checked ? `<section class="stack"><h2>Banco de marcadores<small>podéis usar otros</small></h2><div class="banco">${["enzima", "metabolito"].map((tp) => `<p><b>${tp === "enzima" ? "Enzimas" : "Metabolitos"}</b></p>` + a.catalogo.filter((m) => m.tipo === tp).map((m) => `<p>${esc(L(m.nombre))}</p>`).join("")).join("")}</div></section>` : "";
-    cuerpo = `<section class="stack"><h2>1. ${t[0]}${pts(0)}</h2><p class="small">Indicad las dos situaciones que vais a comparar (el fold change será condición 1 / condición 2) y por qué.</p>
-        <div class="campos"><span>Condición 1:</span><span>Condición 2:</span></div><p class="small"><b>¿Por qué esta comparación?</b></p>${lineas(3)}</section>
-      <section class="stack"><h2>2. ${t[1]} · 3. ${t[2]}<small>${p[1]} + ${p[2]} puntos</small></h2><p class="small">${a.n_enzimas} enzimas y ${a.n_metabolitos} metabolitos que permitan contrastar la hipótesis.</p>${filas(a.n_enzimas, "Enzima")}${filas(a.n_metabolitos, "Metabolito")}
-        <p class="small"><b>¿Qué demostraría vuestro experimento?</b></p>${lineas(5)}</section>${banco}`;
+    const filas = (n, tit) => `<div class="tablebox"><table class="w"><thead><tr><th style="width:22%">${tit}</th><th style="width:36%">${T("reac")}</th><th style="width:22%">${T("ruta")}</th><th>${T("fcesp")}</th></tr></thead><tbody>${'<tr><td></td><td class="e"></td><td class="e"></td><td class="e"></td></tr>'.repeat(n)}</tbody></table></div>`;
+    const banco = $("#banco") && $("#banco").checked ? `<section class="stack"><h2>${T("banco")}<small>${T("otros")}</small></h2><div class="banco">${["enzima", "metabolito"].map((tp) => `<p><b>${tp === "enzima" ? T("enzs") : T("mets")}</b></p>` + a.catalogo.filter((m) => m.tipo === tp).map((m) => `<p>${esc(L(m.nombre))}</p>`).join("")).join("")}</div></section>` : "";
+    cuerpo = `<section class="stack"><h2>1. ${t[0]}${pts(0)}</h2><p class="small">${T("cond")}</p>
+        <div class="campos"><span>${T("c1")}</span><span>${T("c2")}</span></div><p class="small"><b>${T("porque")}</b></p>${lineas(3)}</section>
+      <section class="stack"><h2>2. ${t[1]} · 3. ${t[2]}<small>${T("pts", `${p[1]} + ${p[2]}`)}</small></h2><p class="small">${T("pide", a.n_enzimas, a.n_metabolitos)}</p>${filas(a.n_enzimas, T("enz"))}${filas(a.n_metabolitos, T("mtb"))}
+        <p class="small"><b>${T("demo")}</b></p>${lineas(5)}</section>${banco}`;
   }
-  $("#main").innerHTML = `<article class="hoja"><div class="campos"><span>Grupo:</span><span>Fecha:</span></div>
-    <div class="stack"><p class="eyebrow">DEAba · ${a.tipo === 1 ? "Interpretar el experimento" : "Diseñar el experimento"}</p><h1>${esc(L(a.titulo))}</h1></div>
+  $("#main").innerHTML = `<article class="hoja"><div class="campos"><span>${T("grupo")}</span><span>${T("fecha")}</span></div>
+    <div class="stack"><p class="eyebrow">DEAba · ${a.tipo === 1 ? T("t1") : T("t2")}</p><h1>${esc(L(a.titulo))}</h1></div>
     <p>${esc(L(a.contexto))}</p><p><b>${esc(L(a.mision))}</b></p>${cuerpo}</article>`;
+  document.title = `${L(a.titulo)} · ${T("papel")}`;
 }
 document.addEventListener("change", (e) => { if (e.target.id === "banco") render(); });
+document.addEventListener("click", (e) => { const b = e.target.closest(".lang button"); if (b && ACT) { LANG = b.dataset.lang; render(); } });
 (async function () {
   const id = new URLSearchParams(location.search).get("a");
-  try { await dbCargarRutas(); if (!DBB.demo) await DBB.init().catch(() => {}); ACT = await dbActividad(id); document.title = `${L(ACT.titulo)} · papel`; if (ACT.tipo === 2) $("#op-banco").hidden = false; render(); }
-  catch (e) { $("#main").innerHTML = `<p class="notice">No se ha podido cargar la actividad «${esc(id)}».</p>`; }
+  try { await dbCargarRutas(); if (!DBB.demo) await DBB.init().catch(() => {}); ACT = await dbActividad(id); if (ACT.tipo === 2) $("#op-banco").hidden = false; render(); }
+  catch (e) { $("#main").innerHTML = `<p class="notice">${esc(T("noact", id))}</p>`; }
 })();
 </script>
 </body>

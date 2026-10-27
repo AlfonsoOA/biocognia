@@ -1,16 +1,234 @@
 [
  {
-  "id": "diabetes_t1_medium",
-  "titulo": "El misterio del flujo de carbonos",
+  "id": "acetato_t2_high",
+  "titulo": "Una bacteria que vive de vinagre",
+  "titulo_en": "A bacterium that lives on vinegar",
+  "tipo": 2,
+  "nivel": "high",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "alcohol_t1_high",
+  "titulo": "Una copa cada día",
+  "titulo_en": "A drink every day",
+  "tipo": 1,
+  "nivel": "high",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "alcohol_t1_low",
+  "titulo": "Una copa después de entrenar",
+  "titulo_en": "A drink after training",
+  "tipo": 1,
+  "nivel": "low",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "atracon_t1_low",
+  "titulo": "El banquete de los glúcidos",
+  "titulo_en": "The carbohydrate feast",
+  "tipo": 1,
+  "nivel": "low",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "ayuno_t1_low",
+  "titulo": "El ayuno del superviviente",
+  "titulo_en": "The survivor's fast",
+  "tipo": 1,
+  "nivel": "low",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "bcaa_t1_medium",
+  "titulo": "El suplemento milagro",
+  "titulo_en": "The miracle supplement",
   "tipo": 1,
   "nivel": "medium",
   "asignatura": "Bioquímica"
  },
  {
-  "id": "germinacion_t2_medium",
-  "titulo": "Del aceite al azúcar: la germinación de las semillas oleaginosas",
+  "id": "carnitina_t1_high",
+  "titulo": "Una puerta sin llave",
+  "titulo_en": "A door without a key",
+  "tipo": 1,
+  "nivel": "high",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "cetogenica_t1_high",
+  "titulo": "Una dieta cetogénica con sorpresa",
+  "titulo_en": "A ketogenic diet with a surprise",
+  "tipo": 1,
+  "nivel": "high",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "coccion_t1_low",
+  "titulo": "Espinacas al horno",
+  "titulo_en": "Oven-roasted spinach",
+  "tipo": 1,
+  "nivel": "low",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "cori_t1_medium",
+  "titulo": "Ida y vuelta",
+  "titulo_en": "There and back again",
+  "tipo": 1,
+  "nivel": "medium",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "cpt1_t1_high",
+  "titulo": "Datos que no encajan",
+  "titulo_en": "Data that do not fit",
+  "tipo": 1,
+  "nivel": "high",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "desayuno_t1_medium",
+  "titulo": "Un desayuno muy completo",
+  "titulo_en": "A very full breakfast",
+  "tipo": 1,
+  "nivel": "medium",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "diabetes_t1_low",
+  "titulo": "Sed, cansancio y aliento afrutado",
+  "titulo_en": "Thirst, tiredness and fruity breath",
+  "tipo": 1,
+  "nivel": "low",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "diabetes_t1_medium",
+  "titulo": "El misterio del flujo de carbonos",
+  "titulo_en": "The carbon flux mystery",
+  "tipo": 1,
+  "nivel": "medium",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "ejercicio_ayunas_t2_high",
+  "titulo": "¿Entrenar con el estómago vacío?",
+  "titulo_en": "Training on an empty stomach?",
+  "tipo": 2,
+  "nivel": "high",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "ejercicio_glucidos_t2_medium",
+  "titulo": "Plato de pasta y a correr",
+  "titulo_en": "A plate of pasta, then off to run",
   "tipo": 2,
   "nivel": "medium",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "ejercicio_krebs_t2_medium",
+  "titulo": "Las mitocondrias en una carrera larga",
+  "titulo_en": "Mitochondria in a long race",
+  "tipo": 2,
+  "nivel": "medium",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "galactosemia_t2_low",
+  "titulo": "La leche que no sienta bien",
+  "titulo_en": "The milk that does not agree",
+  "tipo": 2,
+  "nivel": "low",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "germinacion_t2_medium",
+  "titulo": "Del aceite al azúcar: la germinación de las semillas oleaginosas",
+  "titulo_en": "From oil to sugar: the germination of oilseeds",
+  "tipo": 2,
+  "nivel": "medium",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "glioxilato_t1_medium",
+  "titulo": "Plántulas a oscuras",
+  "titulo_en": "Seedlings in the dark",
+  "tipo": 1,
+  "nivel": "medium",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "maduracion_t1_medium",
+  "titulo": "Del músculo a la carne (II): la maduración",
+  "titulo_en": "From muscle to meat (II): ageing",
+  "tipo": 1,
+  "nivel": "medium",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "mcardle_t2_medium",
+  "titulo": "Calambres en las escaleras",
+  "titulo_en": "Cramps on the stairs",
+  "tipo": 2,
+  "nivel": "medium",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "neandertal_t1_low",
+  "titulo": "¿Quién es el verdadero «paleo»?",
+  "titulo_en": "Who is the real “paleo”?",
+  "tipo": 1,
+  "nivel": "low",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "pan_t1_low",
+  "titulo": "Pan de molde o pan de avena",
+  "titulo_en": "White sliced bread or oat bread",
+  "tipo": 1,
+  "nivel": "low",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "pdh_t1_high",
+  "titulo": "Agotados antes de tiempo",
+  "titulo_en": "Exhausted too soon",
+  "tipo": 1,
+  "nivel": "high",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "rigor_t1_low",
+  "titulo": "Del músculo a la carne (I): el rigor mortis",
+  "titulo_en": "From muscle to meat (I): rigor mortis",
+  "tipo": 1,
+  "nivel": "low",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "sprint_t1_low",
+  "titulo": "El límite del lactato",
+  "titulo_en": "The lactate limit",
+  "tipo": 1,
+  "nivel": "low",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "vongierke_t2_medium",
+  "titulo": "Un hígado lleno que no da glucosa",
+  "titulo_en": "A full liver that gives no glucose",
+  "tipo": 2,
+  "nivel": "medium",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "zumo_t1_low",
+  "titulo": "¿Zumo o fruta?",
+  "titulo_en": "Juice or fruit?",
+  "tipo": 1,
+  "nivel": "low",
   "asignatura": "Bioquímica"
  }
 ]

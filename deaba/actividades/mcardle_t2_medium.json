@@ -1,0 +1,226 @@
+{
+ "schema": "deaba/1",
+ "id": "mcardle_t2_medium",
+ "tipo": 2,
+ "nivel": "medium",
+ "titulo": {
+  "es": "Calambres en las escaleras",
+  "en": "Cramps on the stairs"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Un estudiante de 20 años nota que, al subir escaleras deprisa o al llevar bolsas pesadas, los músculos se le agarrotan y le duelen. Si para unos minutos y sigue más despacio, mejora («segundo aliento»). Alguna vez la orina se le ha puesto oscura después de un esfuerzo. En reposo está bien. Su médica sospecha una glucogenosis. Se puede tomar una biopsia muscular y sangre venosa del brazo antes y después de una prueba de ejercicio del antebrazo.",
+  "en": "A 20-year-old student notices that, when climbing stairs quickly or carrying heavy bags, his muscles stiffen and hurt. If he stops for a few minutes and carries on more slowly, it gets better (“second wind”). His urine has sometimes turned dark after exertion. At rest he is fine. His doctor suspects a glycogen storage disease. A muscle biopsy and venous blood from the arm before and after a forearm exercise test can be taken."
+ },
+ "mision": {
+  "es": "Diseñad un experimento de expresión diferencial (proteómica y metabolómica): elegid las dos condiciones que vais a comparar, 7 enzimas y 5 metabolitos que permitan distinguirlas, sus reacciones y rutas, y el fold change que esperáis para cada uno.",
+  "en": "Design a differential expression experiment (proteomics and metabolomics): choose the two conditions you will compare, 7 enzymes and 5 metabolites that can tell them apart, their reactions and pathways, and the fold change you expect for each."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "n_enzimas": 7,
+ "n_metabolitos": 5,
+ "condiciones": [
+  {
+   "id": "mc_ej",
+   "nombre": {
+    "es": "Paciente tras la prueba de ejercicio del antebrazo",
+    "en": "Patient after the forearm exercise test"
+   }
+  },
+  {
+   "id": "sano_ej",
+   "nombre": {
+    "es": "Persona sana tras la misma prueba",
+    "en": "Healthy person after the same test"
+   }
+  },
+  {
+   "id": "mc_rep",
+   "nombre": {
+    "es": "El mismo paciente en reposo, antes de la prueba",
+    "en": "The same patient at rest, before the test"
+   }
+  },
+  {
+   "id": "sano_rep",
+   "nombre": {
+    "es": "Persona sana en reposo",
+    "en": "Healthy person at rest"
+   }
+  },
+  {
+   "id": "hep_ej",
+   "nombre": {
+    "es": "Paciente con una glucogenosis hepática (tipo I) tras la prueba",
+    "en": "Patient with a hepatic glycogen storage disease (type I) after the test"
+   }
+  }
+ ],
+ "catalogo": [
+  {
+   "id": "ampd",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "AMP desaminasa (actividad)",
+    "en": "AMP deaminase (activity)"
+   }
+  },
+  {
+   "id": "cat1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carnitina aciltransferasa I (actividad)",
+    "en": "Carnitine acyltransferase I (activity)"
+   }
+  },
+  {
+   "id": "ck",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Creatina quinasa (plasma)",
+    "en": "Creatine kinase (plasma)"
+   }
+  },
+  {
+   "id": "desram",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Enzima desramificante",
+    "en": "Debranching enzyme"
+   }
+  },
+  {
+   "id": "pfk",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfofructoquinasa-1 muscular",
+    "en": "Muscle phosphofructokinase-1"
+   }
+  },
+  {
+   "id": "g6pasa",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucosa-6-fosfatasa",
+    "en": "Glucose-6-phosphatase"
+   }
+  },
+  {
+   "id": "pygl",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa hepática",
+    "en": "Liver glycogen phosphorylase"
+   }
+  },
+  {
+   "id": "pygm",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa muscular (miofosforilasa)",
+    "en": "Muscle glycogen phosphorylase (myophosphorylase)"
+   }
+  },
+  {
+   "id": "gs",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno sintasa muscular",
+    "en": "Muscle glycogen synthase"
+   }
+  },
+  {
+   "id": "hk2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Hexoquinasa II",
+    "en": "Hexokinase II"
+   }
+  },
+  {
+   "id": "ldh",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lactato deshidrogenasa (cantidad)",
+    "en": "Lactate dehydrogenase (amount)"
+   }
+  },
+  {
+   "id": "amonio",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Amonio (sangre venosa)",
+    "en": "Ammonia (venous blood)"
+   }
+  },
+  {
+   "id": "f1p",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fructosa-1-fosfato",
+    "en": "Fructose 1-phosphate"
+   }
+  },
+  {
+   "id": "gal1p",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Galactosa-1-fosfato",
+    "en": "Galactose 1-phosphate"
+   }
+  },
+  {
+   "id": "glc",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa (sangre)",
+    "en": "Glucose (blood)"
+   }
+  },
+  {
+   "id": "g6p",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa-6-fosfato (músculo)",
+    "en": "Glucose 6-phosphate (muscle)"
+   }
+  },
+  {
+   "id": "glucogeno",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucógeno muscular",
+    "en": "Muscle glycogen"
+   }
+  },
+  {
+   "id": "hipox",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Hipoxantina (sangre venosa)",
+    "en": "Hypoxanthine (venous blood)"
+   }
+  },
+  {
+   "id": "lac",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Lactato (sangre venosa)",
+    "en": "Lactate (venous blood)"
+   }
+  },
+  {
+   "id": "pir",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Piruvato",
+    "en": "Pyruvate"
+   }
+  }
+ ]
+}

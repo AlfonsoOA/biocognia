@@ -1,0 +1,163 @@
+{
+ "schema": "deaba/1",
+ "id": "pan_t1_low",
+ "tipo": 1,
+ "nivel": "low",
+ "titulo": {
+  "es": "Pan de molde o pan de avena",
+  "en": "White sliced bread or oat bread"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Una persona desayuna en días distintos 100 g de pan de molde de trigo blanco (condición 1) o 100 g de pan de avena integral (condición 2). Se analiza su perfil hepático y plasmático 60 minutos después de comer. Las enzimas marcadas como «activa» se han medido en su forma activa (fosfoproteómica).",
+  "en": "On different days a person has 100 g of white wheat sliced bread (condition 1) or 100 g of wholegrain oat bread (condition 2) for breakfast. Their liver and plasma profile is analysed 60 minutes after eating. Enzymes labelled “active” were measured in their active form (phosphoproteomics)."
+ },
+ "mision": {
+  "es": "Explicad las reacciones y las rutas y por qué el mismo peso de pan produce respuestas metabólicas tan distintas.",
+  "en": "Explain the reactions and the pathways and why the same weight of bread produces such different metabolic responses."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición 1: pan de molde blanco",
+   "en": "Condition 1: white sliced bread"
+  },
+  "c2": {
+   "es": "Condición 2: pan de avena integral",
+   "en": "Condition 2: wholegrain oat bread"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucocinasa (hígado)",
+    "en": "Glucokinase (liver)"
+   },
+   "fc": 15
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfofructoquinasa-2 (PFK-2) activa",
+    "en": "Phosphofructokinase-2 (PFK-2), active"
+   },
+   "fc": 20
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato deshidrogenasa (PDH) activa",
+    "en": "Pyruvate dehydrogenase (PDH), active"
+   },
+   "fc": 12
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa (ACC)",
+    "en": "Acetyl-CoA carboxylase (ACC)"
+   },
+   "fc": 18
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno sintasa",
+    "en": "Glycogen synthase"
+   },
+   "fc": 22
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fructosa-1,6-bisfosfatasa",
+    "en": "Fructose-1,6-bisphosphatase"
+   },
+   "fc": -14
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa",
+    "en": "Glycogen phosphorylase"
+   },
+   "fc": -20
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lipasa sensible a hormonas",
+    "en": "Hormone-sensitive lipase"
+   },
+   "fc": -18
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Isocitrato deshidrogenasa",
+    "en": "Isocitrate dehydrogenase"
+   },
+   "fc": 5
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "HMG-CoA reductasa",
+    "en": "HMG-CoA reductase"
+   },
+   "fc": 10
+  },
+  {
+   "id": "11",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa (en plasma)",
+    "en": "Glucose (plasma)"
+   },
+   "fc": 8
+  },
+  {
+   "id": "12",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fructosa-2,6-bisfosfato",
+    "en": "Fructose 2,6-bisphosphate"
+   },
+   "fc": 25
+  },
+  {
+   "id": "13",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
+   },
+   "fc": 16
+  },
+  {
+   "id": "14",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Citrato citosólico",
+    "en": "Cytosolic citrate"
+   },
+   "fc": 12
+  }
+ ]
+}

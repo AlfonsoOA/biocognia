@@ -1,0 +1,226 @@
+{
+ "schema": "deaba/1",
+ "id": "diabetes_t1_low",
+ "tipo": 1,
+ "nivel": "low",
+ "titulo": {
+  "es": "Sed, cansancio y aliento afrutado",
+  "en": "Thirst, tiredness and fruity breath"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Se estudia un modelo animal de una enfermedad que cursa con sed intensa, orina abundante, pérdida de peso pese a comer con normalidad y aliento con olor afrutado. Se comparan hígados de animales enfermos (condición A) y sanos (condición B).",
+  "en": "An animal model of a disease with intense thirst, abundant urine, weight loss despite normal eating and fruity-smelling breath is being studied. Livers from sick animals (condition A) and healthy animals (condition B) are compared."
+ },
+ "mision": {
+  "es": "Para cada enzima y metabolito, explicad la reacción y la ruta, y explicad la enfermedad a partir del patrón de expresión.",
+  "en": "For each enzyme and metabolite, explain the reaction and the pathway, and explain the disease from the expression pattern."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición A",
+   "en": "Condition A"
+  },
+  "c2": {
+   "es": "Condición B",
+   "en": "Condition B"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Hexoquinasa",
+    "en": "Hexokinase"
+   },
+   "fc": -9
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato quinasa",
+    "en": "Pyruvate kinase"
+   },
+   "fc": -8
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa",
+    "en": "Acetyl-CoA carboxylase"
+   },
+   "fc": -15
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carnitina aciltransferasa I",
+    "en": "Carnitine acyltransferase I"
+   },
+   "fc": 5
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fructosa-1,6-bisfosfatasa-1",
+    "en": "Fructose-1,6-bisphosphatase-1"
+   },
+   "fc": 14
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno sintasa",
+    "en": "Glycogen synthase"
+   },
+   "fc": -14
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "D-β-Hidroxibutirato deshidrogenasa",
+    "en": "D-β-Hydroxybutyrate dehydrogenase"
+   },
+   "fc": 17
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "HMG-CoA reductasa",
+    "en": "HMG-CoA reductase"
+   },
+   "fc": -11
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acil-CoA deshidrogenasa",
+    "en": "Acyl-CoA dehydrogenase"
+   },
+   "fc": 12
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Enoil-CoA hidratasa",
+    "en": "Enoyl-CoA hydratase"
+   },
+   "fc": 6
+  },
+  {
+   "id": "11",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato carboxilasa",
+    "en": "Pyruvate carboxylase"
+   },
+   "fc": 17
+  },
+  {
+   "id": "12",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucosa-6-fosfatasa",
+    "en": "Glucose-6-phosphatase"
+   },
+   "fc": 13
+  },
+  {
+   "id": "13",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfoenolpiruvato carboxiquinasa (PEPCK)",
+    "en": "Phosphoenolpyruvate carboxykinase (PEPCK)"
+   },
+   "fc": 6
+  },
+  {
+   "id": "14",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Enzima málica",
+    "en": "Malic enzyme"
+   },
+   "fc": -10
+  },
+  {
+   "id": "15",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acilcarnitina",
+    "en": "Acylcarnitine"
+   },
+   "fc": 11
+  },
+  {
+   "id": "16",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "L-β-Hidroxiacil-CoA",
+    "en": "L-β-Hydroxyacyl-CoA"
+   },
+   "fc": 5
+  },
+  {
+   "id": "17",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acetil-CoA",
+    "en": "Acetyl-CoA"
+   },
+   "fc": 34
+  },
+  {
+   "id": "18",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
+   },
+   "fc": -8
+  },
+  {
+   "id": "19",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Oxalacetato",
+    "en": "Oxaloacetate"
+   },
+   "fc": -4
+  },
+  {
+   "id": "20",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acetoacetato",
+    "en": "Acetoacetate"
+   },
+   "fc": 7
+  },
+  {
+   "id": "21",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa (en sangre)",
+    "en": "Glucose (blood)"
+   },
+   "fc": 5
+  }
+ ]
+}

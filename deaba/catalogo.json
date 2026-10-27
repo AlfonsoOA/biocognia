@@ -221,8 +221,24 @@
 "en": "Acyl-CoA"
 },
 {
+"es": "Acil graso-CoA",
+"en": "Fatty acyl-CoA"
+},
+{
 "es": "Acilcarnitina",
 "en": "Acylcarnitine"
+},
+{
+"es": "Acil graso-carnitina",
+"en": "Fatty acylcarnitine"
+},
+{
+"es": "Acil-ACP",
+"en": "Acyl-ACP"
+},
+{
+"es": "Ácido graso libre",
+"en": "Free fatty acid"
 },
 {
 "es": "Carnitina",
@@ -595,6 +611,38 @@
 {
 "es": "Cortisol",
 "en": "Cortisol"
+},
+{
+"es": "Galactonato",
+"en": "Galactonate"
+},
+{
+"es": "Hipoxantina",
+"en": "Hypoxanthine"
+},
+{
+"es": "Inosina",
+"en": "Inosine"
+},
+{
+"es": "Xantina",
+"en": "Xanthine"
+},
+{
+"es": "Acetil-fosfato",
+"en": "Acetyl phosphate"
+},
+{
+"es": "α-Cetoisocaproato",
+"en": "α-Ketoisocaproate"
+},
+{
+"es": "Glutatión reducido (GSH)",
+"en": "Reduced glutathione (GSH)"
+},
+{
+"es": "Glutatión oxidado (GSSG)",
+"en": "Oxidised glutathione (GSSG)"
 }
 ],
 "enzimas": [
@@ -1085,6 +1133,34 @@
 {
 "es": "Acetoacetato descarboxilasa",
 "en": "Acetoacetate decarboxylase"
+},
+{
+"es": "Acetil-CoA sintetasa",
+"en": "Acetyl-CoA synthetase"
+},
+{
+"es": "Isocitrato deshidrogenasa quinasa/fosfatasa (AceK)",
+"en": "Isocitrate dehydrogenase kinase/phosphatase (AceK)"
+},
+{
+"es": "Galactosa deshidrogenasa",
+"en": "Galactose dehydrogenase"
+},
+{
+"es": "Glutatión peroxidasa",
+"en": "Glutathione peroxidase"
+},
+{
+"es": "Glutatión reductasa",
+"en": "Glutathione reductase"
+},
+{
+"es": "Protoclorofílida oxidorreductasa",
+"en": "Protochlorophyllide oxidoreductase"
+},
+{
+"es": "Sistema de fosfotransferasa (PTS)",
+"en": "Phosphotransferase system (PTS)"
 }
 ]
 }

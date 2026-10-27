@@ -1,0 +1,172 @@
+{
+ "schema": "deaba/1",
+ "id": "sprint_t1_low",
+ "tipo": 1,
+ "nivel": "low",
+ "titulo": {
+  "es": "El límite del lactato",
+  "en": "The lactate limit"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Se han tomado biopsias del músculo cuádriceps de un atleta en dos situaciones distintas, la condición A y la condición B. Con técnicas de alta resolución se ha cuantificado la abundancia de enzimas clave y la concentración de metabolitos intermediarios.",
+  "en": "Biopsies of an athlete's quadriceps muscle have been taken in two different situations, condition A and condition B. High-resolution techniques have been used to quantify the abundance of key enzymes and the concentration of intermediary metabolites."
+ },
+ "mision": {
+  "es": "Determinad cuál de las dos condiciones corresponde al estado metabólico inmediatamente posterior a una carrera de 400 metros lisos a máxima intensidad, y justificadlo.",
+  "en": "Decide which of the two conditions corresponds to the metabolic state immediately after an all-out 400-metre sprint, and justify it."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición A",
+   "en": "Condition A"
+  },
+  "c2": {
+   "es": "Condición B",
+   "en": "Condition B"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa",
+    "en": "Glycogen phosphorylase"
+   },
+   "fc": 25
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Hexoquinasa",
+    "en": "Hexokinase"
+   },
+   "fc": 12
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfofructoquinasa-1 (PFK-1)",
+    "en": "Phosphofructokinase-1 (PFK-1)"
+   },
+   "fc": 30
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Gliceraldehído-3-fosfato deshidrogenasa",
+    "en": "Glyceraldehyde-3-phosphate dehydrogenase"
+   },
+   "fc": 15
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato quinasa",
+    "en": "Pyruvate kinase"
+   },
+   "fc": 20
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Lactato deshidrogenasa (LDH)",
+    "en": "Lactate dehydrogenase (LDH)"
+   },
+   "fc": 40
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato deshidrogenasa (PDH)",
+    "en": "Pyruvate dehydrogenase (PDH)"
+   },
+   "fc": 5
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa (ACC)",
+    "en": "Acetyl-CoA carboxylase (ACC)"
+   },
+   "fc": -18
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Citrato sintasa",
+    "en": "Citrate synthase"
+   },
+   "fc": 2
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno sintasa",
+    "en": "Glycogen synthase"
+   },
+   "fc": -22
+  },
+  {
+   "id": "11",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa-6-fosfato",
+    "en": "Glucose 6-phosphate"
+   },
+   "fc": 10
+  },
+  {
+   "id": "12",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fructosa-1,6-bisfosfato",
+    "en": "Fructose 1,6-bisphosphate"
+   },
+   "fc": 28
+  },
+  {
+   "id": "13",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Lactato",
+    "en": "Lactate"
+   },
+   "fc": 50
+  },
+  {
+   "id": "14",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
+   },
+   "fc": -12
+  },
+  {
+   "id": "15",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "ATP",
+    "en": "ATP"
+   },
+   "fc": -4
+  }
+ ]
+}

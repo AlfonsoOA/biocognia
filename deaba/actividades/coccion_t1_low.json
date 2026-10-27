@@ -1,0 +1,172 @@
+{
+ "schema": "deaba/1",
+ "id": "coccion_t1_low",
+ "tipo": 1,
+ "nivel": "low",
+ "titulo": {
+  "es": "Espinacas al horno",
+  "en": "Oven-roasted spinach"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Se ha analizado el perfil de proteínas y metabolitos de hojas de espinaca (Spinacia oleracea) asadas al horno a 200 °C durante 20 minutos (condición 1) y frescas, crudas (condición 2). Todos los valores están referidos a peso seco, para que la pérdida de agua del asado no falsee la comparación.",
+  "en": "The protein and metabolite profile of spinach leaves (Spinacia oleracea) roasted at 200 °C for 20 minutes (condition 1) and fresh, raw leaves (condition 2) has been analysed. All values are on a dry-weight basis, so that the water lost during roasting does not distort the comparison."
+ },
+ "mision": {
+  "es": "Identificad en qué estado queda la maquinaria enzimática y los metabolitos tras someter el tejido a altas temperaturas, y explicad por qué.",
+  "en": "Identify the state of the enzyme machinery and the metabolites after exposing the tissue to high temperatures, and explain why."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición 1: asadas (200 °C, 20 min)",
+   "en": "Condition 1: roasted (200 °C, 20 min)"
+  },
+  "c2": {
+   "es": "Condición 2: frescas",
+   "en": "Condition 2: fresh"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Hexoquinasa",
+    "en": "Hexokinase"
+   },
+   "fc": -6
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fosfofructoquinasa",
+    "en": "Phosphofructokinase"
+   },
+   "fc": -8
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Gliceraldehído-3-fosfato deshidrogenasa",
+    "en": "Glyceraldehyde-3-phosphate dehydrogenase"
+   },
+   "fc": -9
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Enolasa",
+    "en": "Enolase"
+   },
+   "fc": -7
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato quinasa",
+    "en": "Pyruvate kinase"
+   },
+   "fc": -10
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Complejo piruvato deshidrogenasa",
+    "en": "Pyruvate dehydrogenase complex"
+   },
+   "fc": -9
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Citrato sintasa",
+    "en": "Citrate synthase"
+   },
+   "fc": -6
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Malato deshidrogenasa",
+    "en": "Malate dehydrogenase"
+   },
+   "fc": -16
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "ATP sintasa",
+    "en": "ATP synthase"
+   },
+   "fc": -6
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Citocromo c oxidasa",
+    "en": "Cytochrome c oxidase"
+   },
+   "fc": -9
+  },
+  {
+   "id": "11",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa",
+    "en": "Glucose"
+   },
+   "fc": -5
+  },
+  {
+   "id": "12",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Citrato",
+    "en": "Citrate"
+   },
+   "fc": -8
+  },
+  {
+   "id": "13",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malato",
+    "en": "Malate"
+   },
+   "fc": -6
+  },
+  {
+   "id": "14",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "NADH",
+    "en": "NADH"
+   },
+   "fc": -5
+  },
+  {
+   "id": "15",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "ATP",
+    "en": "ATP"
+   },
+   "fc": -33
+  }
+ ]
+}

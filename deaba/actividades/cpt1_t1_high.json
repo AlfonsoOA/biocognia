@@ -1,0 +1,145 @@
+{
+ "schema": "deaba/1",
+ "id": "cpt1_t1_high",
+ "tipo": 1,
+ "nivel": "high",
+ "titulo": {
+  "es": "Datos que no encajan",
+  "en": "Data that do not fit"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Un deportista aficionado que toma suplementos acude a consulta porque se agota enseguida en los entrenamientos largos, sobre todo si entrena en ayunas. Se compara una biopsia de su músculo tomada justo después de entrenar (A) con la de un voluntario sano en reposo (B).",
+  "en": "An amateur athlete who takes supplements comes to the clinic because he runs out of energy quickly in long training sessions, especially when he trains on an empty stomach. A muscle biopsy taken right after training (A) is compared with that of a healthy volunteer at rest (B)."
+ },
+ "mision": {
+  "es": "Desgranad las reacciones individuales y proponed un escenario fisiológico que unifique unos datos aparentemente contradictorios.",
+  "en": "Work through the individual reactions and propose a physiological scenario that brings together data that seem contradictory."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Deportista (A)",
+   "en": "Athlete (A)"
+  },
+  "c2": {
+   "es": "Control (B)",
+   "en": "Control (B)"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Hexoquinasa",
+    "en": "Hexokinase"
+   },
+   "fc": 10
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Fructosa-1,6-bisfosfatasa",
+    "en": "Fructose-1,6-bisphosphatase"
+   },
+   "fc": -5
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "β-Hidroxi-β-metilglutaril-CoA liasa (HMG-CoA liasa)",
+    "en": "β-Hydroxy-β-methylglutaryl-CoA lyase (HMG-CoA lyase)"
+   },
+   "fc": -8
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Piruvato quinasa",
+    "en": "Pyruvate kinase"
+   },
+   "fc": 12
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "L-3-Hidroxiacil-CoA deshidrogenasa",
+    "en": "L-3-Hydroxyacyl-CoA dehydrogenase"
+   },
+   "fc": -7
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa",
+    "en": "Acetyl-CoA carboxylase"
+   },
+   "fc": 11
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Glucógeno fosforilasa",
+    "en": "Glycogen phosphorylase"
+   },
+   "fc": 16
+  },
+  {
+   "id": "8",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acetil-CoA",
+    "en": "Acetyl-CoA"
+   },
+   "fc": 6
+  },
+  {
+   "id": "9",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Fosfoenolpiruvato",
+    "en": "Phosphoenolpyruvate"
+   },
+   "fc": 12
+  },
+  {
+   "id": "10",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
+   },
+   "fc": 5
+  },
+  {
+   "id": "11",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "β-Cetoacil-CoA",
+    "en": "β-Ketoacyl-CoA"
+   },
+   "fc": -8
+  },
+  {
+   "id": "12",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Creatina",
+    "en": "Creatine"
+   },
+   "fc": 12
+  }
+ ]
+}

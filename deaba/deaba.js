@@ -3,7 +3,7 @@
    BIOCOGNIA · Open Educational Technology · Alfonso Olaya Abril
    ============================================================ */
 "use strict";
-const DB_VERSION = "0.2.0";
+const DB_VERSION = "0.2.1";
 
 /* ---------- Utilidades ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -170,13 +170,21 @@ function dbLeerFC(s) { const m = String(s || "").replace(",", ".").match(/[-−]
 //          · borrarGrupo(sid, gid) · cambiarSesion(sid, patch) · guia(aid) · guardarGuia(aid, guia) · guias()
 const DB_ADMINS = ["cMZwT1gAQHa5EmohnmYV9YmY4XT2"];
 function dbDemo() { try { return new URLSearchParams(location.search).has("demo") || !(window.QUAESTIA_FIREBASE && window.QUAESTIA_FIREBASE.config); } catch (e) { return true; } }
-function dbComprobar(v, ruta = "") { if (v === undefined) throw new Error(`valor vacío (undefined) en «${ruta}»`); if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) dbComprobar(x, ruta ? `${ruta}.${k}` : k); }
+// Mismas restricciones que Firestore: sin «undefined» y sin listas dentro de listas.
+function dbComprobar(v, ruta = "") {
+  if (v === undefined) throw new Error(`valor vacío (undefined) en «${ruta}»`);
+  if (Array.isArray(v) && v.some(Array.isArray)) throw new Error(`Firestore no admite listas dentro de listas («${ruta}»)`);
+  if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) dbComprobar(x, ruta ? `${ruta}.${k}` : k);
+}
+// Las guías llevan listas anidadas (conceptos → alternativas): se guardan como texto JSON.
+const dbGuiaGuardar = (g) => ({ schema: g.schema || "deaba-guia/1", actividad: g.actividad || "", json: JSON.stringify(g) });
+const dbGuiaLeer = (d) => (d && typeof d.json === "string" ? JSON.parse(d.json) : d || null);
 
 function dbBackendDemo() {
   const KEY = "deaba.demo";
   const vacio = () => ({ sesiones: {}, guias: {}, profesores: {}, actividades: {} });
   const read = () => { try { return { ...vacio(), ...(JSON.parse(localStorage.getItem(KEY)) || {}) }; } catch (e) { return vacio(); } };
-  const write = (d) => { localStorage.setItem(KEY, JSON.stringify(d)); window.dispatchEvent(new Event("db-demo")); };
+  const write = (d) => { dbComprobar(d.sesiones, "sesiones"); dbComprobar(d.actividades, "actividades"); localStorage.setItem(KEY, JSON.stringify(d)); window.dispatchEvent(new Event("db-demo")); };
   let me; try { me = sessionStorage.getItem("db.uid") || ("demo-" + dbCodigo(8)); sessionStorage.setItem("db.uid", me); } catch (e) { me = "demo-" + dbCodigo(8); }
   const watchers = []; const fire = () => watchers.forEach((w) => w());
   window.addEventListener("storage", (e) => { if (e.key === KEY) fire(); });
@@ -200,8 +208,8 @@ function dbBackendDemo() {
     async borrarGrupo(sid, gid) { const d = read(); delete d.sesiones[sid].grupos[gid]; write(d); },
     async cambiarSesion(sid, patch) { dbComprobar(patch); const d = read(); Object.assign(d.sesiones[sid], patch); write(d); },
     // En demo, si la guía no se ha subido, se busca en guias/<id>.guia.json (carpeta local que NO va al repositorio).
-    async guia(aid) { const g = read().guias[aid]; if (g) return g; try { const r = await fetch(`guias/${encodeURIComponent(aid)}.guia.json`); return r.ok ? r.json() : null; } catch (e) { return null; } },
-    async guardarGuia(aid, guia) { const d = read(); d.guias[aid] = guia; write(d); },
+    async guia(aid) { const g = read().guias[aid]; if (g) return dbGuiaLeer(g); try { const r = await fetch(`guias/${encodeURIComponent(aid)}.guia.json`); return r.ok ? r.json() : null; } catch (e) { return null; } },
+    async guardarGuia(aid, guia) { const d = read(), x = dbGuiaGuardar(guia); dbComprobar(x); d.guias[aid] = x; write(d); },
     async guias() { return Object.keys(read().guias); },
     async actividadesFS() { return Object.entries(read().actividades || {}).map(([id, a]) => ({ id, ...a })); },
     async actividadFS(aid) { return (read().actividades || {})[aid] || null; },
@@ -250,8 +258,8 @@ function dbBackendFirebase() {
     async cambiarGrupoAdmin(sid, gid, patch) { await F().updateDoc(gref(sid, gid), patch); },
     async borrarGrupo(sid, gid) { await F().deleteDoc(gref(sid, gid)); },
     async cambiarSesion(sid, patch) { await F().updateDoc(sref(sid), patch); },
-    async guia(aid) { await ready; try { const s = await F().getDoc(F().doc(db, "deaba_guias", aid)); return s.exists() ? s.data() : null; } catch (e) { return null; } },
-    async guardarGuia(aid, guia) { await F().setDoc(F().doc(db, "deaba_guias", aid), guia); },
+    async guia(aid) { await ready; try { const s = await F().getDoc(F().doc(db, "deaba_guias", aid)); return s.exists() ? dbGuiaLeer(s.data()) : null; } catch (e) { return null; } },
+    async guardarGuia(aid, guia) { await F().setDoc(F().doc(db, "deaba_guias", aid), dbGuiaGuardar(guia)); },
     async guias() { try { const q = await F().getDocs(F().collection(db, "deaba_guias")); return q.docs.map((d) => d.id); } catch (e) { return []; } },
     async actividadesFS() { await ready; const q = await F().getDocs(F().collection(db, "deaba_actividades")); return q.docs.map((d) => ({ id: d.id, ...d.data() })); },
     async actividadFS(aid) { await ready; const s = await F().getDoc(F().doc(db, "deaba_actividades", aid)); return s.exists() ? s.data() : null; },

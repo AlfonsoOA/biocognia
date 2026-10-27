@@ -86,3 +86,6 @@ footer .pill { white-space: normal; }
 .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); animation: pulse 1s infinite; }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(.8); } }
 .ok-t { color: var(--ok); } .bad-t { color: var(--bad); }
+a.btn { text-decoration: none; color: inherit; display: inline-block; }
+a.btn.primary { color: var(--accent-ink); }
+td.n .btn, td.n label.btn { font-family: var(--f-ui); }

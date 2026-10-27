@@ -3,7 +3,7 @@
    BIOCOGNIA · Open Educational Technology · Alfonso Olaya Abril
    ============================================================ */
 "use strict";
-const DB_VERSION = "0.1.0";
+const DB_VERSION = "0.2.0";
 
 /* ---------- Utilidades ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -34,7 +34,38 @@ const DB_DIRS = { sube: { es: "sube", en: "goes up", s: "↑" }, baja: { es: "ba
 let DB_RUTAS = [];
 async function dbCargarRutas(base = "") { if (DB_RUTAS.length) return DB_RUTAS; const r = await fetch(base + "rutas.json"); DB_RUTAS = await r.json(); return DB_RUTAS; }
 function dbRuta(id, lang) { const r = DB_RUTAS.find((x) => x.id === id); return r ? (r[lang] || r.es) : id; }
-async function dbActividad(id, base = "") { const r = await fetch(`${base}actividades/${encodeURIComponent(id)}.json`); if (!r.ok) throw new Error("actividad " + id); return r.json(); }
+/* ---------- Catálogo de nombres y autocompletado ---------- */
+// Solo nombres (metabolitos, cofactores, enzimas y las moléculas de la actividad): ayuda a escribir, no da la reacción.
+let DB_CAT = null;
+async function dbCargarCatalogo(base = "") { if (DB_CAT) return DB_CAT; try { const r = await fetch(base + "catalogo.json"); DB_CAT = await r.json(); } catch (e) { DB_CAT = { metabolitos: [], enzimas: [] }; } return DB_CAT; }
+function dbNombres(lang, extra = []) {
+  const vistos = new Set(), out = [];
+  for (const n of [...extra, ...((DB_CAT && DB_CAT.metabolitos) || []), ...((DB_CAT && DB_CAT.enzimas) || [])]) {
+    const t = dbT(n, lang), k = dbNorm(t); if (!t || vistos.has(k)) continue; vistos.add(k); out.push({ t, k });
+  }
+  return out;
+}
+// Busca sugerencias para las últimas 1–3 palabras antes del cursor. Devuelve { n (palabras a sustituir), sug: [nombres] }.
+function dbSugerencias(antes, nombres, max = 6) {
+  const m = antes.match(/[^\s+→=,;:()\/]+(?:\s+[^\s+→=,;:()\/]+){0,2}$/u); if (!m) return null;
+  const pal = m[0].split(/\s+/);
+  for (let k = pal.length; k >= 1; k--) {
+    const q = dbNorm(pal.slice(-k).join(" ")).replace(/\|/g, "").trim();
+    if (q.length < (k === 1 ? 3 : 4)) continue;
+    const ini = nombres.filter((x) => x.k.startsWith(q)), dentro = nombres.filter((x) => !x.k.startsWith(q) && x.k.includes(" " + q));
+    const sug = [...ini, ...dentro].slice(0, max).map((x) => x.t);
+    if (sug.length && !(sug.length === 1 && dbNorm(sug[0]) === q)) return { n: k, texto: pal.slice(-k).join(" "), sug };
+  }
+  return null;
+}
+function dbBuscarRutas(q, lang, excluir = []) { const k = dbNorm(q); return DB_RUTAS.filter((r) => !excluir.includes(r.id) && (!k || dbNorm(r[lang] || r.es).includes(k) || dbNorm(r.es).includes(k))).slice(0, k ? 10 : 40); }
+
+// Actividades: primero las del repositorio (archivos estáticos); si no está, las creadas desde el panel (Firebase).
+async function dbActividad(id, base = "") {
+  try { const r = await fetch(`${base}actividades/${encodeURIComponent(id)}.json`); if (r.ok) return r.json(); } catch (e) {}
+  const a = await DBB.actividadFS(id).catch(() => null); if (!a || !a.datos) throw new Error("actividad " + id);
+  return { ...a.datos, autor: a.autor_nombre || a.datos.autor || "" };
+}
 async function dbIndice(base = "") { try { const r = await fetch(base + "actividades/index.json"); return r.ok ? r.json() : []; } catch (e) { return []; } }
 function dbTareas(act, lang = "es") {
   const en = lang === "en";
@@ -140,7 +171,7 @@ function dbComprobar(v, ruta = "") { if (v === undefined) throw new Error(`valor
 
 function dbBackendDemo() {
   const KEY = "deaba.demo";
-  const vacio = () => ({ sesiones: {}, guias: {}, profesores: {} });
+  const vacio = () => ({ sesiones: {}, guias: {}, profesores: {}, actividades: {} });
   const read = () => { try { return { ...vacio(), ...(JSON.parse(localStorage.getItem(KEY)) || {}) }; } catch (e) { return vacio(); } };
   const write = (d) => { localStorage.setItem(KEY, JSON.stringify(d)); window.dispatchEvent(new Event("db-demo")); };
   let me; try { me = sessionStorage.getItem("db.uid") || ("demo-" + dbCodigo(8)); sessionStorage.setItem("db.uid", me); } catch (e) { me = "demo-" + dbCodigo(8); }
@@ -169,6 +200,11 @@ function dbBackendDemo() {
     async guia(aid) { const g = read().guias[aid]; if (g) return g; try { const r = await fetch(`guias/${encodeURIComponent(aid)}.guia.json`); return r.ok ? r.json() : null; } catch (e) { return null; } },
     async guardarGuia(aid, guia) { const d = read(); d.guias[aid] = guia; write(d); },
     async guias() { return Object.keys(read().guias); },
+    async actividadesFS() { return Object.entries(read().actividades || {}).map(([id, a]) => ({ id, ...a })); },
+    async actividadFS(aid) { return (read().actividades || {})[aid] || null; },
+    async guardarActividad(aid, doc) { dbComprobar(doc); const d = read(); d.actividades = d.actividades || {}; d.actividades[aid] = doc; write(d); },
+    async cambiarActividad(aid, patch) { const d = read(); Object.assign(d.actividades[aid], patch); write(d); },
+    async borrarActividad(aid) { const d = read(); delete d.actividades[aid]; delete d.guias[aid]; write(d); },
   };
 }
 
@@ -181,6 +217,7 @@ function dbBackendFirebase() {
     auth = authM.getAuth(app); db = fsM.initializeFirestore(app, { ignoreUndefinedProperties: true }); M = { authM, fsM };
     await auth.authStateReady();
   })();
+  ready.catch(() => {}); // sin conexión: cada llamada informará del error
   const F = () => M.fsM;
   const sref = (sid) => F().doc(db, "deaba_sesiones", sid);
   const gref = (sid, gid) => F().doc(db, "deaba_sesiones", sid, "grupos", gid);
@@ -213,6 +250,11 @@ function dbBackendFirebase() {
     async guia(aid) { await ready; try { const s = await F().getDoc(F().doc(db, "deaba_guias", aid)); return s.exists() ? s.data() : null; } catch (e) { return null; } },
     async guardarGuia(aid, guia) { await F().setDoc(F().doc(db, "deaba_guias", aid), guia); },
     async guias() { try { const q = await F().getDocs(F().collection(db, "deaba_guias")); return q.docs.map((d) => d.id); } catch (e) { return []; } },
+    async actividadesFS() { await ready; const q = await F().getDocs(F().collection(db, "deaba_actividades")); return q.docs.map((d) => ({ id: d.id, ...d.data() })); },
+    async actividadFS(aid) { await ready; const s = await F().getDoc(F().doc(db, "deaba_actividades", aid)); return s.exists() ? s.data() : null; },
+    async guardarActividad(aid, doc) { await F().setDoc(F().doc(db, "deaba_actividades", aid), doc); },
+    async cambiarActividad(aid, patch) { await F().updateDoc(F().doc(db, "deaba_actividades", aid), patch); },
+    async borrarActividad(aid) { await F().deleteDoc(F().doc(db, "deaba_guias", aid)).catch(() => {}); await F().deleteDoc(F().doc(db, "deaba_actividades", aid)); },
   };
 }
 const DBB = dbDemo() ? dbBackendDemo() : dbBackendFirebase();

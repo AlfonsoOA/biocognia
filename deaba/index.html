@@ -9,6 +9,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="deaba.css">
+<style>
+.acw { position: relative; display: block; flex: 1 1 220px; min-width: 0; }
+.acw > .field { width: 100%; }
+.chips .acw { flex: 0 1 260px; }
+.ac { position: absolute; left: 0; right: 0; top: calc(100% + 2px); z-index: 20; margin: 0; padding: 4px; list-style: none; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 10px 24px -12px rgba(0,0,0,.45); max-height: 260px; overflow: auto; min-width: 220px; }
+.ac li { padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: .92rem; }
+.ac li[aria-selected="true"], .ac li:hover { background: var(--sunk); }
+.ac.sug { position: static; display: flex; flex-wrap: wrap; gap: 4px; box-shadow: none; border: 0; background: none; padding: 4px 0 0; max-height: none; min-width: 0; }
+.ac.sug li { border: 1px dashed var(--line); border-radius: 999px; padding: 3px 10px; font-size: .86rem; background: var(--surface); }
+.ac.sug li[aria-selected="true"] { border-style: solid; border-color: var(--accent); background: var(--surface); }
+.reac { display: flex; gap: 6px; align-items: flex-start; }
+.reac .btn { font-family: var(--f-mono); min-width: 2.4em; padding-top: 8px; padding-bottom: 8px; }
+</style>
 </head>
 <body>
 <header class="bar"><div class="wrap">
@@ -82,7 +95,7 @@ function chrome() {
   $("#tagline").textContent = T("tagline");
   for (const b of document.querySelectorAll(".lang button")) b.setAttribute("aria-pressed", b.dataset.lang === S.lang);
   $("#who").textContent = S.g && S.sid ? `${S.g.nombre} · ${S.sid}` : "";
-  $("#foot").innerHTML = `${T("f")} · v${DB_VERSION} · <a href="panel.html">${S.lang === "en" ? "Teachers" : "Profesorado"}</a>${DBB.demo ? ` · <span class="pill go">${T("demo")}</span>` : ""}`;
+  $("#foot").innerHTML = `${T("f")} · v${DB_VERSION} · <a href="panel.html">${S.lang === "en" ? "Teachers" : "Profesorado"}</a> · <a href="proponer.html">${S.lang === "en" ? "Propose an activity" : "Proponer una actividad"}</a>${DBB.demo ? ` · <span class="pill go">${T("demo")}</span>` : ""}`;
 }
 
 /* ---------- Entrar ---------- */
@@ -101,10 +114,15 @@ function vJoin(msg) {
 
 /* ---------- Piezas comunes ---------- */
 function fcSpan(fc) { const d = dbDir(fc); return `<span class="fc ${d === "sube" ? "up" : d === "baja" ? "down" : "eq"}">${dbFmtFC(fc, S.lang)}</span>`; }
-function rutasOpts(sel) { return `<option value="">${T("add_ruta")}</option>` + DB_RUTAS.filter((r) => !sel.includes(r.id)).map((r) => `<option value="${r.id}">${esc(r[S.lang] || r.es)}</option>`).join(""); }
+// Buscador de rutas: se escribe parte del nombre y se elige de la lista (ya no hay que recorrer el desplegable entero).
+function picker(path, modo) { return `<span class="acw"><input class="field small" data-rpick="${path}" data-modo="${modo}" autocomplete="off" placeholder="${T("add_ruta")}" aria-label="${T("add_ruta")}"></span>`; }
 function vRutas(path, sel, ro) {
   const chips = sel.map((id) => `<span class="chip">${esc(dbRuta(id, S.lang))}${ro ? "" : `<button type="button" data-delruta="${path}" data-v="${id}" aria-label="${T("del")}">×</button>`}</span>`).join("");
-  return `<div class="chips">${chips}${ro ? "" : `<select class="field small" data-addruta="${path}" aria-label="${T("add_ruta")}">${rutasOpts(sel)}</select>`}</div>`;
+  return `<div class="chips">${chips}${ro ? "" : picker(path, "multi")}</div>`;
+}
+function vRutaUno(path, val, ro) {
+  if (val) return `<span class="chip">${esc(dbRuta(val, S.lang))}${ro ? "" : `<button type="button" data-borrar1="${path}" aria-label="${T("del")}">×</button>`}</span>`;
+  return ro ? "" : picker(path, "uno");
 }
 function secHead(i, titulo, desc) { const p = S.act.puntos[i]; return `<header><h2>${i + 1}. ${esc(titulo)}</h2>${p ? `<span class="pill">${T("pts", p)}</span>` : ""}</header>${desc ? `<p class="muted">${desc}</p>` : ""}`; }
 function vCabecera() {
@@ -113,7 +131,12 @@ function vCabecera() {
     <p>${esc(L(a.contexto))}</p><p><b>${esc(L(a.mision))}</b></p>${a.autor ? `<p class="small muted">${S.lang === "en" ? "Activity designed by" : "Actividad diseñada por"} ${esc(a.autor)}</p>` : ""}
     ${S.g.aviso ? `<p class="notice"><b>${T("aviso")}:</b> ${esc(S.g.aviso)}</p>` : ""}</div>`;
 }
-function ta(path, val, ph, ro, rows = 3) { return ro ? `<div class="ro">${esc(val) || "—"}</div>` : `<textarea class="field" rows="${rows}" data-k="${path}" placeholder="${esc(ph || "")}">${esc(val)}</textarea>`; }
+function ta(path, val, ph, ro, rows = 3) { return ro ? `<div class="ro">${esc(val) || "—"}</div>` : `<span class="acw"><textarea class="field" rows="${rows}" data-k="${path}" data-auto="1" placeholder="${esc(ph || "")}">${esc(val)}</textarea></span>`; }
+// Campo de reacción: autocompleta nombres y ofrece «→» y «+» para no tener que buscarlos en el teclado.
+function inpR(path, val, ph, ro) {
+  if (ro) return inp(path, val, ph, ro);
+  return `<span class="reac"><span class="acw"><input class="field" data-k="${path}" data-auto="1" autocomplete="off" value="${esc(val)}" placeholder="${esc(ph || "")}"></span><button type="button" class="btn small" data-ins="→" data-para="${path}" aria-label="→">→</button><button type="button" class="btn small" data-ins="+" data-para="${path}" aria-label="+">+</button></span>`;
+}
 function inp(path, val, ph, ro, extra = "") { return ro ? `<span class="ro" style="display:inline-block">${esc(val) || "—"}</span>` : `<input class="field" data-k="${path}" value="${esc(val)}" placeholder="${esc(ph || "")}" ${extra}>`; }
 
 /* ---------- Tipo 1: interpretar ---------- */
@@ -130,18 +153,17 @@ function vTipo1(ro) {
   const tarjetas = a.moleculas.map((m) => {
     const x = r.mol[m.id] || { reac: "", rutas: [] };
     return `<div class="card"><div class="top"><span class="num muted">${esc(m.id)}</span><b>${esc(L(m.nombre))}</b><span class="small muted">${m.tipo === "enzima" ? T("enz") : T("met")}</span>${fcSpan(m.fc)}</div>
-      <label class="stack small">${T("reac")}${inp(`mol.${m.id}.reac`, x.reac, m.tipo === "enzima" ? T("reac_ph_e") : T("reac_ph_m"), ro)}</label>
+      <label class="stack small">${T("reac")}${inpR(`mol.${m.id}.reac`, x.reac, m.tipo === "enzima" ? T("reac_ph_e") : T("reac_ph_m"), ro)}</label>
       <div class="stack small" style="gap:4px"><span>${T("rutas")}</span>${vRutas(`mol.${m.id}.rutas`, x.rutas || [], ro)}</div></div>`;
   }).join("");
   const molOpts = (v) => `<option value="">${T("frase_mol")}</option>` + a.moleculas.map((m) => `<option value="${esc(m.id)}" ${v === m.id ? "selected" : ""}>${esc(m.id)}. ${esc(L(m.nombre))}</option>`).join("");
   const dirOpts = (v) => ["sube", "baja"].map((d) => `<option value="${d}" ${v === d ? "selected" : ""}>${DB_DIRS[d][S.lang]}</option>`).join("");
-  const rOpts = (v) => `<option value="">${T("ruta_ph")}</option>` + DB_RUTAS.map((x) => `<option value="${x.id}" ${v === x.id ? "selected" : ""}>${esc(x[S.lang] || x.es)}</option>`).join("");
   const frases = (r.frases || []).map((f, i) => ro
     ? `<div class="frase"><b>${esc((a.moleculas.find((m) => m.id === f.mol) && L(a.moleculas.find((m) => m.id === f.mol).nombre)) || "—")}</b> <span>${f.dir ? DB_DIRS[f.dir][S.lang] : ""}</span> <span class="w">${T("porque")}</span> <span>${esc(f.porque)}</span>${f.ruta ? ` <span class="w">${T("en")}</span> <span>${esc(dbRuta(f.ruta, S.lang))}</span>` : ""}</div>`
     : `<div class="frase"><select class="field" data-k="frases.${i}.mol" data-frase-mol="${i}" aria-label="${T("frase_mol")}">${molOpts(f.mol)}</select>
         <select class="field" data-k="frases.${i}.dir" aria-label="${T("dir")}"><option value=""></option>${dirOpts(f.dir)}</select><span class="w">${T("porque")}</span>
-        <input class="field" data-k="frases.${i}.porque" value="${esc(f.porque)}" placeholder="${T("frase_ph")}"><span class="w">${T("en")}</span>
-        <select class="field" data-k="frases.${i}.ruta" aria-label="${T("ruta_ph")}">${rOpts(f.ruta)}</select>
+        <span class="acw"><input class="field" data-k="frases.${i}.porque" data-auto="1" autocomplete="off" value="${esc(f.porque)}" placeholder="${T("frase_ph")}"></span><span class="w">${T("en")}</span>
+        ${vRutaUno(`frases.${i}.ruta`, f.ruta, false)}
         ${(r.frases || []).length > 1 ? `<button type="button" class="btn small ghost" data-delfrase="${i}">${T("del")}</button>` : ""}</div>`).join("");
   return `${vTablas()}
     <section class="sec"><header><h2>1. ${esc(t[0])} · 2. ${esc(t[1])}</h2><span class="pill">${a.puntos[0]} + ${a.puntos[1]} ${S.lang === "en" ? "points" : "puntos"}</span></header><p class="muted">${T("s12_d")}</p><div class="cards">${tarjetas}</div></section>
@@ -167,7 +189,7 @@ function vTipo2(ro) {
     const x = r.marc[m.id];
     const seg = ["sube", "baja", "igual"].map((d) => `<label><input type="radio" name="dir_${esc(m.id)}" data-k="marc.${m.id}.dir" value="${d}" ${x.dir === d ? "checked" : ""} ${ro ? "disabled" : ""}><span>${DB_DIRS[d].s} ${DB_DIRS[d][S.lang]}</span></label>`).join("");
     return `<div class="card"><div class="top"><b>${esc(L(m.nombre))}</b><span class="small muted">${m.tipo === "enzima" ? T("enz") : T("met")}</span></div>
-      <label class="stack small">${T("reac")}${inp(`marc.${m.id}.reac`, x.reac, m.tipo === "enzima" ? T("reac_ph_e") : T("reac_ph_m"), ro)}</label>
+      <label class="stack small">${T("reac")}${inpR(`marc.${m.id}.reac`, x.reac, m.tipo === "enzima" ? T("reac_ph_e") : T("reac_ph_m"), ro)}</label>
       <div class="stack small" style="gap:4px"><span>${T("rutas")}</span>${vRutas(`marc.${m.id}.rutas`, x.rutas || [], ro)}</div>
       <div class="row small"><span>${T("dir")}</span><span class="seg">${seg}</span><label class="row" style="gap:6px">${T("fc_est")}${inp(`marc.${m.id}.fc`, x.fc, T("fc_ph"), ro, 'style="width:8em" inputmode="decimal"')}</label></div></div>`;
   }).join("");
@@ -232,6 +254,8 @@ document.addEventListener("click", async (e) => {
   const t = e.target.closest("button"); if (!t) return;
   if (t.dataset.lang) { S.lang = t.dataset.lang; dbSetLang(S.lang); return S.g ? rerender() : (chrome(), main().innerHTML = vJoin()); }
   if (t.dataset.delruta) { const a = getPath(t.dataset.delruta) || []; setPath(t.dataset.delruta, a.filter((x) => x !== t.dataset.v)); guardar(); return rerender(); }
+  if (t.dataset.borrar1) { setPath(t.dataset.borrar1, ""); guardar(); return rerender(); }
+  if (t.dataset.ins) { const el = document.querySelector(`[data-k="${t.dataset.para}"]`); if (el) insertar(el, ` ${t.dataset.ins} `); return; }
   if (t.id === "addfrase") { S.r.frases.push({ mol: "", dir: "", porque: "", ruta: "" }); guardar(); return rerender(); }
   if (t.dataset.delfrase) { S.r.frases.splice(+t.dataset.delfrase, 1); guardar(); return rerender(); }
   if (t.id === "send") { S.confirm = true; return renderEnvio(); }
@@ -259,9 +283,61 @@ document.addEventListener("change", (e) => {
 });
 document.addEventListener("input", (e) => {
   const el = e.target;
+  if (el.dataset.rpick) return actualizarAC(el);
+  if (el.dataset.auto) { if (e.isTrusted) actualizarAC(el); }
   if (el.dataset.rev) return guardarRevision(el.value);
   if (el.dataset.k && (el.tagName === "TEXTAREA" || el.tagName === "INPUT")) { setPath(el.dataset.k, el.value); guardar(); clearTimeout(S.envT); S.envT = setTimeout(renderEnvio, 400); }
 });
+/* ---------- Autocompletado ---------- */
+const AC = { el: null, items: [], i: 0, tipo: "", n: 0 };
+function nombresAct() { const a = S.act; return a ? (a.tipo === 1 ? a.moleculas : a.catalogo).map((m) => m.nombre) : []; }
+function cerrarAC() { const u = $("#ac"); if (u) u.remove(); AC.el = null; AC.items = []; }
+function pintarAC() {
+  const el = AC.el; let u = $("#ac"); if (u) u.remove(); if (!el || !AC.items.length) return;
+  // Rutas: lista desplegable. Nombres: fila de sugerencias bajo el campo, que desplaza el contenido en vez de taparlo.
+  u = document.createElement("ul"); u.id = "ac"; u.className = AC.tipo === "nombre" ? "ac sug" : "ac"; u.setAttribute("role", "listbox");
+  u.innerHTML = AC.items.map((x, i) => `<li role="option" data-i="${i}" aria-selected="${i === AC.i}">${esc(x.t)}</li>`).join("");
+  el.closest(".acw").appendChild(u);
+}
+function insertar(el, txt) {
+  const a = el.selectionStart ?? el.value.length, b = el.selectionEnd ?? a;
+  el.value = (el.value.slice(0, a) + txt + el.value.slice(b)).replace(/\s{2,}/g, " "); const p = Math.min(el.value.length, a + txt.length);
+  el.focus(); el.setSelectionRange(p, p); el.dispatchEvent(new Event("input", { bubbles: true }));
+}
+function aceptarAC(i) {
+  const el = AC.el, x = AC.items[i]; if (!el || !x) return;
+  if (AC.tipo === "nombre") {
+    const p = el.selectionStart, antes = el.value.slice(0, p), corte = antes.length - AC.texto.length;
+    el.value = antes.slice(0, corte) + x.t + " " + el.value.slice(p); const q = corte + x.t.length + 1;
+    cerrarAC(); el.focus(); el.setSelectionRange(q, q); el.dispatchEvent(new Event("input", { bubbles: true }));
+  } else {
+    const path = el.dataset.rpick, modo = el.dataset.modo;
+    if (modo === "uno") setPath(path, x.id); else setPath(path, [...new Set((getPath(path) || []).concat(x.id))]);
+    cerrarAC(); guardar(); rerender();
+    const nuevo = document.querySelector(`[data-rpick="${path}"]`); if (nuevo) nuevo.focus();
+  }
+}
+function actualizarAC(el) {
+  if (el.dataset.rpick) {
+    const sel = el.dataset.modo === "uno" ? [] : (getPath(el.dataset.rpick) || []);
+    AC.el = el; AC.tipo = "ruta"; AC.i = 0; AC.items = dbBuscarRutas(el.value, S.lang, sel).map((r) => ({ id: r.id, t: r[S.lang] || r.es }));
+  } else {
+    const r = dbSugerencias(el.value.slice(0, el.selectionStart), dbNombres(S.lang, nombresAct()));
+    AC.el = el; AC.tipo = "nombre"; AC.i = 0; AC.items = r ? r.sug.map((t) => ({ t })) : []; AC.texto = r ? r.texto : "";
+  }
+  pintarAC();
+}
+// La lista de rutas se abre al tocar el buscador o al escribir (no al recuperar el foco tras elegir una).
+document.addEventListener("click", (e) => { const el = e.target.closest && e.target.closest("[data-rpick]"); if (el) actualizarAC(el); });
+document.addEventListener("focusout", (e) => { if (e.target === AC.el) setTimeout(() => { if (document.activeElement !== AC.el) cerrarAC(); }, 150); });
+document.addEventListener("mousedown", (e) => { const li = e.target.closest("#ac li"); if (li) { e.preventDefault(); aceptarAC(+li.dataset.i); } });
+document.addEventListener("keydown", (e) => {
+  if (!AC.el || e.target !== AC.el || !AC.items.length) return;
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); AC.i = (AC.i + (e.key === "ArrowDown" ? 1 : AC.items.length - 1)) % AC.items.length; pintarAC(); }
+  else if (e.key === "Enter" || (e.key === "Tab" && AC.tipo === "nombre")) { e.preventDefault(); aceptarAC(AC.i); }
+  else if (e.key === "Escape") cerrarAC();
+});
+
 document.addEventListener("submit", async (e) => {
   if (e.target.id !== "join") return;
   e.preventDefault();
@@ -295,7 +371,7 @@ async function empezar(sid, ses) {
 }
 (async function boot() {
   chrome();
-  await dbCargarRutas();
+  await Promise.all([dbCargarRutas(), dbCargarCatalogo()]);
   const sid = (new URLSearchParams(location.search).get("s") || "").toUpperCase();
   try {
     await DBB.init();

@@ -57,7 +57,7 @@ details.g .det { border-top: 1px solid var(--line); padding: 12px 14px; display:
 <script src="deaba.js"></script>
 <script>
 "use strict";
-const P = { rol: null, uid: null, nombre: "", indice: [], guias: {}, sesiones: [], sid: null, ses: null, act: null, guia: null, grupos: [], vista: "grupos",
+const P = { rol: null, uid: null, nombre: "", indice: [], acts: [], conv: null, guias: {}, sesiones: [], sid: null, ses: null, act: null, guia: null, grupos: [], vista: "grupos",
   open: new Set(), msg: "", proj: { on: false, i: 0, clave: false, nombres: true } };
 const L = (x) => dbT(x, "es");
 const admin = () => P.rol === "admin";
@@ -66,30 +66,104 @@ const ESTADOS = { editando: ["Trabajando", ""], enviado: ["Enviada", "ok"] };
 const PAPEL = { clave: ["clave", "ok"], apoyo: ["apoyo", ""], distractor: ["distractor", "bad"], referencia_1: ["referencia (1)", "ok"], referencia_2: ["referencia (2)", "ok"], valida: ["válida", "ok"], debil: ["débil", "go"] };
 
 /* ---------- Carga ---------- */
+// Actividades del repositorio (publicadas) y las creadas desde el panel (borrador → propuesta → publicada).
 async function cargarIndice() {
   P.indice = await dbIndice();
+  const fs = await DBB.actividadesFS().catch(() => []), enRepo = new Set(P.indice.map((a) => a.id));
+  P.acts = P.indice.map((a) => ({ ...a, origen: "repo", estado: "publicada" }));
+  for (const a of fs) {
+    if (enRepo.has(a.id) || !a.datos) continue;
+    if (!admin() && a.estado !== "publicada" && a.autor !== P.uid) continue;
+    P.acts.push({ id: a.id, titulo: L(a.datos.titulo), tipo: a.datos.tipo, nivel: a.datos.nivel, asignatura: a.datos.asignatura || "", origen: "panel", estado: a.estado, autor: a.autor, autor_nombre: a.autor_nombre || "", datos: a.datos });
+  }
   P.guias = {};
-  await Promise.all(P.indice.map(async (a) => { P.guias[a.id] = await DBB.guia(a.id).catch(() => null); }));
+  await Promise.all(P.acts.map(async (a) => { P.guias[a.id] = await DBB.guia(a.id).catch(() => null); }));
 }
+const ESTACT = { publicada: ["publicada", "ok"], propuesta: ["propuesta", "go"], borrador: ["borrador", ""] };
+const mia = (a) => a.origen === "panel" && a.autor === P.uid;
+const puedeGuia = (a) => admin() || (mia(a) && a.estado !== "publicada");
 async function cargarSesiones() { P.sesiones = await DBB.sesiones(admin()).catch(() => []); }
 
 /* ---------- Inicio ---------- */
 function vMsg() { return P.msg ? `<p class="notice small" role="status">${esc(P.msg)}</p>` : ""; }
-function tituloAct(id) { const a = P.indice.find((x) => x.id === id); return a ? a.titulo : id; }
+function tituloAct(id) { const a = P.acts.find((x) => x.id === id); return a ? a.titulo : id; }
 function vInicio() {
-  const opts = P.indice.map((a) => `<option value="${esc(a.id)}">${esc(a.titulo)} · tipo ${a.tipo} · ${a.nivel}</option>`).join("");
+  const usables = P.acts.filter((a) => a.estado === "publicada" || mia(a) || admin());
+  const opts = usables.map((a) => `<option value="${esc(a.id)}">${esc(a.titulo)} · tipo ${a.tipo} · ${a.nivel}${a.estado !== "publicada" ? ` · ${a.estado}` : ""}</option>`).join("");
   const ses = P.sesiones.map((s) => `<tr><td class="num"><b>${esc(s.id)}</b></td><td>${esc(s.nombre || "")}</td><td>${esc(tituloAct(s.actividad))}</td><td>${s.modo === "evaluacion" ? `<span class="pill go">evaluación</span>` : `<span class="pill">formativa</span>`}</td>
     <td>${s.estado === "abierta" ? `<span class="pill ok">abierta</span>` : `<span class="pill">cerrada</span>`}</td><td class="n"><button class="btn small" data-open="${esc(s.id)}">Abrir</button></td></tr>`).join("");
-  const acts = P.indice.map((a) => `<tr><td><b>${esc(a.titulo)}</b><br><span class="small muted num">${esc(a.id)}</span></td><td>${a.tipo}</td><td>${esc(a.nivel)}</td><td>${esc(a.asignatura || "")}</td>
-    <td>${P.guias[a.id] ? `<span class="pill ok">guía cargada</span>` : `<span class="pill bad">sin guía</span>`}</td>
-    <td class="n"><div class="row" style="justify-content:flex-end">${P.guias[a.id] ? `<a class="btn small" href="guia.html?a=${encodeURIComponent(a.id)}${DBB.demo ? "&demo" : ""}" target="_blank">Guía</a>` : ""}<a class="btn small" href="imprimir.html?a=${encodeURIComponent(a.id)}" target="_blank">Papel</a>
-    ${admin() ? `<label class="btn small">Subir guía<input type="file" accept=".json,application/json" data-guia="${esc(a.id)}" hidden></label>` : ""}</div></td></tr>`).join("");
+  const acts = P.acts.map((a) => {
+    const est = ESTACT[a.estado] || [a.estado, ""], acc = [];
+    if (P.guias[a.id]) acc.push(`<a class="btn small" href="guia.html?a=${encodeURIComponent(a.id)}${DBB.demo ? "&demo" : ""}" target="_blank">Guía</a>`);
+    acc.push(`<a class="btn small" href="imprimir.html?a=${encodeURIComponent(a.id)}${DBB.demo ? "&demo" : ""}" target="_blank">Papel</a>`);
+    if (puedeGuia(a)) acc.push(`<label class="btn small">Subir guía<input type="file" accept=".json,application/json" data-guia="${esc(a.id)}" hidden></label>`);
+    if (a.origen === "panel") {
+      if (mia(a) && a.estado === "borrador") acc.push(`<button class="btn small" data-prop="${esc(a.id)}">Proponer</button>`);
+      if (admin() && a.estado !== "publicada") acc.push(`<button class="btn small primary" data-pub="${esc(a.id)}">Publicar</button>`);
+      if (admin() && a.estado !== "borrador") acc.push(`<button class="btn small" data-dev="${esc(a.id)}">A borrador</button>`);
+      acc.push(`<button class="btn small ghost" data-dl="${esc(a.id)}">JSON</button>`);
+      if (admin() || (mia(a) && a.estado !== "publicada")) acc.push(`<button class="btn small ghost" data-delact="${esc(a.id)}">Eliminar</button>`);
+    }
+    return `<tr><td><b>${esc(a.titulo)}</b><br><span class="small muted num">${esc(a.id)}</span>${a.origen === "panel" ? `<br><span class="small muted">${esc(a.autor_nombre || "")}</span>` : ""}</td><td>${a.tipo}</td><td>${esc(a.nivel)}</td><td>${esc(a.asignatura || "")}</td>
+      <td><span class="pill ${est[1]}">${est[0]}</span> ${P.guias[a.id] ? `<span class="pill ok">guía</span>` : `<span class="pill bad">sin guía</span>`}</td><td class="n"><div class="row" style="justify-content:flex-end">${acc.join("")}</div></td></tr>`;
+  }).join("");
   return `${vMsg()}<section class="panel stack"><h2>Nueva sesión</h2>
     <form id="nueva" class="row"><select class="field" name="act" required>${opts}</select><input class="field" name="nombre" placeholder="Nombre (p. ej., BQ 2.º A · grupo de tarde)" style="flex:1;min-width:220px">
       <select class="field" name="modo"><option value="formativa">Formativa</option><option value="evaluacion">Evaluación (con calificación)</option></select><button class="btn primary">Crear</button></form></section>
     <section class="stack"><h2>${admin() ? "Sesiones (todas)" : "Tus sesiones"}</h2>${P.sesiones.length ? `<div class="tablebox"><table><thead><tr><th>Código</th><th>Nombre</th><th>Actividad</th><th>Modo</th><th>Estado</th><th></th></tr></thead><tbody>${ses}</tbody></table></div>` : `<p class="muted">Todavía no hay sesiones.</p>`}</section>
-    <section class="stack"><h2>Actividades</h2><p class="small muted">La guía del profesor (respuestas esperadas, errores comunes y preguntas para el plenario) no está en el repositorio: se sube aquí a partir del archivo <span class="num">.guia.json</span> que genera el conversor. Solo la ve el profesorado.</p>
+    <section class="stack"><div class="row"><h2>Actividades</h2><span class="spacer"></span><button class="btn primary" id="vconv">Crear actividad desde Excel</button><a class="btn" href="proponer.html">Cómo se diseña una actividad</a></div>
+      <p class="small muted">${admin() ? "Las actividades que propone el profesorado aparecen como «propuesta»: revísalas (guía incluida) y publícalas." : "Crea tu actividad desde la plantilla Excel, pruébala en una sesión tuya (como borrador) y pulsa «Proponer» cuando esté lista: el administrador la revisa y la publica con tu nombre."} La guía del profesor (respuestas esperadas y preguntas para el plenario) nunca está en el repositorio: solo la ve el profesorado.</p>
       <div class="tablebox"><table><thead><tr><th>Actividad</th><th>Tipo</th><th>Nivel</th><th>Asignatura</th><th>Guía</th><th></th></tr></thead><tbody>${acts}</tbody></table></div></section>`;
+}
+
+/* ---------- Crear actividad desde Excel ---------- */
+function cargarScript(src) { return new Promise((ok, ko) => { const x = document.createElement("script"); x.src = src; x.onload = ok; x.onerror = () => ko(new Error("No se ha podido cargar " + src)); document.head.appendChild(x); }); }
+async function libsConversor() {
+  if (!window.XLSX) await cargarScript("https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js");
+  if (typeof window.dbConvertir !== "function") await cargarScript(`conversor.js?v=${DB_VERSION}`);
+}
+function choque(aid) {
+  const a = P.acts.find((x) => x.id === aid); if (!a) return {};
+  if (a.origen === "repo") return { error: `Ya existe una actividad publicada en el repositorio con el id «${aid}». Cambia el id en la hoja «Actividad».` };
+  if (!admin() && a.autor !== P.uid) return { error: `El id «${aid}» ya lo usa una actividad de otra persona. Cambia el id en la hoja «Actividad».` };
+  if (!admin() && a.estado === "publicada") return { error: `«${aid}» ya está publicada: para cambiarla, pide al administrador que la devuelva a borrador.` };
+  return { aviso: `Ya existe «${aid}» (${a.estado}): al guardar se sustituirá por esta versión.`, ex: a };
+}
+async function convertir(f) {
+  P.msg = ""; P.conv = { fase: "cargando", archivo: f.name }; render();
+  await libsConversor();
+  const r = dbConvertir(XLSX.read(await f.arrayBuffer(), { type: "array" }));
+  P.conv = { ...r, archivo: f.name, fase: r.errores.length ? "error" : "hecho" }; render();
+}
+function vConversor() {
+  const c = P.conv; let cuerpo = "";
+  if (c && c.fase === "cargando") cuerpo = `<p class="muted">Leyendo la hoja…</p>`;
+  else if (c && c.errores.length) cuerpo = `<div class="stack"><p><b>La hoja «${esc(c.archivo)}» tiene ${c.errores.length} problema${c.errores.length > 1 ? "s" : ""}.</b> Corrígelos en el Excel y vuelve a cargarla:</p><ul class="small" style="color:var(--bad);margin:0;padding-left:1.2em">${c.errores.slice(0, 40).map((e) => `<li>${esc(e)}</li>`).join("")}</ul></div>`;
+  else if (c) {
+    const a = c.act, g = c.guia, ch = choque(a.id), n = a.tipo === 1 ? a.moleculas.length : a.catalogo.length;
+    const sinEn = !a.titulo.en || !a.contexto.en || !a.mision.en;
+    const secs = Object.entries(g.secciones).filter(([, v]) => v.length).map(([k, v]) => `${k} (${v.length})`).join(" · ");
+    cuerpo = `<div class="stack"><p><b>${esc(L(a.titulo))}</b> <span class="small muted">· id <span class="num">${esc(a.id)}</span> · tipo ${a.tipo} · ${esc(a.nivel)}</span></p>
+      <p class="small">${a.tipo === 1 ? `${n} moléculas` : `${a.condiciones.length} condiciones · ${n} marcadores en el catálogo (se piden ${a.n_enzimas} enzimas y ${a.n_metabolitos} metabolitos)`} · ${g.conceptos.length} conceptos · guía: ${secs || "vacía"}</p>
+      ${sinEn ? `<p class="small notice">Sin textos en inglés: quien use la app en inglés verá la actividad en español.</p>` : ""}
+      ${ch.error ? `<p class="notice" style="color:var(--bad)">${esc(ch.error)}</p>` : ch.aviso ? `<p class="small notice">${esc(ch.aviso)}</p>` : ""}
+      <div class="row">${ch.error ? "" : admin() ? `<button class="btn primary" id="c-pub">Guardar y publicar</button><button class="btn" id="c-bor">Guardar como borrador</button>` : `<button class="btn primary" id="c-bor">Guardar como borrador</button>`}<button class="btn ghost" id="c-dl">Descargar JSON (actividad y guía)</button></div></div>`;
+  }
+  return `<div class="row"><button class="btn small" id="volver">← Inicio</button></div>${vMsg()}<section class="panel stack"><h2>Crear una actividad desde una hoja Excel</h2>
+    <ol class="small" style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px">
+      <li>Rellena la plantilla del <a href="plantilla/Plantilla_DEAba_tipo1.xlsx" download>tipo 1 (interpretar)</a> o del <a href="plantilla/Plantilla_DEAba_tipo2.xlsx" download>tipo 2 (diseñar)</a>. Las instrucciones están dentro y en la <a href="proponer.html">página para proponer actividades</a>.</li>
+      <li>Cárgala aquí: el panel comprueba la hoja y separa lo que ven los grupos de la guía del profesor.</li>
+      <li>${admin() ? "Guárdala como borrador para probarla en una sesión, o publícala directamente." : "Guárdala como borrador, pruébala en una sesión tuya y, cuando esté lista, pulsa «Proponer» en la lista de actividades."}</li></ol>
+    <div class="row"><label class="btn ${c ? "" : "primary"}">${c ? "Cargar otra hoja" : "Cargar hoja Excel (.xlsx)"}<input type="file" id="xls" accept=".xlsx,.xlsm,.xls" hidden></label>${c && c.archivo ? `<span class="small muted">${esc(c.archivo)}</span>` : ""}</div>${cuerpo}</section>`;
+}
+async function guardarConv(estado) {
+  const c = P.conv, aid = c.act.id, ch = choque(aid); if (ch.error) throw new Error(ch.error);
+  const ex = ch.ex;
+  await DBB.guardarActividad(aid, { datos: c.act, autor: ex ? ex.autor : P.uid, autor_nombre: ex ? (ex.autor_nombre || "") : (c.act.autor || P.nombre), estado, actualizado: Date.now() });
+  await DBB.guardarGuia(aid, c.guia);
+  P.conv = null; P.vista = "inicio";
+  P.msg = estado === "publicada" ? `«${L(c.act.titulo)}» publicada: ya se puede usar en cualquier sesión.` : `«${L(c.act.titulo)}» guardada como borrador. Pruébala creando una sesión${admin() ? "" : " y, cuando esté lista, pulsa «Proponer»"}.`;
+  await cargarIndice(); render();
 }
 
 /* ---------- Análisis de las respuestas ---------- */
@@ -243,7 +317,7 @@ function render() {
   const m = $("#main");
   if (!P.rol) return;
   if (P.sid && P.act) { const y = window.scrollY; m.innerHTML = vSesion(); window.scrollTo(0, y); }
-  else m.innerHTML = vInicio();
+  else m.innerHTML = P.vista === "conversor" ? vConversor() : vInicio();
 }
 let renderT = null;
 function renderPronto() { clearTimeout(renderT); renderT = setTimeout(() => { if (document.activeElement && document.activeElement.closest && document.activeElement.closest("#main form, #main input")) return; render(); }, 250); }
@@ -274,7 +348,17 @@ function csv() {
 async function accion(t) {
   if (t.id === "signin") return entrar();
   if (t.dataset.open) return abrir(t.dataset.open);
-  if (t.id === "volver") { P.sid = null; P.act = null; P.msg = ""; await cargarSesiones(); return render(); }
+  if (t.id === "volver") { P.sid = null; P.act = null; P.msg = ""; P.vista = "grupos"; P.conv = null; await cargarSesiones(); return render(); }
+  if (t.id === "vconv") { P.vista = "conversor"; P.msg = ""; return render(); }
+  if (t.id === "c-pub") return guardarConv("publicada");
+  if (t.id === "c-bor") return guardarConv("borrador");
+  if (t.id === "c-dl") { save(`${P.conv.act.id}.json`, JSON.stringify(P.conv.act, null, 1), "application/json"); setTimeout(() => save(`${P.conv.act.id}.guia.json`, JSON.stringify(P.conv.guia, null, 1), "application/json"), 300); return; }
+  const tit = (aid) => tituloAct(aid);
+  if (t.dataset.prop) { await DBB.cambiarActividad(t.dataset.prop, { estado: "propuesta", actualizado: Date.now() }); P.msg = `«${tit(t.dataset.prop)}» enviada al administrador para su revisión.`; await cargarIndice(); return render(); }
+  if (t.dataset.pub) { await DBB.cambiarActividad(t.dataset.pub, { estado: "publicada", actualizado: Date.now() }); P.msg = `«${tit(t.dataset.pub)}» publicada.`; await cargarIndice(); return render(); }
+  if (t.dataset.dev) { await DBB.cambiarActividad(t.dataset.dev, { estado: "borrador", actualizado: Date.now() }); P.msg = `«${tit(t.dataset.dev)}» ha vuelto a borrador.`; await cargarIndice(); return render(); }
+  if (t.dataset.dl) { const a = P.acts.find((x) => x.id === t.dataset.dl); save(`${a.id}.json`, JSON.stringify(a.datos, null, 1), "application/json"); if (P.guias[a.id]) setTimeout(() => save(`${a.id}.guia.json`, JSON.stringify(P.guias[a.id], null, 1), "application/json"), 300); return; }
+  if (t.dataset.delact) { if (t.dataset.confirm !== "1") { t.dataset.confirm = "1"; t.textContent = "¿Seguro? Pulsa otra vez"; return; } const tt = tit(t.dataset.delact); await DBB.borrarActividad(t.dataset.delact); P.msg = `«${tt}» eliminada.`; await cargarIndice(); return render(); }
   if (t.id === "copiar") { try { await navigator.clipboard.writeText($("#link").value); P.msg = "Enlace copiado."; } catch (er) { $("#link").select(); } return render(); }
   if (t.dataset.vista) { P.vista = t.dataset.vista; return render(); }
   if (t.id === "cerrar") { await DBB.cambiarSesion(P.sid, { estado: "cerrada" }); P.ses.estado = "cerrada"; return render(); }
@@ -308,6 +392,7 @@ document.addEventListener("change", async (e) => {
   const el = e.target;
   if (el.id === "pj-clave") { P.proj.clave = el.checked; return vProj(); }
   if (el.id === "pj-nom") { P.proj.nombres = el.checked; return vProj(); }
+  if (el.id === "xls") { const f = el.files[0]; if (f) convertir(f).catch(fallo); return; }
   if (el.dataset.guia) {
     const aid = el.dataset.guia, f = el.files[0]; if (!f) return;
     try { const g = JSON.parse(await f.text()); if (g.schema !== "deaba-guia/1" || g.actividad !== aid) throw new Error("Este archivo no es la guía de esta actividad."); await DBB.guardarGuia(aid, g); P.guias[aid] = g; P.msg = "Guía cargada."; }

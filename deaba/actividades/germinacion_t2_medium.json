@@ -4,15 +4,18 @@
  "tipo": 2,
  "nivel": "medium",
  "titulo": {
-  "es": "Del aceite al azúcar: la germinación de las semillas oleaginosas"
+  "es": "Del aceite al azúcar: la germinación de las semillas oleaginosas",
+  "en": "From oil to sugar: the germination of oilseeds"
  },
  "asignatura": "Bioquímica",
  "autor": "Alfonso Olaya Abril",
  "contexto": {
-  "es": "Las semillas oleaginosas (como el girasol o Arabidopsis thaliana) almacenan su energía sobre todo como triacilgliceroles en los oleosomas. Durante los primeros días de la germinación en oscuridad, la plántula es heterótrofa: todavía no puede hacer la fotosíntesis, pero necesita con urgencia hexosas (glucosa y sacarosa) para construir las paredes de celulosa y alimentar las zonas de crecimiento."
+  "es": "Las semillas oleaginosas (como el girasol o Arabidopsis thaliana) almacenan su energía sobre todo como triacilgliceroles en los oleosomas. Durante los primeros días de la germinación en oscuridad, la plántula es heterótrofa: todavía no puede hacer la fotosíntesis, pero necesita con urgencia hexosas (glucosa y sacarosa) para construir las paredes de celulosa y alimentar las zonas de crecimiento.",
+  "en": "Oilseeds (such as sunflower or Arabidopsis thaliana) store their energy mainly as triacylglycerols in oil bodies. During the first days of germination in the dark, the seedling is heterotrophic: it cannot photosynthesise yet, but it urgently needs hexoses (glucose and sucrose) to build cellulose cell walls and to feed the growing tissues."
  },
  "mision": {
-  "es": "Diseñad un experimento de expresión diferencial (proteómica y metabolómica) que permita comprobar cómo consigue la plántula fabricar azúcares a partir de sus reservas de aceite."
+  "es": "Diseñad un experimento de expresión diferencial (proteómica y metabolómica) que permita comprobar cómo consigue la plántula fabricar azúcares a partir de sus reservas de aceite.",
+  "en": "Design a differential expression experiment (proteomics and metabolomics) to test how the seedling manages to make sugars from its oil reserves."
  },
  "puntos": [
   3,
@@ -25,31 +28,36 @@
   {
    "id": "semilla",
    "nombre": {
-    "es": "Semilla seca (latente)"
+    "es": "Semilla seca (latente)",
+    "en": "Dry (dormant) seed"
    }
   },
   {
    "id": "osc48",
    "nombre": {
-    "es": "Plántula de 48 h en oscuridad"
+    "es": "Plántula de 48 h en oscuridad",
+    "en": "48-h seedling in the dark"
    }
   },
   {
    "id": "luz7",
    "nombre": {
-    "es": "Plántula de 7 días en luz (fotoautótrofa)"
+    "es": "Plántula de 7 días en luz (fotoautótrofa)",
+    "en": "7-day seedling in the light (photoautotrophic)"
    }
   },
   {
    "id": "osc48_sac",
    "nombre": {
-    "es": "Plántula de 48 h en oscuridad con sacarosa en el medio"
+    "es": "Plántula de 48 h en oscuridad con sacarosa en el medio",
+    "en": "48-h seedling in the dark with sucrose in the medium"
    }
   },
   {
    "id": "hoja",
    "nombre": {
-    "es": "Hoja de una planta adulta"
+    "es": "Hoja de una planta adulta",
+    "en": "Leaf of an adult plant"
    }
   }
  ],
@@ -58,175 +66,200 @@
    "id": "acx",
    "tipo": "enzima",
    "nombre": {
-    "es": "Acil-CoA oxidasa"
+    "es": "Acil-CoA oxidasa",
+    "en": "Acyl-CoA oxidase"
    }
   },
   {
    "id": "cat1",
    "tipo": "enzima",
    "nombre": {
-    "es": "Carnitina aciltransferasa I"
+    "es": "Carnitina aciltransferasa I",
+    "en": "Carnitine acyltransferase I"
    }
   },
   {
    "id": "cs",
    "tipo": "enzima",
    "nombre": {
-    "es": "Citrato sintasa"
+    "es": "Citrato sintasa",
+    "en": "Citrate synthase"
    }
   },
   {
    "id": "pepck",
    "tipo": "enzima",
    "nombre": {
-    "es": "Fosfoenolpiruvato carboxiquinasa (PEPCK)"
+    "es": "Fosfoenolpiruvato carboxiquinasa (PEPCK)",
+    "en": "Phosphoenolpyruvate carboxykinase (PEPCK)"
    }
   },
   {
    "id": "fbp",
    "tipo": "enzima",
    "nombre": {
-    "es": "Fructosa-1,6-bisfosfatasa (citosólica)"
+    "es": "Fructosa-1,6-bisfosfatasa (citosólica)",
+    "en": "Fructose-1,6-bisphosphatase (cytosolic)"
    }
   },
   {
    "id": "g6pasa",
    "tipo": "enzima",
    "nombre": {
-    "es": "Glucosa-6-fosfatasa"
+    "es": "Glucosa-6-fosfatasa",
+    "en": "Glucose-6-phosphatase"
    }
   },
   {
    "id": "hk",
    "tipo": "enzima",
    "nombre": {
-    "es": "Hexoquinasa"
+    "es": "Hexoquinasa",
+    "en": "Hexokinase"
    }
   },
   {
    "id": "idh",
    "tipo": "enzima",
    "nombre": {
-    "es": "Isocitrato deshidrogenasa (NAD⁺, mitocondrial)"
+    "es": "Isocitrato deshidrogenasa (NAD⁺, mitocondrial)",
+    "en": "Isocitrate dehydrogenase (NAD⁺, mitochondrial)"
    }
   },
   {
    "id": "icl",
    "tipo": "enzima",
    "nombre": {
-    "es": "Isocitrato liasa (ICL)"
+    "es": "Isocitrato liasa (ICL)",
+    "en": "Isocitrate lyase (ICL)"
    }
   },
   {
    "id": "ldh",
    "tipo": "enzima",
    "nombre": {
-    "es": "Lactato deshidrogenasa"
+    "es": "Lactato deshidrogenasa",
+    "en": "Lactate dehydrogenase"
    }
   },
   {
    "id": "ms",
    "tipo": "enzima",
    "nombre": {
-    "es": "Malato sintasa (MS)"
+    "es": "Malato sintasa (MS)",
+    "en": "Malate synthase (MS)"
    }
   },
   {
    "id": "rubisco",
    "tipo": "enzima",
    "nombre": {
-    "es": "RuBisCO (subunidad grande)"
+    "es": "RuBisCO (subunidad grande)",
+    "en": "RuBisCO (large subunit)"
    }
   },
   {
    "id": "sps",
    "tipo": "enzima",
    "nombre": {
-    "es": "Sacarosa-fosfato sintasa"
+    "es": "Sacarosa-fosfato sintasa",
+    "en": "Sucrose-phosphate synthase"
    }
   },
   {
    "id": "sdp1",
    "tipo": "enzima",
    "nombre": {
-    "es": "Triacilglicerol lipasa (SDP1)"
+    "es": "Triacilglicerol lipasa (SDP1)",
+    "en": "Triacylglycerol lipase (SDP1)"
    }
   },
   {
    "id": "acoa",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Acetil-CoA"
+    "es": "Acetil-CoA",
+    "en": "Acetyl-CoA"
    }
   },
   {
    "id": "clor",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Clorofila a"
+    "es": "Clorofila a",
+    "en": "Chlorophyll a"
    }
   },
   {
    "id": "bhb",
    "tipo": "metabolito",
    "nombre": {
-    "es": "D-β-Hidroxibutirato"
+    "es": "D-β-Hidroxibutirato",
+    "en": "D-β-Hydroxybutyrate"
    }
   },
   {
    "id": "pep",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Fosfoenolpiruvato"
+    "es": "Fosfoenolpiruvato",
+    "en": "Phosphoenolpyruvate"
    }
   },
   {
    "id": "glx",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Glioxilato"
+    "es": "Glioxilato",
+    "en": "Glyoxylate"
    }
   },
   {
    "id": "glucogeno",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Glucógeno"
+    "es": "Glucógeno",
+    "en": "Glycogen"
    }
   },
   {
    "id": "lac",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Lactato"
+    "es": "Lactato",
+    "en": "Lactate"
    }
   },
   {
    "id": "mal",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Malato"
+    "es": "Malato",
+    "en": "Malate"
    }
   },
   {
    "id": "sac",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Sacarosa"
+    "es": "Sacarosa",
+    "en": "Sucrose"
    }
   },
   {
    "id": "succ",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Succinato"
+    "es": "Succinato",
+    "en": "Succinate"
    }
   },
   {
    "id": "tag",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Triacilgliceroles"
+    "es": "Triacilgliceroles",
+    "en": "Triacylglycerols"
    }
   }
  ]

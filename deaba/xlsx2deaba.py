@@ -76,6 +76,14 @@ def convertir(ruta):
     if "Actividad" not in wb.sheetnames:
         raise ErrorExcel("Falta la hoja «Actividad»")
     A = {txt(f.get("Campo")): f.get("Valor") for f in filas(wb["Actividad"])}
+    AEN = {txt(f.get("Campo")): f.get("Valor (en)") for f in filas(wb["Actividad"])}
+
+    def bil(es, en):
+        # Texto en dos idiomas: el inglés solo si está relleno.
+        d = {"es": txt(es)}
+        if txt(en):
+            d["en"] = txt(en)
+        return d
     aid = txt(A.get("id"))
     if not re.fullmatch(r"[a-z0-9]+(_[a-z0-9]+)*", aid or ""):
         errores.append("Actividad: «id» debe ir en minúsculas, sin tildes ni espacios (p. ej., diabetes_t1_medium)")
@@ -95,16 +103,17 @@ def convertir(ruta):
         if not txt(A.get(k)):
             errores.append(f"Actividad: falta «{k}»")
 
-    act = {"schema": "deaba/1", "id": aid, "tipo": tipo, "nivel": nivel, "titulo": {"es": txt(A.get("titulo"))},
+    act = {"schema": "deaba/1", "id": aid, "tipo": tipo, "nivel": nivel, "titulo": bil(A.get("titulo"), AEN.get("titulo")),
            "asignatura": txt(A.get("asignatura")), "autor": txt(A.get("autor")),
-           "contexto": {"es": txt(A.get("contexto"))}, "mision": {"es": txt(A.get("mision"))}, "puntos": pts}
+           "contexto": bil(A.get("contexto"), AEN.get("contexto")), "mision": bil(A.get("mision"), AEN.get("mision")), "puntos": pts}
     guia = {"schema": "deaba-guia/1", "actividad": aid, "objetivo": {"es": txt(A.get("objetivo"))},
             "nivel_texto": {"es": txt(A.get("nivel_texto"))}, "secciones": {s: [] for s in SECCIONES}}
 
     if tipo == 1:
         if "Moléculas" not in wb.sheetnames:
             raise ErrorExcel("Falta la hoja «Moléculas»")
-        act["condiciones"] = {"c1": {"es": txt(A.get("condicion_1")) or "Condición 1"}, "c2": {"es": txt(A.get("condicion_2")) or "Condición 2"}}
+        act["condiciones"] = {"c1": bil(A.get("condicion_1") or "Condición 1", AEN.get("condicion_1") or ("Condition 1" if not txt(A.get("condicion_1")) else "")),
+                              "c2": bil(A.get("condicion_2") or "Condición 2", AEN.get("condicion_2") or ("Condition 2" if not txt(A.get("condicion_2")) else ""))}
         act["moleculas"] = []
         guia["moleculas"] = {}
         vistos = set()
@@ -124,7 +133,7 @@ def convertir(ruta):
                 fc = 1
             if -1 < fc < 1:
                 errores.append(f"{d}: el FC va de 1 en adelante o de −1 hacia abajo (convención −1/valor)")
-            act["moleculas"].append({"id": mid, "tipo": tp, "nombre": {"es": txt(f.get("Nombre"))}, "fc": fc})
+            act["moleculas"].append({"id": mid, "tipo": tp, "nombre": bil(f.get("Nombre"), f.get("Nombre (en)")), "fc": fc})
             guia["moleculas"][mid] = {"reaccion": {"es": txt(f.get("Reacción"))}, "rutas": rutas(f.get("Rutas"), d, errores),
                                       "compartimento": {"es": txt(f.get("Compartimento"))}, "porque": {"es": txt(f.get("Por qué cambia"))},
                                       "claves": lista(f.get("Palabras clave"))}
@@ -146,7 +155,7 @@ def convertir(ruta):
             papel = txt(f.get("Papel")) or "valida"
             if papel not in ("referencia_1", "referencia_2", "valida", "debil"):
                 errores.append(f"Condiciones, fila {i}: papel «{papel}» desconocido")
-            act["condiciones"].append({"id": cid, "nombre": {"es": txt(f.get("Nombre"))}})
+            act["condiciones"].append({"id": cid, "nombre": bil(f.get("Nombre"), f.get("Nombre (en)"))})
             guia["condiciones"][cid] = {"comentario": {"es": txt(f.get("Comentario (guía)"))}, "papel": papel}
         papeles = [c["papel"] for c in guia["condiciones"].values()]
         if papeles.count("referencia_1") != 1 or papeles.count("referencia_2") != 1:
@@ -173,7 +182,7 @@ def convertir(ruta):
                         errores.append(f"{d}: el nivel no puede ser negativo")
                 except ErrorExcel as e:
                     errores.append(str(e))
-            cat.append({"id": mid, "tipo": tp, "nombre": {"es": txt(f.get("Nombre"))}})
+            cat.append({"id": mid, "tipo": tp, "nombre": bil(f.get("Nombre"), f.get("Nombre (en)"))})
             guia["marcadores"][mid] = {"papel": papel, "reaccion": {"es": txt(f.get("Reacción"))}, "rutas": rutas(f.get("Rutas"), d, errores),
                                        "compartimento": {"es": txt(f.get("Compartimento"))}, "porque": {"es": txt(f.get("Por qué"))},
                                        "claves": lista(f.get("Palabras clave")), "niveles": niveles}

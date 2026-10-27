@@ -4,15 +4,18 @@
  "tipo": 1,
  "nivel": "medium",
  "titulo": {
-  "es": "El misterio del flujo de carbonos"
+  "es": "El misterio del flujo de carbonos",
+  "en": "The carbon flux mystery"
  },
  "asignatura": "Bioquímica",
  "autor": "Alfonso Olaya Abril",
  "contexto": {
-  "es": "Un grupo de investigación ha enviado al laboratorio central muestras de tejido hepático de un modelo animal en dos condiciones fisiológicas distintas. Los animales de la condición A han perdido peso en las últimas semanas aunque comen con normalidad; los de la condición B están sanos. Se han analizado sus perfiles mediante proteómica y metabolómica."
+  "es": "Un grupo de investigación ha enviado al laboratorio central muestras de tejido hepático de un modelo animal en dos condiciones fisiológicas distintas. Los animales de la condición A han perdido peso en las últimas semanas aunque comen con normalidad; los de la condición B están sanos. Se han analizado sus perfiles mediante proteómica y metabolómica.",
+  "en": "A research group has sent the central laboratory liver tissue samples from an animal model in two different physiological conditions. The animals in condition A have lost weight over the last few weeks even though they eat normally; those in condition B are healthy. Their profiles have been analysed by proteomics and metabolomics."
  },
  "mision": {
-  "es": "Analizad los perfiles moleculares y reconstruid el puzle metabólico para identificar qué proceso fisiológico o patológico está ocurriendo en la condición A con respecto a la B."
+  "es": "Analizad los perfiles moleculares y reconstruid el puzle metabólico para identificar qué proceso fisiológico o patológico está ocurriendo en la condición A con respecto a la B.",
+  "en": "Analyse the molecular profiles and put the metabolic puzzle together to identify which physiological or pathological process is taking place in condition A compared with condition B."
  },
  "puntos": [
   3,
@@ -21,10 +24,12 @@
  ],
  "condiciones": {
   "c1": {
-   "es": "Condición A"
+   "es": "Condición A",
+   "en": "Condition A"
   },
   "c2": {
-   "es": "Condición B"
+   "es": "Condición B",
+   "en": "Condition B"
   }
  },
  "moleculas": [
@@ -32,7 +37,8 @@
    "id": "1",
    "tipo": "enzima",
    "nombre": {
-    "es": "Acil graso-CoA sintetasa"
+    "es": "Acil graso-CoA sintetasa",
+    "en": "Fatty acyl-CoA synthetase"
    },
    "fc": 10
   },
@@ -40,7 +46,8 @@
    "id": "2",
    "tipo": "enzima",
    "nombre": {
-    "es": "Carnitina aciltransferasa I (CAT-I)"
+    "es": "Carnitina aciltransferasa I (CAT-I)",
+    "en": "Carnitine acyltransferase I (CAT-I)"
    },
    "fc": 12
   },
@@ -48,7 +55,8 @@
    "id": "3",
    "tipo": "enzima",
    "nombre": {
-    "es": "Enoil-CoA hidratasa"
+    "es": "Enoil-CoA hidratasa",
+    "en": "Enoyl-CoA hydratase"
    },
    "fc": 8
   },
@@ -56,7 +64,8 @@
    "id": "4",
    "tipo": "enzima",
    "nombre": {
-    "es": "L-3-Hidroxiacil-CoA deshidrogenasa"
+    "es": "L-3-Hidroxiacil-CoA deshidrogenasa",
+    "en": "L-3-Hydroxyacyl-CoA dehydrogenase"
    },
    "fc": 7
   },
@@ -64,7 +73,8 @@
    "id": "5",
    "tipo": "enzima",
    "nombre": {
-    "es": "Tiolasa"
+    "es": "Tiolasa",
+    "en": "Thiolase"
    },
    "fc": 10
   },
@@ -72,7 +82,8 @@
    "id": "6",
    "tipo": "enzima",
    "nombre": {
-    "es": "HMG-CoA sintasa"
+    "es": "HMG-CoA sintasa",
+    "en": "HMG-CoA synthase"
    },
    "fc": 20
   },
@@ -80,7 +91,8 @@
    "id": "7",
    "tipo": "enzima",
    "nombre": {
-    "es": "HMG-CoA reductasa"
+    "es": "HMG-CoA reductasa",
+    "en": "HMG-CoA reductase"
    },
    "fc": -14
   },
@@ -88,7 +100,8 @@
    "id": "8",
    "tipo": "enzima",
    "nombre": {
-    "es": "D-3-Hidroxibutirato deshidrogenasa"
+    "es": "D-3-Hidroxibutirato deshidrogenasa",
+    "en": "D-3-Hydroxybutyrate dehydrogenase"
    },
    "fc": 15
   },
@@ -96,7 +109,8 @@
    "id": "9",
    "tipo": "enzima",
    "nombre": {
-    "es": "Acetil-CoA carboxilasa (ACC)"
+    "es": "Acetil-CoA carboxilasa (ACC)",
+    "en": "Acetyl-CoA carboxylase (ACC)"
    },
    "fc": -25
   },
@@ -104,7 +118,8 @@
    "id": "10",
    "tipo": "enzima",
    "nombre": {
-    "es": "Hexoquinasa"
+    "es": "Hexoquinasa",
+    "en": "Hexokinase"
    },
    "fc": -15
   },
@@ -112,7 +127,8 @@
    "id": "11",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Acilcarnitina"
+    "es": "Acilcarnitina",
+    "en": "Acylcarnitine"
    },
    "fc": 8
   },
@@ -120,7 +136,8 @@
    "id": "12",
    "tipo": "metabolito",
    "nombre": {
-    "es": "L-3-Hidroxiacil-CoA"
+    "es": "L-3-Hidroxiacil-CoA",
+    "en": "L-3-Hydroxyacyl-CoA"
    },
    "fc": 19
   },
@@ -128,7 +145,8 @@
    "id": "13",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Acetil-CoA"
+    "es": "Acetil-CoA",
+    "en": "Acetyl-CoA"
    },
    "fc": 35
   },
@@ -136,7 +154,8 @@
    "id": "14",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Malonil-CoA"
+    "es": "Malonil-CoA",
+    "en": "Malonyl-CoA"
    },
    "fc": -19
   },
@@ -144,7 +163,8 @@
    "id": "15",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Oxalacetato"
+    "es": "Oxalacetato",
+    "en": "Oxaloacetate"
    },
    "fc": -23
   },
@@ -152,7 +172,8 @@
    "id": "16",
    "tipo": "metabolito",
    "nombre": {
-    "es": "D-β-Hidroxibutirato"
+    "es": "D-β-Hidroxibutirato",
+    "en": "D-β-Hydroxybutyrate"
    },
    "fc": 6
   },
@@ -160,7 +181,8 @@
    "id": "17",
    "tipo": "metabolito",
    "nombre": {
-    "es": "Glucosa"
+    "es": "Glucosa",
+    "en": "Glucose"
    },
    "fc": 4
   }

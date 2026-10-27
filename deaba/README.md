@@ -9,6 +9,16 @@ Parte de BIOCOGNIA. Versión digital de la metodología DEAba (análisis de expr
 
 Puntuación por defecto (3 + 3 + 4). Tipo 1: reacciones, rutas y diagnóstico. Tipo 2: condiciones; enzimas, reacciones y rutas; fold change.
 
+## Escribir sin pelearse con el teclado
+
+- **Reacciones y frases.** Al escribir, la app sugiere nombres de metabolitos, cofactores y enzimas (`catalogo.json`, más las moléculas de la propia actividad). Se aceptan con un toque, con Enter o con Tab. Los botones «→» y «+» insertan los símbolos de la reacción. Solo se sugieren **nombres**, nunca reacciones: la app ayuda a escribir, no da la respuesta.
+- **Rutas.** Un buscador: se escribe parte del nombre («gluco», «cetog») y se elige de la lista.
+- El catálogo se amplía en `py/catalogo.py` (fuera del repositorio) o editando directamente `catalogo.json` (`{"es": …, "en": …}`).
+
+## Idiomas
+
+La interfaz está en español e inglés. Para que una actividad también se vea en inglés, rellena la columna «Valor (en)» de la hoja «Actividad» (título, contexto, misión y nombres de las condiciones) y las columnas «Nombre (en)». Lo que quede vacío se muestra en español. La guía del profesor está solo en español.
+
 ## Cómo se usa
 
 - **Grupos:** `deaba/?s=CÓDIGO`. Entran con el código y el nombre del grupo, sin datos personales. Trabajan de forma independiente y no reciben corrección: todo queda abierto hasta el plenario.
@@ -30,6 +40,15 @@ El panel busca en lo que escribe cada grupo los conceptos definidos en la guía:
 - si la palabra va precedida de «no», «sin», «ni»… (dentro de la misma frase), la marca como negada.
 
 **Es una ayuda para orientar el plenario, no una corrección.**
+
+## Proponer actividades (otro profesorado)
+
+- **Sin cuenta:** `deaba/proponer.html` explica los dos tipos, permite descargar las plantillas y enviar la propuesta por correo (con el Excel adjunto) o abrirla en GitHub (sin el archivo, porque contiene la guía).
+- **Con cuenta en el panel:**
+  1. «Crear actividad desde Excel». El panel comprueba la hoja con el mismo conversor que `xlsx2deaba.py` y guarda la actividad y su guía en Firestore.
+  2. La actividad empieza como **borrador**. Su autor puede probarla en sus sesiones y luego pulsar «Proponer».
+  3. El administrador la revisa y la **publica**. Desde ese momento aparece para todo el profesorado, con «Actividad diseñada por…».
+- Las actividades del repositorio (`actividades/`) tienen prioridad. Las del panel se guardan en `deaba_actividades` y sus guías en `deaba_guias`.
 
 ## Crear o actualizar una actividad
 

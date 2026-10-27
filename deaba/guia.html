@@ -58,8 +58,8 @@ function rubrica(a) {
   const id = new URLSearchParams(location.search).get("a");
   try {
     await dbCargarRutas();
-    const act = await dbActividad(id);
     if (!DBB.demo) await DBB.init().catch(() => {});
+    const act = await dbActividad(id);
     const g = await DBB.guia(id);
     document.title = `Guía · ${L(act.titulo)}`;
     if (!g) { $("#main").innerHTML = `<section class="panel stack"><h1>${esc(L(act.titulo))}</h1><p>No se ha podido cargar la guía. Entra primero en el <a href="panel.html">panel del profesorado</a> con una cuenta autorizada y comprueba que la guía de esta actividad está subida.</p></section>`; return; }

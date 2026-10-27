@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEAba Digital · Proponer una actividad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="deaba.css">
+<style>
+main.wrap { max-width: 860px; }
+html:not([lang="en"]) [data-l="en"], html[lang="en"] [data-l="es"] { display: none !important; }
+a.btn { text-decoration: none; }
+ol.pasos { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; }
+code { font-family: var(--f-mono); font-size: .88em; background: var(--sunk); padding: 1px 5px; border-radius: 5px; }
+form.stack label { display: flex; flex-direction: column; gap: 4px; font-size: .9rem; }
+form.stack label.chk { flex-direction: row; align-items: flex-start; gap: 8px; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.tipos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="mark" href="./">DEABA<small data-l="es">Proponer una actividad</small><small data-l="en">Propose an activity</small></a>
+  <span class="spacer"></span>
+  <div class="lang" role="group" aria-label="Idioma / Language"><button data-lang="es">ES</button><button data-lang="en">EN</button></div>
+</div></header>
+<main class="wrap stack-lg">
+
+<section class="stack">
+  <p class="eyebrow">DEAba · BIOCOGNIA</p>
+  <h1 data-l="es">Diseña tu propia actividad</h1><h1 data-l="en">Design your own activity</h1>
+  <p data-l="es">Una actividad DEAba pone a los grupos ante un experimento de expresión diferencial (proteómica y metabolómica): o lo interpretan, o lo diseñan. Trabajan sin corrección y todo se discute en un plenario. Cualquier docente puede diseñar una y proponerla para que se publique en abierto con su nombre.</p>
+  <p data-l="en">A DEAba activity puts groups in front of a differential expression experiment (proteomics and metabolomics): they either interpret it or design it. They work without feedback and everything is discussed in a plenary. Any teacher can design one and propose it for open publication under their name.</p>
+  <div class="tipos">
+    <div class="panel stack"><h2 data-l="es">Tipo 1 · Interpretar</h2><h2 data-l="en">Type 1 · Interpret</h2>
+      <p class="small" data-l="es">Das una tabla de enzimas y metabolitos con su fold change. Los grupos escriben la reacción y la ruta de cada uno y explican qué está ocurriendo.</p>
+      <p class="small" data-l="en">You give a table of enzymes and metabolites with their fold change. Groups write the reaction and pathway of each one and explain what is happening.</p>
+      <a class="btn primary" href="plantilla/Plantilla_DEAba_tipo1.xlsx" download><span data-l="es">Plantilla del tipo 1</span><span data-l="en">Type 1 template</span></a></div>
+    <div class="panel stack"><h2 data-l="es">Tipo 2 · Diseñar</h2><h2 data-l="en">Type 2 · Design</h2>
+      <p class="small" data-l="es">Planteas una hipótesis. Los grupos eligen las condiciones y los marcadores (de un catálogo con distractores) y predicen el fold change; en el plenario se «ejecuta el experimento».</p>
+      <p class="small" data-l="en">You pose a hypothesis. Groups choose the conditions and markers (from a catalogue with distractors) and predict the fold change; in the plenary the “experiment is run”.</p>
+      <a class="btn primary" href="plantilla/Plantilla_DEAba_tipo2.xlsx" download><span data-l="es">Plantilla del tipo 2</span><span data-l="en">Type 2 template</span></a></div>
+  </div>
+</section>
+
+<section class="panel stack">
+  <h2 data-l="es">Cómo se rellena</h2><h2 data-l="en">How to fill it in</h2>
+  <ol class="pasos" data-l="es">
+    <li><b>Actividad.</b> Identificador (<code>condición_tipo_nivel</code>, p. ej. <code>diabetes_t1_medium</code>), título, contexto y misión. Si rellenas la columna «Valor (en)», la actividad también se verá en inglés.</li>
+    <li><b>Moléculas</b> (tipo 1) o <b>Condiciones y Marcadores</b> (tipo 2). Lo que ven los grupos va en las columnas blancas; la clave (reacción, rutas, por qué cambia, papel de cada marcador, niveles en cada condición) en las amarillas.</li>
+    <li><b>Guía.</b> Una fila por idea: respuesta esperada, pistas, razonamiento, alternativas válidas, errores frecuentes, preguntas para el plenario y referencias. Con esto se genera la guía del profesor.</li>
+    <li><b>Conceptos</b> (opcional). Palabras que el panel buscará en las respuestas para orientar el plenario. No corrige: ayuda a ver qué ideas han aparecido.</li>
+  </ol>
+  <ol class="pasos" data-l="en">
+    <li><b>Activity.</b> Identifier (<code>condition_type_level</code>, e.g. <code>diabetes_t1_medium</code>), title, context and mission. If you fill in the “Valor (en)” column, the activity will also be shown in English.</li>
+    <li><b>Molecules</b> (type 1) or <b>Conditions and Markers</b> (type 2). What groups see goes in the white columns; the key (reaction, pathways, why it changes, role of each marker, levels in each condition) in the yellow ones.</li>
+    <li><b>Guide.</b> One row per idea: expected answer, hints, reasoning, valid alternatives, common errors, plenary questions and references. This becomes the teacher's guide.</li>
+    <li><b>Concepts</b> (optional). Words the panel will look for in the answers to steer the plenary. It does not mark anything: it shows which ideas have come up.</li>
+  </ol>
+  <p class="small"><b data-l="es">¿Ya tienes cuenta en el panel?</b><b data-l="en">Already have a panel account?</b>
+    <span data-l="es">Carga la hoja tú mismo en <a href="panel.html">el panel</a> («Crear actividad desde Excel»): verás los errores al momento, podrás probarla con tus grupos como borrador y proponerla con un clic. Para tener cuenta, escribe a <a href="mailto:b22olaba@uco.es">b22olaba@uco.es</a>.</span>
+    <span data-l="en">Load the sheet yourself in <a href="panel.html">the panel</a> (“Crear actividad desde Excel”): you will see any errors instantly, test it with your groups as a draft and propose it with one click. To get an account, write to <a href="mailto:b22olaba@uco.es">b22olaba@uco.es</a>.</span></p>
+</section>
+
+<section class="panel stack">
+  <h2 data-l="es">Enviar la propuesta sin cuenta</h2><h2 data-l="en">Submit your proposal without an account</h2>
+  <p class="notice small" data-l="es"><b>Importante:</b> el Excel contiene la guía con las respuestas. No lo subas a ningún sitio público: envíalo por correo. En GitHub, abre solo la propuesta (sin el archivo).</p>
+  <p class="notice small" data-l="en"><b>Important:</b> the spreadsheet contains the guide with the answers. Do not upload it anywhere public: send it by email. On GitHub, open only the proposal (without the file).</p>
+  <form class="stack" id="f">
+    <div class="cols">
+      <label><span data-l="es">Nombre y apellidos</span><span data-l="en">Full name</span><input class="field" name="nombre" required maxlength="80"></label>
+      <label><span data-l="es">Centro o universidad</span><span data-l="en">Institution</span><input class="field" name="centro" maxlength="120"></label>
+      <label><span data-l="es">Título de la actividad</span><span data-l="en">Activity title</span><input class="field" name="titulo" required maxlength="120"></label>
+      <label><span data-l="es">Asignatura, tipo y nivel</span><span data-l="en">Course, type and level</span><input class="field" name="asignatura" maxlength="120"></label>
+    </div>
+    <label><span data-l="es">Breve descripción (qué situación metabólica y qué deben deducir o diseñar los grupos)</span><span data-l="en">Short description (which metabolic situation and what groups must deduce or design)</span><textarea class="field" name="desc" rows="4" maxlength="1500"></textarea></label>
+    <label class="chk small"><input type="checkbox" name="ok" required style="margin-top:3px"><span><span data-l="es">Soy autor/a de la actividad y acepto que, si se publica, se distribuya en abierto dentro de BIOCOGNIA con mi nombre como autor/a.</span><span data-l="en">I am the author of this activity and agree that, if published, it will be distributed openly within BIOCOGNIA with my name as author.</span></span></label>
+    <div class="row">
+      <button class="btn primary" type="submit" data-via="correo"><span data-l="es">Enviar por correo (con el Excel adjunto)</span><span data-l="en">Send by email (attach the spreadsheet)</span></button>
+      <button class="btn" type="submit" data-via="github"><span data-l="es">Abrir la propuesta en GitHub</span><span data-l="en">Open the proposal on GitHub</span></button>
+    </div>
+    <p class="small muted" data-l="es">«Enviar por correo» abre tu programa de correo con el mensaje preparado: <b>adjunta el Excel antes de enviarlo</b>. Si no se abre, escribe a <a href="mailto:b22olaba@uco.es">b22olaba@uco.es</a>.</p>
+    <p class="small muted" data-l="en">“Send by email” opens your mail app with the message ready: <b>attach the spreadsheet before sending</b>. If nothing opens, write to <a href="mailto:b22olaba@uco.es">b22olaba@uco.es</a>.</p>
+  </form>
+</section>
+
+<section class="panel stack">
+  <h2 data-l="es">Qué pasa después</h2><h2 data-l="en">What happens next</h2>
+  <ol class="pasos" data-l="es">
+    <li>Se revisa la actividad: que la hoja se convierta sin errores, que los datos sean bioquímicamente coherentes y que la guía esté completa. Si hay que cambiar algo, te escribimos.</li>
+    <li>Se publica en DEAba Digital y aparece en el panel para cualquier docente autorizado, con su versión en papel y su guía.</li>
+    <li>La actividad muestra «Actividad diseñada por …» con tu nombre.</li>
+  </ol>
+  <ol class="pasos" data-l="en">
+    <li>The activity is reviewed: the sheet must convert without errors, the data must be biochemically consistent and the guide complete. If something needs changing, we will contact you.</li>
+    <li>It is published in DEAba Digital and appears in the panel for every authorised teacher, with its paper version and guide.</li>
+    <li>The activity shows “Activity designed by …” with your name.</li>
+  </ol>
+</section>
+</main>
+<footer><div class="wrap small muted">DEAba Digital · BIOCOGNIA</div></footer>
+<script>
+"use strict";
+const REPO = "AlfonsoOA/biocognia", CORREO = "b22olaba@uco.es";
+let lang = "es";
+try { lang = localStorage.getItem("db.lang") || ((navigator.language || "es").startsWith("es") ? "es" : "en"); } catch (e) {}
+function setLang(l) { lang = l; document.documentElement.lang = l; for (const b of document.querySelectorAll(".lang button")) b.setAttribute("aria-pressed", b.dataset.lang === l); try { localStorage.setItem("db.lang", l); } catch (e) {} }
+setLang(lang);
+document.querySelector(".lang").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) setLang(b.dataset.lang); });
+let via = "correo";
+for (const b of document.querySelectorAll("button[data-via]")) b.addEventListener("click", () => { via = b.dataset.via; });
+document.getElementById("f").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const f = e.target, v = (k) => f[k].value.trim();
+  const titulo = `[DEAba] ${v("titulo")}`;
+  const cuerpo = [
+    `Actividad / Activity: ${v("titulo")}`, `Autor/a / Author: ${v("nombre")}`,
+    v("centro") ? `Centro / Institution: ${v("centro")}` : null, v("asignatura") ? `Asignatura, tipo y nivel / Course, type and level: ${v("asignatura")}` : null,
+    "", v("desc"), "", "Acepto que, si se publica, se distribuya en abierto dentro de BIOCOGNIA con mi nombre como autor/a.",
+  ].filter((x) => x !== null).join("\n");
+  if (via === "github") {
+    const body = cuerpo + "\n\n(La hoja Excel con la guía se envía por correo, no aquí. / The spreadsheet with the guide is sent by email, not here.)";
+    window.open(`https://github.com/${REPO}/issues/new?labels=propuesta-deaba&title=${encodeURIComponent(titulo)}&body=${encodeURIComponent(body)}`, "_blank", "noopener");
+  } else {
+    location.href = `mailto:${CORREO}?subject=${encodeURIComponent(titulo)}&body=${encodeURIComponent(cuerpo + "\n\n[Adjunta aquí la hoja Excel / Attach the spreadsheet here]")}`;
+  }
+});
+</script>
+</body>
+</html>

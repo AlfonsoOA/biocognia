@@ -34,6 +34,7 @@ table.w td { height: 2.6em; } table.w td.e { border-left: 1px solid var(--line);
   <label class="toggle small noprint" id="op-banco" hidden><input type="checkbox" id="banco"> Incluir el banco de marcadores</label><button class="btn small" onclick="print()">Imprimir</button></div></header>
 <main class="wrap" id="main"><p class="muted">Cargando…</p></main>
 <footer><div class="wrap">DEAba Digital · BIOCOGNIA</div></footer>
+<script src="../quaestia/firebase-config.js"></script>
 <script src="deaba.js"></script>
 <script>
 "use strict";
@@ -69,7 +70,7 @@ function render() {
 document.addEventListener("change", (e) => { if (e.target.id === "banco") render(); });
 (async function () {
   const id = new URLSearchParams(location.search).get("a");
-  try { await dbCargarRutas(); ACT = await dbActividad(id); document.title = `${L(ACT.titulo)} · papel`; if (ACT.tipo === 2) $("#op-banco").hidden = false; render(); }
+  try { await dbCargarRutas(); if (!DBB.demo) await DBB.init().catch(() => {}); ACT = await dbActividad(id); document.title = `${L(ACT.titulo)} · papel`; if (ACT.tipo === 2) $("#op-banco").hidden = false; render(); }
   catch (e) { $("#main").innerHTML = `<p class="notice">No se ha podido cargar la actividad «${esc(id)}».</p>`; }
 })();
 </script>

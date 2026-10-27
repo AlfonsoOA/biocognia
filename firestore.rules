@@ -114,9 +114,28 @@ service cloud.firestore {
 
     // ---------- DEAba Digital ----------
     // Guías del profesor (respuestas esperadas): solo el profesorado autorizado; solo el administrador las sube.
+    // Actividades creadas desde el panel: el contenido lo leen los grupos; el profesorado crea borradores y los propone.
+    match /deaba_actividades/{aid} {
+      allow read: if request.auth != null;
+      allow create: if esAdmin()
+                    || (esProfesor() && request.resource.data.autor == request.auth.uid && request.resource.data.estado == 'borrador');
+      allow update: if esAdmin()
+                    || (esProfesor() && resource.data.autor == request.auth.uid
+                        && resource.data.estado in ['borrador', 'propuesta']
+                        && request.resource.data.autor == request.auth.uid
+                        && request.resource.data.estado in ['borrador', 'propuesta']);
+      allow delete: if esAdmin() || (esProfesor() && resource.data.autor == request.auth.uid && resource.data.estado != 'publicada');
+    }
+    function deabaActividad(aid) { return get(/databases/$(database)/documents/deaba_actividades/$(aid)).data; }
+    // Guías del profesor (respuestas esperadas): solo el profesorado. El administrador sube cualquiera;
+    // cada profesor, la de su propia actividad mientras no esté publicada.
     match /deaba_guias/{aid} {
       allow read: if esDocente();
-      allow write: if esAdmin();
+      allow write: if esAdmin()
+                   || (esProfesor()
+                       && exists(/databases/$(database)/documents/deaba_actividades/$(aid))
+                       && deabaActividad(aid).autor == request.auth.uid
+                       && deabaActividad(aid).estado != 'publicada');
     }
     match /deaba_sesiones/{sid} {
       allow read: if request.auth != null;

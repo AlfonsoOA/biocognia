@@ -1,0 +1,1090 @@
+{
+"metabolitos": [
+{
+"es": "Glucosa",
+"en": "Glucose"
+},
+{
+"es": "Glucosa-6-fosfato",
+"en": "Glucose 6-phosphate"
+},
+{
+"es": "Glucosa-1-fosfato",
+"en": "Glucose 1-phosphate"
+},
+{
+"es": "Fructosa",
+"en": "Fructose"
+},
+{
+"es": "Fructosa-6-fosfato",
+"en": "Fructose 6-phosphate"
+},
+{
+"es": "Fructosa-1,6-bisfosfato",
+"en": "Fructose 1,6-bisphosphate"
+},
+{
+"es": "Fructosa-2,6-bisfosfato",
+"en": "Fructose 2,6-bisphosphate"
+},
+{
+"es": "Fructosa-1-fosfato",
+"en": "Fructose 1-phosphate"
+},
+{
+"es": "Galactosa",
+"en": "Galactose"
+},
+{
+"es": "Galactosa-1-fosfato",
+"en": "Galactose 1-phosphate"
+},
+{
+"es": "Galactitol",
+"en": "Galactitol"
+},
+{
+"es": "Lactosa",
+"en": "Lactose"
+},
+{
+"es": "Sacarosa",
+"en": "Sucrose"
+},
+{
+"es": "Sacarosa-6-fosfato",
+"en": "Sucrose 6-phosphate"
+},
+{
+"es": "Maltosa",
+"en": "Maltose"
+},
+{
+"es": "Almidón",
+"en": "Starch"
+},
+{
+"es": "Glucógeno",
+"en": "Glycogen"
+},
+{
+"es": "UDP-glucosa",
+"en": "UDP-glucose"
+},
+{
+"es": "UDP-galactosa",
+"en": "UDP-galactose"
+},
+{
+"es": "Dihidroxiacetona fosfato",
+"en": "Dihydroxyacetone phosphate"
+},
+{
+"es": "Gliceraldehído-3-fosfato",
+"en": "Glyceraldehyde 3-phosphate"
+},
+{
+"es": "Gliceraldehído",
+"en": "Glyceraldehyde"
+},
+{
+"es": "1,3-Bisfosfoglicerato",
+"en": "1,3-Bisphosphoglycerate"
+},
+{
+"es": "2,3-Bisfosfoglicerato",
+"en": "2,3-Bisphosphoglycerate"
+},
+{
+"es": "3-Fosfoglicerato",
+"en": "3-Phosphoglycerate"
+},
+{
+"es": "2-Fosfoglicerato",
+"en": "2-Phosphoglycerate"
+},
+{
+"es": "Fosfoenolpiruvato",
+"en": "Phosphoenolpyruvate"
+},
+{
+"es": "Piruvato",
+"en": "Pyruvate"
+},
+{
+"es": "Lactato",
+"en": "Lactate"
+},
+{
+"es": "Etanol",
+"en": "Ethanol"
+},
+{
+"es": "Acetaldehído",
+"en": "Acetaldehyde"
+},
+{
+"es": "Acetato",
+"en": "Acetate"
+},
+{
+"es": "Glicerol",
+"en": "Glycerol"
+},
+{
+"es": "Glicerol-3-fosfato",
+"en": "Glycerol 3-phosphate"
+},
+{
+"es": "6-Fosfogluconolactona",
+"en": "6-Phosphogluconolactone"
+},
+{
+"es": "6-Fosfogluconato",
+"en": "6-Phosphogluconate"
+},
+{
+"es": "Ribulosa-5-fosfato",
+"en": "Ribulose 5-phosphate"
+},
+{
+"es": "Ribosa-5-fosfato",
+"en": "Ribose 5-phosphate"
+},
+{
+"es": "Xilulosa-5-fosfato",
+"en": "Xylulose 5-phosphate"
+},
+{
+"es": "Sedoheptulosa-7-fosfato",
+"en": "Sedoheptulose 7-phosphate"
+},
+{
+"es": "Eritrosa-4-fosfato",
+"en": "Erythrose 4-phosphate"
+},
+{
+"es": "Ribulosa-1,5-bisfosfato",
+"en": "Ribulose 1,5-bisphosphate"
+},
+{
+"es": "Acetil-CoA",
+"en": "Acetyl-CoA"
+},
+{
+"es": "Citrato",
+"en": "Citrate"
+},
+{
+"es": "cis-Aconitato",
+"en": "cis-Aconitate"
+},
+{
+"es": "Isocitrato",
+"en": "Isocitrate"
+},
+{
+"es": "2-Oxoglutarato (α-cetoglutarato)",
+"en": "2-Oxoglutarate (α-ketoglutarate)"
+},
+{
+"es": "Succinil-CoA",
+"en": "Succinyl-CoA"
+},
+{
+"es": "Succinato",
+"en": "Succinate"
+},
+{
+"es": "Fumarato",
+"en": "Fumarate"
+},
+{
+"es": "Malato",
+"en": "Malate"
+},
+{
+"es": "Oxalacetato",
+"en": "Oxaloacetate"
+},
+{
+"es": "Glioxilato",
+"en": "Glyoxylate"
+},
+{
+"es": "Ácido graso",
+"en": "Fatty acid"
+},
+{
+"es": "Acil-CoA",
+"en": "Acyl-CoA"
+},
+{
+"es": "Acilcarnitina",
+"en": "Acylcarnitine"
+},
+{
+"es": "Carnitina",
+"en": "Carnitine"
+},
+{
+"es": "trans-Δ²-Enoil-CoA",
+"en": "trans-Δ²-Enoyl-CoA"
+},
+{
+"es": "L-3-Hidroxiacil-CoA",
+"en": "L-3-Hydroxyacyl-CoA"
+},
+{
+"es": "3-Cetoacil-CoA (β-cetoacil-CoA)",
+"en": "3-Ketoacyl-CoA (β-ketoacyl-CoA)"
+},
+{
+"es": "Malonil-CoA",
+"en": "Malonyl-CoA"
+},
+{
+"es": "Acetoacetil-CoA",
+"en": "Acetoacetyl-CoA"
+},
+{
+"es": "HMG-CoA (3-hidroxi-3-metilglutaril-CoA)",
+"en": "HMG-CoA (3-hydroxy-3-methylglutaryl-CoA)"
+},
+{
+"es": "Acetoacetato",
+"en": "Acetoacetate"
+},
+{
+"es": "D-3-Hidroxibutirato (β-hidroxibutirato)",
+"en": "D-3-Hydroxybutyrate (β-hydroxybutyrate)"
+},
+{
+"es": "Acetona",
+"en": "Acetone"
+},
+{
+"es": "Mevalonato",
+"en": "Mevalonate"
+},
+{
+"es": "Escualeno",
+"en": "Squalene"
+},
+{
+"es": "Colesterol",
+"en": "Cholesterol"
+},
+{
+"es": "Ácidos biliares",
+"en": "Bile acids"
+},
+{
+"es": "Triacilglicerol",
+"en": "Triacylglycerol"
+},
+{
+"es": "Diacilglicerol",
+"en": "Diacylglycerol"
+},
+{
+"es": "Monoacilglicerol",
+"en": "Monoacylglycerol"
+},
+{
+"es": "Ácido fosfatídico",
+"en": "Phosphatidic acid"
+},
+{
+"es": "Fosfolípido",
+"en": "Phospholipid"
+},
+{
+"es": "Palmitato",
+"en": "Palmitate"
+},
+{
+"es": "Palmitoil-CoA",
+"en": "Palmitoyl-CoA"
+},
+{
+"es": "Propionil-CoA",
+"en": "Propionyl-CoA"
+},
+{
+"es": "Metilmalonil-CoA",
+"en": "Methylmalonyl-CoA"
+},
+{
+"es": "Quilomicrones",
+"en": "Chylomicrons"
+},
+{
+"es": "VLDL",
+"en": "VLDL"
+},
+{
+"es": "LDL",
+"en": "LDL"
+},
+{
+"es": "HDL",
+"en": "HDL"
+},
+{
+"es": "Alanina",
+"en": "Alanine"
+},
+{
+"es": "Aspartato",
+"en": "Aspartate"
+},
+{
+"es": "Glutamato",
+"en": "Glutamate"
+},
+{
+"es": "Glutamina",
+"en": "Glutamine"
+},
+{
+"es": "Asparagina",
+"en": "Asparagine"
+},
+{
+"es": "Serina",
+"en": "Serine"
+},
+{
+"es": "Glicina",
+"en": "Glycine"
+},
+{
+"es": "Leucina",
+"en": "Leucine"
+},
+{
+"es": "Isoleucina",
+"en": "Isoleucine"
+},
+{
+"es": "Valina",
+"en": "Valine"
+},
+{
+"es": "Lisina",
+"en": "Lysine"
+},
+{
+"es": "Metionina",
+"en": "Methionine"
+},
+{
+"es": "Fenilalanina",
+"en": "Phenylalanine"
+},
+{
+"es": "Tirosina",
+"en": "Tyrosine"
+},
+{
+"es": "Triptófano",
+"en": "Tryptophan"
+},
+{
+"es": "Treonina",
+"en": "Threonine"
+},
+{
+"es": "Histidina",
+"en": "Histidine"
+},
+{
+"es": "Arginina",
+"en": "Arginine"
+},
+{
+"es": "Ornitina",
+"en": "Ornithine"
+},
+{
+"es": "Citrulina",
+"en": "Citrulline"
+},
+{
+"es": "Argininosuccinato",
+"en": "Argininosuccinate"
+},
+{
+"es": "Carbamoil fosfato",
+"en": "Carbamoyl phosphate"
+},
+{
+"es": "Amonio (NH₄⁺)",
+"en": "Ammonium (NH₄⁺)"
+},
+{
+"es": "Urea",
+"en": "Urea"
+},
+{
+"es": "Ácido úrico",
+"en": "Uric acid"
+},
+{
+"es": "Creatina",
+"en": "Creatine"
+},
+{
+"es": "Fosfocreatina",
+"en": "Phosphocreatine"
+},
+{
+"es": "Creatinina",
+"en": "Creatinine"
+},
+{
+"es": "3-Metilhistidina",
+"en": "3-Methylhistidine"
+},
+{
+"es": "α-Cetoácido de cadena ramificada",
+"en": "Branched-chain α-keto acid"
+},
+{
+"es": "Hemo",
+"en": "Haem"
+},
+{
+"es": "Bilirrubina",
+"en": "Bilirubin"
+},
+{
+"es": "ATP",
+"en": "ATP"
+},
+{
+"es": "ADP",
+"en": "ADP"
+},
+{
+"es": "AMP",
+"en": "AMP"
+},
+{
+"es": "GTP",
+"en": "GTP"
+},
+{
+"es": "GDP",
+"en": "GDP"
+},
+{
+"es": "UTP",
+"en": "UTP"
+},
+{
+"es": "IMP",
+"en": "IMP"
+},
+{
+"es": "cAMP (AMP cíclico)",
+"en": "cAMP (cyclic AMP)"
+},
+{
+"es": "NAD⁺",
+"en": "NAD⁺"
+},
+{
+"es": "NADH",
+"en": "NADH"
+},
+{
+"es": "NADP⁺",
+"en": "NADP⁺"
+},
+{
+"es": "NADPH",
+"en": "NADPH"
+},
+{
+"es": "FAD",
+"en": "FAD"
+},
+{
+"es": "FADH₂",
+"en": "FADH₂"
+},
+{
+"es": "Coenzima A (CoA)",
+"en": "Coenzyme A (CoA)"
+},
+{
+"es": "Ubiquinona (coenzima Q)",
+"en": "Ubiquinone (coenzyme Q)"
+},
+{
+"es": "Ubiquinol (QH₂)",
+"en": "Ubiquinol (QH₂)"
+},
+{
+"es": "Citocromo c",
+"en": "Cytochrome c"
+},
+{
+"es": "Fosfato inorgánico (Pi)",
+"en": "Inorganic phosphate (Pi)"
+},
+{
+"es": "Pirofosfato (PPi)",
+"en": "Pyrophosphate (PPi)"
+},
+{
+"es": "CO₂",
+"en": "CO₂"
+},
+{
+"es": "HCO₃⁻ (bicarbonato)",
+"en": "HCO₃⁻ (bicarbonate)"
+},
+{
+"es": "H₂O",
+"en": "H₂O"
+},
+{
+"es": "O₂",
+"en": "O₂"
+},
+{
+"es": "H₂O₂ (peróxido de hidrógeno)",
+"en": "H₂O₂ (hydrogen peroxide)"
+},
+{
+"es": "H⁺",
+"en": "H⁺"
+},
+{
+"es": "Biotina",
+"en": "Biotin"
+},
+{
+"es": "Tiamina pirofosfato (TPP)",
+"en": "Thiamine pyrophosphate (TPP)"
+},
+{
+"es": "Lipoamida",
+"en": "Lipoamide"
+},
+{
+"es": "Clorofila",
+"en": "Chlorophyll"
+},
+{
+"es": "Insulina",
+"en": "Insulin"
+},
+{
+"es": "Glucagón",
+"en": "Glucagon"
+},
+{
+"es": "Adrenalina",
+"en": "Adrenaline"
+},
+{
+"es": "Cortisol",
+"en": "Cortisol"
+}
+],
+"enzimas": [
+{
+"es": "Hexoquinasa",
+"en": "Hexokinase"
+},
+{
+"es": "Glucoquinasa (hexoquinasa IV)",
+"en": "Glucokinase (hexokinase IV)"
+},
+{
+"es": "Fosfoglucosa isomerasa (fosfohexosa isomerasa)",
+"en": "Phosphoglucose isomerase (phosphohexose isomerase)"
+},
+{
+"es": "Fosfofructoquinasa-1 (PFK-1)",
+"en": "Phosphofructokinase-1 (PFK-1)"
+},
+{
+"es": "Fosfofructoquinasa-2 / fructosa-2,6-bisfosfatasa (PFK-2)",
+"en": "Phosphofructokinase-2 / fructose-2,6-bisphosphatase (PFK-2)"
+},
+{
+"es": "Aldolasa",
+"en": "Aldolase"
+},
+{
+"es": "Aldolasa B",
+"en": "Aldolase B"
+},
+{
+"es": "Triosa fosfato isomerasa",
+"en": "Triose phosphate isomerase"
+},
+{
+"es": "Gliceraldehído-3-fosfato deshidrogenasa",
+"en": "Glyceraldehyde-3-phosphate dehydrogenase"
+},
+{
+"es": "Fosfoglicerato quinasa",
+"en": "Phosphoglycerate kinase"
+},
+{
+"es": "Fosfoglicerato mutasa",
+"en": "Phosphoglycerate mutase"
+},
+{
+"es": "Enolasa",
+"en": "Enolase"
+},
+{
+"es": "Piruvato quinasa",
+"en": "Pyruvate kinase"
+},
+{
+"es": "Lactato deshidrogenasa (LDH)",
+"en": "Lactate dehydrogenase (LDH)"
+},
+{
+"es": "Piruvato carboxilasa",
+"en": "Pyruvate carboxylase"
+},
+{
+"es": "Fosfoenolpiruvato carboxiquinasa (PEPCK)",
+"en": "Phosphoenolpyruvate carboxykinase (PEPCK)"
+},
+{
+"es": "Fosfoenolpiruvato carboxilasa (PEPC)",
+"en": "Phosphoenolpyruvate carboxylase (PEPC)"
+},
+{
+"es": "Fructosa-1,6-bisfosfatasa (FBPasa-1)",
+"en": "Fructose-1,6-bisphosphatase (FBPase-1)"
+},
+{
+"es": "Glucosa-6-fosfatasa",
+"en": "Glucose-6-phosphatase"
+},
+{
+"es": "Glucógeno fosforilasa",
+"en": "Glycogen phosphorylase"
+},
+{
+"es": "Glucógeno sintasa",
+"en": "Glycogen synthase"
+},
+{
+"es": "Enzima ramificante",
+"en": "Branching enzyme"
+},
+{
+"es": "Enzima desramificante",
+"en": "Debranching enzyme"
+},
+{
+"es": "Fosfoglucomutasa",
+"en": "Phosphoglucomutase"
+},
+{
+"es": "UDP-glucosa pirofosforilasa",
+"en": "UDP-glucose pyrophosphorylase"
+},
+{
+"es": "Glucosa-6-fosfato deshidrogenasa",
+"en": "Glucose-6-phosphate dehydrogenase"
+},
+{
+"es": "Lactonasa",
+"en": "Lactonase"
+},
+{
+"es": "6-Fosfogluconato deshidrogenasa",
+"en": "6-Phosphogluconate dehydrogenase"
+},
+{
+"es": "Transcetolasa",
+"en": "Transketolase"
+},
+{
+"es": "Transaldolasa",
+"en": "Transaldolase"
+},
+{
+"es": "Fructoquinasa (cetohexoquinasa)",
+"en": "Fructokinase (ketohexokinase)"
+},
+{
+"es": "Triosa quinasa (gliceraldehído quinasa)",
+"en": "Triose kinase (glyceraldehyde kinase)"
+},
+{
+"es": "Galactoquinasa",
+"en": "Galactokinase"
+},
+{
+"es": "Galactosa-1-fosfato uridiltransferasa (GALT)",
+"en": "Galactose-1-phosphate uridylyltransferase (GALT)"
+},
+{
+"es": "UDP-galactosa-4-epimerasa",
+"en": "UDP-galactose 4-epimerase"
+},
+{
+"es": "Aldosa reductasa",
+"en": "Aldose reductase"
+},
+{
+"es": "Lactasa",
+"en": "Lactase"
+},
+{
+"es": "Sacarasa",
+"en": "Sucrase"
+},
+{
+"es": "α-Amilasa",
+"en": "α-Amylase"
+},
+{
+"es": "Maltasa",
+"en": "Maltase"
+},
+{
+"es": "Sacarosa-fosfato sintasa",
+"en": "Sucrose-phosphate synthase"
+},
+{
+"es": "Piruvato deshidrogenasa (PDH)",
+"en": "Pyruvate dehydrogenase (PDH)"
+},
+{
+"es": "Dihidrolipoil transacetilasa (E2)",
+"en": "Dihydrolipoyl transacetylase (E2)"
+},
+{
+"es": "Dihidrolipoil deshidrogenasa (E3)",
+"en": "Dihydrolipoyl dehydrogenase (E3)"
+},
+{
+"es": "PDH quinasa",
+"en": "PDH kinase"
+},
+{
+"es": "PDH fosfatasa",
+"en": "PDH phosphatase"
+},
+{
+"es": "Citrato sintasa",
+"en": "Citrate synthase"
+},
+{
+"es": "Aconitasa",
+"en": "Aconitase"
+},
+{
+"es": "Isocitrato deshidrogenasa",
+"en": "Isocitrate dehydrogenase"
+},
+{
+"es": "2-Oxoglutarato deshidrogenasa (α-cetoglutarato deshidrogenasa)",
+"en": "2-Oxoglutarate dehydrogenase (α-ketoglutarate dehydrogenase)"
+},
+{
+"es": "Succinil-CoA sintetasa",
+"en": "Succinyl-CoA synthetase"
+},
+{
+"es": "Succinato deshidrogenasa",
+"en": "Succinate dehydrogenase"
+},
+{
+"es": "Fumarasa",
+"en": "Fumarase"
+},
+{
+"es": "Malato deshidrogenasa",
+"en": "Malate dehydrogenase"
+},
+{
+"es": "Enzima málica",
+"en": "Malic enzyme"
+},
+{
+"es": "Isocitrato liasa",
+"en": "Isocitrate lyase"
+},
+{
+"es": "Malato sintasa",
+"en": "Malate synthase"
+},
+{
+"es": "Complejo I (NADH deshidrogenasa)",
+"en": "Complex I (NADH dehydrogenase)"
+},
+{
+"es": "Complejo II (succinato deshidrogenasa)",
+"en": "Complex II (succinate dehydrogenase)"
+},
+{
+"es": "Complejo III (citocromo bc1)",
+"en": "Complex III (cytochrome bc1)"
+},
+{
+"es": "Complejo IV (citocromo c oxidasa)",
+"en": "Complex IV (cytochrome c oxidase)"
+},
+{
+"es": "ATP sintasa",
+"en": "ATP synthase"
+},
+{
+"es": "ETF:ubiquinona oxidorreductasa",
+"en": "ETF:ubiquinone oxidoreductase"
+},
+{
+"es": "Proteína desacoplante (UCP1, termogenina)",
+"en": "Uncoupling protein (UCP1, thermogenin)"
+},
+{
+"es": "Superóxido dismutasa",
+"en": "Superoxide dismutase"
+},
+{
+"es": "Catalasa",
+"en": "Catalase"
+},
+{
+"es": "Lipasa de triacilgliceroles del tejido adiposo (ATGL)",
+"en": "Adipose triglyceride lipase (ATGL)"
+},
+{
+"es": "Lipasa sensible a hormonas (HSL)",
+"en": "Hormone-sensitive lipase (HSL)"
+},
+{
+"es": "Lipasa pancreática",
+"en": "Pancreatic lipase"
+},
+{
+"es": "Lipoproteína lipasa",
+"en": "Lipoprotein lipase"
+},
+{
+"es": "Fosfolipasa",
+"en": "Phospholipase"
+},
+{
+"es": "Acil-CoA sintetasa (acil graso-CoA sintetasa)",
+"en": "Acyl-CoA synthetase (fatty acyl-CoA synthetase)"
+},
+{
+"es": "Carnitina aciltransferasa I (CAT-I, CPT-I)",
+"en": "Carnitine acyltransferase I (CAT-I, CPT-I)"
+},
+{
+"es": "Carnitina aciltransferasa II (CAT-II, CPT-II)",
+"en": "Carnitine acyltransferase II (CAT-II, CPT-II)"
+},
+{
+"es": "Carnitina/acilcarnitina translocasa",
+"en": "Carnitine/acylcarnitine translocase"
+},
+{
+"es": "Acil-CoA deshidrogenasa",
+"en": "Acyl-CoA dehydrogenase"
+},
+{
+"es": "Acil-CoA oxidasa",
+"en": "Acyl-CoA oxidase"
+},
+{
+"es": "Enoil-CoA hidratasa",
+"en": "Enoyl-CoA hydratase"
+},
+{
+"es": "L-3-Hidroxiacil-CoA deshidrogenasa",
+"en": "L-3-Hydroxyacyl-CoA dehydrogenase"
+},
+{
+"es": "Tiolasa (β-cetotiolasa)",
+"en": "Thiolase (β-ketothiolase)"
+},
+{
+"es": "Acetil-CoA carboxilasa (ACC)",
+"en": "Acetyl-CoA carboxylase (ACC)"
+},
+{
+"es": "Ácido graso sintasa (FAS)",
+"en": "Fatty acid synthase (FAS)"
+},
+{
+"es": "Citrato liasa (ATP-citrato liasa)",
+"en": "Citrate lyase (ATP-citrate lyase)"
+},
+{
+"es": "Glicerol quinasa",
+"en": "Glycerol kinase"
+},
+{
+"es": "Glicerol-3-fosfato deshidrogenasa",
+"en": "Glycerol-3-phosphate dehydrogenase"
+},
+{
+"es": "Glicerol-3-fosfato aciltransferasa",
+"en": "Glycerol-3-phosphate acyltransferase"
+},
+{
+"es": "HMG-CoA sintasa",
+"en": "HMG-CoA synthase"
+},
+{
+"es": "HMG-CoA liasa",
+"en": "HMG-CoA lyase"
+},
+{
+"es": "HMG-CoA reductasa",
+"en": "HMG-CoA reductase"
+},
+{
+"es": "D-3-Hidroxibutirato deshidrogenasa",
+"en": "D-3-Hydroxybutyrate dehydrogenase"
+},
+{
+"es": "Succinil-CoA:3-cetoácido CoA transferasa (tioforasa)",
+"en": "Succinyl-CoA:3-ketoacid CoA transferase (thiophorase)"
+},
+{
+"es": "Alanina aminotransferasa (ALT)",
+"en": "Alanine aminotransferase (ALT)"
+},
+{
+"es": "Aspartato aminotransferasa (AST)",
+"en": "Aspartate aminotransferase (AST)"
+},
+{
+"es": "Glutamato deshidrogenasa",
+"en": "Glutamate dehydrogenase"
+},
+{
+"es": "Glutamina sintetasa",
+"en": "Glutamine synthetase"
+},
+{
+"es": "Glutaminasa",
+"en": "Glutaminase"
+},
+{
+"es": "Deshidrogenasa de α-cetoácidos de cadena ramificada (BCKDH)",
+"en": "Branched-chain α-keto acid dehydrogenase (BCKDH)"
+},
+{
+"es": "Aminotransferasa de aminoácidos de cadena ramificada (BCAT)",
+"en": "Branched-chain aminotransferase (BCAT)"
+},
+{
+"es": "Carbamoil fosfato sintetasa I",
+"en": "Carbamoyl phosphate synthetase I"
+},
+{
+"es": "Ornitina transcarbamilasa",
+"en": "Ornithine transcarbamylase"
+},
+{
+"es": "Argininosuccinato sintetasa",
+"en": "Argininosuccinate synthetase"
+},
+{
+"es": "Argininosuccinato liasa",
+"en": "Argininosuccinate lyase"
+},
+{
+"es": "Arginasa",
+"en": "Arginase"
+},
+{
+"es": "Fenilalanina hidroxilasa",
+"en": "Phenylalanine hydroxylase"
+},
+{
+"es": "Creatina quinasa",
+"en": "Creatine kinase"
+},
+{
+"es": "Adenilato quinasa",
+"en": "Adenylate kinase"
+},
+{
+"es": "AMP desaminasa",
+"en": "AMP deaminase"
+},
+{
+"es": "Xantina oxidasa",
+"en": "Xanthine oxidase"
+},
+{
+"es": "Tripsina",
+"en": "Trypsin"
+},
+{
+"es": "Quimotripsina",
+"en": "Chymotrypsin"
+},
+{
+"es": "Pepsina",
+"en": "Pepsin"
+},
+{
+"es": "Alcohol deshidrogenasa (ADH)",
+"en": "Alcohol dehydrogenase (ADH)"
+},
+{
+"es": "Aldehído deshidrogenasa (ALDH)",
+"en": "Aldehyde dehydrogenase (ALDH)"
+},
+{
+"es": "Citocromo P450 2E1 (CYP2E1)",
+"en": "Cytochrome P450 2E1 (CYP2E1)"
+},
+{
+"es": "Proteína quinasa A (PKA)",
+"en": "Protein kinase A (PKA)"
+},
+{
+"es": "Proteína quinasa activada por AMP (AMPK)",
+"en": "AMP-activated protein kinase (AMPK)"
+},
+{
+"es": "Proteína fosfatasa 1 (PP1)",
+"en": "Protein phosphatase 1 (PP1)"
+},
+{
+"es": "Proteína fosfatasa 2A (PP2A)",
+"en": "Protein phosphatase 2A (PP2A)"
+},
+{
+"es": "Adenilato ciclasa",
+"en": "Adenylate cyclase"
+},
+{
+"es": "mTOR",
+"en": "mTOR"
+},
+{
+"es": "RuBisCO",
+"en": "RuBisCO"
+},
+{
+"es": "Acetoacetato descarboxilasa",
+"en": "Acetoacetate decarboxylase"
+}
+]
+}

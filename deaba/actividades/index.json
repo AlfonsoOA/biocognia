@@ -1,0 +1,16 @@
+[
+ {
+  "id": "diabetes_t1_medium",
+  "titulo": "El misterio del flujo de carbonos",
+  "tipo": 1,
+  "nivel": "medium",
+  "asignatura": "Bioquímica"
+ },
+ {
+  "id": "germinacion_t2_medium",
+  "titulo": "Del aceite al azúcar: la germinación de las semillas oleaginosas",
+  "tipo": 2,
+  "nivel": "medium",
+  "asignatura": "Bioquímica"
+ }
+]

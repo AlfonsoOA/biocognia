@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>DEAba · Guía del profesor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="deaba.css">
+<style>
+main.wrap { max-width: 900px; }
+.doc { display: flex; flex-direction: column; gap: 22px; }
+.doc h2 { border-bottom: 2px solid var(--ink); padding-bottom: 4px; }
+.doc ul, .doc ol { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 4px; }
+.meta { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; font-size: .92rem; }
+.meta dt { color: var(--muted); } .meta dd { margin: 0; }
+.ficha { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; break-inside: avoid; font-size: .9rem; display: flex; flex-direction: column; gap: 3px; background: var(--surface); }
+.fichas { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ficha .t { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.ficha .k { color: var(--muted); }
+.conf { background: var(--bad-bg); color: var(--bad); border-radius: 8px; padding: 6px 10px; font-size: .85rem; font-weight: 500; }
+@media (max-width: 640px) { .fichas { grid-template-columns: 1fr; } }
+@media print {
+  @page { size: A4; margin: 15mm 14mm; }
+  :root { --bg: #fff; --surface: #fff; --sunk: #f1f1ee; --ink: #111; --muted: #555; --line: #ccc; color-scheme: light; }
+  body { font-size: 10.5pt; } header.bar, footer, .noprint { display: none !important; } main { padding: 0; }
+  .doc { gap: 14px; } h1 { font-size: 20pt; } h2 { font-size: 13pt; break-after: avoid; } .fc { border: 1px solid #ccc; }
+  table { font-size: 9pt; } tr, .ficha { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap"><a class="mark" href="panel.html">DEABA<small>Guía del profesor</small></a><span class="spacer"></span><button class="btn small" onclick="print()">Imprimir / guardar PDF</button></div></header>
+<main class="wrap" id="main"><p class="muted">Cargando…</p></main>
+<footer><div class="wrap">DEAba Digital · guía del profesor · BIOCOGNIA</div></footer>
+<script src="../quaestia/firebase-config.js"></script>
+<script src="deaba.js"></script>
+<script>
+"use strict";
+const L = (x) => dbT(x, "es");
+const lista = (xs, ord) => xs && xs.length ? `<${ord ? "ol" : "ul"}>${xs.map((x) => `<li>${esc(L(x))}</li>`).join("")}</${ord ? "ol" : "ul"}>` : `<p class="muted">—</p>`;
+const NIV = { low: "básico", medium: "intermedio", high: "avanzado" };
+const PAPEL = { clave: "clave", apoyo: "apoyo", distractor: "distractor", referencia_1: "referencia (condición 1)", referencia_2: "referencia (condición 2)", valida: "válida", debil: "débil" };
+function fcTxt(fc) { const d = dbDir(fc); return `<span class="fc ${d === "sube" ? "up" : d === "baja" ? "down" : "eq"}">${dbFmtFC(fc)}</span>`; }
+function rubrica(a) {
+  const p = a.puntos, n = a.tipo === 1 ? a.moleculas.length : a.n_enzimas + a.n_metabolitos, r = (x) => String(Math.round((x / n) * 100) / 100).replace(".", ",");
+  return a.tipo === 1
+    ? `<ul><li><b>Reacciones (${p[0]}):</b> ${r(p[0])} por molécula con la reacción correcta (sustratos y productos, o la enzima que forma o consume el metabolito).</li>
+       <li><b>Rutas (${p[1]}):</b> ${r(p[1])} por molécula situada en una ruta correcta (cualquiera de las de la ficha).</li>
+       <li><b>Diagnóstico (${p[2]}):</b> identificación de la condición (1) e integración razonada del patrón (3): regulación, flujo del carbono entre rutas y compartimentos, y los datos que descartan las alternativas.</li></ul>`
+    : `<ul><li><b>Condiciones (${p[0]}):</b> comparación de referencia o válida y bien justificada, ${p[0]}; comparación débil, entre 1 y 2 según la justificación; una condición propia se valora por su justificación.</li>
+       <li><b>Enzimas, reacciones y rutas (${p[1]}):</b> ${r(p[1])} por marcador pertinente con su reacción y su ruta. Un distractor no puntúa.</li>
+       <li><b>Fold change (${p[2]}):</b> ${r(p[2])} por marcador con la dirección correcta para la comparación elegida y una magnitud razonable; se valora que incluyan marcadores que bajen.</li></ul>`;
+}
+(async function () {
+  const id = new URLSearchParams(location.search).get("a");
+  try {
+    await dbCargarRutas();
+    const act = await dbActividad(id);
+    if (!DBB.demo) await DBB.init().catch(() => {});
+    const g = await DBB.guia(id);
+    document.title = `Guía · ${L(act.titulo)}`;
+    if (!g) { $("#main").innerHTML = `<section class="panel stack"><h1>${esc(L(act.titulo))}</h1><p>No se ha podido cargar la guía. Entra primero en el <a href="panel.html">panel del profesorado</a> con una cuenta autorizada y comprueba que la guía de esta actividad está subida.</p></section>`; return; }
+    const S = g.secciones, t = dbTareas(act, "es");
+    let datos = "", fichas = "";
+    if (act.tipo === 1) {
+      datos = `<div class="tablebox"><table><thead><tr><th>Id</th><th>Molécula</th><th>Tipo</th><th class="n">FC</th></tr></thead><tbody>${act.moleculas.map((m) => `<tr><td class="num">${esc(m.id)}</td><td>${esc(L(m.nombre))}</td><td>${m.tipo}</td><td class="n">${fcTxt(m.fc)}</td></tr>`).join("")}</tbody></table></div>
+        <p class="small muted">FC = ${esc(L(act.condiciones.c1))} / ${esc(L(act.condiciones.c2))}.</p>`;
+      fichas = act.moleculas.map((m) => { const k = g.moleculas[m.id] || {};
+        return `<div class="ficha"><div class="t"><b>${esc(m.id)}. ${esc(L(m.nombre))}</b>${fcTxt(m.fc)}</div><div>${esc(L(k.reaccion))}</div>
+          <div><span class="k">Ruta:</span> ${(k.rutas || []).map((r) => esc(dbRuta(r, "es"))).join(" · ")} · <span class="k">Compartimento:</span> ${esc(L(k.compartimento))}</div><div><span class="k">Por qué ${m.fc > 0 ? "sube" : "baja"}:</span> ${esc(L(k.porque))}</div></div>`; }).join("");
+    } else {
+      const ref = Object.entries(g.condiciones).filter(([, c]) => c.papel.startsWith("referencia")).sort((a, b) => a[1].papel.localeCompare(b[1].papel)).map(([i]) => i);
+      const nom = (cid) => L((act.condiciones.find((c) => c.id === cid) || {}).nombre);
+      datos = `<div class="tablebox"><table><thead><tr><th>Condición</th><th>Papel</th><th>Comentario</th></tr></thead><tbody>${act.condiciones.map((c) => `<tr><td>${esc(L(c.nombre))}</td><td>${PAPEL[g.condiciones[c.id].papel]}</td><td>${esc(L(g.condiciones[c.id].comentario))}</td></tr>`).join("")}</tbody></table></div>
+        <p class="small muted">Se piden ${act.n_enzimas} enzimas y ${act.n_metabolitos} metabolitos. Fold change de cada marcador en la comparación de referencia: ${esc(nom(ref[0]))} / ${esc(nom(ref[1]))}.</p>`;
+      fichas = act.catalogo.map((m) => { const k = g.marcadores[m.id], fc = dbFC(k.niveles[ref[0]], k.niveles[ref[1]]);
+        return `<div class="ficha"><div class="t"><b>${esc(L(m.nombre))}</b><span class="pill ${k.papel === "clave" ? "ok" : k.papel === "distractor" ? "bad" : ""}">${PAPEL[k.papel]}</span>${fc === null ? `<span class="fc eq">n.d.</span>` : fcTxt(fc)}</div><div>${esc(L(k.reaccion))}</div>
+          <div><span class="k">Ruta:</span> ${(k.rutas || []).map((r) => esc(dbRuta(r, "es"))).join(" · ")} · <span class="k">Compartimento:</span> ${esc(L(k.compartimento))}</div><div>${esc(L(k.porque))}</div></div>`; }).join("");
+    }
+    $("#main").innerHTML = `<article class="doc"><p class="conf">Material del profesorado: no lo compartas con el alumnado antes del plenario.</p>
+      <div class="stack"><p class="eyebrow">DEAba · tipo ${act.tipo} · ${act.tipo === 1 ? "interpretar el experimento" : "diseñar el experimento"}</p><h1>${esc(L(act.titulo))}</h1></div>
+      <dl class="meta"><dt>Identificador</dt><dd class="num">${esc(act.id)}</dd><dt>Nivel</dt><dd>${NIV[act.nivel] || act.nivel}${L(g.nivel_texto) ? ` · ${esc(L(g.nivel_texto))}` : ""}</dd>${act.asignatura ? `<dt>Asignatura</dt><dd>${esc(act.asignatura)}</dd>` : ""}
+        <dt>Objetivo</dt><dd>${esc(L(g.objetivo))}</dd><dt>Tareas</dt><dd>${t.map((x, i) => `${esc(x)} (${act.puntos[i]})`).join(" · ")}</dd>${act.autor ? `<dt>Autoría</dt><dd>${esc(act.autor)}</dd>` : ""}</dl>
+      <section class="stack"><h2>Contexto que ven los grupos</h2><p>${esc(L(act.contexto))}</p><p><b>${esc(L(act.mision))}</b></p>${datos}</section>
+      <section class="stack"><h2>Respuesta esperada</h2>${lista(S.diagnostico)}</section>
+      <section class="stack"><h2>Pistas de entrada</h2>${lista(S.pistas)}</section>
+      <section class="stack"><h2>Razonamiento esperado</h2>${lista(S.razonamiento, true)}</section>
+      <section class="stack"><h2>${act.tipo === 1 ? "Ficha de cada molécula" : "Ficha de cada marcador del catálogo"}</h2><div class="fichas">${fichas}</div></section>
+      <section class="stack"><h2>Interpretaciones alternativas válidas</h2>${lista(S.alternativas)}</section>
+      <section class="stack"><h2>Errores frecuentes</h2>${lista(S.errores)}</section>
+      <section class="stack"><h2>Preguntas para el plenario</h2>${lista(S.plenario)}</section>
+      <section class="stack"><h2>Rúbrica orientativa</h2>${rubrica(act)}</section>
+      ${g.conceptos.length ? `<section class="stack"><h2>Conceptos que busca el panel</h2><p class="small muted">El panel los señala en las respuestas para orientar el plenario; no corrige.</p><ul>${g.conceptos.map((c) => `<li><b>${esc(c.etiqueta)}</b>${c.tipo !== "esperado" ? ` (${c.tipo})` : ""}: <span class="small muted">${c.alternativas.map((a) => a.join(" + ")).join(" · ")}</span></li>`).join("")}</ul></section>` : ""}
+      ${S.notas && S.notas.length ? `<section class="stack"><h2>Notas</h2>${lista(S.notas)}</section>` : ""}
+      <section class="stack"><h2>Referencias</h2>${lista(S.referencias)}</section></article>`;
+  } catch (e) { $("#main").innerHTML = `<p class="notice">No se ha podido cargar la actividad «${esc(id)}».</p>`; }
+})();
+</script>
+</body>
+</html>

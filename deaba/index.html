@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DEAba Digital</title>
+<meta name="description" content="DEAba Digital: interpretación y diseño de experimentos de expresión diferencial en Bioquímica Metabólica. BIOCOGNIA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="deaba.css">
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="mark" href="../">DEABA<small id="tagline">Expresión diferencial</small></a>
+  <span class="small muted spacer" id="who"></span>
+  <div class="lang" role="group" aria-label="Idioma"><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
+</div></header>
+<main class="wrap" id="main"><p class="muted">…</p></main>
+<footer><div class="wrap" id="foot"></div></footer>
+<script src="../quaestia/firebase-config.js"></script>
+<script src="deaba.js"></script>
+<script>
+"use strict";
+const I = {
+  es: {
+    tagline: "Expresión diferencial", join_t: "Entrar en la actividad", join_code: "Código de la sesión", join_name: "Nombre del grupo", join_name_ph: "Por ejemplo: Grupo 3",
+    join_hint: "No pongáis vuestros nombres: basta con el número o el nombre del grupo.", join_btn: "Entrar", join_bad: "No existe ninguna sesión abierta con ese código.", join_err: "No se ha podido entrar. Comprobad la conexión e intentadlo de nuevo.",
+    t1: "Interpretar el experimento", t2: "Diseñar el experimento", pts: (n) => `${n} ${n === 1 ? "punto" : "puntos"}`,
+    fc_nota: (a, b) => `FC = ${a} / ${b}. Un valor negativo equivale a −1/valor: −4 significa que hay cuatro veces menos en la ${a}.`,
+    prot: "Proteómica", metab: "Metabolómica", nombre: "Nombre", enz: "Enzima", met: "Metabolito",
+    reac_ph_e: "Sustratos → productos", reac_ph_m: "¿Qué enzima lo forma o lo consume? ¿En qué reacción?", reac: "Reacción", rutas: "Rutas", add_ruta: "Añadir ruta…",
+    s12_d: "Para cada molécula, escribid la reacción y elegid la ruta o rutas en las que participa.",
+    s3_d: "Explicad el patrón de cambios con frases cortas y, al final, decid qué está ocurriendo.",
+    frase_mol: "Molécula…", porque: "porque", en: "en", frase_ph: "¿qué mecanismo o regulación lo explica?", ruta_ph: "ruta…", add_frase: "Añadir otra frase", del: "Quitar",
+    frases_t: (n) => `Frases de razonamiento (mínimo ${n})`, diag1: (c) => `¿Qué está ocurriendo en la ${c}?`, diag2: (c) => `¿Y en la ${c}? (opcional)`, justif: "Justificación integrada", justif_ph: "Relacionad las frases entre sí: ¿cómo encaja todo?",
+    cond_d: "Elegid las dos situaciones que vais a comparar. El fold change será condición 1 / condición 2.", c1: "Condición 1", c2: "Condición 2", elegir: "Elegid…", otra: "Otra (describidla)", otra_ph: "Describid la condición que proponéis",
+    cond_porque: "¿Por qué esta comparación?", cond_porque_ph: "¿Qué esperáis aislar comparando estas dos situaciones?",
+    marc_d: (e, m) => `Elegid ${e} enzimas y ${m} metabolitos que permitan contrastar la hipótesis. Para cada uno, indicad la reacción, la ruta y cómo esperáis que cambie.`,
+    enzs: (k, n) => `Enzimas (${k} de ${n})`, mets: (k, n) => `Metabolitos (${k} de ${n})`, dir: "Cambio esperado", fc_est: "FC estimado", fc_ph: "p. ej., +8 o −3",
+    fc_d: "Las estimaciones de fold change de cada marcador están en sus tarjetas. Añadid aquí cómo encaja el conjunto.", justif2_ph: "¿Qué demostraría vuestro experimento si los resultados salen como esperáis?",
+    pending: "Os falta:", send: "Enviar la respuesta", send_confirm: "Una vez enviada no podréis cambiarla. ¿Enviar?", yes: "Sí, enviar", no: "Seguir revisando",
+    saving: "Guardando…", saved: "Cambios guardados", sent_t: "Respuesta enviada", sent_d: "Todo queda abierto hasta el plenario: allí se comentarán las respuestas de todos los grupos.",
+    aviso: "Aviso del profesor", vuestra: "Vuestra respuesta",
+    res_t: "Resultados del experimento", res_d: (a, b) => `Fold change observado (${a} / ${b}) en los marcadores que elegisteis.`, res_ref: "Como propusisteis una condición propia, se muestran los resultados de la comparación de referencia.",
+    res_marc: "Marcador", res_pred: "Vuestra predicción", res_obs: "Observado", explora: "Probad otras condiciones", explora_d: "Elegid otra pareja de condiciones para ver cómo cambiarían vuestros marcadores.",
+    revision: "Revisión tras ver los resultados", revision_ph: "¿Se cumplieron vuestras predicciones? ¿Qué cambiaríais del diseño?", no_det: "no detectado",
+    demo: "Modo demostración: los datos se guardan solo en este navegador.", f: "DEAba Digital · Parte de BIOCOGNIA · Open Educational Technology",
+  },
+  en: {
+    tagline: "Differential expression", join_t: "Join the activity", join_code: "Session code", join_name: "Group name", join_name_ph: "For example: Group 3",
+    join_hint: "Don't use your names: the group number or name is enough.", join_btn: "Join", join_bad: "There is no open session with that code.", join_err: "Could not join. Check your connection and try again.",
+    t1: "Interpret the experiment", t2: "Design the experiment", pts: (n) => `${n} ${n === 1 ? "point" : "points"}`,
+    fc_nota: (a, b) => `FC = ${a} / ${b}. A negative value means −1/value: −4 means four times less in ${a}.`,
+    prot: "Proteomics", metab: "Metabolomics", nombre: "Name", enz: "Enzyme", met: "Metabolite",
+    reac_ph_e: "Substrates → products", reac_ph_m: "Which enzyme makes or uses it? In which reaction?", reac: "Reaction", rutas: "Pathways", add_ruta: "Add a pathway…",
+    s12_d: "For each molecule, write the reaction and choose the pathway or pathways it belongs to.",
+    s3_d: "Explain the pattern of changes with short sentences and, at the end, say what is happening.",
+    frase_mol: "Molecule…", porque: "because", en: "in", frase_ph: "which mechanism or regulation explains it?", ruta_ph: "pathway…", add_frase: "Add another sentence", del: "Remove",
+    frases_t: (n) => `Reasoning sentences (at least ${n})`, diag1: (c) => `What is happening in ${c}?`, diag2: (c) => `And in ${c}? (optional)`, justif: "Integrated justification", justif_ph: "Link the sentences together: how does it all fit?",
+    cond_d: "Choose the two situations you will compare. The fold change will be condition 1 / condition 2.", c1: "Condition 1", c2: "Condition 2", elegir: "Choose…", otra: "Other (describe it)", otra_ph: "Describe the condition you propose",
+    cond_porque: "Why this comparison?", cond_porque_ph: "What do you expect to isolate by comparing these two situations?",
+    marc_d: (e, m) => `Choose ${e} enzymes and ${m} metabolites to test the hypothesis. For each one, give the reaction, the pathway and how you expect it to change.`,
+    enzs: (k, n) => `Enzymes (${k} of ${n})`, mets: (k, n) => `Metabolites (${k} of ${n})`, dir: "Expected change", fc_est: "Estimated FC", fc_ph: "e.g. +8 or −3",
+    fc_d: "Each marker's fold-change estimate is on its card. Add here how the whole set fits together.", justif2_ph: "What would your experiment show if the results come out as you expect?",
+    pending: "Still missing:", send: "Send the answer", send_confirm: "Once sent, you cannot change it. Send?", yes: "Yes, send", no: "Keep reviewing",
+    saving: "Saving…", saved: "Changes saved", sent_t: "Answer sent", sent_d: "Everything stays open until the plenary, where all groups' answers will be discussed.",
+    aviso: "Message from the teacher", vuestra: "Your answer",
+    res_t: "Results of the experiment", res_d: (a, b) => `Observed fold change (${a} / ${b}) for the markers you chose.`, res_ref: "Because you proposed your own condition, the results of the reference comparison are shown.",
+    res_marc: "Marker", res_pred: "Your prediction", res_obs: "Observed", explora: "Try other conditions", explora_d: "Choose another pair of conditions to see how your markers would change.",
+    revision: "Review after seeing the results", revision_ph: "Were your predictions right? What would you change in the design?", no_det: "not detected",
+    demo: "Demo mode: data are stored only in this browser.", f: "DEAba Digital · Part of BIOCOGNIA · Open Educational Technology",
+  },
+};
+const S = { lang: dbLang(), sid: null, ses: null, act: null, g: null, r: null, confirm: false, saveT: null, explora: null };
+const T = (k, ...a) => { const v = I[S.lang][k]; return typeof v === "function" ? v(...a) : v; };
+const L = (x) => dbT(x, S.lang);
+const main = () => $("#main");
+
+function chrome() {
+  document.documentElement.lang = S.lang;
+  $("#tagline").textContent = T("tagline");
+  for (const b of document.querySelectorAll(".lang button")) b.setAttribute("aria-pressed", b.dataset.lang === S.lang);
+  $("#who").textContent = S.g && S.sid ? `${S.g.nombre} · ${S.sid}` : "";
+  $("#foot").innerHTML = `${T("f")} · v${DB_VERSION} · <a href="panel.html">${S.lang === "en" ? "Teachers" : "Profesorado"}</a>${DBB.demo ? ` · <span class="pill go">${T("demo")}</span>` : ""}`;
+}
+
+/* ---------- Entrar ---------- */
+function vJoin(msg) {
+  const q = new URLSearchParams(location.search);
+  let nombre = ""; try { nombre = localStorage.getItem("db.nombre") || ""; } catch (e) {}
+  return `<section class="panel stack" style="max-width:520px"><h1>${T("join_t")}</h1>
+    <form id="join" class="stack" novalidate>
+      <label class="stack small">${T("join_code")}<input class="field num" name="code" autocomplete="off" maxlength="8" value="${esc((q.get("s") || "").toUpperCase())}" style="text-transform:uppercase;letter-spacing:.15em;font-size:1.2rem"></label>
+      <label class="stack small">${T("join_name")}<input class="field" name="name" maxlength="40" placeholder="${T("join_name_ph")}" value="${esc(nombre)}"></label>
+      <p class="small muted">${T("join_hint")}</p>
+      ${msg ? `<p class="notice small" role="alert">${msg}</p>` : ""}
+      <div><button class="btn primary" type="submit">${T("join_btn")}</button></div>
+    </form></section>`;
+}
+
+/* ---------- Piezas comunes ---------- */
+function fcSpan(fc) { const d = dbDir(fc); return `<span class="fc ${d === "sube" ? "up" : d === "baja" ? "down" : "eq"}">${dbFmtFC(fc, S.lang)}</span>`; }
+function rutasOpts(sel) { return `<option value="">${T("add_ruta")}</option>` + DB_RUTAS.filter((r) => !sel.includes(r.id)).map((r) => `<option value="${r.id}">${esc(r[S.lang] || r.es)}</option>`).join(""); }
+function vRutas(path, sel, ro) {
+  const chips = sel.map((id) => `<span class="chip">${esc(dbRuta(id, S.lang))}${ro ? "" : `<button type="button" data-delruta="${path}" data-v="${id}" aria-label="${T("del")}">×</button>`}</span>`).join("");
+  return `<div class="chips">${chips}${ro ? "" : `<select class="field small" data-addruta="${path}" aria-label="${T("add_ruta")}">${rutasOpts(sel)}</select>`}</div>`;
+}
+function secHead(i, titulo, desc) { const p = S.act.puntos[i]; return `<header><h2>${i + 1}. ${esc(titulo)}</h2>${p ? `<span class="pill">${T("pts", p)}</span>` : ""}</header>${desc ? `<p class="muted">${desc}</p>` : ""}`; }
+function vCabecera() {
+  const a = S.act;
+  return `<div class="stack"><p class="eyebrow">DEAba · ${a.tipo === 1 ? T("t1") : T("t2")}</p><h1>${esc(L(a.titulo))}</h1>
+    <p>${esc(L(a.contexto))}</p><p><b>${esc(L(a.mision))}</b></p>${a.autor ? `<p class="small muted">${S.lang === "en" ? "Activity designed by" : "Actividad diseñada por"} ${esc(a.autor)}</p>` : ""}
+    ${S.g.aviso ? `<p class="notice"><b>${T("aviso")}:</b> ${esc(S.g.aviso)}</p>` : ""}</div>`;
+}
+function ta(path, val, ph, ro, rows = 3) { return ro ? `<div class="ro">${esc(val) || "—"}</div>` : `<textarea class="field" rows="${rows}" data-k="${path}" placeholder="${esc(ph || "")}">${esc(val)}</textarea>`; }
+function inp(path, val, ph, ro, extra = "") { return ro ? `<span class="ro" style="display:inline-block">${esc(val) || "—"}</span>` : `<input class="field" data-k="${path}" value="${esc(val)}" placeholder="${esc(ph || "")}" ${extra}>`; }
+
+/* ---------- Tipo 1: interpretar ---------- */
+function vTablas() {
+  const a = S.act, tabla = (tipo, tit) => {
+    const ms = a.moleculas.filter((m) => m.tipo === tipo); if (!ms.length) return "";
+    return `<div class="stack"><h3>${tit}</h3><div class="tablebox"><table><thead><tr><th>Id</th><th>${T("nombre")}</th><th class="n">FC</th></tr></thead><tbody>
+      ${ms.map((m) => `<tr><td class="num">${esc(m.id)}</td><td>${esc(L(m.nombre))}</td><td class="n">${fcSpan(m.fc)}</td></tr>`).join("")}</tbody></table></div></div>`;
+  };
+  return `<section class="panel stack">${`<p class="small muted">${T("fc_nota", L(a.condiciones.c1), L(a.condiciones.c2))}</p>`}<div class="grid2">${tabla("enzima", T("prot"))}${tabla("metabolito", T("metab"))}</div></section>`;
+}
+function vTipo1(ro) {
+  const a = S.act, r = S.r, t = dbTareas(a, S.lang);
+  const tarjetas = a.moleculas.map((m) => {
+    const x = r.mol[m.id] || { reac: "", rutas: [] };
+    return `<div class="card"><div class="top"><span class="num muted">${esc(m.id)}</span><b>${esc(L(m.nombre))}</b><span class="small muted">${m.tipo === "enzima" ? T("enz") : T("met")}</span>${fcSpan(m.fc)}</div>
+      <label class="stack small">${T("reac")}${inp(`mol.${m.id}.reac`, x.reac, m.tipo === "enzima" ? T("reac_ph_e") : T("reac_ph_m"), ro)}</label>
+      <div class="stack small" style="gap:4px"><span>${T("rutas")}</span>${vRutas(`mol.${m.id}.rutas`, x.rutas || [], ro)}</div></div>`;
+  }).join("");
+  const molOpts = (v) => `<option value="">${T("frase_mol")}</option>` + a.moleculas.map((m) => `<option value="${esc(m.id)}" ${v === m.id ? "selected" : ""}>${esc(m.id)}. ${esc(L(m.nombre))}</option>`).join("");
+  const dirOpts = (v) => ["sube", "baja"].map((d) => `<option value="${d}" ${v === d ? "selected" : ""}>${DB_DIRS[d][S.lang]}</option>`).join("");
+  const rOpts = (v) => `<option value="">${T("ruta_ph")}</option>` + DB_RUTAS.map((x) => `<option value="${x.id}" ${v === x.id ? "selected" : ""}>${esc(x[S.lang] || x.es)}</option>`).join("");
+  const frases = (r.frases || []).map((f, i) => ro
+    ? `<div class="frase"><b>${esc((a.moleculas.find((m) => m.id === f.mol) && L(a.moleculas.find((m) => m.id === f.mol).nombre)) || "—")}</b> <span>${f.dir ? DB_DIRS[f.dir][S.lang] : ""}</span> <span class="w">${T("porque")}</span> <span>${esc(f.porque)}</span>${f.ruta ? ` <span class="w">${T("en")}</span> <span>${esc(dbRuta(f.ruta, S.lang))}</span>` : ""}</div>`
+    : `<div class="frase"><select class="field" data-k="frases.${i}.mol" data-frase-mol="${i}" aria-label="${T("frase_mol")}">${molOpts(f.mol)}</select>
+        <select class="field" data-k="frases.${i}.dir" aria-label="${T("dir")}"><option value=""></option>${dirOpts(f.dir)}</select><span class="w">${T("porque")}</span>
+        <input class="field" data-k="frases.${i}.porque" value="${esc(f.porque)}" placeholder="${T("frase_ph")}"><span class="w">${T("en")}</span>
+        <select class="field" data-k="frases.${i}.ruta" aria-label="${T("ruta_ph")}">${rOpts(f.ruta)}</select>
+        ${(r.frases || []).length > 1 ? `<button type="button" class="btn small ghost" data-delfrase="${i}">${T("del")}</button>` : ""}</div>`).join("");
+  return `${vTablas()}
+    <section class="sec"><header><h2>1. ${esc(t[0])} · 2. ${esc(t[1])}</h2><span class="pill">${a.puntos[0]} + ${a.puntos[1]} ${S.lang === "en" ? "points" : "puntos"}</span></header><p class="muted">${T("s12_d")}</p><div class="cards">${tarjetas}</div></section>
+    <section class="sec">${secHead(2, t[2], T("s3_d")).replace("<h2>3.", "<h2>3.")}
+      <h3>${T("frases_t", DB_MIN_FRASES)}</h3><div class="stack">${frases}</div>${ro ? "" : `<div><button type="button" class="btn small" id="addfrase">+ ${T("add_frase")}</button></div>`}
+      <label class="stack small">${T("diag1", L(a.condiciones.c1))}${ta("diag.c1", r.diag.c1, "", ro, 2)}</label>
+      <label class="stack small">${T("diag2", L(a.condiciones.c2))}${ta("diag.c2", r.diag.c2, "", ro, 2)}</label>
+      <label class="stack small">${T("justif")}${ta("justif", r.justif, T("justif_ph"), ro, 5)}</label></section>`;
+}
+
+/* ---------- Tipo 2: diseñar ---------- */
+function condOpts(v) { return `<option value="">${T("elegir")}</option>` + S.act.condiciones.map((c) => `<option value="${esc(c.id)}" ${v === c.id ? "selected" : ""}>${esc(L(c.nombre))}</option>`).join("") + `<option value="otra" ${v === "otra" ? "selected" : ""}>${T("otra")}</option>`; }
+function condNombre(id, otra) { if (id === "otra") return otra || T("otra"); const c = S.act.condiciones.find((x) => x.id === id); return c ? L(c.nombre) : "—"; }
+function vTipo2(ro) {
+  const a = S.act, r = S.r, t = dbTareas(a, S.lang), c = r.cond;
+  const cuantos = (tp) => Object.keys(r.marc).filter((id) => (a.catalogo.find((m) => m.id === id) || {}).tipo === tp).length;
+  const ne = cuantos("enzima"), nm = cuantos("metabolito");
+  const pick = (tp, n, k) => a.catalogo.filter((m) => m.tipo === tp).map((m) => {
+    const on = !!r.marc[m.id];
+    return `<label><input type="checkbox" data-marc="${esc(m.id)}" ${on ? "checked" : ""} ${ro || (!on && k >= n) ? "disabled" : ""}><span>${esc(L(m.nombre))}</span></label>`;
+  }).join("");
+  const tarjetas = a.catalogo.filter((m) => r.marc[m.id]).map((m) => {
+    const x = r.marc[m.id];
+    const seg = ["sube", "baja", "igual"].map((d) => `<label><input type="radio" name="dir_${esc(m.id)}" data-k="marc.${m.id}.dir" value="${d}" ${x.dir === d ? "checked" : ""} ${ro ? "disabled" : ""}><span>${DB_DIRS[d].s} ${DB_DIRS[d][S.lang]}</span></label>`).join("");
+    return `<div class="card"><div class="top"><b>${esc(L(m.nombre))}</b><span class="small muted">${m.tipo === "enzima" ? T("enz") : T("met")}</span></div>
+      <label class="stack small">${T("reac")}${inp(`marc.${m.id}.reac`, x.reac, m.tipo === "enzima" ? T("reac_ph_e") : T("reac_ph_m"), ro)}</label>
+      <div class="stack small" style="gap:4px"><span>${T("rutas")}</span>${vRutas(`marc.${m.id}.rutas`, x.rutas || [], ro)}</div>
+      <div class="row small"><span>${T("dir")}</span><span class="seg">${seg}</span><label class="row" style="gap:6px">${T("fc_est")}${inp(`marc.${m.id}.fc`, x.fc, T("fc_ph"), ro, 'style="width:8em" inputmode="decimal"')}</label></div></div>`;
+  }).join("");
+  return `<section class="sec">${secHead(0, t[0], T("cond_d"))}
+      <div class="grid2">${[["c1", "otra1"], ["c2", "otra2"]].map(([k, o]) => `<label class="stack small">${T(k)}${ro ? `<span class="ro">${esc(condNombre(c[k], c[o]))}</span>` : `<select class="field" data-k="cond.${k}" data-recargar="1" style="width:100%">${condOpts(c[k])}</select>${c[k] === "otra" ? inp(`cond.${o}`, c[o], T("otra_ph"), ro) : ""}`}</label>`).join("")}</div>
+      <label class="stack small">${T("cond_porque")}${ta("cond.porque", c.porque, T("cond_porque_ph"), ro, 3)}</label></section>
+    <section class="sec">${secHead(1, t[1], T("marc_d", a.n_enzimas, a.n_metabolitos))}
+      <div class="stack small"><b>${T("enzs", ne, a.n_enzimas)}</b><div class="pick">${pick("enzima", a.n_enzimas, ne)}</div></div>
+      <div class="stack small"><b>${T("mets", nm, a.n_metabolitos)}</b><div class="pick">${pick("metabolito", a.n_metabolitos, nm)}</div></div>
+      <div class="cards">${tarjetas}</div></section>
+    <section class="sec">${secHead(2, t[2], T("fc_d"))}<label class="stack small">${T("justif")}${ta("justif", r.justif, T("justif2_ph"), ro, 5)}</label></section>`;
+}
+// Resultados del «experimento» (cuando el profesor los publica en el plenario).
+function vResultados() {
+  const a = S.act, res = S.ses && S.ses.resultados; if (a.tipo !== 2 || !res || S.g.estado !== "enviado") return "";
+  const c = S.r.cond, propia = c.c1 === "otra" || c.c2 === "otra" || !res.niveles;
+  const p1 = propia ? res.referencia[0] : c.c1, p2 = propia ? res.referencia[1] : c.c2;
+  const ex = S.explora || [p1, p2];
+  const tabla = (x1, x2) => `<div class="tablebox"><table><thead><tr><th>${T("res_marc")}</th><th>${T("res_pred")}</th><th class="n">${T("res_obs")}</th><th></th></tr></thead><tbody>
+    ${a.catalogo.filter((m) => S.r.marc[m.id]).map((m) => {
+      const n = res.niveles[m.id] || {}, fc = dbFC(n[x1], n[x2]), obs = dbDir(fc), pr = S.r.marc[m.id];
+      const ok = pr.dir && pr.dir === obs;
+      return `<tr><td>${esc(L(m.nombre))}</td><td>${pr.dir ? DB_DIRS[pr.dir].s : ""} ${esc(pr.fc || "")}</td><td class="n">${fc === null ? `<span class="muted">${T("no_det")}</span>` : fcSpan(fc)}</td><td class="n">${pr.dir ? (ok ? `<span class="ok-t">✓</span>` : `<span class="bad-t">✗</span>`) : ""}</td></tr>`;
+    }).join("")}</tbody></table></div>`;
+  const opts = (v) => a.condiciones.map((x) => `<option value="${esc(x.id)}" ${v === x.id ? "selected" : ""}>${esc(L(x.nombre))}</option>`).join("");
+  return `<section class="panel stack"><h2>${T("res_t")}</h2>${propia ? `<p class="notice small">${T("res_ref")}</p>` : ""}
+    <p class="small muted">${T("res_d", condNombre(p1), condNombre(p2))}</p>${tabla(p1, p2)}
+    <h3>${T("explora")}</h3><p class="small muted">${T("explora_d")}</p>
+    <div class="row"><select class="field" id="ex1">${opts(ex[0])}</select><span class="muted">/</span><select class="field" id="ex2">${opts(ex[1])}</select></div>
+    <div id="extabla">${tabla(ex[0], ex[1])}</div>
+    <label class="stack small">${T("revision")}<textarea class="field" rows="4" data-rev="1" placeholder="${T("revision_ph")}">${esc(S.g.revision || "")}</textarea></label></section>`;
+}
+
+/* ---------- Pantalla ---------- */
+function vEnvio() {
+  const falta = dbPendientes(S.act, S.r, S.lang);
+  return `<section class="stack" id="sendbox"><div class="row"><span class="small muted" id="saved"></span></div>
+    ${falta.length ? `<div class="notice small"><b>${T("pending")}</b> ${falta.map(esc).join(" · ")}</div>` : ""}
+    ${S.confirm ? `<div class="notice row" role="alert"><span>${T("send_confirm")}</span><button class="btn primary" id="send-yes">${T("yes")}</button><button class="btn" id="send-no">${T("no")}</button></div>`
+      : `<div><button class="btn primary" id="send" ${falta.length ? "disabled" : ""}>${T("send")}</button></div>`}</section>`;
+}
+function render() {
+  chrome(); if (!S.g || !S.act) return;
+  const ro = S.g.estado !== "editando";
+  const cuerpo = S.act.tipo === 1 ? vTipo1(ro) : vTipo2(ro);
+  main().innerHTML = `<div class="stack-lg">${vCabecera()}${ro ? `<div class="notice"><b>${T("sent_t")}.</b> ${T("sent_d")}</div>` + vResultados() + `<h2>${T("vuestra")}</h2>` : ""}${cuerpo}${ro ? "" : vEnvio()}</div>`;
+}
+function rerender() { const y = window.scrollY; render(); window.scrollTo(0, y); }
+function renderEnvio() { const sb = $("#sendbox"); if (sb) { const t = document.createElement("div"); t.innerHTML = vEnvio(); sb.replaceWith(t.firstElementChild); } }
+
+/* ---------- Estado de la respuesta ---------- */
+function setPath(path, v) { const ks = path.split("."); let o = S.r; for (const k of ks.slice(0, -1)) { if (o[k] == null) o[k] = /^\d+$/.test(k) ? [] : {}; o = o[k]; } o[ks[ks.length - 1]] = v; }
+function getPath(path) { return path.split(".").reduce((o, k) => (o == null ? undefined : o[k]), S.r); }
+function guardar(extra) {
+  clearTimeout(S.saveT); const s = $("#saved"); if (s) s.textContent = T("saving");
+  S.saveT = setTimeout(async () => { try { await DBB.cambiarGrupo(S.sid, { resp: S.r, ...(extra || {}) }); const s2 = $("#saved"); if (s2) s2.textContent = T("saved"); } catch (e) {} }, 700);
+}
+let revT = null;
+function guardarRevision(v) { clearTimeout(revT); revT = setTimeout(() => DBB.cambiarGrupo(S.sid, { revision: v }).catch(() => {}), 700); }
+
+document.addEventListener("click", async (e) => {
+  const t = e.target.closest("button"); if (!t) return;
+  if (t.dataset.lang) { S.lang = t.dataset.lang; dbSetLang(S.lang); return S.g ? rerender() : (chrome(), main().innerHTML = vJoin()); }
+  if (t.dataset.delruta) { const a = getPath(t.dataset.delruta) || []; setPath(t.dataset.delruta, a.filter((x) => x !== t.dataset.v)); guardar(); return rerender(); }
+  if (t.id === "addfrase") { S.r.frases.push({ mol: "", dir: "", porque: "", ruta: "" }); guardar(); return rerender(); }
+  if (t.dataset.delfrase) { S.r.frases.splice(+t.dataset.delfrase, 1); guardar(); return rerender(); }
+  if (t.id === "send") { S.confirm = true; return renderEnvio(); }
+  if (t.id === "send-no") { S.confirm = false; return renderEnvio(); }
+  if (t.id === "send-yes") { S.confirm = false; clearTimeout(S.saveT); await DBB.cambiarGrupo(S.sid, { resp: S.r, estado: "enviado" }); window.scrollTo(0, 0); }
+});
+document.addEventListener("change", (e) => {
+  const el = e.target;
+  if (el.dataset.addruta) { if (!el.value) return; const a = getPath(el.dataset.addruta) || []; setPath(el.dataset.addruta, [...new Set(a.concat(el.value))]); guardar(); return rerender(); }
+  if (el.dataset.marc) {
+    if (el.checked) S.r.marc[el.dataset.marc] = S.r.marc[el.dataset.marc] || { reac: "", rutas: [], dir: "", fc: "" }; else delete S.r.marc[el.dataset.marc];
+    guardar(); return rerender();
+  }
+  if (el.id === "ex1" || el.id === "ex2") { S.explora = [$("#ex1").value, $("#ex2").value]; return rerender(); }
+  if (el.dataset.k) {
+    // Los campos de texto ya se guardan con «input»; volver a pintar aquí (al perder el foco) se comería el clic en «Enviar».
+    if (el.tagName === "TEXTAREA" || (el.tagName === "INPUT" && el.type !== "radio")) return;
+    setPath(el.dataset.k, el.value);
+    // Al elegir la molécula de una frase, se propone la dirección según su FC (se puede cambiar).
+    if (el.dataset.fraseMol) { const m = S.act.moleculas.find((x) => x.id === el.value), f = S.r.frases[+el.dataset.fraseMol]; if (m && !f.dir) { f.dir = m.fc > 0 ? "sube" : "baja"; guardar(); return rerender(); } }
+    guardar();
+    if (el.dataset.recargar) return rerender();
+    return renderEnvio();
+  }
+});
+document.addEventListener("input", (e) => {
+  const el = e.target;
+  if (el.dataset.rev) return guardarRevision(el.value);
+  if (el.dataset.k && (el.tagName === "TEXTAREA" || el.tagName === "INPUT")) { setPath(el.dataset.k, el.value); guardar(); clearTimeout(S.envT); S.envT = setTimeout(renderEnvio, 400); }
+});
+document.addEventListener("submit", async (e) => {
+  if (e.target.id !== "join") return;
+  e.preventDefault();
+  const f = e.target, sid = f.code.value.trim().toUpperCase(), nombre = f.name.value.trim() || "Grupo";
+  try {
+    await DBB.init();
+    const ses = await DBB.sesion(sid);
+    if (!ses || ses.estado !== "abierta") { main().innerHTML = vJoin(T("join_bad")); return; }
+    await DBB.unirse(sid, nombre);
+    try { localStorage.setItem("db.nombre", nombre); } catch (err) {}
+    await empezar(sid, ses);
+  } catch (err) { main().innerHTML = vJoin(T("join_err")); }
+});
+
+async function empezar(sid, ses) {
+  S.sid = sid; S.ses = ses; S.act = await dbActividad(ses.actividad);
+  history.replaceState(null, "", `?s=${sid}${DBB.demo && new URLSearchParams(location.search).has("demo") ? "&demo" : ""}`);
+  DBB.verSesion(sid, (se) => { if (!se) return; const antes = !!(S.ses && S.ses.resultados); S.ses = se; if (S.g && S.g.estado === "enviado" && antes !== !!se.resultados) rerender(); });
+  DBB.verGrupo(sid, (g) => {
+    if (!g) return;
+    const prev = S.g && S.g.estado, prevAviso = S.g && S.g.aviso;
+    S.g = g;
+    if (!S.r || (g.estado === "editando" && prev !== "editando")) {
+      S.r = g.resp || dbVacia(S.act);
+      if (S.act.tipo === 1) for (const m of S.act.moleculas) if (!S.r.mol[m.id]) S.r.mol[m.id] = { reac: "", rutas: [] };
+    }
+    // No volver a pintar con cada guardado propio (se perdería el foco al escribir).
+    if (prev && g.estado === prev && g.aviso === prevAviso) { chrome(); return; }
+    rerender();
+  });
+}
+(async function boot() {
+  chrome();
+  await dbCargarRutas();
+  const sid = (new URLSearchParams(location.search).get("s") || "").toUpperCase();
+  try {
+    await DBB.init();
+    if (sid) {
+      const ses = await DBB.sesion(sid);
+      if (ses && ses.estado === "abierta" && (await new Promise((res) => { let done = false; DBB.verGrupo(sid, (g) => { if (!done) { done = true; res(!!g); } }); }))) return empezar(sid, ses);
+    }
+  } catch (e) {}
+  main().innerHTML = vJoin();
+})();
+</script>
+</body>
+</html>

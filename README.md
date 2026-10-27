@@ -1,6 +1,6 @@
 # BIOCOGNIA · Open Educational Technology
 
-**🌐 [Web](https://alfonsooa.github.io/biocognia/)** · **🧪 [QUAESTIA](https://alfonsooa.github.io/biocognia/quaestia/)** · **🔒 [Panel de datos del estudio](https://alfonsooa.github.io/biocognia/quaestia/admin.html)** · **🎲 [Panel de SORTIVIA](https://alfonsooa.github.io/biocognia/sortivia/panel.html)** (solo profesorado) · **✍️ [Proponer una actividad de SORTIVIA](https://alfonsooa.github.io/biocognia/sortivia/proponer.html)**
+**🌐 [Web](https://alfonsooa.github.io/biocognia/)** · **🧪 [QUAESTIA](https://alfonsooa.github.io/biocognia/quaestia/)** · **🔒 [Panel de datos del estudio](https://alfonsooa.github.io/biocognia/quaestia/admin.html)** · **🎲 [Panel de SORTIVIA](https://alfonsooa.github.io/biocognia/sortivia/panel.html)** (solo profesorado) · **✍️ [Proponer una actividad de SORTIVIA](https://alfonsooa.github.io/biocognia/sortivia/proponer.html)** · **🧬 [Panel de DEAba Digital](https://alfonsooa.github.io/biocognia/deaba/panel.html)** (solo profesorado)
 
 Ecosistema de herramientas educativas abiertas para aprender Bioquímica, basadas en la taxonomía de Bloom.
 
@@ -9,8 +9,8 @@ Ecosistema de herramientas educativas abiertas para aprender Bioquímica, basada
 | Aplicación | Función | Base metodológica | Carpeta | Estado |
 | --- | --- | --- | --- | --- |
 | QUAESTIA | Evaluación y autoaprendizaje | Guía de Bioquímica Metabólica | `quaestia/` | v0.3 |
-| SORTIVIA | Gamificación y toma de decisiones | ESTOPA | `sortivia/` | v0.6 |
-| DEAba Digital | Aprendizaje activo | DEAba | `deaba-digital/` | En desarrollo |
+| SORTIVIA | Gamificación y toma de decisiones | ESTOPA | `sortivia/` | v0.7 |
+| DEAba Digital | Interpretación y diseño de experimentos de expresión diferencial | DEAba | `deaba/` | v0.1 (piloto) |
 
 Cada aplicación es independiente (su propia carpeta, versión y registro), pero comparten portada, diseño, procedimiento de consentimiento y formato de exportación.
 
@@ -22,7 +22,7 @@ Cada aplicación es independiente (su propia carpeta, versión y registro), pero
 
 ## Versiones
 
-Cada aplicación se etiqueta por separado: `quaestia-v0.1.0`, `sortivia-v0.1.0`, `deaba-digital-v0.1.0`.
+Cada aplicación se etiqueta por separado: `quaestia-v0.1.0`, `sortivia-v0.1.0`, `deaba-v0.1.0`.
 
 ## Privacidad y estudio de investigación
 

@@ -1,5 +1,5 @@
 rules_version = '2';
-// Reglas de seguridad de Firestore para BIOCOGNIA (QUAESTIA y SORTIVIA).
+// Reglas de seguridad de Firestore para BIOCOGNIA (QUAESTIA, SORTIVIA y DEAba Digital).
 // Cópialas en Firebase → Firestore Database → Reglas → Publicar.
 // - Cada participante (identificación anónima) solo puede crear sus propios registros, leerlos y borrarlos.
 // - Nadie puede modificar un registro ya enviado.
@@ -109,6 +109,39 @@ service cloud.firestore {
                         || (antes().estado == 'fallado' && despues().estado == 'editando' && despues().ronda == antes().ronda + 1)
                         || (antes().estado == despues().estado && despues().ronda == antes().ronda) ));
         allow delete: if esAdmin() || esDueno();
+      }
+    }
+
+    // ---------- DEAba Digital ----------
+    // Guías del profesor (respuestas esperadas): solo el profesorado autorizado; solo el administrador las sube.
+    match /deaba_guias/{aid} {
+      allow read: if esDocente();
+      allow write: if esAdmin();
+    }
+    match /deaba_sesiones/{sid} {
+      allow read: if request.auth != null;
+      allow create: if esAdmin() || (esProfesor() && request.resource.data.propietario == request.auth.uid);
+      allow update, delete: if esAdmin() || (esProfesor() && resource.data.propietario == request.auth.uid);
+
+      match /grupos/{gid} {
+        function dsesion() { return get(/databases/$(database)/documents/deaba_sesiones/$(sid)).data; }
+        function dabierta() { return dsesion().estado == 'abierta'; }
+        function ddueno() { return esProfesor() && dsesion().propietario == request.auth.uid; }
+        function dgrupo() { return request.auth != null && request.auth.uid == gid; }
+        // Cada grupo solo ve y edita su propio documento. La nota y los avisos los escribe el profesor.
+        allow read: if esAdmin() || ddueno() || dgrupo();
+        allow create: if dgrupo() && dabierta()
+                      && request.resource.data.keys().hasOnly(['nombre', 'estado', 'resp', 'actualizado'])
+                      && request.resource.data.estado == 'editando'
+                      && request.resource.data.nombre is string && request.resource.data.nombre.size() <= 40;
+        allow update: if esAdmin() || ddueno() || (dgrupo() && dabierta()
+                      && request.resource.data.nombre is string && request.resource.data.nombre.size() <= 40
+                      && ( (resource.data.estado == 'editando'
+                            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['nombre', 'estado', 'resp', 'actualizado'])
+                            && request.resource.data.estado in ['editando', 'enviado'])
+                        || (resource.data.estado == 'enviado'
+                            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['nombre', 'revision', 'actualizado'])) ));
+        allow delete: if esAdmin() || ddueno();
       }
     }
 

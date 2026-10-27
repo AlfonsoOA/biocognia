@@ -1,0 +1,168 @@
+{
+ "schema": "deaba/1",
+ "id": "diabetes_t1_medium",
+ "tipo": 1,
+ "nivel": "medium",
+ "titulo": {
+  "es": "El misterio del flujo de carbonos"
+ },
+ "asignatura": "Bioquímica",
+ "autor": "Alfonso Olaya Abril",
+ "contexto": {
+  "es": "Un grupo de investigación ha enviado al laboratorio central muestras de tejido hepático de un modelo animal en dos condiciones fisiológicas distintas. Los animales de la condición A han perdido peso en las últimas semanas aunque comen con normalidad; los de la condición B están sanos. Se han analizado sus perfiles mediante proteómica y metabolómica."
+ },
+ "mision": {
+  "es": "Analizad los perfiles moleculares y reconstruid el puzle metabólico para identificar qué proceso fisiológico o patológico está ocurriendo en la condición A con respecto a la B."
+ },
+ "puntos": [
+  3,
+  3,
+  4
+ ],
+ "condiciones": {
+  "c1": {
+   "es": "Condición A"
+  },
+  "c2": {
+   "es": "Condición B"
+  }
+ },
+ "moleculas": [
+  {
+   "id": "1",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acil graso-CoA sintetasa"
+   },
+   "fc": 10
+  },
+  {
+   "id": "2",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Carnitina aciltransferasa I (CAT-I)"
+   },
+   "fc": 12
+  },
+  {
+   "id": "3",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Enoil-CoA hidratasa"
+   },
+   "fc": 8
+  },
+  {
+   "id": "4",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "L-3-Hidroxiacil-CoA deshidrogenasa"
+   },
+   "fc": 7
+  },
+  {
+   "id": "5",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Tiolasa"
+   },
+   "fc": 10
+  },
+  {
+   "id": "6",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "HMG-CoA sintasa"
+   },
+   "fc": 20
+  },
+  {
+   "id": "7",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "HMG-CoA reductasa"
+   },
+   "fc": -14
+  },
+  {
+   "id": "8",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "D-3-Hidroxibutirato deshidrogenasa"
+   },
+   "fc": 15
+  },
+  {
+   "id": "9",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Acetil-CoA carboxilasa (ACC)"
+   },
+   "fc": -25
+  },
+  {
+   "id": "10",
+   "tipo": "enzima",
+   "nombre": {
+    "es": "Hexoquinasa"
+   },
+   "fc": -15
+  },
+  {
+   "id": "11",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acilcarnitina"
+   },
+   "fc": 8
+  },
+  {
+   "id": "12",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "L-3-Hidroxiacil-CoA"
+   },
+   "fc": 19
+  },
+  {
+   "id": "13",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Acetil-CoA"
+   },
+   "fc": 35
+  },
+  {
+   "id": "14",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Malonil-CoA"
+   },
+   "fc": -19
+  },
+  {
+   "id": "15",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Oxalacetato"
+   },
+   "fc": -23
+  },
+  {
+   "id": "16",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "D-β-Hidroxibutirato"
+   },
+   "fc": 6
+  },
+  {
+   "id": "17",
+   "tipo": "metabolito",
+   "nombre": {
+    "es": "Glucosa"
+   },
+   "fc": 4
+  }
+ ]
+}

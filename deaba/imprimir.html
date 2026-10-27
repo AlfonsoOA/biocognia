@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEAba · Versión en papel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="deaba.css">
+<style>
+main.wrap { max-width: 900px; }
+.hoja { display: flex; flex-direction: column; gap: 16px; }
+.campos { display: flex; gap: 24px; flex-wrap: wrap; font-size: .95rem; }
+.campos span { flex: 1; min-width: 200px; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+.hoja h2 { border-bottom: 2px solid var(--ink); padding-bottom: 4px; display: flex; gap: 10px; align-items: baseline; }
+.hoja h2 small { margin-left: auto; font-family: var(--f-ui); font-size: .85rem; font-weight: 500; color: var(--muted); }
+table.w td { height: 2.6em; } table.w td.e { border-left: 1px solid var(--line); }
+.lineas { display: flex; flex-direction: column; } .lineas i { display: block; height: 2em; border-bottom: 1px solid var(--line); }
+.frm { display: flex; flex-direction: column; gap: 2px; font-size: .95rem; }
+.frm div { display: grid; grid-template-columns: 2fr auto auto 4fr auto 2fr; gap: 6px; align-items: end; height: 2.4em; }
+.frm div i { border-bottom: 1px solid var(--line); height: 1.6em; display: block; } .frm div b { font-weight: 400; color: var(--muted); }
+.banco { columns: 2; font-size: .9rem; } .banco p { margin: 0 0 2px; }
+@media print {
+  @page { size: A4; margin: 14mm; }
+  :root { --bg: #fff; --surface: #fff; --sunk: #f1f1ee; --ink: #111; --muted: #555; --line: #bbb; color-scheme: light; }
+  body { font-size: 10.5pt; } header.bar, footer, .noprint { display: none !important; } main { padding: 0; }
+  .hoja { gap: 12px; } h1 { font-size: 18pt; } h2 { font-size: 13pt; break-after: avoid; } tr { break-inside: avoid; } .fc { border: 1px solid #bbb; }
+}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap"><a class="mark" href="./">DEABA<small>Versión en papel</small></a><span class="spacer"></span>
+  <label class="toggle small noprint" id="op-banco" hidden><input type="checkbox" id="banco"> Incluir el banco de marcadores</label><button class="btn small" onclick="print()">Imprimir</button></div></header>
+<main class="wrap" id="main"><p class="muted">Cargando…</p></main>
+<footer><div class="wrap">DEAba Digital · BIOCOGNIA</div></footer>
+<script src="deaba.js"></script>
+<script>
+"use strict";
+const L = (x) => dbT(x, "es");
+const lineas = (n) => `<div class="lineas">${"<i></i>".repeat(n)}</div>`;
+let ACT = null;
+function fcTxt(fc) { return `<span class="fc ${fc > 0 ? "up" : "down"}">${dbFmtFC(fc)}</span>`; }
+function render() {
+  const a = ACT, t = dbTareas(a, "es"), p = a.puntos, pts = (i) => `<small>${p[i]} puntos</small>`;
+  let cuerpo;
+  if (a.tipo === 1) {
+    const tabla = (tipo, tit) => { const ms = a.moleculas.filter((m) => m.tipo === tipo); if (!ms.length) return "";
+      return `<h3>${tit}</h3><div class="tablebox"><table class="w"><thead><tr><th>Id</th><th>Nombre</th><th class="n">FC</th><th style="width:38%">Reacción</th><th style="width:22%">Ruta(s)</th></tr></thead><tbody>
+        ${ms.map((m) => `<tr><td class="num">${esc(m.id)}</td><td>${esc(L(m.nombre))}</td><td class="n">${fcTxt(m.fc)}</td><td class="e"></td><td class="e"></td></tr>`).join("")}</tbody></table></div>`; };
+    cuerpo = `<p class="small muted">FC = ${esc(L(a.condiciones.c1))} / ${esc(L(a.condiciones.c2))}. Un valor negativo equivale a −1/valor.</p>
+      <section class="stack"><h2>1. ${t[0]} · 2. ${t[1]}<small>${p[0]} + ${p[1]} puntos</small></h2><p class="small">Para cada molécula, escribid la reacción y la ruta o rutas en las que participa.</p>${tabla("enzima", "Proteómica")}${tabla("metabolito", "Metabolómica")}</section>
+      <section class="stack"><h2>3. ${t[2]}${pts(2)}</h2><p class="small">Explicad el patrón con frases cortas:</p>
+        <div class="frm">${'<div><i></i><b>sube / baja</b><b>porque</b><i></i><b>en</b><i></i></div>'.repeat(6)}</div>
+        <p class="small"><b>¿Qué está ocurriendo en la ${esc(L(a.condiciones.c1))}?</b></p>${lineas(3)}
+        <p class="small"><b>Justificación integrada</b></p>${lineas(7)}</section>`;
+  } else {
+    const filas = (n, tit) => `<div class="tablebox"><table class="w"><thead><tr><th style="width:22%">${tit}</th><th style="width:36%">Reacción</th><th style="width:22%">Ruta</th><th>FC esperado (↑ ↓ ≈ y valor)</th></tr></thead><tbody>${'<tr><td></td><td class="e"></td><td class="e"></td><td class="e"></td></tr>'.repeat(n)}</tbody></table></div>`;
+    const banco = $("#banco") && $("#banco").checked ? `<section class="stack"><h2>Banco de marcadores<small>podéis usar otros</small></h2><div class="banco">${["enzima", "metabolito"].map((tp) => `<p><b>${tp === "enzima" ? "Enzimas" : "Metabolitos"}</b></p>` + a.catalogo.filter((m) => m.tipo === tp).map((m) => `<p>${esc(L(m.nombre))}</p>`).join("")).join("")}</div></section>` : "";
+    cuerpo = `<section class="stack"><h2>1. ${t[0]}${pts(0)}</h2><p class="small">Indicad las dos situaciones que vais a comparar (el fold change será condición 1 / condición 2) y por qué.</p>
+        <div class="campos"><span>Condición 1:</span><span>Condición 2:</span></div><p class="small"><b>¿Por qué esta comparación?</b></p>${lineas(3)}</section>
+      <section class="stack"><h2>2. ${t[1]} · 3. ${t[2]}<small>${p[1]} + ${p[2]} puntos</small></h2><p class="small">${a.n_enzimas} enzimas y ${a.n_metabolitos} metabolitos que permitan contrastar la hipótesis.</p>${filas(a.n_enzimas, "Enzima")}${filas(a.n_metabolitos, "Metabolito")}
+        <p class="small"><b>¿Qué demostraría vuestro experimento?</b></p>${lineas(5)}</section>${banco}`;
+  }
+  $("#main").innerHTML = `<article class="hoja"><div class="campos"><span>Grupo:</span><span>Fecha:</span></div>
+    <div class="stack"><p class="eyebrow">DEAba · ${a.tipo === 1 ? "Interpretar el experimento" : "Diseñar el experimento"}</p><h1>${esc(L(a.titulo))}</h1></div>
+    <p>${esc(L(a.contexto))}</p><p><b>${esc(L(a.mision))}</b></p>${cuerpo}</article>`;
+}
+document.addEventListener("change", (e) => { if (e.target.id === "banco") render(); });
+(async function () {
+  const id = new URLSearchParams(location.search).get("a");
+  try { await dbCargarRutas(); ACT = await dbActividad(id); document.title = `${L(ACT.titulo)} · papel`; if (ACT.tipo === 2) $("#op-banco").hidden = false; render(); }
+  catch (e) { $("#main").innerHTML = `<p class="notice">No se ha podido cargar la actividad «${esc(id)}».</p>`; }
+})();
+</script>
+</body>
+</html>

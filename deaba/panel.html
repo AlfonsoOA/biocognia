@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>DEAba Digital · Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="deaba.css">
+<style>
+main.wrap { max-width: 1100px; }
+.code { font-family: var(--f-mono); font-size: clamp(2.2rem, 7vw, 3.4rem); letter-spacing: .18em; font-weight: 500; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tabs button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+details.g { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+details.g > summary { cursor: pointer; list-style: none; padding: 12px 14px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+details.g > summary::-webkit-details-marker { display: none; }
+details.g .det { border-top: 1px solid var(--line); padding: 12px 14px; display: flex; flex-direction: column; gap: 12px; font-size: .92rem; }
+.cpt { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: .78rem; margin: 2px 4px 2px 0; border: 1px solid var(--line); }
+.cpt.si { background: var(--ok-bg); color: var(--ok); border-color: transparent; }
+.cpt.negado { background: var(--warn-bg); text-decoration: line-through; }
+.cpt.err.si { background: var(--bad-bg); color: var(--bad); }
+.cpt.alt.si { background: var(--warn-bg); color: var(--ink); }
+.bar { display: grid; grid-template-columns: minmax(140px, 260px) 1fr 2.5em; gap: 8px; align-items: center; font-size: .9rem; }
+.bar .tr { height: 12px; background: var(--sunk); border-radius: 6px; overflow: hidden; } .bar .tr span { display: block; height: 100%; background: var(--accent); }
+.bar.esp .tr span { background: var(--ok); } .bar.dis .tr span { background: var(--bad); }
+.key { background: var(--warn-bg); border-radius: 8px; padding: 8px 10px; font-size: .88rem; }
+.mx td, .mx th { text-align: center; padding: 4px 6px; font-size: .82rem; } .mx td:first-child, .mx th:first-child { text-align: left; }
+.nota { display: flex; gap: 10px; align-items: end; flex-wrap: wrap; } .nota input.field[name^="s"] { width: 5em; } .nota input.field[name="com"] { width: 100%; }
+/* Proyección */
+#proj { position: fixed; inset: 0; z-index: 50; background: var(--bg); overflow: auto; display: none; }
+#proj.on { display: block; }
+#proj .in { max-width: 1200px; margin: 0 auto; padding: 28px 32px 90px; font-size: 1.3rem; display: flex; flex-direction: column; gap: 18px; }
+#proj h1 { font-size: clamp(2rem, 4vw, 3rem); } #proj .bar { font-size: 1.15rem; grid-template-columns: minmax(200px, 420px) 1fr 3em; } #proj .bar .tr { height: 20px; }
+#proj .nav { position: fixed; bottom: 0; left: 0; right: 0; display: flex; gap: 10px; align-items: center; padding: 10px 16px; background: var(--surface); border-top: 1px solid var(--line); font-size: 1rem; flex-wrap: wrap; }
+#proj .q { border-left: 4px solid var(--accent); padding: 6px 12px; background: var(--surface); border-radius: 0 8px 8px 0; }
+#proj .fc { font-size: 1.4rem; }
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="mark" href="./">DEABA<small>Panel del profesorado</small></a>
+  <span class="small muted spacer" id="who"></span>
+</div></header>
+<main class="wrap stack-lg" id="main">
+  <section class="panel stack" id="login">
+    <p>Panel del profesorado de DEAba Digital: crea sesiones, sigue a los grupos en directo, proyecta las respuestas en el plenario, consulta la guía de cada actividad y califica. Usa la misma cuenta autorizada que SORTIVIA.</p>
+    <div class="row"><button class="btn primary" id="signin">Entrar con Google</button></div>
+    <p class="small" id="err" role="alert" style="color:var(--bad)"></p>
+  </section>
+</main>
+<footer><div class="wrap" id="foot"></div></footer>
+<div id="proj" role="dialog" aria-label="Proyección"></div>
+<script src="../quaestia/firebase-config.js"></script>
+<script src="deaba.js"></script>
+<script>
+"use strict";
+const P = { rol: null, uid: null, nombre: "", indice: [], guias: {}, sesiones: [], sid: null, ses: null, act: null, guia: null, grupos: [], vista: "grupos",
+  open: new Set(), msg: "", proj: { on: false, i: 0, clave: false, nombres: true } };
+const L = (x) => dbT(x, "es");
+const admin = () => P.rol === "admin";
+$("#foot").innerHTML = `DEAba Digital · panel · v${DB_VERSION}${DBB.demo ? ` · <span class="pill go">Modo demostración: todo se guarda en este navegador</span>` : ""}`;
+const ESTADOS = { editando: ["Trabajando", ""], enviado: ["Enviada", "ok"] };
+const PAPEL = { clave: ["clave", "ok"], apoyo: ["apoyo", ""], distractor: ["distractor", "bad"], referencia_1: ["referencia (1)", "ok"], referencia_2: ["referencia (2)", "ok"], valida: ["válida", "ok"], debil: ["débil", "go"] };
+
+/* ---------- Carga ---------- */
+async function cargarIndice() {
+  P.indice = await dbIndice();
+  P.guias = {};
+  await Promise.all(P.indice.map(async (a) => { P.guias[a.id] = await DBB.guia(a.id).catch(() => null); }));
+}
+async function cargarSesiones() { P.sesiones = await DBB.sesiones(admin()).catch(() => []); }
+
+/* ---------- Inicio ---------- */
+function vMsg() { return P.msg ? `<p class="notice small" role="status">${esc(P.msg)}</p>` : ""; }
+function tituloAct(id) { const a = P.indice.find((x) => x.id === id); return a ? a.titulo : id; }
+function vInicio() {
+  const opts = P.indice.map((a) => `<option value="${esc(a.id)}">${esc(a.titulo)} · tipo ${a.tipo} · ${a.nivel}</option>`).join("");
+  const ses = P.sesiones.map((s) => `<tr><td class="num"><b>${esc(s.id)}</b></td><td>${esc(s.nombre || "")}</td><td>${esc(tituloAct(s.actividad))}</td><td>${s.modo === "evaluacion" ? `<span class="pill go">evaluación</span>` : `<span class="pill">formativa</span>`}</td>
+    <td>${s.estado === "abierta" ? `<span class="pill ok">abierta</span>` : `<span class="pill">cerrada</span>`}</td><td class="n"><button class="btn small" data-open="${esc(s.id)}">Abrir</button></td></tr>`).join("");
+  const acts = P.indice.map((a) => `<tr><td><b>${esc(a.titulo)}</b><br><span class="small muted num">${esc(a.id)}</span></td><td>${a.tipo}</td><td>${esc(a.nivel)}</td><td>${esc(a.asignatura || "")}</td>
+    <td>${P.guias[a.id] ? `<span class="pill ok">guía cargada</span>` : `<span class="pill bad">sin guía</span>`}</td>
+    <td class="n"><div class="row" style="justify-content:flex-end">${P.guias[a.id] ? `<a class="btn small" href="guia.html?a=${encodeURIComponent(a.id)}${DBB.demo ? "&demo" : ""}" target="_blank">Guía</a>` : ""}<a class="btn small" href="imprimir.html?a=${encodeURIComponent(a.id)}" target="_blank">Papel</a>
+    ${admin() ? `<label class="btn small">Subir guía<input type="file" accept=".json,application/json" data-guia="${esc(a.id)}" hidden></label>` : ""}</div></td></tr>`).join("");
+  return `${vMsg()}<section class="panel stack"><h2>Nueva sesión</h2>
+    <form id="nueva" class="row"><select class="field" name="act" required>${opts}</select><input class="field" name="nombre" placeholder="Nombre (p. ej., BQ 2.º A · grupo de tarde)" style="flex:1;min-width:220px">
+      <select class="field" name="modo"><option value="formativa">Formativa</option><option value="evaluacion">Evaluación (con calificación)</option></select><button class="btn primary">Crear</button></form></section>
+    <section class="stack"><h2>${admin() ? "Sesiones (todas)" : "Tus sesiones"}</h2>${P.sesiones.length ? `<div class="tablebox"><table><thead><tr><th>Código</th><th>Nombre</th><th>Actividad</th><th>Modo</th><th>Estado</th><th></th></tr></thead><tbody>${ses}</tbody></table></div>` : `<p class="muted">Todavía no hay sesiones.</p>`}</section>
+    <section class="stack"><h2>Actividades</h2><p class="small muted">La guía del profesor (respuestas esperadas, errores comunes y preguntas para el plenario) no está en el repositorio: se sube aquí a partir del archivo <span class="num">.guia.json</span> que genera el conversor. Solo la ve el profesorado.</p>
+      <div class="tablebox"><table><thead><tr><th>Actividad</th><th>Tipo</th><th>Nivel</th><th>Asignatura</th><th>Guía</th><th></th></tr></thead><tbody>${acts}</tbody></table></div></section>`;
+}
+
+/* ---------- Análisis de las respuestas ---------- */
+const enviados = () => P.grupos.filter((g) => g.resp);
+function chipsConceptos(texto) {
+  if (!P.guia || !P.guia.conceptos.length) return "";
+  const r = dbConceptos(texto, P.guia.conceptos);
+  return P.guia.conceptos.map((c) => `<span class="cpt ${r[c.id]} ${c.tipo === "error" ? "err" : c.tipo === "alternativo" ? "alt" : ""}" title="${c.tipo}${r[c.id] === "negado" ? " · mencionado en negativo" : ""}">${esc(c.etiqueta)}</span>`).join("");
+}
+function barras(items, total) {
+  // items: [{label, n, cls}]
+  return items.map((x) => `<div class="bar ${x.cls || ""}"><span>${x.label}</span><span class="tr"><span style="width:${total ? (100 * x.n) / total : 0}%"></span></span><span class="num">${x.n}</span></div>`).join("") || `<p class="muted small">Sin respuestas todavía.</p>`;
+}
+function nombreG(g, i) { return P.proj.on && !P.proj.nombres ? `Grupo ${String.fromCharCode(65 + i)}` : g.nombre; }
+function aggMolecula(m, clave) {
+  const gs = enviados(), cuenta = {};
+  for (const g of gs) for (const r of ((g.resp.mol || {})[m.id] || {}).rutas || []) cuenta[r] = (cuenta[r] || 0) + 1;
+  const k = P.guia && P.guia.moleculas && P.guia.moleculas[m.id];
+  const esperadas = new Set(k ? k.rutas : []);
+  const items = Object.entries(cuenta).sort((a, b) => b[1] - a[1]).map(([id, n]) => ({ label: `${clave && esperadas.has(id) ? "★ " : ""}${esc(dbRuta(id, "es"))}`, n, cls: clave && esperadas.has(id) ? "esp" : "" }));
+  const reacs = gs.map((g, i) => { const t = (((g.resp.mol || {})[m.id]) || {}).reac || ""; if (!t.trim()) return ""; const hits = k ? k.claves.filter((w) => dbBuscar(dbTokens(t), w).length).length : 0;
+    return `<li><b>${esc(nombreG(g, i))}:</b> ${esc(t)}${clave && k && k.claves.length ? ` <span class="small muted">(${hits}/${k.claves.length} palabras clave)</span>` : ""}</li>`; }).join("");
+  const frases = gs.flatMap((g, i) => (g.resp.frases || []).filter((f) => f.mol === m.id && (f.porque || "").trim()).map((f) => `<li><b>${esc(nombreG(g, i))}:</b> ${f.dir ? DB_DIRS[f.dir].es : ""} porque ${esc(f.porque)}${f.ruta ? ` (${esc(dbRuta(f.ruta, "es"))})` : ""}</li>`)).join("");
+  return `<div class="stack"><h3>Rutas elegidas (${gs.length} grupos)</h3>${barras(items, gs.length)}
+    <h3>Reacciones</h3>${reacs ? `<ul style="margin:0;padding-left:1.2em">${reacs}</ul>` : `<p class="muted small">—</p>`}
+    ${frases ? `<h3>Frases sobre esta molécula</h3><ul style="margin:0;padding-left:1.2em">${frases}</ul>` : ""}
+    ${clave && k ? `<div class="key"><b>Clave:</b> ${esc(L(k.reaccion))}<br><b>Rutas:</b> ${k.rutas.map((r) => esc(dbRuta(r, "es"))).join(", ")} · <b>Compartimento:</b> ${esc(L(k.compartimento))}<br><b>Por qué:</b> ${esc(L(k.porque))}</div>` : ""}</div>`;
+}
+function aggMarcadores(clave) {
+  const gs = enviados(), a = P.act, n = gs.length;
+  const items = a.catalogo.map((m) => {
+    const sel = gs.filter((g) => g.resp.marc && g.resp.marc[m.id]);
+    const papel = P.guia && P.guia.marcadores[m.id] ? P.guia.marcadores[m.id].papel : "";
+    const dirs = ["sube", "baja", "igual"].map((d) => `${DB_DIRS[d].s}${sel.filter((g) => g.resp.marc[m.id].dir === d).length}`).join(" ");
+    return { m, n: sel.length, papel, dirs };
+  }).filter((x) => x.n || clave).sort((x, y) => y.n - x.n);
+  const ref = P.guia ? refPar() : null;
+  return `<div class="stack">${items.map((x) => {
+    let obs = "";
+    if (clave && ref && P.guia.marcadores[x.m.id]) { const nv = P.guia.marcadores[x.m.id].niveles, fc = dbFC(nv[ref[0]], nv[ref[1]]); obs = ` · observado ${fc === null ? "n.d." : dbFmtFC(fc)}`; }
+    return `<div class="bar ${clave && x.papel === "distractor" ? "dis" : clave && x.papel === "clave" ? "esp" : ""}"><span>${esc(L(x.m.nombre))}${clave && x.papel ? ` <span class="pill ${PAPEL[x.papel][1]}">${PAPEL[x.papel][0]}</span>` : ""}<br><span class="small muted">${x.dirs}${obs}</span></span><span class="tr"><span style="width:${n ? (100 * x.n) / n : 0}%"></span></span><span class="num">${x.n}</span></div>`;
+  }).join("") || `<p class="muted small">Sin respuestas todavía.</p>`}</div>`;
+}
+function refPar() { if (!P.guia || !P.guia.condiciones) return null; const e = Object.entries(P.guia.condiciones); const a = e.find(([, c]) => c.papel === "referencia_1"), b = e.find(([, c]) => c.papel === "referencia_2"); return a && b ? [a[0], b[0]] : null; }
+function nomCond(id, otra) { if (id === "otra") return `Otra: ${otra || "—"}`; const c = P.act.condiciones.find((x) => x.id === id); return c ? L(c.nombre) : "—"; }
+function aggCondiciones(clave) {
+  const gs = enviados(), cuenta = {};
+  for (const g of gs) { const c = g.resp.cond || {}; if (!c.c1 || !c.c2) continue; const k = `${c.c1}|${c.c2}`; cuenta[k] = cuenta[k] || { n: 0, c }; cuenta[k].n++; }
+  const items = Object.entries(cuenta).sort((a, b) => b[1].n - a[1].n).map(([k, x]) => {
+    const [c1, c2] = k.split("|"), ref = refPar(), es = ref && ((c1 === ref[0] && c2 === ref[1]) || (c1 === ref[1] && c2 === ref[0]));
+    const p = (id) => clave && P.guia && P.guia.condiciones[id] ? ` <span class="pill ${PAPEL[P.guia.condiciones[id].papel][1]}">${PAPEL[P.guia.condiciones[id].papel][0]}</span>` : "";
+    return { label: `${esc(nomCond(c1, x.c.otra1))}${p(c1)} <span class="muted">frente a</span> ${esc(nomCond(c2, x.c.otra2))}${p(c2)}`, n: x.n, cls: clave && es ? "esp" : "" };
+  });
+  const porque = gs.map((g, i) => (g.resp.cond || {}).porque ? `<li><b>${esc(nombreG(g, i))}:</b> ${esc(g.resp.cond.porque)}</li>` : "").join("");
+  return `<div class="stack">${barras(items, gs.length)}${porque ? `<h3>¿Por qué esta comparación?</h3><ul style="margin:0;padding-left:1.2em">${porque}</ul>` : ""}
+    ${clave && P.guia ? `<div class="key">${Object.entries(P.guia.condiciones).map(([id, c]) => `<b>${esc(nomCond(id))}</b> (${PAPEL[c.papel][0]}): ${esc(L(c.comentario))}`).join("<br>")}</div>` : ""}</div>`;
+}
+function matrizConceptos() {
+  if (!P.guia || !P.guia.conceptos.length) return `<p class="muted small">Sube la guía de la actividad para ver qué conceptos aparecen en las respuestas.</p>`;
+  const gs = enviados(); const cs = P.guia.conceptos;
+  const filas = gs.map((g, i) => { const r = dbConceptos(dbTextoGrupo(P.act, g.resp), cs); return `<tr><td>${esc(nombreG(g, i))}</td>${cs.map((c) => `<td>${r[c.id] === "si" ? (c.tipo === "error" ? `<span class="bad-t">●</span>` : `<span class="ok-t">●</span>`) : r[c.id] === "negado" ? "◌" : `<span class="muted">·</span>`}</td>`).join("")}</tr>`; }).join("");
+  const pie = `<tr><th>% de grupos</th>${cs.map((c) => { const k = gs.filter((g) => dbConcepto(dbTextoGrupo(P.act, g.resp), c) === "si").length; return `<th class="num">${gs.length ? Math.round((100 * k) / gs.length) : 0}</th>`; }).join("")}</tr>`;
+  return `<div class="tablebox"><table class="mx"><thead><tr><th>Grupo</th>${cs.map((c) => `<th title="${esc(c.tipo)}">${esc(c.etiqueta)}${c.tipo === "error" ? " ⚠" : c.tipo === "alternativo" ? " ◇" : ""}</th>`).join("")}</tr></thead><tbody>${filas}</tbody><tfoot>${pie}</tfoot></table></div>
+    <p class="small muted">● aparece · ◌ aparece pero en negativo («no», «sin»…) · ⚠ concepto erróneo · ◇ interpretación alternativa. Es una ayuda para orientar el plenario, no una corrección.</p>`;
+}
+
+/* ---------- Detalle de un grupo ---------- */
+function vRespuesta(g) {
+  const a = P.act, r = g.resp; if (!r) return `<p class="muted">Todavía no ha escrito nada.</p>`;
+  if (a.tipo === 1) {
+    const mol = a.moleculas.map((m) => { const x = r.mol[m.id] || {}; const k = P.guia && P.guia.moleculas && P.guia.moleculas[m.id]; const ok = k && (x.rutas || []).some((id) => k.rutas.includes(id));
+      return `<tr><td>${esc(m.id)}. ${esc(L(m.nombre))}</td><td>${esc(x.reac || "")}</td><td>${(x.rutas || []).map((id) => esc(dbRuta(id, "es"))).join(", ")}${k && (x.rutas || []).length ? (ok ? ` <span class="ok-t">✓</span>` : ` <span class="bad-t">✗</span>`) : ""}</td></tr>`; }).join("");
+    const fr = (r.frases || []).filter((f) => f.mol).map((f) => `<li>${esc(L((a.moleculas.find((m) => m.id === f.mol) || {}).nombre))} ${f.dir ? DB_DIRS[f.dir].es : ""} porque ${esc(f.porque)}${f.ruta ? ` en ${esc(dbRuta(f.ruta, "es"))}` : ""}</li>`).join("");
+    return `<div class="tablebox"><table><thead><tr><th>Molécula</th><th>Reacción</th><th>Rutas</th></tr></thead><tbody>${mol}</tbody></table></div>
+      <div><b>Frases</b><ul style="margin:4px 0 0;padding-left:1.2em">${fr || "<li>—</li>"}</ul></div>
+      <div><b>${esc(L(a.condiciones.c1))}:</b><div class="ro">${esc(r.diag.c1) || "—"}</div></div>${r.diag.c2 ? `<div><b>${esc(L(a.condiciones.c2))}:</b><div class="ro">${esc(r.diag.c2)}</div></div>` : ""}
+      <div><b>Justificación</b><div class="ro">${esc(r.justif) || "—"}</div></div>`;
+  }
+  const c = r.cond || {}, mk = a.catalogo.filter((m) => r.marc && r.marc[m.id]).map((m) => { const x = r.marc[m.id], pp = P.guia && P.guia.marcadores[m.id] ? P.guia.marcadores[m.id].papel : "";
+    return `<tr><td>${esc(L(m.nombre))}${pp ? ` <span class="pill ${PAPEL[pp][1]}">${PAPEL[pp][0]}</span>` : ""}</td><td>${esc(x.reac || "")}</td><td>${(x.rutas || []).map((id) => esc(dbRuta(id, "es"))).join(", ")}</td><td>${x.dir ? DB_DIRS[x.dir].s : ""} ${esc(x.fc || "")}</td></tr>`; }).join("");
+  return `<p><b>Comparación:</b> ${esc(nomCond(c.c1, c.otra1))} / ${esc(nomCond(c.c2, c.otra2))}</p><div class="ro">${esc(c.porque) || "—"}</div>
+    <div class="tablebox"><table><thead><tr><th>Marcador</th><th>Reacción</th><th>Rutas</th><th>FC esperado</th></tr></thead><tbody>${mk}</tbody></table></div>
+    <div><b>Justificación</b><div class="ro">${esc(r.justif) || "—"}</div></div>${g.revision ? `<div><b>Revisión tras los resultados</b><div class="ro">${esc(g.revision)}</div></div>` : ""}`;
+}
+function vNota(g) {
+  const n = g.nota || {}, t = dbTareas(P.act, "es"), p = P.act.puntos;
+  const total = [n.s1, n.s2, n.s3].reduce((s, x) => s + (Number(x) || 0), 0);
+  return `<form class="nota" data-nota="${esc(g.id)}">${t.map((x, i) => `<label class="stack small">${esc(x)} (/${p[i]})<input class="field num" name="s${i + 1}" inputmode="decimal" value="${n[`s${i + 1}`] ?? ""}"></label>`).join("")}
+    <label class="stack small" style="flex:1;min-width:200px">Comentario<input class="field" name="com" value="${esc(n.com || "")}"></label><span class="small">Total <b class="num">${total}</b> / ${p.reduce((s, x) => s + x, 0)}</span><button class="btn small">Guardar nota</button></form>`;
+}
+function vGrupos() {
+  if (!P.grupos.length) return `<p class="muted">Todavía no se ha unido ningún grupo. Comparte el código o el enlace.</p>`;
+  return P.grupos.slice().sort((a, b) => (a.nombre || "").localeCompare(b.nombre || "")).map((g) => {
+    const st = ESTADOS[g.estado] || [g.estado, ""], falta = g.resp ? dbPendientes(P.act, g.resp, "es").length : null;
+    return `<details class="g" data-g="${esc(g.id)}" ${P.open.has(g.id) ? "open" : ""}><summary><b>${esc(g.nombre)}</b><span class="pill ${st[1]}">${st[0]}</span>${g.estado === "editando" && falta !== null ? `<span class="small muted">${falta ? `${falta} apartados por completar` : "lista para enviar"}</span>` : ""}
+      ${g.nota ? `<span class="small">nota <b class="num">${[g.nota.s1, g.nota.s2, g.nota.s3].reduce((s, x) => s + (Number(x) || 0), 0)}</b></span>` : ""}<span class="spacer small">${chipsConceptos(dbTextoGrupo(P.act, g.resp))}</span></summary>
+      <div class="det">${vRespuesta(g)}${P.ses.modo === "evaluacion" || g.nota ? vNota(g) : ""}
+        <div class="row"><input class="field" data-aviso="${esc(g.id)}" placeholder="Aviso para este grupo (lo ve en su pantalla)" value="${esc(g.aviso || "")}" style="flex:1;min-width:200px"><button class="btn small" data-enviaraviso="${esc(g.id)}">Enviar aviso</button>
+          ${g.estado === "enviado" ? `<button class="btn small" data-reabrir="${esc(g.id)}">Dejar que lo cambie</button>` : ""}<button class="btn small ghost" data-borrar="${esc(g.id)}">Eliminar grupo</button></div></div></details>`;
+  }).join("");
+}
+function vAgregado() {
+  const a = P.act;
+  if (a.tipo === 1) return a.moleculas.map((m) => `<section class="panel stack"><div class="row"><h2>${esc(m.id)}. ${esc(L(m.nombre))}</h2><span class="fc ${m.fc > 0 ? "up" : "down"}">${dbFmtFC(m.fc)}</span></div>${aggMolecula(m, true)}</section>`).join("");
+  return `<section class="panel stack"><h2>Condiciones elegidas</h2>${aggCondiciones(true)}</section><section class="panel stack"><h2>Marcadores elegidos</h2>${aggMarcadores(true)}</section>`;
+}
+function vSesion() {
+  const s = P.ses, a = P.act, link = location.href.replace(/panel\.html.*$/, "") + `?s=${P.sid}${DBB.demo && new URLSearchParams(location.search).has("demo") ? "&demo" : ""}`;
+  const n = P.grupos.length, env = P.grupos.filter((g) => g.estado === "enviado").length;
+  const ref = a.tipo === 2 ? refPar() : null;
+  return `<div class="row"><button class="btn small" id="volver">← Sesiones</button>${vMsg()}</div>
+    <section class="panel stack"><div class="row"><div class="stack" style="gap:4px"><span class="eyebrow">${a.tipo === 1 ? "Tipo 1 · interpretar" : "Tipo 2 · diseñar"} · ${s.modo === "evaluacion" ? "evaluación" : "formativa"}</span><h1>${esc(L(a.titulo))}</h1><span class="muted">${esc(s.nombre || "")}</span></div>
+      <div class="spacer stack" style="align-items:flex-end;gap:4px"><span class="code">${esc(P.sid)}</span><span class="small muted">${s.estado === "abierta" ? "abierta" : "cerrada"} · ${n} grupos · ${env} enviadas</span></div></div>
+      <div class="row"><input class="field" id="link" readonly value="${esc(link)}" style="flex:1;min-width:240px"><button class="btn small" id="copiar">Copiar enlace</button></div>
+      <div class="row"><button class="btn primary" id="proyectar">Proyectar (plenario)</button>
+        ${P.guia ? `<a class="btn" href="guia.html?a=${encodeURIComponent(a.id)}${DBB.demo ? "&demo" : ""}" target="_blank">Guía del profesor</a>` : `<span class="pill bad">sin guía cargada</span>`}
+        <a class="btn" href="imprimir.html?a=${encodeURIComponent(a.id)}" target="_blank">Versión en papel</a>
+        ${a.tipo === 2 && P.guia && ref ? `<button class="btn" id="resultados">${s.resultados ? "Ocultar los resultados" : "Ejecutar el experimento (mostrar resultados)"}</button>` : ""}
+        <button class="btn" id="csv">CSV</button>${s.estado === "abierta" ? `<button class="btn ghost" id="cerrar">Cerrar sesión</button>` : `<button class="btn ghost" id="reabrirses">Reabrir sesión</button>`}</div>
+      ${a.tipo === 2 && s.resultados ? `<p class="notice small">Los grupos que ya han enviado ven ahora el fold change observado de sus marcadores y pueden probar otras condiciones.</p>` : ""}</section>
+    <div class="tabs">${[["grupos", "Grupos"], ["agregado", a.tipo === 1 ? "Por molécula" : "Condiciones y marcadores"], ["conceptos", "Conceptos"]].map(([k, t]) => `<button class="btn small" data-vista="${k}" aria-pressed="${P.vista === k}">${t}</button>`).join("")}</div>
+    <div class="stack">${P.vista === "grupos" ? vGrupos() : P.vista === "agregado" ? vAgregado() : matrizConceptos()}</div>`;
+}
+
+/* ---------- Proyección ---------- */
+function diapositivas() {
+  const a = P.act, cl = P.proj.clave, gs = enviados(), D = [];
+  D.push(`<p class="eyebrow">DEAba · ${a.tipo === 1 ? "Interpretar el experimento" : "Diseñar el experimento"}</p><h1>${esc(L(a.titulo))}</h1><p>${esc(L(a.contexto))}</p><p class="q">${esc(L(a.mision))}</p><p class="muted">${gs.length} grupos con respuesta</p>`);
+  if (a.tipo === 1) {
+    for (const m of a.moleculas) D.push(`<div class="row"><h1>${esc(m.id)}. ${esc(L(m.nombre))}</h1><span class="fc ${m.fc > 0 ? "up" : "down"}">${dbFmtFC(m.fc)}</span></div>${aggMolecula(m, cl)}`);
+    D.push(`<h1>¿Qué está ocurriendo en la ${esc(L(a.condiciones.c1))}?</h1>${gs.map((g, i) => `<div class="q"><b>${esc(nombreG(g, i))}:</b> ${esc((g.resp.diag || {}).c1 || "—")}</div>`).join("")}${cl && P.guia ? `<div class="key">${P.guia.secciones.diagnostico.map((x) => esc(L(x))).join("<br>")}</div>` : ""}`);
+  } else {
+    D.push(`<h1>¿Qué habéis comparado?</h1>${aggCondiciones(cl)}`);
+    D.push(`<h1>¿Qué marcadores habéis elegido?</h1>${aggMarcadores(cl)}`);
+    D.push(`<h1>¿Qué demostraría vuestro experimento?</h1>${gs.map((g, i) => `<div class="q"><b>${esc(nombreG(g, i))}:</b> ${esc(g.resp.justif || "—")}</div>`).join("")}`);
+  }
+  if (P.guia && P.guia.conceptos.length) D.push(`<h1>¿Qué ideas han aparecido?</h1>${matrizConceptos()}`);
+  if (P.guia && P.guia.secciones.plenario.length) D.push(`<h1>Para el plenario</h1>${P.guia.secciones.plenario.map((x) => `<p class="q">${esc(L(x))}</p>`).join("")}`);
+  return D;
+}
+function vProj() {
+  const D = diapositivas(); P.proj.i = Math.max(0, Math.min(P.proj.i, D.length - 1));
+  $("#proj").innerHTML = `<div class="in">${D[P.proj.i]}</div><div class="nav"><button class="btn" data-pj="-1" aria-label="Anterior">←</button><span class="num">${P.proj.i + 1} / ${D.length}</span><button class="btn" data-pj="1" aria-label="Siguiente">→</button>
+    <label class="toggle"><input type="checkbox" id="pj-clave" ${P.proj.clave ? "checked" : ""}> Mostrar la clave</label><label class="toggle"><input type="checkbox" id="pj-nom" ${P.proj.nombres ? "checked" : ""}> Nombres de los grupos</label>
+    <span class="spacer"></span><button class="btn" id="pj-salir">Salir (Esc)</button></div>`;
+}
+
+/* ---------- Render y acciones ---------- */
+function render() {
+  if (P.proj.on) vProj();
+  const m = $("#main");
+  if (!P.rol) return;
+  if (P.sid && P.act) { const y = window.scrollY; m.innerHTML = vSesion(); window.scrollTo(0, y); }
+  else m.innerHTML = vInicio();
+}
+let renderT = null;
+function renderPronto() { clearTimeout(renderT); renderT = setTimeout(() => { if (document.activeElement && document.activeElement.closest && document.activeElement.closest("#main form, #main input")) return; render(); }, 250); }
+async function abrir(sid) {
+  P.sid = sid; P.ses = P.sesiones.find((s) => s.id === sid) || await DBB.sesion(sid); P.act = await dbActividad(P.ses.actividad);
+  P.guia = P.guias[P.act.id] || await DBB.guia(P.act.id).catch(() => null); P.grupos = []; P.open = new Set(); P.msg = ""; P.vista = "grupos";
+  DBB.verSesion(sid, (se) => { if (P.sid !== sid || !se) return; P.ses = { ...P.ses, ...se }; renderPronto(); });
+  DBB.verGrupos(sid, (gs) => { if (P.sid !== sid) return; P.grupos = gs; renderPronto(); });
+  render();
+}
+async function entrar() {
+  const u = await DBB.entrarAdmin(); P.uid = u.uid; P.rol = await DBB.rol(u.uid);
+  if (!P.rol) { $("#who").textContent = u.email || ""; $("#main").innerHTML = `<section class="panel stack"><h2>Cuenta no autorizada</h2><p>Esta cuenta (${esc(u.email || "")}) todavía no tiene acceso. Envía al administrador (b22olaba@uco.es) tu nombre, tu centro y este identificador:</p><input class="field uid" readonly value="${esc(u.uid)}"></section>`; return; }
+  const perfil = P.rol === "profesor" ? await DBB.perfil(u.uid) : null;
+  P.nombre = (perfil && perfil.nombre) || u.nombre || u.email;
+  $("#who").textContent = `${P.nombre} · ${P.rol === "admin" ? "administrador" : "profesor"}`;
+  await dbCargarRutas(); await Promise.all([cargarIndice(), cargarSesiones()]); render();
+}
+function cell(v) { const s = v == null ? "" : String(v); return /[",\n;]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; }
+function save(name, text, type) { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["﻿" + text], { type })); a.download = name; document.body.appendChild(a); a.click(); a.remove(); }
+function csv() {
+  const a = P.act, cs = (P.guia && P.guia.conceptos) || [], t = dbTareas(a, "es");
+  const cab = ["grupo", "estado", ...t.map((x) => `nota: ${x}`), "nota total", "comentario", "texto completo", ...cs.map((c) => `concepto: ${c.etiqueta}`)];
+  const filas = P.grupos.map((g) => { const n = g.nota || {}, tx = dbTextoGrupo(a, g.resp), r = dbConceptos(tx, cs);
+    return [g.nombre, g.estado, n.s1 ?? "", n.s2 ?? "", n.s3 ?? "", [n.s1, n.s2, n.s3].reduce((s, x) => s + (Number(x) || 0), 0), n.com || "", tx.replace(/\s*\n\s*/g, " | "), ...cs.map((c) => r[c.id])]; });
+  return [cab, ...filas].map((f) => f.map(cell).join(";")).join("\n");
+}
+async function accion(t) {
+  if (t.id === "signin") return entrar();
+  if (t.dataset.open) return abrir(t.dataset.open);
+  if (t.id === "volver") { P.sid = null; P.act = null; P.msg = ""; await cargarSesiones(); return render(); }
+  if (t.id === "copiar") { try { await navigator.clipboard.writeText($("#link").value); P.msg = "Enlace copiado."; } catch (er) { $("#link").select(); } return render(); }
+  if (t.dataset.vista) { P.vista = t.dataset.vista; return render(); }
+  if (t.id === "cerrar") { await DBB.cambiarSesion(P.sid, { estado: "cerrada" }); P.ses.estado = "cerrada"; return render(); }
+  if (t.id === "reabrirses") { await DBB.cambiarSesion(P.sid, { estado: "abierta" }); P.ses.estado = "abierta"; return render(); }
+  if (t.id === "resultados") {
+    const ref = refPar(), res = P.ses.resultados ? null : { referencia: ref, niveles: Object.fromEntries(Object.entries(P.guia.marcadores).map(([id, m]) => [id, m.niveles])) };
+    await DBB.cambiarSesion(P.sid, { resultados: res }); P.ses.resultados = res; return render();
+  }
+  if (t.id === "csv") return save(`deaba_${P.act.id}_${P.sid}_${new Date().toISOString().slice(0, 10)}.csv`, csv(), "text/csv");
+  if (t.dataset.enviaraviso) { const v = $(`[data-aviso="${t.dataset.enviaraviso}"]`).value.trim(); await DBB.cambiarGrupoAdmin(P.sid, t.dataset.enviaraviso, { aviso: v || null }); P.msg = v ? "Aviso enviado." : "Aviso retirado."; return render(); }
+  if (t.dataset.reabrir) return DBB.cambiarGrupoAdmin(P.sid, t.dataset.reabrir, { estado: "editando" });
+  if (t.dataset.borrar) { if (t.dataset.confirm !== "1") { t.dataset.confirm = "1"; t.textContent = "¿Seguro? Pulsa otra vez"; return; } return DBB.borrarGrupo(P.sid, t.dataset.borrar); }
+  if (t.id === "proyectar") { P.proj.on = true; P.proj.i = 0; $("#proj").classList.add("on"); document.body.style.overflow = "hidden"; return vProj(); }
+  if (t.id === "pj-salir") return salirProj();
+  if (t.dataset.pj) { P.proj.i += Number(t.dataset.pj); return vProj(); }
+}
+function salirProj() { P.proj.on = false; $("#proj").classList.remove("on"); document.body.style.overflow = ""; render(); }
+function fallo(er) {
+  const txt = er.code === "permission-denied" ? "Firebase no permite esta operación con tu cuenta (¿están publicadas las reglas nuevas de Firestore?)." : (er.code || er.message);
+  const m = $("#err"); if (m) m.textContent = `Error: ${txt}`; else { P.msg = `Error: ${txt}`; render(); }
+}
+document.addEventListener("click", (e) => { const t = e.target.closest("button"); if (t) accion(t).catch(fallo); });
+document.addEventListener("keydown", (e) => {
+  if (!P.proj.on) return;
+  if (e.key === "Escape") return salirProj();
+  if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); P.proj.i++; vProj(); }
+  if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); P.proj.i--; vProj(); }
+});
+document.addEventListener("toggle", (e) => { const d = e.target; if (d.dataset && d.dataset.g) { if (d.open) P.open.add(d.dataset.g); else P.open.delete(d.dataset.g); } }, true);
+document.addEventListener("change", async (e) => {
+  const el = e.target;
+  if (el.id === "pj-clave") { P.proj.clave = el.checked; return vProj(); }
+  if (el.id === "pj-nom") { P.proj.nombres = el.checked; return vProj(); }
+  if (el.dataset.guia) {
+    const aid = el.dataset.guia, f = el.files[0]; if (!f) return;
+    try { const g = JSON.parse(await f.text()); if (g.schema !== "deaba-guia/1" || g.actividad !== aid) throw new Error("Este archivo no es la guía de esta actividad."); await DBB.guardarGuia(aid, g); P.guias[aid] = g; P.msg = "Guía cargada."; }
+    catch (er) { P.msg = er.message; }
+    return render();
+  }
+});
+document.addEventListener("submit", (e) => {
+  const f = e.target; e.preventDefault();
+  (async () => {
+    if (f.id === "nueva") { const sid = await DBB.crearSesion({ actividad: f.act.value, nombre: f.nombre.value.trim(), modo: f.modo.value, resultados: null }); await cargarSesiones(); return abrir(sid); }
+    if (f.dataset.nota) {
+      const num = (v) => { const x = String(v).replace(",", ".").trim(); return x === "" ? null : Number(x); };
+      const n = { s1: num(f.s1.value), s2: num(f.s2.value), s3: num(f.s3.value), com: f.com.value.trim() };
+      for (const [i, k] of ["s1", "s2", "s3"].entries()) if (n[k] !== null && (Number.isNaN(n[k]) || n[k] < 0 || n[k] > P.act.puntos[i])) { P.msg = `La nota de «${dbTareas(P.act, "es")[i]}» debe estar entre 0 y ${P.act.puntos[i]}.`; return render(); }
+      await DBB.cambiarGrupoAdmin(P.sid, f.dataset.nota, { nota: n }); P.msg = "Nota guardada."; document.activeElement.blur(); render();
+    }
+  })().catch(fallo);
+});
+if (DBB.demo) $("#signin").click();
+</script>
+</body>
+</html>

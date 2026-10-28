@@ -72,3 +72,7 @@ Las reglas garantizan que:
 - la nota y los avisos los escribe el profesor de la sesión.
 
 Alfonso Olaya Abril · Departamento de Bioquímica y Biología Molecular · Universidad de Córdoba
+
+## Cómo citar (Zenodo)
+
+La colección de actividades se publica en Zenodo con un DOI. Cuando exista, pégalo en `coleccion.json` (campo `doi`) y la guía y la versión en papel mostrarán «Cómo citar». Una actividad aportada por otro profesor puede llevar su propio DOI en la fila `doi` de la hoja «Actividad» de la plantilla.

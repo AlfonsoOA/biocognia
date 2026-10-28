@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORTIVIA · Versión en papel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="sortivia.css">
+<style>
+.hoja { display: flex; flex-direction: column; gap: 16px; padding: 24px 0 40px; }
+.campos { display: flex; gap: 24px; flex-wrap: wrap; font-size: .95rem; }
+.campos span { flex: 1; min-width: 200px; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+.lim { display: flex; gap: 10px; flex-wrap: wrap; }
+.lim b { font-family: var(--f-mono); font-weight: 500; }
+.reglas { font-size: .92rem; margin: 0; padding-left: 1.2em; }
+.blk { border-top: 2px solid var(--ink); padding-top: 6px; break-inside: avoid-page; }
+.blk h2 { font-size: 1.15rem; margin: 0; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.blk h2 small { font-family: var(--f-ui); font-size: .8rem; font-weight: 500; color: var(--muted); }
+.blk h2 .tag { margin-left: auto; font-family: var(--f-ui); font-size: .78rem; font-weight: 600; border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; }
+.dec { margin: 8px 0 4px; break-inside: avoid; }
+.dec > p { margin: 0 0 2px; font-weight: 600; font-size: .95rem; }
+.dec > p span { font-weight: 400; color: var(--muted); font-size: .85rem; }
+.op { display: grid; grid-template-columns: 1.1em 1fr auto; gap: 8px; align-items: baseline; font-size: .93rem; padding: 1px 0; }
+.op i { font-style: normal; font-family: var(--f-mono); font-size: .85rem; color: var(--muted); white-space: nowrap; }
+.op .box { width: .9em; height: .9em; border: 1.3px solid var(--ink); display: inline-block; }
+.op .box.r { border-radius: 50%; }
+.grp { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 6px 0 0; }
+.lineas { display: flex; flex-direction: column; margin-top: 4px; } .lineas i { display: block; height: 1.9em; border-bottom: 1px solid var(--line); }
+.sub { display: flex; justify-content: flex-end; gap: 8px; font-size: .9rem; margin-top: 6px; } .sub span { min-width: 110px; border-bottom: 1px solid var(--ink); }
+.tot { display: flex; gap: 24px; flex-wrap: wrap; font-weight: 600; } .tot span { flex: 1; min-width: 200px; border-bottom: 2px solid var(--ink); padding-bottom: 2px; }
+.cita { font-size: .8rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 6px; }
+@media print {
+  @page { size: A4; margin: 14mm; }
+  :root { --bg: #fff; --surface: #fff; --sunk: #f1f1ee; --ink: #111; --muted: #555; --line: #bbb; color-scheme: light; }
+  body { font-size: 10.5pt; } header.bar, footer, .noprint { display: none !important; } main { padding: 0; }
+  .hoja { padding: 0; gap: 12px; } h1 { font-size: 18pt; }
+}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap"><a class="mark" href="./">SORTIVIA<small>Versión en papel</small></a><span class="spacer"></span>
+  <div class="lang noprint" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
+  <button class="btn small noprint" onclick="print()" id="imp">Imprimir</button></div></header>
+<main class="wrap" id="main"><p class="muted">Cargando…</p></main>
+<footer><div class="wrap">SORTIVIA · BIOCOGNIA</div></footer>
+<script src="../quaestia/firebase-config.js"></script>
+<script src="sortivia.js"></script>
+<script>
+"use strict";
+let LANG = new URLSearchParams(location.search).get("lang") || svLang();
+const AID = new URLSearchParams(location.search).get("a");
+const P = {
+  es: { grupo: "Grupo:", fecha: "Fecha:", pres: "Presupuesto", lim2: "Límite", obl: "obligatorio", opc: "opcional", obj: "Objetivo", varias: "podéis marcar varias", una: "marcad una",
+    cont: (p) => `indicad cuántas (${p} cada una)`, just: "Justificación de las decisiones de este bloque", sub: "Gasto del bloque:", tot: "Gasto total:", tot2: "Total",
+    reglas: ["Elegid una estrategia: qué bloques hacéis y qué opción tomáis en cada decisión. Los bloques obligatorios hay que hacerlos; los opcionales, solo si os compensan.",
+      "Cada opción tiene un coste. No podéis pasaros del presupuesto{L}.", "Justificad cada bloque: la justificación forma parte de la nota.",
+      "Cada opción suma o resta puntos según una clave que no conocéis. Al final, los puntos se convierten en números para un sorteo: cuanto mejor sea la estrategia, más probabilidades de ganar."],
+    imp: "Imprimir", noact: (i) => `No se ha podido cargar la actividad «${i}».`, auto: "Actividad diseñada por", cita: "Cómo citar:" },
+  en: { grupo: "Group:", fecha: "Date:", pres: "Budget", lim2: "Limit", obl: "required", opc: "optional", obj: "Goal", varias: "you may tick several", una: "tick one",
+    cont: (p) => `state how many (${p} each)`, just: "Justification of the decisions in this block", sub: "Block cost:", tot: "Total cost:", tot2: "Total",
+    reglas: ["Choose a strategy: which blocks you do and which option you take in each decision. Required blocks must be done; optional ones only if they are worth it.",
+      "Every option has a cost. You cannot exceed the budget{L}.", "Justify each block: the justification is part of the mark.",
+      "Each option adds or subtracts points according to a key you do not know. At the end, the points become numbers for a draw: the better the strategy, the higher the chance of winning."],
+    imp: "Print", noact: (i) => `The activity “${i}” could not be loaded.`, auto: "Activity designed by", cita: "How to cite:" },
+};
+const T = (k, ...a) => { const v = P[LANG][k]; return typeof v === "function" ? v(...a) : v; };
+const L = (x) => svT(x, LANG);
+const lineas = (n) => `<div class="lineas">${"<i></i>".repeat(n)}</div>`;
+let ACT = null, COL = null;
+function render() {
+  document.documentElement.lang = LANG; document.getElementById("imp").textContent = T("imp");
+  for (const b of document.querySelectorAll(".lang button")) b.setAttribute("aria-pressed", b.dataset.lang === LANG);
+  const a = ACT, l2 = a.limite2 ? svCant(a.limite2.valor, a.limite2.unidad, LANG) : "";
+  const reglas = T("reglas").map((r) => r.replace("{L}", l2 ? (LANG === "en" ? ` or the limit of ${l2}` : ` ni el límite de ${l2}`) : ""));
+  const bloques = a.bloques.map((b) => {
+    const req = a.bloques_obligatorios.includes(b.id), obj = b.objetivo && L(b.objetivo.nombre) !== L(b.nombre) ? L(b.objetivo.nombre) : "";
+    const decs = b.decisiones.map((d) => {
+      const sola = b.decisiones.length === 1 && L(d.nombre) === L(b.nombre);
+      if (d.tipo === "contador") return `<div class="dec"><p>${esc(L(d.nombre))} <span>· ${T("cont", svPrecio(d.opciones[0], LANG).replace(/ (c\/u|each)$/, ""))}</span></p><div class="sub"><span></span></div></div>`;
+      let last = null;
+      const ops = d.opciones.map((o) => {
+        const gt = L(o.grupo), g = gt && gt !== last ? `<p class="grp">${esc(gt)}</p>` : ""; last = gt || last;
+        return `${g}<div class="op"><span class="box ${d.tipo === "multiple" ? "" : "r"}"></span><span>${esc(L(o.label))}</span><i>${esc(svPrecio(o, LANG))}</i></div>`;
+      }).join("");
+      return `<div class="dec">${sola ? "" : `<p>${esc(L(d.nombre))} <span>· ${d.tipo === "multiple" ? T("varias") : T("una")}</span></p>`}${sola && d.tipo === "multiple" ? `<p><span>${T("varias")}</span></p>` : ""}${ops}</div>`;
+    }).join("");
+    return `<section class="blk"><h2>${esc(L(b.nombre))}${obj ? `<small>${T("obj")}: ${esc(obj)}</small>` : ""}<span class="tag">${req ? T("obl") : T("opc")}</span></h2>${decs}
+      <p class="small muted" style="margin:8px 0 0">${T("just")}</p>${lineas(3)}<div class="sub">${T("sub")}<span></span></div></section>`;
+  }).join("");
+  const c = COL || {}, txtCita = a.doi ? `${a.autor ? a.autor + ". " : ""}${L(a.titulo)} [${LANG === "en" ? "ESTOPA activity" : "Actividad ESTOPA"}]. Zenodo. https://doi.org/${a.doi}`
+    : c.doi && (!a.autor || a.autor === c.autor) ? `${L(a.titulo)}. ${LANG === "en" ? "In" : "En"}: ${c.autor_cita} (${c.anio}). ${L(c.titulo)} (v${c.version}). Zenodo. https://doi.org/${c.doi}` : "";
+  const cita = txtCita ? `<p class="cita">${T("cita")} ${esc(txtCita)}</p>` : "";
+  document.getElementById("main").innerHTML = `<div class="hoja">
+    <div class="campos"><span>${T("grupo")}</span><span>${T("fecha")}</span></div>
+    <p class="eyebrow" style="margin:0">ESTOPA${a.asignatura ? " · " + esc(a.asignatura) : ""}</p><h1 style="margin:0">${esc(L(a.titulo))}</h1>
+    ${a.autor ? `<p class="small muted" style="margin:0">${T("auto")} ${esc(a.autor)}</p>` : ""}
+    <p style="margin:0">${esc(L(a.resumen))}</p>
+    <div class="lim"><span class="pill">${T("pres")}: <b>${esc(svEur(a.presupuesto, LANG))}</b></span>${l2 ? `<span class="pill">${T("lim2")}: <b>${esc(l2)}</b></span>` : ""}</div>
+    <ol class="reglas">${reglas.map((r) => `<li>${esc(r)}</li>`).join("")}</ol>
+    ${bloques}
+    <div class="tot"><span>${T("tot")}</span>${l2 ? `<span>${T("tot2")} (${esc(svT(a.limite2.unidad, LANG).split("|").pop())}):</span>` : ""}</div>${cita}</div>`;
+}
+document.addEventListener("click", (e) => { const b = e.target.closest("[data-lang]"); if (b) { LANG = b.dataset.lang; try { localStorage.setItem("sv.lang", LANG); } catch (er) {} render(); } });
+(async () => {
+  try { COL = await fetch("coleccion.json").then((r) => (r.ok ? r.json() : {})).catch(() => ({})); if (!SVB.demo) await SVB.init().catch(() => {}); ACT = await svCargarActividad(AID); render(); }
+  catch (e) { document.getElementById("main").innerHTML = `<p class="notice">${esc(T("noact", AID || ""))}</p>`; }
+})();
+</script>
+</body>
+</html>

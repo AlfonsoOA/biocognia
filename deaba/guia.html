@@ -99,7 +99,7 @@ function pintar() {
   $("#main").innerHTML = `<article class="doc"><p class="conf">${T("conf")}</p>
     <div class="stack"><p class="eyebrow">DEAba · ${T("tipo", act.tipo)} · ${act.tipo === 1 ? T("t1") : T("t2")}</p><h1>${esc(L(act.titulo))}</h1></div>
     <dl class="meta"><dt>${T("id")}</dt><dd class="num">${esc(act.id)}</dd><dt>${T("nivel")}</dt><dd>${T("niv")[act.nivel] || act.nivel}${L(g.nivel_texto) ? ` · ${esc(L(g.nivel_texto))}` : ""}</dd>${act.asignatura ? `<dt>${T("asig")}</dt><dd>${esc(act.asignatura)}</dd>` : ""}
-      <dt>${T("obj")}</dt><dd>${esc(L(g.objetivo))}</dd><dt>${T("tareas")}</dt><dd>${t.map((x, i) => `${esc(x)} (${act.puntos[i]})`).join(" · ")}</dd>${act.autor ? `<dt>${T("aut")}</dt><dd>${esc(act.autor)}</dd>` : ""}</dl>
+      <dt>${T("obj")}</dt><dd>${esc(L(g.objetivo))}</dd><dt>${T("tareas")}</dt><dd>${t.map((x, i) => `${esc(x)} (${act.puntos[i]})`).join(" · ")}</dd>${act.autor ? `<dt>${T("aut")}</dt><dd>${esc(act.autor)}</dd>` : ""}${dbCita(act, LANG) ? `<dt>${LANG === "en" ? "How to cite" : "Cómo citar"}</dt><dd class="small">${esc(dbCita(act, LANG))}</dd>` : ""}</dl>
     <section class="stack"><h2>${T("ctx")}</h2><p>${esc(L(act.contexto))}</p><p><b>${esc(L(act.mision))}</b></p>${datos}</section>
     <section class="stack"><h2>${T("diag")}</h2>${lista(S.diagnostico)}</section>
     <section class="stack"><h2>${T("pistas")}</h2>${lista(S.pistas)}</section>
@@ -117,7 +117,7 @@ document.addEventListener("click", (e) => { const b = e.target.closest(".lang bu
 (async function () {
   const id = new URLSearchParams(location.search).get("a");
   try {
-    await dbCargarRutas();
+    await Promise.all([dbCargarRutas(), dbCargarColeccion()]);
     if (!DBB.demo) await DBB.init().catch(() => {});
     ACT = await dbActividad(id);
     GUIA = await DBB.guia(id);

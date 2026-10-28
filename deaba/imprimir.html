@@ -87,14 +87,14 @@ function render() {
   }
   $("#main").innerHTML = `<article class="hoja"><div class="campos"><span>${T("grupo")}</span><span>${T("fecha")}</span></div>
     <div class="stack"><p class="eyebrow">DEAba · ${a.tipo === 1 ? T("t1") : T("t2")}</p><h1>${esc(L(a.titulo))}</h1></div>
-    <p>${esc(L(a.contexto))}</p><p><b>${esc(L(a.mision))}</b></p>${cuerpo}</article>`;
+    <p>${esc(L(a.contexto))}</p><p><b>${esc(L(a.mision))}</b></p>${cuerpo}${dbCita(a, LANG) ? `<p class="small muted" style="border-top:1px solid var(--line);padding-top:6px">${LANG === "en" ? "How to cite:" : "Cómo citar:"} ${esc(dbCita(a, LANG))}</p>` : ""}</article>`;
   document.title = `${L(a.titulo)} · ${T("papel")}`;
 }
 document.addEventListener("change", (e) => { if (e.target.id === "banco") render(); });
 document.addEventListener("click", (e) => { const b = e.target.closest(".lang button"); if (b && ACT) { LANG = b.dataset.lang; render(); } });
 (async function () {
   const id = new URLSearchParams(location.search).get("a");
-  try { await dbCargarRutas(); if (!DBB.demo) await DBB.init().catch(() => {}); ACT = await dbActividad(id); if (ACT.tipo === 2) $("#op-banco").hidden = false; render(); }
+  try { await Promise.all([dbCargarRutas(), dbCargarColeccion()]); if (!DBB.demo) await DBB.init().catch(() => {}); ACT = await dbActividad(id); if (ACT.tipo === 2) $("#op-banco").hidden = false; render(); }
   catch (e) { $("#main").innerHTML = `<p class="notice">${esc(T("noact", id))}</p>`; }
 })();
 </script>

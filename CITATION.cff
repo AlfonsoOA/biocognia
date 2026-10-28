@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "Si usas BIOCOGNIA (QUAESTIA, SORTIVIA o DEAba Digital), cítalo así. / If you use BIOCOGNIA, please cite it as below."
+title: "BIOCOGNIA: Open Educational Technology (QUAESTIA, SORTIVIA y DEAba Digital)"
+type: software
+authors:
+  - family-names: "Olaya Abril"
+    given-names: "Alfonso"
+    affiliation: "Universidad de Córdoba"
+repository-code: "https://github.com/AlfonsoOA/biocognia"
+url: "https://alfonsooa.github.io/biocognia/"
+keywords:
+  - biochemistry education
+  - open educational resources
+  - gamification
+  - active learning

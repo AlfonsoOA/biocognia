@@ -1,0 +1,9 @@
+{
+ "_nota": "Datos de la colección publicada en Zenodo. Cuando tengas el DOI, pégalo en «doi» (sin https://doi.org/). Mientras esté vacío, no se muestra cómo citar.",
+ "doi": "",
+ "version": "1.0",
+ "anio": 2026,
+ "autor": "Alfonso Olaya Abril",
+ "autor_cita": "Olaya Abril, A.",
+ "titulo": {"es": "ESTOPA: actividades de toma de decisiones con presupuesto para la enseñanza de las ciencias moleculares", "en": "ESTOPA: budget-constrained decision-making activities for teaching molecular sciences"}
+}

@@ -3,7 +3,7 @@
 Actividades de toma de decisiones y gamificación basadas en la metodología **ESTOPA**. Parte de BIOCOGNIA · Open Educational Technology.
 
 - **Autoría y desarrollo:** Alfonso Olaya Abril (Departamento de Bioquímica y Biología Molecular, Universidad de Córdoba).
-- **Versión:** 0.7.0.
+- **Versión:** 0.7.1.
 
 ## Cómo funciona una actividad
 
@@ -34,6 +34,14 @@ En cada sesión: código y enlace para los grupos, **árbitro automático** (cal
 4. «JSON» descarga la actividad y su clave por si se quiere pasar al repositorio (`actividades/`; la clave nunca).
 
 Quien no tenga cuenta puede proponer una actividad desde `proponer.html`: envía el Excel por correo (la hoja contiene la clave, así que no se sube a GitHub; en GitHub solo se abre la propuesta, con la etiqueta `propuesta-sortivia`).
+
+## Versión en papel
+
+`imprimir.html?a=<id>` (o el botón «Papel» del panel) genera la hoja del alumnado: bloques, decisiones y opciones con sus costes, sin puntos ni reglas, en español o inglés. Se imprime o se guarda como PDF desde el navegador.
+
+## Cómo citar (Zenodo)
+
+La colección de actividades ESTOPA se publica en Zenodo con un DOI. Cuando exista, pégalo en `coleccion.json` (campo `doi`) y la versión en papel mostrará «Cómo citar».
 
 ## Modo demostración
 

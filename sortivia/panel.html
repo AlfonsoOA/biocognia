@@ -125,6 +125,7 @@ const etiquetaAsig = (k) => k || "Sin asignatura";
 function vActividades() {
   const filaAct = (a) => {
     const k = P.claves[a.id], [lab, cls] = ESTACT[a.estado] || [a.estado, ""], mia = a.autor === P.uid, acc = [];
+    acc.push(`<a class="btn small ghost" href="imprimir.html?a=${encodeURIComponent(a.id)}${SVB.demo && new URLSearchParams(location.search).has("demo") ? "&demo" : ""}" target="_blank">Papel</a>`);
     if (a.origen === "repo") { if (admin()) acc.push(`<label class="btn small">${k ? "Sustituir" : "Cargar"} clave<input type="file" accept=".json" data-key="${a.id}" hidden></label>`); }
     else {
       if (admin() && a.estado !== "publicada") acc.push(`<button class="btn small primary" data-pub="${a.id}">Publicar</button>`);

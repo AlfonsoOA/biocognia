@@ -35,6 +35,8 @@ function dbConvertir(wb) {
     for (const k of ["titulo", "contexto", "mision"]) if (!txt(A[k])) errores.push(`Actividad: falta «${k}»`);
     const act = { schema: "deaba/1", id: aid, tipo, nivel, titulo: bil(A.titulo, AEN.titulo), asignatura: txt(A.asignatura), autor: txt(A.autor),
       contexto: bil(A.contexto, AEN.contexto), mision: bil(A.mision, AEN.mision), puntos: pts };
+    const doi = txt(A.doi).replace(/^(https?:\/\/(dx\.)?doi\.org\/|doi:\s*)/i, "");
+    if (doi) { if (!/^10\.\d{4,9}\/\S+$/.test(doi)) errores.push(`Actividad: «doi» no válido (${doi}); debe empezar por 10. (p. ej., 10.5281/zenodo.1234567)`); act.doi = doi; }
     const guia = { schema: "deaba-guia/1", actividad: aid, objetivo: bil(A.objetivo, AEN.objetivo), nivel_texto: bil(A.nivel_texto, AEN.nivel_texto), secciones: Object.fromEntries(DB_SECCIONES.map((s) => [s, []])) };
     if (tipo === 1) {
       if (!tiene("Moléculas")) throw new Error("Falta la hoja «Moléculas»");

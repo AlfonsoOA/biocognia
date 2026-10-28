@@ -38,6 +38,16 @@ function dbRuta(id, lang) { const r = DB_RUTAS.find((x) => x.id === id); return 
 // Solo nombres (metabolitos, cofactores, enzimas y las moléculas de la actividad): ayuda a escribir, no da la reacción.
 let DB_CAT = null;
 async function dbCargarCatalogo(base = "") { if (DB_CAT) return DB_CAT; try { const r = await fetch(base + "catalogo.json"); DB_CAT = await r.json(); } catch (e) { DB_CAT = { metabolitos: [], enzimas: [] }; } return DB_CAT; }
+// Colección en Zenodo (coleccion.json) y cómo citar una actividad.
+let DB_COL = null;
+async function dbCargarColeccion(base = "") { if (DB_COL) return DB_COL; try { const r = await fetch(base + "coleccion.json"); DB_COL = r.ok ? await r.json() : {}; } catch (e) { DB_COL = {}; } return DB_COL; }
+function dbCita(act, lang = "es") {
+  const en = lang === "en", tit = dbT(act.titulo, lang);
+  if (act.doi) return `${act.autor ? act.autor + ". " : ""}${tit} [${en ? "DEAba Digital activity" : "Actividad DEAba Digital"}]. Zenodo. https://doi.org/${act.doi}`;
+  const c = DB_COL || {};
+  if (c.doi && (!act.autor || act.autor === c.autor)) return `${tit}. ${en ? "In" : "En"}: ${c.autor_cita} (${c.anio}). ${dbT(c.titulo, lang)} (v${c.version}). Zenodo. https://doi.org/${c.doi}`;
+  return "";
+}
 function dbNombres(lang, extra = []) {
   const vistos = new Set(), out = [];
   for (const n of [...extra, ...((DB_CAT && DB_CAT.metabolitos) || []), ...((DB_CAT && DB_CAT.enzimas) || [])]) {

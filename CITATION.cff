@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "Si usas BIOCOGNIA (QUAESTIA, SORTIVIA o DEAba Digital), cítalo así. / If you use BIOCOGNIA, please cite it as below."
+message: "Si usas BIOCOGNIA (QUAESTIA, SORTIVIA o DEAba Digital), cita el software así. Las preguntas de QUAESTIA se citan a través de la Guía de Bioquímica Metabólica (https://doi.org/10.5281/zenodo.22299277). / If you use BIOCOGNIA, please cite the software as below; QUAESTIA questions are cited through the Metabolic Biochemistry Guide (https://doi.org/10.5281/zenodo.22299277)."
 title: "BIOCOGNIA: Open Educational Technology (QUAESTIA, SORTIVIA y DEAba Digital)"
 type: software
 authors:

@@ -2,8 +2,8 @@
 
 Autoevaluación y autoaprendizaje de **Bioquímica metabólica**, con preguntas clasificadas según la taxonomía de Bloom (B1 Recordar → B6 Crear). Bilingüe (ES/EN). Parte de BIOCOGNIA.
 
-- **Banco de preguntas:** Guía de Bioquímica Metabólica (Universidad de Córdoba).
-- **Versión:** 0.3.1 (estudiante, profesorado y envío automático opcional).
+- **Banco de preguntas:** Guía de Bioquímica Metabólica (Universidad de Córdoba), https://doi.org/10.5281/zenodo.22299277. Para citar las preguntas, cita la Guía; el banco no forma parte del registro del software.
+- **Versión:** 0.3.2 (estudiante, profesorado y envío automático opcional).
 
 ## Qué hace
 

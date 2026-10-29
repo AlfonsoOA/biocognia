@@ -3,7 +3,7 @@
    BIOCOGNIA · Open Educational Technology · Alfonso Olaya Abril
    ============================================================ */
 "use strict";
-const DB_VERSION = "0.2.3";
+const DB_VERSION = "0.2.4";
 
 /* ---------- Utilidades ---------- */
 const $ = (s, r = document) => r.querySelector(s);

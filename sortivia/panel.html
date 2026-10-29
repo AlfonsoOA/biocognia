@@ -43,16 +43,18 @@ ul.err { margin: 0; padding-left: 20px; color: var(--bad); font-size: .9rem; }
   </section>
 </main>
 <footer><div class="wrap" id="foot"></div></footer>
+<script src="../comun/panel_i18n.js?v=1.0"></script>
 <script src="../quaestia/firebase-config.js"></script>
-<script src="sortivia.js"></script>
-<script src="../comun/estadisticas.js?v=1.0"></script>
+<script src="sortivia.js?v=0.7.3"></script>
+<script src="../comun/estadisticas.js?v=1.1"></script>
 <script>
 "use strict";
 const P = { rol: null, uid: null, email: "", nombre: "", vista: "inicio", acts: [], fsActs: [], repo: [], claves: {}, sesiones: [], profs: [], conv: null,
   sid: null, ses: null, act: null, grupos: [], auto: true, busy: new Set(), open: new Set(), msg: "" };
 const ESTADOS = { editando: ["Decidiendo", ""], enviado: ["Enviada", "go"], puntuado: ["Eligiendo números", "go"], sorteo_pedido: ["Sorteo pedido", "go"], ganado: ["Ganado", "ok"], fallado: ["Fallado", "bad"], terminado: ["Terminado", "bad"] };
 const ESTACT = { publicada: ["Publicada", "ok"], propuesta: ["Propuesta", "go"], borrador: ["Borrador", ""] };
-const fmt = (n) => svEur(n, "es");
+const fmt = (n) => svEur(n, PANEL_LANG);
+const W = (es, en) => (PANEL_LANG === "en" ? en : es);
 const admin = () => P.rol === "admin";
 $("#foot").innerHTML = `SORTIVIA · panel · v${SV_VERSION}${SVB.demo ? ` · <span class="pill go">Modo demostración: todo se guarda en este navegador</span>` : ""}`;
 
@@ -119,7 +121,7 @@ function vTabs() {
 // Actividades agrupadas por asignatura (las que no tienen, al final) y por título dentro de cada una.
 function porAsignatura(lista) {
   const g = new Map();
-  for (const a of lista.slice().sort((x, y) => svT(x.titulo, "es").localeCompare(svT(y.titulo, "es"), "es"))) { const k = a.asignatura || ""; if (!g.has(k)) g.set(k, []); g.get(k).push(a); }
+  for (const a of lista.slice().sort((x, y) => svT(x.titulo, PANEL_LANG).localeCompare(svT(y.titulo, PANEL_LANG), "es"))) { const k = a.asignatura || ""; if (!g.has(k)) g.set(k, []); g.get(k).push(a); }
   return [...g.entries()].sort(([a], [b]) => (a === "") - (b === "") || a.localeCompare(b, "es"));
 }
 const etiquetaAsig = (k) => k || "Sin asignatura";
@@ -138,7 +140,7 @@ function vActividades() {
       if (admin() || (mia && a.estado !== "publicada")) acc.push(`<button class="btn small ghost" data-delact="${a.id}">Eliminar</button>`);
     }
     const origen = a.origen === "repo" ? "Repositorio" : `Panel · ${esc(a.autor_nombre || nombreProf(a.autor))}`;
-    return `<tr><td>${esc(svT(a.titulo, "es"))}<div class="small muted">${origen}</div></td><td><span class="pill ${cls}">${lab}</span></td>
+    return `<tr><td>${esc(svT(a.titulo, PANEL_LANG))}<div class="small muted">${origen}</div></td><td><span class="pill ${cls}">${lab}</span></td>
       <td>${k ? `<span class="pill ok">Clave (${Object.keys(k.puntos || {}).length})</span>` : `<span class="pill bad">Sin clave</span>`}</td><td class="n"><div class="acc">${acc.join("")}</div></td></tr>`;
   };
   const grupos = porAsignatura(P.acts), conCab = grupos.length > 1 || (grupos[0] && grupos[0][0]);
@@ -153,14 +155,14 @@ function vActividades() {
 function vNueva() {
   const usables = P.acts.filter((a) => a.estado === "publicada" || a.autor === P.uid || admin());
   return `<section class="panel stack"><h2>Nueva sesión</h2><form id="nueva" class="row">
-    <select class="field" name="act">${porAsignatura(usables).map(([k, l]) => `<optgroup label="${esc(etiquetaAsig(k))}">${l.map((a) => `<option value="${a.id}">${esc(svT(a.titulo, "es"))}${a.estado !== "publicada" ? " (sin publicar: solo para pruebas)" : ""}</option>`).join("")}</optgroup>`).join("")}</select>
+    <select class="field" name="act">${porAsignatura(usables).map(([k, l]) => `<optgroup label="${esc(etiquetaAsig(k))}">${l.map((a) => `<option value="${a.id}">${esc(svT(a.titulo, PANEL_LANG))}${a.estado !== "publicada" ? " (sin publicar: solo para pruebas)" : ""}</option>`).join("")}</optgroup>`).join("")}</select>
     <input class="field" name="nombre" placeholder="Nombre (p. ej., BMSi 2026-27 · grupo A)" style="flex:1;min-width:220px" maxlength="80">
     <button class="btn primary" type="submit">Crear sesión</button></form></section>`;
 }
 function vSesiones() {
   const abiertas = P.sesiones.filter((s) => s.estado === "abierta"), cerradas = P.sesiones.filter((s) => s.estado !== "abierta");
   const cols = admin() ? 6 : 5;
-  const fila = (s) => `<tr><td class="num">${s.id}</td><td>${esc(s.nombre || "")}</td><td>${(() => { const a = P.acts.find((x) => x.id === s.actividad) || {}; return `${a.asignatura ? `<span class="pill">${esc(a.asignatura)}</span> ` : ""}${esc(svT(a.titulo, "es") || s.actividad)}`; })()}</td>${admin() ? `<td class="small">${esc(nombreProf(s.propietario))}</td>` : ""}<td class="small muted">${new Date(s.creada).toLocaleString("es-ES")}</td><td class="n"><button class="btn small" data-open="${s.id}">Abrir</button></td></tr>`;
+  const fila = (s) => `<tr><td class="num">${s.id}</td><td>${esc(s.nombre || "")}</td><td>${(() => { const a = P.acts.find((x) => x.id === s.actividad) || {}; return `${a.asignatura ? `<span class="pill">${esc(a.asignatura)}</span> ` : ""}${esc(svT(a.titulo, PANEL_LANG) || s.actividad)}`; })()}</td>${admin() ? `<td class="small">${esc(nombreProf(s.propietario))}</td>` : ""}<td class="small muted">${new Date(s.creada).toLocaleString(PANEL_LANG === "en" ? "en-GB" : "es-ES")}</td><td class="n"><button class="btn small" data-open="${s.id}">Abrir</button></td></tr>`;
   return `<section class="panel stack"><h2>${admin() ? "Sesiones (todas)" : "Tus sesiones"}</h2>${P.sesiones.length ? `<div class="tablebox"><table><thead><tr><th>Código</th><th>Nombre</th><th>Actividad</th>${admin() ? "<th>Profesor</th>" : ""}<th>Creada</th><th></th></tr></thead><tbody>${abiertas.map(fila).join("")}${cerradas.length ? `<tr><td colspan="${cols}" class="small muted">Cerradas</td></tr>${cerradas.map(fila).join("")}` : ""}</tbody></table></div>` : `<p class="muted">Todavía no hay sesiones.</p>`}</section>`;
 }
 function vMsg() { return P.msg ? `<p class="notice small" role="status">${esc(P.msg)}</p>` : ""; }
@@ -168,7 +170,7 @@ function vInicio() { return vTabs() + vMsg() + vNueva() + vSesiones() + vActivid
 
 /* ---------- Estadísticas de uso (solo administrador) ---------- */
 async function cargarEst(min = 1) {
-  const actividades = Object.fromEntries(P.acts.map((a) => [a.id, { titulo: svT(a.titulo, "es") || a.id, detalle: a.asignatura || "" }]));
+  const actividades = Object.fromEntries(P.acts.map((a) => [a.id, { titulo: svT(a.titulo, PANEL_LANG) || a.id, detalle: a.asignatura || "" }]));
   const enviado = (g) => g.estado !== "editando" || (g.ronda || 1) > 1;
   P.est = await bcCargar({ app: "SORTIVIA", B: SVB, adminUids: [...SV_ADMINS, "demo-admin"], actividades, enviado, min }); render();
 }
@@ -207,8 +209,8 @@ function planFilas(act, el) {
     const sel = el.bloques[b.id], cb = svCosteBloque(b, sel, nc, nr);
     b.decisiones.forEach((d, i) => {
       const v = sel.dec[d.id];
-      const txt = d.tipo === "contador" ? (Number(v) > 0 ? `${Number(v)} ×` : "—") : svElegidas(d, v).map((o) => svT(o.label, "es")).join(" + ");
-      out.push(`<tr><td>${i === 0 ? `<b>${esc(svT(b.nombre, "es"))}</b>` : ""}</td><td>${esc(svT(d.nombre, "es"))}</td><td>${esc(txt)}</td><td class="n">${i === 0 ? fmt(cb) : ""}</td></tr>`);
+      const txt = d.tipo === "contador" ? (Number(v) > 0 ? `${Number(v)} ×` : "—") : svElegidas(d, v).map((o) => svT(o.label, PANEL_LANG)).join(" + ");
+      out.push(`<tr><td>${i === 0 ? `<b>${esc(svT(b.nombre, PANEL_LANG))}</b>` : ""}</td><td>${esc(svT(d.nombre, PANEL_LANG))}</td><td>${esc(txt)}</td><td class="n">${i === 0 ? fmt(cb) : ""}</td></tr>`);
     });
   }
   return out.join("");
@@ -221,15 +223,15 @@ function vConversor() {
   else if (c) {
     const a = c.act, nd = a.bloques.reduce((s, b) => s + b.decisiones.length, 0), no = a.bloques.reduce((s, b) => s + b.decisiones.reduce((t, d) => t + d.opciones.length, 0), 0);
     const ch = choque(a.id);
-    cuerpo = `<div class="stack"><p><b>${esc(svT(a.titulo, "es"))}</b> <span class="small muted">· id <span class="num">${esc(a.id)}</span></span></p>
-      <div class="kv">${a.asignatura ? `<div><b>${esc(a.asignatura)}</b><span>Asignatura</span></div>` : ""}<div><b>${a.bloques.length}</b><span>Bloques</span></div><div><b>${nd}</b><span>Decisiones</span></div><div><b>${no}</b><span>Opciones</span></div><div><b>${c.clave.reglas.length}</b><span>Reglas</span></div><div><b>${fmt(a.presupuesto)}</b><span>Presupuesto</span></div>${a.limite2 ? `<div><b>${svCant(a.limite2.valor, a.limite2.unidad, "es")}</b><span>Segundo límite</span></div>` : ""}<div><b>${c.objetivo}</b><span>Puntos objetivo</span></div></div>
+    cuerpo = `<div class="stack"><p><b>${esc(svT(a.titulo, PANEL_LANG))}</b> <span class="small muted">· id <span class="num">${esc(a.id)}</span></span></p>
+      <div class="kv">${a.asignatura ? `<div><b>${esc(a.asignatura)}</b><span>Asignatura</span></div>` : ""}<div><b>${a.bloques.length}</b><span>Bloques</span></div><div><b>${nd}</b><span>Decisiones</span></div><div><b>${no}</b><span>Opciones</span></div><div><b>${c.clave.reglas.length}</b><span>Reglas</span></div><div><b>${fmt(a.presupuesto)}</b><span>Presupuesto</span></div>${a.limite2 ? `<div><b>${svCant(a.limite2.valor, a.limite2.unidad, PANEL_LANG)}</b><span>Segundo límite</span></div>` : ""}<div><b>${c.objetivo}</b><span>Puntos objetivo</span></div></div>
       ${ch.error ? `<p class="notice" style="color:var(--bad)">${esc(ch.error)}</p>` : ch.aviso ? `<p class="small notice">${esc(ch.aviso)}</p>` : ""}`;
     if (c.fase === "optimizando") cuerpo += `<div class="stack"><p class="small">Buscando la mejor estrategia dentro del presupuesto… (unos 30 segundos; no cierres la página)</p><progress id="prog" max="1" value="${c.prog || 0}"></progress></div>`;
     if (c.fase === "hecho") {
       if (!(c.bruto > 0)) cuerpo += `<p class="notice" style="color:var(--bad)">No se ha encontrado ninguna estrategia con puntos positivos dentro del presupuesto. Revisa los precios, los puntos o el presupuesto.</p>`;
       else {
         const coste = svCosteTotal(a, c.plan), nums = svNumeros(a, svEscalar(c.clave, c.bruto));
-        cuerpo += `<div class="stack"><p>Mejor estrategia encontrada: <b>${c.bruto} puntos brutos</b> con un gasto de <b>${fmt(coste)}</b> (de ${fmt(a.presupuesto)})${a.limite2 ? ` y <b>${svCant(svCoste2Total(a, c.plan), a.limite2.unidad, "es")}</b> (de ${svCant(a.limite2.valor, a.limite2.unidad, "es")})` : ""}. Se reescalan a <b>${c.objetivo} puntos</b> → ${nums} número${nums === 1 ? "" : "s"} de ${a.numeros}. Cualquier otra estrategia obtiene puntos en proporción.</p>
+        cuerpo += `<div class="stack"><p>${W("Mejor estrategia encontrada:", "Best strategy found:")} <b>${c.bruto} ${W("puntos brutos", "raw points")}</b> ${W("con un gasto de", "costing")} <b>${fmt(coste)}</b> (${W("de", "of")} ${fmt(a.presupuesto)})${a.limite2 ? ` ${W("y", "and")} <b>${svCant(svCoste2Total(a, c.plan), a.limite2.unidad, PANEL_LANG)}</b> (${W("de", "of")} ${svCant(a.limite2.valor, a.limite2.unidad, PANEL_LANG)})` : ""}. ${W("Se reescalan a", "Rescaled to")} <b>${c.objetivo} ${W("puntos", "points")}</b> → ${nums} ${W("número", "number")}${nums === 1 ? "" : "s"} ${W("de", "out of")} ${a.numeros}. ${W("Cualquier otra estrategia obtiene puntos en proporción.", "Any other strategy gets points in proportion.")}</p>
           <details><summary class="small">Ver la estrategia óptima</summary><div class="tablebox"><table class="plan"><thead><tr><th>Bloque</th><th>Decisión</th><th>Elección</th><th class="n">Coste</th></tr></thead><tbody>${planFilas(a, c.plan)}</tbody></table></div></details>
           <p class="small muted">Si la estrategia óptima no es la que tú esperabas, suele indicar puntos o reglas que conviene revisar en el Excel.</p>
           <div class="row">${ch.error ? "" : admin() ? `<button class="btn primary" id="c-pub">Guardar y publicar</button><button class="btn" id="c-bor">Guardar como borrador</button>` : `<button class="btn primary" id="c-bor">Guardar como borrador</button>`}<button class="btn ghost" id="c-dl">Descargar JSON (actividad y clave)</button></div></div>`;
@@ -256,16 +258,16 @@ function vGrupoDet(g) {
   const h = g.historial || [];
   const rondas = h.map((r) => {
     const filas = r.detalle.map((d) => {
-      if (d.regla) return `<tr class="regla"><td>Coherencia · ${esc(d.regla)}${d.bloque ? ` <span class="small muted">(${esc(svT((P.act.bloques.find((x) => x.id === d.bloque) || {}).nombre, "es"))})</span>` : ""}</td><td colspan="2">${esc(svT(d.texto, "es"))}</td><td class="n ${d.puntos > 0 ? "pos" : d.puntos < 0 ? "neg" : ""}">${d.puntos > 0 ? "+" : ""}${d.puntos}</td></tr>`;
+      if (d.regla) return `<tr class="regla"><td>Coherencia · ${esc(d.regla)}${d.bloque ? ` <span class="small muted">(${esc(svT((P.act.bloques.find((x) => x.id === d.bloque) || {}).nombre, PANEL_LANG))})</span>` : ""}</td><td colspan="2">${esc(svT(d.texto, PANEL_LANG))}</td><td class="n ${d.puntos > 0 ? "pos" : d.puntos < 0 ? "neg" : ""}">${d.puntos > 0 ? "+" : ""}${d.puntos}</td></tr>`;
       const b = P.act.bloques.find((x) => x.id === d.bloque), dec = b && b.decisiones.find((x) => x.id === d.decision), cnt = dec && dec.tipo === "contador", o = dec && (cnt ? dec.opciones[0] : dec.opciones.find((x) => x.id === d.opcion));
       const best = P.sol && dec && !cnt ? P.sol.decisiones.find((x) => x.bloque === d.bloque && x.decision === d.decision) : null;
       const ok = !best || best.mejores.some((m) => m.id === d.opcion);
-      const bestTxt = best && !ok ? `<br><span class="small muted">Mejor: ${best.mejores.map((m) => `${esc(svT((dec.opciones.find((x) => x.id === m.id) || {}).label, "es") || m.id)} (${m.puntos > 0 ? "+" : ""}${m.puntos})`).join(", ")}</span>` : "";
+      const bestTxt = best && !ok ? `<br><span class="small muted">Mejor: ${best.mejores.map((m) => `${esc(svT((dec.opciones.find((x) => x.id === m.id) || {}).label, PANEL_LANG) || m.id)} (${m.puntos > 0 ? "+" : ""}${m.puntos})`).join(", ")}</span>` : "";
       const nc = d.cuenta === false ? ` <span class="small muted">(${d.noCuentaBloque ? "bloque que no cuenta en su objetivo" : "no suma: cuenta la mejor opción"})</span>` : "";
-      return `<tr${d.cuenta === false ? ' class="nocuenta"' : ""}><td>${esc(b ? svT(b.nombre, "es") : d.bloque)}</td><td>${esc(dec ? svT(dec.nombre, "es") : d.decision)}</td><td>${esc(o ? (cnt ? `${d.cantidad} ×` : svT(o.label, "es")) : d.opcion)}${nc}${bestTxt}</td><td class="n ${d.puntos > 0 ? "pos" : d.puntos < 0 ? "neg" : ""}">${d.puntos > 0 ? "+" : ""}${d.puntos}</td></tr>`;
+      return `<tr${d.cuenta === false ? ' class="nocuenta"' : ""}><td>${esc(b ? svT(b.nombre, PANEL_LANG) : d.bloque)}</td><td>${esc(dec ? svT(dec.nombre, PANEL_LANG) : d.decision)}</td><td>${esc(o ? (cnt ? `${d.cantidad} ×` : svT(o.label, PANEL_LANG)) : d.opcion)}${nc}${bestTxt}</td><td class="n ${d.puntos > 0 ? "pos" : d.puntos < 0 ? "neg" : ""}">${d.puntos > 0 ? "+" : ""}${d.puntos}</td></tr>`;
     }).join("");
-    const js = Object.entries(r.justif || {}).filter(([, t]) => t && t.trim()).map(([b, t]) => `<div><span class="eyebrow">${esc(svT((P.act.bloques.find((x) => x.id === b) || {}).nombre, "es") || b)}</span><div class="just">${esc(t)}</div></div>`).join("");
-    return `<div class="stack"><h3>Ronda ${r.ronda}: ${r.puntos} puntos${r.puntos_brutos != null ? ` <span class="small muted">(${r.puntos_brutos} brutos)</span>` : ""} → ${r.numeros} números · ${fmt(r.coste)}${r.sorteo ? ` · sorteo ${r.sorteo} (${r.resultado})` : ""}</h3>
+    const js = Object.entries(r.justif || {}).filter(([, t]) => t && t.trim()).map(([b, t]) => `<div><span class="eyebrow">${esc(svT((P.act.bloques.find((x) => x.id === b) || {}).nombre, PANEL_LANG) || b)}</span><div class="just">${esc(t)}</div></div>`).join("");
+    return `<div class="stack"><h3>${W("Ronda", "Round")} ${r.ronda}: ${r.puntos} ${W("puntos", "points")}${r.puntos_brutos != null ? ` <span class="small muted">(${r.puntos_brutos} ${W("brutos", "raw")})</span>` : ""} → ${r.numeros} ${W("números", "numbers")} · ${fmt(r.coste)}${r.sorteo ? ` · ${W("sorteo", "draw")} ${r.sorteo} (${W(r.resultado, { ganado: "won", fallado: "lost" }[r.resultado] || r.resultado)})` : ""}</h3>
       <div class="tablebox"><table><thead><tr><th>Bloque</th><th>Decisión</th><th>Opción</th><th class="n">Puntos</th></tr></thead><tbody>${filas}</tbody></table></div>${js ? `<div class="stack">${js}</div>` : ""}</div>`;
   }).join("");
   return `<div class="det">${rondas || `<p class="muted">Aún no ha enviado ninguna estrategia. Gasto actual: ${fmt(g.coste || 0)}.</p>`}
@@ -281,7 +283,7 @@ function vSesion() {
   return `<section class="panel stack"><div class="row"><button class="btn ghost small" id="volver">← Sesiones</button><span class="spacer"></span>${P.claves[P.act.id] ? `<button class="btn small ${s.solucion ? "" : "primary"}" id="solucion">${s.solucion ? "Ocultar las mejores elecciones" : "Publicar las mejores elecciones"}</button>` : ""}${s.estado === "abierta" ? `<button class="btn small" id="cerrar">Cerrar sesión</button>` : `<span class="pill">Cerrada</span>`}</div>
       ${s.solucion ? `<p class="small notice">Mejores elecciones publicadas: las ven los grupos que han terminado (ganado o sin rondas).</p>` : ""}
       <div class="row" style="align-items:flex-end;gap:24px"><div><p class="eyebrow">Código para los grupos</p><div class="code">${P.sid}</div></div>
-      <div class="stack" style="flex:1;min-width:240px"><p><b>${esc(s.nombre || "")}</b> · ${esc(svT(P.act.titulo, "es"))}</p><div class="row"><input class="field num small" id="link" readonly value="${esc(enlace(P.sid))}" style="flex:1"><button class="btn small" id="copiar">Copiar enlace</button></div></div></div>
+      <div class="stack" style="flex:1;min-width:240px"><p><b>${esc(s.nombre || "")}</b> · ${esc(svT(P.act.titulo, PANEL_LANG))}</p><div class="row"><input class="field num small" id="link" readonly value="${esc(enlace(P.sid))}" style="flex:1"><button class="btn small" id="copiar">Copiar enlace</button></div></div></div>
       ${P.claves[P.act.id] ? "" : `<p class="notice">Falta cargar la clave de esta actividad: sin ella no se pueden calcular los puntos.</p>`}
       <label class="row small"><input type="checkbox" id="auto" ${P.auto ? "checked" : ""}> Árbitro automático: calcular puntos y hacer los sorteos en cuanto los grupos lo pidan (deja esta página abierta durante la clase).</label></section>
     <section class="stack"><div class="kv"><div><b>${gs.length}</b><span>Grupos</span></div><div><b>${gs.filter((g) => g.estado === "editando").length}</b><span>Decidiendo</span></div><div><b>${gan}</b><span>Han ganado</span></div><div><b>${gs.filter((g) => g.estado === "terminado").length}</b><span>Sin rondas</span></div></div>
@@ -296,7 +298,7 @@ function cell(v) { const s = v == null ? "" : String(v); return /[",\n]/.test(s)
 function save(name, text, type) { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
 function csvDecisiones() {
   const out = [["sesion", "actividad", "grupo", "ronda", "coste_ronda", "puntos_ronda", "puntos_brutos", "numeros", "elegidos", "sorteo", "resultado", "bloque", "decision", "opcion", "puntos_opcion", "cuenta"].join(",")];
-  for (const g of P.grupos) for (const r of g.historial || []) for (const d of r.detalle) out.push([P.sid, P.act.id, g.nombre, r.ronda, r.coste, r.puntos, r.puntos_brutos ?? "", r.numeros, (r.elegidos || []).join(" "), r.sorteo || "", r.resultado || "", d.regla ? "coherencia" : d.bloque, d.regla || d.decision, d.regla ? svT(d.texto, "es") : (d.cantidad != null ? d.cantidad : d.opcion), d.puntos, d.cuenta === false ? 0 : 1].map(cell).join(","));
+  for (const g of P.grupos) for (const r of g.historial || []) for (const d of r.detalle) out.push([P.sid, P.act.id, g.nombre, r.ronda, r.coste, r.puntos, r.puntos_brutos ?? "", r.numeros, (r.elegidos || []).join(" "), r.sorteo || "", r.resultado || "", d.regla ? "coherencia" : d.bloque, d.regla || d.decision, d.regla ? svT(d.texto, PANEL_LANG) : (d.cantidad != null ? d.cantidad : d.opcion), d.puntos, d.cuenta === false ? 0 : 1].map(cell).join(","));
   return out.join("\n");
 }
 function csvJust() {
@@ -334,7 +336,7 @@ async function guardarConv(estado) {
   await SVB.guardarActividad(aid, doc);
   await SVB.guardarClave(aid, c.clave);
   P.conv = null; P.vista = "inicio";
-  P.msg = estado === "publicada" ? `«${svT(c.act.titulo, "es")}» publicada: ya se puede usar en cualquier sesión.` : `«${svT(c.act.titulo, "es")}» guardada como borrador. Pruébala creando una sesión${admin() ? "" : " y, cuando esté lista, pulsa «Proponer»"}.`;
+  P.msg = estado === "publicada" ? `«${svT(c.act.titulo, PANEL_LANG)}» publicada: ya se puede usar en cualquier sesión.` : `«${svT(c.act.titulo, PANEL_LANG)}» guardada como borrador. Pruébala creando una sesión${admin() ? "" : " y, cuando esté lista, pulsa «Proponer»"}.`;
   await cargarActividades(); render();
 }
 async function descargarAct(aid) {
@@ -366,7 +368,7 @@ async function entrar() {
   }
   const perfil = P.rol === "profesor" ? await SVB.perfil(u.uid) : null;
   P.nombre = (perfil && perfil.nombre) || u.nombre || P.email;
-  $("#who").textContent = `${P.nombre} · ${P.rol === "admin" ? "administrador" : "profesor"}`;
+  $("#who").textContent = `${(PANEL_LANG === "en" && PANEL_I18N.tr(P.nombre)) || P.nombre} · ${P.rol === "admin" ? W("administrador", "administrator") : W("profesor", "teacher")}`;
   await Promise.all([cargarActividades(), cargarSesiones(), cargarProfes()]);
   render();
 }
@@ -388,7 +390,7 @@ async function accion(t) {
   if (t.dataset.reset) return SVB.cambiarGrupoAdmin(P.sid, t.dataset.reset, { estado: "editando", ronda: 1, puntos: null, numeros: null, sorteo: null, elegidos: [], historial: [], aviso: null });
   if (t.dataset.borrar) return SVB.borrarGrupo(P.sid, t.dataset.borrar);
   // Actividades
-  const titulo = (aid) => svT((P.acts.find((a) => a.id === aid) || {}).titulo, "es") || aid;
+  const titulo = (aid) => svT((P.acts.find((a) => a.id === aid) || {}).titulo, PANEL_LANG) || aid;
   if (t.dataset.pub) { await SVB.cambiarActividad(t.dataset.pub, { estado: "publicada", actualizado: Date.now() }); P.msg = `«${titulo(t.dataset.pub)}» publicada.`; await cargarActividades(); return render(); }
   if (t.dataset.prop) { await SVB.cambiarActividad(t.dataset.prop, { estado: "propuesta", actualizado: Date.now() }); P.msg = `«${titulo(t.dataset.prop)}» enviada al administrador para su revisión.`; await cargarActividades(); return render(); }
   if (t.dataset.dev) { await SVB.cambiarActividad(t.dataset.dev, { estado: "borrador", actualizado: Date.now() }); P.msg = `«${titulo(t.dataset.dev)}» ha vuelto a borrador.`; await cargarActividades(); return render(); }

@@ -53,17 +53,21 @@ details.g .det { border-top: 1px solid var(--line); padding: 12px 14px; display:
 </main>
 <footer><div class="wrap" id="foot"></div></footer>
 <div id="proj" role="dialog" aria-label="Proyección"></div>
+<script src="../comun/panel_i18n.js?v=1.0"></script>
 <script src="../quaestia/firebase-config.js"></script>
-<script src="deaba.js?v=0.2.3"></script>
-<script src="../comun/estadisticas.js?v=1.0"></script>
+<script src="deaba.js?v=0.2.4"></script>
+<script src="../comun/estadisticas.js?v=1.1"></script>
 <script>
 "use strict";
 const P = { rol: null, uid: null, nombre: "", indice: [], acts: [], conv: null, guias: {}, sesiones: [], sid: null, ses: null, act: null, guia: null, grupos: [], vista: "grupos",
   open: new Set(), msg: "", proj: { on: false, i: 0, clave: false, nombres: true } };
-const L = (x) => dbT(x, "es");
+const L = (x) => dbT(x, PANEL_LANG);
+const W = (es, en) => (PANEL_LANG === "en" ? en : es);
+const ETQ = (c) => (PANEL_LANG === "en" && c.etiqueta_en) || c.etiqueta;
 const admin = () => P.rol === "admin";
 $("#foot").innerHTML = `DEAba Digital · panel · v${DB_VERSION}${DBB.demo ? ` · <span class="pill go">Modo demostración: todo se guarda en este navegador</span>` : ""}`;
 const ESTADOS = { editando: ["Trabajando", ""], enviado: ["Enviada", "ok"] };
+const PL = (k) => (PAPEL[k] || [k])[0];
 const PAPEL = { clave: ["clave", "ok"], apoyo: ["apoyo", ""], distractor: ["distractor", "bad"], referencia_1: ["referencia (1)", "ok"], referencia_2: ["referencia (2)", "ok"], valida: ["válida", "ok"], debil: ["débil", "go"] };
 
 /* ---------- Carga ---------- */
@@ -71,7 +75,7 @@ const PAPEL = { clave: ["clave", "ok"], apoyo: ["apoyo", ""], distractor: ["dist
 async function cargarIndice() {
   P.indice = await dbIndice();
   const fs = await DBB.actividadesFS().catch(() => []), enRepo = new Set(P.indice.map((a) => a.id));
-  P.acts = P.indice.map((a) => ({ ...a, origen: "repo", estado: "publicada" }));
+  P.acts = P.indice.map((a) => ({ ...a, titulo: (PANEL_LANG === "en" && a.titulo_en) || a.titulo, origen: "repo", estado: "publicada" }));
   for (const a of fs) {
     if (enRepo.has(a.id) || !a.datos) continue;
     if (!admin() && a.estado !== "publicada" && a.autor !== P.uid) continue;
@@ -90,7 +94,7 @@ function vMsg() { return P.msg ? `<p class="notice small" role="status">${esc(P.
 function tituloAct(id) { const a = P.acts.find((x) => x.id === id); return a ? a.titulo : id; }
 function vInicio() {
   const usables = P.acts.filter((a) => a.estado === "publicada" || mia(a) || admin());
-  const opts = usables.map((a) => `<option value="${esc(a.id)}">${esc(a.titulo)} · tipo ${a.tipo} · ${a.nivel}${a.estado !== "publicada" ? ` · ${a.estado}` : ""}</option>`).join("");
+  const opts = usables.map((a) => `<option value="${esc(a.id)}">${esc(a.titulo)} · ${W("tipo", "type")} ${a.tipo} · ${a.nivel}${a.estado !== "publicada" ? ` · ${W(a.estado, { borrador: "draft", propuesta: "proposal" }[a.estado] || a.estado)}` : ""}</option>`).join("");
   const ses = P.sesiones.map((s) => `<tr><td class="num"><b>${esc(s.id)}</b></td><td>${esc(s.nombre || "")}</td><td>${esc(tituloAct(s.actividad))}</td><td>${s.modo === "evaluacion" ? `<span class="pill go">evaluación</span>` : `<span class="pill">formativa</span>`}</td>
     <td>${s.estado === "abierta" ? `<span class="pill ok">abierta</span>` : `<span class="pill">cerrada</span>`}</td><td class="n"><button class="btn small" data-open="${esc(s.id)}">Abrir</button></td></tr>`).join("");
   const acts = P.acts.map((a) => {
@@ -144,7 +148,7 @@ function vConversor() {
     const a = c.act, g = c.guia, ch = choque(a.id), n = a.tipo === 1 ? a.moleculas.length : a.catalogo.length;
     const sinEn = !a.titulo.en || !a.contexto.en || !a.mision.en;
     const secs = Object.entries(g.secciones).filter(([, v]) => v.length).map(([k, v]) => `${k} (${v.length})`).join(" · ");
-    cuerpo = `<div class="stack"><p><b>${esc(L(a.titulo))}</b> <span class="small muted">· id <span class="num">${esc(a.id)}</span> · tipo ${a.tipo} · ${esc(a.nivel)}</span></p>
+    cuerpo = `<div class="stack"><p><b>${esc(L(a.titulo))}</b> <span class="small muted">· id <span class="num">${esc(a.id)}</span> · ${W("tipo", "type")} ${a.tipo} · ${esc(a.nivel)}</span></p>
       <p class="small">${a.tipo === 1 ? `${n} moléculas` : `${a.condiciones.length} condiciones · ${n} marcadores en el catálogo (se piden ${a.n_enzimas} enzimas y ${a.n_metabolitos} metabolitos)`} · ${g.conceptos.length} conceptos · guía: ${secs || "vacía"}</p>
       ${sinEn ? `<p class="small notice">Sin textos en inglés: quien use la app en inglés verá la actividad en español.</p>` : ""}
       ${ch.error ? `<p class="notice" style="color:var(--bad)">${esc(ch.error)}</p>` : ch.aviso ? `<p class="small notice">${esc(ch.aviso)}</p>` : ""}
@@ -188,7 +192,9 @@ async function subirGuias(files) {
     try { await DBB.guardarGuia(a.id, g); P.guias[a.id] = g; ok.push(a.titulo); } catch (er) { mal.push(`${f.name}: ${er.message}`); }
   }
   const falta = P.acts.filter((a) => !P.guias[a.id]).length;
-  P.msg = `${ok.length} guía${ok.length === 1 ? "" : "s"} cargada${ok.length === 1 ? "" : "s"}${falta ? ` · quedan ${falta} actividades sin guía` : " · todas las actividades tienen guía"}.` + (mal.length ? ` No se han cargado: ${mal.join(" · ")}` : "");
+  const sg = ok.length === 1 ? "" : "s";
+  P.msg = W(`${ok.length} guía${sg} cargada${sg}${falta ? ` · quedan ${falta} actividades sin guía` : " · todas las actividades tienen guía"}.` + (mal.length ? ` No se han cargado: ${mal.join(" · ")}` : ""),
+    `${ok.length} guide${sg} loaded${falta ? ` · ${falta} activities still without a guide` : " · all activities have a guide"}.` + (mal.length ? ` Not loaded: ${mal.join(" · ")}` : ""));
   render();
 }
 
@@ -234,7 +240,7 @@ function vCatalogo() {
 }
 
 async function cargarEst(min = 1) {
-  const actividades = Object.fromEntries(P.acts.map((a) => [a.id, { titulo: a.titulo, detalle: `tipo ${a.tipo} · ${a.nivel}` }]));
+  const actividades = Object.fromEntries(P.acts.map((a) => [a.id, { titulo: a.titulo, detalle: `${W("tipo", "type")} ${a.tipo} · ${a.nivel}` }]));
   P.est = await bcCargar({ app: "DEAba Digital", B: DBB, adminUids: [...DB_ADMINS, "demo-admin"], actividades, enviado: (g) => g.estado === "enviado", min }); render();
 }
 function vEstadisticas() {
@@ -246,7 +252,7 @@ const enviados = () => P.grupos.filter((g) => g.resp);
 function chipsConceptos(texto) {
   if (!P.guia || !P.guia.conceptos.length) return "";
   const r = dbConceptos(texto, P.guia.conceptos);
-  return P.guia.conceptos.map((c) => `<span class="cpt ${r[c.id]} ${c.tipo === "error" ? "err" : c.tipo === "alternativo" ? "alt" : ""}" title="${c.tipo}${r[c.id] === "negado" ? " · mencionado en negativo" : ""}">${esc(c.etiqueta)}</span>`).join("");
+  return P.guia.conceptos.map((c) => `<span class="cpt ${r[c.id]} ${c.tipo === "error" ? "err" : c.tipo === "alternativo" ? "alt" : ""}" title="${c.tipo}${r[c.id] === "negado" ? " · mencionado en negativo" : ""}">${esc(ETQ(c))}</span>`).join("");
 }
 function barras(items, total) {
   // items: [{label, n, cls}]
@@ -258,14 +264,14 @@ function aggMolecula(m, clave) {
   for (const g of gs) for (const r of ((g.resp.mol || {})[m.id] || {}).rutas || []) cuenta[r] = (cuenta[r] || 0) + 1;
   const k = P.guia && P.guia.moleculas && P.guia.moleculas[m.id];
   const esperadas = new Set(k ? k.rutas : []);
-  const items = Object.entries(cuenta).sort((a, b) => b[1] - a[1]).map(([id, n]) => ({ label: `${clave && esperadas.has(id) ? "★ " : ""}${esc(dbRuta(id, "es"))}`, n, cls: clave && esperadas.has(id) ? "esp" : "" }));
+  const items = Object.entries(cuenta).sort((a, b) => b[1] - a[1]).map(([id, n]) => ({ label: `${clave && esperadas.has(id) ? "★ " : ""}${esc(dbRuta(id, PANEL_LANG))}`, n, cls: clave && esperadas.has(id) ? "esp" : "" }));
   const reacs = gs.map((g, i) => { const t = (((g.resp.mol || {})[m.id]) || {}).reac || ""; if (!t.trim()) return ""; const hits = k ? k.claves.filter((w) => dbBuscar(dbTokens(t), w).length).length : 0;
     return `<li><b>${esc(nombreG(g, i))}:</b> ${esc(t)}${clave && k && k.claves.length ? ` <span class="small muted">(${hits}/${k.claves.length} palabras clave)</span>` : ""}</li>`; }).join("");
-  const frases = gs.flatMap((g, i) => (g.resp.frases || []).filter((f) => f.mol === m.id && (f.porque || "").trim()).map((f) => `<li><b>${esc(nombreG(g, i))}:</b> ${f.dir ? DB_DIRS[f.dir].es : ""} porque ${esc(f.porque)}${f.ruta ? ` (${esc(dbRuta(f.ruta, "es"))})` : ""}</li>`)).join("");
+  const frases = gs.flatMap((g, i) => (g.resp.frases || []).filter((f) => f.mol === m.id && (f.porque || "").trim()).map((f) => `<li><b>${esc(nombreG(g, i))}:</b> ${f.dir ? DB_DIRS[f.dir][PANEL_LANG] : ""} ${W("porque", "because")} ${esc(f.porque)}${f.ruta ? ` (${esc(dbRuta(f.ruta, PANEL_LANG))})` : ""}</li>`)).join("");
   return `<div class="stack"><h3>Rutas elegidas (${gs.length} grupos)</h3>${barras(items, gs.length)}
     <h3>Reacciones</h3>${reacs ? `<ul style="margin:0;padding-left:1.2em">${reacs}</ul>` : `<p class="muted small">—</p>`}
     ${frases ? `<h3>Frases sobre esta molécula</h3><ul style="margin:0;padding-left:1.2em">${frases}</ul>` : ""}
-    ${clave && k ? `<div class="key"><b>Clave:</b> ${esc(L(k.reaccion))}<br><b>Rutas:</b> ${k.rutas.map((r) => esc(dbRuta(r, "es"))).join(", ")} · <b>Compartimento:</b> ${esc(L(k.compartimento))}<br><b>Por qué:</b> ${esc(L(k.porque))}</div>` : ""}</div>`;
+    ${clave && k ? `<div class="key"><b>Clave:</b> ${esc(L(k.reaccion))}<br><b>Rutas:</b> ${k.rutas.map((r) => esc(dbRuta(r, PANEL_LANG))).join(", ")} · <b>Compartimento:</b> ${esc(L(k.compartimento))}<br><b>Por qué:</b> ${esc(L(k.porque))}</div>` : ""}</div>`;
 }
 function aggMarcadores(clave) {
   const gs = enviados(), a = P.act, n = gs.length;
@@ -294,14 +300,14 @@ function aggCondiciones(clave) {
   });
   const porque = gs.map((g, i) => (g.resp.cond || {}).porque ? `<li><b>${esc(nombreG(g, i))}:</b> ${esc(g.resp.cond.porque)}</li>` : "").join("");
   return `<div class="stack">${barras(items, gs.length)}${porque ? `<h3>¿Por qué esta comparación?</h3><ul style="margin:0;padding-left:1.2em">${porque}</ul>` : ""}
-    ${clave && P.guia ? `<div class="key">${Object.entries(P.guia.condiciones).map(([id, c]) => `<b>${esc(nomCond(id))}</b> (${PAPEL[c.papel][0]}): ${esc(L(c.comentario))}`).join("<br>")}</div>` : ""}</div>`;
+    ${clave && P.guia ? `<div class="key">${Object.entries(P.guia.condiciones).map(([id, c]) => `<b>${esc(nomCond(id))}</b> (${PL(c.papel)}): ${esc(L(c.comentario))}`).join("<br>")}</div>` : ""}</div>`;
 }
 function matrizConceptos() {
   if (!P.guia || !P.guia.conceptos.length) return `<p class="muted small">Sube la guía de la actividad para ver qué conceptos aparecen en las respuestas.</p>`;
   const gs = enviados(); const cs = P.guia.conceptos;
   const filas = gs.map((g, i) => { const r = dbConceptos(dbTextoGrupo(P.act, g.resp), cs); return `<tr><td>${esc(nombreG(g, i))}</td>${cs.map((c) => `<td>${r[c.id] === "si" ? (c.tipo === "error" ? `<span class="bad-t">●</span>` : `<span class="ok-t">●</span>`) : r[c.id] === "negado" ? "◌" : `<span class="muted">·</span>`}</td>`).join("")}</tr>`; }).join("");
   const pie = `<tr><th>% de grupos</th>${cs.map((c) => { const k = gs.filter((g) => dbConcepto(dbTextoGrupo(P.act, g.resp), c) === "si").length; return `<th class="num">${gs.length ? Math.round((100 * k) / gs.length) : 0}</th>`; }).join("")}</tr>`;
-  return `<div class="tablebox"><table class="mx"><thead><tr><th>Grupo</th>${cs.map((c) => `<th title="${esc(c.tipo)}">${esc(c.etiqueta)}${c.tipo === "error" ? " ⚠" : c.tipo === "alternativo" ? " ◇" : ""}</th>`).join("")}</tr></thead><tbody>${filas}</tbody><tfoot>${pie}</tfoot></table></div>
+  return `<div class="tablebox"><table class="mx"><thead><tr><th>Grupo</th>${cs.map((c) => `<th title="${esc(c.tipo)}">${esc(ETQ(c))}${c.tipo === "error" ? " ⚠" : c.tipo === "alternativo" ? " ◇" : ""}</th>`).join("")}</tr></thead><tbody>${filas}</tbody><tfoot>${pie}</tfoot></table></div>
     <p class="small muted">● aparece · ◌ aparece pero en negativo («no», «sin»…) · ⚠ concepto erróneo · ◇ interpretación alternativa. Es una ayuda para orientar el plenario, no una corrección.</p>`;
 }
 
@@ -310,21 +316,21 @@ function vRespuesta(g) {
   const a = P.act, r = g.resp; if (!r) return `<p class="muted">Todavía no ha escrito nada.</p>`;
   if (a.tipo === 1) {
     const mol = a.moleculas.map((m) => { const x = r.mol[m.id] || {}; const k = P.guia && P.guia.moleculas && P.guia.moleculas[m.id]; const ok = k && (x.rutas || []).some((id) => k.rutas.includes(id));
-      return `<tr><td>${esc(m.id)}. ${esc(L(m.nombre))}</td><td>${esc(x.reac || "")}</td><td>${(x.rutas || []).map((id) => esc(dbRuta(id, "es"))).join(", ")}${k && (x.rutas || []).length ? (ok ? ` <span class="ok-t">✓</span>` : ` <span class="bad-t">✗</span>`) : ""}</td></tr>`; }).join("");
-    const fr = (r.frases || []).filter((f) => f.mol).map((f) => `<li>${esc(L((a.moleculas.find((m) => m.id === f.mol) || {}).nombre))} ${f.dir ? DB_DIRS[f.dir].es : ""} porque ${esc(f.porque)}${f.ruta ? ` en ${esc(dbRuta(f.ruta, "es"))}` : ""}</li>`).join("");
+      return `<tr><td>${esc(m.id)}. ${esc(L(m.nombre))}</td><td>${esc(x.reac || "")}</td><td>${(x.rutas || []).map((id) => esc(dbRuta(id, PANEL_LANG))).join(", ")}${k && (x.rutas || []).length ? (ok ? ` <span class="ok-t">✓</span>` : ` <span class="bad-t">✗</span>`) : ""}</td></tr>`; }).join("");
+    const fr = (r.frases || []).filter((f) => f.mol).map((f) => `<li>${esc(L((a.moleculas.find((m) => m.id === f.mol) || {}).nombre))} ${f.dir ? DB_DIRS[f.dir][PANEL_LANG] : ""} ${W("porque", "because")} ${esc(f.porque)}${f.ruta ? ` ${W("en", "in")} ${esc(dbRuta(f.ruta, PANEL_LANG))}` : ""}</li>`).join("");
     return `<div class="tablebox"><table><thead><tr><th>Molécula</th><th>Reacción</th><th>Rutas</th></tr></thead><tbody>${mol}</tbody></table></div>
       <div><b>Frases</b><ul style="margin:4px 0 0;padding-left:1.2em">${fr || "<li>—</li>"}</ul></div>
       <div><b>${esc(L(a.condiciones.c1))}:</b><div class="ro">${esc(r.diag.c1) || "—"}</div></div>${r.diag.c2 ? `<div><b>${esc(L(a.condiciones.c2))}:</b><div class="ro">${esc(r.diag.c2)}</div></div>` : ""}
       <div><b>Justificación</b><div class="ro">${esc(r.justif) || "—"}</div></div>`;
   }
   const c = r.cond || {}, mk = a.catalogo.filter((m) => r.marc && r.marc[m.id]).map((m) => { const x = r.marc[m.id], pp = P.guia && P.guia.marcadores[m.id] ? P.guia.marcadores[m.id].papel : "";
-    return `<tr><td>${esc(L(m.nombre))}${pp ? ` <span class="pill ${PAPEL[pp][1]}">${PAPEL[pp][0]}</span>` : ""}</td><td>${esc(x.reac || "")}</td><td>${(x.rutas || []).map((id) => esc(dbRuta(id, "es"))).join(", ")}</td><td>${x.dir ? DB_DIRS[x.dir].s : ""} ${esc(x.fc || "")}</td></tr>`; }).join("");
+    return `<tr><td>${esc(L(m.nombre))}${pp ? ` <span class="pill ${PAPEL[pp][1]}">${PAPEL[pp][0]}</span>` : ""}</td><td>${esc(x.reac || "")}</td><td>${(x.rutas || []).map((id) => esc(dbRuta(id, PANEL_LANG))).join(", ")}</td><td>${x.dir ? DB_DIRS[x.dir].s : ""} ${esc(x.fc || "")}</td></tr>`; }).join("");
   return `<p><b>Comparación:</b> ${esc(nomCond(c.c1, c.otra1))} / ${esc(nomCond(c.c2, c.otra2))}</p><div class="ro">${esc(c.porque) || "—"}</div>
     <div class="tablebox"><table><thead><tr><th>Marcador</th><th>Reacción</th><th>Rutas</th><th>FC esperado</th></tr></thead><tbody>${mk}</tbody></table></div>
     <div><b>Justificación</b><div class="ro">${esc(r.justif) || "—"}</div></div>${g.revision ? `<div><b>Revisión tras los resultados</b><div class="ro">${esc(g.revision)}</div></div>` : ""}`;
 }
 function vNota(g) {
-  const n = g.nota || {}, t = dbTareas(P.act, "es"), p = P.act.puntos;
+  const n = g.nota || {}, t = dbTareas(P.act, PANEL_LANG), p = P.act.puntos;
   const total = [n.s1, n.s2, n.s3].reduce((s, x) => s + (Number(x) || 0), 0);
   return `<form class="nota" data-nota="${esc(g.id)}">${t.map((x, i) => `<label class="stack small">${esc(x)} (/${p[i]})<input class="field num" name="s${i + 1}" inputmode="decimal" value="${n[`s${i + 1}`] ?? ""}"></label>`).join("")}
     <label class="stack small" style="flex:1;min-width:200px">Comentario<input class="field" name="com" value="${esc(n.com || "")}"></label><span class="small">Total <b class="num">${total}</b> / ${p.reduce((s, x) => s + x, 0)}</span><button class="btn small">Guardar nota</button></form>`;
@@ -332,8 +338,8 @@ function vNota(g) {
 function vGrupos() {
   if (!P.grupos.length) return `<p class="muted">Todavía no se ha unido ningún grupo. Comparte el código o el enlace.</p>`;
   return P.grupos.slice().sort((a, b) => (a.nombre || "").localeCompare(b.nombre || "")).map((g) => {
-    const st = ESTADOS[g.estado] || [g.estado, ""], falta = g.resp ? dbPendientes(P.act, g.resp, "es").length : null;
-    return `<details class="g" data-g="${esc(g.id)}" ${P.open.has(g.id) ? "open" : ""}><summary><b>${esc(g.nombre)}</b><span class="pill ${st[1]}">${st[0]}</span>${g.estado === "editando" && falta !== null ? `<span class="small muted">${falta ? `${falta} apartados por completar` : "lista para enviar"}</span>` : ""}
+    const st = ESTADOS[g.estado] || [g.estado, ""], falta = g.resp ? dbPendientes(P.act, g.resp, PANEL_LANG).length : null;
+    return `<details class="g" data-g="${esc(g.id)}" ${P.open.has(g.id) ? "open" : ""}><summary><b>${esc(g.nombre)}</b><span class="pill ${st[1]}">${st[0]}</span>${g.estado === "editando" && falta !== null ? `<span class="small muted">${falta ? W(`${falta} apartados por completar`, `${falta} item${falta === 1 ? "" : "s"} to complete`) : "lista para enviar"}</span>` : ""}
       ${g.nota ? `<span class="small">nota <b class="num">${[g.nota.s1, g.nota.s2, g.nota.s3].reduce((s, x) => s + (Number(x) || 0), 0)}</b></span>` : ""}<span class="spacer small">${chipsConceptos(dbTextoGrupo(P.act, g.resp))}</span></summary>
       <div class="det">${vRespuesta(g)}${P.ses.modo === "evaluacion" || g.nota ? vNota(g) : ""}
         <div class="row"><input class="field" data-aviso="${esc(g.id)}" placeholder="Aviso para este grupo (lo ve en su pantalla)" value="${esc(g.aviso || "")}" style="flex:1;min-width:200px"><button class="btn small" data-enviaraviso="${esc(g.id)}">Enviar aviso</button>
@@ -350,7 +356,7 @@ function vSesion() {
   const n = P.grupos.length, env = P.grupos.filter((g) => g.estado === "enviado").length;
   const ref = a.tipo === 2 ? refPar() : null;
   return `<div class="row"><button class="btn small" id="volver">← Sesiones</button>${vMsg()}</div>
-    <section class="panel stack"><div class="row"><div class="stack" style="gap:4px"><span class="eyebrow">${a.tipo === 1 ? "Tipo 1 · interpretar" : "Tipo 2 · diseñar"} · ${s.modo === "evaluacion" ? "evaluación" : "formativa"}</span><h1>${esc(L(a.titulo))}</h1><span class="muted">${esc(s.nombre || "")}</span></div>
+    <section class="panel stack"><div class="row"><div class="stack" style="gap:4px"><span class="eyebrow">${a.tipo === 1 ? W("Tipo 1 · interpretar", "Type 1 · interpret") : W("Tipo 2 · diseñar", "Type 2 · design")} · ${s.modo === "evaluacion" ? W("evaluación", "assessment") : W("formativa", "formative")}</span><h1>${esc(L(a.titulo))}</h1><span class="muted">${esc(s.nombre || "")}</span></div>
       <div class="spacer stack" style="align-items:flex-end;gap:4px"><span class="code">${esc(P.sid)}</span><span class="small muted">${s.estado === "abierta" ? "abierta" : "cerrada"} · ${n} grupos · ${env} enviadas</span></div></div>
       <div class="row"><input class="field" id="link" readonly value="${esc(link)}" style="flex:1;min-width:240px"><button class="btn small" id="copiar">Copiar enlace</button></div>
       <div class="row"><button class="btn primary" id="proyectar">Proyectar (plenario)</button>
@@ -408,14 +414,14 @@ async function entrar() {
   if (!P.rol) { $("#who").textContent = u.email || ""; $("#main").innerHTML = `<section class="panel stack"><h2>Cuenta no autorizada</h2><p>Esta cuenta (${esc(u.email || "")}) todavía no tiene acceso. Envía al administrador (b22olaba@uco.es) tu nombre, tu centro y este identificador:</p><input class="field uid" readonly value="${esc(u.uid)}"></section>`; return; }
   const perfil = P.rol === "profesor" ? await DBB.perfil(u.uid) : null;
   P.nombre = (perfil && perfil.nombre) || u.nombre || u.email;
-  $("#who").textContent = `${P.nombre} · ${P.rol === "admin" ? "administrador" : "profesor"}`;
+  $("#who").textContent = `${(PANEL_LANG === "en" && PANEL_I18N.tr(P.nombre)) || P.nombre} · ${P.rol === "admin" ? W("administrador", "administrator") : W("profesor", "teacher")}`;
   await dbCargarRutas(); await Promise.all([cargarIndice(), cargarSesiones()]); render();
 }
 function cell(v) { const s = v == null ? "" : String(v); return /[",\n;]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; }
 function save(name, text, type, bom = true) { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([(bom ? "﻿" : "") + text], { type })); a.download = name; document.body.appendChild(a); a.click(); a.remove(); }
 function csv() {
-  const a = P.act, cs = (P.guia && P.guia.conceptos) || [], t = dbTareas(a, "es");
-  const cab = ["grupo", "estado", ...t.map((x) => `nota: ${x}`), "nota total", "comentario", "texto completo", ...cs.map((c) => `concepto: ${c.etiqueta}`)];
+  const a = P.act, cs = (P.guia && P.guia.conceptos) || [], t = dbTareas(a, PANEL_LANG);
+  const cab = ["grupo", "estado", ...t.map((x) => `nota: ${x}`), "nota total", "comentario", "texto completo", ...cs.map((c) => `concepto: ${ETQ(c)}`)];
   const filas = P.grupos.map((g) => { const n = g.nota || {}, tx = dbTextoGrupo(a, g.resp), r = dbConceptos(tx, cs);
     return [g.nombre, g.estado, n.s1 ?? "", n.s2 ?? "", n.s3 ?? "", [n.s1, n.s2, n.s3].reduce((s, x) => s + (Number(x) || 0), 0), n.com || "", tx.replace(/\s*\n\s*/g, " | "), ...cs.map((c) => r[c.id])]; });
   return [cab, ...filas].map((f) => f.map(cell).join(";")).join("\n");
@@ -491,7 +497,7 @@ document.addEventListener("submit", (e) => {
     if (f.dataset.nota) {
       const num = (v) => { const x = String(v).replace(",", ".").trim(); return x === "" ? null : Number(x); };
       const n = { s1: num(f.s1.value), s2: num(f.s2.value), s3: num(f.s3.value), com: f.com.value.trim() };
-      for (const [i, k] of ["s1", "s2", "s3"].entries()) if (n[k] !== null && (Number.isNaN(n[k]) || n[k] < 0 || n[k] > P.act.puntos[i])) { P.msg = `La nota de «${dbTareas(P.act, "es")[i]}» debe estar entre 0 y ${P.act.puntos[i]}.`; return render(); }
+      for (const [i, k] of ["s1", "s2", "s3"].entries()) if (n[k] !== null && (Number.isNaN(n[k]) || n[k] < 0 || n[k] > P.act.puntos[i])) { P.msg = `La nota de «${dbTareas(P.act, PANEL_LANG)[i]}» debe estar entre 0 y ${P.act.puntos[i]}.`; return render(); }
       await DBB.cambiarGrupoAdmin(P.sid, f.dataset.nota, { nota: n }); P.msg = "Nota guardada."; document.activeElement.blur(); render();
     }
   })().catch(fallo);

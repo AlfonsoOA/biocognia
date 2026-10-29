@@ -30,6 +30,7 @@ La interfaz está en español e inglés. Para que una actividad también se vea 
 - **Guía del profesor:** `deaba/guia.html?a=ID` (se imprime o se guarda como PDF). Solo la ve el profesorado.
 - **Versión en papel:** `deaba/imprimir.html?a=ID`, recomendada para las sesiones presenciales.
 - **Demostración:** añade `?demo` a cualquier página; todo se guarda solo en el navegador.
+- **Idioma del panel:** selector ES | EN en la cabecera (se recuerda en el navegador; también `panel.html?lang=en`). En inglés se traducen los textos del panel (`../comun/panel_i18n.js`) y se muestran en inglés los títulos, el contenido de las actividades y de las guías, los conceptos y la proyección. Las respuestas de los grupos y los nombres de las pestañas y columnas de las plantillas Excel se quedan como están. Para añadir o corregir una traducción, se edita la lista `PANEL_EN` de ese archivo.
 
 ## Detección de conceptos
 

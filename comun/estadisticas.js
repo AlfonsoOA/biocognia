@@ -2,10 +2,12 @@
    Cuenta sesiones, grupos, respuestas enviadas, docentes, centros y actividades. No usa ni muestra datos de los grupos
    (nombres ni respuestas): solo cuántos hay y si han enviado. */
 "use strict";
-const BC_STATS_V = "1.0";
+const BC_STATS_V = "1.1";
+const BC_L = () => (typeof PANEL_LANG !== "undefined" ? PANEL_LANG : "es");
+const BC_LOC = () => (BC_L() === "en" ? "en-GB" : "es-ES");
 
 function bcCurso(ms) { const d = new Date(ms), y = d.getFullYear(); return d.getMonth() >= 8 ? `${y}/${String(y + 1).slice(2)}` : `${y - 1}/${String(y).slice(2)}`; }
-function bcFecha(ms) { return new Date(ms).toLocaleDateString("es-ES", { day: "numeric", month: "short", year: "numeric" }); }
+function bcFecha(ms) { return new Date(ms).toLocaleDateString(BC_LOC(), { day: "numeric", month: "short", year: "numeric" }); }
 
 // datos = { app, sesiones:[{id, actividad, propietario, creada, modo}], grupos:{sid:[grupo]}, profesores:[{uid, nombre, centro}],
 //           admin:{uids:[], nombre, centro}, actividades:{id:{titulo, detalle}}, enviado:(g)=>bool, minEnviados }
@@ -45,7 +47,13 @@ function bcCalcular(datos) {
 }
 
 function bcResumenTexto(r) {
-  const t = r.total;
+  const t = r.total, pl = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
+  if (BC_L() === "en") {
+    if (!t.sesiones) return `There are no ${r.app} sessions yet with at least ${pl(r.min, "group")} that submitted an answer.`;
+    return `Between ${bcFecha(t.desde)} and ${bcFecha(t.hasta)}, ${r.app} was used in ${pl(t.sesiones, "class session")} with ${pl(t.grupos, "student group")} `
+      + `(${pl(t.enviados, "answer")} submitted), led by ${pl(t.profesores, "teacher")} from ${t.centros} institution${t.centros === 1 ? "" : "s"}, `
+      + `with ${t.actividades} different activit${t.actividades === 1 ? "y" : "ies"}.`;
+  }
   if (!t.sesiones) return `Todavía no hay sesiones de ${r.app} con al menos ${r.min} grupo${r.min === 1 ? "" : "s"} que haya enviado su respuesta.`;
   return `Entre el ${bcFecha(t.desde)} y el ${bcFecha(t.hasta)}, ${r.app} se ha usado en ${t.sesiones} sesion${t.sesiones === 1 ? "" : "es"} de clase con ${t.grupos} grupos de estudiantes `
     + `(${t.enviados} respuestas enviadas), dirigidas por ${t.profesores} docente${t.profesores === 1 ? "" : "s"} de ${t.centros} centro${t.centros === 1 ? "" : "s"}, `
@@ -74,13 +82,20 @@ function bcCSV(r) {
 // Hoja imprimible (o PDF) con el resumen, para adjuntar como evidencia de uso.
 function bcImprimir(r, esc) {
   const w = window.open("", "_blank"); if (!w) return false;
-  const hoy = new Date().toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" });
+  const hoy = new Date().toLocaleDateString(BC_LOC(), { day: "numeric", month: "long", year: "numeric" });
   w.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>${esc(r.app)} · estadísticas de uso</title>
     <style>:root{--line:#bbb;--muted:#555;--surface:#fff;--r:8px}body{font-family:system-ui,sans-serif;color:#111;max-width:780px;margin:24px auto;padding:0 16px;font-size:14px}
     h1{font-family:Georgia,serif;margin:0 0 4px}h3{margin:18px 0 6px}table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid #ddd;padding:4px 6px;text-align:left}td.n,th.n{text-align:right}
     .notice{background:#f4f4f0;padding:10px;border-radius:6px}.small{font-size:12px}.muted{color:#555}@page{size:A4;margin:14mm}</style></head>
     <body><h1>${esc(r.app)} · estadísticas de uso</h1><p class="small muted">BIOCOGNIA · generado el ${hoy} desde el panel del profesorado. Se cuentan las sesiones con al menos ${r.min} grupo${r.min === 1 ? "" : "s"} que ha enviado su respuesta. No incluye datos de estudiantes.</p>
     ${bcVista(r, esc)}<script>setTimeout(()=>print(),300)<\/script></body></html>`);
+  if (BC_L() === "en" && typeof PANEL_I18N !== "undefined") {
+    w.document.documentElement.lang = "en"; w.document.title = `${r.app} · usage statistics`;
+    const h = w.document.querySelector("h1"), p = w.document.querySelector("body > p.small");
+    if (h) h.textContent = `${r.app} · usage statistics`;
+    if (p) p.textContent = `BIOCOGNIA · generated on ${hoy} from the teacher panel. Sessions with at least ${r.min} group${r.min === 1 ? "" : "s"} that submitted an answer are counted. No student data included.`;
+    PANEL_I18N.walk(w.document.body);
+  }
   w.document.close(); return true;
 }
 

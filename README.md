@@ -10,7 +10,7 @@ Ecosistema de herramientas educativas abiertas para aprender Bioquímica, basada
 | --- | --- | --- | --- | --- |
 | QUAESTIA | Evaluación y autoaprendizaje | Guía de Bioquímica Metabólica | `quaestia/` | v0.3 |
 | SORTIVIA | Gamificación y toma de decisiones | ESTOPA | `sortivia/` | v0.7 |
-| DEAba Digital | Interpretación y diseño de experimentos de expresión diferencial | DEAba | `deaba/` | v0.2 (30 actividades) |
+| DEAba Digital | Interpretación y diseño de experimentos de expresión diferencial | DEAba | `deaba/` | v0.2 |
 
 Cada aplicación es independiente (su propia carpeta, versión y registro), pero comparten portada, diseño, procedimiento de consentimiento y formato de exportación.
 

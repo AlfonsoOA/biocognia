@@ -4,8 +4,13 @@
                      se envían a Firestore con un identificador anónimo.
    Actívalo SOLO cuando el Comité Ético haya aprobado la modificación del estudio.
    El bloque "config" no es secreto: la protección de los datos la dan las reglas de Firestore. */
+/* - uso: false   → no se ofrece contar el uso.
+   - uso: true    → a quien no participa en el estudio se le pregunta si acepta enviar recuentos anónimos de uso
+                     (tema, modo y número de preguntas de cada test; sin identificador ni respuestas).
+   Actívalo SOLO cuando el Comité Ético haya aprobado la enmienda. */
 window.QUAESTIA_FIREBASE = {
   envio: false,
+  uso: false,
   config: {
     apiKey: "AIzaSyD-a_pFNg0iYINQohQRkwuxgHdjGbQFZ1E",
     authDomain: "biocognia-c9afc.firebaseapp.com",

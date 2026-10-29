@@ -54,7 +54,8 @@ details.g .det { border-top: 1px solid var(--line); padding: 12px 14px; display:
 <footer><div class="wrap" id="foot"></div></footer>
 <div id="proj" role="dialog" aria-label="Proyección"></div>
 <script src="../quaestia/firebase-config.js"></script>
-<script src="deaba.js?v=0.2.2"></script>
+<script src="deaba.js?v=0.2.3"></script>
+<script src="../comun/estadisticas.js?v=1.0"></script>
 <script>
 "use strict";
 const P = { rol: null, uid: null, nombre: "", indice: [], acts: [], conv: null, guias: {}, sesiones: [], sid: null, ses: null, act: null, guia: null, grupos: [], vista: "grupos",
@@ -111,7 +112,7 @@ function vInicio() {
     <form id="nueva" class="row"><select class="field" name="act" required>${opts}</select><input class="field" name="nombre" placeholder="Nombre (p. ej., BQ 2.º A · grupo de tarde)" style="flex:1;min-width:220px">
       <select class="field" name="modo"><option value="formativa">Formativa</option><option value="evaluacion">Evaluación (con calificación)</option></select><button class="btn primary">Crear</button></form></section>
     <section class="stack"><h2>${admin() ? "Sesiones (todas)" : "Tus sesiones"}</h2>${P.sesiones.length ? `<div class="tablebox"><table><thead><tr><th>Código</th><th>Nombre</th><th>Actividad</th><th>Modo</th><th>Estado</th><th></th></tr></thead><tbody>${ses}</tbody></table></div>` : `<p class="muted">Todavía no hay sesiones.</p>`}</section>
-    <section class="stack"><div class="row"><h2>Actividades</h2><span class="spacer"></span><button class="btn primary" id="vconv">Crear actividad desde Excel</button><a class="btn" href="proponer.html">Cómo se diseña una actividad</a>${admin() ? `<label class="btn">Subir guías (varias)<input type="file" id="guias" accept=".json,application/json" multiple hidden></label><button class="btn" id="vcat">Catálogo y rutas</button>` : ""}</div>
+    <section class="stack"><div class="row"><h2>Actividades</h2><span class="spacer"></span><button class="btn primary" id="vconv">Crear actividad desde Excel</button><a class="btn" href="proponer.html">Cómo se diseña una actividad</a>${admin() ? `<label class="btn">Subir guías (varias)<input type="file" id="guias" accept=".json,application/json" multiple hidden></label><button class="btn" id="vcat">Catálogo y rutas</button><button class="btn" id="vest">Estadísticas de uso</button>` : ""}</div>
       <p class="small muted">${admin() ? "Las actividades que propone el profesorado aparecen como «propuesta»: revísalas (guía incluida) y publícalas." : "Crea tu actividad desde la plantilla Excel, pruébala en una sesión tuya (como borrador) y pulsa «Proponer» cuando esté lista: el administrador la revisa y la publica con tu nombre."} La guía del profesor (respuestas esperadas y preguntas para el plenario) nunca está en el repositorio: solo la ve el profesorado.</p>
       <div class="tablebox"><table><thead><tr><th>Actividad</th><th>Tipo</th><th>Nivel</th><th>Asignatura</th><th>Guía</th><th></th></tr></thead><tbody>${acts}</tbody></table></div></section>`;
 }
@@ -230,6 +231,14 @@ function vCatalogo() {
       <li>Cárgalo aquí: el panel lo comprueba (nombres repetidos, Ids de ruta válidos, que no falte ninguna ruta que usen las actividades) y te enseña qué cambia.</li>
       <li>Descarga los dos archivos que genera y súbelos a GitHub.</li></ol>
     <div class="row"><button class="btn" id="cat-xls">Descargar el Excel del catálogo</button><label class="btn ${c ? "" : "primary"}">${c ? "Cargar otro Excel" : "Cargar el Excel editado"}<input type="file" id="catxls" accept=".xlsx,.xlsm,.xls" hidden></label>${c && c.archivo ? `<span class="small muted">${esc(c.archivo)}</span>` : ""}</div>${cuerpo}</section>`;
+}
+
+async function cargarEst(min = 1) {
+  const actividades = Object.fromEntries(P.acts.map((a) => [a.id, { titulo: a.titulo, detalle: `tipo ${a.tipo} · ${a.nivel}` }]));
+  P.est = await bcCargar({ app: "DEAba Digital", B: DBB, adminUids: [...DB_ADMINS, "demo-admin"], actividades, enviado: (g) => g.estado === "enviado", min }); render();
+}
+function vEstadisticas() {
+  return `<div class="row"><button class="btn small" id="volver">← Inicio</button></div>${vMsg()}<section class="panel stack"><h2>Estadísticas de uso · DEAba Digital</h2>${bcPanel(P.est, esc)}</section>`;
 }
 
 /* ---------- Análisis de las respuestas ---------- */
@@ -383,7 +392,7 @@ function render() {
   const m = $("#main");
   if (!P.rol) return;
   if (P.sid && P.act) { const y = window.scrollY; m.innerHTML = vSesion(); window.scrollTo(0, y); }
-  else m.innerHTML = P.vista === "conversor" ? vConversor() : P.vista === "catalogo" ? vCatalogo() : vInicio();
+  else m.innerHTML = P.vista === "conversor" ? vConversor() : P.vista === "catalogo" ? vCatalogo() : P.vista === "estadisticas" && admin() ? vEstadisticas() : vInicio();
 }
 let renderT = null;
 function renderPronto() { clearTimeout(renderT); renderT = setTimeout(() => { if (document.activeElement && document.activeElement.closest && document.activeElement.closest("#main form, #main input")) return; render(); }, 250); }
@@ -416,6 +425,9 @@ async function accion(t) {
   if (t.dataset.open) return abrir(t.dataset.open);
   if (t.id === "volver") { P.sid = null; P.act = null; P.msg = ""; P.vista = "grupos"; P.conv = null; P.cat = null; await cargarSesiones(); return render(); }
   if (t.id === "vconv") { P.vista = "conversor"; P.msg = ""; return render(); }
+  if (t.id === "vest") { P.vista = "estadisticas"; P.msg = ""; P.est = null; render(); return cargarEst(); }
+  if (t.id === "bc-csv") return save(`deaba_estadisticas_${new Date().toISOString().slice(0, 10)}.csv`, bcCSV(P.est.r), "text/csv");
+  if (t.id === "bc-print") { if (!bcImprimir(P.est.r, esc)) { P.msg = "El navegador ha bloqueado la ventana: permite las ventanas emergentes para este sitio."; render(); } return; }
   if (t.id === "vcat") { P.vista = "catalogo"; P.msg = ""; P.cat = null; await dbCargarCatalogo(); return render(); }
   if (t.id === "cat-xls") { await libsConversor(); await dbCargarCatalogo(); return XLSX.writeFile(dbLibroCatalogo(DB_CAT, DB_RUTAS), "Catalogo_DEAba.xlsx"); }
   if (t.id === "cat-dl") { const c = P.cat; save("catalogo.json", JSON.stringify(c.catalogo, null, 0), "application/json", false); setTimeout(() => save("rutas.json", JSON.stringify(c.rutas, null, 1), "application/json", false), 300); return; }
@@ -462,6 +474,7 @@ document.addEventListener("change", async (e) => {
   if (el.id === "pj-clave") { P.proj.clave = el.checked; return vProj(); }
   if (el.id === "pj-nom") { P.proj.nombres = el.checked; return vProj(); }
   if (el.id === "xls") { const f = el.files[0]; if (f) convertir(f).catch(fallo); return; }
+  if (el.id === "bc-min") { bcRecalcular(P.est, Number(el.value)); return render(); }
   if (el.id === "catxls") { const f = el.files[0]; if (f) convertirCatalogo(f).catch(fallo); return; }
   if (el.id === "guias") { const fs = [...el.files]; if (fs.length) subirGuias(fs).catch(fallo); return; }
   if (el.dataset.guia) {

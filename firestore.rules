@@ -164,6 +164,25 @@ service cloud.firestore {
       }
     }
 
+    // ---------- QUAESTIA: estadísticas de uso anónimas ----------
+    // Cualquiera puede añadir un recuento (sin cuenta ni identificador), solo con estos campos y valores acotados.
+    // Nadie puede modificarlos; solo el administrador los lee o borra.
+    match /uso/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['app', 'app_version', 'tipo', 'modo', 'temas', 'n', 'lang', 'dia', 'nuevo', 'compartido', 'creado'])
+                    && request.resource.data.app == 'quaestia'
+                    && request.resource.data.tipo in ['test', 'corta']
+                    && request.resource.data.modo in ['entrenamiento', 'test', 'simulacro', 'corta']
+                    && request.resource.data.temas is list && request.resource.data.temas.size() <= 10
+                    && request.resource.data.n is int && request.resource.data.n >= 0 && request.resource.data.n <= 100
+                    && request.resource.data.lang in ['es', 'en']
+                    && request.resource.data.dia is string && request.resource.data.dia.size() == 10
+                    && request.resource.data.nuevo is bool && request.resource.data.compartido is bool
+                    && request.resource.data.app_version is string && request.resource.data.app_version.size() <= 12
+                    && request.resource.data.creado == request.time;
+      allow read, delete: if esAdmin();
+      allow update: if false;
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }

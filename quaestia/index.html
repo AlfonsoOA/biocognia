@@ -441,7 +441,7 @@ function renderChrome() {
   $("#tagline").textContent = T("tagline");
   $("#nav").innerHTML = VIEWS.map(([v, k]) => `<button type="button" data-go="${v}" ${S.view === v ? 'aria-current="page"' : ""}>${T(k)}</button>`).join("");
   for (const b of document.querySelectorAll(".lang button")) b.setAttribute("aria-pressed", b.dataset.lang === S.lang ? "true" : "false");
-  $("#foot").innerHTML = `<span>${T("f_source")}</span><span>${T("f_eco")} · v${APP_VERSION}</span><span>${T("f_data")} · <a href="admin.html" class="muted">${T("f_admin")}</a></span>`;
+  $("#foot").innerHTML = `<span>${T("f_source")}</span><span>${T("f_eco")} · v${APP_VERSION}</span><span>${T(usoActivo() ? "f_data_uso" : "f_data")} · <a href="admin.html" class="muted">${T("f_admin")}</a></span>`;
 }
 function render() {
   renderChrome();
@@ -477,7 +477,7 @@ function vHome() {
   const leg = BLOOM.map((b) => `<span><i style="background:var(--${b.toLowerCase()})"></i>${b} ${esc(I18N[S.lang].bl_names[b])} <span class="num muted">${cnt[b]}</span></span>`).join("");
   const filas = TEMAS.map((t) => `<tr><td><span class="num muted">${t}</span>&nbsp; ${esc(tx(S.meta[t].titulo))}</td><td class="n">${test.filter((q) => q.tema === t).length}</td><td class="n">${cortas.filter((q) => q.tema === t).length}</td></tr>`).join("");
   return `<div class="stack-lg">
-    ${consentBox()}
+    ${consentBox()}${usoBox()}
     <section class="hero"><p class="eyebrow">QUAESTIA</p><h1>${T("hero_title")}</h1><p class="muted">${T("hero_text")}</p></section>
     <section class="modes">
       <button class="mode" type="button" data-go="train"><h3>${T("m_train")}</h3><p class="small muted">${T("m_train_d")}</p><span class="go">${T("go")}</span></button>
@@ -619,6 +619,7 @@ function finishRun() {
     config: r.modo !== "exam" ? r.cfg : null, duracion_s: Math.round((Date.now() - r.inicio) / 1000), nota: res.nota, bruto: Math.round(res.bruto * 1000) / 1000, max: res.max, lang: S.lang, detalle: res.detalle };
   hist.push(rec); Store.set("historial", hist);
   if (consent) srvAttempt(rec);
+  else usoEvento({ tipo: "test", modo: rec.modo, temas: [...new Set(rec.detalle.map((d) => d.tema))].sort((a, b) => a - b), n: rec.detalle.length, compartido: r.modo === "test" });
   S.result = { rec, preguntas: r.preguntas, modo: r.modo, cfg: r.cfg };
   S.run = null; S.view = "result"; render(); window.scrollTo(0, 0);
 }
@@ -693,6 +694,7 @@ function shortRate(v) {
   all[q.id] = { ...prev, borrador: ($("#short-ans") || {}).value || prev.borrador || "", registros: [...(prev.registros || []), reg] };
   Store.set("cortas", all);
   if (consent) srvShort(q.id, reg);
+  else if (v != null) usoEvento({ tipo: "corta", modo: "corta", temas: [q.tema], n: 1 });
   render();
 }
 
@@ -706,6 +708,7 @@ function vMe() {
     ${srvPanel()}<h3>${T("x_title")}</h3><p class="small">${T("x_text")}</p><p class="small muted">${T("x_week")}: <span class="num">${semanaCurso()}</span></p>
     ${consent !== true ? `<p class="small muted">${T("x_off")}</p>` : `<div class="row"><button class="btn primary" type="button" id="x-json">${T("x_json")}</button><button class="btn" type="button" id="x-csv">${T("x_csv")}</button><button class="btn" type="button" id="x-copy">${T("x_copy")}</button></div><p class="small" id="x-msg" aria-live="polite"></p><textarea id="x-out" readonly hidden aria-label="Datos"></textarea>`}</section>`;
   if (!grupo) research = `<section class="panel stack"><h2>${T("me_research")}</h2><p class="small muted">${T("x_nogroup")}</p></section>`;
+  research += usoPanel();
   if (!hist.length) return `<div class="stack-lg">${consentBox()}<h1>${T("me_title")}</h1><p class="muted">${T("me_none")}</p>${nC ? `<p>${T("me_shorts")}: <b class="num">${nC}</b></p>` : ""}${research}${delBox()}</div>`;
   const notas = hist.map((h) => h.nota), avg = notas.reduce((a, b) => a + b, 0) / notas.length;
   const allDet = hist.flatMap((h) => h.detalle);
@@ -765,6 +768,7 @@ document.addEventListener("click", (e) => {
   if (t.dataset.lang) { S.lang = t.dataset.lang; Store.set("lang", S.lang); return render(); }
   if (t.id === "home-link") return go("home");
   if (t.dataset.go) return go(t.dataset.go);
+  if (t.dataset.uso) return usoSet(t.dataset.uso === "1");
   if (t.dataset.consent) return setConsent(t.dataset.consent === "1");
   if (teachClick(t)) return;
   if (srvClick(t)) return;
@@ -828,7 +832,7 @@ async function boot() {
   renderChrome();
   main().innerHTML = `<p class="muted">${T("loading")}</p>`;
   S.testLink = parseTestParam();
-  try { await cargar(); if (S.testLink) S.view = "testIntro"; render(); srvFlush(); }
+  try { await cargar(); if (S.testLink) S.view = "testIntro"; render(); srvFlush(); usoFlush(); }
   catch (err) { main().innerHTML = `<div class="notice">${T("load_error")}</div>`; }
 }
 // Arranca cuando están cargados todos los scripts de la página (incluido el del profesorado).
@@ -1313,6 +1317,71 @@ Object.assign(I18N.en, {
   srv_del: "Delete what I have sent to the study", srv_del_confirm: "All answers sent from this browser will be deleted from the server. This cannot be undone.", srv_del_yes: "Yes, delete from server", srv_deleted: "Data deleted from the server.", srv_del_fail: "Deletion failed. Try again when you are online.",
 });
 
+
+/* ============================================================
+   Estadísticas de uso anónimas (apagadas por defecto: «uso» en firebase-config.js).
+   Se ofrecen a quien NO participa en el estudio. Solo se envía, por cada test o pregunta corta:
+   tipo, modo, temas, número de preguntas, idioma, día y si es el primer envío de este navegador.
+   Sin identificador, sin respuestas y sin notas.
+   ============================================================ */
+(function () { const fc = window.QUAESTIA_FIREBASE || {}; CONFIG.uso = !!(fc.uso && fc.config); })();
+Object.assign(I18N.es, {
+  u_title: "¿Nos ayudas a saber cuánto se usa QUAESTIA?",
+  u_text: "Si aceptas, al terminar cada test se envía solo el tema, el modo y el número de preguntas, y el día. No se envía ningún identificador, ni tus respuestas, ni tu nota. Sirve para saber cuánto se usa la aplicación (Universidad de Córdoba; informe del comité de ética [referencia]). Si no aceptas, la aplicación funciona igual.",
+  u_yes: "Sí, contar mi uso", u_no: "No, gracias", u_panel: "Estadísticas de uso", u_on: "Se cuenta tu uso de forma anónima.", u_off: "No se cuenta tu uso.",
+  u_toggle_on: "Contar mi uso", u_toggle_off: "Dejar de contar mi uso", u_research: "Como participas en el estudio, tu uso ya se cuenta dentro de él.",
+  f_data_uso: "Tus datos se guardan solo en este navegador; si lo has aceptado, se envían recuentos anónimos de uso.",
+});
+Object.assign(I18N.en, {
+  u_title: "Will you help us know how much QUAESTIA is used?",
+  u_text: "If you agree, after each test we send only the topic, the mode, the number of questions and the day. No identifier, no answers and no grade are sent. It helps us know how much the app is used (University of Córdoba; ethics committee report [reference]). If you don't agree, the app works the same.",
+  u_yes: "Yes, count my use", u_no: "No, thanks", u_panel: "Usage statistics", u_on: "Your use is counted anonymously.", u_off: "Your use is not counted.",
+  u_toggle_on: "Count my use", u_toggle_off: "Stop counting my use", u_research: "As you take part in the study, your use is already counted within it.",
+  f_data_uso: "Your data are stored only in this browser; if you agreed, anonymous usage counts are sent.",
+});
+const USO = { ready: null, flushing: false };
+function usoOn() { return !!(CONFIG.firebase && CONFIG.uso) || !!window.QUAESTIA_USO_MOCK; }
+function usoActivo() { return usoOn() && Store.get("usoConsent", null) === true && !srvParticipa(); }
+function usoBox() {
+  if (!usoOn() || Store.get("usoConsent", null) !== null || srvParticipa() || (Store.get("grupo", null) && Store.get("consent", null) === null)) return "";
+  return `<section class="consent" aria-labelledby="u-t"><h2 id="u-t">${T("u_title")}</h2><p class="small">${T("u_text")}</p>
+    <div class="row"><button class="btn primary" type="button" data-uso="1">${T("u_yes")}</button><button class="btn" type="button" data-uso="0">${T("u_no")}</button></div><p class="small muted">${T("c_later")}</p></section>`;
+}
+function usoPanel() {
+  if (!usoOn()) return "";
+  if (srvParticipa()) return `<section class="panel stack"><h2>${T("u_panel")}</h2><p class="small muted">${T("u_research")}</p></section>`;
+  const on = Store.get("usoConsent", null) === true;
+  return `<section class="panel stack"><h2>${T("u_panel")}</h2><div class="row"><span class="pill ${on ? "on" : "off"}">${T(on ? "u_on" : "u_off")}</span><button class="btn" type="button" data-uso="${on ? 0 : 1}">${T(on ? "u_toggle_off" : "u_toggle_on")}</button></div><p class="small muted">${T("u_text")}</p></section>`;
+}
+function usoSet(v) { Store.set("usoConsent", v); if (!v) Store.set("usoPend", []); render(); }
+function usoEvento(d) {
+  if (!usoActivo()) return;
+  const ev = { app: "quaestia", app_version: APP_VERSION, tipo: d.tipo, modo: d.modo, temas: d.temas.slice(0, 10), n: Math.min(100, d.n | 0), lang: S.lang,
+    dia: new Date().toISOString().slice(0, 10), nuevo: !Store.get("usoYa", false), compartido: !!d.compartido };
+  Store.set("usoYa", true);
+  const q = Store.get("usoPend", []); q.push(ev); Store.set("usoPend", q.slice(-200)); usoFlush();
+}
+function usoImpl() {
+  if (window.QUAESTIA_USO_MOCK) return Promise.resolve(window.QUAESTIA_USO_MOCK);
+  if (USO.ready) return USO.ready;
+  const B = "https://www.gstatic.com/firebasejs/10.12.2/";
+  USO.ready = (async () => {
+    const [appM, fsM] = await Promise.all([import(B + "firebase-app.js"), import(B + "firebase-firestore.js")]);
+    const app = appM.getApps().length ? appM.getApp() : appM.initializeApp(CONFIG.firebase), db = fsM.getFirestore(app);
+    return { async add(ev) { await fsM.addDoc(fsM.collection(db, "uso"), { ...ev, creado: fsM.serverTimestamp() }); } };
+  })();
+  USO.ready.catch(() => { USO.ready = null; });
+  return USO.ready;
+}
+async function usoFlush() {
+  if (!usoOn() || USO.flushing) return;
+  let q = Store.get("usoPend", []); if (!q.length) return;
+  USO.flushing = true;
+  try { const impl = await usoImpl(); while (q.length) { await impl.add(q[0]); q.shift(); Store.set("usoPend", q); } }
+  catch (e) { /* se reintenta en el próximo arranque o envío */ }
+  finally { USO.flushing = false; }
+}
+
 const SRV = { ready: null, flushing: false };
 // El grupo PRUEBA envía aunque el envío general esté apagado: sirve para comprobar el circuito sin datos de alumnos.
 function srvOn() { return !!(CONFIG.firebase && (CONFIG.envio || Store.get("grupo", null) === "PRUEBA")) || !!window.QUAESTIA_SRV_MOCK; }
@@ -1325,7 +1394,7 @@ function srvImpl() {
   const B = "https://www.gstatic.com/firebasejs/10.12.2/";
   SRV.ready = (async () => {
     const [appM, authM, fsM] = await Promise.all([import(B + "firebase-app.js"), import(B + "firebase-auth.js"), import(B + "firebase-firestore.js")]);
-    const app = appM.initializeApp(CONFIG.firebase);
+    const app = appM.getApps().length ? appM.getApp() : appM.initializeApp(CONFIG.firebase);
     const auth = authM.getAuth(app), db = fsM.getFirestore(app);
     await auth.authStateReady();
     if (!auth.currentUser) await authM.signInAnonymously(auth);

@@ -3,7 +3,7 @@
    BIOCOGNIA · Open Educational Technology · Alfonso Olaya Abril
    ============================================================ */
 "use strict";
-const DB_VERSION = "0.2.2";
+const DB_VERSION = "0.2.3";
 
 /* ---------- Utilidades ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -216,6 +216,8 @@ function dbBackendDemo() {
     async crearSesion(datos) { const d = read(); const sid = dbCodigo(5); d.sesiones[sid] = { ...datos, propietario: me, estado: "abierta", creada: Date.now(), grupos: {} }; write(d); return sid; },
     async sesiones(todas) { const d = read(); return Object.entries(d.sesiones).map(([id, s]) => ({ id, ...s, grupos: undefined })).filter((s) => todas || s.propietario === me).sort((a, b) => b.creada - a.creada); },
     verGrupos(sid, cb) { watch(() => { const s = read().sesiones[sid]; cb(s ? Object.entries(s.grupos).map(([id, g]) => ({ id, ...g })) : []); }); },
+    async gruposLista(sid) { const s = read().sesiones[sid]; return s ? Object.entries(s.grupos).map(([id, g]) => ({ id, ...g })) : []; },
+    async profesores() { return Object.entries(read().profesores || {}).map(([uid, p]) => ({ uid, ...p })); },
     async cambiarGrupoAdmin(sid, gid, patch) { dbComprobar(patch); const d = read(); Object.assign(d.sesiones[sid].grupos[gid], patch); write(d); },
     async borrarGrupo(sid, gid) { const d = read(); delete d.sesiones[sid].grupos[gid]; write(d); },
     async cambiarSesion(sid, patch) { dbComprobar(patch); const d = read(); Object.assign(d.sesiones[sid], patch); write(d); },
@@ -267,6 +269,8 @@ function dbBackendFirebase() {
       return q.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => b.creada - a.creada);
     },
     verGrupos(sid, cb) { F().onSnapshot(F().collection(db, "deaba_sesiones", sid, "grupos"), (q) => cb(q.docs.map((d) => ({ id: d.id, ...d.data() })))); },
+    async gruposLista(sid) { const q = await F().getDocs(F().collection(db, "deaba_sesiones", sid, "grupos")); return q.docs.map((d) => ({ id: d.id, ...d.data() })); },
+    async profesores() { try { const q = await F().getDocs(F().collection(db, "profesores")); return q.docs.map((d) => ({ uid: d.id, ...d.data() })); } catch (e) { return []; } },
     async cambiarGrupoAdmin(sid, gid, patch) { await F().updateDoc(gref(sid, gid), patch); },
     async borrarGrupo(sid, gid) { await F().deleteDoc(gref(sid, gid)); },
     async cambiarSesion(sid, patch) { await F().updateDoc(sref(sid), patch); },

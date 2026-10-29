@@ -28,6 +28,12 @@ Sin activar, la app no envía nada a ningún servidor. Activado, las respuestas 
 
 **Actívalo solo cuando el Comité Ético haya aprobado la modificación del estudio.**
 
+## Estadísticas de uso anónimas (apagadas por defecto)
+
+Con `uso: true` en `firebase-config.js`, a quien **no** participa en el estudio se le pregunta una vez si acepta que se cuente su uso. Si acepta, al terminar cada test (o al autoevaluar una pregunta corta) se envía a la colección `uso` solo: tipo, modo, temas, número de preguntas, idioma, día y si es el primer envío de ese navegador. Sin identificador, sin respuestas y sin nota. Se puede cambiar en «Mi progreso». Las reglas de Firestore solo admiten esos campos y solo el administrador los lee.
+
+`admin.html` suma estos recuentos a los datos del estudio en «Estadísticas de uso» (por curso, tema y modo; CSV e impresión). **Actívalo solo cuando el Comité Ético haya aprobado la enmienda.**
+
 1. Firebase: proyecto con Firestore en región UE, Authentication con los métodos «Anónimo» y «Google», y `alfonsooa.github.io` en los dominios autorizados.
 2. Edita `firebase-config.js`: pega el bloque `firebaseConfig` en `config` (no es secreto) y deja `envio: false` de momento.
 3. Abre `https://alfonsooa.github.io/biocognia/quaestia/admin.html`, entra con tu cuenta de Google y copia el identificador que aparece.

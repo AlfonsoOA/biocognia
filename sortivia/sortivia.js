@@ -3,7 +3,7 @@
    BIOCOGNIA · Open Educational Technology · Alfonso Olaya Abril
    ============================================================ */
 "use strict";
-const SV_VERSION = "0.7.1";
+const SV_VERSION = "0.7.2";
 
 /* ---------- Cálculo de costes y puntos ---------- */
 // eleccion = { bloques: { [bloque]: { incluido: bool, dec: { [decision]: idOpcion | número (contadores) } } } }
@@ -237,6 +237,7 @@ function svBackendDemo() {
     async crearSesion(datos) { const d = read(); const sid = svCodigo(5); d.sesiones[sid] = { ...datos, propietario: me, estado: "abierta", creada: Date.now(), grupos: {} }; write(d); return sid; },
     async sesiones(todas) { const d = read(); return Object.entries(d.sesiones).map(([id, s]) => ({ id, ...s, grupos: undefined })).filter((s) => todas || s.propietario === me).sort((a, b) => b.creada - a.creada); },
     verGrupos(sid, cb) { watch(() => { const s = read().sesiones[sid]; cb(s ? Object.entries(s.grupos).map(([id, g]) => ({ id, ...g })) : []); }); },
+    async gruposLista(sid) { const s = read().sesiones[sid]; return s ? Object.entries(s.grupos).map(([id, g]) => ({ id, ...g })) : []; },
     async cambiarGrupoAdmin(sid, gid, patch) { svComprobar(patch); const d = read(); Object.assign(d.sesiones[sid].grupos[gid], patch); write(d); },
     async borrarGrupo(sid, gid) { const d = read(); delete d.sesiones[sid].grupos[gid]; write(d); },
     async cerrarSesion(sid) { const d = read(); d.sesiones[sid].estado = "cerrada"; write(d); },
@@ -291,6 +292,7 @@ function svBackendFirebase() {
       return q.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => b.creada - a.creada);
     },
     verGrupos(sid, cb) { F().onSnapshot(F().collection(db, "sesiones", sid, "grupos"), (q) => cb(q.docs.map((d) => ({ id: d.id, ...d.data() })))); },
+    async gruposLista(sid) { const q = await F().getDocs(F().collection(db, "sesiones", sid, "grupos")); return q.docs.map((d) => ({ id: d.id, ...d.data() })); },
     async cambiarGrupoAdmin(sid, gid, patch) { await F().updateDoc(gref(sid, gid), patch); },
     async borrarGrupo(sid, gid) { await F().deleteDoc(gref(sid, gid)); },
     async cerrarSesion(sid) { await F().updateDoc(F().doc(db, "sesiones", sid), { estado: "cerrada" }); },

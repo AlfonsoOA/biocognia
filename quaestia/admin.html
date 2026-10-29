@@ -45,12 +45,19 @@ code { font-family:var(--f-mono); font-size:.85em; word-break:break-all; }
     <p class="small" id="msg" aria-live="polite"></p>
     <p class="small muted">Cada fila del CSV es una pregunta respondida en un intento. «participante» es el identificador anónimo del navegador: permite seguir a cada persona a lo largo del curso sin saber quién es.</p>
   </section>
+  <section class="panel" id="uso" hidden>
+    <div class="row"><h2>Estadísticas de uso</h2><span style="margin-left:auto" class="row"><button class="btn" id="u-csv">Descargar CSV</button><button class="btn primary" id="u-print">Imprimir / PDF</button></span></div>
+    <div class="kv" id="u-kv"></div>
+    <p class="small" id="u-res" style="background:var(--surface,#fff);border:1px solid var(--line,#ddd);border-radius:8px;padding:10px"></p>
+    <div id="u-tab"></div>
+    <p class="small muted">Suma dos fuentes: los datos del estudio (participantes con enlace de grupo y consentimiento) y, si está activado, los recuentos anónimos de uso (sin identificador). «Usuarios aproximados» = participantes del estudio + navegadores que han enviado su primer recuento anónimo. No incluye a quien usa la app sin aceptar ninguna de las dos opciones, así que es una cifra mínima. El grupo PRUEBA no se cuenta.</p>
+  </section>
 </main>
 <script src="firebase-config.js"></script>
 <script>
 "use strict";
 const $ = (s) => document.querySelector(s);
-const D = { intentos: [], cortas: [] };
+const D = { intentos: [], cortas: [], uso: [] };
 const short = (u) => String(u || "").slice(0, 10);
 const fmt = (n) => (Math.round(n * 100) / 100).toString().replace(".", ",");
 function csvCell(v) { const s = v == null ? "" : String(v); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; }
@@ -84,6 +91,46 @@ $("#csvc").onclick = () => save(`quaestia_cortas_${$("#grupo").value || "todos"}
 $("#json").onclick = () => save(`quaestia_${$("#grupo").value || "todos"}_${stamp()}.json`, JSON.stringify({ exportado: new Date().toISOString(), ...sel() }, null, 1), "application/json");
 $("#grupo").onchange = draw;
 
+/* ---------- Estadísticas de uso (para méritos): estudio + recuentos anónimos ---------- */
+const curso = (iso) => { const d = new Date(iso), y = d.getFullYear(); return d.getMonth() >= 8 ? `${y}/${String(y + 1).slice(2)}` : `${y - 1}/${String(y).slice(2)}`; };
+const fecha = (iso) => new Date(iso).toLocaleDateString("es-ES", { day: "numeric", month: "short", year: "numeric" });
+const MODOS = { entrenamiento: "Entrenamiento", test: "Test del profesorado", simulacro: "Simulacro", corta: "Pregunta corta" };
+let U = null;
+function calcUso() {
+  const ia = D.intentos.filter((a) => a.grupo !== "PRUEBA"), ca = D.cortas.filter((c) => c.grupo !== "PRUEBA");
+  const ev = [
+    ...ia.map((a) => ({ fuente: "estudio", fecha: a.fecha, tipo: "test", modo: a.modo, temas: [...new Set((a.items || []).map((i) => i.tema))], n: (a.items || []).length })),
+    ...ca.map((c) => ({ fuente: "estudio", fecha: c.fecha, tipo: "corta", modo: "corta", temas: [], n: 1 })),
+    ...D.uso.map((u) => ({ fuente: "anonimo", fecha: u.dia, tipo: u.tipo, modo: u.modo, temas: u.temas || [], n: u.n || 0, nuevo: u.nuevo, compartido: u.compartido })),
+  ].filter((e) => e.fecha).sort((a, b) => String(a.fecha).localeCompare(String(b.fecha)));
+  const tests = ev.filter((e) => e.tipo === "test"), part = new Set(ia.map((a) => a.uid).concat(ca.map((c) => c.uid))).size, nuevos = D.uso.filter((u) => u.nuevo).length;
+  const t = { tests: tests.length, preguntas: tests.reduce((s, e) => s + e.n, 0), cortas: ev.filter((e) => e.tipo === "corta").length, participantes: part, anonimos: nuevos,
+    usuarios: part + nuevos, grupos: new Set(ia.map((a) => a.grupo).concat(ca.map((c) => c.grupo)).filter(Boolean)).size, profesorado: tests.filter((e) => e.modo === "test").length,
+    desde: ev.length ? ev[0].fecha : null, hasta: ev.length ? ev[ev.length - 1].fecha : null };
+  const por = (f) => { const m = new Map(); for (const e of ev) for (const k of f(e)) { const x = m.get(k) || { k, tests: 0, preguntas: 0, cortas: 0 }; if (e.tipo === "test") { x.tests++; x.preguntas += e.n; } else x.cortas++; m.set(k, x); } return [...m.values()]; };
+  return { ev, t, porCurso: por((e) => [curso(e.fecha)]).sort((a, b) => a.k.localeCompare(b.k)), porTema: por((e) => e.temas.map((x) => `Tema ${x}`)).sort((a, b) => a.k.localeCompare(b.k, "es", { numeric: true })), porModo: por((e) => [MODOS[e.modo] || e.modo]) };
+}
+function textoUso(t) {
+  if (!t.tests && !t.cortas) return "Todavía no hay datos de uso (ni del estudio ni recuentos anónimos).";
+  return `Entre el ${fecha(t.desde)} y el ${fecha(t.hasta)}, QUAESTIA ha registrado ${t.tests} tests completados (${t.preguntas} preguntas respondidas) y ${t.cortas} preguntas cortas autoevaluadas, `
+    + `por al menos ${t.usuarios} usuario${t.usuarios === 1 ? "" : "s"} (${t.participantes} participante${t.participantes === 1 ? "" : "s"} del estudio en ${t.grupos} grupo${t.grupos === 1 ? "" : "s"} y ${t.anonimos} usuario${t.anonimos === 1 ? "" : "s"} anónimo${t.anonimos === 1 ? "" : "s"}).`
+    + (t.profesorado ? ` ${t.profesorado === 1 ? "Uno de los tests fue preparado" : `${t.profesorado} de los tests fueron preparados`} por el profesorado y compartido${t.profesorado === 1 ? "" : "s"} por enlace.` : "");
+}
+function tablaUso(tit, filas) { return `<h3>${tit}</h3><table><thead><tr><th></th><th class="n">Tests</th><th class="n">Preguntas</th><th class="n">Cortas</th></tr></thead><tbody>${filas.map((x) => `<tr><td>${x.k}</td><td class="n">${x.tests}</td><td class="n">${x.preguntas}</td><td class="n">${x.cortas}</td></tr>`).join("")}</tbody></table>`; }
+function htmlUso(u) { return (u.ev.length ? tablaUso("Por curso académico", u.porCurso) + tablaUso("Por tema", u.porTema) + tablaUso("Por modo", u.porModo) : ""); }
+function drawUso() {
+  U = calcUso(); const t = U.t;
+  $("#u-kv").innerHTML = [["Tests completados", t.tests], ["Preguntas respondidas", t.preguntas], ["Preguntas cortas", t.cortas], ["Usuarios (mínimo)", t.usuarios], ["Grupos de estudio", t.grupos], ["Tests del profesorado", t.profesorado]].map(([k, v]) => `<div><b>${v}</b><span>${k}</span></div>`).join("");
+  $("#u-res").textContent = textoUso(t); $("#u-tab").innerHTML = htmlUso(U); $("#uso").hidden = false;
+}
+$("#u-csv").onclick = () => save(`quaestia_uso_${stamp()}.csv`, "﻿" + ["fuente;fecha;curso;tipo;modo;temas;preguntas;nuevo_navegador;test_profesorado", ...U.ev.map((e) => [e.fuente, String(e.fecha).slice(0, 10), curso(e.fecha), e.tipo, e.modo, e.temas.join(" "), e.n, e.nuevo ? 1 : "", e.modo === "test" ? 1 : ""].join(";"))].join("\n"), "text/csv");
+$("#u-print").onclick = () => {
+  const w = window.open("", "_blank"); if (!w) { $("#msg").textContent = "Permite las ventanas emergentes para imprimir."; return; }
+  w.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>QUAESTIA · estadísticas de uso</title><style>body{font-family:system-ui,sans-serif;max-width:780px;margin:24px auto;padding:0 16px;font-size:14px;color:#111}h1{font-family:Georgia,serif}table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid #ddd;padding:4px 6px;text-align:left}.n{text-align:right}.r{background:#f4f4f0;padding:10px;border-radius:6px}@page{size:A4;margin:14mm}</style></head><body>
+    <h1>QUAESTIA · estadísticas de uso</h1><p style="font-size:12px;color:#555">BIOCOGNIA · generado el ${new Date().toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}. Sin datos personales: participantes del estudio con consentimiento y recuentos anónimos de uso. Cifras mínimas.</p>
+    <p class="r">${textoUso(U.t)}</p>${htmlUso(U)}<script>setTimeout(()=>print(),300)<\/script></body></html>`); w.document.close();
+};
+
 // Acceso a Firebase (o a un simulador para pruebas).
 async function backend() {
   if (window.QUAESTIA_ADMIN_MOCK) return window.QUAESTIA_ADMIN_MOCK;
@@ -101,7 +148,7 @@ async function backend() {
 let BE = null;
 async function load() {
   $("#err").textContent = "";
-  try { D.intentos = await BE.load("intentos"); D.cortas = await BE.load("cortas"); draw(); }
+  try { D.intentos = await BE.load("intentos"); D.cortas = await BE.load("cortas"); D.uso = await BE.load("uso").catch(() => []); draw(); drawUso(); }
   catch (e) { $("#err").innerHTML = `No se pueden leer los datos (${e.code || e.message}). Si es «permission-denied», copia tu identificador de arriba en la función <code>esAdmin()</code> de las reglas de Firestore y publícalas.`; }
 }
 $("#signin").onclick = async () => {

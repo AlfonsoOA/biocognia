@@ -3,7 +3,7 @@
 Actividades de toma de decisiones y gamificación basadas en la metodología **ESTOPA**. Parte de BIOCOGNIA · Open Educational Technology.
 
 - **Autoría y desarrollo:** Alfonso Olaya Abril (Departamento de Bioquímica y Biología Molecular, Universidad de Córdoba).
-- **Versión:** 0.7.1.
+- **Versión:** 0.7.2.
 
 ## Cómo funciona una actividad
 

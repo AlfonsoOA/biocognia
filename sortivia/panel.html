@@ -45,6 +45,7 @@ ul.err { margin: 0; padding-left: 20px; color: var(--bad); font-size: .9rem; }
 <footer><div class="wrap" id="foot"></div></footer>
 <script src="../quaestia/firebase-config.js"></script>
 <script src="sortivia.js"></script>
+<script src="../comun/estadisticas.js?v=1.0"></script>
 <script>
 "use strict";
 const P = { rol: null, uid: null, email: "", nombre: "", vista: "inicio", acts: [], fsActs: [], repo: [], claves: {}, sesiones: [], profs: [], conv: null,
@@ -112,7 +113,7 @@ async function arbitrarGrupo(g, k) {
 /* ---------- Vistas: inicio ---------- */
 function vTabs() {
   const t = [["inicio", "Sesiones y actividades"], ["conversor", "Crear actividad desde Excel"]];
-  if (admin()) t.push(["profesorado", "Profesorado"]);
+  if (admin()) t.push(["profesorado", "Profesorado"], ["estadisticas", "Estadísticas de uso"]);
   return `<nav class="tabs" aria-label="Secciones">${t.map(([v, l]) => `<button class="btn small" data-vista="${v}" aria-pressed="${P.vista === v}">${l}</button>`).join("")}</nav>`;
 }
 // Actividades agrupadas por asignatura (las que no tienen, al final) y por título dentro de cada una.
@@ -165,9 +166,17 @@ function vSesiones() {
 function vMsg() { return P.msg ? `<p class="notice small" role="status">${esc(P.msg)}</p>` : ""; }
 function vInicio() { return vTabs() + vMsg() + vNueva() + vSesiones() + vActividades(); }
 
+/* ---------- Estadísticas de uso (solo administrador) ---------- */
+async function cargarEst(min = 1) {
+  const actividades = Object.fromEntries(P.acts.map((a) => [a.id, { titulo: svT(a.titulo, "es") || a.id, detalle: a.asignatura || "" }]));
+  const enviado = (g) => g.estado !== "editando" || (g.ronda || 1) > 1;
+  P.est = await bcCargar({ app: "SORTIVIA", B: SVB, adminUids: [...SV_ADMINS, "demo-admin"], actividades, enviado, min }); render();
+}
+function vEstadisticas() { return vTabs() + vMsg() + `<section class="panel stack"><h2>Estadísticas de uso · SORTIVIA</h2>${bcPanel(P.est, esc)}</section>`; }
+
 /* ---------- Vistas: profesorado (solo administrador) ---------- */
 function vProfesorado() {
-  const filas = P.profs.slice().sort((a, b) => String(a.nombre).localeCompare(String(b.nombre), "es")).map((p) => `<tr><td><b>${esc(p.nombre || "")}</b><div class="small muted">${esc(p.correo || "")}</div></td><td class="uid">${esc(p.uid)}</td>
+  const filas = P.profs.slice().sort((a, b) => String(a.nombre).localeCompare(String(b.nombre), "es")).map((p) => `<tr><td><b>${esc(p.nombre || "")}</b><div class="small muted">${esc([p.correo, p.centro].filter(Boolean).join(" · "))}</div></td><td class="uid">${esc(p.uid)}</td>
     <td>${p.activo ? `<span class="pill ok">Autorizado</span>` : `<span class="pill bad">Desactivado</span>`}</td>
     <td class="n"><div class="acc"><button class="btn small" data-tprof="${esc(p.uid)}">${p.activo ? "Desactivar" : "Activar"}</button><button class="btn small ghost" data-dprof="${esc(p.uid)}">Eliminar</button></div></td></tr>`).join("");
   return vTabs() + vMsg() + `<section class="panel stack"><h2>Profesorado autorizado</h2>
@@ -176,7 +185,9 @@ function vProfesorado() {
     <section class="panel stack"><h3>Autorizar a un profesor</h3><form id="nprof" class="stack">
       <div class="row"><input class="field" name="uid" placeholder="UID (lo ve al entrar en el panel)" required pattern="[A-Za-z0-9_-]{6,128}" style="flex:2;min-width:240px">
       <input class="field" name="nombre" placeholder="Nombre y apellidos" required maxlength="80" style="flex:1;min-width:180px">
-      <input class="field" name="correo" type="email" placeholder="Correo (opcional)" maxlength="120" style="flex:1;min-width:180px"></div>
+      <input class="field" name="correo" type="email" placeholder="Correo (opcional)" maxlength="120" style="flex:1;min-width:180px">
+      <input class="field" name="centro" placeholder="Centro (p. ej., Universidad de Granada)" maxlength="120" style="flex:1;min-width:200px"></div>
+      <p class="small muted" style="margin:0">El centro solo se usa en las estadísticas de uso. Para añadirlo o cambiarlo a alguien ya autorizado, vuelve a autorizar su UID con el centro.</p>
       <div class="row"><button class="btn primary" type="submit">Autorizar</button></div></form></section>`;
 }
 
@@ -238,7 +249,7 @@ function vConversor() {
 function render() {
   const m = $("#main");
   if (!P.rol) return;
-  m.innerHTML = P.sid ? vSesion() : P.vista === "conversor" ? vConversor() : P.vista === "profesorado" && admin() ? vProfesorado() : vInicio();
+  m.innerHTML = P.sid ? vSesion() : P.vista === "conversor" ? vConversor() : P.vista === "profesorado" && admin() ? vProfesorado() : P.vista === "estadisticas" && admin() ? vEstadisticas() : vInicio();
 }
 function enlace(sid) { return location.href.replace(/panel\.html.*$/, "") + `?s=${sid}${SVB.demo && new URLSearchParams(location.search).has("demo") ? "&demo" : ""}`; }
 function vGrupoDet(g) {
@@ -362,7 +373,9 @@ async function entrar() {
 async function accion(t) {
   if (t.id === "signin") return entrar();
   if (t.id === "copiar-uid") { try { await navigator.clipboard.writeText(P.uid); t.textContent = "Copiado"; } catch (er) { $("#miuid").select(); } return; }
-  if (t.dataset.vista) { P.vista = t.dataset.vista; P.msg = ""; if (P.vista === "profesorado") await cargarProfes(); return render(); }
+  if (t.dataset.vista) { P.vista = t.dataset.vista; P.msg = ""; if (P.vista === "profesorado") await cargarProfes(); if (P.vista === "estadisticas") { P.est = null; render(); return cargarEst(); } return render(); }
+  if (t.id === "bc-csv") return save(`sortivia_estadisticas_${new Date().toISOString().slice(0, 10)}.csv`, "\uFEFF" + bcCSV(P.est.r), "text/csv");
+  if (t.id === "bc-print") { if (!bcImprimir(P.est.r, esc)) { P.msg = "El navegador ha bloqueado la ventana: permite las ventanas emergentes para este sitio."; render(); } return; }
   if (t.dataset.open) return abrir(t.dataset.open);
   if (t.id === "volver") { P.sid = null; P.msg = ""; await cargarSesiones(); return render(); }
   if (t.id === "copiar") { try { await navigator.clipboard.writeText($("#link").value); P.msg = "Enlace copiado."; } catch (er) { $("#link").select(); } return render(); }
@@ -408,6 +421,7 @@ document.addEventListener("click", (e) => { const t = e.target.closest("button")
 document.addEventListener("toggle", (e) => { const d = e.target; if (d.dataset && d.dataset.g) { if (d.open) P.open.add(d.dataset.g); else P.open.delete(d.dataset.g); } }, true);
 document.addEventListener("change", async (e) => {
   if (e.target.id === "auto") { P.auto = e.target.checked; return arbitrar(); }
+  if (e.target.id === "bc-min") { bcRecalcular(P.est, Number(e.target.value)); return render(); }
   if (e.target.id === "xls") { const f = e.target.files[0]; if (f) convertir(f).catch(fallo); return; }
   if (e.target.dataset.key) {
     const aid = e.target.dataset.key, f = e.target.files[0]; if (!f) return;
@@ -421,7 +435,7 @@ document.addEventListener("submit", (e) => {
     if (f.id === "nueva") { if (!f.act.value) return; const sid = await SVB.crearSesion({ actividad: f.act.value, nombre: f.nombre.value.trim() }); await cargarSesiones(); return abrir(sid); }
     if (f.id === "nprof") {
       const uid = f.uid.value.trim();
-      await SVB.guardarProfesor(uid, { nombre: f.nombre.value.trim(), correo: f.correo.value.trim(), activo: true, alta: Date.now() });
+      await SVB.guardarProfesor(uid, { nombre: f.nombre.value.trim(), correo: f.correo.value.trim(), centro: f.centro.value.trim(), activo: true, alta: Date.now() });
       P.msg = `${f.nombre.value.trim()} ya puede entrar en el panel.`; await cargarProfes(); render();
     }
   })().catch(fallo);

@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0e6b5c">
+<link rel="apple-touch-icon" href="comun/iconos/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="BIOCOGNIA">
+<script src="comun/pwa.js" defer></script>
+<link rel="icon" type="image/png" href="comun/iconos/favicon-32.png">
 <title>BIOCOGNIA</title>
 <meta name="description" content="BIOCOGNIA · Open Educational Technology: QUAESTIA, SORTIVIA y DEAba Digital, herramientas abiertas para aprender Bioquímica.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +35,11 @@ a.app:hover { border-color:var(--accent); }
 .app .go { margin-top:auto; color:var(--accent); font-weight:500; font-size:.92rem; }
 .app.soon { opacity:.65; }
 footer { border-top:1px solid var(--line); padding-top:20px; font-size:.84rem; color:var(--muted); display:flex; flex-direction:column; gap:4px; }
+.instalar { display:none; align-items:center; gap:12px; flex-wrap:wrap; padding:14px 16px; border:1px dashed var(--line); border-radius:10px; background:var(--surface); font-size:.92rem; }
+.instalar.on { display:flex; }
+.instalar p { margin:0; color:var(--muted); flex:1; min-width:220px; }
+.instalar button { font:inherit; font-weight:500; border:0; border-radius:8px; padding:9px 16px; background:var(--accent); color:#fff; cursor:pointer; }
+@media (prefers-color-scheme: dark) { .instalar button { color:#0f1a18; } }
 </style>
 </head>
 <body>
@@ -36,6 +49,10 @@ footer { border-top:1px solid var(--line); padding-top:20px; font-size:.84rem; c
     <h1>BIOCOGNIA</h1>
     <p>Herramientas abiertas para aprender Bioquímica, basadas en la taxonomía de Bloom.</p>
   </header>
+  <section class="instalar" id="instalar" aria-label="Instalar">
+    <p id="instalar-txt">Instala BIOCOGNIA en tu móvil u ordenador: se abre como una app, con acceso directo a QUAESTIA, SORTIVIA y DEAba Digital.</p>
+    <button type="button" id="instalar-btn">Instalar</button>
+  </section>
   <section class="apps" aria-label="Aplicaciones">
     <a class="app" href="quaestia/" data-keepq>
       <h2>QUAESTIA</h2>
@@ -67,6 +84,22 @@ try {
   var q = location.search;
   if (q) document.querySelectorAll("a[data-keepq]").forEach(function (a) { a.href = a.getAttribute("href") + q; });
 } catch (e) {}
+</script>
+<script>
+(function () {
+  const caja = document.getElementById("instalar"), btn = document.getElementById("instalar-btn"), txt = document.getElementById("instalar-txt");
+  const instalada = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  if (instalada) return;
+  let aviso = null;
+  addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); aviso = e; caja.classList.add("on"); });
+  btn.addEventListener("click", async () => { if (!aviso) return; aviso.prompt(); await aviso.userChoice.catch(() => null); aviso = null; caja.classList.remove("on"); });
+  addEventListener("appinstalled", () => caja.classList.remove("on"));
+  // iPhone/iPad: no hay botón de instalación; se explica cómo hacerlo.
+  if (/iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) {
+    txt.textContent = "Para instalar BIOCOGNIA en el iPhone o el iPad: abre esta página en Safari, pulsa Compartir y elige «Añadir a pantalla de inicio».";
+    btn.hidden = true; caja.classList.add("on");
+  }
+})();
 </script>
 </body>
 </html>

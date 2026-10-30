@@ -1,0 +1,24 @@
+{
+  "name": "BIOCOGNIA",
+  "short_name": "BIOCOGNIA",
+  "description": "Herramientas abiertas para aprender Bioquímica: QUAESTIA, SORTIVIA y DEAba Digital.",
+  "id": "./",
+  "start_url": "./?pwa=1",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "lang": "es",
+  "background_color": "#f4f7f6",
+  "theme_color": "#0e6b5c",
+  "categories": ["education"],
+  "icons": [
+    { "src": "comun/iconos/icono-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "comun/iconos/icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "comun/iconos/icono-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "QUAESTIA", "short_name": "QUAESTIA", "description": "Evaluación y autoaprendizaje", "url": "quaestia/", "icons": [{ "src": "comun/iconos/quaestia-96.png", "sizes": "96x96", "type": "image/png" }] },
+    { "name": "SORTIVIA", "short_name": "SORTIVIA", "description": "Gamificación y toma de decisiones", "url": "sortivia/", "icons": [{ "src": "comun/iconos/sortivia-96.png", "sizes": "96x96", "type": "image/png" }] },
+    { "name": "DEAba Digital", "short_name": "DEAba", "description": "Interpretación y diseño de experimentos", "url": "deaba/", "icons": [{ "src": "comun/iconos/deaba-96.png", "sizes": "96x96", "type": "image/png" }] }
+  ]
+}

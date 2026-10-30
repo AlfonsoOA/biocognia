@@ -98,6 +98,12 @@ try {
   if (/iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) {
     txt.textContent = "Para instalar BIOCOGNIA en el iPhone o el iPad: abre esta página en Safari, pulsa Compartir y elige «Añadir a pantalla de inicio».";
     btn.hidden = true; caja.classList.add("on");
+  } else if (/firefox/i.test(navigator.userAgent)) {
+    // Firefox no ofrece el botón de instalación: en Android se hace desde su menú; en el ordenador, con Chrome o Edge.
+    txt.textContent = /android/i.test(navigator.userAgent)
+      ? "Para instalar BIOCOGNIA en Firefox: abre el menú ⋮ y elige «Instalar» (o «Añadir a pantalla de inicio»)."
+      : "Firefox para ordenador no permite instalar BIOCOGNIA como app. Puedes usarla aquí con normalidad o, si quieres instalarla, abrir esta página en Chrome o Edge.";
+    btn.hidden = true; caja.classList.add("on");
   }
 })();
 </script>

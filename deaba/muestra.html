@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#0e6b5c">
+<link rel="apple-touch-icon" href="../comun/iconos/apple-touch-icon.png">
+<script src="../comun/pwa.js" defer></script>
+<title>DEAba Digital · Actividad de muestra</title>
+<meta name="description" content="Prueba DEAba Digital con una actividad de muestra: la vista del alumnado y el panel del profesor, sin cuenta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="deaba.css">
+<style>
+.pasos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.paso { display: flex; flex-direction: column; gap: 10px; }
+.paso h2 { font-size: 1.15rem; margin: 0; }
+.paso p { margin: 0; }
+.paso .btn { align-self: flex-start; margin-top: auto; }
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="mark" href="./">DEABA<small id="tagline">Actividad de muestra</small></a>
+  <span class="spacer"></span>
+  <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
+</div></header>
+<main class="wrap stack-lg" id="main" style="padding-top:28px;padding-bottom:40px"></main>
+<footer><div class="wrap small muted">DEAba Digital · BIOCOGNIA</div></footer>
+<script src="deaba.js?v=0.2.4"></script>
+<script src="muestra/muestra.js?v=1"></script>
+<script>
+"use strict";
+const TX = {
+  es: {
+    tag: "Actividad de muestra", eyebrow: "Pruébala sin cuenta",
+    h1: "DEAba Digital con una actividad de muestra",
+    intro: "Una sesión de clase ya en marcha con la actividad «El misterio del flujo de carbonos» (tipo 1, interpretar). Cuatro grupos ficticios ya han trabajado: uno lo resuelve bien, otro cae en el error típico y lo confunde con un ayuno, otro se queda a medias y el último sigue escribiendo.",
+    p1t: "1. El panel del profesor", p1: "Sigue a los grupos, mira qué ha puesto cada uno por molécula, qué conceptos aparecen en las respuestas, proyecta el plenario y abre la guía con las respuestas esperadas.", p1b: "Abrir el panel",
+    p2t: "2. La vista del alumnado", p2: "Entra como un grupo más (con cualquier nombre) y rellena la actividad. Si tienes el panel abierto en otra pestaña, verás aparecer tu grupo en directo.", p2b: "Entrar como grupo",
+    p3t: "3. Empezar de cero", p3: "Vuelve a dejar la sesión de muestra como al principio, con los cuatro grupos ficticios.", p3b: "Reiniciar la muestra", hecho: "Muestra reiniciada.",
+    nota: "Todo ocurre en tu navegador (modo demostración): no se guarda nada en el servidor ni afecta a ninguna sesión real. Para usar DEAba Digital con tus grupos hace falta una cuenta autorizada: escribe a b22olaba@uco.es.",
+    err: "No se ha podido preparar la muestra. Recarga la página.",
+  },
+  en: {
+    tag: "Sample activity", eyebrow: "Try it without an account",
+    h1: "DEAba Digital with a sample activity",
+    intro: "A class session already under way with the activity “The carbon flux mystery” (type 1, interpret). Four fictional groups have already worked on it: one solves it well, another falls into the typical mistake and confuses it with fasting, another gets halfway and the last one is still writing.",
+    p1t: "1. The teacher panel", p1: "Follow the groups, see what each one wrote for each molecule and which concepts appear in their answers, project the plenary and open the guide with the expected answers.", p1b: "Open the panel",
+    p2t: "2. The student view", p2: "Join as one more group (any name will do) and fill in the activity. If you have the panel open in another tab, you will see your group appear live.", p2b: "Join as a group",
+    p3t: "3. Start again", p3: "Put the sample session back as it was at the start, with the four fictional groups.", p3b: "Reset the sample", hecho: "Sample reset.",
+    nota: "Everything happens in your browser (demo mode): nothing is stored on the server and no real session is affected. To use DEAba Digital with your groups you need an authorised account: write to b22olaba@uco.es.",
+    err: "The sample could not be prepared. Reload the page.",
+  },
+};
+let LANG = new URLSearchParams(location.search).get("lang") || (() => { try { return localStorage.getItem("bc.panel.lang") || dbLang(); } catch (e) { return dbLang(); } })();
+if (LANG !== "en") LANG = "es";
+let msg = "";
+function render() {
+  const t = TX[LANG];
+  document.documentElement.lang = LANG; document.getElementById("tagline").textContent = t.tag;
+  for (const b of document.querySelectorAll("[data-lang]")) b.setAttribute("aria-pressed", b.dataset.lang === LANG);
+  document.getElementById("main").innerHTML = `
+    <div class="stack"><p class="eyebrow" style="margin:0">${t.eyebrow}</p><h1 style="margin:0">${t.h1}</h1><p style="margin:0">${esc(t.intro)}</p></div>
+    <div class="pasos">
+      <section class="panel paso"><h2>${t.p1t}</h2><p class="small">${t.p1}</p><a class="btn primary" target="_blank" href="panel.html?demo&abrir=${MUESTRA.sid}&lang=${LANG}">${t.p1b}</a></section>
+      <section class="panel paso"><h2>${t.p2t}</h2><p class="small">${t.p2}</p><a class="btn primary" target="_blank" href="index.html?demo&s=${MUESTRA.sid}">${t.p2b}</a></section>
+      <section class="panel paso"><h2>${t.p3t}</h2><p class="small">${t.p3}</p><button class="btn" id="reiniciar">${t.p3b}</button></section>
+    </div>
+    ${msg ? `<p class="notice small" role="status">${esc(msg)}</p>` : ""}
+    <p class="small muted">${esc(t.nota)}</p>`;
+}
+async function preparar(forzar) {
+  let hay = false; try { hay = !!(JSON.parse(localStorage.getItem("deaba.demo")) || {}).sesiones?.[MUESTRA.sid]; } catch (e) {}
+  if (forzar || !hay) await muestraPreparar(LANG);
+}
+function fijarIdiomas() { try { localStorage.setItem("bc.panel.lang", LANG); dbSetLang(LANG); } catch (e) {} }
+document.addEventListener("click", async (e) => {
+  const l = e.target.closest("[data-lang]");
+  if (l && l.dataset.lang !== LANG) { LANG = l.dataset.lang; fijarIdiomas(); msg = ""; try { await preparar(true); } catch (er) { msg = TX[LANG].err; } render(); return; }
+  if (e.target.id === "reiniciar") { try { await preparar(true); msg = TX[LANG].hecho; } catch (er) { msg = TX[LANG].err; } render(); }
+});
+(async () => { fijarIdiomas(); try { await preparar(false); } catch (e) { msg = TX[LANG].err; } render(); })();
+</script>
+</body>
+</html>

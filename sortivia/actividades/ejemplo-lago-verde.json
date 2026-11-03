@@ -1,0 +1,402 @@
+{
+ "schema": "sortivia-actividad/3",
+ "id": "ejemplo-lago-verde",
+ "metodologia": "ESTOPA",
+ "titulo": {
+  "es": "El misterio del lago verde",
+  "en": "The green lake mystery"
+ },
+ "resumen": {
+  "es": "El lago se ha vuelto verde y huele mal. Diseñad la estrategia ómica que explique quién vive ahí y qué está haciendo, sin pasaros del presupuesto.",
+  "en": "The lake has turned green and smells bad. Design the omics strategy that explains who lives there and what they are doing, within budget."
+ },
+ "presupuesto": 3000.0,
+ "numeros": 10,
+ "rondas": 2,
+ "puntos_por_numero": 10.0,
+ "bloques_obligatorios": [
+  "sampling-design"
+ ],
+ "bloques": [
+  {
+   "id": "sampling-design",
+   "nombre": {
+    "en": "Sampling design",
+    "es": "Diseño de muestreo"
+   },
+   "decisiones": [
+    {
+     "id": "design",
+     "nombre": {
+      "en": "Design",
+      "es": "Diseño"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "problem-only",
+       "label": {
+        "en": "Problem only",
+        "es": "Solo el lago problema"
+       },
+       "coste": {
+        "tipo": "condiciones",
+        "valor": 1.0
+       }
+      },
+      {
+       "id": "problem-vs-control-lake",
+       "label": {
+        "en": "Problem vs control lake",
+        "es": "Lago problema frente a lago control"
+       },
+       "coste": {
+        "tipo": "condiciones",
+        "valor": 2.0
+       }
+      }
+     ]
+    }
+   ],
+   "objetivo": {
+    "id": "sampling",
+    "nombre": {
+     "en": "Sampling",
+     "es": "Muestreo"
+    }
+   }
+  },
+  {
+   "id": "metagenomics",
+   "nombre": {
+    "en": "Metagenomics",
+    "es": "Metagenómica"
+   },
+   "decisiones": [
+    {
+     "id": "replicates",
+     "nombre": {
+      "en": "Replicates",
+      "es": "Réplicas"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "1",
+       "label": {
+        "en": "1",
+        "es": "1"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 0.0,
+        "n": 1
+       }
+      },
+      {
+       "id": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 0.0,
+        "n": 3
+       }
+      }
+     ]
+    },
+    {
+     "id": "sequencing",
+     "nombre": {
+      "en": "Sequencing",
+      "es": "Secuenciación"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "short-reads",
+       "label": {
+        "en": "Short reads",
+        "es": "Lecturas cortas"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 150.0
+       }
+      },
+      {
+       "id": "long-reads",
+       "label": {
+        "en": "Long reads",
+        "es": "Lecturas largas"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 400.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "depth",
+     "nombre": {
+      "en": "Depth",
+      "es": "Profundidad"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "standard",
+       "label": {
+        "en": "Standard",
+        "es": "Estándar"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.0
+       }
+      },
+      {
+       "id": "high",
+       "label": {
+        "en": "High",
+        "es": "Alta"
+       },
+       "coste": {
+        "tipo": "mult",
+        "valor": 1.5
+       }
+      }
+     ]
+    },
+    {
+     "id": "binning-mags",
+     "nombre": {
+      "en": "Binning (MAGs)",
+      "es": "Binning (MAG)"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "yes",
+       "label": {
+        "en": "Yes",
+        "es": "Sí"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 100.0
+       }
+      },
+      {
+       "id": "no",
+       "label": {
+        "en": "No",
+        "es": "No"
+       },
+       "coste": {
+        "tipo": "fijo",
+        "valor": 0.0
+       }
+      }
+     ]
+    }
+   ],
+   "objetivo": {
+    "id": "who-is-there",
+    "nombre": {
+     "en": "Who is there?",
+     "es": "¿Quién hay?"
+    }
+   }
+  },
+  {
+   "id": "16s-amplicons",
+   "nombre": {
+    "en": "16S amplicons",
+    "es": "Amplicones 16S"
+   },
+   "decisiones": [
+    {
+     "id": "replicates",
+     "nombre": {
+      "en": "Replicates",
+      "es": "Réplicas"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "1",
+       "label": {
+        "en": "1",
+        "es": "1"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 0.0,
+        "n": 1
+       }
+      },
+      {
+       "id": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 0.0,
+        "n": 3
+       }
+      }
+     ]
+    },
+    {
+     "id": "sequencing",
+     "nombre": {
+      "en": "Sequencing",
+      "es": "Secuenciación"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "v3-v4-amplicons",
+       "label": {
+        "en": "V3-V4 amplicons",
+        "es": "Amplicones V3-V4"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 40.0
+       }
+      }
+     ]
+    }
+   ],
+   "objetivo": {
+    "id": "who-is-there",
+    "nombre": {
+     "en": "Who is there?",
+     "es": "¿Quién hay?"
+    }
+   }
+  },
+  {
+   "id": "metabolomics",
+   "nombre": {
+    "en": "Metabolomics",
+    "es": "Metabolómica"
+   },
+   "decisiones": [
+    {
+     "id": "replicates",
+     "nombre": {
+      "en": "Replicates",
+      "es": "Réplicas"
+     },
+     "tipo": "unica",
+     "opciones": [
+      {
+       "id": "3",
+       "label": {
+        "en": "3",
+        "es": "3"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 0.0,
+        "n": 3
+       }
+      },
+      {
+       "id": "5",
+       "label": {
+        "en": "5",
+        "es": "5"
+       },
+       "coste": {
+        "tipo": "replicas",
+        "valor": 0.0,
+        "n": 5
+       }
+      }
+     ]
+    },
+    {
+     "id": "platform",
+     "nombre": {
+      "en": "Platform",
+      "es": "Plataforma"
+     },
+     "tipo": "multiple",
+     "opciones": [
+      {
+       "id": "gc-ms",
+       "label": {
+        "en": "GC-MS",
+        "es": "GC-MS"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 120.0
+       }
+      },
+      {
+       "id": "lc-ms",
+       "label": {
+        "en": "LC-MS",
+        "es": "LC-MS"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 180.0
+       }
+      },
+      {
+       "id": "optical-density-only",
+       "label": {
+        "en": "Optical density only",
+        "es": "Solo densidad óptica"
+       },
+       "coste": {
+        "tipo": "muestra",
+        "valor": 5.0
+       }
+      }
+     ]
+    },
+    {
+     "id": "validation-with-standards",
+     "nombre": {
+      "en": "Validation with standards",
+      "es": "Validación con patrones"
+     },
+     "tipo": "contador",
+     "opciones": [
+      {
+       "id": "n",
+       "label": {
+        "en": "Standards",
+        "es": "Patrones"
+       },
+       "coste": {
+        "tipo": "unidad",
+        "valor": 60.0
+       }
+      }
+     ]
+    }
+   ],
+   "objetivo": {
+    "id": "what-are-they-doing",
+    "nombre": {
+     "en": "What are they doing?",
+     "es": "¿Qué están haciendo?"
+    }
+   }
+  }
+ ],
+ "asignatura": "Ejemplo"
+}

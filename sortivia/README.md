@@ -24,6 +24,8 @@ Una cuenta sin autorizar ve un aviso con su identificador (UID) para enviárselo
 
 En cada sesión: código y enlace para los grupos, **árbitro automático** (calcula puntos y hace los sorteos; el panel debe estar abierto durante la clase), detalle de cada grupo (puntos, mejor opción de cada decisión fallada, reglas que han saltado, justificaciones), reabrir o reiniciar grupos, **Publicar las mejores elecciones** cuando el profesor quiera y descarga en CSV/JSON.
 
+**Actividad de muestra:** `sortivia/muestra.html` (enlazada desde la portada y desde la pantalla de entrada del panel) crea en el navegador, sin cuenta, una sesión de «El misterio del lago verde» (`ejemplo-lago-verde`, la de la plantilla Ejemplo_SORTIVIA.xlsx) con tres grupos ficticios en distintos momentos (ES/EN). Como es un ejemplo, su clave es pública (`sortivia/muestra/ejemplo-lago-verde.clave.json`); el panel la carga sola en la muestra. Datos y respuestas en `sortivia/muestra/muestra.js`.
+
 **Idioma del panel:** selector ES | EN en la cabecera (se recuerda en el navegador; también `panel.html?lang=en`). En inglés se traducen los textos del panel (`../comun/panel_i18n.js`) y se muestran en inglés los títulos, el contenido de las actividades y de las guías, los conceptos y la proyección. Las respuestas de los grupos y los nombres de las pestañas y columnas de las plantillas Excel se quedan como están. Para añadir o corregir una traducción, se edita la lista `PANEL_EN` de ese archivo.
 
 ## Crear una actividad desde Excel (en el panel)

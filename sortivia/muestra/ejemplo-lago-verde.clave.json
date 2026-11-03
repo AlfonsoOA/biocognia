@@ -1,0 +1,99 @@
+{
+ "schema": "sortivia-clave/3",
+ "actividad": "ejemplo-lago-verde",
+ "puntos": {
+  "sampling-design/design/problem-only": -5.0,
+  "sampling-design/design/problem-vs-control-lake": 5.0,
+  "metagenomics/replicates/1": -3.0,
+  "metagenomics/replicates/3": 3.0,
+  "metagenomics/sequencing/short-reads": 2.0,
+  "metagenomics/sequencing/long-reads": 3.0,
+  "metagenomics/depth/standard": 0.0,
+  "metagenomics/depth/high": 2.0,
+  "metagenomics/binning-mags/yes": 3.0,
+  "metagenomics/binning-mags/no": -2.0,
+  "16s-amplicons/replicates/1": -3.0,
+  "16s-amplicons/replicates/3": 3.0,
+  "16s-amplicons/sequencing/v3-v4-amplicons": 2.0,
+  "metabolomics/replicates/3": 3.0,
+  "metabolomics/replicates/5": 4.0,
+  "metabolomics/platform/gc-ms": 2.0,
+  "metabolomics/platform/lc-ms": 3.0,
+  "metabolomics/platform/optical-density-only": -4.0,
+  "metabolomics/validation-with-standards/n": 2.0
+ },
+ "reglas": [
+  {
+   "id": "R1",
+   "terminos": [
+    {
+     "bloque": "metabolomics",
+     "no": false
+    },
+    {
+     "bloque": "sampling-design",
+     "no": false,
+     "decision": "design",
+     "opciones": [
+      "problem-only"
+     ]
+    }
+   ],
+   "puntos": -10.0,
+   "texto": {
+    "en": "Metabolomics without a control lake: you cannot tell which metabolites are abnormal.",
+    "es": "Metabolómica sin lago control: no se sabe qué metabolitos son anómalos."
+   }
+  },
+  {
+   "id": "R2",
+   "terminos": [
+    {
+     "bloque": "metabolomics",
+     "no": false,
+     "decision": "platform",
+     "opciones": [
+      "gc-ms"
+     ]
+    },
+    {
+     "bloque": "metabolomics",
+     "no": false,
+     "decision": "platform",
+     "opciones": [
+      "lc-ms"
+     ]
+    }
+   ],
+   "puntos": 2.0,
+   "texto": {
+    "en": "GC-MS and LC-MS complement each other (volatile and polar compounds).",
+    "es": "GC-MS y LC-MS se complementan (volátiles y polares)."
+   },
+   "bloque": "metabolomics"
+  },
+  {
+   "id": "R3",
+   "terminos": [
+    {
+     "bloque": "metagenomics",
+     "no": false
+    },
+    {
+     "bloque": "16s-amplicons",
+     "no": false
+    }
+   ],
+   "puntos": -3.0,
+   "texto": {
+    "en": "16S amplicons on top of metagenomics: redundant spending.",
+    "es": "Amplicones 16S además de metagenómica: gasto redundante."
+   }
+  }
+ ],
+ "escala": {
+  "objetivo": 99.0,
+  "maximo": 23.0,
+  "presupuesto": 3000.0
+ }
+}

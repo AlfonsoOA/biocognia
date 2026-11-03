@@ -45,12 +45,12 @@ ul.err { margin: 0; padding-left: 20px; color: var(--bad); font-size: .9rem; }
 <main class="wrap stack-lg" id="main">
   <section class="panel stack" id="login">
     <p>Panel del profesorado: crea sesiones, sigue a los grupos en directo, haz de árbitro (puntos y sorteos) y convierte tus hojas de claves en actividades. Hace falta una cuenta autorizada por el administrador.</p>
-    <div class="row"><button class="btn primary" id="signin">Entrar con Google</button><a class="btn ghost" href="proponer.html">¿Quieres proponer una actividad?</a></div>
+    <div class="row"><button class="btn primary" id="signin">Entrar con Google</button><a class="btn ghost" href="muestra.html">Probar sin cuenta: actividad de muestra</a><a class="btn ghost" href="proponer.html">¿Quieres proponer una actividad?</a></div>
     <p class="small" id="err" role="alert" style="color:var(--bad)"></p>
   </section>
 </main>
 <footer><div class="wrap" id="foot"></div></footer>
-<script src="../comun/panel_i18n.js?v=1.0"></script>
+<script src="../comun/panel_i18n.js?v=1.1"></script>
 <script src="../quaestia/firebase-config.js"></script>
 <script src="sortivia.js?v=0.7.3"></script>
 <script src="../comun/estadisticas.js?v=1.1"></script>
@@ -378,6 +378,7 @@ async function entrar() {
   $("#who").textContent = `${(PANEL_LANG === "en" && PANEL_I18N.tr(P.nombre)) || P.nombre} · ${P.rol === "admin" ? W("administrador", "administrator") : W("profesor", "teacher")}`;
   await Promise.all([cargarActividades(), cargarSesiones(), cargarProfes()]);
   render();
+  { const ab = new URLSearchParams(location.search).get("abrir"); if (ab && P.sesiones.some((s) => s.id === ab)) await abrir(ab); }
 }
 async function accion(t) {
   if (t.id === "signin") return entrar();

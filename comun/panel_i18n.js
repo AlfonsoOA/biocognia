@@ -157,7 +157,7 @@ const PANEL_EN = [
   ["Crear actividad desde una hoja Excel", "Create activity from an Excel sheet"], ["Clave", "Key"], ["No hay ninguna actividad.", "There are no activities."],
   ["Bloque", "Block"], ["Decisión", "Decision"], ["Elección", "Choice"], ["Coste", "Cost"], ["Opción", "Option"], ["Coherencia · {0}", "Consistency · {0}"], ["Mejor: {0}", "Best: {0}"],
   ["Han ganado", "Won"], ["JSON completo", "Full JSON"],
-  ["Salir (Esc)", "Exit (Esc)"], ["DEAba · {0}", "DEAba · {0}"],
+  ["Probar sin cuenta: actividad de muestra", "Try it without an account: sample activity"], ["Salir (Esc)", "Exit (Esc)"], ["DEAba · {0}", "DEAba · {0}"],
   // ---------- títulos y pie ----------
   ["DEAba Digital · Panel", "DEAba Digital · Panel"], ["SORTIVIA · Panel", "SORTIVIA · Panel"], ["DEAba Digital · panel · v{0}", "DEAba Digital · panel · v{0}"],
   // ---------- errores de las hojas Excel (los nombres de pestañas y columnas se dejan como en la plantilla) ----------

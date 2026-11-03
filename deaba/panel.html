@@ -30,8 +30,8 @@ details.g .det { border-top: 1px solid var(--line); padding: 12px 14px; display:
 .cpt.negado { background: var(--warn-bg); text-decoration: line-through; }
 .cpt.err.si { background: var(--bad-bg); color: var(--bad); }
 .cpt.alt.si { background: var(--warn-bg); color: var(--ink); }
-.bar { display: grid; grid-template-columns: minmax(140px, 260px) 1fr 2.5em; gap: 8px; align-items: center; font-size: .9rem; }
-.bar .tr { height: 12px; background: var(--sunk); border-radius: 6px; overflow: hidden; } .bar .tr span { display: block; height: 100%; background: var(--accent); }
+div.bar { display: grid; grid-template-columns: minmax(140px, 260px) 1fr 2.5em; gap: 8px; align-items: center; font-size: .9rem; }
+div.bar .tr { height: 12px; background: var(--sunk); border-radius: 6px; overflow: hidden; } div.bar .tr span { display: block; height: 100%; background: var(--accent); }
 .bar.esp .tr span { background: var(--ok); } .bar.dis .tr span { background: var(--bad); }
 .key { background: var(--warn-bg); border-radius: 8px; padding: 8px 10px; font-size: .88rem; }
 .mx td, .mx th { text-align: center; padding: 4px 6px; font-size: .82rem; } .mx td:first-child, .mx th:first-child { text-align: left; }
@@ -54,13 +54,13 @@ details.g .det { border-top: 1px solid var(--line); padding: 12px 14px; display:
 <main class="wrap stack-lg" id="main">
   <section class="panel stack" id="login">
     <p>Panel del profesorado de DEAba Digital: crea sesiones, sigue a los grupos en directo, proyecta las respuestas en el plenario, consulta la guía de cada actividad y califica. Usa la misma cuenta autorizada que SORTIVIA.</p>
-    <div class="row"><button class="btn primary" id="signin">Entrar con Google</button></div>
+    <div class="row"><button class="btn primary" id="signin">Entrar con Google</button><a class="btn ghost" href="muestra.html">Probar sin cuenta: actividad de muestra</a></div>
     <p class="small" id="err" role="alert" style="color:var(--bad)"></p>
   </section>
 </main>
 <footer><div class="wrap" id="foot"></div></footer>
 <div id="proj" role="dialog" aria-label="Proyección"></div>
-<script src="../comun/panel_i18n.js?v=1.0"></script>
+<script src="../comun/panel_i18n.js?v=1.1"></script>
 <script src="../quaestia/firebase-config.js"></script>
 <script src="deaba.js?v=0.2.4"></script>
 <script src="../comun/estadisticas.js?v=1.1"></script>
@@ -423,6 +423,7 @@ async function entrar() {
   P.nombre = (perfil && perfil.nombre) || u.nombre || u.email;
   $("#who").textContent = `${(PANEL_LANG === "en" && PANEL_I18N.tr(P.nombre)) || P.nombre} · ${P.rol === "admin" ? W("administrador", "administrator") : W("profesor", "teacher")}`;
   await dbCargarRutas(); await Promise.all([cargarIndice(), cargarSesiones()]); render();
+  { const ab = new URLSearchParams(location.search).get("abrir"); if (ab && P.sesiones.some((s) => s.id === ab)) await abrir(ab); }
 }
 function cell(v) { const s = v == null ? "" : String(v); return /[",\n;]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; }
 function save(name, text, type, bom = true) { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([(bom ? "﻿" : "") + text], { type })); a.download = name; document.body.appendChild(a); a.click(); a.remove(); }

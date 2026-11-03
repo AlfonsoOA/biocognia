@@ -1,0 +1,843 @@
+{
+ "schema": "deaba-guia/1",
+ "actividad": "diabetes_t1_medium",
+ "objetivo": {
+  "es": "Integrar la regulación hormonal (insulina/glucagón) con el reparto del acetil-CoA entre β-oxidación, ciclo de Krebs y cetogénesis, y distinguir una cetosis por falta de insulina de la del ayuno.",
+  "en": "Integrate hormonal regulation (insulin/glucagon) with the partitioning of acetyl-CoA between β-oxidation, the citric acid cycle and ketogenesis, and tell a ketosis caused by lack of insulin from that of fasting."
+ },
+ "nivel_texto": {
+  "es": "Grado (2.º curso, Bioquímica Metabólica). Requiere haber visto β-oxidación, cetogénesis y su regulación hormonal.",
+  "en": "Undergraduate (2nd year, Metabolic Biochemistry). Requires β-oxidation, ketogenesis and their hormonal regulation."
+ },
+ "secciones": {
+  "diagnostico": [
+   {
+    "es": "Condición A: diabetes mellitus tipo 1 descompensada (cetoacidosis diabética). Condición B: control sano.",
+    "en": "Condition A: uncontrolled type 1 diabetes mellitus (diabetic ketoacidosis). Condition B: healthy control."
+   }
+  ],
+  "pistas": [
+   {
+    "es": "Pérdida de peso con ingesta normal (contexto).",
+    "en": "Weight loss despite normal food intake (context)."
+   },
+   {
+    "es": "Glucosa alta junto a una cetogénesis masiva: falta de insulina, no falta de alimento.",
+    "en": "High glucose together with massive ketogenesis: lack of insulin, not lack of food."
+   },
+   {
+    "es": "ACC y malonil-CoA bajos con CAT-I alta: vía libre para las grasas (paso 2 del protocolo).",
+    "en": "Low ACC and malonyl-CoA with high CAT-I: the way is open for fats (step 2 of the protocol)."
+   }
+  ],
+  "razonamiento": [
+   {
+    "es": "Sin insulina (y con glucagón alto) el tejido adiposo libera ácidos grasos que el hígado activa (acil-CoA sintetasa ↑).",
+    "en": "Without insulin (and with high glucagon) adipose tissue releases fatty acids that the liver activates (acyl-CoA synthetase ↑)."
+   },
+   {
+    "es": "La ACC está inactiva, baja el malonil-CoA y la CAT-I deja entrar los acil-CoA en la mitocondria (acilcarnitina ↑).",
+    "en": "ACC is inactive, malonyl-CoA falls and CAT-I lets acyl-CoA into the mitochondrion (acylcarnitine ↑)."
+   },
+   {
+    "es": "La β-oxidación va a pleno rendimiento (hidratasa, deshidrogenasa y tiolasa ↑) y produce mucho acetil-CoA y NADH.",
+    "en": "β-Oxidation runs at full speed (hydratase, dehydrogenase and thiolase ↑) and produces a lot of acetyl-CoA and NADH."
+   },
+   {
+    "es": "El oxalacetato se desvía a la gluconeogénesis y se reduce a malato: el acetil-CoA no puede entrar en el ciclo de Krebs.",
+    "en": "Oxaloacetate is diverted to gluconeogenesis and reduced to malate: acetyl-CoA cannot enter the citric acid cycle."
+   },
+   {
+    "es": "El exceso de acetil-CoA se canaliza a cuerpos cetónicos (HMG-CoA sintasa ↑, D-3-hidroxibutirato ↑); el NADH alto favorece el D-3-hidroxibutirato.",
+    "en": "Excess acetyl-CoA is channelled into ketone bodies (HMG-CoA synthase ↑, D-3-hydroxybutyrate ↑); high NADH favours D-3-hydroxybutyrate."
+   },
+   {
+    "es": "La glucoquinasa y la HMG-CoA reductasa bajan porque dependen de la insulina; la glucosa sube: diabetes, no ayuno.",
+    "en": "Glucokinase and HMG-CoA reductase fall because they depend on insulin; glucose rises: diabetes, not fasting."
+   }
+  ],
+  "alternativas": [
+   {
+    "es": "Ayuno prolongado o inanición: comparte casi todo el perfil, pero la glucosa debería bajar. Si el grupo lo razona bien, merece puntuación parcial y es la mejor pregunta para el plenario.",
+    "en": "Prolonged fasting or starvation: shares almost the whole profile, but glucose should fall. If the group reasons it well, it deserves partial credit and is the best question for the plenary."
+   },
+   {
+    "es": "Dieta cetogénica estricta: misma lógica, sin hiperglucemia ni pérdida de peso con ingesta normal.",
+    "en": "Strict ketogenic diet: same logic, without hyperglycaemia or weight loss on a normal intake."
+   },
+   {
+    "es": "L-3-hidroxiacil-CoA alto por freno de la deshidrogenasa (NADH alto) en lugar de por mayor flujo: válido si se justifica.",
+    "en": "High L-3-hydroxyacyl-CoA because the dehydrogenase is slowed (high NADH) rather than greater flux: valid if justified."
+   }
+  ],
+  "errores": [
+   {
+    "es": "Confundir la HMG-CoA sintasa mitocondrial (cetogénesis) con la HMG-CoA reductasa del retículo (colesterol).",
+    "en": "Confusing mitochondrial HMG-CoA synthase (ketogenesis) with ER HMG-CoA reductase (cholesterol)."
+   },
+   {
+    "es": "Pensar que el acetil-CoA alto significa más ciclo de Krebs.",
+    "en": "Thinking that high acetyl-CoA means more citric acid cycle activity."
+   },
+   {
+    "es": "Explicar la ACC baja solo como «menos lipogénesis», sin conectarla con el malonil-CoA y la CAT-I.",
+    "en": "Explaining low ACC only as “less lipogenesis”, without linking it to malonyl-CoA and CAT-I."
+   },
+   {
+    "es": "Atribuir la hexoquinasa baja a que «no hay glucosa», cuando la glucosa sube.",
+    "en": "Attributing low hexokinase to “there is no glucose”, when glucose actually rises."
+   },
+   {
+    "es": "Decir que el hígado consume los cuerpos cetónicos que fabrica.",
+    "en": "Saying that the liver uses the ketone bodies it makes."
+   }
+  ],
+  "plenario": [
+   {
+    "es": "¿Qué dato separa la diabetes del ayuno? ¿Qué esperaríais ver en el ayuno?",
+    "en": "Which datum separates diabetes from fasting? What would you expect to see in fasting?"
+   },
+   {
+    "es": "¿Por qué el acetil-CoA no entra en el ciclo de Krebs si hay tanto?",
+    "en": "Why does acetyl-CoA not enter the citric acid cycle if there is so much of it?"
+   },
+   {
+    "es": "¿Por qué el hígado fabrica cuerpos cetónicos pero no los usa?",
+    "en": "Why does the liver make ketone bodies but not use them?"
+   },
+   {
+    "es": "¿Qué le pasará al pH de la sangre? ¿Por qué es peligroso?",
+    "en": "What will happen to blood pH? Why is it dangerous?"
+   },
+   {
+    "es": "Si se administra insulina, ¿qué valores de fold change cambiarían de signo primero?",
+    "en": "If insulin is given, which fold-change values would change sign first?"
+   }
+  ],
+  "referencias": [
+   {
+    "es": "Guía de Bioquímica Metabólica (UCOPress).",
+    "en": "Guía de Bioquímica Metabólica (UCOPress)."
+   },
+   {
+    "es": "Nelson DL, Cox MM. Lehninger. Principios de Bioquímica, 8.ª ed. Cap. 23: regulación hormonal e integración del metabolismo de los mamíferos.",
+    "en": "Nelson DL, Cox MM. Lehninger Principles of Biochemistry, 8th ed. Ch. 23: hormonal regulation and integration of mammalian metabolism."
+   },
+   {
+    "es": "Laffel L (1999). Ketone bodies: a review of physiology, pathophysiology and application of monitoring to diabetes. Diabetes Metab Res Rev 15:412-426.",
+    "en": "Laffel L (1999). Ketone bodies: a review of physiology, pathophysiology and application of monitoring to diabetes. Diabetes Metab Res Rev 15:412-426."
+   }
+  ],
+  "notas": []
+ },
+ "moleculas": {
+  "1": {
+   "reaccion": {
+    "es": "Ácido graso + CoA + ATP → acil-CoA + AMP + PPi",
+    "en": "Fatty acid + CoA + ATP → acyl-CoA + AMP + PPi"
+   },
+   "rutas": [
+    "betaox"
+   ],
+   "compartimento": {
+    "es": "Membrana mitocondrial externa y retículo",
+    "en": "Outer mitochondrial membrane and ER"
+   },
+   "porque": {
+    "es": "Llegan más ácidos grasos desde el tejido adiposo (la lipólisis está activa sin insulina) y se activan para oxidarse.",
+    "en": "More fatty acids arrive from adipose tissue (lipolysis is active without insulin) and are activated for oxidation."
+   },
+   "claves": [
+    "acil coa",
+    "atp",
+    "amp",
+    "activacion",
+    "acyl coa"
+   ]
+  },
+  "2": {
+   "reaccion": {
+    "es": "Acil-CoA + carnitina → acilcarnitina + CoA",
+    "en": "Acyl-CoA + carnitine → acylcarnitine + CoA"
+   },
+   "rutas": [
+    "lanzadera_carnitina"
+   ],
+   "compartimento": {
+    "es": "Membrana mitocondrial externa",
+    "en": "Outer mitochondrial membrane"
+   },
+   "porque": {
+    "es": "Con el malonil-CoA bajo, la CAT-I queda libre de su inhibidor: entran más ácidos grasos en la mitocondria.",
+    "en": "With malonyl-CoA low, CAT-I is freed from its inhibitor: more fatty acids enter the mitochondrion."
+   },
+   "claves": [
+    "carnitina",
+    "acilcarnitina",
+    "carnitine"
+   ]
+  },
+  "3": {
+   "reaccion": {
+    "es": "trans-Δ²-Enoil-CoA + H₂O → L-3-hidroxiacil-CoA",
+    "en": "trans-Δ²-Enoyl-CoA + H₂O → L-3-hydroxyacyl-CoA"
+   },
+   "rutas": [
+    "betaox"
+   ],
+   "compartimento": {
+    "es": "Matriz mitocondrial",
+    "en": "Mitochondrial matrix"
+   },
+   "porque": {
+    "es": "Segunda etapa de la β-oxidación, que va a pleno rendimiento.",
+    "en": "Second step of β-oxidation, which is running at full speed."
+   },
+   "claves": [
+    "hidrat*",
+    "enoil",
+    "hidroxiacil",
+    "hydrat*",
+    "enoyl"
+   ]
+  },
+  "4": {
+   "reaccion": {
+    "es": "L-3-Hidroxiacil-CoA + NAD⁺ → 3-cetoacil-CoA + NADH + H⁺",
+    "en": "L-3-Hydroxyacyl-CoA + NAD⁺ → 3-ketoacyl-CoA + NADH + H⁺"
+   },
+   "rutas": [
+    "betaox"
+   ],
+   "compartimento": {
+    "es": "Matriz mitocondrial",
+    "en": "Mitochondrial matrix"
+   },
+   "porque": {
+    "es": "Tercera etapa de la β-oxidación; genera NADH, lo que eleva el cociente NADH/NAD⁺ de la matriz.",
+    "en": "Third step of β-oxidation; it produces NADH, raising the matrix NADH/NAD⁺ ratio."
+   },
+   "claves": [
+    "nad",
+    "nadh",
+    "cetoacil",
+    "ketoacyl"
+   ]
+  },
+  "5": {
+   "reaccion": {
+    "es": "3-Cetoacil-CoA + CoA → acil-CoA (2 C menos) + acetil-CoA",
+    "en": "3-Ketoacyl-CoA + CoA → acyl-CoA (2 C shorter) + acetyl-CoA"
+   },
+   "rutas": [
+    "betaox",
+    "cetogenesis"
+   ],
+   "compartimento": {
+    "es": "Matriz mitocondrial",
+    "en": "Mitochondrial matrix"
+   },
+   "porque": {
+    "es": "Última etapa de la β-oxidación. La acetoacetil-CoA tiolasa también condensa 2 acetil-CoA en acetoacetil-CoA al inicio de la cetogénesis: ambas interpretaciones son válidas.",
+    "en": "Last step of β-oxidation. Acetoacetyl-CoA thiolase also condenses 2 acetyl-CoA into acetoacetyl-CoA at the start of ketogenesis: both interpretations are valid."
+   },
+   "claves": [
+    "acetil coa",
+    "tiol*",
+    "acetoacetil",
+    "acetyl coa"
+   ]
+  },
+  "6": {
+   "reaccion": {
+    "es": "Acetoacetil-CoA + acetil-CoA + H₂O → HMG-CoA + CoA",
+    "en": "Acetoacetyl-CoA + acetyl-CoA + H₂O → HMG-CoA + CoA"
+   },
+   "rutas": [
+    "cetogenesis"
+   ],
+   "compartimento": {
+    "es": "Matriz mitocondrial (hígado)",
+    "en": "Mitochondrial matrix (liver)"
+   },
+   "porque": {
+    "es": "Enzima clave de la cetogénesis; se induce cuando falta insulina y sobra acetil-CoA.",
+    "en": "Key enzyme of ketogenesis; induced when insulin is lacking and acetyl-CoA is in excess."
+   },
+   "claves": [
+    "hmg coa",
+    "acetoacetil",
+    "acetoacetyl"
+   ]
+  },
+  "7": {
+   "reaccion": {
+    "es": "HMG-CoA + 2 NADPH + 2 H⁺ → mevalonato + CoA + 2 NADP⁺",
+    "en": "HMG-CoA + 2 NADPH + 2 H⁺ → mevalonate + CoA + 2 NADP⁺"
+   },
+   "rutas": [
+    "colesterol"
+   ],
+   "compartimento": {
+    "es": "Retículo endoplasmático (cara citosólica)",
+    "en": "Endoplasmic reticulum (cytosolic face)"
+   },
+   "porque": {
+    "es": "La insulina estimula esta enzima y el glucagón la inhibe (fosforilación por AMPK): sin insulina, baja. El HMG-CoA de la cetogénesis es mitocondrial y no alimenta la síntesis de colesterol.",
+    "en": "Insulin stimulates this enzyme and glucagon inhibits it (phosphorylation by AMPK): without insulin it falls. The HMG-CoA of ketogenesis is mitochondrial and does not feed cholesterol synthesis."
+   },
+   "claves": [
+    "mevalonato",
+    "nadph",
+    "colesterol",
+    "mevalonate",
+    "cholesterol"
+   ]
+  },
+  "8": {
+   "reaccion": {
+    "es": "Acetoacetato + NADH + H⁺ ⇌ D-3-hidroxibutirato + NAD⁺",
+    "en": "Acetoacetate + NADH + H⁺ ⇌ D-3-hydroxybutyrate + NAD⁺"
+   },
+   "rutas": [
+    "cetogenesis",
+    "cetolisis"
+   ],
+   "compartimento": {
+    "es": "Matriz mitocondrial",
+    "en": "Mitochondrial matrix"
+   },
+   "porque": {
+    "es": "El exceso de NADH procedente de la β-oxidación desplaza el equilibrio hacia el D-3-hidroxibutirato.",
+    "en": "The excess NADH from β-oxidation shifts the equilibrium towards D-3-hydroxybutyrate."
+   },
+   "claves": [
+    "acetoacetato",
+    "hidroxibutirato",
+    "nadh",
+    "acetoacetate",
+    "hydroxybutyrate"
+   ]
+  },
+  "9": {
+   "reaccion": {
+    "es": "Acetil-CoA + HCO₃⁻ + ATP → malonil-CoA + ADP + Pi",
+    "en": "Acetyl-CoA + HCO₃⁻ + ATP → malonyl-CoA + ADP + Pi"
+   },
+   "rutas": [
+    "sintesis_ag"
+   ],
+   "compartimento": {
+    "es": "Citosol",
+    "en": "Cytosol"
+   },
+   "porque": {
+    "es": "El glucagón (vía PKA/AMPK) la fosforila e inactiva y la falta de insulina reduce su expresión: se frena la lipogénesis y baja el malonil-CoA.",
+    "en": "Glucagon (via PKA/AMPK) phosphorylates and inactivates it, and lack of insulin lowers its expression: lipogenesis stops and malonyl-CoA falls."
+   },
+   "claves": [
+    "malonil",
+    "carboxil*",
+    "bicarbonato",
+    "malonyl",
+    "bicarbonate"
+   ]
+  },
+  "10": {
+   "reaccion": {
+    "es": "Glucosa + ATP → glucosa-6-fosfato + ADP",
+    "en": "Glucose + ATP → glucose 6-phosphate + ADP"
+   },
+   "rutas": [
+    "glucolisis"
+   ],
+   "compartimento": {
+    "es": "Citosol",
+    "en": "Cytosol"
+   },
+   "porque": {
+    "es": "En el hígado actúa sobre todo la glucoquinasa, cuya expresión depende de la insulina: sin insulina, el hígado deja de captar y fosforilar glucosa.",
+    "en": "In the liver it is mainly glucokinase, whose expression depends on insulin: without insulin the liver stops taking up and phosphorylating glucose."
+   },
+   "claves": [
+    "glucosa 6 fosfato",
+    "glucose 6 phosphate"
+   ]
+  },
+  "11": {
+   "reaccion": {
+    "es": "Producto de la CAT-I; la translocasa la introduce en la matriz y la CAT-II la convierte de nuevo en acil-CoA",
+    "en": "Product of CAT-I; the translocase moves it into the matrix and CAT-II converts it back into acyl-CoA"
+   },
+   "rutas": [
+    "lanzadera_carnitina"
+   ],
+   "compartimento": {
+    "es": "Espacio intermembrana / matriz",
+    "en": "Intermembrane space / matrix"
+   },
+   "porque": {
+    "es": "Refleja la mayor entrada de ácidos grasos en la mitocondria.",
+    "en": "Reflects the greater entry of fatty acids into the mitochondrion."
+   },
+   "claves": [
+    "cat",
+    "carnitina",
+    "translocasa",
+    "translocase"
+   ]
+  },
+  "12": {
+   "reaccion": {
+    "es": "Lo forma la enoil-CoA hidratasa y lo consume la L-3-hidroxiacil-CoA deshidrogenasa",
+    "en": "Made by enoyl-CoA hydratase and used by L-3-hydroxyacyl-CoA dehydrogenase"
+   },
+   "rutas": [
+    "betaox"
+   ],
+   "compartimento": {
+    "es": "Matriz mitocondrial",
+    "en": "Mitochondrial matrix"
+   },
+   "porque": {
+    "es": "Mayor flujo de β-oxidación. Interpretación alternativa válida: el NADH alto frena la deshidrogenasa y el intermediario se acumula.",
+    "en": "Greater β-oxidation flux. Valid alternative: high NADH slows the dehydrogenase and the intermediate accumulates."
+   },
+   "claves": [
+    "hidratasa",
+    "deshidrogenasa",
+    "hydratase",
+    "dehydrogenase"
+   ]
+  },
+  "13": {
+   "reaccion": {
+    "es": "Lo forman la tiolasa (β-oxidación) y la PDH; lo consumen la citrato sintasa y la cetogénesis",
+    "en": "Made by thiolase (β-oxidation) and PDH; used by citrate synthase and ketogenesis"
+   },
+   "rutas": [
+    "betaox",
+    "krebs",
+    "cetogenesis"
+   ],
+   "compartimento": {
+    "es": "Matriz mitocondrial",
+    "en": "Mitochondrial matrix"
+   },
+   "porque": {
+    "es": "Se produce más acetil-CoA del que puede entrar en el ciclo de Krebs porque falta oxalacetato.",
+    "en": "More acetyl-CoA is made than can enter the citric acid cycle because oxaloacetate is lacking."
+   },
+   "claves": [
+    "tiolasa",
+    "citrato sintasa",
+    "oxalacetato",
+    "thiolase",
+    "citrate synthase"
+   ]
+  },
+  "14": {
+   "reaccion": {
+    "es": "Lo forma la ACC; lo consume la ácido graso sintasa; inhibe la CAT-I",
+    "en": "Made by ACC; used by fatty acid synthase; inhibits CAT-I"
+   },
+   "rutas": [
+    "sintesis_ag",
+    "lanzadera_carnitina"
+   ],
+   "compartimento": {
+    "es": "Citosol",
+    "en": "Cytosol"
+   },
+   "porque": {
+    "es": "La ACC está inactiva. Al bajar el malonil-CoA se libera la CAT-I.",
+    "en": "ACC is inactive. As malonyl-CoA falls, CAT-I is released."
+   },
+   "claves": [
+    "acc",
+    "carboxilasa",
+    "cat",
+    "carboxylase"
+   ]
+  },
+  "15": {
+   "reaccion": {
+    "es": "Lo forman la piruvato carboxilasa y la malato deshidrogenasa; lo consumen la citrato sintasa y la PEPCK",
+    "en": "Made by pyruvate carboxylase and malate dehydrogenase; used by citrate synthase and PEPCK"
+   },
+   "rutas": [
+    "krebs",
+    "gluconeogenesis"
+   ],
+   "compartimento": {
+    "es": "Matriz mitocondrial / citosol",
+    "en": "Mitochondrial matrix / cytosol"
+   },
+   "porque": {
+    "es": "Se desvía hacia la gluconeogénesis y, con el NADH alto, se reduce a malato: queda poco para condensarse con el acetil-CoA.",
+    "en": "It is diverted to gluconeogenesis and, with high NADH, reduced to malate: little is left to condense with acetyl-CoA."
+   },
+   "claves": [
+    "piruvato carboxilasa",
+    "pepck",
+    "malato",
+    "citrato",
+    "pyruvate carboxylase"
+   ]
+  },
+  "16": {
+   "reaccion": {
+    "es": "Lo forma la D-3-hidroxibutirato deshidrogenasa a partir del acetoacetato",
+    "en": "Made by D-3-hydroxybutyrate dehydrogenase from acetoacetate"
+   },
+   "rutas": [
+    "cetogenesis"
+   ],
+   "compartimento": {
+    "es": "Matriz mitocondrial → sangre",
+    "en": "Mitochondrial matrix → blood"
+   },
+   "porque": {
+    "es": "Cuerpo cetónico que el hígado exporta; el hígado no puede usarlo porque carece de la succinil-CoA:3-cetoácido CoA transferasa.",
+    "en": "A ketone body exported by the liver; the liver cannot use it because it lacks succinyl-CoA:3-ketoacid CoA transferase."
+   },
+   "claves": [
+    "acetoacetato",
+    "deshidrogenasa",
+    "acetoacetate"
+   ]
+  },
+  "17": {
+   "reaccion": {
+    "es": "La libera la glucosa-6-fosfatasa (gluconeogénesis y glucogenólisis); la fosforila la hexoquinasa/glucoquinasa",
+    "en": "Released by glucose-6-phosphatase (gluconeogenesis and glycogenolysis); phosphorylated by hexokinase/glucokinase"
+   },
+   "rutas": [
+    "gluconeogenesis",
+    "glucolisis"
+   ],
+   "compartimento": {
+    "es": "Citosol / sangre",
+    "en": "Cytosol / blood"
+   },
+   "porque": {
+    "es": "Hiperglucemia: el hígado sigue fabricando glucosa y los tejidos no la captan sin insulina. Es el dato que separa la diabetes del ayuno (donde la glucosa baja).",
+    "en": "Hyperglycaemia: the liver keeps making glucose and tissues cannot take it up without insulin. This is what separates diabetes from fasting (where glucose falls)."
+   },
+   "claves": [
+    "glucosa 6 fosfatasa",
+    "glucoquinasa",
+    "hexoquinasa",
+    "glucose 6 phosphatase"
+   ]
+  }
+ },
+ "conceptos": [
+  {
+   "id": "insulina",
+   "etiqueta": "Falta de insulina",
+   "alternativas": [
+    [
+     "insulina"
+    ],
+    [
+     "insulinopenia"
+    ],
+    [
+     "hipoinsulin*"
+    ],
+    [
+     "insulin"
+    ]
+   ],
+   "tipo": "esperado",
+   "etiqueta_en": "Lack of insulin"
+  },
+  {
+   "id": "glucagon",
+   "etiqueta": "Glucagón alto",
+   "alternativas": [
+    [
+     "glucagon"
+    ]
+   ],
+   "tipo": "esperado",
+   "etiqueta_en": "High glucagon"
+  },
+  {
+   "id": "diabetes",
+   "etiqueta": "Diabetes",
+   "alternativas": [
+    [
+     "diabetes"
+    ],
+    [
+     "diabetic*"
+    ],
+    [
+     "dm1"
+    ],
+    [
+     "dm tipo 1"
+    ],
+    [
+     "tipo 1"
+    ],
+    [
+     "type 1"
+    ]
+   ],
+   "tipo": "esperado",
+   "etiqueta_en": "Diabetes"
+  },
+  {
+   "id": "cetogenesis",
+   "etiqueta": "Cetogénesis / cuerpos cetónicos",
+   "alternativas": [
+    [
+     "cetogenesis"
+    ],
+    [
+     "cuerpos cetonicos"
+    ],
+    [
+     "cetonic*"
+    ],
+    [
+     "cetosis"
+    ],
+    [
+     "cetoacidosis"
+    ],
+    [
+     "ketogenesis"
+    ],
+    [
+     "ketone*"
+    ],
+    [
+     "ketosis"
+    ],
+    [
+     "ketoacidosis"
+    ]
+   ],
+   "tipo": "esperado",
+   "etiqueta_en": "Ketogenesis / ketone bodies"
+  },
+  {
+   "id": "betaox",
+   "etiqueta": "β-oxidación activa",
+   "alternativas": [
+    [
+     "beta oxidacion"
+    ],
+    [
+     "betaoxidacion"
+    ],
+    [
+     "oxidacion de acidos grasos"
+    ],
+    [
+     "oxidacion de los acidos grasos"
+    ],
+    [
+     "beta oxidation"
+    ],
+    [
+     "fatty acid oxidation"
+    ]
+   ],
+   "tipo": "esperado",
+   "etiqueta_en": "Active β-oxidation"
+  },
+  {
+   "id": "malonil_cat",
+   "etiqueta": "Malonil-CoA ↓ libera la CAT-I",
+   "alternativas": [
+    [
+     "malonil",
+     "cat"
+    ],
+    [
+     "malonil",
+     "cpt"
+    ],
+    [
+     "malonil",
+     "carnitina"
+    ],
+    [
+     "malonyl",
+     "cat"
+    ],
+    [
+     "malonyl",
+     "cpt"
+    ],
+    [
+     "malonyl",
+     "carnitine"
+    ]
+   ],
+   "tipo": "esperado",
+   "etiqueta_en": "Low malonyl-CoA releases CAT-I"
+  },
+  {
+   "id": "oaa",
+   "etiqueta": "Oxalacetato desviado / Krebs saturado",
+   "alternativas": [
+    [
+     "oxalacetato",
+     "gluconeogenesis"
+    ],
+    [
+     "oxalacetato",
+     "krebs"
+    ],
+    [
+     "oaa",
+     "gluconeogenesis"
+    ],
+    [
+     "oaa",
+     "krebs"
+    ],
+    [
+     "oxaloacetate",
+     "gluconeogenesis"
+    ],
+    [
+     "oxaloacetate",
+     "cycle"
+    ]
+   ],
+   "tipo": "esperado",
+   "etiqueta_en": "Oxaloacetate diverted / cycle saturated"
+  },
+  {
+   "id": "hiperglucemia",
+   "etiqueta": "Hiperglucemia",
+   "alternativas": [
+    [
+     "hiperglucemia"
+    ],
+    [
+     "glucosa alta"
+    ],
+    [
+     "glucosa elevada"
+    ],
+    [
+     "sube la glucosa"
+    ],
+    [
+     "aumenta la glucosa"
+    ],
+    [
+     "glucosa aumenta"
+    ],
+    [
+     "glucosa sube"
+    ],
+    [
+     "hyperglycaemia"
+    ],
+    [
+     "hyperglycemia"
+    ],
+    [
+     "high glucose"
+    ]
+   ],
+   "tipo": "esperado",
+   "etiqueta_en": "Hyperglycaemia"
+  },
+  {
+   "id": "acidosis",
+   "etiqueta": "Acidosis",
+   "alternativas": [
+    [
+     "acidosis"
+    ],
+    [
+     "ph"
+    ]
+   ],
+   "tipo": "esperado",
+   "etiqueta_en": "Acidosis"
+  },
+  {
+   "id": "ayuno",
+   "etiqueta": "Ayuno / inanición",
+   "alternativas": [
+    [
+     "ayuno"
+    ],
+    [
+     "inanicion"
+    ],
+    [
+     "dieta cetogenica"
+    ],
+    [
+     "fasting"
+    ],
+    [
+     "starvation"
+    ],
+    [
+     "ketogenic diet"
+    ]
+   ],
+   "tipo": "alternativo",
+   "etiqueta_en": "Fasting / starvation"
+  },
+  {
+   "id": "colesterol",
+   "etiqueta": "HMG-CoA reductasa = colesterol",
+   "alternativas": [
+    [
+     "colesterol"
+    ],
+    [
+     "mevalonato"
+    ],
+    [
+     "cholesterol"
+    ],
+    [
+     "mevalonate"
+    ]
+   ],
+   "tipo": "esperado",
+   "etiqueta_en": "HMG-CoA reductase = cholesterol"
+  },
+  {
+   "id": "krebs_sube",
+   "etiqueta": "Error: más acetil-CoA = más Krebs",
+   "alternativas": [
+    [
+     "aumenta el ciclo de krebs"
+    ],
+    [
+     "mas ciclo de krebs"
+    ],
+    [
+     "krebs aumenta"
+    ],
+    [
+     "activa el ciclo de krebs"
+    ],
+    [
+     "krebs cycle increases"
+    ],
+    [
+     "more krebs"
+    ]
+   ],
+   "tipo": "error",
+   "etiqueta_en": "Error: more acetyl-CoA = more cycle"
+  }
+ ]
+}

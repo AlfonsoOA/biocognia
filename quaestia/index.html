@@ -198,6 +198,24 @@ select { padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; b
 .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 500; }
 .pill.on { background: var(--ok-bg); color: var(--ok); } .pill.off { background: var(--sunk); color: var(--muted); }
 .spark { width: 100%; height: 80px; display: block; }
+/* Mapa de calor tema × nivel de Bloom (Mi progreso) */
+.hm { display: grid; grid-template-columns: 7.2rem repeat(7, minmax(34px, 1fr)); gap: 4px; }
+@media (max-width: 560px) { .hm { grid-template-columns: 1.9rem repeat(7, minmax(34px, 1fr)); gap: 3px; } .hm .hy span { display: none; } }
+.hm .hx, .hm .hy { font-size: 0.78rem; color: var(--muted); display: flex; align-items: center; }
+.hm .hx { justify-content: center; font-family: var(--f-mono); }
+.hm .hy { gap: 4px; }
+.hm .hy b { font-family: var(--f-mono); font-weight: 500; }
+.hm .c { height: 46px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); padding: 2px; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1; font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.hm .c b { font-size: 0.86rem; font-weight: 500; }
+.hm .c small { font-size: 0.66rem; opacity: 0.8; }
+.hm .c.todo { border-style: dashed; color: var(--muted); }
+.hm .c.na { background: transparent; border-color: transparent; color: var(--line); cursor: default; }
+.hm .c:not(.na):hover { outline: 2px solid var(--accent); outline-offset: 1px; }
+.hmleg { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-size: 0.8rem; color: var(--muted); }
+.hmleg .grad { display: inline-block; width: 90px; height: 10px; border-radius: 3px; vertical-align: -1px; margin: 0 6px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 10%, var(--surface)), var(--accent)); }
+.hmleg .sw { display: inline-block; width: 14px; height: 12px; border: 1px dashed var(--line); border-radius: 3px; vertical-align: -1px; margin-right: 6px; }
 footer a { color: inherit; }
 footer { border-top: 1px solid var(--line); padding-block: 22px; color: var(--muted); font-size: 0.84rem; }
 footer .wrap { display: flex; flex-direction: column; gap: 6px; }
@@ -272,7 +290,7 @@ table.answers.key td:last-child { text-align: left; }
    QUAESTIA — autoevaluación de Bioquímica metabólica (BIOCOGNIA)
    Versión 0.1 (estudiante). Sin servidor: datos en el navegador.
    ============================================================ */
-const APP_VERSION = "0.3.3";
+const APP_VERSION = "0.4.0";
 const TEMAS = [1, 2, 3, 4, 5, 6, 7];
 
 /* ---------- Núcleo (equivale a metahub-core.js) ---------- */
@@ -355,7 +373,7 @@ const I18N = {
     s_title: "Preguntas cortas", s_topic: "Tema", s_your: "Tu respuesta", s_placeholder: "Escribe aquí tu respuesta antes de ver la del manual…", s_show: "Ver respuesta del manual", s_model: "Respuesta del manual",
     s_rate: "¿Cómo ha ido tu respuesta?", s_good: "La tenía bien", s_part: "Parcialmente", s_bad: "No la sabía", s_next: "Siguiente pregunta", s_done: "Has repasado todas las preguntas cortas de este tema.", s_count: (i, n) => `${i} de ${n}`, s_concept: "Concepto clave",
     me_title: "Mi progreso", me_none: "Todavía no has hecho ninguna prueba. Cuando termines una, aparecerá aquí.", me_attempts: "Pruebas hechas", me_avg: "Nota media", me_last: "Última nota", me_shorts: "Preguntas cortas repasadas",
-    me_trend: "Evolución de la nota", me_bloom: "Rendimiento por nivel de Bloom (todas las pruebas)", me_history: "Historial", me_research: "Investigación", me_delete: "Borrar todos mis datos", me_delete_confirm: "Se borrarán tu historial y tus respuestas de este navegador. No se puede deshacer.", me_delete_yes: "Sí, borrar", me_deleted: "Datos borrados.",
+    me_map: "Qué has practicado y cómo te va", me_map_note: "Cada casilla cruza un tema (columnas) con un nivel de Bloom (filas). El número grande es tu porcentaje de puntos en esas preguntas y el pequeño, cuántas distintas has hecho de las que hay. Cuanto más intenso el color, mejor te va. Pulsa una casilla para practicar justo eso.", me_map_low: "0 %", me_map_high: "100 %", me_map_todo: "Sin hacer", me_map_cell: (t, b, h, n, p) => `Tema ${t}, ${b}: ${h} de ${n} preguntas hechas` + (p == null ? "" : `, ${p} % de los puntos`) + ". Pulsa para practicar.", me_trend: "Evolución de la nota", me_bloom: "Rendimiento por nivel de Bloom (todas las pruebas)", me_history: "Historial", me_research: "Investigación", me_delete: "Borrar todos mis datos", me_delete_confirm: "Se borrarán tu historial y tus respuestas de este navegador. No se puede deshacer.", me_delete_yes: "Sí, borrar", me_deleted: "Datos borrados.",
     h_date: "Fecha", h_mode: "Modo", h_n: "Preguntas", h_grade: "Nota", mode_train: "Entrenamiento", mode_exam: "Simulacro",
     c_title: "Antes de empezar", c_text: "Esta aplicación forma parte del estudio BIOCOGNIA sobre aprendizaje de la Bioquímica (Universidad de Córdoba; informe del comité de ética [referencia]). Si aceptas, tus respuestas se guardarán en este navegador con un código aleatorio, sin tu nombre ni tu correo. Al final podrás exportarlas y entregarlas de forma anónima, si quieres. Participar o no, y entregar o no tus datos, no afecta a tu nota. Si no aceptas, puedes usar la aplicación igual.", c_age: "Soy mayor de edad.",
     c_yes: "Acepto participar", c_no: "Prefiero no participar", c_later: "Puedes cambiar tu decisión cuando quieras en «Mi progreso».", c_on: "Participas en el estudio", c_off: "No participas en el estudio", c_toggle_on: "Participar", c_toggle_off: "Dejar de participar",
@@ -389,7 +407,7 @@ const I18N = {
     s_title: "Short questions", s_topic: "Topic", s_your: "Your answer", s_placeholder: "Write your answer here before seeing the handbook's…", s_show: "Show the handbook answer", s_model: "Handbook answer",
     s_rate: "How did your answer go?", s_good: "I had it right", s_part: "Partly", s_bad: "I didn't know it", s_next: "Next question", s_done: "You have reviewed all the short questions in this topic.", s_count: (i, n) => `${i} of ${n}`, s_concept: "Key concept",
     me_title: "My progress", me_none: "You haven't taken any test yet. When you finish one, it will appear here.", me_attempts: "Tests taken", me_avg: "Average grade", me_last: "Latest grade", me_shorts: "Short questions reviewed",
-    me_trend: "Grade over time", me_bloom: "Performance by Bloom level (all tests)", me_history: "History", me_research: "Research", me_delete: "Delete all my data", me_delete_confirm: "Your history and answers will be deleted from this browser. This cannot be undone.", me_delete_yes: "Yes, delete", me_deleted: "Data deleted.",
+    me_map: "What you have practised and how it is going", me_map_note: "Each cell crosses a topic (columns) with a Bloom level (rows). The large number is your percentage of points on those questions and the small one, how many different questions you have done out of those available. The stronger the colour, the better you are doing. Tap a cell to practise exactly that.", me_map_low: "0%", me_map_high: "100%", me_map_todo: "Not done", me_map_cell: (t, b, h, n, p) => `Topic ${t}, ${b}: ${h} of ${n} questions done` + (p == null ? "" : `, ${p}% of points`) + ". Tap to practise.", me_trend: "Grade over time", me_bloom: "Performance by Bloom level (all tests)", me_history: "History", me_research: "Research", me_delete: "Delete all my data", me_delete_confirm: "Your history and answers will be deleted from this browser. This cannot be undone.", me_delete_yes: "Yes, delete", me_deleted: "Data deleted.",
     h_date: "Date", h_mode: "Mode", h_n: "Questions", h_grade: "Grade", mode_train: "Practice", mode_exam: "Mock exam",
     c_title: "Before you start", c_text: "This app is part of the BIOCOGNIA study on learning biochemistry (University of Córdoba; ethics committee report [reference]). If you agree, your answers will be stored in this browser under a random code, without your name or email. At the end you can export them and hand them in anonymously, if you wish. Taking part or not, and handing in your data or not, does not affect your grade. If you don't agree, you can still use the app.", c_age: "I am 18 or older.",
     c_yes: "I agree to take part", c_no: "I'd rather not take part", c_later: "You can change your decision at any time in “My progress”.", c_on: "You are taking part in the study", c_off: "You are not taking part in the study", c_toggle_on: "Take part", c_toggle_off: "Stop taking part",
@@ -725,10 +743,43 @@ function vMe() {
   const rows = hist.slice().reverse().map((h) => `<tr><td>${new Date(h.fecha).toLocaleDateString(S.lang === "es" ? "es-ES" : "en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}</td><td>${modeLabel(h.modo)}</td><td class="n">${h.max}</td><td class="n">${fmt(h.nota)}</td></tr>`).join("");
   return `<div class="stack-lg">${consentBox()}<h1>${T("me_title")}</h1>
     <div class="kv"><div><b>${hist.length}</b><span>${T("me_attempts")}</span></div><div><b>${fmt(avg)}</b><span>${T("me_avg")}</span></div><div><b>${fmt(notas[notas.length - 1])}</b><span>${T("me_last")}</span></div><div><b>${nC}</b><span>${T("me_shorts")}</span></div></div>
+    <section class="stack"><h2>${T("me_map")}</h2><div class="tablebox">${heatmap(allDet)}</div>
+      <div class="hmleg"><span>${T("me_map_low")}<span class="grad"></span>${T("me_map_high")}</span><span><span class="sw"></span>${T("me_map_todo")}</span></div>
+      <p class="small muted">${T("me_map_note")}</p></section>
     <section class="stack"><h2>${T("me_trend")}</h2>${spark}</section>
     <section class="stack"><h2>${T("me_bloom")}</h2><div class="bars">${barsBy(allDet, (x) => x.bloom, (b) => `${b} ${esc(I18N[S.lang].bl_names[b])}`, (b) => `var(--${b.toLowerCase()})`)}</div><p class="small muted">${T("r_bar_note")}</p></section>
     <section class="stack"><h2>${T("me_history")}</h2><div class="tablebox"><table class="temas"><thead><tr><th>${T("h_date")}</th><th>${T("h_mode")}</th><th style="text-align:right">${T("h_n")}</th><th style="text-align:right">${T("h_grade")}</th></tr></thead><tbody>${rows}</tbody></table></div></section>
     ${research}${delBox()}</div>`;
+}
+/* Mapa de calor: temas en columnas, niveles de Bloom en filas; color = % de puntos (como las barras), texto = preguntas distintas hechas / disponibles. */
+function heatmap(detalle) {
+  const disp = {}, hechas = {}, pts = {};
+  for (const q of S.banco) if (q.tipo === "test") { const k = q.tema + "|" + q.bloom; disp[k] = (disp[k] || 0) + 1; }
+  for (const d of detalle) {
+    const k = d.tema + "|" + d.bloom;
+    (hechas[k] = hechas[k] || new Set()).add(d.id);
+    const a = (pts[k] = pts[k] || { p: 0, n: 0 }); a.p += d.puntos; a.n += 1;
+  }
+  let h = `<div class="hm" role="group" aria-label="${T("me_map")}"><span></span>${TEMAS.map((t) => `<span class="hx" title="${esc(tx(S.meta[t].titulo))}">T${t}</span>`).join("")}`;
+  for (const b of BLOOM) {
+    h += `<span class="hy" title="${esc(I18N[S.lang].bl_names[b])}"><b style="color:var(--${b.toLowerCase()})">${b}</b><span>${esc(I18N[S.lang].bl_names[b])}</span></span>`;
+    for (const t of TEMAS) {
+      const k = t + "|" + b, n = disp[k] || 0, done = hechas[k] ? hechas[k].size : 0;
+      if (!n) { h += `<span class="c na" aria-hidden="true">·</span>`; continue; }
+      if (!pts[k]) { h += `<button type="button" class="c todo" data-cell="${t},${b}" aria-label="${esc(T("me_map_cell", t, b, 0, n, null))}"><b>–</b><small>0/${n}</small></button>`; continue; }
+      const pct = Math.max(0, Math.round((100 * pts[k].p) / pts[k].n));
+      const fg = pct >= 55 ? "var(--accent-ink)" : "var(--ink)";
+      h += `<button type="button" class="c" data-cell="${t},${b}" style="background:color-mix(in srgb, var(--accent) ${10 + Math.round(pct * 0.9)}%, var(--surface));color:${fg}" aria-label="${esc(T("me_map_cell", t, b, done, n, pct))}"><b>${pct}</b><small>${done}/${n}</small></button>`;
+    }
+  }
+  return h + `</div>`;
+}
+function practicarCasilla(v) {
+  const [t, b] = v.split(","), cfg = { temas: [+t], n: 10, secciones: [], blooms: [b] };
+  Store.set("trainCfg", cfg);
+  const g = generarEntrenamiento(S.banco, cfg);
+  if (!g.preguntas.length) return go("train");
+  return startRun("train", g.preguntas, cfg);
 }
 function delBox() {
   if (S.delConfirm) return `<div class="confirm" role="alert"><span>${T("me_delete_confirm")}</span><button class="btn primary" type="button" id="del-yes">${T("me_delete_yes")}</button><button class="btn" type="button" id="del-no">${T("q_hand_no")}</button></div>`;
@@ -775,6 +826,7 @@ document.addEventListener("click", (e) => {
   if (t.dataset.lang) { S.lang = t.dataset.lang; Store.set("lang", S.lang); return render(); }
   if (t.id === "home-link") return go("home");
   if (t.dataset.go) return go(t.dataset.go);
+  if (t.dataset.cell) return practicarCasilla(t.dataset.cell);
   if (t.dataset.uso) return usoSet(t.dataset.uso === "1");
   if (t.dataset.consent) return setConsent(t.dataset.consent === "1");
   if (teachClick(t)) return;

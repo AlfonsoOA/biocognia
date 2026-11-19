@@ -3,7 +3,7 @@
 Autoevaluación y autoaprendizaje de **Bioquímica metabólica**, con preguntas clasificadas según la taxonomía de Bloom (B1 Recordar → B6 Crear). Bilingüe (ES/EN). Parte de BIOCOGNIA.
 
 - **Banco de preguntas:** Guía de Bioquímica Metabólica (UCOPress, Universidad de Córdoba, 2026), https://doi.org/10.21071/000115 · eISBN 978-84-1072-031-2. Los archivos fuente de la Guía están en Zenodo (https://doi.org/10.5281/zenodo.22299277). Para citar las preguntas, cita la Guía; el banco no forma parte del registro del software.
-- **Versión:** 0.3.3 (estudiante, profesorado y envío automático opcional).
+- **Versión:** 0.4.0 (estudiante, profesorado y envío automático opcional). Novedad: en «Mi progreso», mapa de calor tema × nivel de Bloom con lo hecho, lo que falta y el rendimiento; cada casilla abre un entrenamiento de ese tema y nivel.
 
 ## Qué hace
 
@@ -58,4 +58,6 @@ Sustituye el archivo correspondiente en `data/` (`tema01.json` … `tema07.json`
 
 ## Licencia
 
-Pendiente de decidir (código y contenido del banco por separado).
+BIOCOGNIA (QUAESTIA, SORTIVIA y DEAba Digital) es y será de uso libre y gratuito con fines educativos. Su licencia abierta, no comercial y con obligación de citar la autoría, está en trámite con la Universidad de Córdoba. Mientras tanto, todos los derechos quedan reservados al autor, Alfonso Olaya Abril.
+
+Las preguntas de QUAESTIA proceden de la *Guía de Bioquímica Metabólica* (UCOPress, 2026, doi:10.21071/000115), que se distribuye con su propia licencia Creative Commons.

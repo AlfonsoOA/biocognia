@@ -46,4 +46,6 @@ Las propuestas del profesorado llegan como *issues* con la etiqueta `propuesta` 
 
 ## Licencia
 
-Pendiente de decidir (código y contenido por separado).
+BIOCOGNIA (QUAESTIA, SORTIVIA y DEAba Digital) es y será de uso libre y gratuito con fines educativos. Su licencia abierta, no comercial y con obligación de citar la autoría, está en trámite con la Universidad de Córdoba. Mientras tanto, todos los derechos quedan reservados al autor, Alfonso Olaya Abril.
+
+Las preguntas de QUAESTIA proceden de la *Guía de Bioquímica Metabólica* (UCOPress, 2026, doi:10.21071/000115), que se distribuye con su propia licencia Creative Commons.

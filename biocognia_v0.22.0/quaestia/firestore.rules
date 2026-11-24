@@ -1,0 +1,54 @@
+rules_version = '2';
+// Reglas de seguridad de Firestore para QUAESTIA (BIOCOGNIA).
+// Cópialas en Firebase → Firestore Database → Reglas → Publicar.
+// - Cada participante (identificación anónima) solo puede crear sus propios registros, leerlos y borrarlos.
+// - Nadie puede modificar un registro ya enviado.
+// - Solo las cuentas listadas en esAdmin() pueden leer todos los datos (panel admin.html).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function esAdmin() {
+      // Identificadores de las cuentas del equipo investigador (los muestra admin.html al entrar).
+      return request.auth != null && request.auth.uid in ['cMZwT1gAQHa5EmohnmYV9YmY4XT2'];
+    }
+    function propio() {
+      return request.auth != null && resource.data.uid == request.auth.uid;
+    }
+    // Código de participante (opcional): aleatorio, estable, de hasta 12 caracteres.
+    function participanteValido() {
+      return !('participante' in request.resource.data)
+        || (request.resource.data.participante is string && request.resource.data.participante.size() <= 12);
+    }
+    function creacionValida(campos) {
+      return request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.creado == request.time
+        && request.resource.data.keys().hasOnly(campos)
+        && request.resource.data.app == 'quaestia'
+        && request.resource.data.grupo is string
+        && request.resource.data.grupo.size() <= 24;
+    }
+
+    match /intentos/{id} {
+      allow create: if creacionValida(['uid', 'creado', 'app', 'app_version', 'grupo', 'modo', 'fecha', 'semana_curso', 'n_intento',
+                                        'nota', 'bruto', 'max', 'duracion_s', 'lang', 'config', 'items', 'participante'])
+                    && participanteValido()
+                    && request.resource.data.items is list
+                    && request.resource.data.items.size() <= 200;
+      allow read, delete: if esAdmin() || propio();
+      allow update: if false;
+    }
+
+    match /cortas/{id} {
+      allow create: if creacionValida(['uid', 'creado', 'app', 'app_version', 'grupo', 'id', 'autoeval', 'fecha', 'semana_curso', 'longitud', 'participante'])
+                    && participanteValido()
+                    && request.resource.data.autoeval in ['bien', 'parcial', 'mal'];
+      allow read, delete: if esAdmin() || propio();
+      allow update: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
